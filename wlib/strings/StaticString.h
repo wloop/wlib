@@ -2,7 +2,7 @@
 #define WLIB_STATICSTRING_H
 
 #include "stdint.h"
-#include <cmath>
+#include <math.h>
 
 template <uint16_t tSize>
 class StaticString {
