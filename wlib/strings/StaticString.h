@@ -1,7 +1,6 @@
 #ifndef WLIB_STATICSTRING_H
 #define WLIB_STATICSTRING_H
 
-#include "String.h"
 #include "stdint.h"
 #include <cmath>
 
