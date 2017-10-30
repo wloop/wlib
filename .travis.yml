@@ -22,6 +22,7 @@ script:
   - export CXX=/usr/bin/g++-6
   # Check versions of gcc, g++ and cmake
   - gcc -v && g++ -v && cmake --version
+  # Compile project and run tests
   - cmake CMakeLists.txt
   - make
   - ./tests/Tests
