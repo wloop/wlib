@@ -9,5 +9,5 @@ TEST(static_string_tests, constructor_tests){
 
     ASSERT_STREQ(string1.c_str(), "helloooo");
     ASSERT_STREQ(string2.c_str(), "\0");
-    //ASSERT_STREQ(string3.c_str(), "helloooo");
+    ASSERT_STREQ(string3.c_str(), "helloooo");
 }

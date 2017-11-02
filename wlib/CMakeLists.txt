@@ -1,15 +1,16 @@
 project(wlib)
 
 file (GLOB header_files
-        "Wlib.h"
+        "*.h"
         "strings/*.h"
         "stl/*.h"
-        "memory/*.h")
+        "memory/*.h"
+        "exception/*.h")
 
 file (GLOB source_files
         "memory/*.cpp")
 
-set(HEADER_FILES ${header_files} )
+set(HEADER_FILES ${header_files})
 set(SOURCE_FILES ${source_files})
 
 add_library(wlib STATIC ${SOURCE_FILES} ${HEADER_FILES})

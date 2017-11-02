@@ -30,26 +30,69 @@ public:
 	}
 
 	/**
-	 * Constructor creates string using static string object
+	 * Copy constructor.
 	 *
-	 * @param str @code StaticString object
+	 * @param str static string to copy
 	 */
-	StaticString<tSize>(const StaticString<tSize> &str){
-		StaticString(str.c_str());
+	StaticString<tSize>(StaticString<tSize>& str) {
+		strncpy(m_buffer, str.m_buffer, str.len);
+		m_buffer[str.len] = '\0';
+		len = str.len;
 	}
 
 	/**
-	 * Assign operator assigns current object to given object
+	 * Copy constructor for const.
 	 *
-	 * @param str @code StaticString object
-	 * @return current object
+	 * @param str const static string to copy
 	 */
-	StaticString<tSize> operator= (const StaticString<tSize> &str){
-		return operator=(str.c_str());
+	StaticString<tSize>(const StaticString<tSize>& str) {
+		strncpy(m_buffer, str.m_buffer, str.len);
+		m_buffer[str.len] = '\0';
+		len = str.len;
+	}
+
+	/**
+	 * Assignment operator. Copies contents of assigned string.
+	 *
+	 * @param str string to assign
+	 * @return reference to this static string
+	 */
+	StaticString<tSize>& operator=(StaticString<tSize>& str) {
+		strncpy(m_buffer, str.m_buffer, str.len);
+		m_buffer[str.len] = '\0';
+		len = str.len;
+		return *this;
+	}
+
+	/**
+	 * Assignment operator for const.
+	 *
+	 * @param str const string to assign
+	 * @return reference to this static string
+	 */
+	StaticString<tSize>& operator=(const StaticString<tSize>& str) {
+		strncpy(m_buffer, str.m_buffer, str.len);
+		m_buffer[str.len] = '\0';
+		len = str.len;
+		return *this;
 	}
 
 	/**
 	 * Assign operator assigns current object to given character string
+	 * @param str
+	 * @return current object
+	 */
+	StaticString<tSize> operator= (char* str){
+		uint16_t destSize = (uint16_t)ceil(fmin((uint16_t) strlen(str), capacity()));
+		strncpy(m_buffer, str, destSize);
+		m_buffer[destSize] = '\0';
+		len = destSize;
+
+		return *this;
+	}
+
+	/**
+	 * Assign operator assigns current object to given const character string
 	 * @param str
 	 * @return current object
 	 */
@@ -76,7 +119,7 @@ public:
 	 *
 	 * @return string capacity
 	 */
-	uint16_t capacity(){
+	uint16_t capacity() const{
 		return tSize;
 	}
 
