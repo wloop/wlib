@@ -31,7 +31,7 @@ wlp::Allocator::Allocator(uint16_t blockSize, uint16_t poolSize, wlp::Allocator:
         m_poolSize = max(m_blockSize, poolSize);
 
         // find the closest round number that describes the number of blocks
-        m_poolTotalBlockCnt = (uint16_t) round(m_poolSize / (float) m_blockSize);
+        m_poolTotalBlockCnt = (uint16_t) roundf(m_poolSize / (float) m_blockSize);
         m_poolCurrBlockCnt = m_poolTotalBlockCnt;
         m_totalBlockCount = m_poolTotalBlockCnt;
 

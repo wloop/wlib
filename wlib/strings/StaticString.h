@@ -1,7 +1,7 @@
 #ifndef WLIB_STATICSTRING_H
 #define WLIB_STATICSTRING_H
 
-#include "stdint.h"
+#include <stdint.h>
 #include <math.h>
 
 template <uint16_t tSize>
