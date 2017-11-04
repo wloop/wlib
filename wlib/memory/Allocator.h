@@ -80,7 +80,7 @@ namespace wlp {
         ~Allocator();
 
         /**
-         * Allocates memory from internal memory pool/dynamic memory system and gives acces to the user
+         * Allocates memory from internal memory pool/dynamic memory system and gives access to the user
          *
          * @return address to memory of blockSize that is predefined
          */
