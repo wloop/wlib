@@ -28,5 +28,5 @@ script:
   # Run static code analyzer
   - cppcheck wlib
   # Run valgrind to detect memory bugs
-  - valgrind --leak-check=full ./tests.Tests
+  - valgrind --leak-check=full ./tests/Tests
 
