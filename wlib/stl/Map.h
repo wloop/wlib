@@ -22,6 +22,7 @@
 #include "Equal.h"
 #include "Pair.h"
 #include "memory/Allocator.h"
+#include "memory/Memory.h"
 #include "exception/Exception.h"
 
 namespace wlp {
@@ -235,11 +236,6 @@ namespace wlp {
          * Allocator to create memory for hash map nodes.
          */
         Allocator m_node_allocator;
-        /**
-         * Allocator for the hash map backing array of
-         * pointers to hash map nodes.
-         */
-        Allocator m_array_allocator;
 
         /**
          * Hash map backing array.
@@ -271,8 +267,7 @@ namespace wlp {
                   m_equal(Equal()),
                   m_num_elements(0),
                   m_max_elements(n),
-                  m_node_allocator{sizeof(map_node), n * sizeof(map_node)},
-                  m_array_allocator{n * sizeof(map_node*), n * sizeof(map_node*)}{
+                  m_node_allocator{sizeof(map_node), static_cast<size_type>(n * sizeof(map_node))}{
             init_buckets(n);
         }
 
@@ -348,6 +343,12 @@ namespace wlp {
         bool empty() const {
             return m_num_elements == 0;
         }
+        /**
+         * @return the node allocator of the map
+         */
+        Allocator* get_node_allocator() const {
+            return &m_node_allocator;
+        }
 
         /**
          * Obtain an iterator to the first element in the hash map.
@@ -375,7 +376,7 @@ namespace wlp {
         }
 
         /**
-         * @see HashMap::begin()
+         * @see HashMap<Key, Value, Hash, Equal>::begin()
          * @return a constant iterator to the first element
          */
         const_iterator begin() const {
@@ -391,7 +392,7 @@ namespace wlp {
         }
 
         /**
-         * @see HashMap::end()
+         * @see HashMap<Key, Value, Hash, Equal>::end()
          * @return a constant pass-the-end iterator
          */
         const_iterator end() const {
@@ -433,7 +434,7 @@ namespace wlp {
          */
         iterator erase(iterator& pos);
         /**
-         * @see HashMap::erase()
+         * @see HashMap<Key, Value, Hash, Equal>::erase()
          * @param pos const iterator to the element to erase
          * @return const iterator to the next element or pass-the-end
          */
@@ -453,7 +454,7 @@ namespace wlp {
          */
         val_type& at(const key_type& key);
         /**
-         * @see HashMap::at()
+         * @see HashMap<Key, Value, Hash, Equal>::at()
          * @param key key for which to find the value
          * @return the mapped value
          * @throws KeyException if the key does not exist
@@ -473,7 +474,7 @@ namespace wlp {
          */
         iterator find(const key_type& key);
         /**
-         * @see HashMap::find()
+         * @see HashMap<Key, Value, Hash, Equal>::find()
          * @param key the key to map
          * @return a const iterator to the element mapped by the key
          */
@@ -490,20 +491,21 @@ namespace wlp {
         val_type& operator[](const key_type& key);
     };
 
-    void HashMap::init_buckets(HashMap::size_type n)  {
-        m_buckets = static_cast<map_node**>(m_array_allocator.Allocate());
+    template<class Key, class Value, class Hash, class Equal>
+    void HashMap<Key, Value, Hash, Equal>::init_buckets(HashMap<Key, Value, Hash, Equal>::size_type n)  {
+        m_buckets = static_cast<map_node**>(memory_alloc(n * sizeof(map_node*)));
         for (size_type i = 0; i < n; i++) {
             m_buckets[i] = nullptr;
         }
     }
 
-    void HashMap::ensure_capacity() {
+    template<class Key, class Value, class Hash, class Equal>
+    void HashMap<Key, Value, Hash, Equal>::ensure_capacity() {
         if (m_num_elements * 100 < m_max_load * m_max_elements) {
             return;
         }
         size_type new_max = static_cast<size_type>(m_max_elements * 2);
-        Allocator new_array_allocator = Allocator(new_max * sizeof(map_node*), new_max * sizeof(map_node*));
-        map_node** new_buckets = static_cast<map_node**>(new_array_allocator.Allocate());
+        map_node** new_buckets = static_cast<map_node**>(memory_alloc(new_max * sizeof(map_node*)));
         for (size_type i = 0; i < m_max_elements; ++i) {
             if (!m_buckets[i]) {
                 continue;
@@ -511,13 +513,13 @@ namespace wlp {
             map_node* node = m_buckets[i];
             new_buckets[bucket_index(node->m_key, new_max)] = node;
         }
-        m_array_allocator.Deallocate(m_buckets);
+        memory_free(m_buckets);
         m_buckets = new_buckets;
-        m_array_allocator = new_array_allocator;
         m_max_elements = new_max;
     }
 
-    void HashMap::clear() noexcept {
+    template<class Key, class Value, class Hash, class Equal>
+    void HashMap<Key, Value, Hash, Equal>::clear() noexcept {
         for (size_type i = 0; i < m_max_elements; i++) {
             if (m_buckets[i]) {
                 m_node_allocator.Deallocate(m_buckets[i]);
@@ -527,7 +529,9 @@ namespace wlp {
         m_num_elements = 0;
     }
 
-    Pair<iterator, bool> HashMap::insert(key_type key, val_type val) {
+    template<class Key, class Value, class Hash, class Equal>
+    Pair<typename HashMap<Key, Value, Hash, Equal>::iterator, bool>
+    HashMap<Key, Value, Hash, Equal>::insert(key_type key, val_type val) {
         ensure_capacity();
         size_type i = hash(key);
         while(m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
@@ -547,7 +551,9 @@ namespace wlp {
         }
     };
 
-    Pair<iterator, bool> HashMap::insert_or_assign(key_type key, val_type val) {
+    template<class Key, class Value, class Hash, class Equal>
+    Pair<typename HashMap<Key, Value, Hash, Equal>::iterator, bool>
+    HashMap<Key, Value, Hash, Equal>::insert_or_assign(key_type key, val_type val) {
         ensure_capacity();
         size_type i = hash(key);
         while(m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
@@ -568,7 +574,9 @@ namespace wlp {
         }
     };
 
-    iterator HashMap::erase(iterator& pos) {
+    template<class Key, class Value, class Hash, class Equal>
+    typename HashMap<Key, Value, Hash, Equal>::iterator
+    HashMap<Key, Value, Hash, Equal>::erase(iterator& pos) {
         map_node* p_node = pos.m_current;
         if (p_node) {
             size_type i = hash(p_node->m_key);
@@ -594,7 +602,9 @@ namespace wlp {
         return end();
     }
 
-    const_iterator HashMap::erase(const_iterator &pos) {
+    template<class Key, class Value, class Hash, class Equal>
+    typename HashMap<Key, Value, Hash, Equal>::const_iterator
+    HashMap<Key, Value, Hash, Equal>::erase(const_iterator &pos) {
         const map_node* p_node = pos.m_current;
         if (p_node) {
             size_type i = hash(p_node->m_key);
@@ -620,7 +630,8 @@ namespace wlp {
         return end();
     }
 
-    bool HashMap::erase(key_type& key) {
+    template<class Key, class Value, class Hash, class Equal>
+    bool HashMap<Key, Value, Hash, Equal>::erase(key_type& key) {
         size_type i = hash(key);
         while(m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
             if (++i >= m_max_elements) {
@@ -637,7 +648,9 @@ namespace wlp {
         }
     }
 
-    val_type& HashMap::at(const key_type& key) {
+    template<class Key, class Value, class Hash, class Equal>
+    typename HashMap<Key, Value, Hash, Equal>::val_type&
+    HashMap<Key, Value, Hash, Equal>::at(const key_type& key) {
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
             if (++i >= m_max_elements) {
@@ -651,7 +664,9 @@ namespace wlp {
         }
     }
 
-    const val_type& HashMap::at(const key_type& key) const {
+    template<class Key, class Value, class Hash, class Equal>
+    const typename HashMap<Key, Value, Hash, Equal>::val_type&
+    HashMap<Key, Value, Hash, Equal>::at(const key_type& key) const {
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
             if (++i >= m_max_elements) {
@@ -665,7 +680,8 @@ namespace wlp {
         }
     }
 
-    bool HashMap::contains(const key_type &key) const {
+    template<class Key, class Value, class Hash, class Equal>
+    bool HashMap<Key, Value, Hash, Equal>::contains(const key_type &key) const {
         size_type i = hash(key);
         while (m_buckets[i]) {
             if (m_equal(key, m_buckets[i]->m_key)) {
@@ -678,7 +694,9 @@ namespace wlp {
         return false;
     }
 
-    val_type& HashMap::operator[](const key_type &key) {
+    template<class Key, class Value, class Hash, class Equal>
+    typename HashMap<Key, Value, Hash, Equal>::val_type&
+    HashMap<Key, Value, Hash, Equal>::operator[](const key_type &key) {
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
             if (++i >= m_max_elements) {
@@ -696,7 +714,9 @@ namespace wlp {
         }
     }
 
-    iterator HashMap::find(const key_type& key) {
+    template<class Key, class Value, class Hash, class Equal>
+    typename HashMap<Key, Value, Hash, Equal>::iterator
+    HashMap<Key, Value, Hash, Equal>::find(const key_type& key) {
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
             if (++i >= m_max_elements) {
@@ -710,7 +730,9 @@ namespace wlp {
         }
     }
 
-    const_iterator HashMap::find(const key_type& key) const {
+    template<class Key, class Value, class Hash, class Equal>
+    typename HashMap<Key, Value, Hash, Equal>::const_iterator
+    HashMap<Key, Value, Hash, Equal>::find(const key_type& key) const {
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
             if (++i >= m_max_elements) {
@@ -724,18 +746,21 @@ namespace wlp {
         }
     }
 
-    HashMap::~HashMap() {
+    template<class Key, class Value, class Hash, class Equal>
+    HashMap<Key, Value, Hash, Equal>::~HashMap() {
         for (size_type i = 0; i < m_max_elements; i++) {
             if (m_buckets[i]) {
                 m_node_allocator.Deallocate(m_buckets[i]);
                 m_buckets[i] = nullptr;
             }
         }
-        m_array_allocator.Deallocate(m_buckets);
+        memory_free(m_buckets);
         m_buckets = nullptr;
     }
 
-    iterator &HashMapIterator::operator++() {
+    template<class Key, class Value, class Hash, class Equal>
+    HashMapIterator<Key, Value, Hash, Equal>&
+    HashMapIterator<Key, Value, Hash, Equal>::operator++() {
         size_type i = m_hash_map->bucket_index(m_current->m_key, m_hash_map->m_num_elements);
         while(!m_hash_map->m_buckets[++i] && i < m_hash_map->m_max_elements);
         if (m_hash_map->m_buckets[i]) {
@@ -744,13 +769,17 @@ namespace wlp {
         return *this;
     }
 
-    iterator HashMapIterator::operator++(int) {
+    template<class Key, class Value, class Hash, class Equal>
+    HashMapIterator<Key, Value, Hash, Equal>
+    HashMapIterator<Key, Value, Hash, Equal>::operator++(int) {
         iterator tmp = *this;
         ++*this;
         return tmp;
     }
 
-    const_iterator &HashMapConstIterator::operator++() {
+    template<class Key, class Value, class Hash, class Equal>
+    HashMapConstIterator<Key, Value, Hash, Equal>&
+    HashMapConstIterator<Key, Value, Hash, Equal>::operator++() {
         size_type i = m_hash_map->bucket_index(m_current->m_key, m_hash_map->m_num_elements);
         while(!m_hash_map->m_buckets[++i] && i < m_hash_map->m_max_elements);
         if (m_hash_map->m_buckets[i]) {
@@ -759,7 +788,9 @@ namespace wlp {
         return *this;
     }
 
-    const_iterator HashMapConstIterator::operator++(int) {
+    template<class Key, class Value, class Hash, class Equal>
+    HashMapConstIterator<Key, Value, Hash, Equal>
+    HashMapConstIterator<Key, Value, Hash, Equal>::operator++(int) {
         const_iterator tmp = *this;
         ++*this;
         return tmp;

@@ -80,20 +80,6 @@ namespace wlp {
     };
 
     template<class IntType>
-    struct hash<unsigned char, IntType> {
-        IntType operator()(unsigned char x) const {
-            return x;
-        }
-    };
-
-    template<class IntType>
-    struct hash<signed char, IntType> {
-        IntType operator()(signed char x) const {
-            return x;
-        }
-    };
-
-    template<class IntType>
     struct hash<uint8_t, IntType> {
         IntType operator()(uint8_t x) const {
             return x;

@@ -39,8 +39,12 @@ namespace wlp {
 
         pair& operator=(pair const& p) {
             m_first = p.m_first;
-            m_second = p.m_first;
+            m_second = p.m_second;
             return *this;
+        }
+
+        bool operator==(pair const& p) {
+            return m_first == p.m_first && m_second == p.m_second;
         }
 
     };

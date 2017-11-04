@@ -24,20 +24,18 @@ namespace wlp {
      * Base exception class from which other exceptions derive.
      * @tparam tSize size of the static string message
      */
-    template<uint16_t tSize>
     class Exception {
     public:
-        typedef StaticString<tSize> msg_type;
+        typedef const char* msg_type;
 
         Exception() throw() = default;
         Exception(const Exception& cause) throw() = default;
         Exception& operator=(const Exception& e) throw() {}
         virtual ~Exception() throw() = default;
-        virtual msg_type& what() const throw() {}
+        virtual msg_type what() const throw() {}
     };
 
-    template<uint16_t tSize>
-    class RangeException : Exception<tSize> {
+    class RangeException : Exception {
     };
 
     /**
@@ -46,16 +44,15 @@ namespace wlp {
      * @tparam Key key type
      */
     template<class Key>
-    class KeyException : Exception<7> {
+    class KeyException : Exception {
     public:
         typedef Key key_type;
-        typedef StaticString<7> msg_type;
+        typedef const char* msg_type;
         key_type m_err_key;
 
         explicit KeyException(const key_type& key) throw() : m_err_key(key) {}
-        msg_type& what() const throw() override {
-            msg_type msg{"Bad key"};
-            return msg;
+        msg_type what() const throw() override {
+            return "Bad key";
         }
         key_type& key() const throw() {
             return m_err_key;
