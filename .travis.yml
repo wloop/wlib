@@ -12,6 +12,8 @@ addons:
       - gcc-5
       - g++-5
       - cmake
+      - valgrind
+      - cppcheck
 
 install:
     - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
@@ -23,3 +25,8 @@ script:
   - cmake CMakeLists.txt
   - make
   - ./tests/Tests
+  # Run static code analyzer
+  - cppcheck wlib
+  # Run valgrind to detect memory bugs
+  - valgrind --leak-check=full ./tests.Tests
+
