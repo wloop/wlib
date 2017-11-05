@@ -10,6 +10,7 @@ include_directories(${WLIB_INCLUDE_DIR})
 
 file(GLOB files
         "test.cpp"
+        "stl/*.cpp"
         "strings/*.cpp")
 
 add_executable(tests ${files})

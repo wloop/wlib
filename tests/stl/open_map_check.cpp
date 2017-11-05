@@ -96,6 +96,56 @@ TEST(open_map_test, test_map_iterator_postfix) {
     ASSERT_EQ(2, map.size());
 }
 
+TEST(open_map_test, test_begin_non_empty) {
+    int_map map(15, 75);
+    map[5] = 5;
+    ASSERT_EQ(5, *map.begin());
+    const int_map const_map(map);
+    ASSERT_EQ(5, *const_map.begin());
+}
+
+TEST(open_map_test, test_copy_constructor) {
+    int_map source(15, 75);
+    source[1] = 1;
+    source[3] = 3;
+    source[33] = 33;
+    int_map copy1(source);
+    ASSERT_EQ(3, copy1.size());
+    imi it1 = copy1.begin();
+    ASSERT_EQ(1, *it1);
+    ++it1;
+    ASSERT_EQ(3, *it1);
+    ++it1;
+    ASSERT_EQ(33, *it1);
+    ++it1;
+    ASSERT_EQ(copy1.end(), it1);
+    const int_map copy2 = source;
+    const int_map copy3(copy2);
+    int_map copy4;
+    copy4 = copy3;
+    ASSERT_EQ(3, copy4.size());
+    imi it3 = copy4.begin();
+    ASSERT_EQ(1, *it3);
+    ++it3;
+    ASSERT_EQ(3, *it3);
+    ++it3;
+    ASSERT_EQ(33, *it3);
+    ++it3;
+    ASSERT_EQ(copy4.end(), it3);
+    int_map copy5;
+    copy5[6] = 6;
+    copy5[2] = 2;
+    copy5 = source;
+    it1 = copy5.begin();
+    ASSERT_EQ(1, *it1);
+    ++it1;
+    ASSERT_EQ(3, *it1);
+    ++it1;
+    ASSERT_EQ(33, *it1);
+    ++it1;
+    ASSERT_EQ(copy5.end(), it1);
+}
+
 TEST(open_map_test, test_map_insert_or_assign) {
     int_map map(10, 75);
     P_imi_b res1 = map.insert_or_assign(2, 10);

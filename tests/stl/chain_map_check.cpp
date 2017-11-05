@@ -48,9 +48,9 @@ TEST(chain_map_test, test_const_iterator) {
     string_map::const_iterator const_it = const_map.begin();
     ASSERT_EQ(*it, *const_it);
     ++it;
-    ++const_it;
+    const_it++;
     ASSERT_EQ(*it, *const_it);
-    ++it;
+    it++;
     ++const_it;
     ASSERT_EQ(*it, *const_it);
     ++it;
@@ -382,6 +382,41 @@ TEST(chain_map_test, test_contains_access_operator) {
     ASSERT_EQ(9, map.size());
 }
 
+TEST(chain_map, test_const_map_assignment) {
+    int_map map(10, 255);
+    map.insert(1, 1);
+    map.insert(25, 25);
+    const int_map const_map(map);
+    map = const_map;
+    ASSERT_EQ(2, map.size());
+    imi it = map.begin();
+    ASSERT_EQ(1, *it);
+    it++;
+    ASSERT_EQ(25, *it);
+    int_map b_map(10, 255);
+    b_map.insert(10, 10);
+    b_map.insert(12, 12);
+    b_map.insert(13, 13);
+    map = b_map;
+    ASSERT_EQ(3, map.size());
+    it = map.begin();
+    ASSERT_EQ(10, *it);
+    ++it;
+    ASSERT_EQ(12, *it);
+    ++it;
+    ASSERT_EQ(13, *it);
+    ++it;
+    ASSERT_EQ(map.end(), it);
+    int_map c_map(const_map);
+    ASSERT_EQ(2, c_map.size());
+    it = c_map.begin();
+    ASSERT_EQ(1, *it);
+    ++it;
+    ASSERT_EQ(25, *it);
+    ++it;
+    ASSERT_EQ(c_map.end(), it);
+}
+
 TEST(chain_map_test, test_find) {
     int_map map(10, 255);
     map[16] = 1116;
@@ -401,4 +436,23 @@ TEST(chain_map_test, test_find) {
     ASSERT_EQ(1116, *it);
     ++it;
     ASSERT_EQ(map.end(), it);
+}
+
+TEST(chain_map_test, test_erase_key_cases) {
+    int_map map(10, 255);
+    map[6] = 6;
+    map[16] = 16;
+    map[26] = 26;
+    map[46] = 46;
+    map[56] = 56;
+    map[36] = 36;
+    map[4] = 4;
+    ui16 k = 14;
+    ASSERT_FALSE(map.erase(k));
+    k = 36;
+    ASSERT_TRUE(map.erase(k));
+    k = 26;
+    ASSERT_TRUE(map.erase(k));
+    k = 66;
+    ASSERT_FALSE(map.erase(k));
 }
