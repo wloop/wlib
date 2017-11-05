@@ -2,6 +2,7 @@
 .piolibdeps
 CMakeListsPrivate.txt
 src/main.cpp
+bin/
 # Created by https://www.gitignore.io/api/clion
 
 ### CLion ###
@@ -67,3 +68,4 @@ fabric.properties
 
 # End of https://www.gitignore.io/api/clion
 .pioenvs
+.vscode

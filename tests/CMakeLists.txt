@@ -1,11 +1,16 @@
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+set(GTEST_INCLUDE_DIR ${gtest_SOURCE_DIR}/include)
+set(WLIB_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/lib/wlib)
+
+include_directories(${GTEST_INCLUDE_DIR})
+include_directories(${WLIB_INCLUDE_DIR})
+
 
 file(GLOB files
-        "strings/*.cpp"
-        "strings2/*.cpp"
-        "strings/*.cc")
+        "test.cpp"
+        "strings/*.cpp")
 
-add_executable(Tests ${files})
-
-target_link_libraries(Tests gtest gtest_main)
-target_link_libraries(wlib)
+add_executable(tests ${files})
+target_link_libraries(tests gtest)
+target_link_libraries(tests wlib)
+ADD_DEPENDENCIES(tests wlib)
+ADD_DEPENDENCIES(tests gtest)
