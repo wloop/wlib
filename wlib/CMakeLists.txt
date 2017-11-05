@@ -4,6 +4,7 @@ file (GLOB header_files
         "Wlib.h"
         "strings/*.h"
         "stl/*.h"
+        "stl/*.cpp"
         "memory/*.h")
 
 file (GLOB source_files
