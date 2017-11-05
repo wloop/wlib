@@ -230,6 +230,7 @@ _coverage(){
     cd ..
 }
 
+
 _clean(){
     rm -f -r bin
     echo "Project Cleaned"
@@ -265,6 +266,8 @@ _simple() {
     elif [ "$1" == 'test' ]; then
         echo "Testing the project"
         _test
+    else
+        _print_help
     fi
 }
 
