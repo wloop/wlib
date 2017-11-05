@@ -186,7 +186,7 @@ __  _  _______ _/  |_  ___________|  |   ____   ____ ______
 The Embedded C++ code base builder
 
 Usage:
-  ${_ME} [--help] [build] [clean] [run]
+  ${_ME} [--help] [build] [coverage] [clean] [run] [test]
   ${_ME} -h | --help
 
 Options:
@@ -209,13 +209,40 @@ _build(){
     cd ..
 }
 
+_coverage(){
+    mkdir -p bin
+    cd bin
+    echo "Running CMake"
+    cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=.. -DBUILD_SHARED_LIBS=ON
+    echo "Running Make with coverage"
+    make
+    echo "Running Tests"
+    cd ../
+    _test
+    cd bin
+    echo "Generating Coverage Report"
+    lcov --directory . --capture --output-file coverage.info
+    lcov --remove coverage.info 'tests/*' '/include/*' 'examples/*' --output-file coverage.info
+    lcov --list coverage.info
+    mkdir -p coverage
+    genhtml -no-branch-coverage -o coverage coverage.info
+    echo "Project Built and Report Generated"
+    cd ..
+}
+
+
 _clean(){
     rm -f -r bin
     echo "Project Cleaned"
 }
 
 _run(){
-    ./bin/tests/Tests
+    ./bin/examples/examples
+    echo "Execution Finished"
+}
+
+_test(){
+    ./bin/tests/tests
     echo "Tests Finished Running"
 }
 
@@ -227,12 +254,20 @@ _simple() {
     if [ "$1" == 'build' ] ; then
         echo "Building project"
         _build
+    elif [ "$1" == 'coverage' ] ; then
+        echo "Coverage Build Started"
+        _coverage
     elif [ "$1" == 'clean' ] ; then
         echo "Cleaning project"
         _clean
     elif [ "$1" == 'run' ]; then
         echo "Executing the project"
         _run
+    elif [ "$1" == 'test' ]; then
+        echo "Testing the project"
+        _test
+    else
+        _print_help
     fi
 }
 
