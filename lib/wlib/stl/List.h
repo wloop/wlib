@@ -14,7 +14,8 @@
 #define CORE_STL_LIST_H
 
 #include <stdint.h>
-#include "../memory/Memory.h"
+#include "memory/Memory.h"
+#include "memory/Allocator.h"
 
 namespace wlp {
 
@@ -27,9 +28,10 @@ private:
         m_Node *pNext,*pPrev;
     };
 
-    uint32_t m_len; // Size of list
+    uint16_t m_len; // Size of list
     m_Node* m_pStart;
     m_Node* m_pEnd; // Pointers to start and end
+    Allocator m_allocator = Allocator(static_cast<uint16_t>(sizeof(m_Node)));
 
 public:
     /**
@@ -48,7 +50,7 @@ public:
         while (m_pStart != nullptr) {
             pTmp = m_pStart;
             m_pStart = m_pStart->pNext;
-            memory_free(pTmp);
+            m_allocator.Deallocate(pTmp);
         }
     }
 
@@ -58,7 +60,7 @@ public:
      * @param value the value to store at the new node
      */
     void push_back(const T value) {
-        m_Node *pNewNode = static_cast<m_Node*>(memory_alloc(sizeof(m_Node)));
+        m_Node *pNewNode = static_cast<m_Node*>(m_allocator.Allocate());
         pNewNode->value = value;
         pNewNode->pNext = nullptr;
 
@@ -79,7 +81,7 @@ public:
      * @param value the value to store at the new node
      */
     void push_front(const T value) {
-        m_Node *pNewNode = static_cast<m_Node*>(memory_alloc(sizeof(m_Node)));
+        m_Node *pNewNode = static_cast<m_Node*>(m_allocator.Allocate());
         pNewNode->value = value;
         pNewNode->pPrev = nullptr;
 
@@ -102,7 +104,7 @@ public:
         } else {
             m_pStart = nullptr;
         }
-        memory_free(pTmp);
+        m_allocator.Deallocate(pTmp);
         m_len--;
     }
 
@@ -114,7 +116,7 @@ public:
         } else {
             m_pEnd = nullptr;
         }
-        memory_free(pTmp);
+        m_allocator.Deallocate(pTmp);
         m_len--;
     }
 
@@ -124,7 +126,7 @@ public:
      *
      * @return the value stored at the start of the list
      */
-    T front() {
+    inline T front() {
         return m_pStart->value;
     }
 
@@ -134,7 +136,7 @@ public:
      *
      * @return the value stored at the end of the list
      */
-    T back() {
+    inline T back() {
         return m_pEnd->value;
     }
 
@@ -144,7 +146,7 @@ public:
      *
      * @return the length of the list
      */
-    uint32_t size() {
+    inline uint16_t size() {
         return m_len;
     }
 
@@ -153,7 +155,7 @@ public:
         while (m_pStart != nullptr) {
             pTmp = m_pStart;
             m_pStart = m_pStart->pNext;
-            memory_free(pTmp);
+            m_allocator.Deallocate(pTmp);
             m_len--;
         }
         m_pEnd = nullptr;
@@ -165,7 +167,7 @@ public:
      *
      * @param index the index to remove at
      */
-    void remove_at(uint32_t index) {
+    void remove_at(uint16_t index) {
         m_Node *pTmp = m_pStart;
         while (index-- > 0) {
             pTmp = pTmp->pNext;
@@ -183,7 +185,7 @@ public:
             m_pEnd = pTmp->pPrev;
         }
 
-        memory_free(pTmp);
+        m_allocator.Deallocate(pTmp);
         m_len--;
     }
 
@@ -194,7 +196,7 @@ public:
      * @param index to get
      * @return copy of the value at that index
      */
-    T get(uint32_t index) {
+    T get(uint16_t index) {
         m_Node *pTmp = m_pStart;
         while (index-- > 0) {
             pTmp = pTmp->pNext;
@@ -209,7 +211,7 @@ public:
      * @param index to get
      * @return reference to the value at that index
      */
-    T& at(uint32_t index) {
+    T& at(uint16_t index) {
         m_Node *pTmp = m_pStart;
         while (index-- > 0) {
             pTmp = pTmp->pNext;
@@ -225,7 +227,7 @@ public:
      * @param index to get
      * @return reference to the value at that index
      */
-    T& operator[](uint32_t index) {
+    inline T& operator[](uint16_t index) {
         return at(index);
     }
 
@@ -237,7 +239,7 @@ public:
      * @param index to get
      * @return reference to the value at that index
      */
-    const T& operator[](uint32_t index) const {
+    inline const T& operator[](uint16_t index) const {
         return at(index);
     }
 
@@ -250,9 +252,9 @@ public:
      * @param value value to search for
      * @return reference to the value at that index
      */
-    uint32_t indexOf(const T& value) {
+    uint16_t indexOf(const T& value) {
         m_Node *pTmp = m_pStart;
-        for (uint32_t i = 0; i < m_len; i++) {
+        for (uint16_t i = 0; i < m_len; i++) {
             if (pTmp->value == value) {
                 return i;
             }
