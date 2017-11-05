@@ -1,18 +1,15 @@
-project(tests)
-
 set(GTEST_INCLUDE_DIR ${gtest_SOURCE_DIR}/include)
-set(WLIB_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/wlib)
+set(WLIB_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/lib/wlib)
 
-file(GLOB files
-        "stl/*.cpp"
-        "strings/*.cpp")
-
-include_directories(${GTEST_INCLUDE_DIR} ${gtest_SOURCE_DIR})
+include_directories(${GTEST_INCLUDE_DIR})
 include_directories(${WLIB_INCLUDE_DIR})
 
-add_executable(Tests ${files})
+file(GLOB files
+        "test.cpp"
+        "strings/*.cpp")
 
-target_link_libraries(Tests gtest gtest_main)
-target_link_libraries(Tests wlib)
-add_dependencies(Tests wlib)
-add_dependencies(Tests gtest)
+add_executable(tests ${files})
+target_link_libraries(tests gtest)
+target_link_libraries(tests wlib)
+add_dependencies(tests wlib)
+add_dependencies(tests gtest)
