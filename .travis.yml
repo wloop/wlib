@@ -31,9 +31,6 @@ before_script:
   - lcov --directory . --zerocounters
   - chmod +x wmake
 
-install:
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
-
 script:
   - cd ${TRAVIS_BUILD_DIR}
   # Check versions of gcc, g++ and cmake
