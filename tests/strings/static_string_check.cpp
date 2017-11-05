@@ -8,7 +8,8 @@ TEST(static_string_tests, constructor_tests){
     StaticString<8> string2;                // no text
     StaticString<8> string3{string1};       // string object given
 
-    memory_alloc(75);
+    auto *ptr = memory_alloc(75);
+    memory_free(ptr);
 
     string3.empty();
 

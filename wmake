@@ -215,8 +215,18 @@ _coverage(){
     echo "Running CMake"
     cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=.. -DBUILD_SHARED_LIBS=ON
     echo "Running Make with coverage"
-    make tests_coverage
-    echo "Project Built"
+    make
+    echo "Running Tests"
+    cd ../
+    _test
+    cd bin
+    echo "Generating Coverage Report"
+    lcov --directory . --capture --output-file coverage.info
+    lcov --remove coverage.info 'tests/*' '/include/*' 'examples/*' --output-file coverage.info
+    lcov --list coverage.info
+    mkdir -p coverage
+    genhtml -no-branch-coverage -o coverage coverage.info
+    echo "Project Built and Report Generated"
     cd ..
 }
 
