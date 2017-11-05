@@ -28,11 +28,17 @@ namespace wlp {
     public:
         typedef const char* msg_type;
 
+    protected:
         Exception() throw() = default;
         Exception(const Exception& cause) throw() = default;
-        Exception& operator=(const Exception& e) throw() {}
+        Exception& operator=(const Exception& e) throw() {
+            e.what();
+            return *this;
+        }
         virtual ~Exception() throw() = default;
-        virtual msg_type what() const throw() {}
+        virtual msg_type what() const throw() {
+            return "Error";
+        }
     };
 
     class RangeException : Exception {

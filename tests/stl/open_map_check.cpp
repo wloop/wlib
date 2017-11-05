@@ -84,7 +84,7 @@ TEST(open_map_test, test_insert_find_iterate_integer) {
 TEST(open_map_test, test_map_iterator_postfix) {
     int_map map(15, 75);
     P_imi_b res1 = map.insert(2, 10);
-    P_imi_b res2 = map.insert(10, 12);
+    map.insert(10, 12);
     imi it = res1.first();
     imi it_post = it++;
     ASSERT_NE(it_post, it);

@@ -1,5 +1,5 @@
 /**
- * @file Map.h
+ * @file ChainMap.h
  * @brief Hash map implementation.
  *
  * Hash map is implemented using separate chaining
@@ -9,9 +9,6 @@
  * @date November 3, 2017
  * @bug No known bugs
  */
-
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
 #ifndef EMBEDDEDTESTS_CHAINMAP_H
 #define EMBEDDEDTESTS_CHAINMAP_H
@@ -61,6 +58,12 @@ namespace wlp {
         map_node* next = nullptr;
         key_type m_key;
         val_type m_val;
+        bool operator==(const map_node& node) const {
+            return m_key == node.m_key && m_val == node.m_val;
+        }
+        bool operator==(map_node& node) const {
+            return m_key == node.m_key && m_val == node.m_val;
+        }
     };
 
     /**
@@ -104,6 +107,10 @@ namespace wlp {
          */
         ChainHashMapIterator(map_node* node, hash_map* map)
                 : m_current(node), m_hash_map(map) {}
+        ChainHashMapIterator(const iterator& it)
+                : m_current(it.m_current), m_hash_map(it.m_hash_map) {}
+        ChainHashMapIterator(iterator& it)
+                : m_current(it.m_current), m_hash_map(it.m_hash_map) {}
 
         /**
          * @return reference to the value of the node
@@ -140,6 +147,9 @@ namespace wlp {
         bool operator==(const iterator& it) const {
             return m_current == it.m_current;
         }
+        bool operator==(iterator& it) const {
+            return m_current == it.m_current;
+        }
         /**
          * Compare two iterators, unequal if they point to
          * different nodes.
@@ -149,6 +159,21 @@ namespace wlp {
         bool operator!=(const iterator& it) const {
             return m_current != it.m_current;
         }
+        bool operator!=(iterator& it) const {
+            return m_current != it.m_current;
+        }
+
+        iterator& operator=(const iterator & it) {
+            m_current = it.m_current;
+            m_hash_map = it.m_hash_map;
+            return *this;
+        }
+        iterator& operator=(iterator& it) {
+            m_current = it.m_current;
+            m_hash_map = it.m_hash_map;
+            return *this;
+        }
+
     };
 
     /**
@@ -181,11 +206,15 @@ namespace wlp {
         ChainHashMapConstIterator() {}
         ChainHashMapConstIterator(map_node* node, const hash_map* map)
                 : m_current(node), m_hash_map(map) {}
+        ChainHashMapConstIterator(const const_iterator& it)
+                : m_current(it.m_current), m_hash_map(it.m_hash_map) {}
+        ChainHashMapConstIterator(const_iterator& it)
+                : m_current(it.m_current), m_hash_map(it.m_hash_map) {}
 
-        val_type& operator*() const {
+        const val_type& operator*() const {
             return m_current->m_val;
         }
-        val_type* operator->() const {
+        const val_type* operator->() const {
             return &(operator*());
         }
         const_iterator& operator++();
@@ -193,8 +222,24 @@ namespace wlp {
         bool operator==(const const_iterator& it) const {
             return m_current == it.m_current;
         }
+        bool operator==(const_iterator& it) const {
+            return m_current == it.m_current;
+        }
         bool operator!=(const const_iterator& it) const {
             return m_current != it.m_current;
+        }
+        bool operator!=(const_iterator& it) const {
+            return m_current != it.m_current;
+        }
+        const_iterator& operator=(const const_iterator& it) {
+            m_current = it.m_current;
+            m_hash_map = it.m_hash_map;
+            return *this;
+        }
+        const_iterator& operator=(const_iterator& it) {
+            m_current = it.m_current;
+            m_hash_map = it.m_hash_map;
+            return *this;
         }
     };
 
@@ -212,6 +257,7 @@ namespace wlp {
             class Equal = equals<Key>>
     class ChainHashMap {
     public:
+        typedef ChainHashMap<Key, Val, Hash, Equal> hash_map;
         typedef ChainHashMapIterator<Key, Val, Hash, Equal> iterator;
         typedef ChainHashMapConstIterator<Key, Val, Hash, Equal> const_iterator;
         typedef ChainHashMapNode<Key, Val> map_node;
@@ -264,16 +310,19 @@ namespace wlp {
          * @param hash     hash function for the key type, default is {@code wlp::Hash}
          * @param equal    equality function for the key type, default is {@code wlp::Equal}
          */
-        explicit ChainHashMap(size_type n = 12,
-                         percent_type max_load = 75)
-                : m_max_load(max_load),
-                  m_hash(Hash()),
+        explicit ChainHashMap(
+                size_type n = 12,
+                percent_type max_load = 75)
+                : m_hash(Hash()),
                   m_equal(Equal()),
+                  m_node_allocator{sizeof(map_node), static_cast<size_type>(n * sizeof(map_node))},
                   m_num_elements(0),
                   m_max_elements(n),
-                  m_node_allocator{sizeof(map_node), static_cast<size_type>(n * sizeof(map_node))}{
+                  m_max_load(max_load) {
             init_buckets(n);
         }
+        ChainHashMap(const hash_map& map);
+        ChainHashMap(hash_map& map);
 
         /**
          * Destroy the hash map, freeing allocated nodes and
@@ -448,7 +497,7 @@ namespace wlp {
          * @param type
          * @return
          */
-        bool erase(key_type& type);
+        bool erase(key_type& key);
 
         /**
          * Returns the value corresponding to a provided key.
@@ -493,12 +542,15 @@ namespace wlp {
          * @return a reference to the mapped value
          */
         val_type& operator[](const key_type& key);
+
+        hash_map& operator=(const hash_map& map);
+        hash_map& operator=(hash_map& map);
     };
 
     template<class Key, class Value, class Hash, class Equal>
     void ChainHashMap<Key, Value, Hash, Equal>::init_buckets(ChainHashMap<Key, Value, Hash, Equal>::size_type n)  {
         m_buckets = static_cast<map_node**>(memory_alloc(n * sizeof(map_node*)));
-        for (size_type i = 0; i < n; i++) {
+        for (size_type i = 0; i < n; ++i) {
             m_buckets[i] = nullptr;
         }
     }
@@ -510,6 +562,9 @@ namespace wlp {
         }
         size_type new_max = static_cast<size_type>(m_max_elements * 2);
         map_node** new_buckets = static_cast<map_node**>(memory_alloc(new_max * sizeof(map_node*)));
+        for (size_type i = 0; i < new_max; ++i) {
+            new_buckets[i] = nullptr;
+        }
         for (size_type i = 0; i < m_max_elements; ++i) {
             if (!m_buckets[i]) {
                 continue;
@@ -531,7 +586,7 @@ namespace wlp {
 
     template<class Key, class Value, class Hash, class Equal>
     void ChainHashMap<Key, Value, Hash, Equal>::clear() noexcept {
-        for (size_type i = 0; i < m_max_elements; i++) {
+        for (size_type i = 0; i < m_max_elements; ++i) {
             map_node* cur = m_buckets[i];
             map_node* next;
             while (cur) {
@@ -646,10 +701,11 @@ namespace wlp {
                 while (c_node != p_node) {
                     c_node = c_node->next;
                 }
-                c_node->m_key = c_node->next->m_key;
-                c_node->m_val = c_node->next->m_val;
-                c_node->next = c_node->next->next;
-                m_node_allocator.Deallocate(p_node->next);
+                map_node* n_node = c_node->next;
+                c_node->m_key = n_node->m_key;
+                c_node->m_val = n_node->m_val;
+                c_node->next = n_node->next;
+                m_node_allocator.Deallocate(n_node);
                 --m_num_elements;
                 return pos;
             } else {
@@ -777,6 +833,7 @@ namespace wlp {
     template<class Key, class Value, class Hash, class Equal>
     typename ChainHashMap<Key, Value, Hash, Equal>::val_type&
     ChainHashMap<Key, Value, Hash, Equal>::operator[](const key_type &key) {
+        ensure_capacity();
         size_type i = hash(key);
         map_node* first = m_buckets[i];
         map_node* cur = first;
@@ -841,7 +898,7 @@ namespace wlp {
 
     template<class Key, class Value, class Hash, class Equal>
     ChainHashMap<Key, Value, Hash, Equal>::~ChainHashMap() {
-        for (size_type i = 0; i < m_max_elements; i++) {
+        for (size_type i = 0; i < m_max_elements; ++i) {
             map_node* cur = m_buckets[i];
             if (cur) {
                 while (cur) {
@@ -853,6 +910,103 @@ namespace wlp {
         }
         memory_free(m_buckets);
         m_buckets = nullptr;
+    }
+
+    template<class Key, class Val, class Hash, class Equal>
+    ChainHashMap<Key, Val, Hash, Equal>&
+    ChainHashMap<Key, Val, Hash, Equal>::operator=(const ChainHashMap<Key, Val, Hash, Equal> &map) {
+        clear();
+        memory_free(m_buckets);
+        m_hash = map.m_hash;
+        m_equal = map.m_equal;
+        m_max_elements = map.m_max_elements;
+        m_max_load = map.m_max_load;
+        m_num_elements = map.m_num_elements;
+        m_buckets = static_cast<map_node**>(memory_alloc(map.m_max_elements * sizeof(map_node*)));
+        for (size_type i = 0; i < map.m_max_elements; ++i) {
+            m_buckets[i] = nullptr;
+            map_node* m_cur = map.m_buckets[i];
+            while (m_cur) {
+                map_node* cur = static_cast<map_node *>(m_node_allocator.Allocate());
+                cur->m_key = m_cur->m_key;
+                cur->m_val = m_cur->m_val;
+                cur->next = m_buckets[i];
+                m_buckets[i] = cur;
+                m_cur = m_cur->next;
+            }
+        }
+        return *this;
+    }
+    template<class Key, class Val, class Hash, class Equal>
+    ChainHashMap<Key, Val, Hash, Equal>&
+    ChainHashMap<Key, Val, Hash, Equal>::operator=(ChainHashMap<Key, Val, Hash, Equal> &map) {
+        clear();
+        memory_free(m_buckets);
+        m_hash = map.m_hash;
+        m_equal = map.m_equal;
+        m_max_elements = map.m_max_elements;
+        m_max_load = map.m_max_load;
+        m_num_elements = map.m_num_elements;
+        m_buckets = static_cast<map_node**>(memory_alloc(map.m_max_elements * sizeof(map_node*)));
+        for (size_type i = 0; i < map.m_max_elements; ++i) {
+            m_buckets[i] = nullptr;
+            map_node* m_cur = map.m_buckets[i];
+            while (m_cur) {
+                map_node* cur = static_cast<map_node *>(m_node_allocator.Allocate());
+                cur->m_key = m_cur->m_key;
+                cur->m_val = m_cur->m_val;
+                cur->next = m_buckets[i];
+                m_buckets[i] = cur;
+                m_cur = m_cur->next;
+            }
+        }
+        return *this;
+    }
+
+    template<class Key, class Val, class Hash, class Equal>
+    ChainHashMap<Key, Val, Hash, Equal>::ChainHashMap(const hash_map &map) :
+            m_hash(map.m_hash),
+            m_equal(map.m_equal),
+            m_node_allocator{sizeof(map_node), static_cast<size_type>(map.m_max_elements * sizeof(map_node))},
+            m_num_elements(map.m_num_elements),
+            m_max_elements(map.m_max_elements),
+            m_max_load(map.m_max_load) {
+        m_buckets = static_cast<map_node**>(memory_alloc(map.m_max_elements * sizeof(map_node*)));
+        for (size_type i = 0; i < map.m_max_elements; i++) {
+            m_buckets[i] = nullptr;
+            map_node* m_cur = map.m_buckets[i];
+            while (m_cur) {
+                map_node* cur = static_cast<map_node *>(m_node_allocator.Allocate());
+                cur->m_key = m_cur->m_key;
+                cur->m_val = m_cur->m_val;
+                cur->next = m_buckets[i];
+                m_buckets[i] = cur;
+                m_cur = m_cur->next;
+            }
+        }
+    }
+
+    template<class Key, class Val, class Hash, class Equal>
+    ChainHashMap<Key, Val, Hash, Equal>::ChainHashMap(hash_map &map) :
+            m_hash(map.m_hash),
+            m_equal(map.m_equal),
+            m_node_allocator{sizeof(map_node), static_cast<size_type>(map.m_max_elements * sizeof(map_node))},
+            m_num_elements(map.m_num_elements),
+            m_max_elements(map.m_max_elements),
+            m_max_load(map.m_max_load) {
+        m_buckets = static_cast<map_node**>(memory_alloc(map.m_max_elements * sizeof(map_node*)));
+        for (size_type i = 0; i < map.m_max_elements; i++) {
+            m_buckets[i] = nullptr;
+            map_node* m_cur = map.m_buckets[i];
+            while (m_cur) {
+                map_node* cur = static_cast<map_node *>(m_node_allocator.Allocate());
+                cur->m_key = m_cur->m_key;
+                cur->m_val = m_cur->m_val;
+                cur->next = m_buckets[i];
+                m_buckets[i] = cur;
+                m_cur = m_cur->next;
+            }
+        }
     }
 
     template<class Key, class Value, class Hash, class Equal>
@@ -906,7 +1060,5 @@ namespace wlp {
     }
 
 }
-
-#pragma clang diagnostic pop
 
 #endif //EMBEDDEDTESTS_CHAINMAP_H

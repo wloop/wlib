@@ -13,6 +13,154 @@ typedef Pair<imi, bool> P_imi_b;
 typedef string_map::iterator smi;
 typedef Pair<smi, bool> P_smi_b;
 
+TEST(chain_map_test, test_chain_map_node) {
+    int_map::map_node node;
+    node.m_key = 6;
+    node.m_val = 1;
+    imi it(&node, nullptr);
+    ASSERT_EQ(1, *it);
+    ASSERT_EQ(node, *it.m_current);
+    ASSERT_EQ(nullptr, it.m_hash_map);
+    string_map::map_node snode;
+    snode.m_key = string16{"hello"};
+    snode.m_val = string16{"hello"};
+    smi sit(&snode, nullptr);
+    ASSERT_EQ(5, sit->length());
+    ASSERT_EQ(16, sit->capacity());
+}
+
+TEST(chain_map_test, test_const_iterator) {
+    string_map map(10, 100);
+    string16 key1{"key1"};
+    string16 key2{"key2"};
+    string16 key3{"key3"};
+    string16 val1{"val1"};
+    string16 val2{"val2"};
+    string16 val3{"val3"};
+    map[key1] = val1;
+    map[key2] = val2;
+    map[key3] = val3;
+    const string_map const_map = map;
+    ASSERT_EQ(3, const_map.size());
+    ASSERT_EQ(10, const_map.max_size());
+    ASSERT_EQ(100, const_map.max_load());
+    string_map::iterator it = map.begin();
+    string_map::const_iterator const_it = const_map.begin();
+    ASSERT_EQ(*it, *const_it);
+    ++it;
+    ++const_it;
+    ASSERT_EQ(*it, *const_it);
+    ++it;
+    ++const_it;
+    ASSERT_EQ(*it, *const_it);
+    ++it;
+    ++const_it;
+    ASSERT_EQ(map.end(), it);
+    ASSERT_EQ(const_map.end(), const_it);
+}
+
+TEST(chain_map_test, test_const_node_equals) {
+    int_map map(10, 150);
+    map[15] = 10;
+    map[10] = 9;
+    map[9] = 19;
+    imi it = map.begin();
+    int_map::map_node node = *it.m_current;
+    ASSERT_TRUE(*map.begin().m_current == node);
+}
+
+TEST(chain_map_test, test_iterator_constructors) {
+    int_map map(10, 150);
+    map[15] = 10;
+    map[10] = 9;
+    const imi it = map.begin();
+    imi it2(it);
+    ASSERT_EQ(map.begin(), it2);
+}
+
+TEST(chain_map_test, test_iterator_equals) {
+    int_map map(10, 15);
+    map[15] = 10;
+    map[10] = 9;
+    imi it = map.begin();
+    ++it;
+    imi it2 = map.begin();
+    ASSERT_FALSE(it == it2);
+    ASSERT_TRUE(it != it2);
+    it = it2;
+    ASSERT_EQ(it, map.begin());
+}
+
+TEST(chain_map_test, test_ensure_capacity_holes) {
+    int_map map(5, 50);
+    map[1] = 1;
+    map[6] = 6;
+    map[11] = 11;
+    map[16] = 16;
+    map[21] = 21;
+    map[26] = 26;
+    ASSERT_EQ(20, map.max_size());
+    ui16 expected_values_traverse[] = {1, 21, 26, 6, 11, 16};
+    imi it = map.begin();
+    for (ui16 i = 0; i < 6; i++) {
+        ASSERT_EQ(expected_values_traverse[i], *it);
+        ++it;
+    }
+    ASSERT_EQ(map.end(), it);
+    map.clear();
+    ASSERT_EQ(map.end(), map.begin());
+    ASSERT_EQ(0, map.size());
+    ASSERT_EQ(20, map.max_size());
+}
+
+TEST(chain_map_test, test_erase_cases) {
+    int_map map(10, 255);
+    imi it = map.insert(1, 1).first();
+    map[11] = 11;
+    map[21] = 21;
+    map[31] = 31;
+    map[2] = 2;
+    map.erase(it);
+    ASSERT_EQ(2, *it);
+    it = map.end();
+    map.erase(it);
+    ASSERT_EQ(map.end(), it);
+}
+
+TEST(chain_map_test, test_erase_const_iterator) {
+    int_map map(20, 255);
+    map[1] = 1;
+    imi it1 = map.insert(41, 11).first();
+    map[21] = 21;
+    imi it2 = map.insert(2, 2).first();
+    map[42] = 42;
+    map[22] = 22;
+    map[62] = 62;
+    map[3] = 3;
+    imi it3 = map.insert(4, 4).first();
+    map[44] = 44;
+    imi it4 = map.insert(5, 5).first();
+    imi it5 = map.insert(15, 15).first();
+    int_map::const_iterator cit1(it1.m_current, it1.m_hash_map);
+    int_map::const_iterator cit2(it2.m_current, it2.m_hash_map);
+    int_map::const_iterator cit3(it3.m_current, it3.m_hash_map);
+    int_map::const_iterator cit4(it4.m_current, it4.m_hash_map);
+    int_map::const_iterator cit5(it5.m_current, it5.m_hash_map);
+    const int_map const_map = map;
+    int_map::const_iterator const_end = const_map.end();
+    ASSERT_EQ(12, map.size());
+    map.erase(cit1);
+    ASSERT_EQ(1, *cit1);
+    map.erase(cit2);
+    ASSERT_EQ(3, *cit2);
+    map.erase(cit4);
+    ASSERT_EQ(15, *cit4);
+    map.erase(cit5);
+    ASSERT_EQ(const_end, cit5);
+    map.erase(cit3);
+    ASSERT_EQ(const_end, cit3);
+}
+
 TEST(chain_map_test, test_constructor_params) {
     int_map map(10, 150);
     ASSERT_EQ(10, map.max_size());
@@ -169,7 +317,7 @@ TEST(chain_map_test, test_erase_iterator) {
     ASSERT_EQ(3, map.size());
     P_imi_b r20 = map.insert(20, 20);
     P_imi_b r33 = map.insert(33, 33);
-    P_imi_b r40 = map.insert(40, 40);
+    map.insert(40, 40);
     ASSERT_EQ(6, map.size());
     imi it = r1.first();
     map.erase(it);
