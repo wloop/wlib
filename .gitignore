@@ -2,6 +2,7 @@
 .piolibdeps
 CMakeListsPrivate.txt
 src/main.cpp
+bin
 # Created by https://www.gitignore.io/api/clion
 
 ### CLion ###
