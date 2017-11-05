@@ -22,11 +22,10 @@ script:
   # Check versions of gcc, g++ and cmake
   - gcc -v && g++ -v && cmake --version
   # Compile project and run tests
-  - cmake CMakeLists.txt
-  - make
-  - ./tests/Tests
+  - chmod +x wmake
+  - ./wmake build
+  - ./wmake run
   # Run static code analyzer
   - cppcheck wlib
   # Run valgrind to detect memory bugs
-  - valgrind --leak-check=full ./tests/Tests
-
+  - valgrind --leak-check=full ./bin/tests/Tests
