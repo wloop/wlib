@@ -4,6 +4,7 @@ set(GTEST_INCLUDE_DIR ${gtest_SOURCE_DIR}/include)
 set(WLIB_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/wlib)
 
 file(GLOB files
+        "stl/*.cpp"
         "strings/*.cpp")
 
 include_directories(${GTEST_INCLUDE_DIR} ${gtest_SOURCE_DIR})

@@ -41,7 +41,7 @@ public:
     void pop_front(); // Pops item from front
     T front(); // get item from front
     T back(); // get item from back
-    int size(); // Returns size of list
+    uint32_t size(); // Returns size of list
     void clear(); // Clears list
     void remove_at(uint32_t index); // Remove item at given index
     T get(uint32_t index); // Get item at given index

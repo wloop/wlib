@@ -19,9 +19,7 @@ template<class T>
 List<T>::List() :
     m_len(0),
     m_pStart(nullptr),
-    m_pEnd(nullptr) {
-
-}
+    m_pEnd(nullptr) {}
 
 // Destructor
 template<class T>
@@ -69,8 +67,7 @@ void List<T>::push_back(const T value) {
 
 // Pop from front
 template<class T>
-void List<T>::pop_front()
-{
+void List<T>::pop_front() {
     if (m_pStart != nullptr) {
         m_Node *pTmp = m_pStart;
         m_pStart = m_pStart->pNext;
@@ -118,8 +115,8 @@ T List<T>::back() {
 
 // Get size
 template<class T>
-int List<T>::size() {
-    return this->m_len;
+inline uint32_t List<T>::size() {
+    return m_len;
 }
 
 // Clear list
@@ -134,6 +131,7 @@ void List<T>::clear() {
     }
     m_pEnd = nullptr;
 }
+
 template<class T>
 void List<T>::remove_at(uint32_t index) {
     // dangerous (will die if out of bounds)
@@ -182,7 +180,7 @@ T& List<T>::at(uint32_t index) {
 
 // Get m_len
 template<class T>
-uint32_t List<T>::length() {
+inline uint32_t List<T>::length() {
     return m_len;
 }
 
@@ -200,11 +198,11 @@ uint32_t List<T>::indexOf(const T &val) {
 
 // Array index operator
 template<class T>
-T& List<T>::operator[](uint32_t index) {
+inline T& List<T>::operator[](uint32_t index) {
     return at(index);
 }
 
 template<class T>
-const T& List<T>::operator[](uint32_t index) const {
+inline const T& List<T>::operator[](uint32_t index) const {
     return at(index);
 }
