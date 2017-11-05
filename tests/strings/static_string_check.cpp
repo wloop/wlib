@@ -9,6 +9,7 @@ TEST(static_string_tests, constructor_tests){
     StaticString<8> string3{string1};       // string object given
 
     auto *ptr = memory_alloc(75);
+    ptr = memory_realloc(ptr, 35);
     memory_free(ptr);
 
     string3.empty();
