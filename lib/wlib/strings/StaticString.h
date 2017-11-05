@@ -1,9 +1,8 @@
 #ifndef WLIB_STATICSTRING_H
 #define WLIB_STATICSTRING_H
 
-#include "String.h"
-#include "stdint.h"
-#include <cmath>
+#include <string.h>
+#include <math.h>
 
 template <uint16_t tSize>
 class StaticString {
@@ -308,13 +307,13 @@ public:
 	 * @return new string which is a substring of current string
 	 */
 	StaticString<tSize> substr(uint16_t pos, uint16_t length) const{
-		char newBuffer[length];
+		char newBuffer[length + 1];
 
-		for(uint16_t i = pos; i < pos + len ;i++){
+		for(uint16_t i = pos; i < pos + length ;i++){
 			newBuffer[i-pos] = m_buffer[i];
 		}
 
-		newBuffer[pos + end] = '\0';
+		newBuffer[length] = '\0';
 
 		StaticString<tSize> s{newBuffer};
 
