@@ -1,6 +1,5 @@
 #! /bin/bash
 #!/usr/bin/env bash
-
 # Boilerplate for creating a simple bash script with some basic strictness
 # checks and help features.
 #
@@ -177,13 +176,13 @@ _ME=$(basename "${0}")
 # Print the program help information.
 _print_help() {
   cat <<HEREDOC
-                 __               .__                        
-__  _  _______ _/  |_  ___________|  |   ____   ____ ______  
-\ \/ \/ /\__  \\   __\/ __ \_  __ \  |  /  _ \ /  _ \\____ \ 
+                 __               .__
+__  _  _______ _/  |_  ___________|  |   ____   ____ ______
+\ \/ \/ /\__  \\   __\/ __ \_  __ \  |  /  _ \ /  _ \\____ \
  \     /  / __ \|  | \  ___/|  | \/  |_(  <_> |  <_> )  |_> >
-  \/\_/  (____  /__|  \___  >__|  |____/\____/ \____/|   __/ 
-              \/          \/                         |__|    
-    
+  \/\_/  (____  /__|  \___  >__|  |____/\____/ \____/|   __/
+              \/          \/                         |__|
+
 The Embedded C++ code base builder
 
 Usage:
@@ -224,7 +223,7 @@ _simple() {
     root_dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
     root_dir_name=$(basename "$root_dir")
     cd "$root_dir"
-    
+
     if [ "$1" == 'build' ] ; then
         echo "Building project"
         _build
