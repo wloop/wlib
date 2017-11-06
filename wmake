@@ -222,7 +222,7 @@ _coverage(){
     cd bin
     echo "Generating Coverage Report"
     lcov --directory . --capture --output-file coverage.info
-    lcov --remove coverage.info 'tests/*' '/include/*' 'examples/*' --output-file coverage.info
+    lcov --remove coverage.info '/usr/*' "$(pwd)/tests/*" "$(pwd)/include/*" "$(pwd)/examples/*" --output-file coverage.info
     lcov --list coverage.info
     mkdir -p coverage
     genhtml -no-branch-coverage -o coverage coverage.info

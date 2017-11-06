@@ -2,10 +2,14 @@
 #include "stl/List.h"
 #include <stdint.h>
 
+namespace wlp {
+    template class List<uint16_t>;
+}
+
 using namespace wlp;
 
 TEST(list_tests, constructor_tests) {
-    List<uint8_t> numlist;
+    List<uint16_t> numlist;
     ASSERT_EQ(numlist.size(), 0);
 }
 
