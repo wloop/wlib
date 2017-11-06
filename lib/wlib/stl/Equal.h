@@ -17,58 +17,58 @@
 
 namespace wlp {
 
-    /**
-     * The equality function type returns whether
-     * two key-type values are to be considered equal.
-     * @tparam Key key type
-     */
-    template<class Key>
-    struct equals {
-        bool operator()(const Key &key1, const Key &key2) const {
-            return key1 == key2;
-        }
-    };
+	/**
+	 * The equality function type returns whether
+	 * two key-type values are to be considered equal.
+	 * @tparam Key key type
+	 */
+	template<class Key>
+	struct equals {
+		bool operator()(const Key &key1, const Key &key2) const {
+			return key1 == key2;
+		}
+	};
 
-    template<uint16_t tSize>
-    inline bool static_string_equals(const StaticString<tSize> &str1, const StaticString<tSize> &str2) {
-        if (str1.length() != str2.length()) {
-            return false;
-        }
-        for (uint16_t i = 0; i < str1.length(); ++i) {
-            if (str1[i] != str2[i]) {
-                return false;
-            }
-        }
-        return true;
-    }
+	template<uint16_t tSize>
+	inline bool static_string_equals(const StaticString<tSize> &str1, const StaticString<tSize> &str2) {
+		if (str1.length() != str2.length()) {
+			return false;
+		}
+		for (uint16_t i = 0; i < str1.length(); ++i) {
+			if (str1[i] != str2[i]) {
+				return false;
+			}
+		}
+		return true;
+	}
 
-    inline bool string_equals(const char *&str1, const char *&str2) {
-        for (; *str1 && *str2; ++str1, ++str2) {
-            if (*str1 != *str2) {
-                return false;
-            }
-        }
-        return *str1 == *str2;
-    }
+	inline bool string_equals(const char *&str1, const char *&str2) {
+		for (; *str1 && *str2; ++str1, ++str2) {
+			if (*str1 != *str2) {
+				return false;
+			}
+		}
+		return *str1 == *str2;
+	}
 
-    template<uint16_t tSize>
-    struct equals<StaticString<tSize> > {
-        bool operator()(const StaticString<tSize> &key1, const StaticString<tSize> &key2) const {
-            return static_string_equals(key1, key2);
-        }
-    };
+	template<uint16_t tSize>
+	struct equals<StaticString<tSize> > {
+		bool operator()(const StaticString<tSize> &key1, const StaticString<tSize> &key2) const {
+			return static_string_equals(key1, key2);
+		}
+	};
 
-    TEMPLATE_NULL struct equals<char *> {
-        bool operator()(const char *key1, const char *key2) const {
-            return string_equals(key1, key2);
-        }
-    };
+	TEMPLATE_NULL struct equals<char *> {
+		bool operator()(const char *key1, const char *key2) const {
+			return string_equals(key1, key2);
+		}
+	};
 
-    TEMPLATE_NULL struct equals<const char *> {
-        bool operator()(const char *key1, const char *key2) const {
-            return string_equals(key1, key2);
-        }
-    };
+	TEMPLATE_NULL struct equals<const char *> {
+		bool operator()(const char *key1, const char *key2) const {
+			return string_equals(key1, key2);
+		}
+	};
 
 }
 

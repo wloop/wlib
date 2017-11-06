@@ -9,9 +9,10 @@ include_directories(${GTEST_INCLUDE_DIR})
 include_directories(${WLIB_INCLUDE_DIR})
 
 file(GLOB files
-        "test.cpp"
-        "stl/*.cpp"
-        "strings/*.cpp")
+		"test.cpp"
+		"template_defs.h"
+		"stl/*.cpp"
+		"strings/*.cpp")
 
 add_executable(tests ${files})
 target_link_libraries(tests gtest)
