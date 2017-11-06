@@ -27,6 +27,7 @@
 class MemoryInitDestroy {
 public:
     MemoryInitDestroy();
+
     ~MemoryInitDestroy();
 
 private:
@@ -35,7 +36,7 @@ private:
 
 static MemoryInitDestroy g_smemoryInitDestroy;
 
-extern "C"{
+extern "C" {
 
 
 /**

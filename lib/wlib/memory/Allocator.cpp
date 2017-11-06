@@ -24,7 +24,7 @@ wlp::Allocator::Allocator(uint16_t blockSize, uint16_t poolSize, wlp::Allocator:
         m_allocations{0},
         m_deallocations{0} {
     // lowest size of a block will be the size of Block ptr
-    if (m_blockSize < sizeof(wlp::Allocator::Block*)) m_blockSize = sizeof(wlp::Allocator::Block*);
+    if (m_blockSize < sizeof(wlp::Allocator::Block *)) m_blockSize = sizeof(wlp::Allocator::Block *);
 
     // if pool size is provided, we will use pool instead of dynamic heap allocations
     if (m_poolSize) {
@@ -92,11 +92,10 @@ void *wlp::Allocator::Allocate() {
     // Pop one free block, if any.
     wlp::Allocator::Block *pBlock = m_pHead;
 
-    if (pBlock){
+    if (pBlock) {
         m_pHead = m_pHead->pNext;
         --m_poolCurrBlockCnt;
-    }
-    else {
+    } else {
         // Otherwise, get a 'new' one from heap.
         pBlock = (wlp::Allocator::Block *) new char[m_blockSize];
         ++m_totalBlockCount;
