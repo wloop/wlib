@@ -4,8 +4,7 @@ file (GLOB header_files
 		"*.h"
 		"strings/*.h"
 		"stl/*.h"
-		"memory/*.h"
-		"exception/*.h")
+		"memory/*.h")
 
 file (GLOB source_files
 		"memory/*.cpp")
