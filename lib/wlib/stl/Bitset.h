@@ -28,7 +28,7 @@ namespace wlp {
      */
     template<uint8_t exp>
     struct pow_mask {
-        static const int value = ((1 << exp) - 1);
+        static const uint32_t value = (uint32_t) ((1 << exp) - 1);
     };
 
     /**
@@ -36,7 +36,7 @@ namespace wlp {
      * prevent overflow.
      */
     template<> struct pow_mask<32> {
-        static const int value = 0xffffffff;
+        static const uint32_t value = 0xffffffff;
     };
 
     /**
@@ -46,7 +46,7 @@ namespace wlp {
      */
     template<uint8_t nBits>
     struct ceil_bits {
-        static const int value = (nBits + INT_SIZE - 1) / INT_SIZE;
+        static const uint32_t value = (nBits + INT_SIZE - 1) / INT_SIZE;
     };
 
 	template<uint8_t nBits>
@@ -74,7 +74,7 @@ namespace wlp {
          * @param b Bitset to copy
          */
         Bitset(Bitset<nBits>& b) {
-            int end = ceil_bits<nBits>::value;
+            uint32_t end = ceil_bits<nBits>::value;
             for (uint16_t i = 0; i < end; i++) {
                 m_array[i] = (m_array[i] & 0) | b.m_array[i];
             }
@@ -85,7 +85,7 @@ namespace wlp {
          * @param b Bitset to copy
          */
         Bitset(const Bitset<nBits>& b) {
-            int end = ceil_bits<nBits>::value;
+            uint32_t end = ceil_bits<nBits>::value;
             for (uint16_t i = 0; i < end; i++) {
                 m_array[i] = (m_array[i] & 0) | b.m_array[i];
             }
@@ -98,8 +98,8 @@ namespace wlp {
          */
         void setFromNumber(uint64_t n) {
             memset(m_array, 0, sizeof(m_array));
-            constexpr int end = nBits / INT_SIZE;
-            constexpr int extra = nBits - end * INT_SIZE;
+            constexpr uint32_t end = nBits / INT_SIZE;
+            constexpr uint32_t extra = nBits - end * INT_SIZE;
             for (uint16_t i = 0; i < end; ++i) {
                 m_array[i] = (int) n;
                 n >>= INT_SIZE;
@@ -200,7 +200,7 @@ namespace wlp {
          * @param b Bitset to assign
          */
         Bitset<nBits>& operator=(Bitset<nBits>& b) {
-            int end = ceil_bits<nBits>::value;
+            uint32_t end = ceil_bits<nBits>::value;
             for (uint16_t i = 0; i < end; i++) {
                 m_array[i] = (m_array[i] & 0) | b.m_array[i];
             }
@@ -212,7 +212,7 @@ namespace wlp {
          * @param b Bitset to assign
          */
         Bitset<nBits>& operator=(const Bitset<nBits>& b) {
-            int end = ceil_bits<nBits>::value;
+            uint32_t end = ceil_bits<nBits>::value;
             for (uint16_t i = 0; i < end; i++) {
                 m_array[i] = (m_array[i] & 0) | b.m_array[i];
             }
@@ -225,7 +225,7 @@ namespace wlp {
          * Integer type arrays generally have the fastest access
          * times in C++.
          */
-		int m_array[ceil_bits<nBits>::value];
+		uint32_t m_array[ceil_bits<nBits>::value];
 	};
 }
 

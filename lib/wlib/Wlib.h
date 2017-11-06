@@ -5,6 +5,6 @@
 #define min(x, y) (((x) < (y)) ? (x) : (y))
 
 #define BYTE_SIZE 8
-#define INT_SIZE (BYTE_SIZE * sizeof(int))
+#define INT_SIZE (BYTE_SIZE * sizeof(uint32_t))
 
 #endif //EMBEDDEDTESTS_WLIB_H
