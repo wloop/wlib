@@ -21,33 +21,33 @@
 
 namespace wlp {
 
-    /**
-     * Computes the mask corresponding to the number of bits
-     * or the exponent in the from 2^n - 1.
-     * @tparam exp the number of bits, 32 or less
-     */
-    template<uint8_t exp>
-    struct pow_mask {
-        static const uint32_t value = (uint32_t) ((1 << exp) - 1);
-    };
+	/**
+	 * Computes the mask corresponding to the number of bits
+	 * or the exponent in the from 2^n - 1.
+	 * @tparam exp the number of bits, 32 or less
+	 */
+	template<uint8_t exp>
+	struct pow_mask {
+		static const uint32_t value = (uint32_t) ((1 << exp) - 1);
+	};
 
-    /**
-     * Template specialization for 32 bits to
-     * prevent overflow.
-     */
-    template<> struct pow_mask<32> {
-        static const uint32_t value = 0xffffffff;
-    };
+	/**
+	 * Template specialization for 32 bits to
+	 * prevent overflow.
+	 */
+	template<> struct pow_mask<32> {
+		static const uint32_t value = 0xffffffff;
+	};
 
-    /**
-     * Compute the minimum number of integers
-     * needed to store a certain number of bits.
-     * @tparam nBits the bits to store
-     */
-    template<uint8_t nBits>
-    struct ceil_bits {
-        static const uint32_t value = (nBits + INT_SIZE - 1) / INT_SIZE;
-    };
+	/**
+	 * Compute the minimum number of integers
+	 * needed to store a certain number of bits.
+	 * @tparam nBits the bits to store
+	 */
+	template<uint8_t nBits>
+	struct ceil_bits {
+		static const uint32_t value = (nBits + INT_SIZE - 1) / INT_SIZE;
+	};
 
 	template<uint8_t nBits>
 	class Bitset {
@@ -56,7 +56,7 @@ namespace wlp {
 		 * Default Constructor creates an empty bitset.
 		 */
 		Bitset() {
-            memset(m_array, 0, sizeof(m_array));
+			memset(m_array, 0, sizeof(m_array));
 		}
 
 		/**
@@ -69,45 +69,45 @@ namespace wlp {
 			setFromNumber(n);
 		}
 
-        /**
-         * Copy constructor.
-         * @param b Bitset to copy
-         */
-        Bitset(Bitset<nBits>& b) {
-            uint32_t end = ceil_bits<nBits>::value;
-            for (uint16_t i = 0; i < end; i++) {
-                m_array[i] = (m_array[i] & 0) | b.m_array[i];
-            }
-        }
+		/**
+		 * Copy constructor.
+		 * @param b Bitset to copy
+		 */
+		Bitset(Bitset<nBits>& b) {
+			uint32_t end = ceil_bits<nBits>::value;
+			for (uint16_t i = 0; i < end; i++) {
+				m_array[i] = (m_array[i] & 0) | b.m_array[i];
+			}
+		}
 
-        /**
-         * Copy constructor for const.
-         * @param b Bitset to copy
-         */
-        Bitset(const Bitset<nBits>& b) {
-            uint32_t end = ceil_bits<nBits>::value;
-            for (uint16_t i = 0; i < end; i++) {
-                m_array[i] = (m_array[i] & 0) | b.m_array[i];
-            }
-        }
+		/**
+		 * Copy constructor for const.
+		 * @param b Bitset to copy
+		 */
+		Bitset(const Bitset<nBits>& b) {
+			uint32_t end = ceil_bits<nBits>::value;
+			for (uint16_t i = 0; i < end; i++) {
+				m_array[i] = (m_array[i] & 0) | b.m_array[i];
+			}
+		}
 
-        /**
-         * Set the value of the Bitset from a number
-         * of maximum 64 bit size.
-         * @param n the number to set from
-         */
-        void setFromNumber(uint64_t n) {
-            memset(m_array, 0, sizeof(m_array));
-            constexpr uint32_t end = nBits / INT_SIZE;
-            constexpr uint32_t extra = nBits - end * INT_SIZE;
-            for (uint16_t i = 0; i < end; ++i) {
-                m_array[i] = (int) n;
-                n >>= INT_SIZE;
-            }
-            if (extra) {
-                m_array[end] = ((int) n) & pow_mask<extra>::value;
-            }
-        }
+		/**
+		 * Set the value of the Bitset from a number
+		 * of maximum 64 bit size.
+		 * @param n the number to set from
+		 */
+		void setFromNumber(uint64_t n) {
+			memset(m_array, 0, sizeof(m_array));
+			constexpr uint32_t end = nBits / INT_SIZE;
+			constexpr uint32_t extra = nBits - end * INT_SIZE;
+			for (uint16_t i = 0; i < end; ++i) {
+				m_array[i] = (uint32_t) n;
+				n >>= INT_SIZE;
+			}
+			if (extra) {
+				m_array[end] = ((uint32_t) n) & pow_mask<extra>::value;
+			}
+		}
 
 
 		/**
@@ -153,10 +153,10 @@ namespace wlp {
 		 * @return unsigned 64 bit integer
 		 */
 		uint64_t to_uint64_t() const {
-            if (nBits <= 32) {
-                return to_uint32_t();
-            }
-            return (((uint64_t) m_array[1]) << INT_SIZE) | ((uint32_t) m_array[0]);
+			if (nBits <= 32) {
+				return to_uint32_t();
+			}
+			return (((uint64_t) m_array[1]) << INT_SIZE) | ((uint32_t) m_array[0]);
 		}
 
 		/**
@@ -165,7 +165,7 @@ namespace wlp {
 		 * @return unsigned 32 bit integer
 		 */
 		uint32_t to_uint32_t() const {
-            return (uint32_t) m_array[0];
+			return (uint32_t) m_array[0];
 		}
 
 		/**
@@ -186,45 +186,45 @@ namespace wlp {
 			return (uint8_t) (m_array[0] & pow_mask<8>::value);
 		}
 
-        /**
-         * Access operator returns the bit at the given position.
-         * @param i the position of the bit to test
-         * @return the value of the bit
-         */
-        bool operator[](const uint16_t i) const {
-            return test(i);
-        }
+		/**
+		 * Access operator returns the bit at the given position.
+		 * @param i the position of the bit to test
+		 * @return the value of the bit
+		 */
+		bool operator[](const uint16_t i) const {
+			return test(i);
+		}
 
-        /**
-         * Assignment operator copies the contents of the bitset.
-         * @param b Bitset to assign
-         */
-        Bitset<nBits>& operator=(Bitset<nBits>& b) {
-            uint32_t end = ceil_bits<nBits>::value;
-            for (uint16_t i = 0; i < end; i++) {
-                m_array[i] = (m_array[i] & 0) | b.m_array[i];
-            }
-            return *this;
-        }
+		/**
+		 * Assignment operator copies the contents of the bitset.
+		 * @param b Bitset to assign
+		 */
+		Bitset<nBits>& operator=(Bitset<nBits>& b) {
+			uint32_t end = ceil_bits<nBits>::value;
+			for (uint16_t i = 0; i < end; i++) {
+				m_array[i] = (m_array[i] & 0) | b.m_array[i];
+			}
+			return *this;
+		}
 
-        /**
-         * Assignment operator copies the contents of the bitset.
-         * @param b Bitset to assign
-         */
-        Bitset<nBits>& operator=(const Bitset<nBits>& b) {
-            uint32_t end = ceil_bits<nBits>::value;
-            for (uint16_t i = 0; i < end; i++) {
-                m_array[i] = (m_array[i] & 0) | b.m_array[i];
-            }
-            return *this;
-        }
+		/**
+		 * Assignment operator copies the contents of the bitset.
+		 * @param b Bitset to assign
+		 */
+		Bitset<nBits>& operator=(const Bitset<nBits>& b) {
+			uint32_t end = ceil_bits<nBits>::value;
+			for (uint16_t i = 0; i < end; i++) {
+				m_array[i] = (m_array[i] & 0) | b.m_array[i];
+			}
+			return *this;
+		}
 
 	private:
-        /**
-         * Backing array of integers that contain the bites.
-         * Integer type arrays generally have the fastest access
-         * times in C++.
-         */
+		/**
+		 * Backing array of integers that contain the bites.
+		 * Integer type arrays generally have the fastest access
+		 * times in C++.
+		 */
 		uint32_t m_array[ceil_bits<nBits>::value];
 	};
 }
