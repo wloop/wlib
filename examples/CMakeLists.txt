@@ -6,4 +6,4 @@ file(GLOB files
 
 add_executable(examples ${files})
 target_link_libraries(examples wlib)
-ADD_DEPENDENCIES(examples wlib)
+add_dependencies(examples wlib)
