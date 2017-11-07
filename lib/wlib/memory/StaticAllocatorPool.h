@@ -14,8 +14,8 @@
 
 using namespace wlp;
 
-template <int tblockSize, int tnumBlocks>
-class StaticAllocatorPool : public Allocator{
+template<int tblockSize, int tnumBlocks>
+class StaticAllocatorPool : public Allocator {
 public:
     StaticAllocatorPool() : Allocator(tblockSize, m_memory, tblockSize * tnumBlocks), Allocator::STATIC){}
 private:
