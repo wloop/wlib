@@ -17,9 +17,7 @@ using namespace wlp;
 template<int tblockSize, int tnumBlocks>
 class StaticAllocatorPool : public Allocator {
 public:
-    StaticAllocatorPool() : Allocator(tblockSize, m_memory, tblockSize * tnumBlocks), Allocator::STATIC
-
-    ){}
+    StaticAllocatorPool() : Allocator(tblockSize, m_memory, tblockSize * tnumBlocks), Allocator::STATIC){}
 private:
     char m_memory[tblockSize * tnumBlocks];
 };
