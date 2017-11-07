@@ -35,7 +35,8 @@ namespace wlp {
      * Template specialization for 32 bits to
      * prevent overflow.
      */
-    template<> struct pow_mask<32> {
+    template<>
+    struct pow_mask<32> {
         static const uint32_t value = 0xffffffff;
     };
 
@@ -73,7 +74,7 @@ namespace wlp {
          * Copy constructor.
          * @param b Bitset to copy
          */
-        Bitset(Bitset<nBits>& b) {
+        Bitset(Bitset<nBits> &b) {
             uint32_t end = ceil_bits<nBits>::value;
             for (uint16_t i = 0; i < end; i++) {
                 m_array[i] = (m_array[i] & 0) | b.m_array[i];
@@ -84,7 +85,7 @@ namespace wlp {
          * Copy constructor for const.
          * @param b Bitset to copy
          */
-        Bitset(const Bitset<nBits>& b) {
+        Bitset(const Bitset<nBits> &b) {
             uint32_t end = ceil_bits<nBits>::value;
             for (uint16_t i = 0; i < end; i++) {
                 m_array[i] = (m_array[i] & 0) | b.m_array[i];
@@ -199,7 +200,7 @@ namespace wlp {
          * Assignment operator copies the contents of the bitset.
          * @param b Bitset to assign
          */
-        Bitset<nBits>& operator=(Bitset<nBits>& b) {
+        Bitset<nBits> &operator=(Bitset<nBits> &b) {
             uint32_t end = ceil_bits<nBits>::value;
             for (uint16_t i = 0; i < end; i++) {
                 m_array[i] = (m_array[i] & 0) | b.m_array[i];
@@ -211,7 +212,7 @@ namespace wlp {
          * Assignment operator copies the contents of the bitset.
          * @param b Bitset to assign
          */
-        Bitset<nBits>& operator=(const Bitset<nBits>& b) {
+        Bitset<nBits> &operator=(const Bitset<nBits> &b) {
             uint32_t end = ceil_bits<nBits>::value;
             for (uint16_t i = 0; i < end; i++) {
                 m_array[i] = (m_array[i] & 0) | b.m_array[i];
