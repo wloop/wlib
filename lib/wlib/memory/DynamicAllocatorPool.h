@@ -1,10 +1,10 @@
 /**
- * @file StaticAllocatorPool.h
- * @brief Template class to create static memory pools
+ * @file DynamicAllocatorPool.h
+ * @brief Template class to create Dynamic memory pools
  * 
  * This class is a generalization of the @code Allocator @endcode class and can be used for
  * convenience
- * 
+ *
  * @author Deep Dhillon
  * @date November 06, 2017
  * @bug No known bugs
@@ -18,11 +18,9 @@
 using namespace wlp;
 
 template<int tblockSize, int tnumBlocks>
-class StaticAllocatorPool : public Allocator {
+class DynamicAllocatorPool : public Allocator {
 public:
-    StaticAllocatorPool() : Allocator(tblockSize, m_memory, tblockSize * tnumBlocks, Allocator::STATIC){}
-private:
-    char m_memory[tblockSize * tnumBlocks];
+    DynamicAllocatorPool() : Allocator(tblockSize, tblockSize * tnumBlocks){}
 };
 
 #endif //FIXED_MEMORY_ALLOCATORPOOL_H
