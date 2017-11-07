@@ -1,11 +1,20 @@
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Waddress -Warray-bounds -Wbuiltin-macro-redefined -Wconversion")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Winit-self -Wnon-virtual-dtor -Woverloaded-virtual -Wsuggest-attribute=const")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wsuggest-attribute=noreturn -Wsuggest-attribute=pure -Wswitch -Wunreachable-code")
+
+set(GTEST_INCLUDE_DIR ${gtest_SOURCE_DIR}/include)
+set(WLIB_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/lib/wlib)
+
+include_directories(${GTEST_INCLUDE_DIR})
+include_directories(${WLIB_INCLUDE_DIR})
 
 file(GLOB files
-        "strings/*.cpp"
-        "strings2/*.cpp"
-        "strings/*.cc")
+        "test.cpp"
+        "stl/*.cpp"
+        "strings/*.cpp")
 
-add_executable(Tests ${files})
-
-target_link_libraries(Tests gtest gtest_main)
-target_link_libraries(wlib)
+add_executable(tests ${files})
+target_link_libraries(tests gtest)
+target_link_libraries(tests wlib)
+ADD_DEPENDENCIES(tests wlib)
+ADD_DEPENDENCIES(tests gtest)

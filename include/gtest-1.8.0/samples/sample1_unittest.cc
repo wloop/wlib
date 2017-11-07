@@ -142,7 +142,7 @@ TEST(IsPrimeTest, Positive) {
 
 // Step 3. Call RUN_ALL_TESTS() in main().
 //
-// We do this by linking in src/gtest_main.cc file, which consists of
+// We do this by linking in examples/gtest_main.cc file, which consists of
 // a main() function which calls RUN_ALL_TESTS() for us.
 //
 // This runs all the tests you've defined, prints the result, and
