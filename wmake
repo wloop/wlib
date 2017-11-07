@@ -186,11 +186,16 @@ __  _  _______ _/  |_  ___________|  |   ____   ____ ______
 The Embedded C++ code base builder
 
 Usage:
-  ${_ME} [--help] [build] [coverage] [clean] [run] [test]
+  ${_ME} [--help] [build] [coverage] [clean] [reset] [run] [test]
   ${_ME} -h | --help
 
 Options:
-  -h --help  Show this screen.
+  -h --help     Show this screen.
+  build         Build the project and stores the build files in the bin folder
+  coverage      Build the project and add coverage files in coverage folder
+  clean         Cleans the project and deletes every file from the bin folder
+  run           Execute the Examples binary
+  test          Execute the Tests binary
 HEREDOC
 }
 
@@ -229,7 +234,6 @@ _coverage(){
     echo "Project Built and Report Generated"
     cd ..
 }
-
 
 _clean(){
     rm -f -r bin

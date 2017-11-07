@@ -1,13 +1,13 @@
 project(wlib)
 
 file (GLOB header_files
-        "Wlib.h"
-        "strings/*.h"
-        "stl/*.h"
-        "memory/*.h")
+		"*.h"
+		"strings/*.h"
+		"stl/*.h"
+		"memory/*.h")
 
 file (GLOB source_files
-        "memory/*.cpp")
+		"memory/*.cpp")
 
 set(HEADER_FILES ${header_files} )
 set(SOURCE_FILES ${source_files})
