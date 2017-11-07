@@ -18,90 +18,92 @@
 
 namespace wlp {
 
-	template<class First, class Second>
-	struct Pair {
-		typedef First first_type;
-		typedef Second second_type;
-		typedef Pair<First, Second> pair;
+    template<class First, class Second>
+    struct Pair {
+        typedef First first_type;
+        typedef Second second_type;
+        typedef Pair<First, Second> pair;
 
-	private:
-		/**
-		 * First element in the pair.
-		 */
-		first_type m_first;
-		/**
-		 * Second element in the pair.
-		 */
-		second_type m_second;
+    private:
+        /**
+         * First element in the pair.
+         */
+        first_type m_first;
+        /**
+         * Second element in the pair.
+         */
+        second_type m_second;
 
-	public:
-		/**
-		 * Default constructor creates an empty pair.
-		 */
-		Pair() {};
-		/**
-		 * Create a pair from two values of first type and second type.
-		 * @param first  first type value
-		 * @param second second type value
-		 */
-		Pair(first_type first, second_type second) : m_first(first), m_second(second) {}
+    public:
+        /**
+         * Default constructor creates an empty pair.
+         */
+        Pair() {};
 
-		/**
-		 * @return the first value in the pair
-		 */
-		first_type first() {
-			return m_first;
-		}
-		/**
-		 * @return the second value in the pair
-		 */
-		second_type second() {
-			return m_second;
-		}
+        /**
+         * Create a pair from two values of first type and second type.
+         * @param first  first type value
+         * @param second second type value
+         */
+        Pair(first_type first, second_type second) : m_first(first), m_second(second) {}
 
-		/**
-		 * Assignment operator copies the first and second values.
-		 * @param p pair to copy
-		 * @return a reference to this pair
-		 */
-		pair& operator=(const pair& p) {
-			m_first = p.m_first;
-			m_second = p.m_second;
-			return *this;
-		}
+        /**
+         * @return the first value in the pair
+         */
+        first_type first() {
+            return m_first;
+        }
 
-		/**
-		 * Assignment operator copies the first and second values.
-		 * @param p pair to copy
-		 * @return a reference to this pair
-		 */
-		pair& operator=(pair& p) {
-			m_first = p.m_first;
-			m_second = p.m_second;
-			return *this;
-		}
+        /**
+         * @return the second value in the pair
+         */
+        second_type second() {
+            return m_second;
+        }
 
-		/**
-		 * Equality operator. Two pairs are equal if
-		 * both their elements are equal.
-		 * @param p the pair to compare
-		 * @return true if the pairs are equal
-		 */
-		bool operator==(const pair& p) {
-			return m_first == p.m_first && m_second == p.m_second;
-		}
+        /**
+         * Assignment operator copies the first and second values.
+         * @param p pair to copy
+         * @return a reference to this pair
+         */
+        pair &operator=(const pair &p) {
+            m_first = p.m_first;
+            m_second = p.m_second;
+            return *this;
+        }
 
-		/**
-		 * Equality operator. Two pairs are equal if
-		 * both their elements are equal.
-		 * @param p the pair to compare
-		 * @return true if the pairs are equal
-		 */
-		bool operator==(pair& p) {
-			return m_first == p.m_first && m_second == p.m_second;
-		}
+        /**
+         * Assignment operator copies the first and second values.
+         * @param p pair to copy
+         * @return a reference to this pair
+         */
+        pair &operator=(pair &p) {
+            m_first = p.m_first;
+            m_second = p.m_second;
+            return *this;
+        }
 
-	};
+        /**
+         * Equality operator. Two pairs are equal if
+         * both their elements are equal.
+         * @param p the pair to compare
+         * @return true if the pairs are equal
+         */
+        bool operator==(const pair &p) {
+            return m_first == p.m_first && m_second == p.m_second;
+        }
+
+        /**
+         * Equality operator. Two pairs are equal if
+         * both their elements are equal.
+         * @param p the pair to compare
+         * @return true if the pairs are equal
+         */
+        bool operator==(pair &p) {
+            return m_first == p.m_first && m_second == p.m_second;
+        }
+
+    };
 
 }
 
