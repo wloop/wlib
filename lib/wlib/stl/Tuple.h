@@ -21,17 +21,10 @@ namespace wlp {
     struct TupleElement {
         T value;
 
-        TupleElement() {}
-
-        explicit TupleElement(T const &t) : value(t) {
-        }
-
-        explicit TupleElement(T &&t) : value(move(t)) {
-        }
-
         template<typename U>
         explicit TupleElement(U &&u) : value(forward<U>(u)) {
         }
+
     };
 
     // IndexSequence
@@ -92,13 +85,8 @@ namespace wlp {
     struct TupleImpl<IndexSequence<Indices...>, Types...>
             : TupleElement<Indices, Types> ... {
 
-        template<typename... OtherTypes>
-        explicit TupleImpl(OtherTypes &&... elements)
-                : TupleElement<Indices, Types>(forward<OtherTypes>(elements))... {
-        }
-
         template<typename... OtherTypes, typename = typename enable_if<
-                !is_any_of<IsTupleImpl, typename decay<OtherTypes>::type...>()
+                !is_any_of<IsTupleImpl, decay_type<OtherTypes>...>()
         >::type>
         explicit TupleImpl(OtherTypes &&... elements)
                 : TupleElement<Indices, Types>(forward<OtherTypes>(elements))... {
@@ -111,6 +99,8 @@ namespace wlp {
     class Tuple
             : public TupleImpl<typename MakeIndexSequence<sizeof...(Types)>::type, Types...> {
 
+    public:
+
         Tuple(Tuple const &) = default;
 
         Tuple(Tuple &&) = default;
@@ -118,8 +108,6 @@ namespace wlp {
         Tuple &operator=(Tuple const &) = default;
 
         Tuple &operator=(Tuple &&) = default;
-
-    public:
 
         using base_type = TupleImpl<typename MakeIndexSequence<sizeof...(Types)>::type, Types...>;
 
@@ -160,8 +148,8 @@ namespace wlp {
 
     template<size_type I, typename... Types>
     remove_reference_type<TypeAtIndexType<I, Types...>> &&get(Tuple<Types...> &&tuple) {
-        TupleElement<I, TypeAtIndexType<I, Types...>> base = move(tuple);
-        return base.value;
+        TupleElement<I, TypeAtIndexType<I, Types...>> base = tuple;
+        return forward<TypeAtIndexType<I, Types...>>(base.value);
     };
 
     template<typename>
@@ -201,6 +189,121 @@ namespace wlp {
         static_assert(count<T, Types...>() == 1, "Type must be unique in Tuple");
         return get<find<T, Types...>()>(tuple);
     }
+
+    template<typename>
+    struct tuple_size;
+
+    template<typename... Types>
+    struct tuple_size<Tuple<Types...>> : integral_constant<size_type, sizeof...(Types)> {
+    };
+
+    template<typename... Types>
+    constexpr size_type get_tuple_size(Tuple<Types...>) {
+        return sizeof...(Types);
+    }
+
+    template<typename... Types>
+    Tuple<Types &&...> forward_as_tuple(Types &&... elements) {
+        return Tuple<Types &&...>(forward<Types>(elements)...);
+    }
+
+    template<typename... Types>
+    Tuple<Types &...> tie(Types &... elements) {
+        return Tuple<Types &...>(elements...);
+    }
+
+    typedef struct ignore_type {
+        template<typename U>
+        ignore_type &operator=(U &&) {
+            return *this;
+        }
+    } ignore;
+
+    template<size_type, typename>
+    struct TypeAtTuple;
+
+    template<size_type I, typename... Types>
+    struct TypeAtTuple<I, Tuple<Types...>>
+            : TypeAtIndex<I, Types...> {
+    };
+
+    template<typename, typename, typename, typename>
+    struct cat_pair_type_sub;
+
+    template<typename TupleA, size_type... IndicesA, typename TupleB, size_type... IndicesB>
+    struct cat_pair_type_sub<
+            TupleA, IndexSequence<IndicesA...>,
+            TupleB, IndexSequence<IndicesB...>
+    > {
+        using type = Tuple<
+                typename TypeAtTuple<IndicesA, TupleA>::type...,
+                typename TypeAtTuple<IndicesB, TupleB>::type...
+        >;
+    };
+
+    template<typename TupleA, typename TupleB>
+    struct cat_pair_type {
+        static constexpr size_type SizeA = tuple_size<decay_type<TupleA>>::value;
+        static constexpr size_type SizeB = tuple_size<decay_type<TupleB>>::value;
+        using SequenceA = typename MakeIndexSequence<SizeA>::type;
+        using SequenceB = typename MakeIndexSequence<SizeB>::type;
+        using type = typename cat_pair_type_sub<
+                decay_type<TupleA>, SequenceA,
+                decay_type<TupleB>, SequenceB
+        >::type;
+    };
+
+    template<typename... Types>
+    auto make_tuple(Types &&... elements) {
+        return Tuple<decay_type<Types>...>(forward<Types>(elements)...);
+    }
+
+    template<typename TupleA, size_type... IndicesA, typename TupleB, size_type... IndicesB>
+    auto tuple_cat_pair_sub(
+            TupleA &&tupleA, TupleB &&tupleB,
+            IndexSequence<IndicesA...>, IndexSequence<IndicesB...>) {
+        return make_tuple(
+                get<IndicesA>(forward<TupleA>(tupleA))...,
+                get<IndicesB>(forward<TupleB>(tupleB))...
+        );
+    }
+
+    template<typename TupleA, typename TupleB>
+    typename cat_pair_type<TupleA, TupleB>::type
+    tuple_cat_pair(TupleA &&tupleA, TupleB &&tupleB) {
+        return tuple_cat_pair_sub(
+                forward<TupleA>(tupleA),
+                forward<TupleB>(tupleB),
+                MakeIndexSequence<tuple_size<decay_type<TupleA>>::value>{},
+                MakeIndexSequence<tuple_size<decay_type<TupleB>>::value>{}
+        );
+    };
+
+    template<typename HeadTuple>
+    HeadTuple &&tuple_cat(HeadTuple &&tuple) {
+        return forward<HeadTuple>(tuple);
+    }
+
+    template<typename HeadTupleA, typename HeadTupleB>
+    auto tuple_cat(HeadTupleA &&tupleA, HeadTupleB &&tupleB) {
+        return tuple_cat_pair(
+                forward<HeadTupleA>(tupleA),
+                forward<HeadTupleB>(tupleB)
+        );
+    };
+
+    template<typename HeadTupleA, typename HeadTupleB, typename... TailTuples>
+    auto tuple_cat(HeadTupleA &&tupleA, HeadTupleB &&tupleB, TailTuples &&... tail) {
+        auto tuple = tuple_cat_pair(
+                forward<HeadTupleA>(tupleA),
+                forward<HeadTupleB>(tupleB)
+        );
+        return tuple_cat(
+                tuple,
+                forward<TailTuples>(tail)...
+        );
+    };
+
 
 }
 

@@ -231,27 +231,29 @@ namespace wlp {
 
     template<typename U>
     struct __decay__<U, false, false> {
-        typedef typename remove_const_volatile<U>::type __type;
+        typedef typename remove_const_volatile<U>::type type;
     };
 
-    template<typename _Up>
-    struct __decay__<_Up, true, false> {
-        typedef typename remove_extent<_Up>::type *__type;
+    template<typename U>
+    struct __decay__<U, true, false> {
+        typedef typename remove_extent<U>::type *type;
     };
 
-    template<typename _Up>
-    struct __decay__<_Up, false, true> {
-        typedef typename add_pointer<_Up>::type __type;
+    template<typename U>
+    struct __decay__<U, false, true> {
+        typedef typename add_pointer<U>::type type;
     };
 
     template<typename T>
     class decay {
-        typedef typename remove_reference<T>::type __remove_type;
+        typedef typename remove_reference<T>::type remove_type;
 
     public:
-        typedef typename __decay__<__remove_type>::__type type;
+        typedef typename __decay__<remove_type>::type type;
     };
 
+    template<typename T>
+    using decay_type = typename decay<T>::type;
 
     template<typename T>
     constexpr typename remove_reference<T>::type &&move(T &&t) noexcept {
