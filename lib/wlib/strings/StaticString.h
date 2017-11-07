@@ -4,7 +4,7 @@
 #include <string.h>
 #include <math.h>
 
-template <uint16_t tSize>
+template<uint16_t tSize>
 class StaticString {
 private:
     char m_buffer[tSize + 1];
@@ -13,7 +13,7 @@ public:
     /**
      * Default constructor creates string with no character
      */
-    StaticString<tSize>(){
+    StaticString<tSize>() {
         clear();
     }
 
@@ -22,30 +22,59 @@ public:
      *
      * @param str char string
      */
-    StaticString<tSize>(const char* str){
-        uint16_t destSize = (uint16_t)ceil(fmin((uint16_t) strlen(str), capacity()));
+    StaticString<tSize>(const char *str) {
+        uint16_t destSize = (uint16_t) ceil(fmin((uint16_t) strlen(str), capacity()));
         strncpy(m_buffer, str, destSize);
         m_buffer[destSize] = '\0';
         len = destSize;
     }
 
     /**
-     * Constructor creates string using static string object
+     * Copy constructor.
      *
-     * @param str @code StaticString object
+     * @param str static string to copy
      */
-    StaticString<tSize>(const StaticString<tSize> &str){
-        StaticString(str.c_str());
+    StaticString<tSize>(StaticString<tSize> &str) {
+        strncpy(m_buffer, str.m_buffer, str.len);
+        m_buffer[str.len] = '\0';
+        len = str.len;
     }
 
     /**
-     * Assign operator assigns current object to given object
+     * Copy constructor for const.
      *
-     * @param str @code StaticString object
-     * @return current object
+     * @param str const static string to copy
      */
-    StaticString<tSize> operator= (const StaticString<tSize> &str){
-        return operator=(str.c_str());
+    StaticString<tSize>(const StaticString<tSize> &str) {
+        strncpy(m_buffer, str.m_buffer, str.len);
+        m_buffer[str.len] = '\0';
+        len = str.len;
+    }
+
+    /**
+     * Assignment operator. Copies contents of assigned string.
+     *
+     * @param str string to assign
+     * @return reference to this static string
+     */
+    StaticString<tSize> &operator=(StaticString<tSize> &str) {
+        strncpy(m_buffer, str.m_buffer, str.len);
+        m_buffer[str.len] = '\0';
+        len = str.len;
+        return *this;
+    }
+
+    /**
+     * Assignment operator for const.
+     *
+     * @param str const string to assign
+     * @return reference to this static string
+     */
+    StaticString<tSize> &operator=(const StaticString<tSize> &str) {
+        strncpy(m_buffer, str.m_buffer, str.len);
+        m_buffer[str.len] = '\0';
+        len = str.len;
+        return *this;
     }
 
     /**
@@ -53,8 +82,22 @@ public:
      * @param str
      * @return current object
      */
-    StaticString<tSize> operator= (const char* str){
-        uint16_t destSize = (uint16_t)ceil(fmin((uint16_t) strlen(str), capacity()));
+    StaticString<tSize> operator=(char *str) {
+        uint16_t destSize = (uint16_t) ceil(fmin((uint16_t) strlen(str), capacity()));
+        strncpy(m_buffer, str, destSize);
+        m_buffer[destSize] = '\0';
+        len = destSize;
+
+        return *this;
+    }
+
+    /**
+     * Assign operator assigns current object to given const character string
+     * @param str
+     * @return current object
+     */
+    StaticString<tSize> operator=(const char *str) {
+        uint16_t destSize = (uint16_t) ceil(fmin((uint16_t) strlen(str), capacity()));
         strncpy(m_buffer, str, destSize);
         m_buffer[destSize] = '\0';
         len = destSize;
@@ -67,7 +110,7 @@ public:
      *
      * @return string length
      */
-    uint16_t length() const{
+    uint16_t length() const {
         return len;
     }
 
@@ -76,7 +119,7 @@ public:
      *
      * @return string capacity
      */
-    uint16_t capacity(){
+    uint16_t capacity() const {
         return tSize;
     }
 
@@ -92,7 +135,7 @@ public:
     /**
      * Clears the string such that there are no characters left in it
      */
-    void clear(){
+    void clear() {
         m_buffer[0] = '\0';
         len = 0;
     }
@@ -103,7 +146,7 @@ public:
      * @param pos the position of the character
      * @return character at @code position
      */
-    char &operator[](uint16_t pos){
+    char &operator[](uint16_t pos) {
         return m_buffer[pos];
     }
 
@@ -114,7 +157,7 @@ public:
      * @param pos the position of the character
      * @return character at @code position
      */
-    const char &operator[](uint16_t pos) const{
+    const char &operator[](uint16_t pos) const {
         return m_buffer[pos];
     }
 
@@ -124,7 +167,7 @@ public:
      * @param pos the position of the character
      * @return character at @code position
      */
-    char &at(uint16_t pos){
+    char &at(uint16_t pos) {
         return m_buffer[pos];
     }
 
@@ -134,7 +177,7 @@ public:
      * @param pos the position of the character
      * @return character at @code position
      */
-    const char &at(uint16_t pos) const{
+    const char &at(uint16_t pos) const {
         return m_buffer[pos];
     }
 
@@ -143,7 +186,7 @@ public:
      *
      * @return the first character
      */
-    char &front(){
+    char &front() {
         return m_buffer[0];
     }
 
@@ -152,7 +195,7 @@ public:
      *
      * @return the first character
      */
-    const char &front() const{
+    const char &front() const {
         return m_buffer[0];
     }
 
@@ -161,7 +204,7 @@ public:
      *
      * @return the last character
      */
-    char &end(){
+    char &end() {
         if (empty()) return m_buffer[0];
 
         return m_buffer[length() - 1];
@@ -172,7 +215,7 @@ public:
      *
      * @return the last character
      */
-    const char &end() const{
+    const char &end() const {
         if (empty()) return m_buffer[0];
 
         return m_buffer[length() - 1];
@@ -185,7 +228,7 @@ public:
      * @param c character to add
      * @return the current string
      */
-    StaticString<tSize> &operator+=(char c){
+    StaticString<tSize> &operator+=(char c) {
         return append(c);
     }
 
@@ -196,7 +239,7 @@ public:
      * @param val char string to add
      * @return the current string
      */
-    StaticString<tSize> &operator+= (const char* val){
+    StaticString<tSize> &operator+=(const char *val) {
         return append(val);
     }
 
@@ -207,7 +250,7 @@ public:
      * @param other @code StaticString string to add
      * @return the current string
      */
-    StaticString<tSize> operator+= (StaticString<tSize>& other){
+    StaticString<tSize> operator+=(StaticString<tSize> &other) {
         return append(other);
     }
 
@@ -218,7 +261,7 @@ public:
      * @param c character to add
      * @return the current string
      */
-    StaticString<tSize> &append(const char c){
+    StaticString<tSize> &append(const char c) {
         char array[2] = {c, '\0'};
         return append(array);
     }
@@ -230,15 +273,15 @@ public:
      * @param str character string to add
      * @return the current string
      */
-    StaticString<tSize> &append(const char *str){
+    StaticString<tSize> &append(const char *str) {
         uint16_t bufferLength = this->length();
         uint16_t otherLength = (uint16_t) strlen(str);
 
-        for(int i = bufferLength; i < bufferLength + otherLength && i < capacity(); i++){
-            m_buffer[i] = str[i-bufferLength];
+        for (int i = bufferLength; i < bufferLength + otherLength && i < capacity(); i++) {
+            m_buffer[i] = str[i - bufferLength];
         }
 
-        len = (uint16_t)ceil(fmin(capacity(), (bufferLength + otherLength)));
+        len = (uint16_t) ceil(fmin(capacity(), (bufferLength + otherLength)));
 
         m_buffer[len] = '\0';
 
@@ -252,7 +295,7 @@ public:
      * @param str @code StaticString string to add
      * @return the current string
      */
-    StaticString<tSize> &append(const StaticString<tSize> str){
+    StaticString<tSize> &append(const StaticString<tSize> str) {
         return append(str.c_str());
     }
 
@@ -263,7 +306,8 @@ public:
      * @param c character to add
      * @return the current string
      */
-    StaticString<tSize> push_back(const char c){ ;
+    StaticString<tSize> push_back(const char c) {
+        ;
         return append(c);
     }
 
@@ -274,7 +318,8 @@ public:
      * @param str character string to add
      * @return the current string
      */
-    StaticString<tSize> push_back(const char *str){ ;
+    StaticString<tSize> push_back(const char *str) {
+        ;
         return append(str);
     }
 
@@ -285,7 +330,8 @@ public:
      * @param str @code StaticString string to add
      * @return the current string
      */
-    StaticString<tSize> push_back(const StaticString<tSize> &str){ ;
+    StaticString<tSize> push_back(const StaticString<tSize> &str) {
+        ;
         return append(str);
     }
 
@@ -295,7 +341,7 @@ public:
      *
      * @return character array
      */
-    const char *c_str() const{
+    const char *c_str() const {
         return m_buffer;
     }
 
@@ -306,11 +352,11 @@ public:
      * @param length length of the new string
      * @return new string which is a substring of current string
      */
-    StaticString<tSize> substr(uint16_t pos, uint16_t length) const{
+    StaticString<tSize> substr(uint16_t pos, uint16_t length) const {
         char newBuffer[length + 1];
 
-        for(uint16_t i = pos; i < pos + length ;i++){
-            newBuffer[i-pos] = m_buffer[i];
+        for (uint16_t i = pos; i < pos + length; i++) {
+            newBuffer[i - pos] = m_buffer[i];
         }
 
         newBuffer[length] = '\0';
@@ -328,7 +374,7 @@ public:
      * @param str @code StaticString string to compare against current string
      * @return a signed number based on how strings compare
      */
-    int16_t compare(const StaticString<tSize> &str) const{
+    int16_t compare(const StaticString<tSize> &str) const {
         return compare(str.c_str());
     }
 
@@ -340,7 +386,7 @@ public:
      * @param str character string to compare against current string
      * @return a signed number based on how strings compare
      */
-    int16_t compare(const char *str) const{
+    int16_t compare(const char *str) const {
         return (int16_t) strcmp(this->c_str(), str);
     }
 
@@ -354,8 +400,8 @@ public:
  * @param rhs @code StaticString string as right hand side string
  * @return true or false based on if two strings are equal
  */
-template <uint16_t tSize>
-bool operator== (const StaticString<tSize> &lhs, const StaticString<tSize> &rhs){
+template<uint16_t tSize>
+bool operator==(const StaticString<tSize> &lhs, const StaticString<tSize> &rhs) {
     return lhs.compare(rhs) == 0;
 }
 
@@ -367,8 +413,8 @@ bool operator== (const StaticString<tSize> &lhs, const StaticString<tSize> &rhs)
  * @param rhs @code StaticString string as right hand side string
  * @return true or false based on if two strings are equal
  */
-template <uint16_t tSize>
-bool operator== (const char *lhs, const StaticString<tSize> &rhs){
+template<uint16_t tSize>
+bool operator==(const char *lhs, const StaticString<tSize> &rhs) {
     return rhs.compare(lhs) == 0;
 }
 
@@ -380,8 +426,8 @@ bool operator== (const char *lhs, const StaticString<tSize> &rhs){
  * @param rhs character string as right hand side string
  * @return true or false based on if two strings are equal
  */
-template <uint16_t tSize>
-bool operator== (const StaticString<tSize> &lhs, const char *rhs){
+template<uint16_t tSize>
+bool operator==(const StaticString<tSize> &lhs, const char *rhs) {
     return lhs.compare(rhs) == 0;
 }
 
@@ -393,8 +439,8 @@ bool operator== (const StaticString<tSize> &lhs, const char *rhs){
  * @param rhs @code StaticString string as right hand side string
  * @return a @code StaticString that is build from left hind string and right hand string
  */
-template <uint16_t tSize>
-StaticString<tSize> operator+(const StaticString<tSize> &lhs, const StaticString<tSize> &rhs){
+template<uint16_t tSize>
+StaticString<tSize> operator+(const StaticString<tSize> &lhs, const StaticString<tSize> &rhs) {
     StaticString<tSize> newStr;
     newStr.push_back(lhs).push_back(rhs);
     return newStr;
@@ -408,8 +454,8 @@ StaticString<tSize> operator+(const StaticString<tSize> &lhs, const StaticString
  * @param rhs @code StaticString string as right hand side string
  * @return a @code StaticString that is build from left hind string and right hand string
  */
-template <uint16_t tSize>
-StaticString<tSize> operator+(const char *lhs, const StaticString<tSize> &rhs){
+template<uint16_t tSize>
+StaticString<tSize> operator+(const char *lhs, const StaticString<tSize> &rhs) {
     StaticString<tSize> newStr;
     newStr.push_back(lhs).push_back(rhs);
     return newStr;
@@ -423,8 +469,8 @@ StaticString<tSize> operator+(const char *lhs, const StaticString<tSize> &rhs){
  * @param rhs character string as right hand side string
  * @return a @code StaticString that is build from left hind string and right hand string
  */
-template <uint16_t tSize>
-StaticString<tSize> operator+(const StaticString<tSize> &lhs, const char *rhs){
+template<uint16_t tSize>
+StaticString<tSize> operator+(const StaticString<tSize> &lhs, const char *rhs) {
     StaticString<tSize> newStr;
     newStr.push_back(lhs).push_back(rhs);
     return newStr;

@@ -12,14 +12,14 @@
 #include "Allocator.h"
 
 #ifndef CHAR_BIT
-#define CHAR_BIT	8
+#define CHAR_BIT    8
 #endif
 
 #define MAX_ALLOCATORS 10
 
 using namespace wlp;
 
-static Allocator* _allocators[MAX_ALLOCATORS];
+static Allocator *_allocators[MAX_ALLOCATORS];
 
 int MemoryInitDestroy::m_srefCount = 0;
 
@@ -39,16 +39,15 @@ MemoryInitDestroy::~MemoryInitDestroy() {
  * @param k value for which the higher power of two will be returned
  * @return the next higher power of two based on the input k
  */
-template <class T>
-T nextHigher(T k)
-{
+template<class T>
+T nextHigher(T k) {
     k--;
-    for (size_t i=1; i <sizeof(T)*CHAR_BIT; i<<=1)
+    for (size_t i = 1; i < sizeof(T) * CHAR_BIT; i <<= 1)
         k |= (k >> i);
-    return k+1;
+    return k + 1;
 }
 
-void memory_init(){}
+void memory_init() {}
 
 extern "C" void memory_destroy() {
     for (auto &_allocator : _allocators) {
@@ -65,8 +64,7 @@ extern "C" void memory_destroy() {
  * @param size allocator blocks size
  * @return Allocator instance or nullptr if no allocator exists
  */
-static inline Allocator* find_allocator(size_t size)
-{
+static inline Allocator *find_allocator(size_t size) {
     for (auto &_allocator : _allocators) {
         if (_allocator == nullptr)
             break;
@@ -82,11 +80,9 @@ static inline Allocator* find_allocator(size_t size)
  * Inster an Allocator instance into the array
  * @param allocator an Allocator instance
  */
-static inline void insert_allocator(Allocator* allocator)
-{
+static inline void insert_allocator(Allocator *allocator) {
     for (auto &_allocator : _allocators) {
-        if (_allocator == nullptr)
-        {
+        if (_allocator == nullptr) {
             _allocator = allocator;
             return;
         }
@@ -99,10 +95,9 @@ static inline void insert_allocator(Allocator* allocator)
  * @param allocator allocator to set
  * @return a pointer to the client's area within the block
  */
-static inline void *set_block_allocator(void* block, Allocator* allocator)
-{
+static inline void *set_block_allocator(void *block, Allocator *allocator) {
     // Cast the raw block memory to a Allocator pointer
-    auto ** pAllocatorInBlock = static_cast<Allocator**>(block);
+    auto **pAllocatorInBlock = static_cast<Allocator **>(block);
 
     // Write the size into the memory block
     *pAllocatorInBlock = allocator;
@@ -118,14 +113,13 @@ static inline void *set_block_allocator(void* block, Allocator* allocator)
  * @param size client's requested block size
  * @return an allocator instance that handles the block size
  */
-extern "C" Allocator* memory_get_allocator(size_t size)
-{
+extern "C" Allocator *memory_get_allocator(size_t size) {
     // Based on the size, find the next higher powers of two value.
     // Add sizeof(Allocator*) to the requested block size to hold the size
     // within the block memory region. Most blocks are powers of two,
     // however some common allocator block sizes can be explicitly defined
     // to minimize wasted storage. This offers application specific tuning.
-    size_t blockSize = size + sizeof(Allocator*);
+    size_t blockSize = size + sizeof(Allocator *);
     if (blockSize > 256 && blockSize <= 396)
         blockSize = 396;
     else if (blockSize > 512 && blockSize <= 768)
@@ -133,11 +127,10 @@ extern "C" Allocator* memory_get_allocator(size_t size)
     else
         blockSize = nextHigher<size_t>(blockSize);
 
-    Allocator* allocator = find_allocator(blockSize);
+    Allocator *allocator = find_allocator(blockSize);
 
     // If there is not an allocator already created to handle this block size
-    if (allocator == nullptr)
-    {
+    if (allocator == nullptr) {
         // Create a new allocator to handle blocks of the size required
         allocator = new Allocator(blockSize);
 
@@ -156,11 +149,11 @@ extern "C" Allocator* memory_get_allocator(size_t size)
  */
 extern "C" void *memory_alloc(size_t size) {
     // Allocate a raw memory block
-    Allocator* allocator = memory_get_allocator(size);
-    void* blockMemoryPtr = allocator->Allocate();
+    Allocator *allocator = memory_get_allocator(size);
+    void *blockMemoryPtr = allocator->Allocate();
 
     // Set the block Allocator* within the raw memory block region
-    void* clientsMemoryPtr = set_block_allocator(blockMemoryPtr, allocator);
+    void *clientsMemoryPtr = set_block_allocator(blockMemoryPtr, allocator);
     return clientsMemoryPtr;
 }
 
@@ -169,10 +162,9 @@ extern "C" void *memory_alloc(size_t size) {
  * @param block a pointer to the client's memory block
  * @return The original allocator instance stored in the memory block
  */
-static inline Allocator* get_block_allocator(void* block)
-{
+static inline Allocator *get_block_allocator(void *block) {
     // Cast the client memory to a Allocator pointer
-    auto ** pAllocatorInBlock = static_cast<Allocator**>(block);
+    auto **pAllocatorInBlock = static_cast<Allocator **>(block);
 
     // Back up one Allocator* position to get the stored allocator instance
     pAllocatorInBlock--;
@@ -186,10 +178,9 @@ static inline Allocator* get_block_allocator(void* block)
  * @param block a pointer to the client's memory block
  * @return A pointer to the original raw memory block
  */
-static inline void *get_block_ptr(void* block)
-{
+static inline void *get_block_ptr(void *block) {
     // Cast the client memory to a Allocator* pointer
-    auto ** pAllocatorInBlock = static_cast<Allocator**>(block);
+    auto **pAllocatorInBlock = static_cast<Allocator **>(block);
 
     // Back up one Allocator* position and return the original raw memory block pointer
     return --pAllocatorInBlock;
@@ -200,16 +191,15 @@ static inline void *get_block_ptr(void* block)
  * returned to the fixed block allocator that originally created it
  * @param ptr a pointer to a block created with memory_alloc
  */
-extern "C" void memory_free(void* ptr)
-{
+extern "C" void memory_free(void *ptr) {
     if (ptr == nullptr)
         return;
 
     // Extract the original allocator instance from the caller's block pointer
-    Allocator* allocator = get_block_allocator(ptr);
+    Allocator *allocator = get_block_allocator(ptr);
 
     // Convert the client pointer into the original raw block pointer
-    void* blockPtr = get_block_ptr(ptr);
+    void *blockPtr = get_block_ptr(ptr);
 
     // Deallocate the block
     allocator->Deallocate(blockPtr);
@@ -221,25 +211,20 @@ extern "C" void memory_free(void* ptr)
  * @param size the client requested block size
  * @return pointer to new memory block
  */
-extern "C" void *memory_realloc(void *oldMem, size_t size)
-{
+extern "C" void *memory_realloc(void *oldMem, size_t size) {
     if (oldMem == nullptr)
         return memory_alloc(size);
 
-    if (size == 0)
-    {
+    if (size == 0) {
         memory_free(oldMem);
         return nullptr;
-    }
-    else
-    {
+    } else {
         // Create a new memory block
-        void* newMem = memory_alloc(size);
-        if (newMem != nullptr)
-        {
+        void *newMem = memory_alloc(size);
+        if (newMem != nullptr) {
             // Get the original allocator instance from the old memory block
-            Allocator* oldAllocator = get_block_allocator(oldMem);
-            size_t oldSize = oldAllocator->GetBlockSize() - sizeof(Allocator*);
+            Allocator *oldAllocator = get_block_allocator(oldMem);
+            size_t oldSize = oldAllocator->GetBlockSize() - sizeof(Allocator *);
 
             // Copy the bytes from the old memory block into the new (as much as will fit)
             memcpy(newMem, oldMem, (oldSize < size) ? oldSize : size);
