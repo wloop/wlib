@@ -1,7 +1,8 @@
-
 #include "gtest/gtest.h"
 #include "strings/StaticString.h"
 #include "memory/Memory.h"
+
+#include "../template_defs.h"
 
 TEST(static_string_tests, constructor_tests) {
     StaticString<8> string1{"helloooo"};    // text given
