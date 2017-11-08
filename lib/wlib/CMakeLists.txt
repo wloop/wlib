@@ -1,7 +1,7 @@
 project(wlib)
 
 file(GLOB header_files
-        "Wlib.h"
+        "*.h"
         "strings/*.h"
         "stl/*.h"
         "memory/*.h")

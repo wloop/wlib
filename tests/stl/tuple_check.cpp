@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 
 #include "stl/Tuple.h"
+#include "stl/OpenMap.h"
 
 using namespace wlp;
 
@@ -91,8 +92,51 @@ TEST(tuple_test, test_forward_as_tuple) {
     ASSERT_EQ(5555, d);
 }
 
-TEST(tuple_test, test_tie) {
-    int a, b, c, d;
-    Tuple<int, int, int, int> tuple(1, 2, 3, 4);
-    auto t = tie(a, b, c, d);
+TEST(tuple_test, test_assign_pair) {
+    Tuple<int, int> tuple = make_tuple(12, 34);
+    ASSERT_EQ(12, get<0>(tuple));
+    ASSERT_EQ(34, get<1>(tuple));
+    Pair<int, int> pair(16, 19);
+    tuple = pair;
+    ASSERT_EQ(16, get<0>(tuple));
+    ASSERT_EQ(19, get<1>(tuple));
+    OpenHashMap<int, int> int_map(10, 61);
+    OpenHashMap<int, int>::iterator it;
+    bool b;
+    tie(it, b) = int_map.insert(5, 1);
+    ASSERT_EQ(1, *it);
+    ++it;
+    ASSERT_EQ(int_map.end(), it);
+    ASSERT_TRUE(b);
+    tie(it, b) = int_map.insert(5, 10);
+    ASSERT_EQ(1, *it);
+    ASSERT_FALSE(b);
+    ++it;
+    ASSERT_EQ(int_map.end(), it);
+    tie(ignore, b) = int_map.insert(6, 4);
+    ASSERT_TRUE(b);
+    tie(ignore, b) = int_map.insert(6, 10);
+    ASSERT_FALSE(b);
+}
+
+TEST(tuple_test, test_tuple_assign) {
+    auto tupleA = make_tuple(5, 6, 7, 8);
+    auto tupleB = make_tuple(0, 0, 0, 0);
+    tupleB = tupleA;
+    ASSERT_EQ(5, get<0>(tupleB));
+    ASSERT_EQ(6, get<1>(tupleB));
+    ASSERT_EQ(7, get<2>(tupleB));
+    ASSERT_EQ(8, get<3>(tupleB));
+}
+
+TEST(tuple_test, test_tuple_tie) {
+    int a, b;
+    char c;
+    double d;
+    auto tuple = make_tuple(55, 66, 'g', 66.55);
+    tie(a, b, c, d) = tuple;
+    ASSERT_EQ(55, a);
+    ASSERT_EQ(66, b);
+    ASSERT_EQ('g', c);
+    ASSERT_DOUBLE_EQ(66.55, d);
 }

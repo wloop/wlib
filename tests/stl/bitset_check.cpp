@@ -22,7 +22,7 @@ using namespace wlp;
 typedef uint16_t ui16;
 
 TEST(bitset_test, test_constructor_64) {
-    uint64_t n = 17316249074701521315;
+    uint64_t n = 17316249074701521315u;
     bool expected[] = {
             1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0,
             1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1,
@@ -40,7 +40,7 @@ TEST(bitset_test, test_constructor_64) {
 }
 
 TEST(bitset_test, test_constructor_underflow) {
-    uint64_t n = 17316249074701521315;
+    uint64_t n = 17316249074701521315u;
     bool expected[] = {
             1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0,
             1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1,
@@ -58,7 +58,7 @@ TEST(bitset_test, test_constructor_underflow) {
 }
 
 TEST(bitset_test, test_constructor_overflow) {
-    uint64_t n = 17316249074701521315;
+    uint64_t n = 17316249074701521315u;
     bool expected[] = {
             1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0,
             1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0
@@ -112,8 +112,8 @@ TEST(bitset_test, test_set_reset_flip_get) {
 }
 
 TEST(bitset_test, test_copy_constructors) {
-    Bitset<42> source1(17316249074701521315);
-    Bitset<42> source2(6426756347354645451);
+    Bitset<42> source1(17316249074701521315u);
+    Bitset<42> source2(6426756347354645451u);
     const Bitset<42> copy1_1 = source1;
     const Bitset<42> copy1_2 = copy1_1;
     ASSERT_EQ(source1.to_uint64_t(), copy1_1.to_uint64_t());
