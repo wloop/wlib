@@ -52,7 +52,14 @@ namespace wlp {
     }
 
     template<uint16_t tSize>
-    struct equals<StaticString<tSize> > {
+    struct equals<StaticString<tSize>> {
+        bool operator()(const StaticString<tSize> &key1, const StaticString<tSize> &key2) const {
+            return static_string_equals(key1, key2);
+        }
+    };
+
+    template<uint16_t tSize>
+    struct equals<const StaticString<tSize>> {
         bool operator()(const StaticString<tSize> &key1, const StaticString<tSize> &key2) const {
             return static_string_equals(key1, key2);
         }
