@@ -16,8 +16,7 @@
 
 #include <math.h>
 
-#include "Types.h"
-#include "Wlib.h"
+#include "../Wlib.h"
 
 namespace wlp {
 
