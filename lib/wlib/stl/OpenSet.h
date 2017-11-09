@@ -71,7 +71,7 @@ namespace wlp {
          * @return the size of the backing array
          */
         size_type max_size() const {
-            return m_hash_map.max_size();
+            return m_hash_map.capacity();
         }
 
         /**

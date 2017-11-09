@@ -43,7 +43,7 @@ TEST(chain_map_test, test_const_iterator) {
 	map[key3] = val3;
 	const string_map const_map = map;
 	ASSERT_EQ(3, const_map.size());
-	ASSERT_EQ(10, const_map.max_size());
+	ASSERT_EQ(10, const_map.capacity());
 	ASSERT_EQ(100, const_map.max_load());
 	string_map::iterator it = map.begin();
 	string_map::const_iterator const_it = const_map.begin();
@@ -100,7 +100,7 @@ TEST(chain_map_test, test_ensure_capacity_holes) {
 	map[16] = 16;
 	map[21] = 21;
 	map[26] = 26;
-	ASSERT_EQ(20, map.max_size());
+	ASSERT_EQ(20, map.capacity());
 	ui16 expected_values_traverse[] = {1, 21, 26, 6, 11, 16};
 	imi it = map.begin();
 	for (ui16 i = 0; i < 6; i++) {
@@ -111,7 +111,7 @@ TEST(chain_map_test, test_ensure_capacity_holes) {
 	map.clear();
 	ASSERT_EQ(map.end(), map.begin());
 	ASSERT_EQ(0, map.size());
-	ASSERT_EQ(20, map.max_size());
+	ASSERT_EQ(20, map.capacity());
 }
 
 TEST(chain_map_test, test_erase_cases) {
@@ -164,7 +164,7 @@ TEST(chain_map_test, test_erase_const_iterator) {
 
 TEST(chain_map_test, test_constructor_params) {
 	int_map map(10, 150);
-	ASSERT_EQ(10, map.max_size());
+	ASSERT_EQ(10, map.capacity());
 	ASSERT_EQ(150, map.max_load());
 	ASSERT_EQ(0, map.size());
 	ASSERT_TRUE(map.empty());

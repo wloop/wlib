@@ -13,7 +13,7 @@ typedef Pair<imi, bool> P_imi_b;
 
 TEST(open_map_test, test_constructor_parameters) {
 	int_map map(15, 61);
-	ASSERT_EQ(15, map.max_size());
+	ASSERT_EQ(15, map.capacity());
 	ASSERT_EQ(0, map.size());
 	ASSERT_EQ(61, map.max_load());
 }
@@ -117,7 +117,7 @@ TEST(open_map_test, test_insert_find_iterate_integer) {
 	++it1;
 	ASSERT_EQ(it1, map.end());
 	ASSERT_EQ(5, map.size());
-	ASSERT_EQ(10, map.max_size());
+	ASSERT_EQ(10, map.capacity());
 }
 
 TEST(open_map_test, test_map_iterator_postfix) {

@@ -370,7 +370,7 @@ namespace wlp {
         /**
          * The size of the backing array.
          */
-        size_type m_max_elements;
+        size_type m_capacity;
         /**
          * The load factor in integer percent
          * before rehashing occurs. This number
@@ -399,7 +399,7 @@ namespace wlp {
                   m_equal(Equal()),
                   m_node_allocator{sizeof(map_node), static_cast<size_type>(n * sizeof(map_node))},
                   m_num_elements(0),
-                  m_max_elements(n),
+                  m_capacity(n),
                   m_max_load(max_load) {
             init_buckets(n);
             if (max_load > 100) {
@@ -443,7 +443,7 @@ namespace wlp {
          * @return an index i such that 0 <= i < m_max_elements
          */
         size_type hash(key_type key) const {
-            return m_hash(key) % m_max_elements;
+            return m_hash(key) % m_capacity;
         }
 
         /**
@@ -471,8 +471,8 @@ namespace wlp {
         /**
          * @return the current size of the backing array
          */
-        size_type max_size() const {
-            return m_max_elements;
+        size_type capacity() const {
+            return m_capacity;
         }
 
         /**
@@ -506,7 +506,7 @@ namespace wlp {
             if (m_num_elements == 0) {
                 return end();
             }
-            for (size_type i = 0; i < m_max_elements; ++i) {
+            for (size_type i = 0; i < m_capacity; ++i) {
                 if (m_buckets[i]) {
                     return iterator(m_buckets[i], this);
                 }
@@ -529,7 +529,7 @@ namespace wlp {
             if (m_num_elements == 0) {
                 return end();
             }
-            for (size_type i = 0; i < m_max_elements; ++i) {
+            for (size_type i = 0; i < m_capacity; ++i) {
                 if (m_buckets[i]) {
                     return const_iterator(m_buckets[i], this);
                 }
@@ -650,22 +650,22 @@ namespace wlp {
 
     template<class Key, class Val, class Hash, class Equal>
     void OpenHashMap<Key, Val, Hash, Equal>::ensure_capacity() {
-        if (m_num_elements * 100 < m_max_load * m_max_elements) {
+        if (m_num_elements * 100 < m_max_load * m_capacity) {
             return;
         }
-        size_type new_max = static_cast<size_type>(m_max_elements * 2);
-        map_node **new_buckets = static_cast<map_node **>(memory_alloc(new_max * sizeof(map_node *)));
-        for (size_type i = 0; i < new_max; ++i) {
+        size_type new_capacity = static_cast<size_type>(m_capacity * 2);
+        map_node **new_buckets = static_cast<map_node **>(memory_alloc(new_capacity * sizeof(map_node *)));
+        for (size_type i = 0; i < new_capacity; ++i) {
             new_buckets[i] = nullptr;
         }
-        for (size_type i = 0; i < m_max_elements; ++i) {
+        for (size_type i = 0; i < m_capacity; ++i) {
             if (!m_buckets[i]) {
                 continue;
             }
             map_node *node = m_buckets[i];
-            size_type k = bucket_index(node->m_key, new_max);
+            size_type k = bucket_index(node->m_key, new_capacity);
             while (new_buckets[k]) {
-                if (++k >= new_max) {
+                if (++k >= new_capacity) {
                     k = 0;
                 }
             }
@@ -673,12 +673,12 @@ namespace wlp {
         }
         memory_free(m_buckets);
         m_buckets = new_buckets;
-        m_max_elements = new_max;
+        m_capacity = new_capacity;
     }
 
     template<class Key, class Val, class Hash, class Equal>
     void OpenHashMap<Key, Val, Hash, Equal>::clear() noexcept {
-        for (size_type i = 0; i < m_max_elements; ++i) {
+        for (size_type i = 0; i < m_capacity; ++i) {
             if (m_buckets[i]) {
                 m_node_allocator.Deallocate(m_buckets[i]);
                 m_buckets[i] = nullptr;
@@ -693,7 +693,7 @@ namespace wlp {
         ensure_capacity();
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
-            if (++i >= m_max_elements) {
+            if (++i >= m_capacity) {
                 i = 0;
             }
         }
@@ -715,7 +715,7 @@ namespace wlp {
         ensure_capacity();
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
-            if (++i >= m_max_elements) {
+            if (++i >= m_capacity) {
                 i = 0;
             }
         }
@@ -737,7 +737,7 @@ namespace wlp {
     OpenHashMap<Key, Val, Hash, Equal>::at(const key_type &key) {
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
-            if (++i >= m_max_elements) {
+            if (++i >= m_capacity) {
                 i = 0;
             }
         }
@@ -753,7 +753,7 @@ namespace wlp {
     OpenHashMap<Key, Val, Hash, Equal>::at(const key_type &key) const {
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
-            if (++i >= m_max_elements) {
+            if (++i >= m_capacity) {
                 i = 0;
             }
         }
@@ -771,7 +771,7 @@ namespace wlp {
             if (m_equal(key, m_buckets[i]->m_key)) {
                 return true;
             }
-            if (++i > +m_max_elements) {
+            if (++i > +m_capacity) {
                 i = 0;
             }
         }
@@ -784,7 +784,7 @@ namespace wlp {
         ensure_capacity();
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
-            if (++i >= m_max_elements) {
+            if (++i >= m_capacity) {
                 i = 0;
             }
         }
@@ -805,7 +805,7 @@ namespace wlp {
     OpenHashMap<Key, Val, Hash, Equal>::find(const key_type &key) {
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
-            if (++i >= m_max_elements) {
+            if (++i >= m_capacity) {
                 i = 0;
             }
         }
@@ -821,7 +821,7 @@ namespace wlp {
     OpenHashMap<Key, Val, Hash, Equal>::find(const key_type &key) const {
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
-            if (++i >= m_max_elements) {
+            if (++i >= m_capacity) {
                 i = 0;
             }
         }
@@ -834,7 +834,7 @@ namespace wlp {
 
     template<class Key, class Val, class Hash, class Equal>
     OpenHashMap<Key, Val, Hash, Equal>::~OpenHashMap() {
-        for (size_type i = 0; i < m_max_elements; ++i) {
+        for (size_type i = 0; i < m_capacity; ++i) {
             if (m_buckets[i]) {
                 m_node_allocator.Deallocate(m_buckets[i]);
                 m_buckets[i] = nullptr;
@@ -851,11 +851,11 @@ namespace wlp {
         memory_free(m_buckets);
         m_hash = map.m_hash;
         m_equal = map.m_equal;
-        m_max_elements = map.m_max_elements;
+        m_capacity = map.m_capacity;
         m_max_load = map.m_max_load;
         m_num_elements = map.m_num_elements;
-        m_buckets = static_cast<map_node **>(memory_alloc(map.m_max_elements * sizeof(map_node *)));
-        for (size_type i = 0; i < map.m_max_elements; ++i) {
+        m_buckets = static_cast<map_node **>(memory_alloc(map.m_capacity * sizeof(map_node *)));
+        for (size_type i = 0; i < map.m_capacity; ++i) {
             if (map.m_buckets[i]) {
                 map_node *cur = static_cast<map_node *>(m_node_allocator.Allocate());
                 map_node *m_cur = map.m_buckets[i];
@@ -876,11 +876,11 @@ namespace wlp {
         memory_free(m_buckets);
         m_hash = map.m_hash;
         m_equal = map.m_equal;
-        m_max_elements = map.m_max_elements;
+        m_capacity = map.m_capacity;
         m_max_load = map.m_max_load;
         m_num_elements = map.m_num_elements;
-        m_buckets = static_cast<map_node **>(memory_alloc(map.m_max_elements * sizeof(map_node *)));
-        for (size_type i = 0; i < map.m_max_elements; ++i) {
+        m_buckets = static_cast<map_node **>(memory_alloc(map.m_capacity * sizeof(map_node *)));
+        for (size_type i = 0; i < map.m_capacity; ++i) {
             if (map.m_buckets[i]) {
                 map_node *cur = static_cast<map_node *>(m_node_allocator.Allocate());
                 map_node *m_cur = map.m_buckets[i];
@@ -898,12 +898,12 @@ namespace wlp {
     OpenHashMap<Key, Val, Hash, Equal>::OpenHashMap(const hash_map &map) :
             m_hash(map.m_hash),
             m_equal(map.m_equal),
-            m_node_allocator{sizeof(map_node), static_cast<size_type>(map.m_max_elements * sizeof(map_node))},
+            m_node_allocator{sizeof(map_node), static_cast<size_type>(map.m_capacity * sizeof(map_node))},
             m_num_elements(map.m_num_elements),
-            m_max_elements(map.m_max_elements),
+            m_capacity(map.m_capacity),
             m_max_load(map.m_max_load) {
-        m_buckets = static_cast<map_node **>(memory_alloc(map.m_max_elements * sizeof(map_node *)));
-        for (size_type i = 0; i < map.m_max_elements; i++) {
+        m_buckets = static_cast<map_node **>(memory_alloc(map.m_capacity * sizeof(map_node *)));
+        for (size_type i = 0; i < map.m_capacity; i++) {
             m_buckets[i] = nullptr;
             if (map.m_buckets[i]) {
                 map_node *m_cur = map.m_buckets[i];
@@ -919,12 +919,12 @@ namespace wlp {
     OpenHashMap<Key, Val, Hash, Equal>::OpenHashMap(hash_map &map) :
             m_hash(map.m_hash),
             m_equal(map.m_equal),
-            m_node_allocator{sizeof(map_node), static_cast<size_type>(map.m_max_elements * sizeof(map_node))},
+            m_node_allocator{sizeof(map_node), static_cast<size_type>(map.m_capacity * sizeof(map_node))},
             m_num_elements(map.m_num_elements),
-            m_max_elements(map.m_max_elements),
+            m_capacity(map.m_capacity),
             m_max_load(map.m_max_load) {
-        m_buckets = static_cast<map_node **>(memory_alloc(map.m_max_elements * sizeof(map_node *)));
-        for (size_type i = 0; i < map.m_max_elements; i++) {
+        m_buckets = static_cast<map_node **>(memory_alloc(map.m_capacity * sizeof(map_node *)));
+        for (size_type i = 0; i < map.m_capacity; i++) {
             m_buckets[i] = nullptr;
             if (map.m_buckets[i]) {
                 map_node *m_cur = map.m_buckets[i];
@@ -941,12 +941,12 @@ namespace wlp {
     OpenHashMapIterator<Key, Val, Hash, Equal>::operator++() {
         size_type i = m_hash_map->hash(m_current->m_key);
         while (m_hash_map->m_buckets[i] && !m_hash_map->m_equal(m_current->m_key, m_hash_map->m_buckets[i]->m_key)) {
-            if (++i >= m_hash_map->m_max_elements) {
+            if (++i >= m_hash_map->m_capacity) {
                 i = 0;
             }
         }
-        while (++i < m_hash_map->m_max_elements && !m_hash_map->m_buckets[i]);
-        if (i == m_hash_map->m_max_elements) {
+        while (++i < m_hash_map->m_capacity && !m_hash_map->m_buckets[i]);
+        if (i == m_hash_map->m_capacity) {
             m_current = nullptr;
         } else {
             m_current = m_hash_map->m_buckets[i];
@@ -967,12 +967,12 @@ namespace wlp {
     OpenHashMapConstIterator<Key, Val, Hash, Equal>::operator++() {
         size_type i = m_hash_map->hash(m_current->m_key);
         while (m_hash_map->m_buckets[i] && !m_hash_map->m_equal(m_current->m_key, m_hash_map->m_buckets[i]->m_key)) {
-            if (++i >= m_hash_map->m_max_elements) {
+            if (++i >= m_hash_map->m_capacity) {
                 i = 0;
             }
         }
-        while (++i < m_hash_map->m_max_elements && !m_hash_map->m_buckets[i]);
-        if (i == m_hash_map->m_max_elements) {
+        while (++i < m_hash_map->m_capacity && !m_hash_map->m_buckets[i]);
+        if (i == m_hash_map->m_capacity) {
             m_current = nullptr;
         } else {
             m_current = m_hash_map->m_buckets[i];
