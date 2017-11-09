@@ -28,8 +28,8 @@ public:
 // HELPER
     void IntToBin(int c, int pos);
     void FloatToBin(int c, int pos);
-    void SerializePacketName(std::string c);
     void FloatsToBin();
+    void SetStartAndEnd();
 
 // MEMBER VARIABLES
 private:
