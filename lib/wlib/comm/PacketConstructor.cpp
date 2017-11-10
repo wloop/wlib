@@ -42,7 +42,6 @@ void PacketConstructor::IntToBin(int c, int pos)
 
 void PacketConstructor::FloatToBin(int c, int pos)
 {
-    std::cout << c << std::endl;
     //bit assignment
     for(int i = 0; i < 7; i++) {
         if (1 << i & c) {

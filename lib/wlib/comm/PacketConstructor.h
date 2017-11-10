@@ -34,7 +34,6 @@ public:
     Bitset<64> GetArray();
 
 // MEMBER VARIABLES
-public:
     float *data = new float [3];
     Bitset<64> array;
 };
@@ -70,4 +69,5 @@ class LogPacket : public PacketConstructor {
     }
 };
 
+#endif //EMBEDDEDCPLUSPLUS_PACKETCONSTRUCTOR_H
 #endif //EMBEDDEDCPLUSPLUS_PACKETCONSTRUCTOR_H
