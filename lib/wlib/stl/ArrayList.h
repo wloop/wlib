@@ -109,7 +109,7 @@ namespace wlp {
         }
 
         size_type operator-(const iterator &it) const {
-            return it.m_i - m_i;
+            return m_i - it.m_i;
         }
     };
 
@@ -260,7 +260,6 @@ namespace wlp {
                 normalize(i);
                 return m_data[i];
             }
-            return <#initializer#>;
         }
 
         val_type const &at(size_type i) const {
@@ -268,7 +267,6 @@ namespace wlp {
                 normalize(i);
                 return m_data[i];
             }
-            return <#initializer#>;
         }
 
         val_type &operator[](size_type i) {
@@ -276,7 +274,6 @@ namespace wlp {
                 normalize(i);
                 return m_data[i];
             }
-            return <#initializer#>;
         }
 
         val_type const &operator[](size_type i) const {
@@ -284,35 +281,30 @@ namespace wlp {
                 normalize(i);
                 return m_data[i];
             }
-            return <#initializer#>;
         }
 
         val_type &front() {
             if (m_size > 0) {
                 return m_data[0];
             }
-            return <#initializer#>;
         }
 
         val_type const &front() const {
             if (m_size > 0) {
                 return m_data[0];
             }
-            return <#initializer#>;
         }
 
         val_type &back() {
             if (m_size > 0) {
                 return m_data[m_size - 1];
             }
-            return <#initializer#>;
         }
 
         val_type const &back() const {
             if (m_size > 0) {
                 return m_data[m_size - 1];
             }
-            return <#initializer#>;
         }
 
         val_type *data() {
@@ -399,12 +391,22 @@ namespace wlp {
             ++m_size;
         }
 
-        val_type pop_back() {
+        void pop_back() {
             if (m_size > 0) {
                 --m_size;
-                return m_data[m_size];
             }
-            return nullptr;
+        }
+
+        void swap(array_list &list) {
+            val_type *tmp = m_data;
+            m_data = list.m_data;
+            list.m_data = tmp;
+            size_type tmp_size = m_size;
+            m_size = list.m_size;
+            list.m_size = tmp_size;
+            size_type tmp_cap = m_capacity;
+            m_capacity = list.m_capacity;
+            list.m_capacity = tmp_cap;
         }
 
         array_list &operator=(array_list &list);
@@ -417,7 +419,7 @@ namespace wlp {
             return;
         }
         size_type new_capacity = (size_type) (2 * m_capacity);
-        val_type *new_data = memory_alloc(new_capacity * sizeof(val_type));
+        val_type *new_data = static_cast<val_type *>(memory_alloc(new_capacity * sizeof(val_type)));
         for (size_type i = 0; i < m_size; i++) {
             new_data[i] = m_data[i];
         }
@@ -476,7 +478,7 @@ namespace wlp {
     }
 
     template<typename T>
-    ArrayList<T>::array_list &
+    typename ArrayList<T>::array_list &
     ArrayList<T>::operator=(array_list &list) {
         memory_free(m_data);
         init_array(list.m_capacity);

@@ -1,3 +1,7 @@
+/*
+ * TODO: move assignment/ctors/functions, open access to heap functions
+ */
+
 #ifndef EMBEDDEDCPLUSPLUS_ARRAYHEAP_H
 #define EMBEDDEDCPLUSPLUS_ARRAYHEAP_H
 
@@ -6,15 +10,15 @@
 
 namespace wlp {
 
-    template<typename T, class Cmp = Comparator<T>()>
+    template<typename T, class Cmp = Comparator<T>>
     class ArrayHeap {
     public:
         typedef Cmp comparator;
-        typedef ArrayList<T>::val_type val_type;
-        typedef ArrayList<T>::size_type size_type;
-        typedef ArrayList<T>::array_list array_list;
-        typedef ArrayList<T>::iterator iterator;
-        typedef ArrayList<T>::const_iterator const_iterator;
+        typedef typename ArrayList<T>::val_type val_type;
+        typedef typename ArrayList<T>::size_type size_type;
+        typedef typename ArrayList<T>::array_list array_list;
+        typedef typename ArrayList<T>::iterator iterator;
+        typedef typename ArrayList<T>::const_iterator const_iterator;
 
     private:
         array_list m_list;
@@ -30,6 +34,9 @@ namespace wlp {
         void push_heap(iterator first, size_type hole_index, size_type top_index, val_type value);
 
         void push_heap(iterator first, iterator last) {
+            if (last - first < 2) {
+                return;
+            }
             push_heap(first, static_cast<size_type>(last - first - 1), 0, *(last - 1));
         }
 
@@ -49,22 +56,47 @@ namespace wlp {
         void sort_heap(iterator first, iterator last);
 
     public:
+        void make() {
+            make_heap(m_list.begin(), m_list.end());
+        }
+
+        void sort() {
+            sort_heap(m_list.begin(), m_list.end());
+        }
+
+        void push(val_type value) {
+            m_list.push_back(value);
+            push_heap(m_list.begin(), m_list.end());
+        }
+
         void push(val_type &value) {
             m_list.push_back(value);
             push_heap(m_list.begin(), m_list.end());
         }
 
-        val_type pop_heap() {
+        void pop() {
             pop_heap(m_list.begin(), m_list.end());
-            return m_list.pop_back();
+            m_list.pop_back();
         }
 
-        size_type size() {
+        const val_type &top() {
+            return m_list.front();
+        }
+
+        bool empty() const {
+            return m_list.empty();
+        }
+
+        size_type size() const {
             return m_list.size();
         }
 
-        size_type capacity() {
+        size_type capacity() const {
             return m_list.capacity();
+        }
+
+        array_list *get_array_list() {
+            return &m_list;
         }
     };
 
@@ -75,15 +107,13 @@ namespace wlp {
             size_type top_index,
             val_type value
     ) {
-        {
-            size_type parent = static_cast<size_type>((hole_index - 1) / 2);
-            while (hole_index > top_index && m_cmp.__lt__(*(first + parent), value)) {
-                *(first + hole_index) = *(first + parent);
-                hole_index = parent;
-                parent = static_cast<size_type>((hole_index - 1) / 2);
-            }
-            *(first + hole_index) = value;
+        size_type parent = static_cast<size_type>((hole_index - 1) / 2);
+        while (hole_index > top_index && m_cmp.__lt__(*(first + parent), value)) {
+            *(first + hole_index) = *(first + parent);
+            hole_index = parent;
+            parent = static_cast<size_type>((hole_index - 1) / 2);
         }
+        *(first + hole_index) = value;
     }
 
     template<typename T, class Cmp>
@@ -135,10 +165,19 @@ namespace wlp {
             iterator last
     ) {
         while (last - first > 1) {
-            pop_heap(first, last);
-            --last;
+            pop_heap(first, last--);
         }
     }
+
+    template<typename T>
+    void heap_sort(ArrayList<T> &list) {
+        ArrayHeap<T> heap(0);
+        heap.get_array_list()->swap(list);
+        heap.make();
+        heap.sort();
+        heap.get_array_list()->swap(list);
+    }
+
 }
 
 #endif //EMBEDDEDCPLUSPLUS_ARRAYHEAP_H
