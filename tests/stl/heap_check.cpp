@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 
 #include "stl/ArrayHeap.h"
-#include "../template_defs.h";
+#include "../template_defs.h"
 
 using namespace wlp;
 
@@ -41,7 +41,7 @@ TEST(heap_test, test_heap_sort) {
     list.push_back(7);
     heap_sort(list);
     int expected[] = {-1, 2, 4, 5, 7, 9, 10};
-    for (int i = 0; i < list.size(); ++i) {
+    for (ArrayList<int>::size_type i = 0; i < list.size(); ++i) {
         ASSERT_EQ(expected[i], list[i]);
     }
 }

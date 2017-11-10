@@ -27,8 +27,8 @@ namespace wlp {
      * @tparam Equal the equality function
      */
     template<class Key,
-            class Hash = hash<Key, uint16_t>,
-            class Equal = equals<Key>>
+            class Hash = Hash<Key, uint16_t>,
+            class Equal = Equal<Key>>
     class ChainHashSet {
     public:
         typedef ChainHashSet<Key, Hash, Equal> hash_set;

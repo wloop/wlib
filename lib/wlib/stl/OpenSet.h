@@ -28,8 +28,8 @@ namespace wlp {
      * @tparam Equal test for equality function of the stored elements
      */
     template<class Key,
-            class Hash = hash<Key, uint16_t>,
-            class Equal = equals<Key>>
+            class Hash = Hash<Key, uint16_t>,
+            class Equal = Equal<Key>>
     class OpenHashSet {
     public:
         typedef OpenHashSet<Key, Hash, Equal> hash_set;

@@ -176,17 +176,32 @@ namespace wlp {
             : public conditional<B1::value, B1, B2>::type {
     };
 
-    /**
-     * First expansion of the @code or_ @endcode type
-     * for the needs of this library. A future implementation
-     * of a recursive @code or_ @endcode may occur.
-     * @tparam B1 first boolean condition
-     * @tparam B2 second boolean condition
-     * @tparam B3 third boolean condition
-     */
-    template<typename B1, typename B2, typename B3>
-    struct or_<B1, B2, B3>
-            : public conditional<B1::value, B1, or_<B2, B3>>::type {
+    template<typename B1, typename B2, typename B3, typename... Bn>
+    struct or_<B1, B2, B3, Bn...>
+            : public conditional<B1::value, B1, or_<B2, B3, Bn...>>::type {
+    };
+
+    template<typename...>
+    struct and_;
+
+    template<>
+    struct and_<>
+            : public true_type {
+    };
+
+    template<typename B1>
+    struct and_<B1>
+            : public B1 {
+    };
+
+    template<typename B1, typename B2>
+    struct and_<B1, B2>
+            : public conditional<B1::value, B2, B1>::type {
+    };
+
+    template<typename B1, typename B2, typename B3, typename... Bn>
+    struct and_<B1, B2, B3, Bn...>
+            : public conditional<B1::value, and_<B2, B3, Bn...>, B1>::type {
     };
 
     /**
@@ -647,6 +662,47 @@ namespace wlp {
     constexpr bool is_any_of() {
         return Op<Head>::value || is_any_of<Op, Tail...>();
     };
+
+    template<typename T, bool = is_referenceable<T>::value>
+    struct __lvalue__ {
+        typedef T type;
+    };
+
+    template<typename T>
+    struct __lvalue__<T, true> {
+        typedef T &type;
+    };
+
+    template<typename T>
+    struct add_lvalue_reference : public __lvalue__<T> {
+    };
+
+    template<typename T, bool = is_referenceable<T>::value>
+    struct __rvalue__ {
+        typedef T type;
+    };
+
+    template<typename T>
+    struct __rvalue__<T, true> {
+        typedef T &&type;
+    };
+
+    template<typename T>
+    struct add_rvalue_reference : public __rvalue__<T> {
+    };
+
+    template<typename T>
+    struct __declval__ {
+        static const bool __stop__ = false;
+
+        static typename add_rvalue_reference<T>::type __delegate__();
+    };
+
+    template<typename T>
+    inline typename add_rvalue_reference<T>::type declval() noexcept {
+        static_assert(__declval__<T>::__stop__, "declval is not callable");
+        return __declval__<T>::__delegate__();
+    }
 
 }
 

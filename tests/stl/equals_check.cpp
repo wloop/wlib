@@ -7,7 +7,7 @@
 using namespace wlp;
 
 TEST(equals_test, test_string_equals) {
-	equals<char*> comparator = equals<char*>();
+	Equal<char*> comparator = Equal<char*>();
 	char str1[] = "somestring";
 	char str2[] = "somestring";
 	char str3[] = "shoestring";
@@ -20,7 +20,7 @@ TEST(equals_test, test_string_equals) {
 }
 
 TEST(equals_test, test_static_string_equals) {
-	equals<StaticString<8>> comparator = equals<StaticString<8>>();
+	Equal<StaticString<8>> comparator = Equal<StaticString<8>>();
 	StaticString<8> str1{"darwin"};
 	StaticString<8> str2{"darwin"};
 	StaticString<8> str3{"money__\""};
@@ -30,7 +30,7 @@ TEST(equals_test, test_static_string_equals) {
 }
 
 TEST(equals_test, test_static_string_unequal) {
-	equals<StaticString<8>> comparator = equals<StaticString<8>>();
+	Equal<StaticString<8>> comparator = Equal<StaticString<8>>();
 	StaticString<8> str1{"darwin"};
 	StaticString<8> str2{"money__\""};
 	StaticString<8> str3{"houses"};
@@ -39,7 +39,7 @@ TEST(equals_test, test_static_string_unequal) {
 }
 
 TEST(equals_test, test_integer_equal) {
-	equals<uint16_t> comparator = equals<uint16_t>();
+	Equal<uint16_t> comparator = Equal<uint16_t>();
 	ASSERT_TRUE(comparator(1, 1));
 	ASSERT_TRUE(comparator(15, 15));
 	ASSERT_FALSE(comparator(1, 14));

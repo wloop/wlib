@@ -7,6 +7,7 @@
 
 #include <stdint.h>
 
+#include "Tmp.h"
 #include "../memory/Memory.h"
 
 namespace wlp {
@@ -34,9 +35,15 @@ namespace wlp {
                   m_list(nullptr) {
         }
 
-        explicit ArrayListIterator(size_type i, array_list *list)
+        explicit ArrayListIterator(const size_type &i, array_list *list)
                 : m_i(i),
                   m_list(list) {
+        }
+
+        explicit ArrayListIterator(size_type &&i, array_list *list)
+                : m_i(forward<size_type>(i)),
+                  m_list(list) {
+
         }
 
         val_type &operator*() const {
@@ -55,21 +62,58 @@ namespace wlp {
             return *this;
         }
 
-        iterator &operator++(int) {
+        iterator operator++(int) {
             iterator tmp = *this;
             ++*this;
             return tmp;
         }
 
+        iterator &operator+=(const size_type &d) {
+            m_i += d;
+            if (m_i > m_list->m_size) {
+                m_i = m_list->m_size;
+            }
+            return *this;
+        }
+
+        iterator &operator+=(size_type &&d) {
+            m_i += d;
+            if (m_i > m_list->m_size) {
+                m_i = m_list->m_size;
+            }
+            return *this;
+        }
+
         iterator &operator--() {
+            if (m_i == 0) {
+                return *this;
+            }
             --m_i;
             return *this;
         }
 
-        iterator &operator--(int) {
+        iterator operator--(int) {
             iterator tmp = *this;
             --*this;
             return tmp;
+        }
+
+        iterator &operator-=(const size_type &d) {
+            if (d >= m_i) {
+                m_i = 0;
+            } else {
+                m_i -= d;
+            }
+            return *this;
+        }
+
+        iterator &operator-=(size_type &&d) {
+            if (d >= m_i) {
+                m_i = 0;
+            } else {
+                m_i -= d;
+            }
+            return *this;
         }
 
         bool operator==(iterator &it) const {
@@ -100,15 +144,27 @@ namespace wlp {
             return *this;
         }
 
-        iterator operator+(size_type d) const {
-            return iterator(m_i + d, m_list);
+        iterator operator+(const size_type &d) const {
+            return iterator(forward<size_type>(size_type(m_i + d)), m_list);
         }
 
-        iterator operator-(size_type d) const {
-            return iterator(m_i - d, m_list);
+        iterator operator+(size_type &&d) const {
+            return iterator(forward<size_type>(size_type(m_i + d)), m_list);
+        }
+
+        iterator operator-(const size_type &d) const {
+            return iterator(forward<size_type>(size_type(m_i - d)), m_list);
+        }
+
+        iterator operator-(size_type &&d) const {
+            return iterator(forward<size_type>(size_type(m_i - d)), m_list);
         }
 
         size_type operator-(const iterator &it) const {
+            return m_i - it.m_i;
+        }
+
+        size_type operator-(iterator &&it) const {
             return m_i - it.m_i;
         }
     };
@@ -133,16 +189,21 @@ namespace wlp {
                   m_list(nullptr) {
         }
 
-        explicit ArrayListConstIterator(size_type i, const array_list *list)
+        explicit ArrayListConstIterator(const size_type &i, const array_list *list)
                 : m_i(i),
                   m_list(list) {
         }
 
-        const val_type &operator*() const {
+        explicit ArrayListConstIterator(size_type &&i, const array_list *list)
+                : m_i(forward<size_type>(i)),
+                  m_list(list) {
+        }
+
+        val_type &operator*() const {
             return m_list->m_data[m_i];
         }
 
-        const val_type *operator->() const {
+        val_type *operator->() const {
             return &(operator*());
         }
 
@@ -154,10 +215,55 @@ namespace wlp {
             return *this;
         }
 
-        const_iterator &operator++(int) {
+        const_iterator operator++(int) {
             const_iterator tmp = *this;
             ++*this;
             return tmp;
+        }
+
+        const_iterator &operator+=(const size_type &d) {
+            m_i += d;
+            if (m_i > m_list->m_size) {
+                m_i = m_list->m_size;
+            }
+            return *this;
+        }
+
+        const_iterator &operator+=(size_type &&d) {
+            m_i += d;
+            if (m_i > m_list->m_size) {
+                m_i = m_list->m_size;
+            }
+            return *this;
+        }
+
+        const_iterator &operator--() {
+            --m_i;
+            return *this;
+        }
+
+        const_iterator operator--(int) {
+            const_iterator tmp = *this;
+            --*this;
+            return tmp;
+        }
+
+        const_iterator &operator-=(const size_type &d) {
+            if (d >= m_i) {
+                m_i = 0;
+            } else {
+                m_i -= d;
+            }
+            return *this;
+        }
+
+        const_iterator &operator-=(size_type &&d) {
+            if (d >= m_i) {
+                m_i = 0;
+            } else {
+                m_i -= d;
+            }
+            return *this;
         }
 
         bool operator==(const_iterator &it) const {
@@ -186,6 +292,26 @@ namespace wlp {
             m_i = it.m_i;
             m_list = it.m_list;
             return *this;
+        }
+
+        const_iterator operator+(const size_type &d) const {
+            return const_iterator(forward<size_type>(size_type(m_i + d)), m_list);
+        }
+
+        const_iterator operator+(size_type &&d) const {
+            return const_iterator(forward<size_type>(size_type(m_i + d)), m_list);
+        }
+
+        const_iterator operator-(const size_type &d) const {
+            return const_iterator(forward<size_type>(size_type(m_i - d)), m_list);
+        }
+
+        const_iterator operator-(size_type &&d) const {
+            return const_iterator(forward<size_type>(size_type(m_i - d)), m_list);
+        }
+
+        size_type operator-(const const_iterator &it) const {
+            return m_i - it.m_i;
         }
     };
 
@@ -226,6 +352,10 @@ namespace wlp {
         }
 
         void normalize(size_type &i) const {
+            if (m_size == 0) {
+                i = 0;
+                return;
+            }
             i %= m_size;
             if (i < 0) {
                 i += m_size;
@@ -256,55 +386,37 @@ namespace wlp {
         void shrink();
 
         val_type &at(size_type i) {
-            if (m_size > 0) {
-                normalize(i);
-                return m_data[i];
-            }
+            normalize(i);
+            return m_data[i];
         }
 
         val_type const &at(size_type i) const {
-            if (m_size > 0) {
-                normalize(i);
-                return m_data[i];
-            }
+            normalize(i);
+            return m_data[i];
         }
 
         val_type &operator[](size_type i) {
-            if (m_size > 0) {
-                normalize(i);
-                return m_data[i];
-            }
+            return m_data[i];
         }
 
         val_type const &operator[](size_type i) const {
-            if (m_size > 0) {
-                normalize(i);
-                return m_data[i];
-            }
+            return m_data[i];
         }
 
         val_type &front() {
-            if (m_size > 0) {
-                return m_data[0];
-            }
+            return m_data[0];
         }
 
         val_type const &front() const {
-            if (m_size > 0) {
-                return m_data[0];
-            }
+            return m_data[0];
         }
 
         val_type &back() {
-            if (m_size > 0) {
-                return m_data[m_size - 1];
-            }
+            return m_data[m_size - 1];
         }
 
         val_type const &back() const {
-            if (m_size > 0) {
-                return m_data[m_size - 1];
-            }
+            return m_data[m_size - 1];
         }
 
         val_type *data() {

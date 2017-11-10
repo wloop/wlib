@@ -14,7 +14,7 @@ class StaticString<16>;
 
 namespace wlp {
     template
-    class Pair<uint16_t, const char *>;
+    struct Pair<uint16_t, const char *>;
 
     template
     class ChainHashMap<StaticString<16>, StaticString<16>>;
@@ -23,53 +23,53 @@ namespace wlp {
     class ChainHashMap<uint16_t, uint16_t>;
 
     template
-    class Pair<ChainHashMap<uint16_t, uint16_t>::iterator, bool>;
+    struct Pair<ChainHashMap<uint16_t, uint16_t>::iterator, bool>;
 
     template
-    class Pair<ChainHashMap<StaticString<16>, StaticString<16>>::iterator, bool>;
+    struct Pair<ChainHashMap<StaticString<16>, StaticString<16>>::iterator, bool>;
 
     template
-    class ChainHashMapIterator<
+    struct ChainHashMapIterator<
             StaticString<16>,
             StaticString<16>,
-            hash<StaticString<16>, uint16_t>,
-            equals<StaticString<16>>>;
+            Hash<StaticString<16>, uint16_t>,
+            Equal<StaticString<16>>>;
 
     template
-    class ChainHashMapIterator<
+    struct ChainHashMapIterator<
             uint16_t,
             uint16_t,
-            hash<uint16_t, uint16_t>,
-            equals<uint16_t>>;
+            Hash<uint16_t, uint16_t>,
+            Equal<uint16_t>>;
 
     template
-    class ChainHashMapConstIterator<
+    struct ChainHashMapConstIterator<
             StaticString<16>,
             StaticString<16>,
-            hash<StaticString<16>, uint16_t>,
-            equals<StaticString<16>>>;
+            Hash<StaticString<16>, uint16_t>,
+            Equal<StaticString<16>>>;
 
     template
-    class ChainHashMapConstIterator<
+    struct ChainHashMapConstIterator<
             uint16_t,
             uint16_t,
-            hash<uint16_t, uint16_t>,
-            equals<uint16_t>>;
+            Hash<uint16_t, uint16_t>,
+            Equal<uint16_t>>;
 
     template
-    class equals<StaticString<8>>;
+    struct Equal<StaticString<8>>;
 
     template
-    class equals<uint16_t>;
+    struct Equal<uint16_t>;
 
     template
-    class hash<StaticString<8>, uint16_t>;
+    struct Hash<StaticString<8>, uint16_t>;
 
     template
-    class hash<char *, uint16_t>;
+    struct Hash<char *, uint16_t>;
 
     template
-    class hash<uint16_t, uint16_t>;
+    struct Hash<uint16_t, uint16_t>;
 
     template
     class OpenHashMap<StaticString<16>, StaticString<16>>;
@@ -78,38 +78,38 @@ namespace wlp {
     class OpenHashMap<uint16_t, uint16_t>;
 
     template
-    class Pair<OpenHashMap<uint16_t, uint16_t>::iterator, bool>;
+    struct Pair<OpenHashMap<uint16_t, uint16_t>::iterator, bool>;
 
     template
-    class Pair<OpenHashMap<StaticString<16>, StaticString<16>>::iterator, bool>;
+    struct Pair<OpenHashMap<StaticString<16>, StaticString<16>>::iterator, bool>;
 
     template
-    class OpenHashMapIterator<
+    struct OpenHashMapIterator<
             StaticString<16>,
             StaticString<16>,
-            hash<StaticString<16>, uint16_t>,
-            equals<StaticString<16>>>;
+            Hash<StaticString<16>, uint16_t>,
+            Equal<StaticString<16>>>;
 
     template
-    class OpenHashMapIterator<
+    struct OpenHashMapIterator<
             uint16_t,
             uint16_t,
-            hash<uint16_t, uint16_t>,
-            equals<uint16_t>>;
+            Hash<uint16_t, uint16_t>,
+            Equal<uint16_t>>;
 
     template
-    class OpenHashMapConstIterator<
+    struct OpenHashMapConstIterator<
             StaticString<16>,
             StaticString<16>,
-            hash<StaticString<16>, uint16_t>,
-            equals<StaticString<16>>>;
+            Hash<StaticString<16>, uint16_t>,
+            Equal<StaticString<16>>>;
 
     template
-    class OpenHashMapConstIterator<
+    struct OpenHashMapConstIterator<
             uint16_t,
             uint16_t,
-            hash<uint16_t, uint16_t>,
-            equals<uint16_t>>;
+            Hash<uint16_t, uint16_t>,
+            Equal<uint16_t>>;
 
     template
     class ArrayHeap<int>;
