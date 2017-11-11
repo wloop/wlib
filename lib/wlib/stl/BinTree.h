@@ -6,98 +6,95 @@
 
 using namespace std; //TODO: delete after vector implementation
 
-const int64_t TREE_ORDER = 2;
-const int64_t nullVal = -1; //TODO: find better null value
 
-/* Implement a (Binary) Tree using Vector class
- * Will be using our implemented vector class once complete instead of std 
- * TOOO: Style guide + documentation, implement with our vector class 
+/* Implement a (Binary) Tree using vector
+ * TOOO: implement with our vector class instead of std
   */
 class Tree {
-  private:
-    // vector to store the tree
-    vector<int64_t> tree;
-    // number of valid (non-empty) nodes in the tree
-    int64_t numLeaves = 0;
-
-  public:
-    // Constructor - add a root to the tree
-    Tree(int64_t rootVal){
-      tree.push_back(rootVal);
-      numLeaves++;
-    }
-
-    // Return tree root if exists
-    int64_t getRoot(void){
-      if (tree.size() > 0) {
-        return tree[0];
-      } 
-      return nullVal;
-    }
-
-    // Prints the value at vector index
-    void printValAtIndex(int64_t index){
-      if (index < tree.size()){
-        cout << tree[index] << endl; 
-      }
-    }
-    
-    // Returns index of node from value
-    // Assumes unique values in tree
-    int64_t getIndexFromVal(int64_t val){
-      int64_t len = tree.size();
-      for (int64_t i = 0; i < len; ++i) {
-        if (tree[i] == val){
-          return i;
+    public:
+        // Constructor - add a root to the tree
+        Tree(int64_t rootVal) {
+            m_tree.push_back(rootVal);
+            m_numLeaves = 1;
+            m_kNullVal = -1;
+            m_kTreeOrder = 2;
         }
-      }
-      return nullVal; // not found
-    }
+
+        // Return tree root if exists
+        int64_t GetRoot(void) { 
+            if (m_tree.size() > 0) {
+              return m_tree[0];
+            } 
+            return m_kNullVal;
+        }
+
+        // Returns index of node from value
+        // Assumes unique values in tree
+        int64_t GetIndexFromVal(int64_t val) {
+            int64_t len = m_tree.size();
+            for (int64_t i = 0; i < len; ++i) {
+                if (m_tree[i] == val) {
+                    return i;
+                }
+            }
+            return m_kNullVal; // not found
+
+        }
+
     
-    // Return the value at index in the vector
-    int64_t getValFromIndex(int64_t index){
-      if (index < tree.size()){
-        return tree[index];
-      } else {
-        return nullVal; 
-      }
-    }
+        // Return the value at index in the vector
+        int64_t GetValFromIndex(int64_t index) {
+            if (index < m_tree.size()) {
+                return m_tree[index];
+            } else {
+                return m_kNullVal; 
+            }
+        }
 
-    // Insert a child node given the index of the parent
-    // Return the child's index
-    int64_t insertChildWithParent(int64_t parentIndex, int64_t childVal){
-      int64_t childIndex = TREE_ORDER*parentIndex + 1;
-      int64_t len = tree.size();
-      printf("Size: %lu, Inserted at index: %lld\n", len, childIndex);
+        // Insert a child node given the index of the parent
+        // Return the child's index
+        int64_t InsertChildWithParent(int64_t parentIndex, int64_t childVal) {
+            int64_t childIndex = m_kTreeOrder*parentIndex + 1;
+            int64_t len = m_tree.size();
 
-      // insert null nodes to fill gap if needed
-      while (childIndex > len) {
-        tree.insert(tree.begin() + len, nullVal);
-        len++;
-      }
+            // insert null nodes to fill gap if needed
+            while (childIndex > len) {
+                m_tree.insert(m_tree.begin() + len, m_kNullVal);
+                len++;
+            }
 
-      tree.insert(tree.begin() + childIndex, childVal);
-      numLeaves++;
-      return childIndex;
-    }
+            m_tree.insert(m_tree.begin() + childIndex, childVal);
+            m_numLeaves++;
+            return childIndex;
+        }
 
-    // Remove node from tree with index
-    int64_t deleteNodeAtIndex(int64_t index){
-      tree.erase(tree.begin() + index);
-      numLeaves--;
-      return 1;
-    }
+        // Remove node from tree with index
+        int64_t DeleteNodeAtIndex(int64_t index) {
+            m_tree.erase(m_tree.begin() + index);
+            m_numLeaves--;
+            return 1;
+        }
   
-    // Clear the vector
-    void clear(){
-      tree.clear();
-      numLeaves = 0;
-    }
+        // Clear the vector
+        void Clear() {
+            m_tree.clear();
+            m_numLeaves = 0;
+        }
 
-    // Get the number of leaves in the tree
-    int64_t getNumLeaves(){
-      return numLeaves;
-    }
+        // Get the number of leaves in the tree
+        int64_t GetNumLeaves() {
+          return m_numLeaves;
+        }
+
+    private:
+        // vector to store the tree
+        vector<int64_t> m_tree;
+        // number of valid (non-empty) nodes in the tree
+        int64_t m_numLeaves;
+        // tree order (2 for binary)
+        int64_t m_kTreeOrder;
+        //TODO: find better null value
+        int64_t m_kNullVal;
 
 };
 
