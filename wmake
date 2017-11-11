@@ -270,6 +270,13 @@ _simple() {
     elif [ "$1" == 'test' ]; then
         echo "Testing the project"
         _test
+    elif [ "$1" == 'rebuild' ]; then
+        echo "Rebuilding project"
+        _clean
+        _build
+        if ! [ $# -eq 2 ] || [ "$2" != 'notest' ]; then
+            _test
+        fi
     else
         _print_help
     fi

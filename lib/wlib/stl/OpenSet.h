@@ -28,8 +28,8 @@ namespace wlp {
      * @tparam Equal test for equality function of the stored elements
      */
     template<class Key,
-            class Hash = hash<Key, uint16_t>,
-            class Equal = equals<Key>>
+            class Hash = Hash<Key, uint16_t>,
+            class Equal = Equal<Key>>
     class OpenHashSet {
     public:
         typedef OpenHashSet<Key, Hash, Equal> hash_set;
@@ -58,7 +58,14 @@ namespace wlp {
         explicit OpenHashSet(
                 size_type n = 12,
                 percent_type max_load = 75) :
-                m_hash_map(n, max_load) {}
+                m_hash_map(n, max_load) {
+        }
+
+        OpenHashSet(const hash_set &) = delete;
+
+        OpenHashSet(hash_set &&set)
+                : m_hash_map(move(set.m_hash_map)) {
+        }
 
         /**
          * @return the current number of elements in the set
@@ -71,7 +78,7 @@ namespace wlp {
          * @return the size of the backing array
          */
         size_type max_size() const {
-            return m_hash_map.max_size();
+            return m_hash_map.capacity();
         }
 
         /**
@@ -185,6 +192,13 @@ namespace wlp {
          */
         const_iterator find(const key_type &key) const {
             return m_hash_map.find(key);
+        }
+
+        hash_set &operator=(const hash_set &) = delete;
+
+        hash_set &operator=(hash_set &&set) {
+            m_hash_map = move(set.m_hash_map);
+            return *this;
         }
     };
 
