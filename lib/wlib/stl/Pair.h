@@ -44,22 +44,29 @@ namespace wlp {
          * Copy constructor for const reference.
          * @param pair pair to copy
          */
-        Pair(pair const & pair)
-                : m_first(pair.m_first), m_second(pair.m_second) {}
+        Pair(pair const &pair)
+                : m_first(pair.m_first),
+                  m_second(pair.m_second) {
+        }
 
         /**
          * Copy constructor for R-value.
          * @param pair temporary pair to copy
          */
-        Pair(pair && pair)
-                : m_first(move(pair.m_first)), m_second(move(pair.m_second)) {}
+        Pair(pair &&pair)
+                : m_first(move(pair.m_first)),
+                  m_second(move(pair.m_second)) {
+        }
 
         /**
          * Create a pair from two values of first type and second type.
          * @param first  first type value
          * @param second second type value
          */
-        Pair(first_type first, second_type second) : m_first(first), m_second(second) {}
+        Pair(first_type first, second_type second)
+                : m_first(first),
+                  m_second(second) {
+        }
 
         /**
          * @return the first value in the pair
@@ -95,17 +102,6 @@ namespace wlp {
          * @return a reference to this pair
          */
         pair &operator=(const pair &p) {
-            m_first = p.m_first;
-            m_second = p.m_second;
-            return *this;
-        }
-
-        /**
-         * Assignment operator copies the first and second values.
-         * @param p pair to copy
-         * @return a reference to this pair
-         */
-        pair &operator=(pair &p) {
             m_first = p.m_first;
             m_second = p.m_second;
             return *this;

@@ -33,18 +33,18 @@ namespace wlp {
     class OpenHashSet {
     public:
         typedef OpenHashSet<Key, Hash, Equal> hash_set;
-        typedef OpenHashMap<Key, Key, Hash, Equal> hash_map;
+        typedef OpenHashMap<Key, Key, Hash, Equal> map_type;
         typedef OpenHashMapIterator<Key, Key, Hash, Equal> iterator;
         typedef OpenHashMapConstIterator<Key, Key, Hash, Equal> const_iterator;
-        typedef hash_map::size_type size_type;
-        typedef hash_map::percent_type percent_type;
-        typedef hash_map::key_type key_type;
+        typedef map_type::size_type size_type;
+        typedef map_type::percent_type percent_type;
+        typedef map_type::key_type key_type;
 
     private:
         /**
          * The backing hash map.
          */
-        hash_map m_hash_map;
+        map_type m_hash_map;
 
     public:
         /**
@@ -58,7 +58,14 @@ namespace wlp {
         explicit OpenHashSet(
                 size_type n = 12,
                 percent_type max_load = 75) :
-                m_hash_map(n, max_load) {}
+                m_hash_map(n, max_load) {
+        }
+
+        OpenHashSet(const hash_set &) = delete;
+
+        OpenHashSet(hash_set &&set)
+                : m_hash_map(move(set.m_hash_map)) {
+        }
 
         /**
          * @return the current number of elements in the set
@@ -70,7 +77,7 @@ namespace wlp {
         /**
          * @return the size of the backing array
          */
-        size_type max_size() const {
+        size_type capacity() const {
             return m_hash_map.capacity();
         }
 
@@ -98,7 +105,7 @@ namespace wlp {
         /**
          * @return a pointer to the backing hash map
          */
-        const hash_map *get_backing_hash_map() const {
+        const map_type *get_backing_hash_map() const {
             return &m_hash_map;
         }
 
@@ -185,6 +192,25 @@ namespace wlp {
          */
         const_iterator find(const key_type &key) const {
             return m_hash_map.find(key);
+        }
+
+        iterator &erase(iterator &pos) {
+            return m_hash_map.erase(pos);
+        }
+
+        const_iterator &erase(const_iterator &pos) {
+            return m_hash_map.erase(pos);
+        }
+
+        bool erase(key_type &key) {
+            return m_hash_map.erase(key);
+        }
+
+        hash_set &operator=(const hash_set &) = delete;
+
+        hash_set &operator=(hash_set &&set) {
+            m_hash_map = move(set.m_hash_map);
+            return *this;
         }
     };
 

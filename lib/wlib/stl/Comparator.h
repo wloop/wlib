@@ -61,7 +61,7 @@ namespace wlp {
         }
     };
 
-    TEMPLATE_NULL
+    template<>
     struct Comparator<char *> {
         bool __lt__(const char *s1, const char *s2) {
             return str_cmp(s1, s2) < 0;
@@ -83,7 +83,7 @@ namespace wlp {
         }
     };
 
-    TEMPLATE_NULL
+    template<>
     struct Comparator<const char *> {
         bool __lt__(const char *s1, const char *s2) {
             return str_cmp(s1, s2) < 0;

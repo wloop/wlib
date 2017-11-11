@@ -65,14 +65,14 @@ namespace wlp {
         }
     };
 
-    TEMPLATE_NULL
+    template<>
     struct Equal<char *> {
         bool operator()(const char *key1, const char *key2) const {
             return string_equals(key1, key2);
         }
     };
 
-    TEMPLATE_NULL
+    template<>
     struct Equal<const char *> {
         bool operator()(const char *key1, const char *key2) const {
             return string_equals(key1, key2);

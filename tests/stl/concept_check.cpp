@@ -1,17 +1,18 @@
+#include <stl/OpenMap.h>
 #include "gtest/gtest.h"
 
 #include "stl/Concept.h"
 #include "stl/Comparator.h"
-#include "stl/Hash.h"
+#include "stl/OpenMap.h"
 #include "stl/ChainMap.h"
 #include "stl/ArrayList.h"
 
 using namespace wlp;
 
 TEST(concept_checks, check_comparator_concept) {
-    bool c = comparator_concept<Comparator<int>, bool(const int &, const int &)>::value;
+    bool c = comparator_concept<Comparator<int>, int>::value;
     ASSERT_TRUE(c);
-    c = comparator_concept<Hash<int, int>,  bool(const int &, const int &)>::value;
+    c = comparator_concept<Hash<int, int>, int>::value;
     ASSERT_FALSE(c);
 }
 
@@ -55,4 +56,24 @@ TEST(concept_checks, check_random_access_iterator_concept) {
     ASSERT_TRUE(c);
     c = random_access_iterator_concept<ArrayList<int>::const_iterator>::value;
     ASSERT_TRUE(c);
+
+    ASSERT_TRUE((is_random_access_iterator<ArrayList<int>::iterator>()));
+    ASSERT_TRUE((is_random_access_iterator<ArrayList<int>::const_iterator>()));
+
+    ASSERT_FALSE((is_random_access_iterator<ChainHashMap<int, int>::iterator>()));
+    ASSERT_FALSE((is_random_access_iterator<ChainHashMap<int, int>::const_iterator>()));
+    ASSERT_FALSE((is_random_access_iterator<OpenHashMap<int, int>::iterator>()));
+    ASSERT_FALSE((is_random_access_iterator<OpenHashMap<int, int>::const_iterator>()));
+}
+
+TEST(concept_checks, check_forward_iterator_concept) {
+    ASSERT_TRUE((is_forward_iterator<ChainHashMap<int, int>::iterator>()));
+    ASSERT_TRUE((is_forward_iterator<ChainHashMap<int, int>::const_iterator>()));
+    ASSERT_TRUE((is_forward_iterator<OpenHashMap<int, int>::iterator>()));
+    ASSERT_TRUE((is_forward_iterator<OpenHashMap<int, int>::const_iterator>()));
+    ASSERT_TRUE((is_forward_iterator<ArrayList<int>::iterator>()));
+    ASSERT_TRUE((is_forward_iterator<ArrayList<int>::const_iterator>()));
+
+    ASSERT_FALSE((is_forward_iterator<ArrayList<int>>()));
+    ASSERT_FALSE((is_forward_iterator<Comparator<int>>()));
 }
