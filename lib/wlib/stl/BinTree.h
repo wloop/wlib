@@ -2,10 +2,10 @@
 #define WLIB_TREE_H
 
 #include <stdint.h>
+
+// TODO: delete below lines after vector implementation
 #include <vector>
-
-using namespace std; //TODO: delete after vector implementation
-
+using namespace std;
 
 /* Implement a (Binary) Tree using vector
  * TOOO: implement with our vector class instead of std
@@ -13,15 +13,15 @@ using namespace std; //TODO: delete after vector implementation
 class Tree {
     public:
         // Constructor - add a root to the tree
-        Tree(int64_t rootVal) {
+        Tree(float rootVal) {
             m_tree.push_back(rootVal);
-            m_numLeaves = 1;
-            m_kNullVal = -1;
-            m_kTreeOrder = 2;
+            m_numLeaves = 1; // number of valid (non-empty) nodes
+            m_kNullVal = -1.1999; // value for empty nodes
+            m_kTreeOrder = 2; // children per parent (2 for binary)
         }
 
         // Return tree root if exists
-        int64_t GetRoot(void) { 
+        float GetRoot(void) { 
             if (m_tree.size() > 0) {
               return m_tree[0];
             } 
@@ -37,13 +37,11 @@ class Tree {
                     return i;
                 }
             }
-            return m_kNullVal; // not found
-
+            return -1; // not found
         }
-
     
         // Return the value at index in the vector
-        int64_t GetValFromIndex(int64_t index) {
+        float GetValFromIndex(int64_t index) {
             if (index < m_tree.size()) {
                 return m_tree[index];
             } else {
@@ -53,7 +51,7 @@ class Tree {
 
         // Insert a child node given the index of the parent
         // Return the child's index
-        int64_t InsertChildWithParent(int64_t parentIndex, int64_t childVal) {
+        int64_t InsertChildWithParent(int64_t parentIndex, float childVal) {
             int64_t childIndex = m_kTreeOrder*parentIndex + 1;
             int64_t len = m_tree.size();
 
@@ -63,6 +61,7 @@ class Tree {
                 len++;
             }
 
+            // insert the node and increase valid node count
             m_tree.insert(m_tree.begin() + childIndex, childVal);
             m_numLeaves++;
             return childIndex;
@@ -88,14 +87,13 @@ class Tree {
 
     private:
         // vector to store the tree
-        vector<int64_t> m_tree;
+        vector<float> m_tree;
         // number of valid (non-empty) nodes in the tree
         int64_t m_numLeaves;
         // tree order (2 for binary)
         int64_t m_kTreeOrder;
-        //TODO: find better null value
-        int64_t m_kNullVal;
-
+        // TODO: find better null value
+        float m_kNullVal;
 };
 
 #endif
