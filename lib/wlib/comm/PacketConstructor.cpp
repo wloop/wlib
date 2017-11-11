@@ -8,11 +8,9 @@
  *  @bug No known bugs.
  */
 
-#include "../stl/Bitset.h"
 #include <iostream>
+#include "../stl/Bitset.h"
 #include "PacketConstructor.h"
-#include <math.h>
-#include <cmath>
 
 PacketConstructor::PacketConstructor() {
     m_pdata[0] = 0;

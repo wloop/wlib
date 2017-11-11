@@ -14,6 +14,7 @@
 
 #include <string>
 #include "../stl/Bitset.h"
+
 using namespace wlp;
 
 /**
