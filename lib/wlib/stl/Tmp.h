@@ -19,14 +19,9 @@
 
 #include <stdint.h>
 
-namespace wlp {
+#include "../Wlib.h"
 
-    /**
-     * Standard size_type for Wlib. Unsigned 16-bit integer
-     * is preferred over @code std::size_t @endcode which is
-     * of the unsigned long variant.
-     */
-    typedef uint16_t size_type;
+namespace wlp {
 
     /**
      * This function consumes, and does nothing with, the return

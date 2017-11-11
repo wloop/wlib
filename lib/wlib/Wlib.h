@@ -12,4 +12,15 @@
 #define BYTE_SIZE 8
 #define INT_SIZE (BYTE_SIZE * sizeof(uint32_t))
 
+namespace wlp {
+
+    /**
+     * Standard size_type for Wlib. Unsigned 16-bit integer
+     * is preferred over @code std::size_t @endcode which is
+     * of the unsigned long variant.
+     */
+    typedef uint16_t size_type;
+
+}
+
 #endif //EMBEDDEDTESTS_WLIB_H

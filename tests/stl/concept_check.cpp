@@ -11,7 +11,7 @@ using namespace wlp;
 TEST(concept_checks, check_comparator_concept) {
     bool c = comparator_concept<Comparator<int>, bool(const int &, const int &)>::value;
     ASSERT_TRUE(c);
-    c = comparator_concept<Hash<int, int>,  bool(const int &, const int &)>::value;
+    c = comparator_concept<Hash<int, int>, bool(const int &, const int &)>::value;
     ASSERT_FALSE(c);
 }
 

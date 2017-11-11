@@ -51,8 +51,15 @@ namespace wlp {
          */
         explicit ChainHashSet(
                 size_type n = 12,
-                percent_type max_load = 75) :
-                m_hash_map(n, max_load) {}
+                percent_type max_load = 75)
+                : m_hash_map(n, max_load) {
+        }
+
+        ChainHashSet(const hash_set &) = delete;
+
+        ChainHashSet(hash_set &&set)
+                : m_hash_map(move(set.m_hash_map)) {
+        }
 
         /**
          * @return the current number of elements in the set
@@ -211,6 +218,13 @@ namespace wlp {
          */
         bool erase(key_type &key) {
             return m_hash_map.erase(key);
+        }
+
+        hash_set &operator=(const hash_set &) = delete;
+
+        hash_set &operator=(hash_set &&set) {
+            m_hash_map = move(set.m_hash_map);
+            return *this;
         }
     };
 

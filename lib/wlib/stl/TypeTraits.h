@@ -6,13 +6,23 @@
 namespace wlp {
 
     template<class C>
-    struct obtain_val_type {
+    struct obtain_val_type_ptr {
         static const typename C::val_type *type;
     };
 
     template<class C>
-    struct obtain_size_type {
+    struct obtain_size_type_ptr {
         static const typename C::size_type *type;
+    };
+
+    template<class C>
+    struct obtain_val_type {
+        typedef typename C::val_type type;
+    };
+
+    template<class C>
+    struct obtain_size_type {
+        typedef typename C::size_type type;
     };
 
     template<typename C>

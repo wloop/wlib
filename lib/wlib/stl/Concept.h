@@ -1,7 +1,6 @@
 #ifndef EMBEDDEDCPLUSPLUS_CONCEPTCHECKS_H
 #define EMBEDDEDCPLUSPLUS_CONCEPTCHECKS_H
 
-#include <utility>
 #include "Tmp.h"
 #include "TypeTraits.h"
 
@@ -28,7 +27,7 @@ namespace wlp {
         template<typename>
         static constexpr false_type check(...);
 
-        typedef decltype(check<C>(0)) type;
+        typedef decltype(check<C>(nullptr)) type;
 
     public:
         static constexpr bool value = type::value;
@@ -63,7 +62,7 @@ namespace wlp {
             is_same<decltype(declval<T>().operator==(declval<const iterator &>())), bool>,
             is_same<decltype(declval<T>().operator!=(declval<iterator &>())), bool>,
             is_same<decltype(declval<T>().operator!=(declval<const iterator &>())), bool>,
-            is_same<decltype(declval<T>().operator=(declval<iterator &>())), iterator &>,
+            is_same<decltype(declval<T>().operator=(declval<iterator &&>())), iterator &>,
             is_same<decltype(declval<T>().operator=(declval<const iterator &>())), iterator &>,
             is_same<decltype(declval<T>().operator+(declval<const size_type &>())), iterator>,
             is_same<decltype(declval<T>().operator+(declval<size_type &&>())), iterator>,
@@ -80,7 +79,7 @@ namespace wlp {
         template<typename>
         static constexpr false_type check(...);
 
-        typedef decltype(check<C>(0)) type;
+        typedef decltype(check<C>(nullptr)) type;
 
     public:
         static constexpr bool value = type::value;
