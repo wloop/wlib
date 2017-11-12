@@ -16,22 +16,6 @@ addons:
       - cppcheck
 
 install:
-<<<<<<< HEAD
-    - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
-
-script:
-  # Check versions of gcc, g++ and cmake
-  - gcc -v && g++ -v && cmake --version
-  # Compile project and run tests
-  - cmake CMakeLists.txt
-  - make
-  - ./tests/Tests
-  # Run static code analyzer
-  - cppcheck wlib
-  # Run valgrind to detect memory bugs
-  - valgrind --leak-check=full ./tests/Tests
-
-=======
   - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
 
   - cd ${TRAVIS_BUILD_DIR}
@@ -66,4 +50,3 @@ after_success:
   - lcov --remove coverage.info 'tests/*' '/include/*' 'examples/*' --output-file coverage.info
   - lcov --list coverage.info
   - coveralls-lcov coverage.info
->>>>>>> upstream/master
