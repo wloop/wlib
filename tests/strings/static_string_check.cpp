@@ -67,8 +67,7 @@ TEST(static_string_test, concat_operator) {
     String16 string4{"yo"};
     String16 string5{"yooooooooooooooo"};
     char char1 = '7';
-    char array1[] = "hell";
-    char array2[] = "123456789";
+    char array[] = "hell";
 
     // object to object append
     ASSERT_STREQ("deepbye", (string1 += string2).c_str());
@@ -78,7 +77,7 @@ TEST(static_string_test, concat_operator) {
     // object plus character str
     ASSERT_STREQ("hibrooooooooooo", (string3 += "brooooooooooo").c_str());
     ASSERT_STREQ("yo1234567890000", (string4 += "1234567890000").c_str());
-    ASSERT_STREQ("byeyohell", (string2 += array1).c_str());
+    ASSERT_STREQ("byeyohell", (string2 += array).c_str());
     ASSERT_STREQ(string5.c_str(), (string5 += "hhjsdjhs").c_str());
 
     // individual char
@@ -93,8 +92,7 @@ TEST(static_string_test, concat_append_push_back) {
     String16 string4{"yo"};
     String16 string5{"yooooooooooooooo"};
     char char1 = '7';
-    char array1[] = "hell";
-    char array2[] = "123456789";
+    char array[] = "hell";
 
     // object to object append
     ASSERT_STREQ("deepbye", (string1.append(string2)).c_str());
@@ -104,7 +102,7 @@ TEST(static_string_test, concat_append_push_back) {
     // object plus character str
     ASSERT_STREQ("hibrooooooooooo", (string3.append("brooooooooooo")).c_str());
     ASSERT_STREQ("yo1234567890000", (string4.append("1234567890000")).c_str());
-    ASSERT_STREQ("byehell", (string2.append(array1)).c_str());
+    ASSERT_STREQ("byehell", (string2.append(array)).c_str());
     ASSERT_STREQ(string5.c_str(), (string5.append("hhjsdjhs")).c_str());
 
     // individual char
