@@ -1,12 +1,9 @@
 #ifndef TEMPLATE_DEFS_H
 #define TEMPLATE_DEFS_H
 
-#include <stdint.h>
+#include "Types.h"
 #include "stl/ChainMap.h"
 #include "stl/OpenMap.h"
-
-template class StaticString<8>;
-template class StaticString<16>;
 
 namespace wlp {
 	template class Pair<uint16_t, const char*>;
@@ -63,6 +60,8 @@ namespace wlp {
 			uint16_t,
 			hash<uint16_t, uint16_t>,
 			equals<uint16_t>>;
+    template class StaticString<8>;
+    template class StaticString<16>;
 }
 
 #endif // TEMPLATE_DEFS_H
