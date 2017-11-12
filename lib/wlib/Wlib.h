@@ -10,6 +10,6 @@
 #define MUL_127(x) (((x) << 7) - (x))
 
 #define BYTE_SIZE 8
-#define INT_SIZE (BYTE_SIZE * sizeof(uint32_t))
+#define INT32_SIZE (BYTE_SIZE * sizeof(uint32_t))
 
 #endif //EMBEDDEDTESTS_WLIB_H

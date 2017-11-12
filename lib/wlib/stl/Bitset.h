@@ -13,9 +13,9 @@
 #ifndef CORE_STL_BITSET_H
 #define CORE_STL_BITSET_H
 
-#include "Types.h"
 #include <math.h>
 
+#include "Types.h"
 #include "Wlib.h"
 
 namespace wlp {
@@ -46,7 +46,7 @@ namespace wlp {
      */
     template<uint8_t nBits>
     struct ceil_bits {
-        static const uint32_t value = (nBits + INT_SIZE - 1) / INT_SIZE;
+        static const uint32_t value = (nBits + INT32_SIZE - 1) / INT32_SIZE;
     };
 
     template<uint8_t nBits>
@@ -98,11 +98,11 @@ namespace wlp {
          */
         void setFromNumber(uint64_t n) {
             memset(m_array, 0, sizeof(m_array));
-            constexpr uint32_t end = nBits / INT_SIZE;
-            constexpr uint32_t extra = nBits - end * INT_SIZE;
+            constexpr uint32_t end = nBits / INT32_SIZE;
+            constexpr uint32_t extra = nBits - end * INT32_SIZE;
             for (size_type i = 0; i < end; ++i) {
                 m_array[i] = (uint32_t) n;
-                n >>= INT_SIZE;
+                n >>= INT32_SIZE;
             }
             if (extra) {
                 m_array[end] = ((uint32_t) n) & pow_mask<extra>::value;
@@ -116,7 +116,7 @@ namespace wlp {
          * @param index the index of the bit
          */
         void set(uint16_t index) {
-            m_array[index / INT_SIZE] |= (1U << (index % INT_SIZE));
+            m_array[index / INT32_SIZE] |= (1U << (index % INT32_SIZE));
         }
 
         /**
@@ -125,7 +125,7 @@ namespace wlp {
          * @param index the index of the bit
          */
         void reset(uint16_t index) {
-            m_array[index / INT_SIZE] &= ~(1U << (index % INT_SIZE));
+            m_array[index / INT32_SIZE] &= ~(1U << (index % INT32_SIZE));
         }
 
         /**
@@ -134,7 +134,7 @@ namespace wlp {
          * @param index the index of the bit
          */
         void flip(uint16_t index) {
-            m_array[index / INT_SIZE] ^= (1U << (index % INT_SIZE));
+            m_array[index / INT32_SIZE] ^= (1U << (index % INT32_SIZE));
         }
 
         /**
@@ -144,7 +144,7 @@ namespace wlp {
          * @return the bit value
          */
         bool test(uint16_t index) const {
-            return (m_array[index / INT_SIZE] & (1U << (index % INT_SIZE))) != 0;
+            return (m_array[index / INT32_SIZE] & (1U << (index % INT32_SIZE))) != 0;
         }
 
         /**
@@ -156,7 +156,7 @@ namespace wlp {
             if (nBits <= 32) {
                 return to_uint32_t();
             }
-            return (((uint64_t) m_array[1]) << INT_SIZE) | ((uint32_t) m_array[0]);
+            return (((uint64_t) m_array[1]) << INT32_SIZE) | ((uint32_t) m_array[0]);
         }
 
         /**
