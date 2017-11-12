@@ -1,3 +1,15 @@
+/**
+ * @file TypeTraits.h
+ * @brief Metafunctions for types.
+ *
+ * Works in conjunction with @code Concept.h @endcode to facilitate
+ * C++ polymorphism.
+ *
+ * @author Jeff Niu
+ * @date November 9, 2017
+ * @bug No known bugs
+ */
+
 #ifndef EMBEDDEDCPLUSPLUS_TYPETRAITS_H
 #define EMBEDDEDCPLUSPLUS_TYPETRAITS_H
 

@@ -425,10 +425,14 @@ namespace wlp {
             init_buckets(n);
         }
 
+        /**
+         * Disable copy constructor.
+         */
         ChainHashMap(const map_type &) = delete;
 
         /**
-         * Copy constructor performs a deep copy.
+         * Move constructor.
+         *
          * @param map hash map to copy
          */
         ChainHashMap(map_type &&map) :
@@ -455,6 +459,7 @@ namespace wlp {
          * Function called when creating the hash map. This function
          * will allocate memory for the backing array and initialize each
          * element to nullptr.
+         *
          * @param n the size of the backing array
          */
         void init_buckets(size_type n);
@@ -462,6 +467,7 @@ namespace wlp {
         /**
          * Obtain the bucket index in an array with the specified
          * number of maximum elements.
+         *
          * @param key          the key to hash
          * @param max_elements the maximum number of buckets
          * @return an index i such that 0 <= i < max_elements
@@ -472,6 +478,7 @@ namespace wlp {
 
         /**
          * Obtain the bucket index of a key in the backing array.
+         *
          * @param key the key to hash
          * @return an index i such that 0 <= i < m_max_elements
          */
@@ -533,6 +540,7 @@ namespace wlp {
          * Obtain an iterator to the first element in the hash map.
          * Returns pass-the-end iterator if there are no elements
          * in the hash map.
+         *
          * @return iterator the first element
          */
         iterator begin() {
@@ -588,6 +596,7 @@ namespace wlp {
          * Attempt to insert an element into the map.
          * Insertion is prevented if there already exists
          * an element with the provided key
+         *
          * @param key inserted element key
          * @param val inserted element value
          * @return a pair consisting of an iterator pointing to the
@@ -600,6 +609,7 @@ namespace wlp {
          * Attempt to insert an element into the map.
          * If an element with the same key already exists,
          * override the value mapped to by the provided key.
+         *
          * @param key inserted element key
          * @param val inserted element value
          * @return a pair consisting of an iterator pointing to the
@@ -610,6 +620,7 @@ namespace wlp {
 
         /**
          * Erase an element pointed to by the provided pointer.
+         *
          * @param pos element to erase
          * @return the iterator to the next element in the map
          * or pass-the-end if there are no more elements afterwards
@@ -624,14 +635,16 @@ namespace wlp {
         const_iterator &erase(const_iterator &pos);
 
         /**
-         * Erase
-         * @param type
-         * @return
+         * Erase the element with the corresponding key.
+         *
+         * @param key the key of the element to erase
+         * @return true if erasure occured
          */
         bool erase(key_type &key);
 
         /**
          * Returns the value corresponding to a provided key.
+         *
          * @param key the key for which to find the value
          * @return the value mapped to by the key
          * @throws KeyException if the key does not map to a value
@@ -656,6 +669,7 @@ namespace wlp {
          * Return an iterator to the map element corresponding
          * to the provided key, or pass-the-end if the key does
          * not map to any value in the map.
+         *
          * @param key the key to map
          * @return an iterator to the element mapped by the key
          */
@@ -673,11 +687,17 @@ namespace wlp {
          * If the key does not map to any value in the map,
          * then a new value is created and inserted using the default
          * constructor.
+         *
          * @param key the key whose value to access
          * @return a reference to the mapped value
          */
         val_type &operator[](const key_type &key);
 
+        /**
+         * Disable copy assignment.
+         *
+         * @return reference to this map
+         */
         map_type &operator=(const map_type &) = delete;
 
         /**
@@ -685,6 +705,7 @@ namespace wlp {
          * contents of the assigned map. Therefore, one
          * should use pass by reference or pointer unless
          * assignment is absolutely necessary.
+         *
          * @param map the map to copy
          * @return a reference to this map
          */

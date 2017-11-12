@@ -209,6 +209,7 @@ namespace wlp {
          * Assignment operator to another TupleImpl will expand
          * the assignment operator on each individual tuple element
          * from which this class inherits.
+         *
          * @tparam OtherTypes type pack of the assigned TupleImpl
          * @param tuple the TupleImpl to assign
          * @return a reference to this tuple
@@ -226,6 +227,7 @@ namespace wlp {
 
         /**
          * Move assignment operator for TupleImpl.
+         *
          * @tparam OtherTypes type pack of the assigned TupleImpl
          * @param tuple the TupleImpl to assign
          * @return a reference to this tuple
@@ -244,6 +246,7 @@ namespace wlp {
         /**
          * TupleImpl constructor will instantiate each
          * of its inherit types. This is a universal constructor.
+         *
          * @tparam OtherTypes type pack of the constructed types
          * @param elements values for each tuple element
          */
@@ -259,6 +262,7 @@ namespace wlp {
     /**
      * Main Tuple class. Inherits from TupleImpl
      * and hides the index parameter.
+     *
      * @tparam Types the tuple types
      */
     template<typename... Types>
@@ -275,6 +279,7 @@ namespace wlp {
         /**
          * Assignment operator for tuple casts to the inherited type
          * and defers the operation there.
+         *
          * @tparam OtherTypes types of the assigned tuple
          * @param tuple assigned tuple
          * @return a reference to this tuple
@@ -287,6 +292,7 @@ namespace wlp {
 
         /**
          * Move assignment operator.
+         *
          * @tparam OtherTypes types of assigned tuple
          * @param tuple assigned tuple
          * @return a reference to this tuple
@@ -301,6 +307,7 @@ namespace wlp {
          * Assignment operator for a pair. Currently, a pair
          * can be assigned to any tuple with at least two elements,
          * and will assign to the first two of the elements.
+         *
          * @tparam A pair first type
          * @tparam B pair second type
          * @param pair the pair to assign
@@ -315,6 +322,7 @@ namespace wlp {
 
         /**
          * Pair move assignment operator.
+         *
          * @tparam A pair first type
          * @tparam B pair second type
          * @param pair the pair to assign
@@ -338,6 +346,7 @@ namespace wlp {
          * Constructor for a tuple of each its elements.
          * Enabled only if the correct number of element
          * values have been provided.
+         *
          * @tparam OtherTypes types of the element values
          * @param elements element values pack
          */
@@ -351,10 +360,13 @@ namespace wlp {
         /**
          * Copy constructor for tuple defers
          * to inherited copy constructor.
+         *
          * @tparam OtherTypes types of the copied tuple
          * @param tuple copied tuple
          */
-        template<typename... OtherTypes>
+        template<typename... OtherTypes, typename = typename enable_if<
+                sizeof...(OtherTypes) == sizeof...(Types)
+        >::type>
         explicit Tuple(Tuple<OtherTypes...> const &tuple)
                 : base_type(tuple) {
         }
@@ -362,11 +374,15 @@ namespace wlp {
         /**
          * Move copy constructor for tuple
          * defers to inherited move copy constructor.
+         *
          * @tparam OtherTypes types of the copied tuple
          * @param tuple copied tuple
          */
-        template<typename... OtherTypes>
-        explicit Tuple(Tuple<OtherTypes...> &&tuple) : base_type(move(tuple)) {
+        template<typename... OtherTypes, typename = typename enable_if<
+                sizeof...(OtherTypes) == sizeof...(Types)
+        >::type>
+        explicit Tuple(Tuple<OtherTypes...> &&tuple)
+                : base_type(move(tuple)) {
         }
 
     };

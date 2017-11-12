@@ -235,20 +235,20 @@ TEST(open_map_test, test_access_operator) {
 }
 
 TEST(open_map_test, test_rehash) {
-    int_map map(2, 50);
-    map[0] = 0;
-    map[1] = 10;
-    map[2] = 20;
-    map[3] = 30;
-    map[4] = 40;
-    map[115] = 2115;
-    map[226] = 2216;
-    map[337] = 2317;
-    map[448] = 2418;
-    uint16_t keys[] = {0, 1, 2, 3, 4, 115, 226, 337, 448};
-    uint16_t values[] = {0, 10, 20, 30, 40, 2115, 2216, 2317, 2418};
-    for (uint16_t i = 0; i < 9; i++) {
-        ASSERT_TRUE(map.contains(keys[i]));
-        ASSERT_EQ(*map.find(keys[i]), values[i]);
-    }
+	int_map map(2, 50);
+	map[0] = 0;
+	map[1] = 10;
+	map[2] = 20;
+	map[3] = 30;
+	map[4] = 40;
+	map[115] = 2115;
+	map[226] = 2216;
+	map[337] = 2317;
+	map[448] = 2418;
+	uint16_t keys[] = {0, 1, 2, 3, 4, 115, 226, 337, 448};
+	uint16_t values[] = {0, 10, 20, 30, 40, 2115, 2216, 2317, 2418};
+	for (uint16_t i = 0; i < 9; i++) {
+		ASSERT_TRUE(map.contains(keys[i]));
+		ASSERT_EQ(*map.find(keys[i]), values[i]);
+	}
 }

@@ -55,8 +55,16 @@ namespace wlp {
                 : m_hash_map(n, max_load) {
         }
 
+        /**
+         * Disable copy constructor.
+         */
         ChainHashSet(const set_type &) = delete;
 
+        /**
+         * Move constructor.
+         *
+         * @param set hash set to move
+         */
         ChainHashSet(set_type &&set)
                 : m_hash_map(move(set.m_hash_map)) {
         }
@@ -220,8 +228,19 @@ namespace wlp {
             return m_hash_map.erase(key);
         }
 
+        /**
+         * Disable copy assignment.
+         *
+         * @return reference to this set
+         */
         set_type &operator=(const set_type &) = delete;
 
+        /**
+         * Move assignment operator.
+         *
+         * @param set hash set to move
+         * @return reference to this set
+         */
         set_type &operator=(set_type &&set) {
             m_hash_map = move(set.m_hash_map);
             return *this;

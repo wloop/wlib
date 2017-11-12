@@ -1,3 +1,16 @@
+/**
+ * @file Concept.h
+ * @brief Concept definitions.
+ *
+ * This class is where concept definitions should be located.
+ * Concepts facilitate C++ polymorphism in the place of
+ * complex inheritance trees.
+ *
+ * @author Jeff Niu
+ * @date November 9, 2017
+ * @bug No known bugs
+ */
+
 #ifndef EMBEDDEDCPLUSPLUS_CONCEPTCHECKS_H
 #define EMBEDDEDCPLUSPLUS_CONCEPTCHECKS_H
 
@@ -7,6 +20,12 @@
 
 #include "../Wlib.h"
 
+/**
+ * Definitions for a variadic macro that generates
+ * code to verify whether a specified type has a
+ * function with a function name, return type, and
+ * argument types.
+ */
 #define __HAS_FCN(...) VFUNC(__HAS_FCN, __VA_ARGS__)
 #define __HAS_FCN3(TypeName, FcnName, RetType) \
     is_same<decltype(declval<TypeName>().FcnName( \
@@ -44,6 +63,13 @@
 
 namespace wlp {
 
+    /**
+     * Comparator concept defines a type that implements
+     * the six rich comparison operators for a comparison type.
+     *
+     * @tparam C comparator type
+     * @tparam CmpType the compared type
+     */
     template<typename C, typename CmpType>
     struct comparator_concept {
     private:
@@ -66,16 +92,36 @@ namespace wlp {
         static constexpr bool value = type::value;
     };
 
+    /**
+     * Shorthand method to check whether a class fits
+     * the defined comparator concept.
+     *
+     * @tparam C class to check
+     * @tparam T desired comparison type
+     * @return true if the class is a comparator
+     */
     template<typename C, typename T>
     static constexpr bool is_comparator() {
         return comparator_concept<C, T>::value;
     }
 
+    /**
+     * Base case forward iterator is false.
+     *
+     * @tparam C candidate forward iterator type
+     */
     template<typename C, bool = has_size_type<C>::value && has_val_type<C>::value>
     struct forward_iterator_concept {
         static constexpr bool value = false;
     };
 
+    /**
+     * Forward iterator concept. Defines any iterator over a
+     * data structure that can be moved forwards through the structure,
+     * visiting each value in the structure exactly once.
+     *
+     * @tparam C forward iterator type
+     */
     template<typename C>
     struct forward_iterator_concept<C, true> {
     private:
@@ -113,16 +159,35 @@ namespace wlp {
         static constexpr bool value = type::value;
     };
 
+    /**
+     * Shorthand to check whether a class is a forward iterator.
+     *
+     * @tparam C candidate forward iterator type
+     * @return true if the class is a forward iterator
+     */
     template<typename C>
     static constexpr bool is_forward_iterator() {
         return forward_iterator_concept<C>::value;
     }
 
+    /**
+     * Random access iterator base case is false.
+     *
+     * @tparam C candidate random access iterator
+     */
     template<typename C, bool = has_size_type<C>::value && has_val_type<C>::value>
     struct random_access_iterator_concept {
         static constexpr bool value = false;
     };
 
+    /**
+     * Random access iterator concept. Defines any iterator
+     * over a random access structure, which can be used to
+     * access and assign to any element in the structure
+     * with constant time.
+     *
+     * @tparam C random access iterator type
+     */
     template<typename C>
     struct random_access_iterator_concept<C, true> {
     private:
@@ -171,11 +236,23 @@ namespace wlp {
         static constexpr bool value = type::value;
     };
 
+    /**
+     * Shorthand to check whether a class is a random
+     * access iterator.
+     *
+     * @tparam C candidate random access iterator
+     * @return true if the class is a random access iterator
+     */
     template<typename C>
     static constexpr bool is_random_access_iterator() {
         return random_access_iterator_concept<C>::value;
     }
 
+    /**
+     * Map concept base case is false.
+     *
+     * @tparam C candidate map type
+     */
     template<typename C, bool =
     has_key_type<C>::value &&
     has_val_type<C>::value &&
@@ -187,6 +264,14 @@ namespace wlp {
         static constexpr bool value = false;
     };
 
+    /**
+     * Map concept. Defines a structure that uniquely associates
+     * a key to a value, in such a way that the collection of the
+     * structure's keys contains only unique values, but the collection
+     * of the structure's values may not be unique.
+     *
+     * @tparam C map type
+     */
     template<typename C>
     struct map_concept<C, true> {
     private:
@@ -232,6 +317,12 @@ namespace wlp {
         static constexpr bool value = type::value;
     };
 
+    /**
+     * Shorthand to check whether a class is a map.
+     *
+     * @tparam C candidate map type
+     * @return true if the class is a map
+     */
     template<typename C>
     static constexpr bool is_map() {
         return map_concept<C>::value;

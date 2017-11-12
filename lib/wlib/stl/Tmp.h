@@ -656,34 +656,71 @@ namespace wlp {
         return Op<Head>::value || is_any_of<Op, Tail...>();
     };
 
+    /**
+     * Add lvalue reference helper.
+     *
+     * @tparam T existing lvalue type
+     */
     template<typename T, bool = is_referenceable<T>::value>
     struct __lvalue__ {
         typedef T type;
     };
 
+    /**
+     * Add lvalue reference helper.
+     *
+     * @tparam T non reference type
+     */
     template<typename T>
     struct __lvalue__<T, true> {
         typedef T &type;
     };
 
+    /**
+     * Transform a type such that it is the lvalue reference
+     * to that type.
+     *
+     * @tparam T type to add lvalue reference
+     */
     template<typename T>
     struct add_lvalue_reference : public __lvalue__<T> {
     };
 
+    /**
+     * Add rvalue reference helper
+     *
+     * @tparam T existing rvalue type
+     */
     template<typename T, bool = is_referenceable<T>::value>
     struct __rvalue__ {
         typedef T type;
     };
 
+    /**
+     * Add rvalue reference helper.
+     *
+     * @tparam T non reference type
+     */
     template<typename T>
     struct __rvalue__<T, true> {
         typedef T &&type;
     };
 
+    /**
+     * Transform a type such that it is the rvalue reference
+     * to that type.
+     *
+     * @tparam T type to add rvalue reference
+     */
     template<typename T>
     struct add_rvalue_reference : public __rvalue__<T> {
     };
 
+    /**
+     * Declared value helper.
+     *
+     * @tparam T type to obtain the declared value
+     */
     template<typename T>
     struct __declval__ {
         static const bool __stop__ = false;
@@ -691,6 +728,16 @@ namespace wlp {
         static typename add_rvalue_reference<T>::type __delegate__();
     };
 
+    /**
+     * Obtain a static declared value to the specified type.
+     * This function should only be used in metafunction contexts
+     * as the actual return value is undefined. This is usually
+     * used in conjunction with @code decltype @endcode build-in function
+     * to obtain the type of an unknown type.
+     *
+     * @tparam T type whose value to obtain
+     * @return a value of the type
+     */
     template<typename T>
     inline typename add_rvalue_reference<T>::type declval() noexcept {
         static_assert(__declval__<T>::__stop__, "declval is not callable");

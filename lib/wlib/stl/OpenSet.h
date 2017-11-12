@@ -61,8 +61,16 @@ namespace wlp {
                 m_hash_map(n, max_load) {
         }
 
+        /**
+         * Disable copy constructor.
+         */
         OpenHashSet(const hash_set &) = delete;
 
+        /**
+         * Move constructor.
+         *
+         * @param set hash set to move
+         */
         OpenHashSet(hash_set &&set)
                 : m_hash_map(move(set.m_hash_map)) {
         }
@@ -194,20 +202,51 @@ namespace wlp {
             return m_hash_map.find(key);
         }
 
+        /**
+         * Erase the element in the set pointed to by
+         * the iterator.
+         *
+         * @param pos iterator whose element to erase
+         * @return iterator to the next element in the set
+         */
         iterator &erase(iterator &pos) {
             return m_hash_map.erase(pos);
         }
 
+        /**
+         * Erase the element in the set pointed to by
+         * the iterator.
+         *
+         * @param pos iterator whose element to erase
+         * @return iterator to the next element in the set
+         */
         const_iterator &erase(const_iterator &pos) {
             return m_hash_map.erase(pos);
         }
 
+        /**
+         * Remove an element from the set.
+         *
+         * @param key the element to remove
+         * @return true if removal occured
+         */
         bool erase(key_type &key) {
             return m_hash_map.erase(key);
         }
 
+        /**
+         * Disable copy assignment.
+         *
+         * @return reference to this set
+         */
         hash_set &operator=(const hash_set &) = delete;
 
+        /**
+         * Move assignment operator.
+         *
+         * @param set hash set to move
+         * @return reference to this set
+         */
         hash_set &operator=(hash_set &&set) {
             m_hash_map = move(set.m_hash_map);
             return *this;
