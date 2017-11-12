@@ -13,8 +13,7 @@
 #ifndef CORE_STL_BITSET_H
 #define CORE_STL_BITSET_H
 
-#include <string.h>
-#include <stdint.h>
+#include "Types.h"
 #include <math.h>
 
 #include "Wlib.h"
@@ -76,7 +75,7 @@ namespace wlp {
          */
         Bitset(Bitset<nBits> &b) {
             uint32_t end = ceil_bits<nBits>::value;
-            for (uint16_t i = 0; i < end; i++) {
+            for (size_type i = 0; i < end; i++) {
                 m_array[i] = (m_array[i] & 0) | b.m_array[i];
             }
         }
@@ -87,7 +86,7 @@ namespace wlp {
          */
         Bitset(const Bitset<nBits> &b) {
             uint32_t end = ceil_bits<nBits>::value;
-            for (uint16_t i = 0; i < end; i++) {
+            for (size_type i = 0; i < end; i++) {
                 m_array[i] = (m_array[i] & 0) | b.m_array[i];
             }
         }
@@ -101,7 +100,7 @@ namespace wlp {
             memset(m_array, 0, sizeof(m_array));
             constexpr uint32_t end = nBits / INT_SIZE;
             constexpr uint32_t extra = nBits - end * INT_SIZE;
-            for (uint16_t i = 0; i < end; ++i) {
+            for (size_type i = 0; i < end; ++i) {
                 m_array[i] = (uint32_t) n;
                 n >>= INT_SIZE;
             }
@@ -200,9 +199,9 @@ namespace wlp {
          * Assignment operator copies the contents of the bitset.
          * @param b Bitset to assign
          */
-        Bitset<nBits> &operator=(Bitset<nBits> &b) {
+        Bitset<nBits> &operator=(const Bitset<nBits> &b) {
             uint32_t end = ceil_bits<nBits>::value;
-            for (uint16_t i = 0; i < end; i++) {
+            for (size_type i = 0; i < end; i++) {
                 m_array[i] = (m_array[i] & 0) | b.m_array[i];
             }
             return *this;
@@ -212,9 +211,9 @@ namespace wlp {
          * Assignment operator copies the contents of the bitset.
          * @param b Bitset to assign
          */
-        Bitset<nBits> &operator=(const Bitset<nBits> &b) {
+        Bitset<nBits> &operator=(Bitset<nBits> &b) {
             uint32_t end = ceil_bits<nBits>::value;
-            for (uint16_t i = 0; i < end; i++) {
+            for (size_type i = 0; i < end; i++) {
                 m_array[i] = (m_array[i] & 0) | b.m_array[i];
             }
             return *this;
