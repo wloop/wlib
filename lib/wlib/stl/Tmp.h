@@ -17,8 +17,6 @@
 #ifndef EMBEDDEDCPLUSPLUS_TMP_H
 #define EMBEDDEDCPLUSPLUS_TMP_H
 
-#include <stdint.h>
-
 #include "../Wlib.h"
 
 namespace wlp {

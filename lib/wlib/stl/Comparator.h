@@ -3,8 +3,9 @@
 
 #include <stdint.h>
 
-#include "../WlibConfig.h"
 #include "Equal.h"
+
+#include "../WlibConfig.h"
 
 namespace wlp {
 

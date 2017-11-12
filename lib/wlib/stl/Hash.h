@@ -16,9 +16,9 @@
 
 #include <stdint.h>
 
-#include "Wlib.h"
-#include "WlibConfig.h"
-#include "strings/StaticString.h"
+#include "../Wlib.h"
+
+#include "../strings/StaticString.h"
 
 namespace wlp {
 

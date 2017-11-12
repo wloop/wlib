@@ -14,8 +14,9 @@
 #define EMBEDDEDTESTS_CHAINMAP_H
 
 #include "Equal.h"
-#include "Pair.h"
 #include "Hash.h"
+#include "Pair.h"
+
 #include "../memory/Allocator.h"
 #include "../memory/Memory.h"
 

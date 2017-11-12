@@ -13,9 +13,9 @@
 #ifndef EMBEDDEDCPLUSPLUS_CHAINSET_H
 #define EMBEDDEDCPLUSPLUS_CHAINSET_H
 
-#include "Hash.h"
-#include "Equal.h"
 #include "ChainMap.h"
+#include "Equal.h"
+#include "Hash.h"
 
 namespace wlp {
 

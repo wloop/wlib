@@ -13,8 +13,8 @@
 #ifndef EMBEDDEDCPLUSPLUS_OPENSET_H
 #define EMBEDDEDCPLUSPLUS_OPENSET_H
 
-#include "Hash.h"
 #include "Equal.h"
+#include "Hash.h"
 #include "OpenMap.h"
 
 namespace wlp {

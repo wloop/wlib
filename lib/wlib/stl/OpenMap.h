@@ -15,9 +15,10 @@
 #ifndef CORE_STL_MAP_H
 #define CORE_STL_MAP_H
 
-#include "Hash.h"
 #include "Equal.h"
+#include "Hash.h"
 #include "Pair.h"
+
 #include "../memory/Allocator.h"
 #include "../memory/Memory.h"
 

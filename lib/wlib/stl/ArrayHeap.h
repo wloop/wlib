@@ -1,9 +1,9 @@
 #ifndef EMBEDDEDCPLUSPLUS_ARRAYHEAP_H
 #define EMBEDDEDCPLUSPLUS_ARRAYHEAP_H
 
+#include "ArrayList.h"
 #include "Comparator.h"
 #include "Concept.h"
-#include "ArrayList.h"
 #include "TypeTraits.h"
 
 namespace wlp {

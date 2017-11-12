@@ -10,7 +10,6 @@
 #include "Allocator.h"
 #include "math.h"
 #include <string.h>
-#include "../Wlib.h"
 #include "../stl/Tmp.h"
 
 wlp::Allocator::Allocator(uint16_t blockSize, uint16_t poolSize, wlp::Allocator::Type allocationType, void *pPool) :
