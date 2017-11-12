@@ -11,14 +11,15 @@
 #include "gtest/gtest.h"
 #include "strings/StaticString.h"
 
+#include "Types.h"
 #include "../template_defs.h"
 
 using namespace wlp;
 
 TEST(static_string_test, ctor_test) {
-    StaticString<8> string1{"helloooo"};    // text given
-    StaticString<8> string2;                // no text
-    StaticString<8> string3{string1};       // string object give
+    String8 string1{"helloooo"};    // text given
+    String8 string2;                // no text
+    String8 string3{string1};       // string object give
 
     ASSERT_EQ(8, string1.capacity());
     ASSERT_EQ(8, string2.capacity());
@@ -34,11 +35,11 @@ TEST(static_string_test, ctor_test) {
 }
 
 TEST(static_string_test, add_operators) {
-    StaticString<16> string1{"deep"};
-    StaticString<16> string2{"bye"};
-    StaticString<16> string3{"hi"};
-    StaticString<16> string4{"yo"};
-    StaticString<16> string5{"yooooooooooooooo"};
+    String16 string1{"deep"};
+    String16 string2{"bye"};
+    String16 string3{"hi"};
+    String16 string4{"yo"};
+    String16 string5{"yooooooooooooooo"};
     char char1 = '7';
     char array1[] = "hell";
     char array2[] = "123456789";
@@ -60,11 +61,11 @@ TEST(static_string_test, add_operators) {
 }
 
 TEST(static_string_test, concat_operator) {
-    StaticString<16> string1{"deep"};
-    StaticString<16> string2{"bye"};
-    StaticString<16> string3{"hi"};
-    StaticString<16> string4{"yo"};
-    StaticString<16> string5{"yooooooooooooooo"};
+    String16 string1{"deep"};
+    String16 string2{"bye"};
+    String16 string3{"hi"};
+    String16 string4{"yo"};
+    String16 string5{"yooooooooooooooo"};
     char char1 = '7';
     char array1[] = "hell";
     char array2[] = "123456789";
@@ -86,11 +87,11 @@ TEST(static_string_test, concat_operator) {
 }
 
 TEST(static_string_test, concat_append_push_back) {
-    StaticString<16> string1{"deep"};
-    StaticString<16> string2{"bye"};
-    StaticString<16> string3{"hi"};
-    StaticString<16> string4{"yo"};
-    StaticString<16> string5{"yooooooooooooooo"};
+    String16 string1{"deep"};
+    String16 string2{"bye"};
+    String16 string3{"hi"};
+    String16 string4{"yo"};
+    String16 string5{"yooooooooooooooo"};
     char char1 = '7';
     char array1[] = "hell";
     char array2[] = "123456789";
@@ -112,10 +113,10 @@ TEST(static_string_test, concat_append_push_back) {
 }
 
 TEST(static_string_test, equal_to_operator) {
-    StaticString<16> string1{"deep"};
-    StaticString<16> string2{"bye"};
-    StaticString<16> string3{"hi"};
-    StaticString<16> string4{"y"};
+    String16 string1{"deep"};
+    String16 string2{"bye"};
+    String16 string3{"hi"};
+    String16 string4{"y"};
 
     ASSERT_FALSE(string1 == string2);
     ASSERT_TRUE(string1 == string1);
@@ -126,11 +127,11 @@ TEST(static_string_test, equal_to_operator) {
 }
 
 TEST(static_string_test, compare_methods) {
-    StaticString<16> string1{"deep"};
-    StaticString<16> string2{"bye"};
-    StaticString<16> string3{"hi"};
-    StaticString<16> string4{"y"};
-    StaticString<16> string5{"ye"};
+    String16 string1{"deep"};
+    String16 string2{"bye"};
+    String16 string3{"hi"};
+    String16 string4{"y"};
+    String16 string5{"ye"};
 
     ASSERT_LT(string1.compare(string4), 0);
     ASSERT_GT(string3.compare(string2), 0);
@@ -141,10 +142,10 @@ TEST(static_string_test, compare_methods) {
 }
 
 TEST(static_string_test, access_chars) {
-    const StaticString<16> string1{"deep"};
-    const StaticString<16> string2{"bye"};
-    StaticString<16> string3{"hi"};
-    StaticString<16> string4{"y"};
+    const String16 string1{"deep"};
+    const String16 string2{"bye"};
+    String16 string3{"hi"};
+    String16 string4{"y"};
 
     ASSERT_TRUE(string1[0] == 'd');
     ASSERT_TRUE(string1[4] == 'p');
@@ -169,10 +170,10 @@ TEST(static_string_test, access_chars) {
 }
 
 TEST(static_string_test, clear_string) {
-    StaticString<8> string1{"deep"};
-    StaticString<8> string2{"bye"};
-    StaticString<8> string3{"hi"};
-    StaticString<8> string4{"y"};
+    String8 string1{"deep"};
+    String8 string2{"bye"};
+    String8 string3{"hi"};
+    String8 string4{"y"};
 
     string1.clear();
     string2.clear();
@@ -196,10 +197,10 @@ TEST(static_string_test, clear_string) {
 }
 
 TEST(static_string_test, assign_operator) {
-    StaticString<16> string1{"deep"};
-    StaticString<16> string2{"bye"};
-    StaticString<16> string3{"hi"};
-    StaticString<16> string4{"y"};
+    String16 string1{"deep"};
+    String16 string2{"bye"};
+    String16 string3{"hi"};
+    String16 string4{"y"};
 
     string1 = string4;
     string2 = "deep2";
@@ -212,10 +213,10 @@ TEST(static_string_test, assign_operator) {
 }
 
 TEST(static_string_test, erase_popBack){
-    StaticString<16> string1{"deep"};
-    StaticString<16> string2{"bye"};
-    StaticString<16> string3{"hi"};
-    StaticString<16> string4{"y"};
+    String16 string1{"deep"};
+    String16 string2{"bye"};
+    String16 string3{"hi"};
+    String16 string4{"y"};
 
     string1.erase(2);
     ASSERT_EQ(3, string1.length());
@@ -251,8 +252,8 @@ TEST(static_string_test, erase_popBack){
 }
 
 TEST(static_string_test, substring) {
-    StaticString<16> string1{"deep"};
-    StaticString<16> string2;
+    String16 string1{"deep"};
+    String16 string2;
 
     ASSERT_STREQ("de", string1.substr(0, 2).c_str());
     ASSERT_STREQ("deep", string1.substr(0, 4).c_str());
