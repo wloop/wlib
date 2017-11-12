@@ -15,7 +15,7 @@
 
 using namespace wlp;
 
-TEST(ctor_test, static_string_test) {
+TEST(static_string_test, ctor_test) {
     StaticString<8> string1{"helloooo"};    // text given
     StaticString<8> string2;                // no text
     StaticString<8> string3{string1};       // string object give
@@ -33,7 +33,7 @@ TEST(ctor_test, static_string_test) {
     ASSERT_STREQ("helloooo", string3.c_str());
 }
 
-TEST(add_operators, static_string_test) {
+TEST(static_string_test, add_operators) {
     StaticString<16> string1{"deep"};
     StaticString<16> string2{"bye"};
     StaticString<16> string3{"hi"};
@@ -59,7 +59,7 @@ TEST(add_operators, static_string_test) {
     ASSERT_STREQ(string5.c_str(), (string5 + char1).c_str());
 }
 
-TEST(concat_operator, static_string_test) {
+TEST(static_string_test, concat_operator) {
     StaticString<16> string1{"deep"};
     StaticString<16> string2{"bye"};
     StaticString<16> string3{"hi"};
@@ -85,7 +85,7 @@ TEST(concat_operator, static_string_test) {
     ASSERT_STREQ(string3.c_str(), (string3 += 'd').c_str());
 }
 
-TEST(concat_appendandPushBack, static_string_test) {
+TEST(static_string_test, concat_append_push_back) {
     StaticString<16> string1{"deep"};
     StaticString<16> string2{"bye"};
     StaticString<16> string3{"hi"};
@@ -111,7 +111,7 @@ TEST(concat_appendandPushBack, static_string_test) {
     ASSERT_STREQ(string3.c_str(), (string3.push_back('d')).c_str());
 }
 
-TEST(equalTo_operator, static_string_test) {
+TEST(static_string_test, equal_to_operator) {
     StaticString<16> string1{"deep"};
     StaticString<16> string2{"bye"};
     StaticString<16> string3{"hi"};
@@ -125,7 +125,7 @@ TEST(equalTo_operator, static_string_test) {
     ASSERT_TRUE('y' == string4);
 }
 
-TEST(compare_methods, static_string_test) {
+TEST(static_string_test, compare_methods) {
     StaticString<16> string1{"deep"};
     StaticString<16> string2{"bye"};
     StaticString<16> string3{"hi"};
@@ -140,7 +140,7 @@ TEST(compare_methods, static_string_test) {
     ASSERT_GT(string2.compare('a'), 0);
 }
 
-TEST(access_chars, static_string_test) {
+TEST(static_string_test, access_chars) {
     const StaticString<16> string1{"deep"};
     const StaticString<16> string2{"bye"};
     StaticString<16> string3{"hi"};
@@ -168,7 +168,7 @@ TEST(access_chars, static_string_test) {
     ASSERT_TRUE(string4.back() == 'y');
 }
 
-TEST(clear_string, static_string_test) {
+TEST(static_string_test, clear_string) {
     StaticString<8> string1{"deep"};
     StaticString<8> string2{"bye"};
     StaticString<8> string3{"hi"};
@@ -195,7 +195,7 @@ TEST(clear_string, static_string_test) {
     ASSERT_STREQ("", string4.c_str());
 }
 
-TEST(assign_operator, static_string_test) {
+TEST(static_string_test, assign_operator) {
     StaticString<16> string1{"deep"};
     StaticString<16> string2{"bye"};
     StaticString<16> string3{"hi"};
@@ -211,7 +211,7 @@ TEST(assign_operator, static_string_test) {
     ASSERT_STRNE("d", string4.c_str());
 }
 
-TEST(erase_popBack, static_string_test){
+TEST(static_string_test, erase_popBack){
     StaticString<16> string1{"deep"};
     StaticString<16> string2{"bye"};
     StaticString<16> string3{"hi"};
@@ -250,7 +250,7 @@ TEST(erase_popBack, static_string_test){
     ASSERT_STREQ("", string4.c_str());
 }
 
-TEST(substring, static_string_test) {
+TEST(static_string_test, substring) {
     StaticString<16> string1{"deep"};
     StaticString<16> string2;
 
