@@ -6,7 +6,7 @@
  * convenience
  *
  * @author Deep Dhillon
- * @date November 06, 2017
+ * @date November 11, 2017
  * @bug No known bugs
  */
 
@@ -17,7 +17,7 @@
 
 using namespace wlp;
 
-template<int tblockSize, int tnumBlocks>
+template<uint16_t tblockSize, uint16_t tnumBlocks>
 class StaticAllocatorPool : public Allocator {
 public:
     StaticAllocatorPool() : Allocator(tblockSize, m_memory, tblockSize * tnumBlocks, Allocator::STATIC){}
