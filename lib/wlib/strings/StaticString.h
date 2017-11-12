@@ -330,7 +330,7 @@ namespace wlp {
                 return *this;
 
             if (pos + length >= m_len)
-                length = m_len - pos;
+                length = (uint16_t) (m_len - pos);
 
             char newBuffer[length + 1];
 
