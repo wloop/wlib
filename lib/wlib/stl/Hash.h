@@ -14,9 +14,9 @@
 #ifndef CORE_STL_HASH_H
 #define CORE_STL_HASH_H
 
-#include <stdint.h>
-
+#include "../Types.h"
 #include "../Wlib.h"
+#include "../WlibConfig.h"
 
 #include "../strings/StaticString.h"
 
@@ -36,7 +36,7 @@ namespace wlp {
     template<class IntType, uint16_t tSize>
     inline IntType hash_static_string(StaticString<tSize> &static_string) {
         IntType h = 0;
-        for (uint16_t pos = 0; pos < static_string.length(); ++pos) {
+        for (size_type pos = 0; pos < static_string.length(); ++pos) {
             h = (IntType) (MUL_127(h) + static_string[pos]);
         }
         return h;

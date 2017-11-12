@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 #include "stl/ChainMap.h"
 
+#include "Types.h"
 #include "../template_defs.h"
 
 using namespace wlp;
 
-typedef StaticString<16> string16;
 typedef uint16_t ui16;
-typedef ChainHashMap<string16, string16> string_map;
+typedef ChainHashMap<String16, String16> string_map;
 typedef ChainHashMap<ui16, ui16> int_map;
 typedef int_map::iterator imi;
 typedef Pair<imi, bool> P_imi_b;
@@ -23,8 +23,8 @@ TEST(chain_map_test, test_chain_map_node) {
     ASSERT_EQ(node, *it.m_current);
     ASSERT_EQ(nullptr, it.m_hash_map);
     string_map::node_type snode;
-    snode.m_key = string16{"hello"};
-    snode.m_val = string16{"hello"};
+    snode.m_key = String16{"hello"};
+    snode.m_val = String16{"hello"};
     smi sit(&snode, nullptr);
     ASSERT_EQ(5, sit->length());
     ASSERT_EQ(16, sit->capacity());
@@ -223,11 +223,11 @@ TEST(chain_map_test, test_insert_at_iterator_collision_resolution) {
 
 TEST(chain_map_test, test_insert_or_assign) {
     string_map map(15, 255);
-    string16 a1{"key1"};
-    string16 a2{"key2"};
-    string16 v1{"value1"};
-    string16 v2{"value2"};
-    string16 v3{"value3"};
+    String16 a1{"key1"};
+    String16 a2{"key2"};
+    String16 v1{"value1"};
+    String16 v2{"value2"};
+    String16 v3{"value3"};
     P_smi_b r1 = map.insert_or_assign(a1, v1);
     P_smi_b r2 = map.insert_or_assign(a2, v2);
     ASSERT_EQ(2, map.size());
@@ -244,15 +244,15 @@ TEST(chain_map_test, test_insert_or_assign) {
 
 TEST(chain_map_test, test_erase_key_nothing) {
     string_map map(15, 255);
-    string16 a{"key"};
+    String16 a{"key"};
     ASSERT_FALSE(map.erase(a));
     ASSERT_EQ(0, map.size());
 }
 
 TEST(chain_map_test, test_erase_key) {
     string_map map(15, 255);
-    string16 a{"key"};
-    string16 b{"val"};
+    String16 a{"key"};
+    String16 b{"val"};
     map.insert(a, b);
     ASSERT_EQ(1, map.size());
     ASSERT_TRUE(map.erase(a));

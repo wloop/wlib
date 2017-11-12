@@ -7,10 +7,15 @@
  * @bug No known bugs
  */
 
-#include "Allocator.h"
-#include "math.h"
 #include <string.h>
+#include <math.h>
+
+#include "Allocator.h"
+
+#include "../Types.h"
+
 #include "../stl/Tmp.h"
+
 
 wlp::Allocator::Allocator(uint16_t blockSize, uint16_t poolSize, wlp::Allocator::Type allocationType, void *pPool) :
         m_poolType{allocationType},
@@ -50,7 +55,7 @@ wlp::Allocator::Allocator(uint16_t blockSize, uint16_t poolSize, wlp::Allocator:
 
         // Fill m_pPool with m_poolSize blocks
         wlp::Allocator::Block *pBlock = m_pPool;
-        for (uint16_t i = 1; i < m_poolTotalBlockCnt; i++) {
+        for (size_type i = 1; i < m_poolTotalBlockCnt; i++) {
             pBlock = pBlock->pNext = (wlp::Allocator::Block *) ((char *) pBlock + m_blockSize);
         }
 

@@ -1,16 +1,11 @@
 #ifndef TEMPLATE_DEFS_H
 #define TEMPLATE_DEFS_H
 
-#include <stdint.h>
+#include "Types.h"
+
 #include "stl/ChainMap.h"
 #include "stl/OpenMap.h"
 #include "stl/ArrayHeap.h"
-
-template
-class StaticString<8>;
-
-template
-class StaticString<16>;
 
 namespace wlp {
     template
@@ -119,6 +114,12 @@ namespace wlp {
 
     template
     class ArrayList<int>;
+
+    template
+    class StaticString<8>;
+
+    template
+    class StaticString<16>;
 }
 
 #endif // TEMPLATE_DEFS_H

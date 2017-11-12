@@ -10,9 +10,7 @@
 #ifndef CORE_STL_EQUAL_H
 #define CORE_STL_EQUAL_H
 
-#include <stdint.h>
-
-#include "../Wlib.h"
+#include "../Types.h"
 
 #include "../strings/StaticString.h"
 

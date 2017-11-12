@@ -11,7 +11,7 @@
 
 // Constants for standard sizes
 #define BYTE_SIZE 8
-#define INT_SIZE (BYTE_SIZE * sizeof(uint32_t))
+#define INT32_SIZE (BYTE_SIZE * sizeof(uint32_t))
 
 // Variadic macro argument helpers
 #define __NARG__(...) __NARG_I_(__VA_ARGS__,__RSEQ_N())
