@@ -333,6 +333,10 @@ namespace wlp {
         size_type operator-(const const_iterator &it) const {
             return m_i - it.m_i;
         }
+
+        size_type operator-(const_iterator &&it) const {
+            return m_i - move(it.m_i);
+        }
     };
 
     template<typename T>

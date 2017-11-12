@@ -3,7 +3,6 @@
 
 #include "stl/Concept.h"
 #include "stl/Comparator.h"
-#include "stl/OpenMap.h"
 #include "stl/ChainMap.h"
 #include "stl/ArrayList.h"
 
@@ -76,4 +75,11 @@ TEST(concept_checks, check_forward_iterator_concept) {
 
     ASSERT_FALSE((is_forward_iterator<ArrayList<int>>()));
     ASSERT_FALSE((is_forward_iterator<Comparator<int>>()));
+}
+
+TEST(concept_checks, check_map_concept) {
+    ASSERT_TRUE((is_map<ChainHashMap<int, int>>()));
+    ASSERT_TRUE((is_map<OpenHashMap<int, int>>()));
+    ASSERT_FALSE((is_map<int>()));
+    ASSERT_FALSE((is_map<ArrayList<int>>()));
 }
