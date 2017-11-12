@@ -27,6 +27,7 @@
 class MemoryInitDestroy {
 public:
     MemoryInitDestroy();
+
     ~MemoryInitDestroy();
 
 private:
@@ -35,7 +36,7 @@ private:
 
 static MemoryInitDestroy g_smemoryInitDestroy;
 
-extern "C"{
+extern "C" {
 
 
 /**
@@ -80,9 +81,9 @@ void *memory_realloc(void *ptr, size_t size);
 #define MEMORY_OVERLOAD \
     public: \
         void *operator new(size_t size){ \
-            return memory_malloc(size); \
+            return memory_alloc(size); \
         }; \
-        void *operator delete(void *pObject){ \
+        void operator delete(void *pObject){ \
             memory_free(pObject); \
         } \
 

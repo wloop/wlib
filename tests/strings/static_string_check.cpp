@@ -1,232 +1,201 @@
+
 /**
  * @file static_string_check.cpp
  * @brief Unit Testing for StaticString class present in Wlib library
  *
  * @author Deep Dhillon
- * @date November 4, 2017
+ * @date November 11, 2017
  * @bug No known bugs
  */
 
 #include "gtest/gtest.h"
 #include "strings/StaticString.h"
 
-TEST(length_and_size, static_string_ctr_test){
+#include "../template_defs.h"
+
+using namespace wlp;
+
+TEST(ctor_test, static_string_test) {
     StaticString<8> string1{"helloooo"};    // text given
     StaticString<8> string2;                // no text
-    StaticString<8> string3{string1};       // string object given
+    StaticString<8> string3{string1};       // string object give
 
-    // check for length and size
-    EXPECT_TRUE(string1.capacity() == 8 && string1.length() == 8);
-    EXPECT_TRUE(string2.capacity() == 8 && string2.length() == 0);
-    EXPECT_TRUE(string3.capacity() == 8 && string3.length() == 8);
+    ASSERT_EQ(8, string1.capacity());
+    ASSERT_EQ(8, string2.capacity());
+    ASSERT_EQ(8, string3.capacity());
+
+    ASSERT_EQ(8, string1.length());
+    ASSERT_EQ(0, string2.length());
+    ASSERT_EQ(8, string3.length());
+
+    ASSERT_STREQ("helloooo", string1.c_str());
+    ASSERT_STREQ("", string2.c_str());
+    ASSERT_STREQ("helloooo", string3.c_str());
 }
 
-TEST(chars_compare, static_string_ctr_test){
-    StaticString<8> string1{"helloooo"};    // text given
-    StaticString<8> string2;                // no text
-    StaticString<8> string3{string1};       // string object given
-
-    // check for chars
-    EXPECT_TRUE(strncmp(string1.c_str(), "helloooo", 8) == 0);
-    EXPECT_TRUE(strncmp(string2.c_str(), "", 0) == 0);
-    EXPECT_TRUE(strncmp(string3.c_str(), "helloooo", 8) == 0);
-}
-
-TEST(add_operators, static_string_concat_test){
+TEST(add_operators, static_string_test) {
     StaticString<16> string1{"deep"};
     StaticString<16> string2{"bye"};
     StaticString<16> string3{"hi"};
     StaticString<16> string4{"yo"};
     StaticString<16> string5{"yooooooooooooooo"};
     char char1 = '7';
-    char array1[] = {'h', 'e', 'l', 'l', '\0'};
-    char array2[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '\0'};
+    char array1[] = "hell";
+    char array2[] = "123456789";
 
     // object to object addition
-    EXPECT_TRUE(strcmp((string1 + string2).c_str(), "deepbye") == 0);
-    EXPECT_TRUE(strcmp((string1 + string2 + string4).c_str(), "deepbyeyo") == 0);
+    ASSERT_STREQ("deepbye", (string1 + string2).c_str());
+    ASSERT_STREQ("deepbyeyoooooooo", (string1 + string2 + string5).c_str());
 
     // object plus character array addition
-    EXPECT_TRUE(strcmp((string3 + "brooooooo").c_str(), "hibrooooooo") == 0);
-    EXPECT_TRUE(strcmp(("1234567890000" + string2).c_str(), "1234567890000bye") == 0);
+    ASSERT_STREQ( "hibrooooooo", (string3 + "brooooooo").c_str());
+    ASSERT_STREQ("123456789000045b", ("123456789000045" + string2).c_str());
+    ASSERT_STREQ("helldeep", (array1 + string1).c_str());
+    ASSERT_STREQ("deep123456789hel", (string1 + array2 + array1).c_str());
 
-    // char array
-    EXPECT_TRUE(strcmp((array1 + string1).c_str(), "helldeep") == 0);
-    EXPECT_TRUE(strcmp((string1 + array1 + array1).c_str(), "deephellhell") == 0);
-
-    // individual car
-    EXPECT_TRUE(strcmp((char1 + string1).c_str(), "7deep") == 0);
-    EXPECT_TRUE(strcmp((string1 + char1 + char1).c_str(), "deep77") == 0);
-
-    // string beingadded is longer that what we can hold
-    EXPECT_TRUE(strcmp((string1 + string5).c_str(), "deepyooooooooooo") == 0);
-    EXPECT_TRUE(strcmp((string5 + "boyishero00000").c_str(), "yooooooooooooooo") == 0);
-    EXPECT_TRUE(strcmp((string1 + 'c').c_str(), "deepc") == 0);
-    EXPECT_TRUE(strcmp((string1 + string1 + array2).c_str(), "deepdeep12345678") == 0);
-
+    // individual char
+    ASSERT_STREQ("7deep", (char1 + string1).c_str());
+    ASSERT_STREQ("deep77", (string1 + char1 + char1).c_str());
+    ASSERT_STREQ(string5.c_str(), (string5 + char1).c_str());
 }
 
-TEST(concat_operator, static_string_concat_test){
+TEST(concat_operator, static_string_test) {
     StaticString<16> string1{"deep"};
     StaticString<16> string2{"bye"};
     StaticString<16> string3{"hi"};
     StaticString<16> string4{"yo"};
     StaticString<16> string5{"yooooooooooooooo"};
     char char1 = '7';
-    char array1[] = {'h', 'e', 'l', 'l', '\0'};
-    char array2[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '\0'};
+    char array1[] = "hell";
+    char array2[] = "123456789";
 
     // object to object append
-    EXPECT_TRUE(strcmp((string1 += string2).c_str(), "deepbye") == 0);
-    EXPECT_TRUE(strcmp((string1 += string2 += string4).c_str(), "deepbyebyeyo") == 0);
+    ASSERT_STREQ("deepbye", (string1 += string2).c_str());
+    ASSERT_STREQ("deepbyebyeyo", (string1 += string2 += string4).c_str());
+    ASSERT_STREQ(string5.c_str(), (string5 += string1).c_str());
 
-    // object plus character array append
-    EXPECT_TRUE(strcmp((string3 += "brooooooo").c_str(), "hibrooooooo") == 0);
-    EXPECT_TRUE(strcmp((string4 += "1234567890000").c_str(), "yo1234567890000") == 0);
-
-    // char array
-    EXPECT_TRUE(strcmp((string2 += array1).c_str(), "byeyohell") == 0);
+    // object plus character str
+    ASSERT_STREQ("hibrooooooooooo", (string3 += "brooooooooooo").c_str());
+    ASSERT_STREQ("yo1234567890000", (string4 += "1234567890000").c_str());
+    ASSERT_STREQ("byeyohell", (string2 += array1).c_str());
+    ASSERT_STREQ(string5.c_str(), (string5 += "hhjsdjhs").c_str());
 
     // individual char
-    EXPECT_TRUE(strcmp((string3 += char1).c_str(), "hibrooooooo7") == 0);
-
-    // string being added is longer that what we can hold
-    EXPECT_TRUE(strcmp((string2 += string5).c_str(), "byeyohellyoooooo") == 0);
-    EXPECT_TRUE(strcmp((string5 += "boyishero00000").c_str(), "yooooooooooooooo") == 0);
-    EXPECT_TRUE(strcmp((string5 += 'c').c_str(), "yooooooooooooooo") == 0);
-    EXPECT_TRUE(strcmp((string3 += 'd').c_str(), "hibrooooooo7d") == 0);
+    ASSERT_STREQ("hibrooooooooooo7", (string3 += char1).c_str());
+    ASSERT_STREQ(string3.c_str(), (string3 += 'd').c_str());
 }
 
-TEST(concat_append, static_string_concat_test){
+TEST(concat_appendandPushBack, static_string_test) {
     StaticString<16> string1{"deep"};
     StaticString<16> string2{"bye"};
     StaticString<16> string3{"hi"};
     StaticString<16> string4{"yo"};
     StaticString<16> string5{"yooooooooooooooo"};
     char char1 = '7';
-    char array1[] = {'h', 'e', 'l', 'l', '\0'};
-    char array2[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '\0'};
+    char array1[] = "hell";
+    char array2[] = "123456789";
 
     // object to object append
-    EXPECT_TRUE(strcmp((string1.append(string2)).c_str(), "deepbye") == 0);
-    EXPECT_TRUE(strcmp((string1.append(string2).append(string4)).c_str(), "deepbyebyeyo") == 0);
+    ASSERT_STREQ("deepbye", (string1.append(string2)).c_str());
+    ASSERT_STREQ("deepbyebyeyo", (string1.append(string2).append(string4)).c_str());
+    ASSERT_STREQ(string5.c_str(), (string5.append(string1)).c_str());
 
-    // object plus character array append
-    EXPECT_TRUE(strcmp((string3.append("brooooooo")).c_str(), "hibrooooooo") == 0);
-    EXPECT_TRUE(strcmp((string4.append("1234567890000")).c_str(), "yo1234567890000") == 0);
-
-    // char array
-    EXPECT_TRUE(strcmp((string2.append(array1)).c_str(), "byehell") == 0);
-    EXPECT_TRUE(strcmp((string2.append(array1).append(array1)).c_str(), "byehellhellhell") == 0);
-
+    // object plus character str
+    ASSERT_STREQ("hibrooooooooooo", (string3.append("brooooooooooo")).c_str());
+    ASSERT_STREQ("yo1234567890000", (string4.append("1234567890000")).c_str());
+    ASSERT_STREQ("byehell", (string2.append(array1)).c_str());
+    ASSERT_STREQ(string5.c_str(), (string5.append("hhjsdjhs")).c_str());
 
     // individual char
-    EXPECT_TRUE(strcmp((string2.append(char1)).c_str(), "byehellhellhell7") == 0);
-
-    // string being added is longer that what we can hold
-    EXPECT_TRUE(strcmp((string2.append(string5)).c_str(), "byehellhellhell7") == 0);
-    EXPECT_TRUE(strcmp((string5.append("boyishero00000")).c_str(), "yooooooooooooooo") == 0);
-    EXPECT_TRUE(strcmp((string5.append('c')).c_str(), "yooooooooooooooo") == 0);
-    EXPECT_TRUE(strcmp((string3.append('d').append(array2)).c_str(), "hibroooooood1234") == 0);
+    ASSERT_STREQ("hibrooooooooooo7", (string3.push_back(char1)).c_str());
+    ASSERT_STREQ(string3.c_str(), (string3.push_back('d')).c_str());
 }
 
-TEST(concat_push_back, static_string_concat_test){
-    StaticString<16> string1{"deep"};
-    StaticString<16> string2{"bye"};
-    StaticString<16> string3{"hi"};
-    StaticString<16> string4{"yo"};
-    StaticString<16> string5{"yooooooooooooooo"};
-    char char1 = '7';
-    char array1[] = {'h', 'e', 'l', 'l', '\0'};
-    char array2[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '\0'};
-
-    // object to object push back
-    EXPECT_TRUE(strcmp((string1.push_back(string2)).c_str(), "deepbye") == 0);
-    EXPECT_TRUE(strcmp((string1.push_back(string2).push_back(string4)).c_str(), "deepbyebyeyo") == 0);
-
-    // object plus character array push back
-    EXPECT_TRUE(strcmp((string3.push_back("brooooooo")).c_str(), "hibrooooooo") == 0);
-    EXPECT_TRUE(strcmp((string4.push_back("1234567890000")).c_str(), "yo1234567890000") == 0);
-
-    // char array
-    EXPECT_TRUE(strcmp((string2.push_back(array1)).c_str(), "byehell") == 0);
-    EXPECT_TRUE(strcmp((string2.push_back(array1).push_back(array1)).c_str(), "byehellhellhell") == 0);
-
-
-    // individual char
-    EXPECT_TRUE(strcmp((string2.push_back(char1)).c_str(), "byehellhellhell7") == 0);
-
-    // string being added is longer that what we can hold
-    EXPECT_TRUE(strcmp((string2.push_back(string5)).c_str(), "byehellhellhell7") == 0);
-    EXPECT_TRUE(strcmp((string5.push_back("boyishero00000")).c_str(), "yooooooooooooooo") == 0);
-    EXPECT_TRUE(strcmp((string5.push_back('c')).c_str(), "yooooooooooooooo") == 0);
-    EXPECT_TRUE(strcmp((string3.push_back('d').append(array2)).c_str(), "hibroooooood1234") == 0);
-}
-
-TEST(equalTo_operator, static_string_equalTo_test){
+TEST(equalTo_operator, static_string_test) {
     StaticString<16> string1{"deep"};
     StaticString<16> string2{"bye"};
     StaticString<16> string3{"hi"};
     StaticString<16> string4{"y"};
 
-    EXPECT_FALSE(string1 == string2);
-    EXPECT_TRUE(string1 == string1);
-    EXPECT_TRUE(string1 == "deep");
-    EXPECT_TRUE(string4 == 'y');
-    EXPECT_TRUE("deep" == string1);
-    EXPECT_TRUE('y' == string4);
+    ASSERT_FALSE(string1 == string2);
+    ASSERT_TRUE(string1 == string1);
+    ASSERT_TRUE(string1 == "deep");
+    ASSERT_TRUE(string4 == 'y');
+    ASSERT_TRUE("deep" == string1);
+    ASSERT_TRUE('y' == string4);
 }
 
-TEST(compare_methods, static_string_compare_test){
+TEST(compare_methods, static_string_test) {
     StaticString<16> string1{"deep"};
     StaticString<16> string2{"bye"};
     StaticString<16> string3{"hi"};
     StaticString<16> string4{"y"};
     StaticString<16> string5{"ye"};
 
-    EXPECT_TRUE(string1.compare(string4) < 0);
-    EXPECT_TRUE(string3.compare(string2) > 0);
-    EXPECT_TRUE(string4.compare(string5) < 0);
-    EXPECT_TRUE(string1.compare(string1) == 0);
-    EXPECT_TRUE(string1.compare("dee") > 0);
-    EXPECT_TRUE(string2.compare('a') > 0);
+    ASSERT_LT(string1.compare(string4), 0);
+    ASSERT_GT(string3.compare(string2), 0);
+    ASSERT_LT(string4.compare(string5), 0);
+    ASSERT_EQ(string1.compare(string1), 0);
+    ASSERT_GT(string1.compare("dee"), 0);
+    ASSERT_GT(string2.compare('a'), 0);
 }
 
-TEST(access_chars, static_string_access_test){
-    StaticString<16> string1{"deep"};
-    StaticString<16> string2{"bye"};
+TEST(access_chars, static_string_test) {
+    const StaticString<16> string1{"deep"};
+    const StaticString<16> string2{"bye"};
     StaticString<16> string3{"hi"};
     StaticString<16> string4{"y"};
 
-    EXPECT_TRUE(string1[0] == 'd');
-    EXPECT_TRUE(string2.front() == 'b');
-    EXPECT_TRUE(string3.end() == 'i');
-    EXPECT_TRUE(string2[2] == 'e');
-    EXPECT_TRUE(string4.at(0) == 'y');
+    ASSERT_TRUE(string1[0] == 'd');
+    ASSERT_TRUE(string1[4] == 'p');
+    ASSERT_TRUE(string3[1] == 'i');
+    ASSERT_TRUE(string3[3] == 'i');
+    ASSERT_TRUE(string2[2] == 'e');
+
+    ASSERT_TRUE(string1.at(0) == 'd');
+    ASSERT_TRUE(string1.at(7) == 'p');
+    ASSERT_TRUE(string4.at(6) == 'y');
+    ASSERT_FALSE(string3.at(1) == 'd');
+
+    ASSERT_TRUE(string1.front() == 'd');
+    ASSERT_TRUE(string2.front() == 'b');
+    ASSERT_TRUE(string3.front() == 'h');
+    ASSERT_TRUE(string4.front() == 'y');
+
+    ASSERT_TRUE(string1.back() == 'p');
+    ASSERT_TRUE(string2.back() == 'e');
+    ASSERT_TRUE(string3.back() == 'i');
+    ASSERT_TRUE(string4.back() == 'y');
 }
 
-TEST(clear_string, static_string_clear_test){
-    StaticString<16> string1{"deep"};
-    StaticString<16> string2{"bye"};
-    StaticString<16> string3{"hi"};
-    StaticString<16> string4{"y"};
+TEST(clear_string, static_string_test) {
+    StaticString<8> string1{"deep"};
+    StaticString<8> string2{"bye"};
+    StaticString<8> string3{"hi"};
+    StaticString<8> string4{"y"};
 
     string1.clear();
     string2.clear();
     string3.clear();
     string4.clear();
 
-    EXPECT_TRUE(string1.length() == 0 && strcmp(string1.c_str(), "") == 0
-                && string1.empty() && string1.capacity() == 16);
-    EXPECT_TRUE(string2.length() == 0 && strcmp(string2.c_str(), "") == 0
-                && string1.empty() && string1.capacity() == 16);
-    EXPECT_TRUE(string3.length() == 0 && strcmp(string3.c_str(), "") == 0
-                && string1.empty() && string1.capacity() == 16);
-    EXPECT_TRUE(string4.length() == 0 && strcmp(string4.c_str(), "") == 0
-                && string1.empty() && string1.capacity() == 16);
+    ASSERT_EQ(0, string1.length());
+    ASSERT_EQ(0, string2.length());
+    ASSERT_EQ(0, string3.length());
+    ASSERT_EQ(0, string4.length());
+
+    ASSERT_EQ(8, string1.capacity());
+    ASSERT_EQ(8, string2.capacity());
+    ASSERT_EQ(8, string3.capacity());
+    ASSERT_EQ(8, string4.capacity());
+
+    ASSERT_STREQ("", string1.c_str());
+    ASSERT_STREQ("", string2.c_str());
+    ASSERT_STREQ("", string3.c_str());
+    ASSERT_STREQ("", string4.c_str());
 }
 
-TEST(assign_operator, static_string_assign_test){
+TEST(assign_operator, static_string_test) {
     StaticString<16> string1{"deep"};
     StaticString<16> string2{"bye"};
     StaticString<16> string3{"hi"};
@@ -236,15 +205,59 @@ TEST(assign_operator, static_string_assign_test){
     string2 = "deep2";
     string3 = 'c';
 
-    EXPECT_TRUE(string1 == string4);
-    EXPECT_TRUE(string2 == "deep2");
-    EXPECT_TRUE(string3 == 'c');
+    ASSERT_STREQ(string4.c_str(), string1.c_str());
+    ASSERT_STREQ("deep2", string2.c_str());
+    ASSERT_STREQ("c", string3.c_str());
+    ASSERT_STRNE("d", string4.c_str());
 }
 
-TEST(substring, static_string_substring_test) {
+TEST(erase_popBack, static_string_test){
     StaticString<16> string1{"deep"};
+    StaticString<16> string2{"bye"};
+    StaticString<16> string3{"hi"};
+    StaticString<16> string4{"y"};
 
-    EXPECT_TRUE(string1.substr(0, 2) == "de");
-    EXPECT_TRUE(string1.substr(0, 4) == "deep");
-    EXPECT_TRUE(string1.substr(2, 1) == "e");
+    string1.erase(2);
+    ASSERT_EQ(3, string1.length());
+    ASSERT_EQ(16, string1.capacity());
+    ASSERT_STREQ("dep", string1.c_str());
+
+    string1.erase();
+    ASSERT_EQ(2, string1.length());
+    ASSERT_STREQ("ep", string1.c_str());
+
+    string2.erase(0).erase(1);
+    ASSERT_EQ(1, string2.length());
+    ASSERT_STREQ("y", string2.c_str());
+
+    string2.erase(5);
+    ASSERT_EQ(1, string2.length());
+    ASSERT_STREQ("y", string2.c_str());
+
+    string2.erase().erase();
+    ASSERT_EQ(0, string2.length());
+    ASSERT_STREQ("", string2.c_str());
+
+    string3.pop_back();
+    string4.pop_back();
+    ASSERT_EQ(1, string3.length());
+    ASSERT_STREQ("h", string3.c_str());
+    ASSERT_EQ(0, string4.length());
+    ASSERT_STREQ("", string4.c_str());
+
+    string4.pop_back();
+    ASSERT_EQ(0, string4.length());
+    ASSERT_STREQ("", string4.c_str());
+}
+
+TEST(substring, static_string_test) {
+    StaticString<16> string1{"deep"};
+    StaticString<16> string2;
+
+    ASSERT_STREQ("de", string1.substr(0, 2).c_str());
+    ASSERT_STREQ("deep", string1.substr(0, 4).c_str());
+    ASSERT_STREQ("e", string1.substr(2, 1).c_str());
+    ASSERT_STREQ("", string2.substr(0, 5).c_str());
+    ASSERT_STREQ("deep", string1.substr(15, 2).c_str());
+    ASSERT_STREQ("ep", string1.substr(2, 8).c_str());
 }
