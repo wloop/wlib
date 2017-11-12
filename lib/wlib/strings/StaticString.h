@@ -11,9 +11,7 @@
 #ifndef WLIB_STATICSTRING_H
 #define WLIB_STATICSTRING_H
 
-#include <stdint.h>
 #include <math.h>
-#include <string.h>
 
 namespace wlp {
     template<uint16_t tSize>
@@ -64,8 +62,8 @@ namespace wlp {
          */
         StaticString<tSize> &operator=(const char *str) {
             m_len = (uint16_t) ceil(fmin((uint16_t) strlen(str), capacity()));
-            strncpy(m_buffer, str, length());
-            m_buffer[length()] = '\0';
+            strncpy(m_buffer, str, m_len);
+            m_buffer[m_len] = '\0';
 
             return *this;
         }
@@ -105,7 +103,7 @@ namespace wlp {
          * @return if string is empty or not
          */
         bool empty() const {
-            return length() == 0;
+            return m_len == 0;
         }
 
         /**
@@ -146,7 +144,7 @@ namespace wlp {
          * @return character at @p pos
          */
         char &at(uint16_t pos) {
-            if (pos >= length()) return back();
+            if (pos >= m_len) return back();
 
             return m_buffer[pos];
         }
@@ -159,7 +157,7 @@ namespace wlp {
          * @return character at @p pos
          */
         const char &at(uint16_t pos) const {
-            if (pos >= length()) return back();
+            if (pos >= m_len) return back();
 
             return m_buffer[pos];
         }
@@ -171,7 +169,7 @@ namespace wlp {
          */
         char &back() {
             if (empty()) return m_buffer[0];
-            return m_buffer[length() - 1];
+            return m_buffer[m_len - 1];
         }
 
         /**
@@ -181,7 +179,7 @@ namespace wlp {
          */
         const char &back() const {
             if (empty()) return m_buffer[0];
-            return m_buffer[length() - 1];
+            return m_buffer[m_len - 1];
         }
 
         /**
@@ -254,16 +252,16 @@ namespace wlp {
          * @return the current string
          */
         StaticString<tSize> &append(const char *str) {
-            uint16_t bufferLength = this->length();
+            uint16_t bufferLength = m_len;
             uint16_t otherLength = (uint16_t) strlen(str);
 
-            for (int i = bufferLength; i < bufferLength + otherLength && i < capacity(); i++) {
+            for (uint16_t i = bufferLength; i < bufferLength + otherLength && i < capacity(); i++) {
                 m_buffer[i] = str[i - bufferLength];
             }
 
             m_len = (uint16_t) ceil(fmin(capacity(), (bufferLength + otherLength)));
 
-            m_buffer[length()] = '\0';
+            m_buffer[m_len] = '\0';
 
             return *this;
         }
@@ -287,15 +285,15 @@ namespace wlp {
          * @return the modified String
          */
         StaticString<tSize> &erase(uint16_t pos = 0){
-            if (length() == 0 || pos >= length()) return *this;
+            if (m_len == 0 || pos >= m_len) return *this;
 
             --m_len;
 
-            for (int i = pos; i < length(); ++i) {
+            for (uint16_t i = pos; i < m_len; ++i) {
                 m_buffer[i] = m_buffer[i+1];
             }
 
-            m_buffer[length()] = '\0';
+            m_buffer[m_len] = '\0';
             return *this;
         }
 
@@ -303,7 +301,7 @@ namespace wlp {
          * Deletes the last character in the String
          */
         void pop_back(){
-            if (length() == 0) return;
+            if (m_len == 0) return;
 
             --m_len;
             m_buffer[m_len] = '\0';
@@ -328,11 +326,11 @@ namespace wlp {
          * @return new string which is a substring of current string
          */
         StaticString<tSize> substr(uint16_t pos, uint16_t length) const {
-            if (pos >= this->length())
+            if (pos >= m_len)
                 return *this;
 
-            if (pos + length >= this->length())
-                length = this->length() - pos;
+            if (pos + length >= m_len)
+                length = m_len - pos;
 
             char newBuffer[length + 1];
 
