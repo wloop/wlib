@@ -1,7 +1,7 @@
 #ifndef TEMPLATE_DEFS_H
 #define TEMPLATE_DEFS_H
 
-#include <stdint.h>
+#include "Types.h"
 #include "stl/ChainMap.h"
 #include "stl/OpenMap.h"
 

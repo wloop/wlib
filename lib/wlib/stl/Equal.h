@@ -10,8 +10,7 @@
 #ifndef CORE_STL_EQUAL_H
 #define CORE_STL_EQUAL_H
 
-#include <stdint.h>
-
+#include "Types.h"
 #include "WlibConfig.h"
 #include "strings/StaticString.h"
 
@@ -34,7 +33,7 @@ namespace wlp {
         if (str1.length() != str2.length()) {
             return false;
         }
-        for (uint16_t i = 0; i < str1.length(); ++i) {
+        for (size_type i = 0; i < str1.length(); ++i) {
             if (str1[i] != str2[i]) {
                 return false;
             }

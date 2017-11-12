@@ -2,6 +2,7 @@
 #include "strings/StaticString.h"
 #include "stl/Equal.h"
 
+#include "Types.h"
 #include "../template_defs.h"
 
 using namespace wlp;
@@ -20,20 +21,20 @@ TEST(equals_test, test_string_equals) {
 }
 
 TEST(equals_test, test_static_string_equals) {
-	equals<StaticString<8>> comparator = equals<StaticString<8>>();
-	StaticString<8> str1{"darwin"};
-	StaticString<8> str2{"darwin"};
-	StaticString<8> str3{"money__\""};
-	StaticString<8> str4{"money__\""};
+	equals<String8> comparator = equals<String8>();
+	String8 str1{"darwin"};
+	String8 str2{"darwin"};
+	String8 str3{"money__\""};
+	String8 str4{"money__\""};
 	ASSERT_TRUE(comparator(str1, str2));
 	ASSERT_TRUE(comparator(str3, str4));
 }
 
 TEST(equals_test, test_static_string_unequal) {
-	equals<StaticString<8>> comparator = equals<StaticString<8>>();
-	StaticString<8> str1{"darwin"};
-	StaticString<8> str2{"money__\""};
-	StaticString<8> str3{"houses"};
+	equals<String8> comparator = equals<String8>();
+	String8 str1{"darwin"};
+	String8 str2{"money__\""};
+	String8 str3{"houses"};
 	ASSERT_FALSE(comparator(str1, str2));
 	ASSERT_FALSE(comparator(str2, str3));
 }
