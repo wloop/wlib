@@ -10,6 +10,7 @@ typedef uint16_t ui16;
 typedef ChainHashMap<String16, String16> string_map;
 typedef ChainHashMap<ui16, ui16> int_map;
 typedef int_map::iterator imi;
+typedef int_map::const_iterator cimi;
 typedef Pair<imi, bool> P_imi_b;
 typedef string_map::iterator smi;
 typedef Pair<smi, bool> P_smi_b;
@@ -373,4 +374,52 @@ TEST(chain_map_test, test_erase_key_cases) {
     ASSERT_TRUE(map.erase(k));
     k = 66;
     ASSERT_FALSE(map.erase(k));
+}
+
+TEST(chain_map_test, test_iterator_ctor) {
+    int_map map(10, 255);
+    map.insert(1, 5);
+    map.insert(2, 10);
+    map.insert(3, 15);
+    imi i1 = map.begin();
+    ASSERT_EQ(5, *i1);
+    cimi ci1;
+    const int_map const_map(move(map));
+    cimi ci2 = move(const_map.begin());
+    cimi ci3(ci2);
+    ASSERT_EQ(ci2, ci3);
+    string_map s_map(10, 255);
+    s_map.insert(String16("key"), String16("val"));
+    const string_map const_s_map(move(s_map));
+    string_map::const_iterator s_ci1 = const_s_map.begin();
+    ASSERT_EQ(3, s_ci1->length());
+    ci2 = move(const_map.begin());
+    ASSERT_EQ(5, *ci2);
+    ci3 = move(const_map.begin());
+    ci2 = ci3;
+    ASSERT_EQ(5, *ci2);
+}
+
+TEST(chain_map_test, test_at_const) {
+    int_map map(10, 255);
+    map.insert(1, 5);
+    map.insert(2, 10);
+    map.insert(3, 15);
+    const int_map const_map(move(map));
+    const int v = 3;
+    ASSERT_EQ(15, *const_map.at(v));
+    ASSERT_EQ(15, *const_map.find(v));
+}
+
+TEST(chain_map_test, test_move_assignment_op) {
+    int_map map(10, 255);
+    map.insert(1, 5);
+    map.insert(2, 10);
+    map.insert(3, 15);
+    int_map map1(10, 255);
+    map1 = move(map);
+    ASSERT_EQ(3, map1.size());
+    ASSERT_EQ(5, map1[1]);
+    ASSERT_EQ(10, map1[2]);
+    ASSERT_EQ(15, map1[3]);
 }

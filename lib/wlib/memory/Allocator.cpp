@@ -14,7 +14,7 @@
 
 #include "../Types.h"
 
-#include "../stl/Tmp.h"
+#include "../stl/Utility.h"
 
 
 wlp::Allocator::Allocator(uint16_t blockSize, uint16_t poolSize, wlp::Allocator::Type allocationType, void *pPool) :
@@ -85,6 +85,22 @@ wlp::Allocator::Allocator(Allocator &&allocator)
 }
 
 wlp::Allocator &wlp::Allocator::operator=(Allocator &&allocator) {
+    if (m_totalBlockCount > m_poolTotalBlockCnt) {
+        wlp::Allocator::Block *pBlock = nullptr;
+        while (m_pHead) {
+            pBlock = m_pHead;
+            if (pBlock) {
+                m_pHead = m_pHead->pNext;
+                if (!IsPoolBlock(pBlock)) {
+                    delete[] (char *) pBlock;
+                    --m_totalBlockCount;
+                }
+            }
+        }
+    }
+    if (m_poolType != Type::STATIC && m_pPool) {
+        delete[] (char *) m_pPool;
+    }
     m_poolType = move(allocator.m_poolType);
     m_blockSize = move(allocator.m_blockSize);
     m_poolSize = move(allocator.m_poolSize);

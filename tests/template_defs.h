@@ -3,6 +3,7 @@
 
 #include "Types.h"
 
+#include "stl/Utility.h"
 #include "stl/ChainMap.h"
 #include "stl/OpenMap.h"
 #include "stl/ArrayHeap.h"
@@ -120,6 +121,28 @@ namespace wlp {
 
     template
     class StaticString<16>;
+
+    template
+    class ArrayListIterator<int>;
+
+    template
+    class ArrayListIterator<const char *>;
+
+    template
+    class ArrayListConstIterator<int>;
+
+    template
+    class ArrayListConstIterator<const char *>;
+
+    template
+    struct Comparator<int>;
+
+    template
+    struct ReverseComparator<int>;
+
+    template
+    struct Comparator<String8>;
+
 }
 
 #endif // TEMPLATE_DEFS_H

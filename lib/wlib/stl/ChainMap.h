@@ -13,6 +13,7 @@
 #ifndef EMBEDDEDTESTS_CHAINMAP_H
 #define EMBEDDEDTESTS_CHAINMAP_H
 
+#include "Utility.h"
 #include "Equal.h"
 #include "Hash.h"
 #include "Pair.h"
@@ -122,7 +123,10 @@ namespace wlp {
         /**
          * Default constructor.
          */
-        ChainHashMapIterator() {}
+        ChainHashMapIterator()
+                : m_current(nullptr),
+                  m_hash_map(nullptr) {
+        }
 
         /**
          * Create an iterator to a ChainHashMap node.
@@ -273,7 +277,10 @@ namespace wlp {
         const node_type *m_current;
         const map_type *m_hash_map;
 
-        ChainHashMapConstIterator() {}
+        ChainHashMapConstIterator()
+                : m_current(nullptr),
+                  m_hash_map(nullptr) {
+        }
 
         ChainHashMapConstIterator(node_type *node, const map_type *map)
                 : m_current(node),
@@ -856,59 +863,6 @@ namespace wlp {
     }
 
     template<class Key, class Value, class Hasher, class Equals>
-    typename ChainHashMap<Key, Value, Hasher, Equals>::const_iterator &
-    ChainHashMap<Key, Value, Hasher, Equals>::erase(const_iterator &pos) {
-        const node_type *p_node = pos.m_current;
-        if (p_node) {
-            size_type i = hash(p_node->m_key);
-            node_type *c_node = m_buckets[i];
-            if (p_node->next) {
-                while (c_node != p_node) {
-                    c_node = c_node->next;
-                }
-                node_type *n_node = c_node->next;
-                c_node->m_key = n_node->m_key;
-                c_node->m_val = n_node->m_val;
-                c_node->next = n_node->next;
-                m_node_allocator.Deallocate(n_node);
-                --m_num_elements;
-                return pos;
-            } else {
-                if (c_node == p_node) {
-                    m_node_allocator.Deallocate(c_node);
-                    --m_num_elements;
-                    m_buckets[i] = nullptr;
-                    while (++i < m_capacity && !m_buckets[i]);
-                    if (i == m_capacity) {
-                        pos.m_current = nullptr;
-                        return pos;
-                    } else {
-                        pos.m_current = m_buckets[i];
-                        return pos;
-                    }
-                } else {
-                    while (c_node->next != p_node) {
-                        c_node = c_node->next;
-                    }
-                    m_node_allocator.Deallocate(c_node->next);
-                    --m_num_elements;
-                    c_node->next = nullptr;
-                    while (++i < m_capacity && !m_buckets[i]);
-                    if (i == m_capacity) {
-                        pos.m_current = nullptr;
-                        return pos;
-                    } else {
-                        pos.m_current = m_buckets[i];
-                        return pos;
-                    }
-                }
-            }
-        }
-        pos.m_current = nullptr;
-        return pos;
-    }
-
-    template<class Key, class Value, class Hasher, class Equals>
     bool ChainHashMap<Key, Value, Hasher, Equals>::erase(key_type &key) {
         size_type i = hash(key);
         node_type *first = m_buckets[i];
@@ -1090,6 +1044,9 @@ namespace wlp {
         m_capacity = move(map.m_capacity);
         m_max_load = move(map.m_max_load);
         m_buckets = move(map.m_buckets);
+        map.m_num_elements = 0;
+        map.m_capacity = 0;
+        map.m_buckets = nullptr;
         return *this;
     }
 

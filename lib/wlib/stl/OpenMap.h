@@ -15,6 +15,7 @@
 #ifndef CORE_STL_MAP_H
 #define CORE_STL_MAP_H
 
+#include "Utility.h"
 #include "Equal.h"
 #include "Hash.h"
 #include "Pair.h"
@@ -118,7 +119,9 @@ namespace wlp {
         /**
          * Default constructor.
          */
-        OpenHashMapIterator() {
+        OpenHashMapIterator()
+                : m_current(nullptr),
+                  m_hash_map(nullptr) {
         }
 
         /**
@@ -268,7 +271,9 @@ namespace wlp {
         const node_type *m_current;
         const map_type *m_hash_map;
 
-        OpenHashMapConstIterator() {
+        OpenHashMapConstIterator()
+                : m_current(nullptr),
+                  m_hash_map(nullptr) {
         }
 
         OpenHashMapConstIterator(node_type *node, const map_type *map)
@@ -818,51 +823,7 @@ namespace wlp {
             pos.m_current = nullptr;
             return pos;
         }
-        m_node_allocator.Deallocate(m_buckets[i]);
-        m_buckets[i] = nullptr;
-        while (++i < m_capacity && !m_buckets[i]);
-        node_type *next_node = i >= m_capacity ? nullptr : m_buckets[i];
-        node_type **new_buckets = static_cast<node_type **>(memory_alloc(m_capacity * sizeof(node_type *)));
-        for (size_type k = 0; k < m_capacity; k++) {
-            new_buckets[k] = nullptr;
-        }
-        for (size_type k = 0; k < m_capacity; k++) {
-            if (!m_buckets[k]) {
-                continue;
-            }
-            node_type *node = m_buckets[k];
-            size_type j = hash(node->m_key);
-            while (new_buckets[j]) {
-                if (++j >= m_capacity) {
-                    j = 0;
-                }
-            }
-            new_buckets[j] = node;
-        }
-        memory_free(m_buckets);
-        m_buckets = new_buckets;
-        pos.m_current = next_node;
-        return pos;
-    }
-
-    template<class Key, class Val, class Hasher, class Equals>
-    typename OpenHashMap<Key, Val, Hasher, Equals>::const_iterator &
-    OpenHashMap<Key, Val, Hasher, Equals>::erase(const_iterator &pos) {
-        const node_type *cur_node = pos.m_current;
-        if (!cur_node || pos.m_hash_map != this) {
-            pos.m_current = nullptr;
-            return pos;
-        }
-        size_type i = hash(cur_node->m_key);
-        while (m_buckets[i] && !m_equal(cur_node->m_key, m_buckets[i]->m_key)) {
-            if (++i >= m_capacity) {
-                i = 0;
-            }
-        }
-        if (!m_buckets[i]) {
-            pos.m_current = nullptr;
-            return pos;
-        }
+        --m_num_elements;
         m_node_allocator.Deallocate(m_buckets[i]);
         m_buckets[i] = nullptr;
         while (++i < m_capacity && !m_buckets[i]);
@@ -901,9 +862,13 @@ namespace wlp {
         if (!m_buckets[i]) {
             return false;
         }
+        --m_num_elements;
         m_node_allocator.Deallocate(m_buckets[i]);
         m_buckets[i] = nullptr;
         node_type **new_buckets = static_cast<node_type **>(memory_alloc(m_capacity * sizeof(node_type *)));
+        for (size_type k = 0; k < m_capacity; k++) {
+            new_buckets[k] = nullptr;
+        }
         for (size_type k = 0; k < m_capacity; k++) {
             if (!m_buckets[k]) {
                 continue;
@@ -1042,10 +1007,14 @@ namespace wlp {
     OpenHashMap<Key, Val, Hasher, Equals>::operator=(OpenHashMap<Key, Val, Hasher, Equals> &&map) {
         clear();
         memory_free(m_buckets);
+        m_node_allocator = move(map.m_node_allocator);
         m_capacity = move(map.m_capacity);
         m_max_load = move(map.m_max_load);
         m_num_elements = move(map.m_num_elements);
         m_buckets = move(map.m_buckets);
+        map.m_capacity = 0;
+        map.m_num_elements = 0;
+        map.m_buckets = nullptr;
         return *this;
     }
 

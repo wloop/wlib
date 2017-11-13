@@ -252,3 +252,114 @@ TEST(open_map_test, test_rehash) {
 		ASSERT_EQ(*map.find(keys[i]), values[i]);
 	}
 }
+
+TEST(open_map_test, test_clear_map) {
+    int_map map(20, 90);
+    map[0] = 0;
+    map[1] = 10;
+    map[2] = 20;
+    map[3] = 30;
+    map[4] = 40;
+    map[115] = 2115;
+    map[226] = 2216;
+    map[337] = 2317;
+    map[448] = 2418;
+    ASSERT_EQ(9, map.size());
+    map.clear();
+    ASSERT_EQ(0, map.size());
+    ASSERT_EQ(20, map.capacity());
+    ASSERT_EQ(map.begin(), map.end());
+}
+
+TEST(open_map_test, test_insert_or_assign_collision) {
+    int_map map(20, 90);
+    map[0] = 0;
+    map[20] = 20;
+    map[40] = 40;
+    P_imi_b r1 = map.insert_or_assign(40, 45);
+    ASSERT_FALSE(r1.second());
+    ASSERT_EQ(45, map[40]);
+}
+
+TEST(open_map_test, test_erase_iterator_invalid_iterator) {
+    int_map map(20, 90);
+    int_map::iterator it;
+    map.erase(it);
+    ASSERT_EQ(map.end(), it);
+}
+
+TEST(open_map_test, test_erase_iterator_invalid_node) {
+    int_map map(10, 90);
+    map[0] = 0;
+    map[1] = 10;
+    map[2] = 20;
+    int_map::node_type invalid_node;
+    invalid_node.m_key = 10;
+    invalid_node.m_val = 100;
+    int_map::iterator it;
+    it.m_current = &invalid_node;
+    it.m_hash_map = &map;
+    ASSERT_EQ(map.end(), map.erase(it));
+}
+
+TEST(open_map_test, test_erase_iterator_rehash) {
+    int_map map(10, 90);
+    map[8] = 80;
+    map[88] = 880;
+    map[28] = 280;
+    map[38] = 380;
+    map[48] = 480;
+    ASSERT_EQ(10, map.capacity());
+    ASSERT_EQ(5, map.size());
+    imi it = map.begin();
+    it = map.erase(it);
+    ASSERT_EQ(380, *it);
+    ASSERT_EQ(4, map.size());
+    ASSERT_EQ(10, map.capacity());
+}
+
+TEST(open_map_test, test_erase_nonexisting_key) {
+    int_map map(10, 90);
+    map[8] = 80;
+    map[88] = 880;
+    uint16_t k = 28;
+    ASSERT_FALSE(map.erase(k));
+}
+
+TEST(open_map_test, test_erase_key_rehash) {
+    int_map map(10, 90);
+    map[8] = 80;
+    map[88] = 880;
+    map[28] = 280;
+    map[38] = 380;
+    map[48] = 480;
+    ASSERT_EQ(10, map.capacity());
+    ASSERT_EQ(5, map.size());
+    uint16_t k = 28;
+    ASSERT_TRUE(map.erase(k));
+    ASSERT_EQ(4, map.size());
+    ASSERT_EQ(10, map.capacity());
+}
+
+TEST(open_map_test, test_move_assignment) {
+    int_map map(10, 90);
+    map[8] = 80;
+    map[88] = 880;
+    map[28] = 280;
+    map[38] = 380;
+    map[48] = 480;
+    int_map map1(12, 91);
+    map1 = move(map);
+    ASSERT_EQ(0, map.size());
+    ASSERT_EQ(0, map.capacity());
+    ASSERT_EQ(5, map1.size());
+    ASSERT_EQ(10, map1.capacity());
+    ASSERT_EQ(90, map1.max_load());
+    imi it = map1.begin();
+    uint16_t expected_traverse[] = {280, 380, 480, 80, 880};
+    for (size_type i = 0; i < 5; i++) {
+        ASSERT_EQ(expected_traverse[i], *it);
+        ++it;
+    }
+    ASSERT_EQ(map1.end(), it);
+}

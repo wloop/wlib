@@ -1,4 +1,3 @@
-
 /**
  * @file static_string_check.cpp
  * @brief Unit Testing for StaticString class present in Wlib library

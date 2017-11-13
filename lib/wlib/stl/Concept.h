@@ -65,7 +65,7 @@ namespace wlp {
 
     /**
      * Comparator concept defines a type that implements
-     * the six rich comparison operators for a comparison type.
+     * the six rich comparison operators for a type.
      *
      * @tparam C comparator type
      * @tparam CmpType the compared type

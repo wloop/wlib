@@ -13,7 +13,9 @@
 #ifndef EMBEDDEDCPLUSPLUS_ARRAYLIST_H
 #define EMBEDDEDCPLUSPLUS_ARRAYLIST_H
 
-#include "Tmp.h"
+#include "Utility.h"
+
+#include "../Types.h"
 
 #include "../memory/Memory.h"
 
@@ -30,7 +32,7 @@ namespace wlp {
     template<typename T>
     class ArrayListIterator {
     public:
-        typedef wlp::size_type size_type;
+        typedef uint16_t size_type;
         typedef T val_type;
         typedef ArrayList<T> array_list;
         typedef ArrayListIterator<T> iterator;
@@ -112,8 +114,6 @@ namespace wlp {
         void check_bounds() {
             if (m_i > m_list->m_size) {
                 m_i = m_list->m_size;
-            } else if (m_i < 0) {
-                m_i = 0;
             }
         }
 
@@ -171,7 +171,7 @@ namespace wlp {
          * @return reference to this iterator
          */
         iterator &operator+=(const size_type &d) {
-            m_i += d;
+            m_i = (size_type) (m_i + d);
             if (m_i > m_list->m_size) {
                 m_i = m_list->m_size;
             }
@@ -187,7 +187,7 @@ namespace wlp {
          * @return reference to this iterator
          */
         iterator &operator+=(size_type &&d) {
-            m_i += d;
+            m_i = (size_type) (m_i + d);
             if (m_i > m_list->m_size) {
                 m_i = m_list->m_size;
             }
@@ -231,7 +231,7 @@ namespace wlp {
             if (d >= m_i) {
                 m_i = 0;
             } else {
-                m_i -= d;
+                m_i = (size_type) (m_i - d);
             }
             return *this;
         }
@@ -247,7 +247,7 @@ namespace wlp {
             if (d >= m_i) {
                 m_i = 0;
             } else {
-                m_i -= d;
+                m_i = (size_type) (m_i - d);
             }
             return *this;
         }
@@ -361,9 +361,9 @@ namespace wlp {
          */
         size_type operator-(const iterator &it) const {
             if (m_i < it.m_i) {
-                return it.m_i - m_i;
+                return (size_type) (it.m_i - m_i);
             }
-            return m_i - it.m_i;
+            return (size_type) (m_i - it.m_i);
         }
 
         /**
@@ -375,9 +375,9 @@ namespace wlp {
          */
         size_type operator-(iterator &&it) const {
             if (m_i < it.m_i) {
-                return it.m_i - m_i;
+                return (size_type) (it.m_i - m_i);
             }
-            return m_i - it.m_i;
+            return (size_type) (m_i - it.m_i);
         }
     };
 
@@ -435,8 +435,6 @@ namespace wlp {
         void check_bounds() {
             if (m_i > m_list->m_size) {
                 m_i = m_list->m_size;
-            } else if (m_i < 0) {
-                m_i = 0;
             }
         }
 
@@ -465,7 +463,7 @@ namespace wlp {
         }
 
         const_iterator &operator+=(const size_type &d) {
-            m_i += d;
+            m_i = (size_type) (m_i + d);
             if (m_i > m_list->m_size) {
                 m_i = m_list->m_size;
             }
@@ -473,7 +471,7 @@ namespace wlp {
         }
 
         const_iterator &operator+=(size_type &&d) {
-            m_i += d;
+            m_i = (size_type) (m_i + d);
             if (m_i > m_list->m_size) {
                 m_i = m_list->m_size;
             }
@@ -481,6 +479,9 @@ namespace wlp {
         }
 
         const_iterator &operator--() {
+            if (m_i == 0) {
+                return *this;
+            }
             --m_i;
             return *this;
         }
@@ -495,7 +496,7 @@ namespace wlp {
             if (d >= m_i) {
                 m_i = 0;
             } else {
-                m_i -= d;
+                m_i = (size_type) (m_i - d);
             }
             return *this;
         }
@@ -504,7 +505,7 @@ namespace wlp {
             if (d >= m_i) {
                 m_i = 0;
             } else {
-                m_i -= d;
+                m_i = (size_type) (m_i - d);
             }
             return *this;
         }
@@ -555,16 +556,16 @@ namespace wlp {
 
         size_type operator-(const const_iterator &it) const {
             if (m_i < it.m_i) {
-                return it.m_i - m_i;
+                return (size_type) (it.m_i - m_i);
             }
-            return m_i - it.m_i;
+            return (size_type) (m_i - it.m_i);
         }
 
         size_type operator-(const_iterator &&it) const {
             if (m_i < it.m_i) {
-                return it.m_i - m_i;
+                return (size_type) (it.m_i - m_i);
             }
-            return m_i - move(it.m_i);
+            return (size_type) (m_i - move(it.m_i));
         }
     };
 
@@ -634,6 +635,39 @@ namespace wlp {
         }
 
         /**
+         * Constructor from array. The caller may specify
+         * a desired initial capacity, but if the capacity is
+         * shorter than the length, then the capacity will be
+         * set to the length of the array.
+         *
+         * @param values array of values
+         * @param length length of the array
+         */
+        ArrayList(const val_type *values, size_type length, size_type initial_capacity)
+                : m_size(length),
+                  m_capacity(initial_capacity) {
+            if (m_capacity < length) {
+                m_capacity = length;
+            }
+            init_array(m_capacity);
+            for (size_type i = 0; i < length; i++) {
+                m_data[i] = values[i];
+            }
+        }
+
+        /**
+         * Constructor from array. This constructor will set
+         * the backing array capacity to be equal to the
+         * array length.
+         *
+         * @param values array of values
+         * @param length length of the array
+         */
+        ArrayList(const val_type *values, size_type length)
+                : ArrayList(values, length, length) {
+        }
+
+        /**
          * Free the memory for the array unless
          * it has already been deallocated elsewhere.
          */
@@ -669,9 +703,6 @@ namespace wlp {
                 return;
             }
             i %= m_size;
-            if (i < 0) {
-                i += m_size;
-            }
         }
 
         /**
@@ -939,38 +970,6 @@ namespace wlp {
         }
 
         /**
-         * Insert an element at the position pointed to by
-         * the iterator.
-         *
-         * @param it iterator to the inserted position
-         * @param t element to insert
-         * @return iterator to the inserted element
-         */
-        const_iterator insert(const_iterator &it, const val_type &t) {
-            ensure_capacity();
-            shift_right(it.m_i);
-            m_data[it.m_i] = t;
-            ++m_size;
-            return it;
-        }
-
-        /**
-         * Insert an element at the position pointed to by
-         * the iterator.
-         *
-         * @param it iterator to the inserted position
-         * @param t element to insert
-         * @return iterator to the inserted element
-         */
-        const_iterator insert(const_iterator &it, val_type &&t) {
-            ensure_capacity();
-            shift_right(it.m_i);
-            m_data[it.m_i] = t;
-            ++m_size;
-            return it;
-        }
-
-        /**
          * Remove the element at the specified position.
          *
          * @param i position whose element to erase.
@@ -982,6 +981,7 @@ namespace wlp {
             }
             normalize(i);
             shift_left(i);
+            --m_size;
             return iterator(i, this);
         }
 
@@ -992,25 +992,12 @@ namespace wlp {
          * @return iterator to the next element in the list
          */
         iterator erase(iterator &it) {
-            if (m_size == 0) {
+            if (m_size == 0 || it.m_i >= m_size) {
                 return end();
             }
             shift_left(it.m_i);
+            --m_size;
             return it;
-        }
-
-        /**
-         * Remove the element at the specified position.
-         *
-         * @param it position whose element to erase.
-         * @return iterator to the next element in the list
-         */
-        iterator erase(const_iterator &it) {
-            if (m_size == 0) {
-                return end();
-            }
-            shift_left(it.m_i);
-            return iterator(it.m_i, this);
         }
 
         /**
@@ -1079,6 +1066,9 @@ namespace wlp {
             m_data = move(list.m_data);
             m_size = move(list.m_size);
             m_capacity = move(list.m_capacity);
+            list.m_data = nullptr;
+            list.m_size = 0;
+            list.m_capacity = 0;
             return *this;
         }
 
@@ -1115,6 +1105,9 @@ namespace wlp {
 
     template<typename T>
     void ArrayList<T>::shrink() {
+        if (m_size == m_capacity) {
+            return;
+        }
         val_type *new_data = static_cast<val_type *>(memory_alloc(m_size * sizeof(val_type)));
         for (size_type i = 0; i < m_size; i++) {
             new_data[i] = m_data[i];
@@ -1126,8 +1119,8 @@ namespace wlp {
 
     template<typename T>
     inline void ArrayList<T>::shift_right(size_type i) {
-        for (size_type j = static_cast<size_type>(m_size - 1); j >= i; j--) {
-            m_data[j + 1] = m_data[j];
+        for (size_type j = m_size; j > i; j--) {
+            m_data[j] = m_data[j - 1];
         }
     }
 

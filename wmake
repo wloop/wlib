@@ -277,6 +277,10 @@ _simple() {
         if ! [ $# -eq 2 ] || [ "$2" != 'notest' ]; then
             _test
         fi
+    elif [ "$1" == 'clcov' ]; then
+        echo "Rebuilding and coverage"
+        _clean
+        _coverage
     else
         _print_help
     fi

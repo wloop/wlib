@@ -17,7 +17,7 @@
 #ifndef EMBEDDEDCPLUSPLUS_TMP_H
 #define EMBEDDEDCPLUSPLUS_TMP_H
 
-#include "../Wlib.h"
+#include "../Types.h"
 
 namespace wlp {
 
@@ -491,41 +491,6 @@ namespace wlp {
      */
     template<typename T>
     using decay_type = typename decay<T>::type;
-
-    /**
-     * Move function for move semantics. Transforms a universal type
-     * to an rvalue.
-     * @tparam T universal type
-     * @param t type value
-     * @return rvalue of the type
-     */
-    template<typename T>
-    constexpr typename remove_reference<T>::type &&move(T &&t) noexcept {
-        return static_cast<typename remove_reference<T>::type &&>(t);
-    }
-
-    /**
-     * Forward consumes either an lvalue and rvalue and returns a universal
-     * rvalue type that maintains its properties. This overloads for lvalues.
-     * @tparam T lvalue type
-     * @param t type value
-     * @return rvalue capture
-     */
-    template<typename T>
-    constexpr T &&forward(typename remove_reference<T>::type &t) noexcept {
-        return static_cast<T &&>(t);
-    }
-
-    /**
-     * Overloads for rvalues.
-     * @tparam T rvalue type
-     * @param t type value
-     * @return rvalue capture
-     */
-    template<typename T>
-    constexpr T &&forward(typename remove_reference<T>::type &&t) noexcept {
-        return static_cast<T &&>(t);
-    }
 
     /**
      * Enable if is a template helper that can be used
