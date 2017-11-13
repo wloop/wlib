@@ -1,10 +1,10 @@
 /**
  * @file StaticAllocatorPool.h
  * @brief Template class to create static memory pools
- * 
+ *
  * This class is a generalization of the @code Allocator @endcode class and can be used for
  * convenience
- * 
+ *
  * @author Deep Dhillon
  * @date November 11, 2017
  * @bug No known bugs

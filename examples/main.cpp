@@ -10,5 +10,5 @@
  * @bug No known bugs
  */
 
-int main(){
+int main() {
 }

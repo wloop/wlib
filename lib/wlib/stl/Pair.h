@@ -16,6 +16,8 @@
 #ifndef EMBEDDEDTESTS_PAIR_H
 #define EMBEDDEDTESTS_PAIR_H
 
+#include "Tmp.h"
+
 namespace wlp {
 
     template<class First, class Second>
@@ -24,7 +26,6 @@ namespace wlp {
         typedef Second second_type;
         typedef Pair<First, Second> pair;
 
-    private:
         /**
          * First element in the pair.
          */
@@ -34,11 +35,24 @@ namespace wlp {
          */
         second_type m_second;
 
-    public:
         /**
          * Default constructor creates an empty pair.
          */
         Pair() {};
+
+        /**
+         * Copy constructor for const reference.
+         * @param pair pair to copy
+         */
+        Pair(pair const & pair)
+                : m_first(pair.m_first), m_second(pair.m_second) {}
+
+        /**
+         * Copy constructor for R-value.
+         * @param pair temporary pair to copy
+         */
+        Pair(pair && pair)
+                : m_first(move(pair.m_first)), m_second(move(pair.m_second)) {}
 
         /**
          * Create a pair from two values of first type and second type.
@@ -50,14 +64,28 @@ namespace wlp {
         /**
          * @return the first value in the pair
          */
-        first_type first() {
+        first_type &first() {
             return m_first;
         }
 
         /**
          * @return the second value in the pair
          */
-        second_type second() {
+        second_type &second() {
+            return m_second;
+        }
+
+        /**
+         * @return unmodifiable first value in the pair
+         */
+        first_type const &first() const {
+            return m_first;
+        }
+
+        /**
+         * @return unmodifiable second value in the pair
+         */
+        second_type const &second() const {
             return m_second;
         }
 
@@ -80,6 +108,17 @@ namespace wlp {
         pair &operator=(pair &p) {
             m_first = p.m_first;
             m_second = p.m_second;
+            return *this;
+        }
+
+        /**
+         * R-value assignment operator.
+         * @param p temporary pair to copy
+         * @return a reference to this pair
+         */
+        pair &operator=(pair &&p) {
+            m_first = move(p.m_first);
+            m_second = move(p.m_second);
             return *this;
         }
 
