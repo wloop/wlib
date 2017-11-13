@@ -35,9 +35,9 @@ namespace wlp {
         typedef ChainHashMap<Key, Key, Hash, Equal> map_type;
         typedef ChainHashMapIterator<Key, Key, Hash, Equal> iterator;
         typedef ChainHashMapConstIterator<Key, Key, Hash, Equal> const_iterator;
-        typedef map_type::size_type size_type;
-        typedef map_type::percent_type percent_type;
-        typedef map_type::key_type key_type;
+        typedef typename map_type::size_type size_type;
+        typedef typename map_type::percent_type percent_type;
+        typedef typename map_type::key_type key_type;
 
     private:
         map_type m_hash_map;
