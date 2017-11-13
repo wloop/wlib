@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/Tests.dir/strings/dynamic_string_check.cpp.o CMakeFiles/Tests.dir/strings/static_string_check.cpp.o  -o Tests -rdynamic ../gtest-1.8.0/libgtest.a ../gtest-1.8.0/libgtest_main.a ../wlib/libwlib.a ../gtest-1.8.0/libgtest.a -lpthread 

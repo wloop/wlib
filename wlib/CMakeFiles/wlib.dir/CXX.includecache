@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/Users/bobqy/Desktop/Waterloop/embedded-cplusplus/wlib/Wlib.h
+
+/mnt/c/Users/bobqy/Desktop/Waterloop/embedded-cplusplus/wlib/memory/Allocator.cpp
+Allocator.h
+/mnt/c/Users/bobqy/Desktop/Waterloop/embedded-cplusplus/wlib/memory/Allocator.h
+math.h
+/mnt/c/Users/bobqy/Desktop/Waterloop/embedded-cplusplus/wlib/memory/math.h
+string.h
+-
+../Wlib.h
+/mnt/c/Users/bobqy/Desktop/Waterloop/embedded-cplusplus/wlib/Wlib.h
+
+/mnt/c/Users/bobqy/Desktop/Waterloop/embedded-cplusplus/wlib/memory/Allocator.h
+stddef.h
+-
+stdint.h
+-
+
+/mnt/c/Users/bobqy/Desktop/Waterloop/embedded-cplusplus/wlib/memory/Memory.cpp
+string.h
+-
+Memory.h
+/mnt/c/Users/bobqy/Desktop/Waterloop/embedded-cplusplus/wlib/memory/Memory.h
+Allocator.h
+/mnt/c/Users/bobqy/Desktop/Waterloop/embedded-cplusplus/wlib/memory/Allocator.h
+
+/mnt/c/Users/bobqy/Desktop/Waterloop/embedded-cplusplus/wlib/memory/Memory.h
+stddef.h
+-
+
