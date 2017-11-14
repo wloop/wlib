@@ -15,14 +15,15 @@
 
 #include "Allocator.h"
 
-using namespace wlp;
+namespace wlp{
+    template<uint16_t tblockSize, uint16_t tnumBlocks>
+    class StaticAllocatorPool : public Allocator {
+    public:
+        StaticAllocatorPool() : Allocator(tblockSize, m_memory, tblockSize * tnumBlocks, Allocator::STATIC){}
+    private:
+        char m_memory[tblockSize * tnumBlocks];
+    };
+}
 
-template<uint16_t tblockSize, uint16_t tnumBlocks>
-class StaticAllocatorPool : public Allocator {
-public:
-    StaticAllocatorPool() : Allocator(tblockSize, m_memory, tblockSize * tnumBlocks, Allocator::STATIC){}
-private:
-    char m_memory[tblockSize * tnumBlocks];
-};
 
 #endif //FIXED_MEMORY_ALLOCATORPOOL_H
