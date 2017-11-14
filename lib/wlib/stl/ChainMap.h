@@ -109,7 +109,7 @@ namespace wlp {
 
         typedef Val val_type;
 
-        typedef uint16_t size_type;
+        typedef wlp::size_type size_type;
 
         /**
          * Pointer to the node referenced by this iterator.
@@ -272,7 +272,7 @@ namespace wlp {
 
         typedef Val val_type;
 
-        typedef uint16_t size_type;
+        typedef wlp::size_type size_type;
 
         const node_type *m_current;
         const map_type *m_hash_map;
@@ -360,7 +360,7 @@ namespace wlp {
         typedef Key key_type;
         typedef Val val_type;
 
-        typedef uint16_t size_type;
+        typedef wlp::size_type size_type;
         typedef uint8_t percent_type;
 
         friend struct ChainHashMapIterator<Key, Val, Hasher, Equals>;
