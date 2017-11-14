@@ -1,4 +1,3 @@
-
 /**
  * @file static_string_check.cpp
  * @brief Unit Testing for StaticString class present in Wlib library
@@ -9,10 +8,8 @@
  */
 
 #include "gtest/gtest.h"
-#include "strings/StaticString.h"
 
 #include "Types.h"
-#include "../template_defs.h"
 
 using namespace wlp;
 

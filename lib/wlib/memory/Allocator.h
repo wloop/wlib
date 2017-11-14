@@ -18,6 +18,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "../Wlib.h"
+
 namespace wlp {
     class Allocator {
     private:
@@ -36,6 +38,10 @@ namespace wlp {
             STATIC, /**< this is Stack memory */
             DYNAMIC /**< this is Heap memory */
         };
+
+        Allocator(const Allocator &) = delete;
+
+        Allocator(Allocator &&allocator);
 
         /**
          * Allocator used for allocating memory where memory is acquired by the allocator. It supports a pool
@@ -104,7 +110,7 @@ namespace wlp {
          * @param pBlockVoid memory block address being verified
          * @return true or false based on if the given block belongs to memory pool
          */
-        inline bool IsPoolBlock(void *pBlockVoid) {
+        inline bool IsPoolBlock(void *pBlockVoid) const {
             auto *pBlock = (Block *) pBlockVoid;
 
             if (!m_pPool)return false;
@@ -175,6 +181,10 @@ namespace wlp {
             return m_deallocations;
         }
 
+        Allocator &operator=(const Allocator &) = delete;
+
+        Allocator &operator=(Allocator &&allocator);
+
     private:
         /**
          * Private constructor creates Allocator based on the calls made by other constructor. For more
@@ -188,7 +198,7 @@ namespace wlp {
         explicit Allocator(uint16_t blockSize, uint16_t poolSize, Allocator::Type allocationType, void *pPool);
 
 
-        const Type m_poolType;
+        Type m_poolType;
         size_t m_blockSize;
         Block *m_pHead;
         Block *m_pPool;
