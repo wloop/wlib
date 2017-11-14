@@ -15,12 +15,10 @@
 
 #include "Allocator.h"
 
-using namespace wlp;
-
 template<uint16_t tblockSize, uint16_t tnumBlocks>
-class DynamicAllocatorPool : public Allocator {
+class DynamicAllocatorPool : public wlp::Allocator {
 public:
-    DynamicAllocatorPool() : Allocator(tblockSize, tblockSize * tnumBlocks) {}
+    DynamicAllocatorPool() : wlp::Allocator(tblockSize, tblockSize * tnumBlocks) {}
 };
 
 #endif //FIXED_MEMORY_ALLOCATORPOOL_H
