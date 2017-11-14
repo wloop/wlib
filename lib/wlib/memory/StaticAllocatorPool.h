@@ -15,12 +15,10 @@
 
 #include "Allocator.h"
 
-using namespace wlp;
-
 template<uint16_t tblockSize, uint16_t tnumBlocks>
-class StaticAllocatorPool : public Allocator {
+class StaticAllocatorPool : public wlp::Allocator {
 public:
-    StaticAllocatorPool() : Allocator(tblockSize, m_memory, tblockSize * tnumBlocks, Allocator::STATIC){}
+    StaticAllocatorPool() : wlp::Allocator(tblockSize, m_memory, tblockSize * tnumBlocks, Allocator::STATIC){}
 private:
     char m_memory[tblockSize * tnumBlocks];
 };
