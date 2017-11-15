@@ -4,7 +4,7 @@
  *
  * It provides setting, resetting, testing and flipping of bits
  *
- * @author Deep Dhillon
+ * @author Deep Dhillon, Jeff Niu
  * @date October 28, 2017
  * @bug No Known bugs
  */
