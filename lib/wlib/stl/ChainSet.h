@@ -100,7 +100,7 @@ namespace wlp {
         /**
          * @return a pointer to the backing hash map
          */
-        const map_type *get_backing_hash_map() const {
+        const map_type *get_backing_table() const {
             return &m_hash_map;
         }
 

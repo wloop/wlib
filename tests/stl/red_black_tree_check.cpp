@@ -140,6 +140,6 @@ TEST(rb_tree_test, test_insert_equal_and_range) {
     }
     ASSERT_EQ(0, tree.size());
     ASSERT_TRUE(tree.empty());
-    ASSERT_EQ(tree.begin(), tree.end());
+    ASSERT_TRUE(tree.begin() == tree.end());
 }
 

@@ -31,7 +31,7 @@ namespace wlp {
     template<typename T>
     class ArrayListIterator {
     public:
-        typedef uint16_t size_type;
+        typedef wlp::size_type size_type;
         typedef T val_type;
         typedef ArrayList<T> array_list;
         typedef ArrayListIterator<T> iterator;

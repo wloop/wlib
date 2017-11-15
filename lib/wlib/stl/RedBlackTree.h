@@ -1,3 +1,15 @@
+/**
+ * @file RedBlackTree.h
+ * @brief Red black tree implementation.
+ *
+ * Implements a red black tree structure for use in other
+ * data structures using non-recursive methods.
+ *
+ * @author Jeff Niu
+ * @date November 12, 2017
+ * @bug No known bugs
+ */
+
 #ifndef EMBEDDEDCPLUSPLUS_REDBLACKTREE_H
 #define EMBEDDEDCPLUSPLUS_REDBLACKTREE_H
 
@@ -11,12 +23,30 @@
 
 namespace wlp {
 
+    /**
+     * Tree node color, either red or black.
+     */
     struct RedBlackTreeColor {
+        /**
+         * Color type.
+         */
         typedef bool type;
+        /**
+         * Red node.
+         */
         static constexpr type RED = false;
+        /**
+         * Black node.
+         */
         static constexpr type BLACK = true;
     };
 
+    /**
+     * Tree node contains the node key and value.
+     *
+     * @tparam Key key type
+     * @tparam Val value type
+     */
     template<typename Key, typename Val>
     struct RedBlackTreeNode {
         typedef RedBlackTreeNode<Key, Val> node_type;
@@ -28,15 +58,39 @@ namespace wlp {
 
 
     public:
+        /**
+         * The node color.
+         */
         color m_color;
 
+        /**
+         * Node parent.
+         */
         node_type *m_parent;
+        /**
+         * Left child node.
+         */
         node_type *m_left;
+        /**
+         * Right child node.
+         */
         node_type *m_right;
 
+        /**
+         * Node key, used for ordering and comparisons.
+         */
         key_type m_key;
+        /**
+         * Node value, accessed using the node key.
+         */
         val_type m_val;
 
+        /**
+         * Obtain the minimum key node starting from the given node.
+         *
+         * @param node from which to find the minimum
+         * @return pointer to the node with the smallest key
+         */
         static node_type *find_minimum(node_type *node) {
             while (node->m_left) {
                 node = node->m_left;
@@ -44,6 +98,12 @@ namespace wlp {
             return node;
         }
 
+        /**
+         * Obtain the maximum key node starting from the given node.
+         *
+         * @param node from which to find the maximum
+         * @return pointer to the node with the largest key
+         */
         static node_type *find_maximum(node_type *node) {
             while (node->m_right) {
                 node = node->m_right;
@@ -52,30 +112,66 @@ namespace wlp {
         }
     };
 
-    template<typename Key, typename Val>
+    /**
+     * Tree iterator class, templated to enable constant and non-constant
+     * derived types. This class should not be used directly.
+     *
+     * @tparam Key the node key type
+     * @tparam Val the node value type
+     * @tparam Ref reference to value type, which may be a constant reference
+     * @tparam Ptr pointer to value type, which may be a constant pointer
+     */
+    template<typename Key, typename Val, typename Ref, typename Ptr>
     struct RedBlackTreeIterator {
         typedef RedBlackTreeNode<Key, Val> node_type;
-        typedef RedBlackTreeIterator<Key, Val> iterator;
+        typedef RedBlackTreeIterator<Key, Val, Val &, Val *> iterator;
+        typedef RedBlackTreeIterator<Key, Val, const Val &, const Val *> const_iterator;
         typedef RedBlackTreeColor color;
+        typedef Ref reference;
+        typedef Ptr pointer;
         typedef Key key_type;
         typedef Val val_type;
 
-        node_type *m_node;
+    private:
+        typedef RedBlackTreeIterator<Key, Val, Ref, Ptr> self_type;
 
     public:
+        /**
+         * The tree node pointed to by this iterator.
+         */
+        node_type *m_node;
+
+        /**
+         * Constructor from node.
+         *
+         * @param node to point to
+         */
         RedBlackTreeIterator(node_type *node)
                 : m_node(node) {
         }
 
-        RedBlackTreeIterator(const iterator &it)
+        /**
+         * Constructor from constant reference.
+         *
+         * @param it iterator to copy
+         */
+        RedBlackTreeIterator(const self_type &it)
                 : m_node(it.m_node) {
         }
 
-        RedBlackTreeIterator(iterator &&it)
+        /**
+         * Move constructor.
+         *
+         * @param it iterator to move
+         */
+        RedBlackTreeIterator(self_type &&it)
                 : m_node(move(it.m_node)) {
             it.m_node = nullptr;
         }
 
+        /**
+         * Move the iterator to the next ordered node in the tree.
+         */
         void increment() {
             if (m_node->m_right) {
                 m_node = m_node->m_right;
@@ -94,6 +190,9 @@ namespace wlp {
             }
         }
 
+        /**
+         * Move the iterator to the previous ordered node in the tree.
+         */
         void decrement() {
             if (m_node->m_color == color::RED && m_node->m_parent->m_parent == m_node) {
                 m_node = m_node->m_right;
@@ -113,58 +212,135 @@ namespace wlp {
             }
         }
 
-        bool operator==(const iterator &it) const {
+        /**
+         * Iterator equality operator.
+         *
+         * @param it iterator to compare
+         * @return true if they point to the same node
+         */
+        bool operator==(const self_type &it) const {
             return m_node == it.m_node;
         }
 
-        bool operator==(iterator &&it) const {
-            return m_node == it.m_node;
-        }
-
-        bool operator!=(const iterator &it) const {
+        /**
+         * Iterator inequality operator.
+         *
+         * @param it iterator to compare
+         * @return true if they point to different nodes
+         */
+        bool operator!=(const self_type &it) const {
             return m_node != it.m_node;
         }
 
-        bool operator!=(iterator &&it) const {
-            return m_node != it.m_node;
-        }
-
-        val_type &operator*() const {
+        /**
+         * Deference operator.
+         *
+         * @return reference to the value of the node
+         * pointed to by the iterator
+         */
+        reference operator*() const {
             return m_node->m_val;
         }
 
-        val_type *operator->() const {
+        /**
+         * Pointer operator.
+         *
+         * @return pointer to the value of the node
+         * pointer to by the iterator
+         */
+        pointer operator->() const {
             return &m_node->m_val;
         }
 
-        iterator &operator++() {
+        /**
+         * Prefix increment operator moves the iterator to the next
+         * ordered node in the tree, or pass-the-end if the
+         * iterator has reached the rightmost end of the tree.
+         *
+         * @return reference to this iterator
+         */
+        self_type &operator++() {
             increment();
             return *this;
         }
 
-        iterator operator++(int) {
+        /**
+         * Postfix increment operator moves the iterator to the next
+         * ordered node in the tree, or pass-the-end if the
+         * iterator has reached the rightmost end of the tree.
+         *
+         * @return a copy of the iterator before the increment
+         */
+        self_type operator++(int) {
             iterator tmp = *this;
             increment();
             return tmp;
         }
 
-        iterator &operator--() {
+        /**
+         * Prefix decrement operator moves the iterator to the previous
+         * ordered node in the tree. Iterator does not move past the begin.
+         *
+         * @return reference to this iterator
+         */
+        self_type &operator--() {
             decrement();
             return *this;
         }
 
-        iterator operator--(int) {
+        /**
+         * Postfix decrement operator moves the iterator to the previous
+         * ordered node in the tree. Iterator does not move past the begin.
+         *
+         * @return a copy of the iterator before the increment
+         */
+        self_type operator--(int) {
             iterator tmp = *this;
             decrement();
             return tmp;
         }
 
-        key_type &key() const {
+        /**
+         * @return a reference to the key contained by the iterator node
+         */
+        const key_type &key() const {
             return m_node->m_key;
+        }
+
+        /**
+         * Copy assignment operator.
+         *
+         * @param it iterator to assign
+         * @return reference to this iterator
+         */
+        self_type &operator=(const self_type &it) {
+            m_node = it.m_node;
+            return *this;
+        }
+
+        /**
+         * Move assignment operator.
+         *
+         * @param it iterator to move
+         * @return reference to this iterator
+         */
+        self_type &operator=(self_type &&it) {
+            m_node = move(it.m_node);
+            it.m_node = nullptr;
+            return *this;
         }
     };
 
-    template<typename Key, typename Val, typename Cmp = Comparator<Key>>
+    /**
+     * Red black tree implementation, designed for use in associative
+     * container implementation, e.g. @code Map @endcode and @code Set @endcode.
+     * The insertion and deletion operations are based on those in CLRS.
+     *
+     * @tparam Key node key type
+     * @tparam Val node value type
+     * @tparam Cmp key comparator type, which uses the default comparator
+     */
+    template<typename Key, typename Val, typename Cmp = Comparator <Key>>
     class RedBlackTree {
     public:
         typedef Key key_type;
@@ -173,20 +349,45 @@ namespace wlp {
         typedef wlp::size_type size_type;
         typedef RedBlackTreeNode<Key, Val> node_type;
         typedef RedBlackTree<Key, Val, Cmp> tree_type;
-        typedef RedBlackTreeIterator<Key, Val> iterator;
+        typedef RedBlackTreeIterator<Key, Val, Val &, Val *> iterator;
+        typedef RedBlackTreeIterator<Key, Val, const Val &, const Val *> const_iterator;
 
     protected:
         typedef RedBlackTreeColor color;
 
+        /**
+         * Class allocator instance used to allocate nodes.
+         */
         Allocator m_node_allocator;
+        /**
+         * Header node, which maintains reference to the leftmost node,
+         * the rightmost node, and the root node.
+         */
         node_type *m_header;
+        /**
+         * The number of nodes currently in the tree.
+         */
         size_type m_size;
+        /**
+         * Class comparator instance.
+         */
         comparator m_cmp;
 
+        /**
+         * Allocate a new node.
+         *
+         * @return pointer to the new node
+         */
         node_type *create_node() {
             return static_cast<node_type *>(m_node_allocator.Allocate());
         }
 
+        /**
+         * Copy the contents of a node except for its paremt.
+         *
+         * @param node the tree node to copy
+         * @return a copy of the node
+         */
         node_type *copy_node(node_type *node) {
             node_type *copy = create_node();
             copy->m_key = node->m_key;
@@ -197,16 +398,52 @@ namespace wlp {
             return copy;
         }
 
+        /**
+         * Deallocate the given node.
+         *
+         * @param node node to deallocate
+         */
         void destroy_node(node_type *node) {
             m_node_allocator.Deallocate(node);
         }
 
+        /**
+         * Perform red-black tree left rotation of the specified
+         * node about the specified root.
+         *
+         * @param node the node to rotate
+         * @param root the rotate root node
+         */
         void rotateLeft(node_type *node, node_type *&root);
 
+        /**
+         * Perform red-black tree right rotation of the specified
+         * node about the specified root.
+         *
+         * @param node the node to rotate
+         * @param root the rotate root node
+         */
         void rotateRight(node_type *node, node_type *&root);
 
+        /**
+         * Perform red-black tree rebalance of a potentially
+         * erroneous node starting from the given root.
+         *
+         * @param node the node to rebalance
+         * @param root the rebalance root node
+         */
         void rebalance(node_type *node, node_type *&root);
 
+        /**
+         * Rebalance for erasure the given node. The node is eliminated
+         * from the tree during the rebalance and is prepared for deletion.
+         *
+         * @param node      the node to delete
+         * @param root      the root node in the tree
+         * @param leftmost  the leftmost node in the tree
+         * @param rightmost the right most node in the tree
+         * @return a pointer to the node that can be deleted
+         */
         node_type *eraseRebalance(
                 node_type *node,
                 node_type *&root,
@@ -214,10 +451,30 @@ namespace wlp {
                 node_type *&rightmost
         );
 
+        /**
+         * Insert a given node at the pivot position, which will become
+         * the parent node of the inserted node.
+         *
+         * @param node the node to insert
+         * @param piv  the insertion pivot node
+         * @param key  the key to insert
+         * @param val  the value to insert
+         * @return iterator to the inserted node
+         */
         iterator insert(node_type *node, node_type *piv, const key_type &key, const val_type &val);
 
-        void erase(node_type *node);
+        /**
+         * Delete the supplied node from the tree and all
+         * nodes beneath it.
+         *
+         * @param root the node to delete
+         */
+        void erase(node_type *root);
 
+        /**
+         * Initialize the tree as empty, where the header
+         * node children are itself and the parent is null.
+         */
         void empty_initialize() {
             m_header->m_color = color::RED;
             m_header->m_parent = nullptr;
@@ -226,6 +483,11 @@ namespace wlp {
         }
 
     public:
+        /**
+         * Create an empty red black tree.
+         *
+         * @param n reserved space for nodes
+         */
         RedBlackTree(size_type n = 12)
                 : m_node_allocator(sizeof(node_type), n * sizeof(node_type)),
                   m_header(nullptr),
@@ -235,32 +497,94 @@ namespace wlp {
             empty_initialize();
         }
 
-        ~RedBlackTree() {
-            clear();
-            destroy_node(m_header);
+        /**
+         * Disable copy construction.
+         */
+        RedBlackTree(const tree_type &) = delete;
+
+        /**
+         * Move constructor.
+         *
+         * @param tree tree to move
+         */
+        RedBlackTree(tree_type &&tree)
+                : m_node_allocator(move(tree.m_node_allocator)),
+                  m_header(move(tree.m_header)),
+                  m_size(move(tree.m_size)),
+                  m_cmp() {
+            tree.m_header = nullptr;
+            tree.m_size = 0;
         }
 
+        /**
+         * Destructor.
+         */
+        ~RedBlackTree() {
+            clear();
+            if (m_header) {
+                destroy_node(m_header);
+            }
+        }
+
+        /**
+         * @return an iterator to the leftmost node in the tree
+         */
         iterator begin() {
             return iterator(m_header->m_left);
         }
 
+        /**
+         * @return a const iterator to the leftmost node in the tree
+         */
+        const_iterator begin() const {
+            return const_iterator(m_header->m_left);
+        }
+
+        /**
+         * @return an iterator to the header node, which is the
+         * pass-the-end node after the rightmost node
+         */
         iterator end() {
             return iterator(m_header);
         }
 
+        /**
+         * @return a const iterator to the header node, which is the
+         * pass-the-end node after the rightmost node
+         */
+        const_iterator end() const {
+            return const_iterator(m_header);
+        }
+
+        /**
+         * @return whether the tree has no nodes
+         */
         bool empty() const {
             return m_size == 0;
         }
 
+        /**
+         * @return the number of nodes in the tree
+         */
         size_type size() const {
             return m_size;
         }
 
+        /**
+         * The maximum number of nodes that can be held in the
+         * tree. The tree is not intrinsically limited by any limit
+         * except that its size cannot exceed the defined size type.
+         *
+         * @return the maximum value of size_type
+         */
         size_type capacity() const {
             return static_cast<size_type>(-1);
         }
 
-        void clear() {
+        /**
+         * Delete all the nodes in the tree such that it is now empty.
+         */
+        void clear() noexcept {
             if (m_size > 0) {
                 erase(m_header->m_parent);
                 m_header->m_parent = nullptr;
@@ -270,25 +594,182 @@ namespace wlp {
             }
         }
 
+        /**
+         * Insert a value with a given key into the tree. This function
+         * will insert the value if its key does not exist and fail
+         * if the key already exists.
+         *
+         * @param key key to insert
+         * @param val value to insert
+         * @return a pair consisting of an iterator to the inserted node
+         * or the node that prevented insertion and a flag indicating
+         * whether insertion occurred
+         */
         Pair<iterator, bool> insert_unique(const key_type &key, const val_type &val);
 
+        /**
+         * Insert a value with a given key into the tree. This function
+         * will always insert the value, allowing duplicate keys.
+         *
+         * @param key key to insert
+         * @param val value to insert
+         * @return iterator to the inserted node
+         */
         iterator insert_equal(const key_type &key, const val_type &val);
 
+        /**
+         * Delete the node pointed to by the provided iterator.
+         *
+         * @param pos iterator whose node to delete
+         */
         void erase(const iterator &pos);
 
+        /**
+         * Erase all nodes in the tree that have the provided key.
+         * For containers not allowing multiple keys, the returned value
+         * is never greater than 1.
+         *
+         * @param key the key all of whose associated nodes are to be deleted
+         * @return the number of deleted nodes
+         */
         size_type erase(const key_type &key);
 
+        /**
+         * Erase all nodes starting from the first iterator to before the
+         * last iterator, such that the nodes @code [first, last) @endcode
+         * are deleted and the size of the tree is reduced by
+         * @code last - first @endcode.
+         *
+         * @param first iterator to the first nodes to delete
+         * @param last  iterator to the last nodes to delete
+         * @return the number of deleted nodes
+         */
         size_type erase(const iterator &first, const iterator &last);
 
+        /**
+         * Obtain an iterator to the first node in the tree
+         * whose key matches the provided key. Returns pass-the-end
+         * if no node in the tree has the provided key.
+         *
+         * @param key the key for which to obtain the first node
+         * @return iterator to the first node with the key or pass-the-end
+         */
         iterator find(const key_type &key);
 
+        /**
+         * Obtain a const iterator to the first node in the tree
+         * whose key matches the provided key. Returns pass-the-end
+         * if no node in the tree has the provided key.
+         *
+         * @param key the key for which to obtain the first node
+         * @return const iterator to the first node with the key or pass-the-end
+         */
+        const_iterator find(const key_type &key) const;
+
+        /**
+         * Obtain the number of nodes in the tree that have
+         * the provided key as their keys.
+         *
+         * @param key the key whose nodes to count
+         * @return the number of nodes with the key
+         */
         size_type count(const key_type &key) const;
 
-        iterator lower_bound(const key_type &key) const;
+        /**
+         * Obtain an iterator to the first node in the tree by natural
+         * order that has the provided key. Returns pass-the-end if
+         * there are no nodes with the provided key.
+         *
+         * @pre The returned value is such that all nodes with the provided
+         *      key are in the range @code [lower_bound(key), upper_bound(key)) @endcode.
+         *
+         * @param key the key whose first node to find
+         * @return iterator to the first node with the key
+         */
+        iterator lower_bound(const key_type &key);
 
-        iterator upper_bound(const key_type &key) const;
+        /**
+         * Obtain an iterator to the node right after the last node in the
+         * tree by natural order that has the provided key. May return pass-the-end
+         * if the key is the largest key in the tree, or if the key is not found.
+         *
+         * @pre The returned value is such that all nodes with the provided
+         *      key are in the range @code [lower_bound(key), upper_bound(key)) @endcode.
+         *
+         * @param key the key whose last node to find
+         * @return iterator to the node right after the last node
+         */
+        iterator upper_bound(const key_type &key);
 
-        Pair<iterator, iterator> equal_range(const key_type &val) const;
+        /**
+         * Obtain a const iterator to the first node in the tree by natural
+         * order that has the provided key. Returns pass-the-end if
+         * there are no nodes with the provided key.
+         *
+         * @pre The returned value is such that all nodes with the provided
+         *      key are in the range @code [lower_bound(key), upper_bound(key)) @endcode.
+         *
+         * @param key the key whose first node to find
+         * @return const iterator to the first node with the key
+         */
+        const_iterator lower_bound(const key_type &key) const;
+/**
+         * Obtain a const iterator to the node right after the last node in the
+         * tree by natural order that has the provided key. May return pass-the-end
+         * if the key is the largest key in the tree, or if the key is not found.
+         *
+         * @pre The returned value is such that all nodes with the provided
+         *      key are in the range @code [lower_bound(key), upper_bound(key)) @endcode.
+         *
+         * @param key the key whose last node to find
+         * @return const iterator to the node right after the last node
+         */
+        const_iterator upper_bound(const key_type &key) const;
+
+        /**
+         * Obtain the range of nodes whose keys are equal to the provided key
+         * as per @code lower_bound @endcode and @code upper_bound @endcode.
+         *
+         * @param key the key whose range to get
+         * @return a pair of iterators to the lower and upper bounds
+         */
+        Pair <iterator, iterator> equal_range(const key_type &key);
+
+        /**
+         * Obtain the range of nodes whose keys are equal to the provided key
+         * as per @code lower_bound @endcode and @code upper_bound @endcode.
+         *
+         * @param key the key whose range to get
+         * @return a pair of const iterators to the lower and upper bounds
+         */
+        Pair <const_iterator, const_iterator> equal_range(const key_type &val) const;
+
+        /**
+         * Disable copy assignemnt.
+         *
+         * @return reference to this tree
+         */
+        tree_type &operator=(const tree_type &) = delete;
+
+        /**
+         * Move assignment operator. Resources in this tree
+         * are freed and replaced by moving those from the
+         * assigned tree. The assigned tree is prepared for
+         * destrution.
+         *
+         * @param tree the tree to move
+         * @return reference to this tree
+         */
+        tree_type &operator=(tree_type &&tree) {
+            clear();
+            destroy_node(m_header);
+            m_size = move(tree.m_size);
+            m_header = move(tree.m_header);
+            m_node_allocator = move(tree.m_node_allocator);
+            tree.m_size = 0;
+            tree.m_header = 0;
+            return *this;
+        }
 
     };
 
@@ -597,12 +1078,34 @@ namespace wlp {
     }
 
     template<typename Key, typename Val, typename Cmp>
-    inline void RedBlackTree<Key, Val, Cmp>::erase(node_type *node) {
-        while (node) {
-            erase(node->m_right);
-            node_type *carry = node->m_left;
-            destroy_node(node);
-            node = carry;
+    inline void RedBlackTree<Key, Val, Cmp>::erase(node_type *root) {
+        node_type *current;
+        node_type *pre;
+        node_type *tmp;
+        if (!root) {
+            return;
+        }
+        current = root;
+        while (current) {
+            if (!current->m_left) {
+                tmp = current;
+                current = current->m_right;
+                destroy_node(tmp);
+            } else {
+                pre = current->m_left;
+                while (pre->m_right && pre->m_right != current) {
+                    pre = pre->m_right;
+                }
+                if (!pre->m_right) {
+                    pre->m_right = current;
+                    current = current->m_left;
+                } else {
+                    pre->m_right = nullptr;
+                    tmp = current;
+                    current = current->m_right;
+                    destroy_node(tmp);
+                }
+            }
         }
     }
 
@@ -644,7 +1147,8 @@ namespace wlp {
         node_type *cur = m_header->m_parent;
         while (cur) {
             if (!m_cmp.__lt__(cur->m_key, key)) {
-                carry = cur, cur = cur->m_left;
+                carry = cur;
+                cur = cur->m_left;
             } else {
                 cur = cur->m_right;
             }
@@ -654,9 +1158,26 @@ namespace wlp {
     }
 
     template<typename Key, typename Val, typename Cmp>
+    typename RedBlackTree<Key, Val, Cmp>::const_iterator
+    RedBlackTree<Key, Val, Cmp>::find(const key_type &key) const {
+        node_type *carry = m_header;
+        node_type *cur = m_header->m_parent;
+        while (cur) {
+            if (!m_cmp.__lt__(cur->m_key, key)) {
+                carry = cur;
+                cur = cur->m_left;
+            } else {
+                cur = cur->m_right;
+            }
+        }
+        const_iterator tmp = const_iterator(carry);
+        return (tmp == end() || m_cmp.__lt__(key, tmp.m_node->m_key)) ? end() : tmp;
+    }
+
+    template<typename Key, typename Val, typename Cmp>
     typename RedBlackTree<Key, Val, Cmp>::size_type
     RedBlackTree<Key, Val, Cmp>::count(const key_type &key) const {
-        Pair<iterator, iterator> res = equal_range(key);
+        Pair<const_iterator, const_iterator> res = equal_range(key);
         size_type count = 0;
         while (res.m_first != res.m_second) {
             ++res.m_first;
@@ -667,7 +1188,7 @@ namespace wlp {
 
     template<typename Key, typename Val, typename Cmp>
     typename RedBlackTree<Key, Val, Cmp>::iterator
-    RedBlackTree<Key, Val, Cmp>::lower_bound(const key_type &key) const {
+    RedBlackTree<Key, Val, Cmp>::lower_bound(const key_type &key) {
         node_type *carry = m_header;
         node_type *cur = m_header->m_parent;
         while (cur) {
@@ -683,7 +1204,7 @@ namespace wlp {
 
     template<typename Key, typename Val, typename Cmp>
     typename RedBlackTree<Key, Val, Cmp>::iterator
-    RedBlackTree<Key, Val, Cmp>::upper_bound(const key_type &key) const {
+    RedBlackTree<Key, Val, Cmp>::upper_bound(const key_type &key) {
         node_type *carry = m_header;
         node_type *cur = m_header->m_parent;
         while (cur) {
@@ -699,12 +1220,55 @@ namespace wlp {
     }
 
     template<typename Key, typename Val, typename Cmp>
+    typename RedBlackTree<Key, Val, Cmp>::const_iterator
+    RedBlackTree<Key, Val, Cmp>::lower_bound(const key_type &key) const {
+        node_type *carry = m_header;
+        node_type *cur = m_header->m_parent;
+        while (cur) {
+            if (!m_cmp.__lt__(cur->m_key, key)) {
+                carry = cur;
+                cur = cur->m_left;
+            } else {
+                cur = cur->m_right;
+            }
+        }
+        return const_iterator(carry);
+    }
+
+    template<typename Key, typename Val, typename Cmp>
+    typename RedBlackTree<Key, Val, Cmp>::const_iterator
+    RedBlackTree<Key, Val, Cmp>::upper_bound(const key_type &key) const {
+        node_type *carry = m_header;
+        node_type *cur = m_header->m_parent;
+        while (cur) {
+            if (m_cmp.__lt__(key, cur->m_key)) {
+                carry = cur;
+                cur = cur->m_left;
+            } else {
+                cur = cur->m_right;
+            }
+        }
+
+        return const_iterator(carry);
+    }
+
+    template<typename Key, typename Val, typename Cmp>
     inline Pair<
             typename RedBlackTree<Key, Val, Cmp>::iterator,
             typename RedBlackTree<Key, Val, Cmp>::iterator
     >
-    RedBlackTree<Key, Val, Cmp>::equal_range(const key_type &key) const {
+    RedBlackTree<Key, Val, Cmp>::equal_range(const key_type &key) {
         return Pair<iterator, iterator>(lower_bound(key), upper_bound(key));
+    }
+
+
+    template<typename Key, typename Val, typename Cmp>
+    inline Pair<
+            typename RedBlackTree<Key, Val, Cmp>::const_iterator,
+            typename RedBlackTree<Key, Val, Cmp>::const_iterator
+    >
+    RedBlackTree<Key, Val, Cmp>::equal_range(const key_type &key) const {
+        return Pair<const_iterator, const_iterator>(lower_bound(key), upper_bound(key));
     }
 
 }
