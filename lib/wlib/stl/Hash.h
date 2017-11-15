@@ -35,7 +35,7 @@ namespace wlp {
      */
     template<class Key, class IntType>
     struct Hash {
-        IntType operator()(const Key &key) {
+        IntType operator()(const Key &key) const {
             return (IntType) key;
         }
     };
