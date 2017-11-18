@@ -45,14 +45,7 @@ public:
     /**
      * Default Destructor deallocates all the nodes
      */
-    ~List() {
-        m_Node *pTmp;
-        while (m_pStart != nullptr) {
-            pTmp = m_pStart;
-            m_pStart = m_pStart->pNext;
-            m_allocator.Deallocate(pTmp);
-        }
-    }
+    ~List();
 
     /**
      * Creates a new node and pushes it to the back of the list
@@ -150,16 +143,7 @@ public:
         return m_len;
     }
 
-    void clear() {
-        m_Node *pTmp;
-        while (m_pStart != nullptr) {
-            pTmp = m_pStart;
-            m_pStart = m_pStart->pNext;
-            m_allocator.Deallocate(pTmp);
-            m_len--;
-        }
-        m_pEnd = nullptr;
-    }
+    void clear();
 
     /**
      * Removes the value stored at the given index
@@ -167,42 +151,15 @@ public:
      *
      * @param index the index to remove at
      */
-    void remove_at(uint16_t index) {
-        m_Node *pTmp = m_pStart;
-        while (index-- > 0) {
-            pTmp = pTmp->pNext;
-        }
-
-        if (pTmp->pPrev != nullptr) {
-            pTmp->pPrev->pNext = pTmp->pNext;
-        } else {
-            m_pStart = pTmp->pNext;
-        }
-
-        if (pTmp->pNext != nullptr) {
-            pTmp->pNext->pPrev = pTmp->pPrev;
-        } else {
-            m_pEnd = pTmp->pPrev;
-        }
-
-        m_allocator.Deallocate(pTmp);
-        m_len--;
-    }
+    void remove_at(uint16_t index);
 
     /**
      * Return a copy of the value stored at the `index`
-     * DANGEROUS: will die if out of bounds
      *
      * @param index to get
      * @return copy of the value at that index
      */
-    T get(uint16_t index) {
-        m_Node *pTmp = m_pStart;
-        while (index-- > 0) {
-            pTmp = pTmp->pNext;
-        }
-        return pTmp->value;
-    }
+    T get(uint16_t index);
 
     /**
      * Return a reference to the value stored at the `index`
@@ -211,13 +168,16 @@ public:
      * @param index to get
      * @return reference to the value at that index
      */
-    T& at(uint16_t index) {
-        m_Node *pTmp = m_pStart;
-        while (index-- > 0) {
-            pTmp = pTmp->pNext;
-        }
-        return pTmp->value;
-    }
+    T& at(uint16_t index);
+
+    /**
+     * Return a reference to the value stored at the `index` (const variant)
+     * DANGEROUS: will die if out of bounds
+     *
+     * @param index to get
+     * @return reference to the value at that index
+     */
+    const T& at(uint16_t index) const;
 
     /**
      * Array indexing operator
@@ -252,17 +212,98 @@ public:
      * @param value value to search for
      * @return reference to the value at that index
      */
-    uint16_t indexOf(const T& value) {
-        m_Node *pTmp = m_pStart;
-        for (uint16_t i = 0; i < m_len; i++) {
-            if (pTmp->value == value) {
-                return i;
-            }
-            pTmp = pTmp->pNext;
-        }
-        return m_len;
-    }
+    uint16_t indexOf(const T& value);
 };
+
+template<class T>
+List<T>::~List() {
+    m_Node *pTmp;
+    while (m_pStart != nullptr) {
+        pTmp = m_pStart;
+        m_pStart = m_pStart->pNext;
+        m_allocator.Deallocate(pTmp);
+    }
+}
+
+template<class T>
+void List<T>::clear() {
+    m_Node *pTmp;
+    while (m_pStart != nullptr) {
+        pTmp = m_pStart;
+        m_pStart = m_pStart->pNext;
+        m_allocator.Deallocate(pTmp);
+    }
+    m_len = 0;
+    m_pEnd = nullptr;
+}
+
+template<class T>
+void List<T>::remove_at(uint16_t index) {
+    m_Node *pTmp = m_pStart;
+    while (index-- > 0) {
+        if (pTmp == nullptr) {
+            return;
+        }
+        pTmp = pTmp->pNext;
+    }
+
+    if (pTmp->pPrev != nullptr) {
+        pTmp->pPrev->pNext = pTmp->pNext;
+    } else {
+        m_pStart = pTmp->pNext;
+    }
+
+    if (pTmp->pNext != nullptr) {
+        pTmp->pNext->pPrev = pTmp->pPrev;
+    } else {
+        m_pEnd = pTmp->pPrev;
+    }
+
+    m_allocator.Deallocate(pTmp);
+    m_len--;
+}
+
+template<class T>
+T List<T>::get(uint16_t index) {
+    m_Node *pTmp = m_pStart;
+    while (index-- > 0) {
+        pTmp = pTmp->pNext;
+    }
+    return pTmp->value;
+}
+
+template<class T>
+T& List<T>::at(uint16_t index) {
+    m_Node *pTmp = m_pStart;
+    while (index-- > 0) {
+        pTmp = pTmp->pNext;
+    }
+    return pTmp->value;
+}
+
+template<class T>
+const T& List<T>::at(uint16_t index) const {
+    m_Node *pTmp = m_pStart;
+    while (index-- > 0) {
+        pTmp = pTmp->pNext;
+    }
+    return pTmp->value;
+}
+
+template<class T>
+uint16_t List<T>::indexOf(const T& value) {
+    m_Node *pTmp = m_pStart;
+    for (uint16_t i = 0; i < m_len; i++) {
+        if (pTmp == nullptr) {
+            return T();
+        }
+        if (pTmp->value == value) {
+            return i;
+        }
+        pTmp = pTmp->pNext;
+    }
+    return m_len;
+}
 
 } // namespace wlp
 #endif // CORE_STL_LIST_H

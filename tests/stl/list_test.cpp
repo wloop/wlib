@@ -17,7 +17,7 @@ TEST(list_tests, push_pop_remove_tests) {
     List<uint16_t> numlist;
     numlist.push_back(1);
     numlist.push_back(2);
-    numlist.push_front(3);
+    numlist.push_front(3); // 3 1 2
     ASSERT_EQ(numlist.front(), 3);
     ASSERT_EQ(numlist.back(), 2);
     ASSERT_EQ(numlist.size(), 3);
