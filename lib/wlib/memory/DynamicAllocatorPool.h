@@ -6,7 +6,7 @@
  * convenience
  *
  * @author Deep Dhillon
- * @date November 06, 2017
+ * @date November 11, 2017
  * @bug No known bugs
  */
 
@@ -15,12 +15,12 @@
 
 #include "Allocator.h"
 
-using namespace wlp;
-
-template<int tblockSize, int tnumBlocks>
-class DynamicAllocatorPool : public Allocator {
-public:
-    DynamicAllocatorPool() : Allocator(tblockSize, tblockSize * tnumBlocks){}
-};
+namespace wlp{
+    template<uint16_t tblockSize, uint16_t tnumBlocks>
+    class DynamicAllocatorPool : public Allocator {
+    public:
+        DynamicAllocatorPool() : Allocator(tblockSize, tblockSize * tnumBlocks) {}
+    };
+}
 
 #endif //FIXED_MEMORY_ALLOCATORPOOL_H

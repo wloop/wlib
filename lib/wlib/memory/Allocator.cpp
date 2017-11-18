@@ -7,10 +7,15 @@
  * @bug No known bugs
  */
 
-#include "Allocator.h"
-#include "math.h"
 #include <string.h>
-#include "../Wlib.h"
+#include <math.h>
+
+#include "Allocator.h"
+
+#include "../Types.h"
+
+#include "../stl/Utility.h"
+
 
 wlp::Allocator::Allocator(uint16_t blockSize, uint16_t poolSize, wlp::Allocator::Type allocationType, void *pPool) :
         m_poolType{allocationType},
@@ -50,13 +55,70 @@ wlp::Allocator::Allocator(uint16_t blockSize, uint16_t poolSize, wlp::Allocator:
 
         // Fill m_pPool with m_poolSize blocks
         wlp::Allocator::Block *pBlock = m_pPool;
-        for (uint16_t i = 1; i < m_poolTotalBlockCnt; i++) {
+        for (size_type i = 1; i < m_poolTotalBlockCnt; i++) {
             pBlock = pBlock->pNext = (wlp::Allocator::Block *) ((char *) pBlock + m_blockSize);
         }
 
         // Initially, all in Deallocate'd state
         m_pHead = m_pPool;
     }
+}
+
+wlp::Allocator::Allocator(Allocator &&allocator)
+        : m_poolType(move(allocator.m_poolType)),
+          m_blockSize(move(allocator.m_blockSize)),
+          m_poolSize(move(allocator.m_poolSize)),
+          m_pHead(move(allocator.m_pHead)),
+          m_pPool(move(allocator.m_pPool)),
+          m_poolTotalBlockCnt(move(allocator.m_poolTotalBlockCnt)),
+          m_poolCurrBlockCnt(move(allocator.m_poolCurrBlockCnt)),
+          m_totalBlockCount(move(allocator.m_totalBlockCount)),
+          m_allocations(move(allocator.m_allocations)),
+          m_deallocations(move(allocator.m_deallocations)) {
+    allocator.m_pHead = nullptr;
+    allocator.m_pPool = nullptr;
+    allocator.m_allocations = 0;
+    allocator.m_deallocations = 0;
+    allocator.m_totalBlockCount = 0;
+    allocator.m_poolCurrBlockCnt = 0;
+    allocator.m_poolTotalBlockCnt = 0;
+}
+
+wlp::Allocator &wlp::Allocator::operator=(Allocator &&allocator) {
+    if (m_totalBlockCount > m_poolTotalBlockCnt) {
+        wlp::Allocator::Block *pBlock = nullptr;
+        while (m_pHead) {
+            pBlock = m_pHead;
+            if (pBlock) {
+                m_pHead = m_pHead->pNext;
+                if (!IsPoolBlock(pBlock)) {
+                    delete[] (char *) pBlock;
+                    --m_totalBlockCount;
+                }
+            }
+        }
+    }
+    if (m_poolType != Type::STATIC && m_pPool) {
+        delete[] (char *) m_pPool;
+    }
+    m_poolType = move(allocator.m_poolType);
+    m_blockSize = move(allocator.m_blockSize);
+    m_poolSize = move(allocator.m_poolSize);
+    m_pHead = move(allocator.m_pHead);
+    m_pPool = move(allocator.m_pPool);
+    m_poolTotalBlockCnt = move(allocator.m_poolTotalBlockCnt);
+    m_poolCurrBlockCnt = move(allocator.m_poolCurrBlockCnt);
+    m_totalBlockCount = move(allocator.m_totalBlockCount);
+    m_allocations = move(allocator.m_allocations);
+    m_deallocations = move(allocator.m_deallocations);
+    allocator.m_pHead = nullptr;
+    allocator.m_pPool = nullptr;
+    allocator.m_allocations = 0;
+    allocator.m_deallocations = 0;
+    allocator.m_totalBlockCount = 0;
+    allocator.m_poolCurrBlockCnt = 0;
+    allocator.m_poolTotalBlockCnt = 0;
+    return *this;
 }
 
 wlp::Allocator::Allocator(uint16_t blockSize, uint16_t poolSize) :

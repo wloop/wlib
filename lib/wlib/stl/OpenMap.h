@@ -5,7 +5,7 @@
  * Hash map is implemented using open addressing and linear probing,
  * based on the assumption that it will be used with good knowledge
  * of the needed map size. The Hash Map provides the same basic
- * functionality as std::unordered_map or std::hash_map.
+ * functionality as std::unordered_map or std::map_type.
  *
  * @author Jeff Niu
  * @date November 1, 2017
@@ -15,9 +15,11 @@
 #ifndef CORE_STL_MAP_H
 #define CORE_STL_MAP_H
 
-#include "Hash.h"
+#include "Utility.h"
 #include "Equal.h"
+#include "Hash.h"
 #include "Pair.h"
+
 #include "../memory/Allocator.h"
 #include "../memory/Memory.h"
 
@@ -26,33 +28,33 @@ namespace wlp {
     // Forward declaration of OpenHashMap
     template<class Key,
             class Val,
-            class Hash,
-            class Equal>
+            class Hasher,
+            class Equals>
     class OpenHashMap;
 
     // Forward declaration of OpenHashMap iterator
     template<class Key,
             class Val,
-            class Hash,
-            class Equal>
+            class Hasher,
+            class Equals>
     struct OpenHashMapIterator;
 
     // Forward declaration of const OpenHashMap iterator
     template<class Key,
             class Val,
-            class Hash,
-            class Equal>
+            class Hasher,
+            class Equals>
     struct OpenHashMapConstIterator;
 
     /**
-     * Hash map node comprise the elements of a hash map's
+     * Hasher map node comprise the elements of a hash map's
      * backing array, containing an element key and corresponding value.
      * @tparam Key key type
      * @tparam Val value type
      */
     template<class Key, class Val>
     struct OpenHashMapNode {
-        typedef OpenHashMapNode<Key, Val> map_node;
+        typedef OpenHashMapNode<Key, Val> node_type;
         typedef Key key_type;
         typedef Val val_type;
         /**
@@ -69,7 +71,7 @@ namespace wlp {
          * @param node node to compare
          * @return true if the keys and values are equal
          */
-        bool operator==(const map_node &node) const {
+        bool operator==(const node_type &node) const {
             return m_key == node.m_key && m_val == node.m_val;
         }
 
@@ -78,7 +80,7 @@ namespace wlp {
          * @param node node to compare
          * @return true if they are equal
          */
-        bool operator==(map_node &node) const {
+        bool operator==(node_type &node) const {
             return m_key == node.m_key && m_val == node.m_val;
         }
     };
@@ -89,57 +91,66 @@ namespace wlp {
      * array, returning past-the-end afterwards.
      * @tparam Key   key type
      * @tparam Val   value type
-     * @tparam Hash  hash function
-     * @tparam Equal key equality function
+     * @tparam Hasher  hash function
+     * @tparam Equals key equality function
      */
     template<class Key,
             class Val,
-            class Hash,
-            class Equal>
+            class Hasher,
+            class Equals>
     struct OpenHashMapIterator {
-        typedef OpenHashMap<Key, Val, Hash, Equal> hash_map;
-        typedef OpenHashMapIterator<Key, Val, Hash, Equal> iterator;
-        typedef OpenHashMapNode<Key, Val> map_node;
+        typedef OpenHashMap<Key, Val, Hasher, Equals> map_type;
+        typedef OpenHashMapIterator<Key, Val, Hasher, Equals> iterator;
+        typedef OpenHashMapNode<Key, Val> node_type;
 
         typedef Val val_type;
 
-        typedef uint16_t size_type;
+        typedef wlp::size_type size_type;
 
         /**
          * Pointer to the node referenced by this iterator.
          */
-        map_node *m_current;
+        node_type *m_current;
         /**
          * Pointer to the iterated OpenHashMap.
          */
-        hash_map *m_hash_map;
+        map_type *m_hash_map;
 
         /**
          * Default constructor.
          */
-        OpenHashMapIterator() {}
+        OpenHashMapIterator()
+                : m_current(nullptr),
+                  m_hash_map(nullptr) {
+        }
 
         /**
          * Create an iterator to a OpenHashMap node.
          * @param node hash map node
          * @param map  parent hash map
          */
-        OpenHashMapIterator(map_node *node, hash_map *map)
-                : m_current(node), m_hash_map(map) {}
+        OpenHashMapIterator(node_type *node, map_type *map)
+                : m_current(node),
+                  m_hash_map(map) {
+        }
 
         /**
          * Copy constructor for const.
          * @param it iterator to copy
          */
         OpenHashMapIterator(const iterator &it)
-                : m_current(it.m_current), m_hash_map(it.m_hash_map) {}
+                : m_current(it.m_current),
+                  m_hash_map(it.m_hash_map) {
+        }
 
         /**
          * Copy constructor.
          * @param it iterator to copy
          */
-        OpenHashMapIterator(iterator &it)
-                : m_current(it.m_current), m_hash_map(it.m_hash_map) {}
+        OpenHashMapIterator(iterator &&it)
+                : m_current(move(it.m_current)),
+                  m_hash_map(move(it.m_hash_map)) {
+        }
 
         /**
          * @return reference to the value of the node
@@ -226,9 +237,9 @@ namespace wlp {
          * @param it iterator to copy
          * @return a reference to this iterator
          */
-        iterator &operator=(iterator &it) {
-            m_current = it.m_current;
-            m_hash_map = it.m_hash_map;
+        iterator &operator=(iterator &&it) {
+            m_current = move(it.m_current);
+            m_hash_map = move(it.m_hash_map);
             return *this;
         }
     };
@@ -241,35 +252,44 @@ namespace wlp {
      *
      * @tparam Key   key type
      * @tparam Val   value type
-     * @tparam Hash  hash function
-     * @tparam Equal key equality function
+     * @tparam Hasher  hash function
+     * @tparam Equals key equality function
      */
     template<class Key,
             class Val,
-            class Hash,
-            class Equal>
+            class Hasher,
+            class Equals>
     struct OpenHashMapConstIterator {
-        typedef OpenHashMap<Key, Val, Hash, Equal> hash_map;
-        typedef OpenHashMapConstIterator<Key, Val, Hash, Equal> const_iterator;
-        typedef OpenHashMapNode<Key, Val> map_node;
+        typedef OpenHashMap<Key, Val, Hasher, Equals> map_type;
+        typedef OpenHashMapConstIterator<Key, Val, Hasher, Equals> const_iterator;
+        typedef OpenHashMapNode<Key, Val> node_type;
 
         typedef Val val_type;
 
-        typedef uint16_t size_type;
+        typedef wlp::size_type size_type;
 
-        const map_node *m_current;
-        const hash_map *m_hash_map;
+        const node_type *m_current;
+        const map_type *m_hash_map;
 
-        OpenHashMapConstIterator() {}
+        OpenHashMapConstIterator()
+                : m_current(nullptr),
+                  m_hash_map(nullptr) {
+        }
 
-        OpenHashMapConstIterator(map_node *node, const hash_map *map)
-                : m_current(node), m_hash_map(map) {}
+        OpenHashMapConstIterator(node_type *node, const map_type *map)
+                : m_current(node),
+                  m_hash_map(map) {
+        }
 
         OpenHashMapConstIterator(const const_iterator &it)
-                : m_current(it.m_current), m_hash_map(it.m_hash_map) {}
+                : m_current(it.m_current),
+                  m_hash_map(it.m_hash_map) {
+        }
 
-        OpenHashMapConstIterator(const_iterator &it)
-                : m_current(it.m_current), m_hash_map(it.m_hash_map) {}
+        OpenHashMapConstIterator(const_iterator &&it)
+                : m_current(move(it.m_current)),
+                  m_hash_map(move(it.m_hash_map)) {
+        }
 
         const val_type &operator*() const {
             return m_current->m_val;
@@ -305,52 +325,52 @@ namespace wlp {
             return *this;
         }
 
-        const_iterator &operator=(const_iterator &it) {
-            m_current = it.m_current;
-            m_hash_map = it.m_hash_map;
+        const_iterator &operator=(const_iterator &&it) {
+            m_current = move(it.m_current);
+            m_hash_map = move(it.m_hash_map);
             return *this;
         }
     };
 
     /**
-     * Hash map implemented using open addressing and linear probing,
+     * Hasher map implemented using open addressing and linear probing,
      * in the spirit of std::unordered_map.
      * @tparam Key   key type
      * @tparam Val   value type
-     * @tparam Hash  hash function
-     * @tparam Equal key equality function
+     * @tparam Hasher  hash function
+     * @tparam Equals key equality function
      */
     template<class Key,
             class Val,
-            class Hash = hash <Key, uint16_t>,
-            class Equal = equals <Key>>
+            class Hasher = Hash <Key, uint16_t>,
+            class Equals = Equal <Key>>
     class OpenHashMap {
     public:
-        typedef OpenHashMap<Key, Val, Hash, Equal> hash_map;
-        typedef OpenHashMapIterator<Key, Val, Hash, Equal> iterator;
-        typedef OpenHashMapConstIterator<Key, Val, Hash, Equal> const_iterator;
-        typedef OpenHashMapNode<Key, Val> map_node;
+        typedef OpenHashMap<Key, Val, Hasher, Equals> map_type;
+        typedef OpenHashMapIterator<Key, Val, Hasher, Equals> iterator;
+        typedef OpenHashMapConstIterator<Key, Val, Hasher, Equals> const_iterator;
+        typedef OpenHashMapNode<Key, Val> node_type;
 
         typedef Key key_type;
         typedef Val val_type;
 
-        typedef uint16_t size_type;
+        typedef wlp::size_type size_type;
         typedef uint8_t percent_type;
 
-        friend struct OpenHashMapIterator<Key, Val, Hash, Equal>;
-        friend struct OpenHashMapConstIterator<Key, Val, Hash, Equal>;
+        friend struct OpenHashMapIterator<Key, Val, Hasher, Equals>;
+        friend struct OpenHashMapConstIterator<Key, Val, Hasher, Equals>;
 
     private:
         /**
          * Class hash function instance. Used to hash
          * element keys.
          */
-        Hash m_hash;
+        Hasher m_hash;
         /**
          * Class key equality function. Used to test
          * equality of element keys.
          */
-        Equal m_equal;
+        Equals m_equal;
 
         /**
          * Allocator to create memory for hash map nodes.
@@ -358,9 +378,9 @@ namespace wlp {
         Allocator m_node_allocator;
 
         /**
-         * Hash map backing array.
+         * Hasher map backing array.
          */
-        map_node **m_buckets;
+        node_type **m_buckets;
 
         /**
          * The current number of elements that have been inserted
@@ -370,7 +390,7 @@ namespace wlp {
         /**
          * The size of the backing array.
          */
-        size_type m_max_elements;
+        size_type m_capacity;
         /**
          * The load factor in integer percent
          * before rehashing occurs. This number
@@ -389,27 +409,47 @@ namespace wlp {
          *
          * @param n        initial size of the bucket list; each bucket is initialized to nullptr
          * @param max_load an integer value denoting the max percent load factory, e.g. 75 = 0.75
-         * @param hash     hash function for the key type, default is @code wlp::Hash @endcode
-         * @param equal    equality function for the key type, default is @code wlp::Equal @endcode
+         * @param hash     hash function for the key type, default is @code wlp::Hasher @endcode
+         * @param equal    equality function for the key type, default is @code wlp::Equals @endcode
          */
         explicit OpenHashMap(
                 size_type n = 12,
                 percent_type max_load = 75)
-                : m_hash(Hash()),
-                  m_equal(Equal()),
-                  m_node_allocator{sizeof(map_node), static_cast<size_type>(n * sizeof(map_node))},
+                : m_hash(Hasher()),
+                  m_equal(Equals()),
+                  m_node_allocator{sizeof(node_type), static_cast<size_type>(n * sizeof(node_type))},
                   m_num_elements(0),
-                  m_max_elements(n),
+                  m_capacity(n),
                   m_max_load(max_load) {
             init_buckets(n);
             if (max_load > 100) {
-                max_load = 100;
+                m_max_load = 100;
             }
         }
 
-        OpenHashMap(const hash_map &map);
+        /**
+         * Copy constructor is deleted to prevent
+         * copying of complex structures.
+         */
+        OpenHashMap(const map_type &) = delete;
 
-        OpenHashMap(hash_map &map);
+        /**
+         * Move constructor transfers resources from
+         * rvalue hash map into this hash map.
+         * @param map map from which to transfer
+         */
+        OpenHashMap(map_type &&map) :
+                m_hash(move(map.m_hash)),
+                m_equal(move(map.m_equal)),
+                m_node_allocator(move(map.m_node_allocator)),
+                m_buckets(move(map.m_buckets)),
+                m_num_elements(move(map.m_num_elements)),
+                m_capacity(move(map.m_capacity)),
+                m_max_load(move(map.m_max_load)) {
+            map.m_num_elements = 0;
+            map.m_capacity = 0;
+            map.m_buckets = nullptr;
+        }
 
         /**
          * Destroy the hash map, freeing allocated nodes and
@@ -443,7 +483,7 @@ namespace wlp {
          * @return an index i such that 0 <= i < m_max_elements
          */
         size_type hash(key_type key) const {
-            return m_hash(key) % m_max_elements;
+            return m_hash(key) % m_capacity;
         }
 
         /**
@@ -471,8 +511,8 @@ namespace wlp {
         /**
          * @return the current size of the backing array
          */
-        size_type max_size() const {
-            return m_max_elements;
+        size_type capacity() const {
+            return m_capacity;
         }
 
         /**
@@ -506,7 +546,7 @@ namespace wlp {
             if (m_num_elements == 0) {
                 return end();
             }
-            for (size_type i = 0; i < m_max_elements; ++i) {
+            for (size_type i = 0; i < m_capacity; ++i) {
                 if (m_buckets[i]) {
                     return iterator(m_buckets[i], this);
                 }
@@ -522,14 +562,14 @@ namespace wlp {
         }
 
         /**
-         * @see OpenHashMap<Key, Val, Hash, Equal>::begin()
+         * @see OpenHashMap<Key, Val, Hasher, Equals>::begin()
          * @return a constant iterator to the first element
          */
         const_iterator begin() const {
             if (m_num_elements == 0) {
                 return end();
             }
-            for (size_type i = 0; i < m_max_elements; ++i) {
+            for (size_type i = 0; i < m_capacity; ++i) {
                 if (m_buckets[i]) {
                     return const_iterator(m_buckets[i], this);
                 }
@@ -538,7 +578,7 @@ namespace wlp {
         }
 
         /**
-         * @see OpenHashMap<Key, Val, Hash, Equal>::end()
+         * @see OpenHashMap<Key, Val, Hasher, Equals>::end()
          * @return a constant pass-the-end iterator
          */
         const_iterator end() const {
@@ -576,6 +616,40 @@ namespace wlp {
         Pair<iterator, bool> insert_or_assign(key_type key, val_type val);
 
         /**
+         * Erase the element from the map pointed to by the provided
+         * iterator. Be aware that erasure operations on an openly
+         * addressed hash map will trigger a rehash and invalidate
+         * all iterators other than the return value.
+         * @param pos iterator pointing to the element to erase
+         * @return iterator to the next element in the map or end
+         */
+        iterator &erase(iterator &pos);
+
+        /**
+         * Erase the element from the map pointed to by the provided
+         * const iterator. Be aware that erasure operations on an openly
+         * addressed hash map will trigger a rehash and invalidate
+         * all iterators other than the return value.
+         * @param pos const iterator pointing to the element to erase
+         * @return const iterator to the next element in the map or end
+         */
+        const_iterator &erase(const_iterator &pos);
+
+        /**
+         * Erase the element from the map with the provided key, if such
+         * an element exists. Be aware that if erasure if performed, the
+         * hash map will undergo a rehash.
+         *
+         * @pre If frequency use of erase operations is needed, one is
+         *      recommended to use @code ChainHashMap @encode or a
+         *      tree-based implementation.
+         *
+         * @param key the key whose corresponding element to erase
+         * @return true if an element was erased
+         */
+        bool erase(key_type &key);
+
+        /**
          * Returns the value corresponding to a provided key.
          * @param key the key for which to find the value
          * @return the value mapped to by the key
@@ -584,7 +658,7 @@ namespace wlp {
         iterator at(const key_type &key);
 
         /**
-         * @see OpenHashMap<Key, Val, Hash, Equal>::at()
+         * @see OpenHashMap<Key, Val, Hasher, Equals>::at()
          * @param key key for which to find the value
          * @return the mapped value
          * @throws KeyException if the key does not exist
@@ -607,7 +681,7 @@ namespace wlp {
         iterator find(const key_type &key);
 
         /**
-         * @see OpenHashMap<Key, Val, Hash, Equal>::find()
+         * @see OpenHashMap<Key, Val, Hasher, Equals>::find()
          * @param key the key to map
          * @return a const iterator to the element mapped by the key
          */
@@ -624,48 +698,47 @@ namespace wlp {
         val_type &operator[](const key_type &key);
 
         /**
-         * Assignment operator performs a deep copy of the
-         * contents of the map. Therefore, pass by reference
-         * or by pointer value is generally desired.
-         * @param map map to copy
-         * @return a reference to this map
+         * Copy assignment operators are disabled.
+         * @return hash map reference
          */
-        hash_map &operator=(const hash_map &map);
+        map_type &operator=(const map_type &) = delete;
 
         /**
-         * Assignment operator for non const.
-         * @param map map to copy
-         * @return a reference to this map
+         * Move assignment operator. Assigned hash map
+         * will have its resources transferred into this
+         * hash map. Existing resources will be released.
+         * @param map map to move
+         * @return reference to this map
          */
-        hash_map &operator=(hash_map &map);
+        map_type &operator=(map_type &&map);
     };
 
-    template<class Key, class Val, class Hash, class Equal>
-    void OpenHashMap<Key, Val, Hash, Equal>::init_buckets(OpenHashMap<Key, Val, Hash, Equal>::size_type n) {
-        m_buckets = static_cast<map_node **>(memory_alloc(n * sizeof(map_node *)));
+    template<class Key, class Val, class Hasher, class Equals>
+    void OpenHashMap<Key, Val, Hasher, Equals>::init_buckets(OpenHashMap<Key, Val, Hasher, Equals>::size_type n) {
+        m_buckets = static_cast<node_type **>(memory_alloc(n * sizeof(node_type *)));
         for (size_type i = 0; i < n; ++i) {
             m_buckets[i] = nullptr;
         }
     }
 
-    template<class Key, class Val, class Hash, class Equal>
-    void OpenHashMap<Key, Val, Hash, Equal>::ensure_capacity() {
-        if (m_num_elements * 100 < m_max_load * m_max_elements) {
+    template<class Key, class Val, class Hasher, class Equals>
+    void OpenHashMap<Key, Val, Hasher, Equals>::ensure_capacity() {
+        if (m_num_elements * 100 < m_max_load * m_capacity) {
             return;
         }
-        size_type new_max = static_cast<size_type>(m_max_elements * 2);
-        map_node **new_buckets = static_cast<map_node **>(memory_alloc(new_max * sizeof(map_node *)));
-        for (size_type i = 0; i < new_max; ++i) {
+        size_type new_capacity = static_cast<size_type>(m_capacity * 2);
+        node_type **new_buckets = static_cast<node_type **>(memory_alloc(new_capacity * sizeof(node_type *)));
+        for (size_type i = 0; i < new_capacity; ++i) {
             new_buckets[i] = nullptr;
         }
-        for (size_type i = 0; i < m_max_elements; ++i) {
+        for (size_type i = 0; i < m_capacity; ++i) {
             if (!m_buckets[i]) {
                 continue;
             }
-            map_node *node = m_buckets[i];
-            size_type k = bucket_index(node->m_key, new_max);
+            node_type *node = m_buckets[i];
+            size_type k = bucket_index(node->m_key, new_capacity);
             while (new_buckets[k]) {
-                if (++k >= new_max) {
+                if (++k >= new_capacity) {
                     k = 0;
                 }
             }
@@ -673,12 +746,12 @@ namespace wlp {
         }
         memory_free(m_buckets);
         m_buckets = new_buckets;
-        m_max_elements = new_max;
+        m_capacity = new_capacity;
     }
 
-    template<class Key, class Val, class Hash, class Equal>
-    void OpenHashMap<Key, Val, Hash, Equal>::clear() noexcept {
-        for (size_type i = 0; i < m_max_elements; ++i) {
+    template<class Key, class Val, class Hasher, class Equals>
+    void OpenHashMap<Key, Val, Hasher, Equals>::clear() noexcept {
+        for (size_type i = 0; i < m_capacity; ++i) {
             if (m_buckets[i]) {
                 m_node_allocator.Deallocate(m_buckets[i]);
                 m_buckets[i] = nullptr;
@@ -687,13 +760,13 @@ namespace wlp {
         m_num_elements = 0;
     }
 
-    template<class Key, class Val, class Hash, class Equal>
-    Pair<typename OpenHashMap<Key, Val, Hash, Equal>::iterator, bool>
-    OpenHashMap<Key, Val, Hash, Equal>::insert(key_type key, val_type val) {
+    template<class Key, class Val, class Hasher, class Equals>
+    Pair<typename OpenHashMap<Key, Val, Hasher, Equals>::iterator, bool>
+    OpenHashMap<Key, Val, Hasher, Equals>::insert(key_type key, val_type val) {
         ensure_capacity();
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
-            if (++i >= m_max_elements) {
+            if (++i >= m_capacity) {
                 i = 0;
             }
         }
@@ -701,7 +774,7 @@ namespace wlp {
             return Pair<iterator, bool>(iterator(m_buckets[i], this), false);
         } else {
             ++m_num_elements;
-            map_node *node = static_cast<map_node *>(m_node_allocator.Allocate());
+            node_type *node = static_cast<node_type *>(m_node_allocator.Allocate());
             node->m_key = key;
             node->m_val = val;
             m_buckets[i] = node;
@@ -709,13 +782,13 @@ namespace wlp {
         }
     };
 
-    template<class Key, class Val, class Hash, class Equal>
-    Pair<typename OpenHashMap<Key, Val, Hash, Equal>::iterator, bool>
-    OpenHashMap<Key, Val, Hash, Equal>::insert_or_assign(key_type key, val_type val) {
+    template<class Key, class Val, class Hasher, class Equals>
+    Pair<typename OpenHashMap<Key, Val, Hasher, Equals>::iterator, bool>
+    OpenHashMap<Key, Val, Hasher, Equals>::insert_or_assign(key_type key, val_type val) {
         ensure_capacity();
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
-            if (++i >= m_max_elements) {
+            if (++i >= m_capacity) {
                 i = 0;
             }
         }
@@ -724,7 +797,7 @@ namespace wlp {
             return Pair<iterator, bool>(iterator(m_buckets[i], this), false);
         } else {
             ++m_num_elements;
-            map_node *node = static_cast<map_node *>(m_node_allocator.Allocate());
+            node_type *node = static_cast<node_type *>(m_node_allocator.Allocate());
             node->m_key = key;
             node->m_val = val;
             m_buckets[i] = node;
@@ -732,12 +805,94 @@ namespace wlp {
         }
     };
 
-    template<class Key, class Val, class Hash, class Equal>
-    typename OpenHashMap<Key, Val, Hash, Equal>::iterator
-    OpenHashMap<Key, Val, Hash, Equal>::at(const key_type &key) {
+    template<class Key, class Val, class Hasher, class Equals>
+    typename OpenHashMap<Key, Val, Hasher, Equals>::iterator &
+    OpenHashMap<Key, Val, Hasher, Equals>::erase(iterator &pos) {
+        const node_type *cur_node = pos.m_current;
+        if (!cur_node || pos.m_hash_map != this) {
+            pos.m_current = nullptr;
+            return pos;
+        }
+        size_type i = hash(cur_node->m_key);
+        while (m_buckets[i] && !m_equal(cur_node->m_key, m_buckets[i]->m_key)) {
+            if (++i >= m_capacity) {
+                i = 0;
+            }
+        }
+        if (!m_buckets[i]) {
+            pos.m_current = nullptr;
+            return pos;
+        }
+        --m_num_elements;
+        m_node_allocator.Deallocate(m_buckets[i]);
+        m_buckets[i] = nullptr;
+        while (++i < m_capacity && !m_buckets[i]);
+        node_type *next_node = i >= m_capacity ? nullptr : m_buckets[i];
+        node_type **new_buckets = static_cast<node_type **>(memory_alloc(m_capacity * sizeof(node_type *)));
+        for (size_type k = 0; k < m_capacity; k++) {
+            new_buckets[k] = nullptr;
+        }
+        for (size_type k = 0; k < m_capacity; k++) {
+            if (!m_buckets[k]) {
+                continue;
+            }
+            node_type *node = m_buckets[k];
+            size_type j = hash(node->m_key);
+            while (new_buckets[j]) {
+                if (++j >= m_capacity) {
+                    j = 0;
+                }
+            }
+            new_buckets[j] = node;
+        }
+        memory_free(m_buckets);
+        m_buckets = new_buckets;
+        pos.m_current = next_node;
+        return pos;
+    }
+
+    template<class Key, class Val, class Hasher, class Equals>
+    bool OpenHashMap<Key, Val, Hasher, Equals>::erase(key_type &key) {
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
-            if (++i >= m_max_elements) {
+            if (++i >= m_capacity) {
+                i = 0;
+            }
+        }
+        if (!m_buckets[i]) {
+            return false;
+        }
+        --m_num_elements;
+        m_node_allocator.Deallocate(m_buckets[i]);
+        m_buckets[i] = nullptr;
+        node_type **new_buckets = static_cast<node_type **>(memory_alloc(m_capacity * sizeof(node_type *)));
+        for (size_type k = 0; k < m_capacity; k++) {
+            new_buckets[k] = nullptr;
+        }
+        for (size_type k = 0; k < m_capacity; k++) {
+            if (!m_buckets[k]) {
+                continue;
+            }
+            node_type *node = m_buckets[k];
+            size_type j = hash(node->m_key);
+            while (new_buckets[j]) {
+                if (++j >= m_capacity) {
+                    j = 0;
+                }
+            }
+            new_buckets[j] = node;
+        }
+        memory_free(m_buckets);
+        m_buckets = new_buckets;
+        return true;
+    }
+
+    template<class Key, class Val, class Hasher, class Equals>
+    typename OpenHashMap<Key, Val, Hasher, Equals>::iterator
+    OpenHashMap<Key, Val, Hasher, Equals>::at(const key_type &key) {
+        size_type i = hash(key);
+        while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
+            if (++i >= m_capacity) {
                 i = 0;
             }
         }
@@ -748,12 +903,12 @@ namespace wlp {
         }
     }
 
-    template<class Key, class Val, class Hash, class Equal>
-    typename OpenHashMap<Key, Val, Hash, Equal>::const_iterator
-    OpenHashMap<Key, Val, Hash, Equal>::at(const key_type &key) const {
+    template<class Key, class Val, class Hasher, class Equals>
+    typename OpenHashMap<Key, Val, Hasher, Equals>::const_iterator
+    OpenHashMap<Key, Val, Hasher, Equals>::at(const key_type &key) const {
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
-            if (++i >= m_max_elements) {
+            if (++i >= m_capacity) {
                 i = 0;
             }
         }
@@ -764,27 +919,27 @@ namespace wlp {
         }
     }
 
-    template<class Key, class Val, class Hash, class Equal>
-    bool OpenHashMap<Key, Val, Hash, Equal>::contains(const key_type &key) const {
+    template<class Key, class Val, class Hasher, class Equals>
+    bool OpenHashMap<Key, Val, Hasher, Equals>::contains(const key_type &key) const {
         size_type i = hash(key);
         while (m_buckets[i]) {
             if (m_equal(key, m_buckets[i]->m_key)) {
                 return true;
             }
-            if (++i > +m_max_elements) {
+            if (++i > +m_capacity) {
                 i = 0;
             }
         }
         return false;
     }
 
-    template<class Key, class Val, class Hash, class Equal>
-    typename OpenHashMap<Key, Val, Hash, Equal>::val_type &
-    OpenHashMap<Key, Val, Hash, Equal>::operator[](const key_type &key) {
+    template<class Key, class Val, class Hasher, class Equals>
+    typename OpenHashMap<Key, Val, Hasher, Equals>::val_type &
+    OpenHashMap<Key, Val, Hasher, Equals>::operator[](const key_type &key) {
         ensure_capacity();
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
-            if (++i >= m_max_elements) {
+            if (++i >= m_capacity) {
                 i = 0;
             }
         }
@@ -792,7 +947,7 @@ namespace wlp {
             return m_buckets[i]->m_val;
         } else {
             ++m_num_elements;
-            map_node *node = static_cast<map_node *>(m_node_allocator.Allocate());
+            node_type *node = static_cast<node_type *>(m_node_allocator.Allocate());
             node->m_key = key;
             node->m_val = val_type();
             m_buckets[i] = node;
@@ -800,12 +955,12 @@ namespace wlp {
         }
     }
 
-    template<class Key, class Val, class Hash, class Equal>
-    typename OpenHashMap<Key, Val, Hash, Equal>::iterator
-    OpenHashMap<Key, Val, Hash, Equal>::find(const key_type &key) {
+    template<class Key, class Val, class Hasher, class Equals>
+    typename OpenHashMap<Key, Val, Hasher, Equals>::iterator
+    OpenHashMap<Key, Val, Hasher, Equals>::find(const key_type &key) {
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
-            if (++i >= m_max_elements) {
+            if (++i >= m_capacity) {
                 i = 0;
             }
         }
@@ -816,12 +971,12 @@ namespace wlp {
         }
     }
 
-    template<class Key, class Val, class Hash, class Equal>
-    typename OpenHashMap<Key, Val, Hash, Equal>::const_iterator
-    OpenHashMap<Key, Val, Hash, Equal>::find(const key_type &key) const {
+    template<class Key, class Val, class Hasher, class Equals>
+    typename OpenHashMap<Key, Val, Hasher, Equals>::const_iterator
+    OpenHashMap<Key, Val, Hasher, Equals>::find(const key_type &key) const {
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
-            if (++i >= m_max_elements) {
+            if (++i >= m_capacity) {
                 i = 0;
             }
         }
@@ -832,9 +987,12 @@ namespace wlp {
         }
     }
 
-    template<class Key, class Val, class Hash, class Equal>
-    OpenHashMap<Key, Val, Hash, Equal>::~OpenHashMap() {
-        for (size_type i = 0; i < m_max_elements; ++i) {
+    template<class Key, class Val, class Hasher, class Equals>
+    OpenHashMap<Key, Val, Hasher, Equals>::~OpenHashMap() {
+        if (!m_buckets) {
+            return;
+        }
+        for (size_type i = 0; i < m_capacity; ++i) {
             if (m_buckets[i]) {
                 m_node_allocator.Deallocate(m_buckets[i]);
                 m_buckets[i] = nullptr;
@@ -844,109 +1002,33 @@ namespace wlp {
         m_buckets = nullptr;
     }
 
-    template<class Key, class Val, class Hash, class Equal>
-    OpenHashMap<Key, Val, Hash, Equal> &
-    OpenHashMap<Key, Val, Hash, Equal>::operator=(const OpenHashMap<Key, Val, Hash, Equal> &map) {
+    template<class Key, class Val, class Hasher, class Equals>
+    OpenHashMap<Key, Val, Hasher, Equals> &
+    OpenHashMap<Key, Val, Hasher, Equals>::operator=(OpenHashMap<Key, Val, Hasher, Equals> &&map) {
         clear();
         memory_free(m_buckets);
-        m_hash = map.m_hash;
-        m_equal = map.m_equal;
-        m_max_elements = map.m_max_elements;
-        m_max_load = map.m_max_load;
-        m_num_elements = map.m_num_elements;
-        m_buckets = static_cast<map_node **>(memory_alloc(map.m_max_elements * sizeof(map_node *)));
-        for (size_type i = 0; i < map.m_max_elements; ++i) {
-            if (map.m_buckets[i]) {
-                map_node *cur = static_cast<map_node *>(m_node_allocator.Allocate());
-                map_node *m_cur = map.m_buckets[i];
-                cur->m_key = m_cur->m_key;
-                cur->m_val = m_cur->m_val;
-                m_buckets[i] = cur;
-            } else {
-                m_buckets[i] = nullptr;
-            }
-        }
+        m_node_allocator = move(map.m_node_allocator);
+        m_capacity = move(map.m_capacity);
+        m_max_load = move(map.m_max_load);
+        m_num_elements = move(map.m_num_elements);
+        m_buckets = move(map.m_buckets);
+        map.m_capacity = 0;
+        map.m_num_elements = 0;
+        map.m_buckets = nullptr;
         return *this;
     }
 
-    template<class Key, class Val, class Hash, class Equal>
-    OpenHashMap<Key, Val, Hash, Equal> &
-    OpenHashMap<Key, Val, Hash, Equal>::operator=(OpenHashMap<Key, Val, Hash, Equal> &map) {
-        clear();
-        memory_free(m_buckets);
-        m_hash = map.m_hash;
-        m_equal = map.m_equal;
-        m_max_elements = map.m_max_elements;
-        m_max_load = map.m_max_load;
-        m_num_elements = map.m_num_elements;
-        m_buckets = static_cast<map_node **>(memory_alloc(map.m_max_elements * sizeof(map_node *)));
-        for (size_type i = 0; i < map.m_max_elements; ++i) {
-            if (map.m_buckets[i]) {
-                map_node *cur = static_cast<map_node *>(m_node_allocator.Allocate());
-                map_node *m_cur = map.m_buckets[i];
-                cur->m_key = m_cur->m_key;
-                cur->m_val = m_cur->m_val;
-                m_buckets[i] = cur;
-            } else {
-                m_buckets[i] = nullptr;
-            }
-        }
-        return *this;
-    }
-
-    template<class Key, class Val, class Hash, class Equal>
-    OpenHashMap<Key, Val, Hash, Equal>::OpenHashMap(const hash_map &map) :
-            m_hash(map.m_hash),
-            m_equal(map.m_equal),
-            m_node_allocator{sizeof(map_node), static_cast<size_type>(map.m_max_elements * sizeof(map_node))},
-            m_num_elements(map.m_num_elements),
-            m_max_elements(map.m_max_elements),
-            m_max_load(map.m_max_load) {
-        m_buckets = static_cast<map_node **>(memory_alloc(map.m_max_elements * sizeof(map_node *)));
-        for (size_type i = 0; i < map.m_max_elements; i++) {
-            m_buckets[i] = nullptr;
-            if (map.m_buckets[i]) {
-                map_node *m_cur = map.m_buckets[i];
-                map_node *cur = static_cast<map_node *>(m_node_allocator.Allocate());
-                cur->m_key = m_cur->m_key;
-                cur->m_val = m_cur->m_val;
-                m_buckets[i] = cur;
-            }
-        }
-    }
-
-    template<class Key, class Val, class Hash, class Equal>
-    OpenHashMap<Key, Val, Hash, Equal>::OpenHashMap(hash_map &map) :
-            m_hash(map.m_hash),
-            m_equal(map.m_equal),
-            m_node_allocator{sizeof(map_node), static_cast<size_type>(map.m_max_elements * sizeof(map_node))},
-            m_num_elements(map.m_num_elements),
-            m_max_elements(map.m_max_elements),
-            m_max_load(map.m_max_load) {
-        m_buckets = static_cast<map_node **>(memory_alloc(map.m_max_elements * sizeof(map_node *)));
-        for (size_type i = 0; i < map.m_max_elements; i++) {
-            m_buckets[i] = nullptr;
-            if (map.m_buckets[i]) {
-                map_node *m_cur = map.m_buckets[i];
-                map_node *cur = static_cast<map_node *>(m_node_allocator.Allocate());
-                cur->m_key = m_cur->m_key;
-                cur->m_val = m_cur->m_val;
-                m_buckets[i] = cur;
-            }
-        }
-    }
-
-    template<class Key, class Val, class Hash, class Equal>
-    OpenHashMapIterator<Key, Val, Hash, Equal> &
-    OpenHashMapIterator<Key, Val, Hash, Equal>::operator++() {
+    template<class Key, class Val, class Hasher, class Equals>
+    OpenHashMapIterator<Key, Val, Hasher, Equals> &
+    OpenHashMapIterator<Key, Val, Hasher, Equals>::operator++() {
         size_type i = m_hash_map->hash(m_current->m_key);
         while (m_hash_map->m_buckets[i] && !m_hash_map->m_equal(m_current->m_key, m_hash_map->m_buckets[i]->m_key)) {
-            if (++i >= m_hash_map->m_max_elements) {
+            if (++i >= m_hash_map->m_capacity) {
                 i = 0;
             }
         }
-        while (++i < m_hash_map->m_max_elements && !m_hash_map->m_buckets[i]);
-        if (i == m_hash_map->m_max_elements) {
+        while (++i < m_hash_map->m_capacity && !m_hash_map->m_buckets[i]);
+        if (i == m_hash_map->m_capacity) {
             m_current = nullptr;
         } else {
             m_current = m_hash_map->m_buckets[i];
@@ -954,25 +1036,25 @@ namespace wlp {
         return *this;
     }
 
-    template<class Key, class Val, class Hash, class Equal>
-    inline OpenHashMapIterator<Key, Val, Hash, Equal>
-    OpenHashMapIterator<Key, Val, Hash, Equal>::operator++(int) {
+    template<class Key, class Val, class Hasher, class Equals>
+    inline OpenHashMapIterator<Key, Val, Hasher, Equals>
+    OpenHashMapIterator<Key, Val, Hasher, Equals>::operator++(int) {
         iterator tmp = *this;
         ++*this;
         return tmp;
     }
 
-    template<class Key, class Val, class Hash, class Equal>
-    OpenHashMapConstIterator<Key, Val, Hash, Equal> &
-    OpenHashMapConstIterator<Key, Val, Hash, Equal>::operator++() {
+    template<class Key, class Val, class Hasher, class Equals>
+    OpenHashMapConstIterator<Key, Val, Hasher, Equals> &
+    OpenHashMapConstIterator<Key, Val, Hasher, Equals>::operator++() {
         size_type i = m_hash_map->hash(m_current->m_key);
         while (m_hash_map->m_buckets[i] && !m_hash_map->m_equal(m_current->m_key, m_hash_map->m_buckets[i]->m_key)) {
-            if (++i >= m_hash_map->m_max_elements) {
+            if (++i >= m_hash_map->m_capacity) {
                 i = 0;
             }
         }
-        while (++i < m_hash_map->m_max_elements && !m_hash_map->m_buckets[i]);
-        if (i == m_hash_map->m_max_elements) {
+        while (++i < m_hash_map->m_capacity && !m_hash_map->m_buckets[i]);
+        if (i == m_hash_map->m_capacity) {
             m_current = nullptr;
         } else {
             m_current = m_hash_map->m_buckets[i];
@@ -980,9 +1062,9 @@ namespace wlp {
         return *this;
     }
 
-    template<class Key, class Val, class Hash, class Equal>
-    inline OpenHashMapConstIterator<Key, Val, Hash, Equal>
-    OpenHashMapConstIterator<Key, Val, Hash, Equal>::operator++(int) {
+    template<class Key, class Val, class Hasher, class Equals>
+    inline OpenHashMapConstIterator<Key, Val, Hasher, Equals>
+    OpenHashMapConstIterator<Key, Val, Hasher, Equals>::operator++(int) {
         const_iterator tmp = *this;
         ++*this;
         return tmp;

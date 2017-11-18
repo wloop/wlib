@@ -10,10 +10,9 @@
 #ifndef CORE_STL_EQUAL_H
 #define CORE_STL_EQUAL_H
 
-#include <stdint.h>
+#include "../Types.h"
 
-#include "WlibConfig.h"
-#include "strings/StaticString.h"
+#include "../strings/StaticString.h"
 
 namespace wlp {
 
@@ -23,7 +22,7 @@ namespace wlp {
      * @tparam Key key type
      */
     template<class Key>
-    struct equals {
+    struct Equal {
         bool operator()(const Key &key1, const Key &key2) const {
             return key1 == key2;
         }
@@ -34,7 +33,7 @@ namespace wlp {
         if (str1.length() != str2.length()) {
             return false;
         }
-        for (uint16_t i = 0; i < str1.length(); ++i) {
+        for (size_type i = 0; i < str1.length(); ++i) {
             if (str1[i] != str2[i]) {
                 return false;
             }
@@ -52,21 +51,28 @@ namespace wlp {
     }
 
     template<uint16_t tSize>
-    struct equals<StaticString<tSize> > {
+    struct Equal<StaticString<tSize>> {
         bool operator()(const StaticString<tSize> &key1, const StaticString<tSize> &key2) const {
             return static_string_equals(key1, key2);
         }
     };
 
-    TEMPLATE_NULL
-    struct equals<char *> {
+    template<uint16_t tSize>
+    struct Equal<const StaticString<tSize>> {
+        bool operator()(const StaticString<tSize> &key1, const StaticString<tSize> &key2) const {
+            return static_string_equals(key1, key2);
+        }
+    };
+
+    template<>
+    struct Equal<char *> {
         bool operator()(const char *key1, const char *key2) const {
             return string_equals(key1, key2);
         }
     };
 
-    TEMPLATE_NULL
-    struct equals<const char *> {
+    template<>
+    struct Equal<const char *> {
         bool operator()(const char *key1, const char *key2) const {
             return string_equals(key1, key2);
         }

@@ -13,8 +13,8 @@
 #ifndef EMBEDDEDCPLUSPLUS_OPENSET_H
 #define EMBEDDEDCPLUSPLUS_OPENSET_H
 
-#include "Hash.h"
 #include "Equal.h"
+#include "Hash.h"
 #include "OpenMap.h"
 
 namespace wlp {
@@ -28,23 +28,23 @@ namespace wlp {
      * @tparam Equal test for equality function of the stored elements
      */
     template<class Key,
-            class Hash = hash<Key, uint16_t>,
-            class Equal = equals<Key>>
+            class Hash = Hash<Key, uint16_t>,
+            class Equal = Equal<Key>>
     class OpenHashSet {
     public:
         typedef OpenHashSet<Key, Hash, Equal> hash_set;
-        typedef OpenHashMap<Key, Key, Hash, Equal> hash_map;
+        typedef OpenHashMap<Key, Key, Hash, Equal> map_type;
         typedef OpenHashMapIterator<Key, Key, Hash, Equal> iterator;
         typedef OpenHashMapConstIterator<Key, Key, Hash, Equal> const_iterator;
-        typedef hash_map::size_type size_type;
-        typedef hash_map::percent_type percent_type;
-        typedef hash_map::key_type key_type;
+        typedef map_type::size_type size_type;
+        typedef map_type::percent_type percent_type;
+        typedef map_type::key_type key_type;
 
     private:
         /**
          * The backing hash map.
          */
-        hash_map m_hash_map;
+        map_type m_hash_map;
 
     public:
         /**
@@ -58,7 +58,22 @@ namespace wlp {
         explicit OpenHashSet(
                 size_type n = 12,
                 percent_type max_load = 75) :
-                m_hash_map(n, max_load) {}
+                m_hash_map(n, max_load) {
+        }
+
+        /**
+         * Disable copy constructor.
+         */
+        OpenHashSet(const hash_set &) = delete;
+
+        /**
+         * Move constructor.
+         *
+         * @param set hash set to move
+         */
+        OpenHashSet(hash_set &&set)
+                : m_hash_map(move(set.m_hash_map)) {
+        }
 
         /**
          * @return the current number of elements in the set
@@ -70,8 +85,8 @@ namespace wlp {
         /**
          * @return the size of the backing array
          */
-        size_type max_size() const {
-            return m_hash_map.max_size();
+        size_type capacity() const {
+            return m_hash_map.capacity();
         }
 
         /**
@@ -98,7 +113,7 @@ namespace wlp {
         /**
          * @return a pointer to the backing hash map
          */
-        const hash_map *get_backing_hash_map() const {
+        const map_type *get_backing_hash_map() const {
             return &m_hash_map;
         }
 
@@ -185,6 +200,56 @@ namespace wlp {
          */
         const_iterator find(const key_type &key) const {
             return m_hash_map.find(key);
+        }
+
+        /**
+         * Erase the element in the set pointed to by
+         * the iterator.
+         *
+         * @param pos iterator whose element to erase
+         * @return iterator to the next element in the set
+         */
+        iterator &erase(iterator &pos) {
+            return m_hash_map.erase(pos);
+        }
+
+        /**
+         * Erase the element in the set pointed to by
+         * the iterator.
+         *
+         * @param pos iterator whose element to erase
+         * @return iterator to the next element in the set
+         */
+        const_iterator &erase(const_iterator &pos) {
+            return m_hash_map.erase(pos);
+        }
+
+        /**
+         * Remove an element from the set.
+         *
+         * @param key the element to remove
+         * @return true if removal occured
+         */
+        bool erase(key_type &key) {
+            return m_hash_map.erase(key);
+        }
+
+        /**
+         * Disable copy assignment.
+         *
+         * @return reference to this set
+         */
+        hash_set &operator=(const hash_set &) = delete;
+
+        /**
+         * Move assignment operator.
+         *
+         * @param set hash set to move
+         * @return reference to this set
+         */
+        hash_set &operator=(hash_set &&set) {
+            m_hash_map = move(set.m_hash_map);
+            return *this;
         }
     };
 
