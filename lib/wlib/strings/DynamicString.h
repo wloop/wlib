@@ -1,10 +1,11 @@
 #ifndef WLIB_DYNAMICSTRING_H
 #define WLIB_DYNAMICSTRING_H
 
-#include "stdint.h"
-#include "string.h"
+#include <stdint.h>
+#include <string.h>
 #include <math.h>
 #include "memory/Memory.h"
+#include "Types.h"
 
 class DynamicString {
 private:
@@ -24,7 +25,7 @@ public:
 	 * @param str char string
 	 */
 	DynamicString(const char* str){
-		uint16_t size = (uint16_t) strlen(str);
+		size_type size = (size_type) strlen(str);
 		m_buffer = (char *)memory_alloc((size + 1) * sizeof(char));
 		strncpy(m_buffer, str, size);
 		m_buffer[size] = '\0';
@@ -55,7 +56,7 @@ public:
 	 * @return current object
 	 */
 	DynamicString operator= (const char* str){
-		uint16_t size = (uint16_t) strlen(str);
+		size_type size = (size_type) strlen(str);
 		m_buffer = (char *)memory_realloc(m_buffer, (size + 1) * sizeof(char));
 		strncpy(m_buffer, str, size);
 		m_buffer[size] = '\0';
@@ -68,9 +69,9 @@ public:
 	 *
 	 * @return string length
 	 */
-	uint16_t length() const{
-		uint16_t i = 0;
-		while (m_buffer[i] != 0) i++;
+	size_type length() const{
+		size_type i = 0;
+		while (m_buffer[i] != '\0') i++;
 		return i;
 	}
 
@@ -87,7 +88,7 @@ public:
 	 * @param pos the position of the character
 	 * @return character at @code position
 	 */
-	char &operator[](uint16_t pos){
+	char &operator[](size_type pos){
 		return m_buffer[pos];
 	}
 
@@ -98,7 +99,7 @@ public:
 	 * @param pos the position of the character
 	 * @return character at @code position
 	 */
-	const char &operator[](uint16_t pos) const{
+	const char &operator[](size_type pos) const{
 		return m_buffer[pos];
 	}
 
@@ -108,7 +109,7 @@ public:
 	 * @param pos the position of the character
 	 * @return character at @code position
 	 */
-	char &at(uint16_t pos){
+	char &at(size_type pos){
 		return m_buffer[pos];
 	}
 
@@ -118,7 +119,7 @@ public:
 	 * @param pos the position of the character
 	 * @return character at @code position
 	 */
-	const char &at(uint16_t pos) const{
+	const char &at(size_type pos) const{
 		return m_buffer[pos];
 	}
 
@@ -220,8 +221,8 @@ public:
 	 * @return the current string
 	 */
 	DynamicString &append(const char *str){
-		uint16_t bufferLength = this->length();
-		uint16_t newLength = (uint16_t)(bufferLength + strlen(str));
+		size_type bufferLength = this->length();
+		size_type newLength = (size_type)(bufferLength + strlen(str));
 		m_buffer = (char *)memory_realloc(m_buffer, (newLength + 1) * sizeof(char));
 		
 		for (int i = bufferLength; i < newLength; i++) {
@@ -260,13 +261,13 @@ public:
      * @param pos position of the element to be deleted
      * @return the modified String
      */
-    DynamicString &erase(uint16_t pos = 0){
-		uint16_t len = this->length();
+    DynamicString &erase(size_type pos = 0){
+		size_type len = this->length();
         if (len == 0 || pos >= len) return *this;
 
 		len--;
 
-        for (uint16_t i = pos; i < len; ++i) {
+        for (size_type i = pos; i < len; ++i) {
             m_buffer[i] = m_buffer[i+1];
         }
 
@@ -278,7 +279,7 @@ public:
      * Deletes the last character in the String
      */
     void pop_back(){
-		uint16_t len = this->length();
+		size_type len = this->length();
         if (len == 0) return;
 
         m_buffer[len - 1] = '\0';
@@ -300,10 +301,10 @@ public:
 	 * @param length length of the new string
 	 * @return new string which is a substring of current string
 	 */
-	DynamicString substr(uint16_t pos, uint16_t length) const{
+	DynamicString substr(size_type pos, size_type length) const{
 		char newBuffer[length + 1];
 
-		for(uint16_t i = pos; i < pos + length ;i++){
+		for(size_type i = pos; i < pos + length ;i++){
 			newBuffer[i-pos] = m_buffer[i];
 		}
 
@@ -471,6 +472,13 @@ DynamicString operator+(const DynamicString &lhs, const char rhs){
 	DynamicString newStr;
 	newStr.append(lhs).append(rhs);
 	return newStr;
+}
+
+/**
+ * Destructor function for dynamic string
+ */
+~DynamicString() {
+	memory_free(m_buffer);
 }
 
 #endif //WLIB_DYNAMICSTRING_H

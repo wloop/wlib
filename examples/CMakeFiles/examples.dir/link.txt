@@ -1,0 +1,1 @@
+/usr/bin/c++    -g -O0 --coverage   CMakeFiles/examples.dir/main.cpp.o  -o examples -rdynamic ../lib/wlib/libwlib.a 
