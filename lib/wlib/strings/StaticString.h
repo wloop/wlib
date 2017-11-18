@@ -11,6 +11,7 @@
 #ifndef WLIB_STATICSTRING_H
 #define WLIB_STATICSTRING_H
 
+#include <string.h>
 #include <math.h>
 
 namespace wlp {

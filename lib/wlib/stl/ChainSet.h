@@ -13,9 +13,9 @@
 #ifndef EMBEDDEDCPLUSPLUS_CHAINSET_H
 #define EMBEDDEDCPLUSPLUS_CHAINSET_H
 
-#include "Hash.h"
-#include "Equal.h"
 #include "ChainMap.h"
+#include "Equal.h"
+#include "Hash.h"
 
 namespace wlp {
 
@@ -27,20 +27,20 @@ namespace wlp {
      * @tparam Equal the equality function
      */
     template<class Key,
-            class Hash = hash<Key, uint16_t>,
-            class Equal = equals<Key>>
+            class Hash = Hash<Key, uint16_t>,
+            class Equal = Equal<Key>>
     class ChainHashSet {
     public:
-        typedef ChainHashSet<Key, Hash, Equal> hash_set;
-        typedef ChainHashMap<Key, Key, Hash, Equal> hash_map;
+        typedef ChainHashSet<Key, Hash, Equal> set_type;
+        typedef ChainHashMap<Key, Key, Hash, Equal> map_type;
         typedef ChainHashMapIterator<Key, Key, Hash, Equal> iterator;
         typedef ChainHashMapConstIterator<Key, Key, Hash, Equal> const_iterator;
-        typedef hash_map::size_type size_type;
-        typedef hash_map::percent_type percent_type;
-        typedef hash_map::key_type key_type;
+        typedef map_type::size_type size_type;
+        typedef map_type::percent_type percent_type;
+        typedef map_type::key_type key_type;
 
     private:
-        hash_map m_hash_map;
+        map_type m_hash_map;
 
     public:
         /**
@@ -51,8 +51,23 @@ namespace wlp {
          */
         explicit ChainHashSet(
                 size_type n = 12,
-                percent_type max_load = 75) :
-                m_hash_map(n, max_load) {}
+                percent_type max_load = 75)
+                : m_hash_map(n, max_load) {
+        }
+
+        /**
+         * Disable copy constructor.
+         */
+        ChainHashSet(const set_type &) = delete;
+
+        /**
+         * Move constructor.
+         *
+         * @param set hash set to move
+         */
+        ChainHashSet(set_type &&set)
+                : m_hash_map(move(set.m_hash_map)) {
+        }
 
         /**
          * @return the current number of elements in the set
@@ -64,8 +79,8 @@ namespace wlp {
         /**
          * @return the size of the backing array
          */
-        size_type max_size() const {
-            return m_hash_map.max_size();
+        size_type capacity() const {
+            return m_hash_map.capacity();
         }
 
         /**
@@ -92,7 +107,7 @@ namespace wlp {
         /**
          * @return a pointer to the backing hash map
          */
-        const hash_map *get_backing_hash_map() const {
+        const map_type *get_backing_hash_map() const {
             return &m_hash_map;
         }
 
@@ -211,6 +226,24 @@ namespace wlp {
          */
         bool erase(key_type &key) {
             return m_hash_map.erase(key);
+        }
+
+        /**
+         * Disable copy assignment.
+         *
+         * @return reference to this set
+         */
+        set_type &operator=(const set_type &) = delete;
+
+        /**
+         * Move assignment operator.
+         *
+         * @param set hash set to move
+         * @return reference to this set
+         */
+        set_type &operator=(set_type &&set) {
+            m_hash_map = move(set.m_hash_map);
+            return *this;
         }
     };
 
