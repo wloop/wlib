@@ -33,13 +33,16 @@ TEST(list_tests, push_pop_remove_tests) {
     ASSERT_EQ(numlist.size(), 1);
     numlist.remove_at(0);
     ASSERT_EQ(numlist.size(), 0);
+    // does nothing
+    numlist.remove_at(100);
+    ASSERT_EQ(numlist.size(), 0);
     numlist.push_front(4);
     ASSERT_EQ(numlist.size(), 1);
     numlist.pop_back();
     ASSERT_EQ(numlist.size(), 0);
     numlist.push_back(5);
     ASSERT_EQ(numlist.size(), 1);
-    numlist.pop_front();
+    numlist.clear();
     ASSERT_EQ(numlist.size(), 0);
 }
 
@@ -55,4 +58,22 @@ TEST(list_tests, indexing_tests) {
     ASSERT_EQ(numlist.at(0), 3);
     ASSERT_EQ(numlist.get(1), 1);
     ASSERT_EQ(numlist[2], 2);
+    const uint16_t& two = numlist[2];
+    ASSERT_EQ(two, 2);
+}
+
+TEST(list_tests, iterator_tests) {
+    List<uint16_t> numlist;
+    numlist.push_front(1);
+    numlist.push_back(2);
+    numlist.push_front(3); // 3 1 2
+    ListIterator<uint16_t> it = numlist.begin();
+    ASSERT_EQ(*it, 3);
+    while (it != numlist.end()) {
+        ++it;
+    }
+    it = numlist.begin();
+    while (it != numlist.end()) {
+        it++;
+    }
 }

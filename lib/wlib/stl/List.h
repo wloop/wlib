@@ -12,7 +12,6 @@
 
 #ifndef CORE_STL_LIST_H
 #define CORE_STL_LIST_H
-
 #include <stdint.h>
 #include "memory/Memory.h"
 #include "memory/Allocator.h"
@@ -113,7 +112,7 @@ struct ListIterator {
      */
     iterator operator++(int) {
         iterator tmp = *this;
-        ++*this;
+        m_pCurrent = m_pCurrent->pNext;
         return tmp;
     }
 
@@ -164,7 +163,7 @@ struct ListIterator {
     iterator &operator=(const iterator &it) {
         m_pCurrent = it.m_pCurrent;
         m_pList = it.m_pList;
-        return *this;
+        return this;
     }
 
     /**
@@ -220,7 +219,7 @@ struct ListConstIterator {
 
     const_iterator &operator++() {
         m_pCurrent = m_pCurrent->pNext;
-        return *this;
+        return this;
     }
 
     const_iterator operator++(int) {
@@ -248,13 +247,13 @@ struct ListConstIterator {
     const_iterator &operator=(const const_iterator &it) {
         m_pCurrent = it.m_pCurrent;
         m_pList = it.m_pList;
-        return *this;
+        return this;
     }
 
     const_iterator &operator=(const_iterator &&it) {
         m_pCurrent = move(it.m_pCurrent);
         m_pList = move(it.m_pList);
-        return *this;
+        return this;
     }
 };
 
@@ -293,7 +292,7 @@ public:
      *
      * @param value the value to store at the new node
      */
-    void push_back(const T value) {
+    void push_back(const T& value) {
         ListNode<T> *pNewNode = static_cast<ListNode<T>*>(m_allocator.Allocate());
         pNewNode->m_val = value;
         pNewNode->pNext = nullptr;
@@ -314,7 +313,7 @@ public:
      *
      * @param value the value to store at the new node
      */
-    void push_front(const T value) {
+    void push_front(const T& value) {
         ListNode<T>* pNewNode = static_cast<ListNode<T>*>(m_allocator.Allocate());
         pNewNode->m_val = value;
         pNewNode->pPrev = nullptr;
@@ -355,26 +354,30 @@ public:
     }
 
     /**
-     * Returns the value at the start of the List
-     *
-     * @return the value stored at the start of the list
+     * @return a reference to the value at the start of the List
      */
     T& front() {
-        if (m_pStart == nullptr) {
-            return T();
-        }
         return m_pStart->m_val;
     }
 
     /**
-     * Returns the value at the end of the List
-     *
-     * @return the value stored at the end of the list
+     * @return a const reference to the value at the start of the List
+     */
+    const T& front() const {
+        return m_pStart->m_val;
+    }
+
+    /**
+     * @return a reference to the value at the end of the List
      */
     T& back() {
-        if (m_pEnd == nullptr) {
-            return T();
-        }
+        return m_pEnd->m_val;
+    }
+
+    /**
+     * @return a const reference to the value at the end of the List
+     */
+    const T& back() const {
         return m_pEnd->m_val;
     }
 
@@ -474,7 +477,7 @@ public:
      * @see List<T>::begin()
      * @return a constant iterator to the first element in the list
      */
-    const_iterator begin() const {
+    const const_iterator begin() const {
         return const_iterator(m_pStart, this);
     }
 
@@ -482,7 +485,7 @@ public:
      * @see List<T>::end()
      * @return a constant pass-the-end iterator
      */
-    const_iterator end() const {
+    const const_iterator end() const {
         return const_iterator(nullptr, this);
     }
 };
@@ -539,9 +542,6 @@ template<class T>
 T List<T>::get(size_type index) {
     ListNode<T> *pTmp = m_pStart;
     while (index-- > 0) {
-        if (pTmp == nullptr) {
-            return T();
-        }
         pTmp = pTmp->pNext;
     }
     return pTmp->m_val;
@@ -551,9 +551,6 @@ template<class T>
 T& List<T>::at(size_type index) {
     ListNode<T> *pTmp = m_pStart;
     while (index-- > 0) {
-        if (pTmp == nullptr) {
-            return T();
-        }
         pTmp = pTmp->pNext;
     }
     return pTmp->m_val;
@@ -563,9 +560,6 @@ template<class T>
 const T& List<T>::at(size_type index) const {
     ListNode<T> *pTmp = m_pStart;
     while (index-- > 0) {
-        if (pTmp == nullptr) {
-            return T();
-        }
         pTmp = pTmp->pNext;
     }
     return pTmp->m_val;
