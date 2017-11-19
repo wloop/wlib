@@ -10,17 +10,17 @@
  * @bug No known bugs
  */
 
-#ifndef FIXED_MEMORY_ALLOCATORPOOL_H
-#define FIXED_MEMORY_ALLOCATORPOOL_H
+#ifndef FIXED_MEMORY_DYNAMIC_ALLOCATORPOOL_H
+#define FIXED_MEMORY_DYNAMIC_ALLOCATORPOOL_H
 
 #include "Allocator.h"
 
-namespace wlp{
+namespace wlp {
     template<uint16_t tblockSize, uint16_t tnumBlocks>
     class DynamicAllocatorPool : public Allocator {
     public:
-        DynamicAllocatorPool() : Allocator(tblockSize, tblockSize * tnumBlocks) {}
+        DynamicAllocatorPool() : Allocator(tblockSize, (tblockSize * tnumBlocks)) {}
     };
 }
 
-#endif //FIXED_MEMORY_ALLOCATORPOOL_H
+#endif //FIXED_MEMORY_DYNAMIC_ALLOCATORPOOL_H

@@ -3,7 +3,7 @@
  * @brief Implementation of Allocator
  *
  * @author Deep Dhillon
- * @date October 22, 2017
+ * @date November 19, 2017
  * @bug No known bugs
  */
 
@@ -11,13 +11,10 @@
 #include <math.h>
 
 #include "Allocator.h"
-
-#include "../Types.h"
-
+#include "../Wlib.h"
 #include "../stl/Utility.h"
 
-
-wlp::Allocator::Allocator(uint16_t blockSize, uint16_t poolSize, wlp::Allocator::Type allocationType, void *pPool) :
+wlp::Allocator::Allocator(uint16_t blockSize, uint32_t poolSize, wlp::Allocator::Type allocationType, void *pPool) :
         m_poolType{allocationType},
         m_blockSize{blockSize},
         m_pHead{nullptr},
@@ -36,7 +33,7 @@ wlp::Allocator::Allocator(uint16_t blockSize, uint16_t poolSize, wlp::Allocator:
         m_poolSize = max(m_blockSize, poolSize);
 
         // find the closest round number that describes the number of blocks
-        m_poolTotalBlockCnt = (uint16_t) roundf(m_poolSize / (float) m_blockSize);
+        m_poolTotalBlockCnt = static_cast<uint16_t>(roundf(m_poolSize / static_cast<float>(m_blockSize)));
         m_poolCurrBlockCnt = m_poolTotalBlockCnt;
         m_totalBlockCount = m_poolTotalBlockCnt;
 
@@ -55,7 +52,7 @@ wlp::Allocator::Allocator(uint16_t blockSize, uint16_t poolSize, wlp::Allocator:
 
         // Fill m_pPool with m_poolSize blocks
         wlp::Allocator::Block *pBlock = m_pPool;
-        for (size_type i = 1; i < m_poolTotalBlockCnt; i++) {
+        for (uint16_t i = 1; i < m_poolTotalBlockCnt; i++) {
             pBlock = pBlock->pNext = (wlp::Allocator::Block *) ((char *) pBlock + m_blockSize);
         }
 
@@ -98,9 +95,11 @@ wlp::Allocator &wlp::Allocator::operator=(Allocator &&allocator) {
             }
         }
     }
+
     if (m_poolType != Type::STATIC && m_pPool) {
         delete[] (char *) m_pPool;
     }
+
     m_poolType = move(allocator.m_poolType);
     m_blockSize = move(allocator.m_blockSize);
     m_poolSize = move(allocator.m_poolSize);
@@ -121,10 +120,10 @@ wlp::Allocator &wlp::Allocator::operator=(Allocator &&allocator) {
     return *this;
 }
 
-wlp::Allocator::Allocator(uint16_t blockSize, uint16_t poolSize) :
+wlp::Allocator::Allocator(uint16_t blockSize, uint32_t poolSize) :
         wlp::Allocator(blockSize, poolSize, DYNAMIC, nullptr) {}
 
-wlp::Allocator::Allocator(uint16_t blockSize, void *pPool, uint16_t poolSize, Type type) :
+wlp::Allocator::Allocator(uint16_t blockSize, void *pPool, uint32_t poolSize, Type type) :
         wlp::Allocator(blockSize, poolSize, type, pPool) {}
 
 wlp::Allocator::~Allocator() {
@@ -158,6 +157,10 @@ void *wlp::Allocator::Allocate() {
         m_pHead = m_pHead->pNext;
         --m_poolCurrBlockCnt;
     } else {
+        // If we are using a pool we ran out of memory
+        if (m_poolSize > 0)
+            return nullptr;
+
         // Otherwise, get a 'new' one from heap.
         pBlock = (wlp::Allocator::Block *) new char[m_blockSize];
         ++m_totalBlockCount;
@@ -175,5 +178,7 @@ void wlp::Allocator::Deallocate(void *pBlock) {
     pBlock1->pNext = m_pHead;
     m_pHead = pBlock1;
     ++m_deallocations;
+
+    m_allocations <= 0 ? m_allocations : --m_allocations;
 }
 
