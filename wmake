@@ -186,11 +186,16 @@ __  _  _______ _/  |_  ___________|  |   ____   ____ ______
 The Embedded C++ code base builder
 
 Usage:
-  ${_ME} [--help] [build] [coverage] [clean] [run] [test]
+  ${_ME} [--help] [build] [coverage] [clean] [reset] [run] [test]
   ${_ME} -h | --help
 
 Options:
-  -h --help  Show this screen.
+  -h --help     Show this screen.
+  build         Build the project and stores the build files in the bin folder
+  coverage      Build the project and add coverage files in coverage folder
+  clean         Cleans the project and deletes every file from the bin folder
+  run           Execute the Examples binary
+  test          Execute the Tests binary
 HEREDOC
 }
 
@@ -230,7 +235,6 @@ _coverage(){
     cd ..
 }
 
-
 _clean(){
     rm -f -r bin
     echo "Project Cleaned"
@@ -266,6 +270,17 @@ _simple() {
     elif [ "$1" == 'test' ]; then
         echo "Testing the project"
         _test
+    elif [ "$1" == 'rebuild' ]; then
+        echo "Rebuilding project"
+        _clean
+        _build
+        if ! [ $# -eq 2 ] || [ "$2" != 'notest' ]; then
+            _test
+        fi
+    elif [ "$1" == 'clcov' ]; then
+        echo "Rebuilding and coverage"
+        _clean
+        _coverage
     else
         _print_help
     fi

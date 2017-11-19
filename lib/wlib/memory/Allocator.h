@@ -18,6 +18,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "../Wlib.h"
+
 namespace wlp {
     class Allocator {
     private:
@@ -36,6 +38,10 @@ namespace wlp {
             STATIC, /**< this is Stack memory */
             DYNAMIC /**< this is Heap memory */
         };
+
+        Allocator(const Allocator &) = delete;
+
+        Allocator(Allocator &&allocator);
 
         /**
          * Allocator used for allocating memory where memory is acquired by the allocator. It supports a pool
@@ -80,7 +86,7 @@ namespace wlp {
         ~Allocator();
 
         /**
-         * Allocates memory from internal memory pool/dynamic memory system and gives acces to the user
+         * Allocates memory from internal memory pool/dynamic memory system and gives access to the user
          *
          * @return address to memory of blockSize that is predefined
          */
@@ -104,7 +110,7 @@ namespace wlp {
          * @param pBlockVoid memory block address being verified
          * @return true or false based on if the given block belongs to memory pool
          */
-        inline bool IsPoolBlock(void *pBlockVoid) {
+        inline bool IsPoolBlock(void *pBlockVoid) const {
             auto *pBlock = (Block *) pBlockVoid;
 
             if (!m_pPool)return false;
@@ -117,7 +123,7 @@ namespace wlp {
          *
          * @return size of memory block
          */
-        inline size_t GetBlockSize() {
+        inline size_t GetBlockSize() const {
             return m_blockSize;
         }
 
@@ -126,7 +132,7 @@ namespace wlp {
          *
          * @return size of pool
          */
-        inline size_t GetPoolSize() {
+        inline size_t GetPoolSize() const {
             return m_poolSize;
         }
 
@@ -135,7 +141,7 @@ namespace wlp {
          *
          * @return number of memory blocks available in the pool
          */
-        inline uint16_t GetNumPoolBlocksAvail() {
+        inline uint16_t GetNumPoolBlocksAvail() const {
             return m_poolCurrBlockCnt;
         }
 
@@ -144,7 +150,7 @@ namespace wlp {
          *
          * @return number of memory blocks in total in the pool
          */
-        inline uint16_t GetTotalPoolBlocks() {
+        inline uint16_t GetTotalPoolBlocks() const {
             return m_poolTotalBlockCnt;
         }
 
@@ -153,7 +159,7 @@ namespace wlp {
          *
          * @return number of memory blocks in total in Allocator
          */
-        inline uint16_t GetTotalBlocks() {
+        inline uint16_t GetTotalBlocks() const {
             return m_totalBlockCount;
         }
 
@@ -162,7 +168,7 @@ namespace wlp {
          *
          * @return the number of allocations
          */
-        inline uint16_t GetNumAllocations() {
+        inline uint16_t GetNumAllocations() const {
             return m_allocations;
         }
 
@@ -171,9 +177,13 @@ namespace wlp {
          *
          * @return the number of de-allocations
          */
-        inline uint16_t GetNumDeallocations() {
+        inline uint16_t GetNumDeallocations() const {
             return m_deallocations;
         }
+
+        Allocator &operator=(const Allocator &) = delete;
+
+        Allocator &operator=(Allocator &&allocator);
 
     private:
         /**
@@ -188,7 +198,7 @@ namespace wlp {
         explicit Allocator(uint16_t blockSize, uint16_t poolSize, Allocator::Type allocationType, void *pPool);
 
 
-        const Type m_poolType;
+        Type m_poolType;
         size_t m_blockSize;
         Block *m_pHead;
         Block *m_pPool;

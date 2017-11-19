@@ -16,22 +16,263 @@
 #include <stdint.h>
 #include "memory/Memory.h"
 #include "memory/Allocator.h"
+#include "Utility.h"
 
 namespace wlp {
 
 template<class T>
+struct ListNode {
+    T m_val;
+    ListNode<T> *pNext,*pPrev;
+};
+
+// Forward Declaration of List class
+template<class T>
+class List;
+
+/**
+ * Iterator class over the elements of a List. Specifically,
+ * this class iterates through each chain and then the backing array.
+ * @tparam T   value type
+ */
+
+template<class T>
+struct ListIterator {
+    typedef ListIterator<T> iterator;
+    /**
+     * Pointer to the node referenced by this iterator.
+     */
+    ListNode<T> *m_pCurrent;
+    /**
+     * Pointer to the iterated List.
+     */
+    List<T> *m_pList;
+
+    /**
+     * Default constructor.
+     */
+    ListIterator()
+            : m_pCurrent(nullptr),
+            m_pList(nullptr) {}
+
+    /**
+     * Create an iterator to a List node.
+     * @param node linked list node
+     * @param list  parent linked list
+     */
+    ListIterator(ListNode<T> *node, List<T> *list)
+            : m_pCurrent(node),
+            m_pList(list) {}
+
+    /**
+     * Copy constructor for const.
+     * @param it iterator copy
+     */
+    ListIterator(const iterator &it)
+            : m_pCurrent(it.m_pCurrent),
+            m_pList(it.m_pList) {}
+
+    /**
+     * Copy constructor.
+     * @param it iterator to copy
+     */
+    ListIterator(iterator &&it)
+            : m_pCurrent(move(it.m_pCurrent)),
+            m_pList(move(it.m_pList)) {}
+
+    /**
+     * @return reference to the value of the node
+     * pointed to by the iterator
+     */
+    T &operator*() const {
+        return m_pCurrent->m_val;
+    }
+
+    /**
+     * @return pointer to the value of the node
+     * pointed to by the iterator
+     */
+    T *operator->() const {
+        return &(operator*());
+    }
+
+    /**
+     * Increment the iterator to the next available element in
+     * the List. If no such element exists, returns pass-the-end
+     * iterator. This is pre-fix unary operator.
+     * @return this iterator
+     */
+    iterator &operator++() {
+        m_pCurrent = m_pCurrent->pNext;
+        return *this;
+    }
+
+    /**
+     * Post-fix unary operator.
+     * @return this iterator
+     */
+    iterator operator++(int) {
+        iterator tmp = *this;
+        ++*this;
+        return tmp;
+    }
+
+    /**
+     * Equality operator for const.
+     * @param it iterator to compare
+     * @return true if they are equal
+     */
+    bool operator==(const iterator &it) const {
+        return m_pCurrent == it.m_pCurrent;
+    }
+
+    /**
+     * Compare two iterators, equal of they point to the
+     * same node.
+     * @param it iterator to compare
+     * @return true if both point to the same node
+     */
+    bool operator==(iterator &it) const {
+        return m_pCurrent == it.m_pCurrent;
+    }
+
+    /**
+     * Compare two iterators, unequal if they point to
+     * different nodes.
+     * @param it iterator to compare
+     * @return true if they point to different nodes
+     */
+    bool operator!=(const iterator &it) const {
+        return m_pCurrent != it.m_pCurrent;
+    }
+
+    /**
+     * Inequality operator.
+     * @param it iterator to compare
+     * @return true if they point to different nodes
+     */
+    bool operator!=(iterator &it) const {
+        return m_pCurrent != it.m_pCurrent;
+    }
+
+    /**
+     * Assignment operator copies pointer to node
+     * and pointer to linked list.
+     * @param it iterator to copy
+     * @return reference to this iterator
+     */
+    iterator &operator=(const iterator &it) {
+        m_pCurrent = it.m_pCurrent;
+        m_pList = it.m_pList;
+        return *this;
+    }
+
+    /**
+     * Assignment operator copies pointer to node
+     * and pointer to linked list.
+     * @param it iterator to copy
+     * @return a reference to this iterator
+     */
+    iterator &operator=(iterator &&it) {
+        m_pCurrent = move(it.m_pCurrent);
+        m_pList = move(it.m_pList);
+        return *this;
+    }
+};
+/**
+ * Constant iterator over a List. Values iterated by
+ * this class cannot be modified.
+ *
+ * @see ListIterator
+ *
+ * @tparam T   value type
+ */
+template<class T>
+struct ListConstIterator {
+    typedef ListConstIterator<T> const_iterator;
+
+    const ListNode<T> *m_pCurrent;
+    const List<T> *m_pList;
+
+    ListConstIterator()
+            : m_pCurrent(nullptr),
+            m_pList(nullptr) {}
+
+    ListConstIterator(ListNode<T> *node, const List<T> *list)
+            : m_pCurrent(node),
+            m_pList(list) {}
+
+    ListConstIterator(const const_iterator &it)
+            : m_pCurrent(it.m_pCurrent),
+            m_pList(it.m_pList) {}
+
+    ListConstIterator(const_iterator &&it)
+            : m_pCurrent(move(it.m_pCurrent)),
+            m_pList(move(it.m_pList)) {}
+
+    const T &operator*() const {
+        return m_pCurrent->m_val;
+    }
+
+    const T *operator->() const {
+        return &(operator*());
+    }
+
+    const_iterator &operator++() {
+        m_pCurrent = m_pCurrent->pNext;
+        return *this;
+    }
+
+    const_iterator operator++(int) {
+        const_iterator tmp = *this;
+        m_pCurrent = m_pCurrent->pNext;
+        return tmp;
+    }
+
+    bool operator==(const const_iterator &it) const {
+        return m_pCurrent == it.m_pCurrent;
+    }
+
+    bool operator==(const_iterator &it) const {
+        return m_pCurrent == it.m_pCurrent;
+    }
+
+    bool operator!=(const const_iterator &it) const {
+        return m_pCurrent != it.m_pCurrent;
+    }
+
+    bool operator!=(const_iterator &it) const {
+        return m_pCurrent != it.m_pCurrent;
+    }
+
+    const_iterator &operator=(const const_iterator &it) {
+        m_pCurrent = it.m_pCurrent;
+        m_pList = it.m_pList;
+        return *this;
+    }
+
+    const_iterator &operator=(const_iterator &&it) {
+        m_pCurrent = move(it.m_pCurrent);
+        m_pList = move(it.m_pList);
+        return *this;
+    }
+};
+
+/**
+ * Doubly-Linked List class
+ *
+ * @tparam T value type
+ */
+template<class T>
 class List {
+    typedef ListIterator<T> iterator;
+    typedef ListConstIterator<T> const_iterator;
     MEMORY_OVERLOAD
 private:
-    struct m_Node {
-        T value;
-        m_Node *pNext,*pPrev;
-    };
-
-    uint16_t m_len; // Size of list
-    m_Node* m_pStart;
-    m_Node* m_pEnd; // Pointers to start and end
-    Allocator m_allocator = Allocator(static_cast<uint16_t>(sizeof(m_Node)));
+    size_type m_len; // Size of list
+    ListNode<T> *m_pStart;
+    ListNode<T> *m_pEnd; // Pointers to start and end
+    Allocator m_allocator = Allocator(static_cast<size_type>(sizeof(ListNode<T>)));
 
 public:
     /**
@@ -53,8 +294,8 @@ public:
      * @param value the value to store at the new node
      */
     void push_back(const T value) {
-        m_Node *pNewNode = static_cast<m_Node*>(m_allocator.Allocate());
-        pNewNode->value = value;
+        ListNode<T> *pNewNode = static_cast<ListNode<T>*>(m_allocator.Allocate());
+        pNewNode->m_val = value;
         pNewNode->pNext = nullptr;
 
         if (m_pStart == nullptr) {
@@ -74,8 +315,8 @@ public:
      * @param value the value to store at the new node
      */
     void push_front(const T value) {
-        m_Node *pNewNode = static_cast<m_Node*>(m_allocator.Allocate());
-        pNewNode->value = value;
+        ListNode<T>* pNewNode = static_cast<ListNode<T>*>(m_allocator.Allocate());
+        pNewNode->m_val = value;
         pNewNode->pPrev = nullptr;
 
         if (m_pEnd == nullptr) {
@@ -90,7 +331,7 @@ public:
     }
 
     void pop_back() {
-        m_Node *pTmp = m_pEnd;
+        ListNode<T> *pTmp = m_pEnd;
         m_pEnd = m_pEnd->pPrev;
         if (m_pEnd != nullptr) {
             m_pEnd->pNext = nullptr;
@@ -102,7 +343,7 @@ public:
     }
 
     void pop_front() {
-        m_Node *pTmp = m_pStart;
+        ListNode<T> *pTmp = m_pStart;
         m_pStart = m_pStart->pNext;
         if (m_pStart != nullptr) {
             m_pStart->pPrev = nullptr;
@@ -115,31 +356,34 @@ public:
 
     /**
      * Returns the value at the start of the List
-     * DANGEROUS: will die if nullptr
      *
      * @return the value stored at the start of the list
      */
-    inline T front() {
-        return m_pStart->value;
+    T& front() {
+        if (m_pStart == nullptr) {
+            return T();
+        }
+        return m_pStart->m_val;
     }
 
     /**
      * Returns the value at the end of the List
-     * DANGEROUS: will die if nullptr
      *
      * @return the value stored at the end of the list
      */
-    inline T back() {
-        return m_pEnd->value;
+    T& back() {
+        if (m_pEnd == nullptr) {
+            return T();
+        }
+        return m_pEnd->m_val;
     }
 
     /**
      * Returns the length of the List
-     * DANGEROUS: will die if nullptr
      *
      * @return the length of the list
      */
-    inline uint16_t size() {
+    size_type size() {
         return m_len;
     }
 
@@ -147,11 +391,10 @@ public:
 
     /**
      * Removes the value stored at the given index
-     * DANGEROUS: will die if out of bounds
      *
      * @param index the index to remove at
      */
-    void remove_at(uint16_t index);
+    void remove_at(size_type index);
 
     /**
      * Return a copy of the value stored at the `index`
@@ -159,47 +402,43 @@ public:
      * @param index to get
      * @return copy of the value at that index
      */
-    T get(uint16_t index);
+    T get(size_type index);
 
     /**
      * Return a reference to the value stored at the `index`
-     * DANGEROUS: will die if out of bounds
      *
      * @param index to get
      * @return reference to the value at that index
      */
-    T& at(uint16_t index);
+    T& at(size_type index);
 
     /**
      * Return a reference to the value stored at the `index` (const variant)
-     * DANGEROUS: will die if out of bounds
      *
      * @param index to get
      * @return reference to the value at that index
      */
-    const T& at(uint16_t index) const;
+    const T& at(size_type index) const;
 
     /**
      * Array indexing operator
      * `at` behind the scenes
-     * DANGEROUS: will die if out of bounds
      *
      * @param index to get
      * @return reference to the value at that index
      */
-    inline T& operator[](uint16_t index) {
+    T& operator[](size_type index) {
         return at(index);
     }
 
     /**
      * Array indexing operator const variant
      * `at` behind the scenes
-     * DANGEROUS: will die if out of bounds
      *
      * @param index to get
      * @return reference to the value at that index
      */
-    inline const T& operator[](uint16_t index) const {
+    const T& operator[](size_type index) const {
         return at(index);
     }
 
@@ -207,17 +446,50 @@ public:
      * indexOf from Javascript land that finds the index of the
      * first element from the beginning of the List that equals `value`
      * but returns the length of the array instead of -1 on failure
-     * DANGEROUS: will die if out of bounds
      *
      * @param value value to search for
      * @return reference to the value at that index
      */
-    uint16_t indexOf(const T& value);
+    size_type indexOf(const T& value);
+
+    /**
+     * Obtain an iterator to the first element in the list.
+     * Returns pass-the-end iterator (nullptr) if
+     * there are no elements (m_pStart == nullptr)
+     *
+     * @return iterator the first element
+     */
+    iterator begin() {
+        return iterator(m_pStart, this);
+    }
+
+    /**
+     * @return a pass-the-end iterator for this map
+     */
+    iterator end() {
+        return iterator(nullptr, this);
+    }
+
+    /**
+     * @see List<T>::begin()
+     * @return a constant iterator to the first element in the list
+     */
+    const_iterator begin() const {
+        return const_iterator(m_pStart, this);
+    }
+
+    /**
+     * @see List<T>::end()
+     * @return a constant pass-the-end iterator
+     */
+    const_iterator end() const {
+        return const_iterator(nullptr, this);
+    }
 };
 
 template<class T>
 List<T>::~List() {
-    m_Node *pTmp;
+    ListNode<T> *pTmp;
     while (m_pStart != nullptr) {
         pTmp = m_pStart;
         m_pStart = m_pStart->pNext;
@@ -227,7 +499,7 @@ List<T>::~List() {
 
 template<class T>
 void List<T>::clear() {
-    m_Node *pTmp;
+    ListNode<T> *pTmp;
     while (m_pStart != nullptr) {
         pTmp = m_pStart;
         m_pStart = m_pStart->pNext;
@@ -238,8 +510,8 @@ void List<T>::clear() {
 }
 
 template<class T>
-void List<T>::remove_at(uint16_t index) {
-    m_Node *pTmp = m_pStart;
+void List<T>::remove_at(size_type index) {
+    ListNode<T> *pTmp = m_pStart;
     while (index-- > 0) {
         if (pTmp == nullptr) {
             return;
@@ -264,40 +536,46 @@ void List<T>::remove_at(uint16_t index) {
 }
 
 template<class T>
-T List<T>::get(uint16_t index) {
-    m_Node *pTmp = m_pStart;
+T List<T>::get(size_type index) {
+    ListNode<T> *pTmp = m_pStart;
     while (index-- > 0) {
-        pTmp = pTmp->pNext;
-    }
-    return pTmp->value;
-}
-
-template<class T>
-T& List<T>::at(uint16_t index) {
-    m_Node *pTmp = m_pStart;
-    while (index-- > 0) {
-        pTmp = pTmp->pNext;
-    }
-    return pTmp->value;
-}
-
-template<class T>
-const T& List<T>::at(uint16_t index) const {
-    m_Node *pTmp = m_pStart;
-    while (index-- > 0) {
-        pTmp = pTmp->pNext;
-    }
-    return pTmp->value;
-}
-
-template<class T>
-uint16_t List<T>::indexOf(const T& value) {
-    m_Node *pTmp = m_pStart;
-    for (uint16_t i = 0; i < m_len; i++) {
         if (pTmp == nullptr) {
             return T();
         }
-        if (pTmp->value == value) {
+        pTmp = pTmp->pNext;
+    }
+    return pTmp->m_val;
+}
+
+template<class T>
+T& List<T>::at(size_type index) {
+    ListNode<T> *pTmp = m_pStart;
+    while (index-- > 0) {
+        if (pTmp == nullptr) {
+            return T();
+        }
+        pTmp = pTmp->pNext;
+    }
+    return pTmp->m_val;
+}
+
+template<class T>
+const T& List<T>::at(size_type index) const {
+    ListNode<T> *pTmp = m_pStart;
+    while (index-- > 0) {
+        if (pTmp == nullptr) {
+            return T();
+        }
+        pTmp = pTmp->pNext;
+    }
+    return pTmp->m_val;
+}
+
+template<class T>
+size_type List<T>::indexOf(const T& value) {
+    ListNode<T> *pTmp = m_pStart;
+    for (size_type i = 0; i < m_len; i++) {
+        if (pTmp->m_val == value) {
             return i;
         }
         pTmp = pTmp->pNext;

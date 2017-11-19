@@ -7,10 +7,15 @@
  * @bug No known bugs
  */
 
-#include "Allocator.h"
-#include "math.h"
 #include <string.h>
-#include "../Wlib.h"
+#include <math.h>
+
+#include "Allocator.h"
+
+#include "../Types.h"
+
+#include "../stl/Utility.h"
+
 
 wlp::Allocator::Allocator(uint16_t blockSize, uint16_t poolSize, wlp::Allocator::Type allocationType, void *pPool) :
         m_poolType{allocationType},
@@ -24,14 +29,14 @@ wlp::Allocator::Allocator(uint16_t blockSize, uint16_t poolSize, wlp::Allocator:
         m_allocations{0},
         m_deallocations{0} {
     // lowest size of a block will be the size of Block ptr
-    if (m_blockSize < sizeof(wlp::Allocator::Block*)) m_blockSize = sizeof(wlp::Allocator::Block*);
+    if (m_blockSize < sizeof(wlp::Allocator::Block *)) m_blockSize = sizeof(wlp::Allocator::Block *);
 
     // if pool size is provided, we will use pool instead of dynamic heap allocations
     if (m_poolSize) {
         m_poolSize = max(m_blockSize, poolSize);
 
         // find the closest round number that describes the number of blocks
-        m_poolTotalBlockCnt = (uint16_t) round(m_poolSize / (float) m_blockSize);
+        m_poolTotalBlockCnt = (uint16_t) roundf(m_poolSize / (float) m_blockSize);
         m_poolCurrBlockCnt = m_poolTotalBlockCnt;
         m_totalBlockCount = m_poolTotalBlockCnt;
 
@@ -50,13 +55,70 @@ wlp::Allocator::Allocator(uint16_t blockSize, uint16_t poolSize, wlp::Allocator:
 
         // Fill m_pPool with m_poolSize blocks
         wlp::Allocator::Block *pBlock = m_pPool;
-        for (uint16_t i = 1; i < m_poolTotalBlockCnt; i++) {
+        for (size_type i = 1; i < m_poolTotalBlockCnt; i++) {
             pBlock = pBlock->pNext = (wlp::Allocator::Block *) ((char *) pBlock + m_blockSize);
         }
 
         // Initially, all in Deallocate'd state
         m_pHead = m_pPool;
     }
+}
+
+wlp::Allocator::Allocator(Allocator &&allocator)
+        : m_poolType(move(allocator.m_poolType)),
+          m_blockSize(move(allocator.m_blockSize)),
+          m_poolSize(move(allocator.m_poolSize)),
+          m_pHead(move(allocator.m_pHead)),
+          m_pPool(move(allocator.m_pPool)),
+          m_poolTotalBlockCnt(move(allocator.m_poolTotalBlockCnt)),
+          m_poolCurrBlockCnt(move(allocator.m_poolCurrBlockCnt)),
+          m_totalBlockCount(move(allocator.m_totalBlockCount)),
+          m_allocations(move(allocator.m_allocations)),
+          m_deallocations(move(allocator.m_deallocations)) {
+    allocator.m_pHead = nullptr;
+    allocator.m_pPool = nullptr;
+    allocator.m_allocations = 0;
+    allocator.m_deallocations = 0;
+    allocator.m_totalBlockCount = 0;
+    allocator.m_poolCurrBlockCnt = 0;
+    allocator.m_poolTotalBlockCnt = 0;
+}
+
+wlp::Allocator &wlp::Allocator::operator=(Allocator &&allocator) {
+    if (m_totalBlockCount > m_poolTotalBlockCnt) {
+        wlp::Allocator::Block *pBlock = nullptr;
+        while (m_pHead) {
+            pBlock = m_pHead;
+            if (pBlock) {
+                m_pHead = m_pHead->pNext;
+                if (!IsPoolBlock(pBlock)) {
+                    delete[] (char *) pBlock;
+                    --m_totalBlockCount;
+                }
+            }
+        }
+    }
+    if (m_poolType != Type::STATIC && m_pPool) {
+        delete[] (char *) m_pPool;
+    }
+    m_poolType = move(allocator.m_poolType);
+    m_blockSize = move(allocator.m_blockSize);
+    m_poolSize = move(allocator.m_poolSize);
+    m_pHead = move(allocator.m_pHead);
+    m_pPool = move(allocator.m_pPool);
+    m_poolTotalBlockCnt = move(allocator.m_poolTotalBlockCnt);
+    m_poolCurrBlockCnt = move(allocator.m_poolCurrBlockCnt);
+    m_totalBlockCount = move(allocator.m_totalBlockCount);
+    m_allocations = move(allocator.m_allocations);
+    m_deallocations = move(allocator.m_deallocations);
+    allocator.m_pHead = nullptr;
+    allocator.m_pPool = nullptr;
+    allocator.m_allocations = 0;
+    allocator.m_deallocations = 0;
+    allocator.m_totalBlockCount = 0;
+    allocator.m_poolCurrBlockCnt = 0;
+    allocator.m_poolTotalBlockCnt = 0;
+    return *this;
 }
 
 wlp::Allocator::Allocator(uint16_t blockSize, uint16_t poolSize) :
@@ -92,11 +154,10 @@ void *wlp::Allocator::Allocate() {
     // Pop one free block, if any.
     wlp::Allocator::Block *pBlock = m_pHead;
 
-    if (pBlock){
+    if (pBlock) {
         m_pHead = m_pHead->pNext;
         --m_poolCurrBlockCnt;
-    }
-    else {
+    } else {
         // Otherwise, get a 'new' one from heap.
         pBlock = (wlp::Allocator::Block *) new char[m_blockSize];
         ++m_totalBlockCount;
