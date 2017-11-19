@@ -16,7 +16,7 @@
 #include "Allocator.h"
 
 namespace wlp {
-    template<uint16_t tblockSize, uint16_t tnumBlocks>
+    template<size32_type tblockSize, size32_type tnumBlocks>
     class StaticAllocatorPool : public Allocator {
     public:
         StaticAllocatorPool() : Allocator(tblockSize, m_memory, tblockSize * tnumBlocks, Allocator::STATIC) {}

@@ -10,7 +10,6 @@
 #include "gtest/gtest.h"
 
 #include "memory/Memory.h"
-#include "memory/MemoryConfiguration.h"
 
 class Sample{
     int constr = 0;
@@ -34,8 +33,6 @@ TEST(memory_check, general_usability) {
     ASSERT_TRUE(isSizeAvailable(16));
     ASSERT_TRUE(isSizeMemAvailable(16));
     ASSERT_EQ(getNumBlocks(), getNumBlocksAvailable(16));
-    ASSERT_EQ(NUM_BLOCKS, getNumBlocks());
-    ASSERT_EQ(MAX_ALLOCATORS, getMaxAllocations());
 
     // allocate a character
     auto *character = malloc<char>(); // by default creates one char

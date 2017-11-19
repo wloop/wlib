@@ -10,10 +10,7 @@ include_directories(${WLIB_INCLUDE_DIR})
 
 file(GLOB files
 		"test.cpp"
-		"template_defs.h"
-		"memory/*.cpp"
-		"stl/*.cpp"
-		"strings/*.cpp")
+		"memory/*.cpp")
 
 add_executable(tests ${files})
 target_link_libraries(tests gtest)

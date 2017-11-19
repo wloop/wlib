@@ -14,7 +14,7 @@
 #include "../Wlib.h"
 #include "../stl/Utility.h"
 
-wlp::Allocator::Allocator(uint16_t blockSize, uint32_t poolSize, wlp::Allocator::Type allocationType, void *pPool) :
+wlp::Allocator::Allocator(size32_type blockSize, size32_type poolSize, wlp::Allocator::Type allocationType, void *pPool) :
         m_poolType{allocationType},
         m_blockSize{blockSize},
         m_pHead{nullptr},
@@ -52,8 +52,8 @@ wlp::Allocator::Allocator(uint16_t blockSize, uint32_t poolSize, wlp::Allocator:
 
         // Fill m_pPool with m_poolSize blocks
         wlp::Allocator::Block *pBlock = m_pPool;
-        for (uint16_t i = 1; i < m_poolTotalBlockCnt; i++) {
-            pBlock = pBlock->pNext = (wlp::Allocator::Block *) ((char *) pBlock + m_blockSize);
+        for (size_type i = 1; i < m_poolTotalBlockCnt; i++) {
+            pBlock = pBlock->pNext = reinterpret_cast<Allocator::Block*>(reinterpret_cast<char*>(pBlock) + m_blockSize);
         }
 
         // Initially, all in Deallocate'd state
@@ -120,10 +120,10 @@ wlp::Allocator &wlp::Allocator::operator=(Allocator &&allocator) {
     return *this;
 }
 
-wlp::Allocator::Allocator(uint16_t blockSize, uint32_t poolSize) :
+wlp::Allocator::Allocator(size32_type blockSize, size32_type poolSize) :
         wlp::Allocator(blockSize, poolSize, DYNAMIC, nullptr) {}
 
-wlp::Allocator::Allocator(uint16_t blockSize, void *pPool, uint32_t poolSize, Type type) :
+wlp::Allocator::Allocator(size32_type blockSize, void *pPool, uint32_t poolSize, Type type) :
         wlp::Allocator(blockSize, poolSize, type, pPool) {}
 
 wlp::Allocator::~Allocator() {
@@ -181,4 +181,3 @@ void wlp::Allocator::Deallocate(void *pBlock) {
 
     m_allocations <= 0 ? m_allocations : --m_allocations;
 }
-

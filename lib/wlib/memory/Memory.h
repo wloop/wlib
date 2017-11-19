@@ -17,7 +17,9 @@
 #ifndef FIXED_MEMORY_MEMORY_H
 #define FIXED_MEMORY_MEMORY_H
 
-#include <stdint.h>
+#include <new>
+
+#include "../Types.h"
 
 /**
  * @brief Helper for initializing and destroying memory management
@@ -43,25 +45,25 @@ private:
 /**
  * This code should never be called and/or touched. It is used internally
  */
-static MemoryInitDestroy g_smemoryInitDestroy;
+static MemoryInitDestroy __g_smemoryInitDestroy;
 
 /**
- * NEVER EVER USE THIS OR I WILL COME AND CREATE A NEW VERSION OF YOU
+ * Used internally not for client's use
  * Use the @code malloc @endcode function
  */
-void *memory_alloc(uint32_t size);
+void *__memory_alloc(uint32_t size);
 
 /**
- * NEVER EVER USE THIS OR I WILL COME AND REALLOCATE YOU
+ * Used internally not for client's use
  * Use the @code realloc @endcode function
  */
-void *memory_realloc(void *ptr, uint32_t size);
+void *__memory_realloc(void *ptr, uint32_t size);
 
 /**
- * NEVER EVER USE THIS OR I WILL COME AND FREE YOU FROM LIFE
+ * Used internally not for client's use
  * Use the @code free @endcode function
  */
-void memory_free(void *ptr);
+void __memory_free(void *ptr);
 
 /**
  * This allocates memory of the size provided. Memory allocated could be greater than what has been
@@ -71,14 +73,18 @@ void memory_free(void *ptr);
  * @pre this can also act a @code new @endcode keyword to create objects so there is no need to use
  * new keyword to create an object
  *
- * @tparam type pointer type
- * @param size size of the block to allocate
+ * @pre malloc creates number of blocks of given type and it does not allocate memory by proving it
+ * number of bytes
+ *
+ * @tparam Type pointer type
+ * @param num number of blocks of size @p Type
  * @return address to memory allocated
  */
-template<typename type>
-type *malloc(uint32_t size = 1) {
-    void *memory = memory_alloc(sizeof(type) * size);
-    return new(memory) type;
+template<typename Type>
+Type *malloc(wlp::size32_type num = 1) {
+    void *memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(Type)) * num);
+
+    return new(memory) Type;
 }
 
 /**
@@ -86,27 +92,30 @@ type *malloc(uint32_t size = 1) {
  * allocation from Memory otherwise results are undefined. If there is not a sufficient memory
  * available, it returns a @code nullptr @endcode
  *
- * @tparam type pointer type
+ * @pre realloc creates number of blocks of given type and it does not allocate memory by proving it
+ * number of bytes
+ *
+ * @tparam Type pointer type
  * @param ptr address to memory to be reallocated
- * @param size of new memory block
+ * @param size number of blocks of size @p Type
  * @return address to new memory address
  */
-template<typename type>
-type *realloc(type *ptr, uint32_t size = sizeof(type)) {
-    return static_cast<type *>(memory_realloc(ptr, size));
+template<typename Type>
+Type *realloc(Type *ptr, wlp::size32_type num = 1) {
+    return static_cast<Type *>(__memory_realloc(ptr, static_cast<wlp::size32_type>(sizeof(Type)) * num));
 }
 
 /**
  * This frees the memory allocated. Only memory allocated using Memory will be freed and if another
  * type of memory is provided, results are undefined
  *
- * @tparam type pointer type
+ * @tparam Type pointer type
  * @param ptr address to memory that will be freed
  */
-template<class type>
-void free(type *ptr) {
-    ptr->~type();
-    memory_free(ptr);
+template<class Type>
+void free(Type *ptr) {
+    ptr->~Type();
+    __memory_free(ptr);
 }
 
 /**
@@ -114,7 +123,7 @@ void free(type *ptr) {
  *
  * @return the total memory usage
  */
-uint32_t getTotalMemoryUsed();
+wlp::size32_type getTotalMemoryUsed();
 
 /**
  * Returns the total memory available to use (in bytes). If no pool is
@@ -123,7 +132,7 @@ uint32_t getTotalMemoryUsed();
  *
  * @return the total memory available
  */
-uint32_t getTotalMemoryAvailable();
+wlp::size32_type getTotalMemoryAvailable();
 
 /**
  * Returns if this @p blockSize is available as a size that can be borrowed.
@@ -136,7 +145,7 @@ uint32_t getTotalMemoryAvailable();
  * @param blockSize size of the block being queried
  * @return true or false based on if the block exists
  */
-bool isSizeAvailable(uint16_t blockSize);
+bool isSizeAvailable(wlp::size32_type blockSize);
 
 /**
  * Returns if this @p blockSize is available as a size that can be borrowed but it
@@ -146,7 +155,7 @@ bool isSizeAvailable(uint16_t blockSize);
  * @param blockSize size of the block being queried
  * @return true or false based on if the block exists and has some blocks left
  */
-bool isSizeMemAvailable(uint16_t blockSize);
+bool isSizeMemAvailable(wlp::size32_type blockSize);
 
 /**
  * Returns the total number of blocks that are available for @p blockSize. if @p blockSize
@@ -155,7 +164,7 @@ bool isSizeMemAvailable(uint16_t blockSize);
  * @param blockSize blockSize size of the block being queried
  * @return the number blocks available for @p blockSize
  */
-uint16_t getNumBlocksAvailable(uint16_t blockSize);
+uint16_t getNumBlocksAvailable(wlp::size32_type blockSize);
 
 /**
  * Returns the number of blocks per Allocator if a pool is used
@@ -171,5 +180,6 @@ uint16_t getNumBlocks();
  */
 uint16_t getMaxAllocations();
 
+wlp::size_type getSmallestBlockSize();
 
 #endif //FIXED_MEMORY_MEMORY_H

@@ -16,7 +16,7 @@
 #include "Allocator.h"
 
 namespace wlp {
-    template<uint16_t tblockSize, uint16_t tnumBlocks>
+    template<size32_type tblockSize, size32_type tnumBlocks>
     class DynamicAllocatorPool : public Allocator {
     public:
         DynamicAllocatorPool() : Allocator(tblockSize, (tblockSize * tnumBlocks)) {}
