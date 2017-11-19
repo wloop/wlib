@@ -2,6 +2,8 @@ project(wlib)
 
 file(GLOB header_files
         "*.h"
+        "fsm/*.h"
+        "fsm/*.cpp"
         "strings/*.h"
         "stl/*.h"
         "memory/*.h")

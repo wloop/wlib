@@ -16,8 +16,22 @@
 
 namespace wlp {
 
-    // size
+    /**
+     * Standard size type for Wlib. Used as a 16-bit unsigned integer.
+     * Represents a discrete measure of amount.
+     */
     typedef uint16_t size_type;
+    /**
+     * Standard different type for Wlib. Used as a 16-bit signed integer.
+     * Represents a discrete relative difference which has a concept
+     * of direction.
+     */
+    typedef int16_t diff_type;
+    /**
+     * Type used to represent a state as a distinct numerical value.
+     * Uses the unsigned 8-bit integer.
+     */
+    typedef uint8_t state_type;
 
     // Static Strings
     typedef StaticString<8> String8;
