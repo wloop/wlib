@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
-#include "strings/StaticString.h"
+
+#include "strings/String.h"
 #include "stl/Hash.h"
 
 #include "../template_defs.h"

@@ -235,9 +235,6 @@ TEST(open_map_test, test_access_operator) {
 }
 
 TEST(open_map_test, test_rehash) {
-    // class gives segmentation try using new malloc that should fix it maybe cuz I changed a lot of stuff
-    // also do not directly use Allocator
-    /*
 	int_map map(2, 50);
 	map[0] = 0;
 	map[1] = 10;
@@ -254,7 +251,6 @@ TEST(open_map_test, test_rehash) {
 		ASSERT_TRUE(map.contains(keys[i]));
 		ASSERT_EQ(*map.find(keys[i]), values[i]);
 	}
-     */
 }
 
 TEST(open_map_test, test_clear_map) {
