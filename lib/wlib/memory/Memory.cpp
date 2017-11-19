@@ -125,7 +125,7 @@ void memory_init() {
 #define DYNAMIC_POOL
 #if defined(DYNAMIC_POOL) || defined(STATIC_POOL)
     constexpr uint16_t powStart = (sizeof(Allocator *)) / 2;
-    insert<powStart, 0, MAX_ALLOCATORS>::apply();
+    insert<powStart, 0, MAX_ALLOCATORS-1>::apply();
 #elif defined(NO_POOL)
     for (int i = 0; i < MAX_ALLOCATORS; ++i) {
         auto blockSize = getBlockSize(static_cast<uint16_t>(1 << (i + 3)));
