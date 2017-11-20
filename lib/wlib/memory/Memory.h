@@ -95,9 +95,6 @@ Type *malloc(wlp::size32_type num = 1) {
             new(pointer) Type;
             pointer += sizeof(Type);
         }
-
-        if (pointer < memory)
-            *pointer = '~';
     }
 
     return static_cast<Type *>(memory);
