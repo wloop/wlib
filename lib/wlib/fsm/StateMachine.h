@@ -15,6 +15,7 @@ namespace wlp {
         virtual ~EventData() {}
     };
 
+    typedef uint8_t state_type;
     typedef EventData NoEventData;
 
     class StateMachine;
@@ -263,7 +264,7 @@ namespace wlp {
          * @param pData the event data to send
          * to the new state
          */
-        void externalEvent(state_type newState, const EventData *pData = nullptr);
+        void externalEvent(state_type newState, EventData *pData = nullptr);
 
         /**
          * Trigger an interval state machine event.
@@ -275,7 +276,7 @@ namespace wlp {
          * @param pData the event data to send
          * to the new state
          */
-        void internalEvent(state_type newState, const EventData *pData = nullptr);
+        void internalEvent(state_type newState, EventData *pData = nullptr);
 
     private:
         /**
@@ -306,7 +307,7 @@ namespace wlp {
         /**
          * The state event data pointer.
          */
-        const EventData *m_event_data;
+        EventData *m_event_data;
 
         /**
          * Get the state map as defined in a derived class of State Machine.

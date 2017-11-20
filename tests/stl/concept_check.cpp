@@ -1,9 +1,9 @@
-#include <stl/OpenMap.h>
 #include "gtest/gtest.h"
 
 #include "stl/Concept.h"
-#include "stl/Comparator.h"
+#include "utilities/Comparator.h"
 #include "stl/ChainMap.h"
+#include "stl/OpenMap.h"
 #include "stl/ArrayList.h"
 
 using namespace wlp;

@@ -18,14 +18,6 @@ TEST(open_map_test, test_constructor_parameters) {
     ASSERT_EQ(61, map.max_load());
 }
 
-TEST(open_map_test, test_constructor_allocator) {
-    string_map map(12, 75);
-    const Allocator *alloc = map.get_node_allocator();
-    size_t expected = sizeof(string_map::node_type);
-    ASSERT_EQ(expected, alloc->GetBlockSize());
-    ASSERT_EQ(expected * 12, alloc->GetPoolSize());
-}
-
 TEST(open_map_test, test_is_empty_on_construct) {
     string_map map(12, 75);
     ASSERT_TRUE(map.empty());

@@ -285,13 +285,13 @@ namespace wlp {
          * @param pos position of the element to be deleted
          * @return the modified String
          */
-        StaticString<tSize> &erase(uint16_t pos = 0){
+        StaticString<tSize> &erase(uint16_t pos = 0) {
             if (m_len == 0 || pos >= m_len) return *this;
 
             --m_len;
 
             for (uint16_t i = pos; i < m_len; ++i) {
-                m_buffer[i] = m_buffer[i+1];
+                m_buffer[i] = m_buffer[i + 1];
             }
 
             m_buffer[m_len] = '\0';
@@ -301,7 +301,7 @@ namespace wlp {
         /**
          * Deletes the last character in the String
          */
-        void pop_back(){
+        void pop_back() {
             if (m_len == 0) return;
 
             --m_len;

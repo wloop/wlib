@@ -1,5 +1,7 @@
 #include "StateMachine.h"
 
+#include "../memory/Memory.h"
+
 namespace wlp {
 
     StateMachine::StateMachine(state_type maxStates, state_type initialState) :
@@ -11,12 +13,12 @@ namespace wlp {
         /* assert(m_max_states < EVENT_IGNORED) */
     }
 
-    void StateMachine::externalEvent(state_type newState, const EventData *pData) {
+    void StateMachine::externalEvent(state_type newState, EventData *pData) {
         // If we are supposed to ignore this event
         if (newState == EVENT_IGNORED || newState == CANNOT_HAPPEN) {
             // Just delete the event data, if any
             if (pData != nullptr) {
-                delete pData;
+                free<EventData>(pData);
             }
         } else {
             // TODO - capture software lock here for thread-safety if necessary
@@ -31,9 +33,9 @@ namespace wlp {
         }
     }
 
-    void StateMachine::internalEvent(state_type newState, const EventData *pData) {
+    void StateMachine::internalEvent(state_type newState, EventData *pData) {
         if (pData == nullptr) {
-            pData = new NoEventData();
+            pData = malloc<NoEventData>();
         }
         m_event_data = pData;
         m_event_generated = true;
@@ -55,7 +57,7 @@ namespace wlp {
     }
 
     void StateMachine::stateEngine(const StateMapRow *const pStateMap) {
-        const EventData *pDataTemp = nullptr;
+        EventData *pDataTemp = nullptr;
         // While events are being generated keep executing states
         while (m_event_generated) {
             /* assert(m_new_state < m_max_states) */
@@ -79,13 +81,13 @@ namespace wlp {
             }
             state->InvokeStateAction(this, pDataTemp);
             if (pDataTemp) {
-                delete pDataTemp;
+                free<EventData>(pDataTemp);
             }
         }
     }
 
     void StateMachine::stateEngine(const StateMapRowEx *const pStateMapEx) {
-        const EventData *pDataTemp = nullptr;
+        EventData *pDataTemp = nullptr;
         // While events are being generated keep executing states
         while (m_event_generated) {
             /* assert(m_new_state < m_max_states) */
@@ -136,7 +138,7 @@ namespace wlp {
                 state->InvokeStateAction(this, pDataTemp);
             }
             if (pDataTemp) {
-                delete pDataTemp;
+                free<EventData>(pDataTemp);
             }
         }
     }
