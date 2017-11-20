@@ -28,6 +28,14 @@ namespace wlp {
         }
     };
 
+    /**
+     * Checks whether two static strings are equal.
+     *
+     * @tparam tSize static string size
+     * @param str1 first string
+     * @param str2 second string
+     * @return true if the strings are equal
+     */
     template<uint16_t tSize>
     inline bool static_string_equals(const StaticString<tSize> &str1, const StaticString<tSize> &str2) {
         if (str1.length() != str2.length()) {
@@ -41,6 +49,13 @@ namespace wlp {
         return true;
     }
 
+    /**
+     * Checks whether two C strings are equal.
+     *
+     * @param str1 first string
+     * @param str2 second string
+     * @return true if the strings are equal
+     */
     inline bool string_equals(const char *&str1, const char *&str2) {
         for (; *str1 && *str2; ++str1, ++str2) {
             if (*str1 != *str2) {
@@ -50,6 +65,11 @@ namespace wlp {
         return *str1 == *str2;
     }
 
+    /**
+     * Template specialization for static string.
+     *
+     * @tparam tSize static string size
+     */
     template<uint16_t tSize>
     struct Equal<StaticString<tSize>> {
         bool operator()(const StaticString<tSize> &key1, const StaticString<tSize> &key2) const {
@@ -57,6 +77,11 @@ namespace wlp {
         }
     };
 
+    /**
+     * Template specialization for const static string.
+     *
+     * @tparam tSize static string size
+     */
     template<uint16_t tSize>
     struct Equal<const StaticString<tSize>> {
         bool operator()(const StaticString<tSize> &key1, const StaticString<tSize> &key2) const {
@@ -64,6 +89,9 @@ namespace wlp {
         }
     };
 
+    /**
+     * Template specialization for character arrays.
+     */
     template<>
     struct Equal<char *> {
         bool operator()(const char *key1, const char *key2) const {
@@ -71,6 +99,9 @@ namespace wlp {
         }
     };
 
+    /**
+     * Template specialization for C strings.
+     */
     template<>
     struct Equal<const char *> {
         bool operator()(const char *key1, const char *key2) const {

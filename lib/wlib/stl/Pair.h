@@ -9,10 +9,6 @@
  * @bug No known bugs
  */
 
-/*
- * TODO: create and define more boolean operators
- */
-
 #ifndef EMBEDDEDTESTS_PAIR_H
 #define EMBEDDEDTESTS_PAIR_H
 
@@ -42,6 +38,7 @@ namespace wlp {
 
         /**
          * Copy constructor for const reference.
+         *
          * @param pair pair to copy
          */
         Pair(pair const &pair)
@@ -51,6 +48,7 @@ namespace wlp {
 
         /**
          * Copy constructor for R-value.
+         *
          * @param pair temporary pair to copy
          */
         Pair(pair &&pair)
@@ -60,6 +58,7 @@ namespace wlp {
 
         /**
          * Create a pair from two values of first type and second type.
+         *
          * @param first  first type value
          * @param second second type value
          */
@@ -98,6 +97,7 @@ namespace wlp {
 
         /**
          * Assignment operator copies the first and second values.
+         *
          * @param p pair to copy
          * @return a reference to this pair
          */
@@ -109,6 +109,7 @@ namespace wlp {
 
         /**
          * R-value assignment operator.
+         *
          * @param p temporary pair to copy
          * @return a reference to this pair
          */
@@ -121,6 +122,7 @@ namespace wlp {
         /**
          * Equality operator. Two pairs are equal if
          * both their elements are equal.
+         *
          * @param p the pair to compare
          * @return true if the pairs are equal
          */
@@ -129,13 +131,14 @@ namespace wlp {
         }
 
         /**
-         * Equality operator. Two pairs are equal if
-         * both their elements are equal.
+         * Inequality operator. Two pairs are unequal if
+         * one or more of the two elements are unequal.
+         *
          * @param p the pair to compare
-         * @return true if the pairs are equal
+         * @return true if the pairs are unequal
          */
-        bool operator==(pair &p) {
-            return m_first == p.m_first && m_second == p.m_second;
+        bool operator!=(const pair &p) {
+            return m_first != p.m_first || m_second != p.m_second;
         }
 
     };

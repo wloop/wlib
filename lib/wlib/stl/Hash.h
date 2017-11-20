@@ -25,14 +25,30 @@ namespace wlp {
     /**
      * A basic hash function is defined to be a function that, as best
      * as reasonably possible, maps a key-type value to a unique positive integer
-     * value. This is the parent template of hash functions for basic types in WLib.
+     * value.
+     *
+     * @pre The default hash function attempts to cast to the integer type,
+     *      which works for integer, character, and floating point types.
+     *
      * @tparam Key     key type
      * @tparam IntType the unsigned integer type to return
      */
     template<class Key, class IntType>
     struct Hash {
+        IntType operator()(const Key &key) const {
+            return (IntType) key;
+        }
     };
 
+    /**
+     * Hash a static string by multiplying the character value
+     * by 127 and adding consecutively.
+     *
+     * @tparam IntType the integer return type
+     * @tparam tSize the static string size
+     * @param static_string the string to hash
+     * @return a hash code of the string
+     */
     template<class IntType, uint16_t tSize>
     inline IntType hash_static_string(StaticString<tSize> &static_string) {
         IntType h = 0;
@@ -42,6 +58,14 @@ namespace wlp {
         return h;
     };
 
+    /**
+     * Hash a C string by multiplying the character value
+     * by 127 and adding consecutively.
+     *
+     * @tparam IntType the integer return type value
+     * @param s the string to hash
+     * @return a hash code of the string
+     */
     template<class IntType>
     inline IntType hash_string(const char *s) {
         IntType h = 0;
@@ -51,6 +75,12 @@ namespace wlp {
         return h;
     }
 
+    /**
+     * Template specialization for static stirng.
+     *
+     * @tparam IntType hash code integer type
+     * @tparam tSize static string size
+     */
     template<class IntType, uint16_t tSize>
     struct Hash<StaticString<tSize>, IntType> {
         IntType operator()(StaticString<tSize> &s) const {
@@ -58,6 +88,11 @@ namespace wlp {
         }
     };
 
+    /**
+     * Template specialization for C strings.
+     *
+     * @tparam IntType hash code integer type
+     */
     template<class IntType>
     struct Hash<char *, IntType> {
         IntType operator()(const char *s) const {
@@ -65,59 +100,15 @@ namespace wlp {
         }
     };
 
+    /**
+     * Template specialization for C strings.
+     *
+     * @tparam IntType hash code integer type
+     */
     template<class IntType>
     struct Hash<const char *, IntType> {
         IntType operator()(const char *s) const {
             return hash_string<IntType>(s);
-        }
-    };
-
-    template<class IntType>
-    struct Hash<char, IntType> {
-        IntType operator()(char x) const {
-            return (IntType) x;
-        }
-    };
-
-    template<class IntType>
-    struct Hash<uint8_t, IntType> {
-        IntType operator()(uint8_t x) const {
-            return (IntType) x;
-        }
-    };
-
-    template<class IntType>
-    struct Hash<uint16_t, IntType> {
-        IntType operator()(uint16_t x) const {
-            return (IntType) x;
-        }
-    };
-
-    template<class IntType>
-    struct Hash<uint32_t, IntType> {
-        IntType operator()(uint32_t x) const {
-            return (IntType) x;
-        }
-    };
-
-    template<class IntType>
-    struct Hash<int8_t, IntType> {
-        IntType operator()(int8_t x) const {
-            return (IntType) x;
-        }
-    };
-
-    template<class IntType>
-    struct Hash<int16_t, IntType> {
-        IntType operator()(int16_t x) const {
-            return (IntType) x;
-        }
-    };
-
-    template<class IntType>
-    struct Hash<int32_t, IntType> {
-        IntType operator()(int32_t x) const {
-            return (IntType) x;
         }
     };
 

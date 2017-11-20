@@ -37,8 +37,18 @@ namespace wlp {
             DYNAMIC /**< this is Heap memory */
         };
 
+        /**
+         * Disable copy construction.
+         */
         Allocator(const Allocator &) = delete;
 
+        /**
+         * Move constructor will transfer the resources of another
+         * allocator into this instance.
+         *
+         * @author Jeff Niu
+         * @param allocator the allocator to move
+         */
         Allocator(Allocator &&allocator);
 
         /**
@@ -179,8 +189,23 @@ namespace wlp {
             return m_deallocations;
         }
 
+        /**
+         * Disable copy assignment.
+         *
+         * @return reference to this allocator
+         */
         Allocator &operator=(const Allocator &) = delete;
 
+        /**
+         * Move assignment operator deconstructs the current allocator
+         * resources and transfers the resources from the assigned allocator.
+         * Beware that all previous allocations with this allocator become
+         * invalid, as leaving them uncleared would cause memory leaks.
+         *
+         * @author Jeff Niu
+         * @param allocator the allocator to move
+         * @return reference to this allocator
+         */
         Allocator &operator=(Allocator &&allocator);
 
     private:

@@ -1,3 +1,15 @@
+/**
+ * @file Utility.h
+ * @brief Various helper functions.
+ *
+ * This file is geared to contain helper functions are groups thereof
+ * that are not numerous enough to warrent their own files.
+ *
+ * @author Jeff Niu
+ * @date November 14, 2017
+ * @bug No known bugs
+ */
+
 #ifndef EMBEDDEDCPLUSPLUS_UTILITY_H
 #define EMBEDDEDCPLUSPLUS_UTILITY_H
 
@@ -40,6 +52,13 @@ namespace wlp {
         return static_cast<T &&>(t);
     }
 
+    /**
+     * Swap two elements.
+     *
+     * @tparam T element type
+     * @param v1 first element
+     * @param v2 second element
+     */
     template<typename T>
     void swap(T &v1, T &v2) {
         T tmp(move(v1));
