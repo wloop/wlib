@@ -7,31 +7,20 @@
  * @bug No known bug
  */
 
-
 #ifndef EMBEDDEDCPLUSPLUS_TYPES_H
 #define EMBEDDEDCPLUSPLUS_TYPES_H
 
 #include <stdint.h>
-#include "strings/StaticString.h"
 
 namespace wlp {
 
-    // size
+    // 16 bit sizes
     typedef uint16_t size_type;
+    typedef int16_t diff_type;
 
-    // Static Strings
-    typedef StaticString<8> String8;
-    typedef StaticString<16> String16;
-    typedef StaticString<32> String32;
-    typedef StaticString<64> String64;
-    typedef StaticString<128> String128;
-    typedef StaticString<256> String256;
-
-    /*
-    // Dynamic String
-    typedef wlp::DynamicString String;
-    */
-
+    // 32 bit sizes
+    typedef uint32_t size32_type;
+    typedef int32_t diff32_type;
 }
 
 #endif //EMBEDDEDCPLUSPLUS_TYPES_H

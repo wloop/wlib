@@ -12,7 +12,7 @@
 #ifndef EMBEDDEDTESTS_PAIR_H
 #define EMBEDDEDTESTS_PAIR_H
 
-#include "Utility.h"
+#include "../utility/Utility.h"
 
 namespace wlp {
 
@@ -62,9 +62,10 @@ namespace wlp {
          * @param first  first type value
          * @param second second type value
          */
-        Pair(first_type first, second_type second)
-                : m_first(first),
-                  m_second(second) {
+        template<typename FirstType, typename SecondType>
+        Pair(FirstType &&first, SecondType &&second)
+                : m_first(forward<FirstType>(first)),
+                  m_second(forward<SecondType>(second)) {
         }
 
         /**
@@ -101,21 +102,10 @@ namespace wlp {
          * @param p pair to copy
          * @return a reference to this pair
          */
-        pair &operator=(const pair &p) {
-            m_first = p.m_first;
-            m_second = p.m_second;
-            return *this;
-        }
-
-        /**
-         * R-value assignment operator.
-         *
-         * @param p temporary pair to copy
-         * @return a reference to this pair
-         */
-        pair &operator=(pair &&p) {
-            m_first = move(p.m_first);
-            m_second = move(p.m_second);
+        template<typename P>
+        pair &operator=(P &&p) {
+            m_first = forward<first_type>(p.m_first);
+            m_second = forward<second_type>(p.m_second);
             return *this;
         }
 

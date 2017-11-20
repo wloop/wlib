@@ -3,7 +3,8 @@
 
 #include "Types.h"
 
-#include "stl/Utility.h"
+#include "strings/String.h"
+#include "utility/Utility.h"
 #include "stl/ChainMap.h"
 #include "stl/OpenMap.h"
 #include "stl/ArrayHeap.h"

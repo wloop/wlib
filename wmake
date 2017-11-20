@@ -246,6 +246,7 @@ _run(){
 }
 
 _test(){
+    find ./bin/tests/CMakeFiles/tests.dir/ -name '*.gcda' -delete
     ./bin/tests/tests
     echo "Tests Finished Running"
 }

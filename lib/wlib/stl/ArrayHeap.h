@@ -19,7 +19,8 @@
 #include "Comparator.h"
 #include "Concept.h"
 #include "TypeTraits.h"
-#include "Utility.h"
+
+#include "utility/Utility.h"
 
 namespace wlp {
 

@@ -6,28 +6,27 @@
  * or provided by the user. The goal is to eliminate memory fragmentation and make allocations
  * faster and much safer
  *
+ * This class should never be used because it is used internally
+ *
  * @author Deep Dhillon
- * @date October 22, 2017
+ * @date November 19, 2017
  * @bug No known bugs
  */
 
 #ifndef C_TEST_ALLOCATOR_H
 #define C_TEST_ALLOCATOR_H
 
-
-#include <stddef.h>
-#include <stdint.h>
-
-#include "../Wlib.h"
+#include "../Types.h"
 
 namespace wlp {
-    class Allocator {
+
+    class __Allocator {
     private:
         /*!
          * Block of memory that will be provided to the user
          */
         struct Block {
-            Block *pNext;   /*!< linked list to keep track memory pool */
+            Block *pNext; /*!< linked list to keep track memory pool */
         };
 
     public:
@@ -42,7 +41,7 @@ namespace wlp {
         /**
          * Disable copy construction.
          */
-        Allocator(const Allocator &) = delete;
+        __Allocator(const __Allocator &) = delete;
 
         /**
          * Move constructor will transfer the resources of another
@@ -51,7 +50,7 @@ namespace wlp {
          * @author Jeff Niu
          * @param allocator the allocator to move
          */
-        Allocator(Allocator &&allocator);
+        __Allocator(__Allocator &&allocator);
 
         /**
          * Allocator used for allocating memory where memory is acquired by the allocator. It supports a pool
@@ -67,7 +66,7 @@ namespace wlp {
          * @param blockSize size of memory blocks that can acquired at a time
          * @param poolSize size of memory pool to be created
          */
-        explicit Allocator(uint16_t blockSize, uint16_t poolSize = 0);
+        explicit __Allocator(size32_type blockSize, size32_type poolSize = 0);
 
         /**
          * Allocator used for allocating memory where memory is provided to the allocator. It uses the given
@@ -84,7 +83,7 @@ namespace wlp {
          * @param poolSize size of the memory pool provided
          * @param type type of memory pool provided (static or dynamic)
          */
-        Allocator(uint16_t blockSize, void *pPool, uint16_t poolSize, Type type);
+        __Allocator(size32_type blockSize, void *pPool, size32_type poolSize, Type type);
 
         /**
          * Deletes memory and returns it back to the system
@@ -93,14 +92,14 @@ namespace wlp {
          *      de-allocated the memory or not but for dynamic heap blocks gathered in runtime there is
          *      no such promise. User has to call de-allocate on that memory
          */
-        ~Allocator();
+        ~__Allocator();
 
         /**
          * Allocates memory from internal memory pool/dynamic memory system and gives access to the user
          *
          * @return address to memory of blockSize that is predefined
          */
-        void *Allocate();
+        void *allocate();
 
         /**
          * De-allocates the memory so that it is available if another call for memory is made. It does not
@@ -111,7 +110,7 @@ namespace wlp {
          *
          * @param pBlock address to memory block that needs de-allocation
          */
-        void Deallocate(void *pBlock);
+        void deallocate(void *pBlock);
 
         /**
          * Gives user indication if the memory block they have belongs to the pool or it is some other dynamic
@@ -120,10 +119,10 @@ namespace wlp {
          * @param pBlockVoid memory block address being verified
          * @return true or false based on if the given block belongs to memory pool
          */
-        inline bool IsPoolBlock(void *pBlockVoid) const {
+        inline bool isPoolBlock(void *pBlockVoid) const {
             auto *pBlock = (Block *) pBlockVoid;
 
-            if (!m_pPool)return false;
+            if (!m_pPool) { return false; }
             return ((char *) pBlock >= (char *) m_pPool &&
                     (char *) pBlock <= (char *) m_pPool + m_blockSize * (m_totalBlockCount - 1));
         }
@@ -133,7 +132,7 @@ namespace wlp {
          *
          * @return size of memory block
          */
-        inline size_t GetBlockSize() const {
+        inline size32_type getBlockSize() const {
             return m_blockSize;
         }
 
@@ -142,7 +141,7 @@ namespace wlp {
          *
          * @return size of pool
          */
-        inline size_t GetPoolSize() const {
+        inline size32_type getPoolSize() const {
             return m_poolSize;
         }
 
@@ -151,7 +150,7 @@ namespace wlp {
          *
          * @return number of memory blocks available in the pool
          */
-        inline uint16_t GetNumPoolBlocksAvail() const {
+        inline uint16_t getNumPoolBlocksAvail() const {
             return m_poolCurrBlockCnt;
         }
 
@@ -160,7 +159,7 @@ namespace wlp {
          *
          * @return number of memory blocks in total in the pool
          */
-        inline uint16_t GetTotalPoolBlocks() const {
+        inline uint16_t getTotalPoolBlocks() const {
             return m_poolTotalBlockCnt;
         }
 
@@ -169,7 +168,7 @@ namespace wlp {
          *
          * @return number of memory blocks in total in Allocator
          */
-        inline uint16_t GetTotalBlocks() const {
+        inline uint16_t getTotalBlocks() const {
             return m_totalBlockCount;
         }
 
@@ -178,7 +177,7 @@ namespace wlp {
          *
          * @return the number of allocations
          */
-        inline uint16_t GetNumAllocations() const {
+        inline uint16_t getNumAllocations() const {
             return m_allocations;
         }
 
@@ -187,7 +186,7 @@ namespace wlp {
          *
          * @return the number of de-allocations
          */
-        inline uint16_t GetNumDeallocations() const {
+        inline uint16_t getNumDeallocations() const {
             return m_deallocations;
         }
 
@@ -196,7 +195,7 @@ namespace wlp {
          *
          * @return reference to this allocator
          */
-        Allocator &operator=(const Allocator &) = delete;
+        __Allocator &operator=(const __Allocator &) = delete;
 
         /**
          * Move assignment operator deconstructs the current allocator
@@ -208,7 +207,7 @@ namespace wlp {
          * @param allocator the allocator to move
          * @return reference to this allocator
          */
-        Allocator &operator=(Allocator &&allocator);
+        __Allocator &operator=(__Allocator &&allocator);
 
     private:
         /**
@@ -220,14 +219,13 @@ namespace wlp {
          * @param allocationType type of memory in memory pool
          * @param pPool address to memory provided
          */
-        explicit Allocator(uint16_t blockSize, uint16_t poolSize, Allocator::Type allocationType, void *pPool);
-
+        explicit __Allocator(size32_type blockSize, size32_type poolSize, __Allocator::Type allocationType, void *pPool);
 
         Type m_poolType;
-        size_t m_blockSize;
         Block *m_pHead;
         Block *m_pPool;
-        size_t m_poolSize;
+        size32_type m_blockSize;
+        size32_type m_poolSize;
         uint16_t m_poolTotalBlockCnt;
         uint16_t m_poolCurrBlockCnt;
         uint16_t m_totalBlockCount;
