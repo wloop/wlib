@@ -17,11 +17,9 @@
 #ifndef FIXED_MEMORY_MEMORY_H
 #define FIXED_MEMORY_MEMORY_H
 
-#include <new>
-#include "../utilities/Tmp.h"
-
 #include "../Types.h"
 
+#include "../utility/Tmp.h"
 
 /**
  * @brief Helper for initializing and destroying memory management

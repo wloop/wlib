@@ -19,7 +19,7 @@
 #define EMBEDDEDCPLUSPLUS_TUPLE_H
 
 #include "Pair.h"
-#include "../utilities/Tmp.h"
+#include "../utility/Tmp.h"
 
 namespace wlp {
 
@@ -641,7 +641,7 @@ namespace wlp {
      * @return a tuple sized to the number of elements
      */
     template<typename... Types>
-    auto make_tuple(Types &&... elements) {
+    Tuple<decay_type<Types>...> make_tuple(Types &&... elements) {
         return Tuple<decay_type<Types>...>(forward<Types>(elements)...);
     }
 
@@ -656,7 +656,11 @@ namespace wlp {
      * @return concatenation of the two tuples
      */
     template<typename TupleA, size_type... IndicesA, typename TupleB, size_type... IndicesB>
-    auto tuple_cat_pair_sub(
+    Tuple<
+            typename TypeAtTuple<IndicesA, decay_type<TupleA>>::type...,
+            typename TypeAtTuple<IndicesB, decay_type<TupleB>>::type...
+    >
+    tuple_cat_pair_sub(
             TupleA &&tupleA, TupleB &&tupleB,
             IndexSequence<IndicesA...>, IndexSequence<IndicesB...>) {
         return make_tuple(
@@ -706,11 +710,33 @@ namespace wlp {
      * @return the concatenated tuples
      */
     template<typename HeadTupleA, typename HeadTupleB>
-    auto tuple_cat(HeadTupleA &&tupleA, HeadTupleB &&tupleB) {
+    typename cat_pair_type<HeadTupleA, HeadTupleB>::type
+    tuple_cat(HeadTupleA &&tupleA, HeadTupleB &&tupleB) {
         return tuple_cat_pair(
                 forward<HeadTupleA>(tupleA),
                 forward<HeadTupleB>(tupleB)
         );
+    };
+
+    template<typename...>
+    struct tuple_cat_type;
+
+    template<typename Tuple>
+    struct tuple_cat_type<Tuple> {
+        typedef Tuple type;
+    };
+
+    template<typename TupleA, typename TupleB>
+    struct tuple_cat_type<TupleA, TupleB> {
+        typedef typename cat_pair_type<TupleA, TupleB>::type type;
+    };
+
+    template<typename TupleA, typename TupleB, typename... Tuples>
+    struct tuple_cat_type<TupleA, TupleB, Tuples...> {
+    private:
+        typedef typename cat_pair_type<TupleA, TupleB>::type pair_type;
+    public:
+        typedef typename tuple_cat_type<pair_type, Tuples...>::type type;
     };
 
     /**
@@ -725,7 +751,8 @@ namespace wlp {
      * @return concatenated tuples
      */
     template<typename HeadTupleA, typename HeadTupleB, typename... TailTuples>
-    auto tuple_cat(HeadTupleA &&tupleA, HeadTupleB &&tupleB, TailTuples &&... tail) {
+    typename tuple_cat_type<HeadTupleA, HeadTupleB, TailTuples...>::type
+    tuple_cat(HeadTupleA &&tupleA, HeadTupleB &&tupleB, TailTuples &&... tail) {
         auto tuple = tuple_cat_pair(
                 forward<HeadTupleA>(tupleA),
                 forward<HeadTupleB>(tupleB)

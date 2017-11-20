@@ -7,7 +7,7 @@ using namespace wlp;
 
 typedef StaticString<16> string16;
 typedef OpenHashMap<string16, string16> string_map;
-typedef OpenHashMap<uint16_t, uint16_t> int_map;
+typedef OpenHashMap<int, int> int_map;
 typedef int_map::iterator imi;
 typedef Pair<imi, bool> P_imi_b;
 

@@ -162,8 +162,9 @@ namespace wlp {
          * @param key the element to insert
          * @return a pair of an iterator and boolean
          */
-        Pair<iterator, bool> insert(key_type key) {
-            return m_hash_map.insert(key, key);
+        template<typename K>
+        Pair<iterator, bool> insert(K &&key) {
+            return m_hash_map.insert(forward<K>(key), forward<K>(key));
         };
 
         /**
@@ -202,18 +203,7 @@ namespace wlp {
          * @param pos iterator whose element to erase
          * @return iterator to the next element in the set
          */
-        iterator &erase(iterator &pos) {
-            return m_hash_map.erase(pos);
-        }
-
-        /**
-         * Erase the element in the set pointed to by
-         * the iterator.
-         *
-         * @param pos iterator whose element to erase
-         * @return iterator to the next element in the set
-         */
-        const_iterator &erase(const_iterator &pos) {
+        iterator erase(const iterator &pos) {
             return m_hash_map.erase(pos);
         }
 
@@ -223,7 +213,7 @@ namespace wlp {
          * @param key the element to remove
          * @return true if removal occured
          */
-        bool erase(key_type &key) {
+        bool erase(const key_type &key) {
             return m_hash_map.erase(key);
         }
 

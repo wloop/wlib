@@ -17,9 +17,9 @@
 
 namespace wlp {
     template<size32_type tblockSize, size32_type tnumBlocks>
-    class StaticAllocatorPool : public Allocator {
+    class StaticAllocatorPool : public __Allocator {
     public:
-        StaticAllocatorPool() : Allocator(tblockSize, m_memory, tblockSize * tnumBlocks, Allocator::STATIC) {}
+        StaticAllocatorPool() : __Allocator(tblockSize, m_memory, tblockSize * tnumBlocks, __Allocator::STATIC) {}
 
     private:
         char m_memory[tblockSize * tnumBlocks];

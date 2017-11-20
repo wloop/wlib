@@ -13,7 +13,7 @@
 #ifndef EMBEDDEDCPLUSPLUS_TYPETRAITS_H
 #define EMBEDDEDCPLUSPLUS_TYPETRAITS_H
 
-#include "utilities/Tmp.h"
+#include "../utility/Tmp.h"
 
 /**
  * Code generation macro to create a metafunction
