@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 
 #include "stl/Concept.h"
-#include "utilities/Comparator.h"
+#include "stl/Comparator.h"
 #include "stl/ChainMap.h"
 #include "stl/OpenMap.h"
 #include "stl/ArrayList.h"

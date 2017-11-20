@@ -9,7 +9,7 @@ using namespace wlp;
 
 typedef uint16_t ui16;
 typedef ChainHashMap<String16, String16> string_map;
-typedef ChainHashMap<ui16, ui16> int_map;
+typedef ChainHashMap<int, int> int_map;
 typedef int_map::iterator imi;
 typedef int_map::const_iterator cimi;
 typedef Pair<imi, bool> P_imi_b;
@@ -109,7 +109,7 @@ TEST(chain_map_test, test_erase_cases) {
     map[21] = 21;
     map[31] = 31;
     map[2] = 2;
-    map.erase(it);
+    it = map.erase(it);
     ASSERT_EQ(2, *it);
     it = map.end();
     map.erase(it);
@@ -268,16 +268,16 @@ TEST(chain_map_test, test_erase_iterator) {
     map.insert(40, 40);
     ASSERT_EQ(6, map.size());
     imi it = r1.first();
-    map.erase(it);
+    it = map.erase(it);
     ASSERT_EQ(5, map.size());
     ASSERT_EQ(33, *it);
     ASSERT_EQ(it, r33.first());
-    map.erase(it);
+    it = map.erase(it);
     ASSERT_EQ(4, map.size());
     ASSERT_EQ(3, *it);
     ASSERT_NE(it, r3.first()); // iterator invalidated by erase
     ASSERT_EQ(*it, *r3.first());
-    map.erase(it);
+    it = map.erase(it);
     ASSERT_EQ(3, map.size());
     ASSERT_EQ(map.end(), it);
     ASSERT_EQ(40, *map.at(40));
@@ -287,12 +287,12 @@ TEST(chain_map_test, test_erase_iterator) {
     ASSERT_EQ(map.end(), map.at(3));
     ASSERT_EQ(map.end(), map.at(33));
     it = r20.first();
-    map.erase(it);
+    it = map.erase(it);
     ASSERT_EQ(2, map.size());
     ASSERT_EQ(0, *it);
     ASSERT_NE(it, r0.first());
     ASSERT_EQ(0, *r0.first());
-    map.erase(it);
+    it = map.erase(it);
     ASSERT_EQ(map.end(), it);
     ASSERT_EQ(1, map.size());
     ASSERT_EQ(40, *map.begin());

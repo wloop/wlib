@@ -10,31 +10,15 @@
 #ifndef EMBEDDEDCPLUSPLUS_COMPARATOR_H
 #define EMBEDDEDCPLUSPLUS_COMPARATOR_H
 
-#include "stl/Equal.h"
+#include <string.h> // strcmp
 
 #include "Types.h"
 
+#include "stl/Equal.h"
+#include "strings/String.h"
 #include "strings/StaticString.h"
 
 namespace wlp {
-
-    /**
-     * String comparison function. Returns 0 for equal strings,
-     * a positive signed number if @code s1 @endcode is greater
-     * than @code s2 @endcode and a negative number otherwise.
-     *
-     * @param s1 first string to compare
-     * @param s2 second string to compare
-     * @return 0 for equal, > 0 for greater, < 0 for less than
-     */
-    inline int8_t str_cmp(const char *s1, const char *s2) {
-        for (; *s1 == *s2; ++s1, ++s2) {
-            if (*s1 == 0) {
-                return 0;
-            }
-        }
-        return (int8_t) (*s1 - *s2);
-    }
 
     /**
      * Base comparator type uses the basic comparison
@@ -108,27 +92,27 @@ namespace wlp {
     template<>
     struct Comparator<const char *> {
         bool __lt__(const char *s1, const char *s2) const {
-            return str_cmp(s1, s2) < 0;
+            return strcmp(s1, s2) < 0;
         }
 
         bool __le__(const char *s1, const char *s2) const {
-            return str_cmp(s1, s2) <= 0;
+            return strcmp(s1, s2) <= 0;
         }
 
         bool __eq__(const char *s1, const char *s2) const {
-            return str_cmp(s1, s2) == 0;
+            return strcmp(s1, s2) == 0;
         }
 
         bool __ne__(const char *s1, const char *s2) const {
-            return str_cmp(s1, s2) != 0;
+            return strcmp(s1, s2) != 0;
         }
 
         bool __gt__(const char *s1, const char *s2) const {
-            return str_cmp(s1, s2) > 0;
+            return strcmp(s1, s2) > 0;
         }
 
         bool __ge__(const char *s1, const char *s2) const {
-            return str_cmp(s1, s2) >= 0;
+            return strcmp(s1, s2) >= 0;
         }
     };
 
@@ -138,31 +122,31 @@ namespace wlp {
      * @tparam tSize static string size
      */
     template<uint16_t tSize>
-    struct Comparator<StaticString < tSize>> {
-    bool __lt__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
-        return str_cmp(s1.c_str(), s2.c_str()) < 0;
-    }
+    struct Comparator<StaticString <tSize>> {
+        bool __lt__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+            return strcmp(s1.c_str(), s2.c_str()) < 0;
+        }
 
-    bool __le__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
-        return str_cmp(s1.c_str(), s2.c_str()) <= 0;
-    }
+        bool __le__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+            return strcmp(s1.c_str(), s2.c_str()) <= 0;
+        }
 
-    bool __eq__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
-        return str_cmp(s1.c_str(), s2.c_str()) == 0;
-    }
+        bool __eq__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+            return strcmp(s1.c_str(), s2.c_str()) == 0;
+        }
 
-    bool __ne__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
-        return str_cmp(s1.c_str(), s2.c_str()) != 0;
-    }
+        bool __ne__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+            return strcmp(s1.c_str(), s2.c_str()) != 0;
+        }
 
-    bool __gt__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
-        return str_cmp(s1.c_str(), s2.c_str()) > 0;
-    }
+        bool __gt__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+            return strcmp(s1.c_str(), s2.c_str()) > 0;
+        }
 
-    bool __ge__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
-        return str_cmp(s1.c_str(), s2.c_str()) >= 0;
-    }
-};
+        bool __ge__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+            return strcmp(s1.c_str(), s2.c_str()) >= 0;
+        }
+    };
 
 }
 

@@ -11,11 +11,13 @@
 #ifndef WLIB_STATICSTRING_H
 #define WLIB_STATICSTRING_H
 
-#include <string.h>
-#include <math.h>
+#include <string.h> // strlen, strncpy, strcmp
+
+#include "../Types.h"
+#include "../utility/Math.h"
 
 namespace wlp {
-    template<uint16_t tSize>
+    template<size_type tSize>
     class StaticString {
     public:
         /**
@@ -30,7 +32,8 @@ namespace wlp {
          *
          * @param str @code StaticString @endcode object
          */
-        StaticString<tSize>(const StaticString<tSize> &str) : StaticString{str.c_str()} {}
+        StaticString<tSize>(const StaticString<tSize> &str)
+                : StaticString{str.c_str()} {}
 
         /**
          * Constructor creates string using character array
@@ -38,9 +41,8 @@ namespace wlp {
          * @param str char string
          */
         explicit StaticString<tSize>(const char *str) {
-            m_len = (uint16_t) strlen(str);
-            if (m_len > capacity()) m_len = capacity();
-
+            m_len = static_cast<size_type>(strlen(str));
+            if (m_len > capacity()) { m_len = capacity(); }
             strncpy(m_buffer, str, m_len);
             m_buffer[m_len] = '\0';
         }
@@ -62,7 +64,7 @@ namespace wlp {
          * @return current object
          */
         StaticString<tSize> &operator=(const char *str) {
-            m_len = (uint16_t) ceil(fmin((uint16_t) strlen(str), capacity()));
+            m_len = MIN(static_cast<size_type>(strlen(str)), tSize);
             strncpy(m_buffer, str, m_len);
             m_buffer[m_len] = '\0';
 
@@ -85,7 +87,7 @@ namespace wlp {
          *
          * @return string length
          */
-        uint16_t length() const {
+        size_type length() const {
             return m_len;
         }
 
@@ -94,7 +96,7 @@ namespace wlp {
          *
          * @return string capacity
          */
-        uint16_t capacity() {
+        size_type capacity() {
             return tSize;
         }
 
@@ -121,7 +123,7 @@ namespace wlp {
          * @param pos the position of the character
          * @return character at @p pos
          */
-        char &operator[](uint16_t pos) {
+        char &operator[](size_type pos) {
             return at(pos);
         }
 
@@ -132,7 +134,7 @@ namespace wlp {
          * @param pos the position of the character
          * @return character at @p pos
          */
-        const char &operator[](uint16_t pos) const {
+        const char &operator[](size_type pos) const {
             return at(pos);
         }
 
@@ -144,8 +146,8 @@ namespace wlp {
          * @param pos the position of the character
          * @return character at @p pos
          */
-        char &at(uint16_t pos) {
-            if (pos >= m_len) return back();
+        char &at(size_type pos) {
+            if (pos >= m_len) { return back(); }
 
             return m_buffer[pos];
         }
@@ -157,8 +159,8 @@ namespace wlp {
          * @param pos the position of the character
          * @return character at @p pos
          */
-        const char &at(uint16_t pos) const {
-            if (pos >= m_len) return back();
+        const char &at(size_type pos) const {
+            if (pos >= m_len) { return back(); }
 
             return m_buffer[pos];
         }
@@ -169,7 +171,7 @@ namespace wlp {
          * @return the last character
          */
         char &back() {
-            if (empty()) return m_buffer[0];
+            if (empty()) { return m_buffer[0]; }
             return m_buffer[m_len - 1];
         }
 
@@ -179,7 +181,7 @@ namespace wlp {
          * @return the last character
          */
         const char &back() const {
-            if (empty()) return m_buffer[0];
+            if (empty()) { return m_buffer[0]; }
             return m_buffer[m_len - 1];
         }
 
@@ -253,17 +255,13 @@ namespace wlp {
          * @return the current string
          */
         StaticString<tSize> &append(const char *str) {
-            uint16_t bufferLength = m_len;
-            uint16_t otherLength = (uint16_t) strlen(str);
-
-            for (uint16_t i = bufferLength; i < bufferLength + otherLength && i < capacity(); i++) {
+            size_type bufferLength = m_len;
+            size_type otherLength = static_cast<size_type>(strlen(str));
+            for (size_type i = bufferLength; i < bufferLength + otherLength && i < capacity(); i++) {
                 m_buffer[i] = str[i - bufferLength];
             }
-
-            m_len = (uint16_t) ceil(fmin(capacity(), (bufferLength + otherLength)));
-
+            m_len = MIN(tSize, bufferLength + otherLength);
             m_buffer[m_len] = '\0';
-
             return *this;
         }
 
@@ -285,15 +283,12 @@ namespace wlp {
          * @param pos position of the element to be deleted
          * @return the modified String
          */
-        StaticString<tSize> &erase(uint16_t pos = 0) {
-            if (m_len == 0 || pos >= m_len) return *this;
-
+        StaticString<tSize> &erase(size_type pos = 0) {
+            if (m_len == 0 || pos >= m_len) { return *this; }
             --m_len;
-
-            for (uint16_t i = pos; i < m_len; ++i) {
+            for (size_type i = pos; i < m_len; ++i) {
                 m_buffer[i] = m_buffer[i + 1];
             }
-
             m_buffer[m_len] = '\0';
             return *this;
         }
@@ -302,8 +297,7 @@ namespace wlp {
          * Deletes the last character in the String
          */
         void pop_back() {
-            if (m_len == 0) return;
-
+            if (m_len == 0) { return; }
             --m_len;
             m_buffer[m_len] = '\0';
         }
@@ -326,23 +320,19 @@ namespace wlp {
          * @param length length of the new string
          * @return new string which is a substring of current string
          */
-        StaticString<tSize> substr(uint16_t pos, uint16_t length) const {
-            if (pos >= m_len)
+        StaticString<tSize> substr(size_type pos, size_type length) const {
+            if (pos >= m_len) {
                 return *this;
-
-            if (pos + length >= m_len)
-                length = (uint16_t) (m_len - pos);
-
+            }
+            if (pos + length >= m_len) {
+                length = static_cast<size_type>(m_len - pos);
+            }
             char newBuffer[length + 1];
-
-            for (uint16_t i = pos; i < pos + length; i++) {
+            for (size_type i = pos; i < pos + length; i++) {
                 newBuffer[i - pos] = m_buffer[i];
             }
-
             newBuffer[length] = '\0';
-
             StaticString<tSize> s{newBuffer};
-
             return s;
         }
 
@@ -385,7 +375,7 @@ namespace wlp {
 
     private:
         char m_buffer[tSize + 1];
-        uint16_t m_len;
+        size_type m_len;
     };
 
     /**
@@ -396,7 +386,7 @@ namespace wlp {
      * @param rhs @code StaticString @endcode string as right hand side string
      * @return true or false based on if two strings are equal
      */
-    template<uint16_t tSize>
+    template<size_type tSize>
     bool operator==(const StaticString<tSize> &lhs, const StaticString<tSize> &rhs) {
         return lhs.compare(rhs) == 0;
     }
@@ -409,7 +399,7 @@ namespace wlp {
      * @param rhs @code StaticString @endcode string as right hand side string
      * @return true or false based on if two strings are equal
      */
-    template<uint16_t tSize>
+    template<size_type tSize>
     bool operator==(const char *lhs, const StaticString<tSize> &rhs) {
         return rhs.compare(lhs) == 0;
     }
@@ -422,7 +412,7 @@ namespace wlp {
      * @param rhs character string as right hand side string
      * @return true or false based on if two strings are equal
      */
-    template<uint16_t tSize>
+    template<size_type tSize>
     bool operator==(const StaticString<tSize> &lhs, const char *rhs) {
         return lhs.compare(rhs) == 0;
     }
@@ -435,7 +425,7 @@ namespace wlp {
      * @param rhs a character
      * @return true or false based on the string is equal to the character
      */
-    template<uint16_t tSize>
+    template<size_type tSize>
     bool operator==(const StaticString<tSize> &lhs, const char rhs) {
         return lhs.compare(rhs) == 0;
     }
@@ -448,7 +438,7 @@ namespace wlp {
      * @param rhs @code StaticString @endcode string as right hand side string
      * @return true or false based on the string is equal to the character
      */
-    template<uint16_t tSize>
+    template<size_type tSize>
     bool operator==(const char lhs, const StaticString<tSize> &rhs) {
         return rhs.compare(lhs) == 0;
     }
@@ -461,7 +451,7 @@ namespace wlp {
      * @param rhs @code StaticString @endcode string as right hand side string
      * @return a @code StaticString @endcode that is build from left hind string and right hand string
      */
-    template<uint16_t tSize>
+    template<size_type tSize>
     StaticString<tSize> operator+(const StaticString<tSize> &lhs, const StaticString<tSize> &rhs) {
         StaticString<tSize> newStr;
         newStr.append(lhs).append(rhs);
@@ -476,7 +466,7 @@ namespace wlp {
      * @param rhs @code StaticString @endcode string as right hand side string
      * @return a @code StaticString @endcode that is build from left hind string and right hand string
      */
-    template<uint16_t tSize>
+    template<size_type tSize>
     StaticString<tSize> operator+(const char *lhs, const StaticString<tSize> &rhs) {
         StaticString<tSize> newStr;
         newStr.append(lhs).append(rhs);
@@ -491,7 +481,7 @@ namespace wlp {
      * @param rhs character string as right hand side string
      * @return a @code StaticString @endcode that is build from left hind string and right hand string
      */
-    template<uint16_t tSize>
+    template<size_type tSize>
     StaticString<tSize> operator+(const StaticString<tSize> &lhs, const char *rhs) {
         StaticString<tSize> newStr;
         newStr.append(lhs).append(rhs);
@@ -506,7 +496,7 @@ namespace wlp {
      * @param rhs character
      * @return a @code StaticString @endcode that is build from left hind string and right hand character
      */
-    template<uint16_t tSize>
+    template<size_type tSize>
     StaticString<tSize> operator+(const StaticString<tSize> &lhs, const char rhs) {
         StaticString<tSize> newStr;
         newStr.append(lhs).push_back(rhs);
@@ -521,7 +511,7 @@ namespace wlp {
      * @param rhs @code StaticString @endcode string as right hand side string
      * @return a @code StaticString @endcode that is build from right hind string and left hand character
      */
-    template<uint16_t tSize>
+    template<size_type tSize>
     StaticString<tSize> operator+(const char lhs, const StaticString<tSize> &rhs) {
         StaticString<tSize> newStr;
         newStr.push_back(lhs).append(rhs);
