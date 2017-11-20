@@ -13,8 +13,8 @@
 #include "StaticAllocatorPool.h"
 #include "DynamicAllocatorPool.h"
 
-#include "../Wlib.h"
 #include "../stl/Math.h"
+#include "../Wlib.h"
 
 using namespace wlp;
 
@@ -124,7 +124,7 @@ struct insert<powStart, from, from> {
 
 void memory_init() {
     // smallest pow of 2 a block can be created
-    constexpr auto powStart = static_cast<size_type>(log2<size_type>(required_extra_buffer) + 1);
+    constexpr auto powStart = static_cast<size_type>(log2_const<size_type>(required_extra_buffer) + 1);
     insert<powStart, 0, MAX_ALLOCATORS - 1>::apply();
 }
 
@@ -448,5 +448,5 @@ uint16_t getMaxAllocations() {
 }
 
 size_type getSmallestBlockSize() {
-    return static_cast<size_type>(pow(2, log2<size_type>(required_extra_buffer) + 1));
+    return static_cast<size_type>(pow_const(2, log2_const<size_type>(required_extra_buffer) + 1));
 }

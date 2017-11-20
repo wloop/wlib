@@ -124,13 +124,6 @@ TEST(chain_map_test, test_constructor_params) {
     ASSERT_TRUE(map.empty());
 }
 
-TEST(chain_map_test, test_constructor_allocator) {
-    string_map map(10, 100);
-    const size_t expected = sizeof(string_map::node_type);
-    ASSERT_EQ(expected, map.get_node_allocator()->GetBlockSize());
-    ASSERT_EQ(expected * 10, map.get_node_allocator()->GetPoolSize());
-}
-
 TEST(chain_map_test, test_begin_returns_end_when_empty) {
     string_map map(10, 100);
     ASSERT_EQ(map.begin(), map.end());

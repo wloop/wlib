@@ -4,13 +4,13 @@
 namespace wlp {
 
     template<typename int_type>
-    inline constexpr int_type log2(int_type n) {
-        return static_cast<int_type>((n < 2) ? 1 : 1 + log2(static_cast<int_type>(n / 2)));
+    inline constexpr int_type log2_const(int_type n) {
+        return ((n < 2) ? 0 : 1 + log2_const(n / 2));
     }
 
     template<typename int_type>
-    inline constexpr int_type pow(const int_type a, const int_type b) {
-        return (b == 0) ? 1 : (a * pow(a, b - 1));
+    inline constexpr int_type pow_const(const int_type a, const int_type b) {
+        return (b == 0) ? 1 : (a * pow_const<int_type>(a, b - 1));
     }
 
 }

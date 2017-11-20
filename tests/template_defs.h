@@ -3,6 +3,7 @@
 
 #include "Types.h"
 
+#include "strings/String.h"
 #include "stl/Utility.h"
 #include "stl/ChainMap.h"
 #include "stl/OpenMap.h"
