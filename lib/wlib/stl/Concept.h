@@ -15,10 +15,10 @@
 #define EMBEDDEDCPLUSPLUS_CONCEPTCHECKS_H
 
 #include "Pair.h"
-#include "Tmp.h"
 #include "TypeTraits.h"
 
 #include "../Wlib.h"
+#include "../utility/Tmp.h"
 
 /**
  * Definitions for a variadic macro that generates
@@ -141,12 +141,9 @@ namespace wlp {
                 >::type,
                 __HAS_FCN(T, operator++, iterator &),
                 __HAS_FCN(T, operator++, int, iterator),
-                __HAS_FCN(const T, operator==, iterator &, bool),
                 __HAS_FCN(const T, operator==, const iterator &, bool),
-                __HAS_FCN(const T, operator!=, iterator &, bool),
                 __HAS_FCN(const T, operator!=, const iterator &, bool),
-                __HAS_FCN(T, operator=, const iterator &, iterator &),
-                __HAS_FCN(T, operator=, iterator &&, iterator &)
+                __HAS_FCN(T, operator=, const iterator &, iterator &)
         >::type;
 
 
@@ -209,22 +206,14 @@ namespace wlp {
                 __HAS_FCN(T, operator++, int, iterator),
                 __HAS_FCN(T, operator--, iterator &),
                 __HAS_FCN(T, operator--, int, iterator),
-                __HAS_FCN(T, operator==, iterator &, bool),
                 __HAS_FCN(T, operator==, const iterator &, bool),
-                __HAS_FCN(T, operator!=, iterator &, bool),
-                __HAS_FCN(T, operator!=, iterator &, bool),
-                __HAS_FCN(T, operator=, iterator &&, iterator &),
+                __HAS_FCN(T, operator!=, const iterator &, bool),
                 __HAS_FCN(T, operator=, const iterator &, iterator &),
                 __HAS_FCN(const T, operator+, const size_type &, iterator),
-                __HAS_FCN(const T, operator+, size_type &&, iterator),
                 __HAS_FCN(const T, operator-, const size_type &, iterator),
-                __HAS_FCN(const T, operator-, size_type &&, iterator),
                 __HAS_FCN(const T, operator-, const iterator &, size_type),
-                __HAS_FCN(const T, operator-, iterator &&, size_type),
                 __HAS_FCN(T, operator-=, const size_type &, iterator &),
-                __HAS_FCN(T, operator-=, size_type &&, iterator &),
-                __HAS_FCN(T, operator+=, const size_type &, iterator &),
-                __HAS_FCN(T, operator+=, size_type &&, iterator &)
+                __HAS_FCN(T, operator+=, const size_type &, iterator &)
         >::type;
 
         template<typename>
@@ -294,11 +283,10 @@ namespace wlp {
                 __HAS_FCN(const T, begin, const_iterator),
                 __HAS_FCN(const T, end, const_iterator),
                 __HAS_FCN(T, clear, void),
-                __HAS_FCN(T, insert, key_type, val_type, insert_ret_type),
-                __HAS_FCN(T, insert_or_assign, key_type, val_type, insert_ret_type),
-                __HAS_FCN(T, erase, iterator &, iterator &),
-                __HAS_FCN(T, erase, const_iterator &, const_iterator &),
-                __HAS_FCN(T, erase, key_type &, bool),
+                __HAS_FCN(T, insert, const key_type &, const val_type &, insert_ret_type),
+                __HAS_FCN(T, insert_or_assign, const key_type &, const val_type &, insert_ret_type),
+                __HAS_FCN(T, erase, const key_type &, bool),
+                __HAS_FCN(T, erase, const iterator &, iterator),
                 __HAS_FCN(T, at, const key_type &, iterator),
                 __HAS_FCN(const T, at, const key_type &, const_iterator),
                 __HAS_FCN(const T, contains, const key_type &, bool),

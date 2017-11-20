@@ -15,9 +15,8 @@
 #define CORE_STL_HASH_H
 
 #include "../Types.h"
-#include "../Wlib.h"
 #include "../WlibConfig.h"
-
+#include "../utility/Math.h"
 #include "../strings/StaticString.h"
 
 namespace wlp {
@@ -50,7 +49,7 @@ namespace wlp {
      * @return a hash code of the string
      */
     template<class IntType, uint16_t tSize>
-    inline IntType hash_static_string(StaticString<tSize> &static_string) {
+    inline IntType hash_static_string(const StaticString<tSize> &static_string) {
         IntType h = 0;
         for (size_type pos = 0; pos < static_string.length(); ++pos) {
             h = (IntType) (MUL_127(h) + static_string[pos]);
@@ -83,7 +82,7 @@ namespace wlp {
      */
     template<class IntType, uint16_t tSize>
     struct Hash<StaticString<tSize>, IntType> {
-        IntType operator()(StaticString<tSize> &s) const {
+        IntType operator()(const StaticString<tSize> &s) const {
             return hash_static_string<IntType, tSize>(s);
         }
     };

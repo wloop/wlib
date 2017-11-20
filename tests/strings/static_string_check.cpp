@@ -10,6 +10,7 @@
 #include "gtest/gtest.h"
 
 #include "Types.h"
+#include "strings/String.h"
 
 using namespace wlp;
 
