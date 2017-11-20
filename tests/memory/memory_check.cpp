@@ -84,6 +84,14 @@ TEST(memory_check, malloc_and_realloc){
     free(v2);
 }
 
+TEST(memory_check, array_allocation){
+    Sample *s = malloc<Sample>(2);
+    ASSERT_EQ(8, s[0].getConstr() + s[1].getConstr());
+
+    free(s);
+    ASSERT_EQ(18, s[0].getConstr() + s[1].getConstr());
+}
+
 TEST(memory_check, free){
     free(nullptr);
 
