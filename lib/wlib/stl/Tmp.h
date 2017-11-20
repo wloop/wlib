@@ -10,10 +10,6 @@
  * @bug No known bugs
  */
 
-/*
- * TODO: Robust is_function, and_, recursive or_
- */
-
 #ifndef EMBEDDEDCPLUSPLUS_TMP_H
 #define EMBEDDEDCPLUSPLUS_TMP_H
 
