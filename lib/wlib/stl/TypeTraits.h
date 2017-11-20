@@ -13,7 +13,7 @@
 #ifndef EMBEDDEDCPLUSPLUS_TYPETRAITS_H
 #define EMBEDDEDCPLUSPLUS_TYPETRAITS_H
 
-#include "Tmp.h"
+#include "utilities/Tmp.h"
 
 /**
  * Code generation macro to create a metafunction
@@ -48,11 +48,17 @@ struct obtain_##TypeName { \
 namespace wlp {
 
     __WLIB_HAS_TYPE(size_type)
+
     __WLIB_HAS_TYPE(val_type)
+
     __WLIB_HAS_TYPE(key_type)
+
     __WLIB_HAS_TYPE(iterator)
+
     __WLIB_HAS_TYPE(const_iterator)
+
     __WLIB_HAS_TYPE(map_type)
+
     __WLIB_HAS_TYPE(node_type)
 
     __WLIB_OBTAIN_TYPE(size_type)

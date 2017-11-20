@@ -98,13 +98,6 @@ namespace wlp {
         }
 
         /**
-         * @return a pointer to the backing map's node allocator
-         */
-        const Allocator *get_node_allocator() const {
-            return m_hash_map.get_node_allocator();
-        }
-
-        /**
          * @return a pointer to the backing hash map
          */
         const map_type *get_backing_hash_map() const {
