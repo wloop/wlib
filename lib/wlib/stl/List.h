@@ -16,7 +16,7 @@
 #include "memory/Memory.h"
 #include "memory/Allocator.h"
 #include "Utility.h"
-
+#include <iostream>
 namespace wlp {
 
 template<class T>
@@ -50,34 +50,34 @@ struct ListIterator {
     /**
      * Default constructor.
      */
-    ListIterator()
-            : m_pCurrent(nullptr),
-            m_pList(nullptr) {}
+    ListIterator():
+        m_pCurrent(nullptr),
+        m_pList(nullptr) {}
 
     /**
      * Create an iterator to a List node.
      * @param node linked list node
      * @param list  parent linked list
      */
-    ListIterator(ListNode<T> *node, List<T> *list)
-            : m_pCurrent(node),
-            m_pList(list) {}
+    ListIterator(ListNode<T> *node, List<T> *list):
+        m_pCurrent(node),
+        m_pList(list) {}
 
     /**
      * Copy constructor for const.
      * @param it iterator copy
      */
-    ListIterator(const iterator &it)
-            : m_pCurrent(it.m_pCurrent),
-            m_pList(it.m_pList) {}
+    ListIterator(const iterator &it):
+        m_pCurrent(it.m_pCurrent),
+        m_pList(it.m_pList) {}
 
     /**
-     * Copy constructor.
-     * @param it iterator to copy
+     * Copy constructor (move).
+     * @param it iterator to move
      */
-    ListIterator(iterator &&it)
-            : m_pCurrent(move(it.m_pCurrent)),
-            m_pList(move(it.m_pList)) {}
+    ListIterator(iterator &&it):
+        m_pCurrent(move(it.m_pCurrent)),
+        m_pList(move(it.m_pList)) {}
 
     /**
      * @return reference to the value of the node
@@ -111,9 +111,9 @@ struct ListIterator {
      * @return this iterator
      */
     iterator operator++(int) {
-        iterator tmp = *this;
+        iterator clone(*this);
         m_pCurrent = m_pCurrent->pNext;
-        return tmp;
+        return clone;
     }
 
     /**
@@ -163,7 +163,7 @@ struct ListIterator {
     iterator &operator=(const iterator &it) {
         m_pCurrent = it.m_pCurrent;
         m_pList = it.m_pList;
-        return this;
+        return *this;
     }
 
     /**
@@ -193,21 +193,21 @@ struct ListConstIterator {
     const ListNode<T> *m_pCurrent;
     const List<T> *m_pList;
 
-    ListConstIterator()
-            : m_pCurrent(nullptr),
-            m_pList(nullptr) {}
+    ListConstIterator():
+        m_pCurrent(nullptr),
+        m_pList(nullptr) {}
 
-    ListConstIterator(ListNode<T> *node, const List<T> *list)
-            : m_pCurrent(node),
-            m_pList(list) {}
+    ListConstIterator(ListNode<T> *node, const List<T> *list):
+        m_pCurrent(node),
+        m_pList(list) {}
 
-    ListConstIterator(const const_iterator &it)
-            : m_pCurrent(it.m_pCurrent),
-            m_pList(it.m_pList) {}
+    ListConstIterator(const const_iterator &it):
+        m_pCurrent(it.m_pCurrent),
+        m_pList(it.m_pList) {}
 
-    ListConstIterator(const_iterator &&it)
-            : m_pCurrent(move(it.m_pCurrent)),
-            m_pList(move(it.m_pList)) {}
+    ListConstIterator(const_iterator &&it):
+        m_pCurrent(move(it.m_pCurrent)),
+        m_pList(move(it.m_pList)) {}
 
     const T &operator*() const {
         return m_pCurrent->m_val;
@@ -219,13 +219,13 @@ struct ListConstIterator {
 
     const_iterator &operator++() {
         m_pCurrent = m_pCurrent->pNext;
-        return this;
+        return *this;
     }
 
     const_iterator operator++(int) {
-        const_iterator tmp = *this;
+        const_iterator clone(*this);
         m_pCurrent = m_pCurrent->pNext;
-        return tmp;
+        return clone;
     }
 
     bool operator==(const const_iterator &it) const {
@@ -237,6 +237,7 @@ struct ListConstIterator {
     }
 
     bool operator!=(const const_iterator &it) const {
+        std::cout<<"const testing != "<<'\n';
         return m_pCurrent != it.m_pCurrent;
     }
 
@@ -247,13 +248,13 @@ struct ListConstIterator {
     const_iterator &operator=(const const_iterator &it) {
         m_pCurrent = it.m_pCurrent;
         m_pList = it.m_pList;
-        return this;
+        return *this;
     }
 
     const_iterator &operator=(const_iterator &&it) {
         m_pCurrent = move(it.m_pCurrent);
         m_pList = move(it.m_pList);
-        return this;
+        return *this;
     }
 };
 
@@ -272,7 +273,6 @@ private:
     ListNode<T> *m_pStart;
     ListNode<T> *m_pEnd; // Pointers to start and end
     Allocator m_allocator = Allocator(static_cast<size_type>(sizeof(ListNode<T>)));
-
 public:
     /**
      * Default Constructor creates an empty List
@@ -281,6 +281,33 @@ public:
         m_len(0),
         m_pStart(nullptr),
         m_pEnd(nullptr) {}
+
+    List(const List<T>& list):
+        m_len(list.m_len) {
+        if (m_len > 0) {
+            ListNode<T> *pNodeToCopy = list.m_pStart;
+            m_pStart = static_cast<ListNode<T>*>(m_allocator.Allocate());
+            m_pStart->m_val = pNodeToCopy->m_val;
+            m_pStart->pPrev = nullptr;
+            m_pEnd = m_pStart;
+            for (int i = 1; i < m_len; ++i) {
+                pNodeToCopy = pNodeToCopy->pNext;
+                ListNode<T> *pNewNode = static_cast<ListNode<T>*>(m_allocator.Allocate());
+                pNewNode->m_val = pNodeToCopy->m_val;
+                m_pEnd->pNext = pNewNode;
+                pNewNode->pPrev = m_pEnd;
+                m_pEnd = pNewNode;
+            }
+            m_pEnd->pNext = nullptr;
+        } else {
+            m_pEnd = m_pStart = nullptr;
+        }
+    }
+
+    List(List<T>&& list):
+        m_len(list.m_len),
+        m_pStart(move(list.m_pStart)),
+        m_pEnd(move(list.m_pEnd)) {}
 
     /**
      * Default Destructor deallocates all the nodes
@@ -386,7 +413,7 @@ public:
      *
      * @return the length of the list
      */
-    size_type size() {
+    size_type size() const {
         return m_len;
     }
 
@@ -477,7 +504,7 @@ public:
      * @see List<T>::begin()
      * @return a constant iterator to the first element in the list
      */
-    const const_iterator begin() const {
+    const_iterator begin() const {
         return const_iterator(m_pStart, this);
     }
 
@@ -485,7 +512,7 @@ public:
      * @see List<T>::end()
      * @return a constant pass-the-end iterator
      */
-    const const_iterator end() const {
+    const_iterator end() const {
         return const_iterator(nullptr, this);
     }
 };
