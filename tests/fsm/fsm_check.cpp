@@ -17,14 +17,14 @@ public:
     }
 
     void setValue(int value) {
-        TestData* data = new TestData();
+        TestData* data = malloc<TestData>();
         data->value = value;
         BEGIN_TRANSITION_MAP
             TRANSITION_MAP_ENTRY(ST_START)        // ST_IDLE
             TRANSITION_MAP_ENTRY(CANNOT_HAPPEN)   // ST_STOP
             TRANSITION_MAP_ENTRY(ST_CHANGE_SPEED) // ST_START
             TRANSITION_MAP_ENTRY(ST_CHANGE_SPEED) // ST_CHANGE_SPEED
-        END_TRANSITION_MAP(data)
+        END_TRANSITION_MAP(data, TestData)
     }
 
     void zero() {
@@ -33,7 +33,7 @@ public:
             TRANSITION_MAP_ENTRY(CANNOT_HAPPEN)
             TRANSITION_MAP_ENTRY(ST_STOP)
             TRANSITION_MAP_ENTRY(ST_STOP)
-        END_TRANSITION_MAP(nullptr)
+        END_TRANSITION_MAP(nullptr, NoEventData)
     }
 
     int m_value;
@@ -72,7 +72,7 @@ STATE_DEFINE(TestMachine, Idle) {
 STATE_DEFINE(TestMachine, Stop) {
     state_trace.push_back((int) ST_STOP);
     m_value = 0;
-    internalEvent(ST_IDLE);
+    internalEvent<NoEventData>(ST_IDLE);
 }
 
 STATE_DEFINE(TestMachine, Start, TestData) {
@@ -84,7 +84,7 @@ STATE_DEFINE(TestMachine, ChangeSpeed, TestData) {
     state_trace.push_back((int) ST_CHANGE_SPEED);
     m_value = data->value;
     if (m_value == 0) {
-        internalEvent(ST_IDLE);
+        internalEvent<NoEventData>(ST_IDLE);
     }
 }
 
