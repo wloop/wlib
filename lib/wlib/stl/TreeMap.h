@@ -89,22 +89,25 @@ namespace wlp {
             m_tree.clear();
         }
 
-        Pair<iterator, bool> insert(key_type &key, val_type &val) {
-            return m_tree.insert_unique(key, val);
+        template<typename K, typename V>
+        Pair<iterator, bool> insert(K &&key, V &&val) {
+            return m_tree.insert_unique(forward<K>(key), forward<V>(val));
         };
 
-        Pair<iterator, bool> insert_or_assign(key_type &key, val_type &val) {
-            Pair<iterator, bool> result = m_tree.insert_unique(key, val);
+        template<typename K, typename V>
+        Pair<iterator, bool> insert_or_assign(K &&key, V &&val) {
+            Pair<iterator, bool> result = m_tree.insert_unique(forward<K>(key), forward<V>(val));
             if (!result.m_second) {
-                *result.m_first = val;
+                *result.m_first = forward<V>(val);
             }
             return result;
         };
 
-        iterator &erase(iterator &pos) {
-            iterator tmp = pos++;
-            m_tree.erase(tmp);
-            return pos;
+        iterator erase(const iterator &pos) {
+            iterator tmp = pos;
+            ++tmp;
+            m_tree.erase(pos);
+            return tmp;
         }
 
         bool erase(const key_type &key) {

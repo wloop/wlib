@@ -17,7 +17,7 @@ TEST(rb_tree_test, test_insert_iterator_order) {
     char keys[] = {'g', 'h', 'j', 'k', 'y', 'c', 'd', 'q', 'w'};
     int vals[] = {5, 1, 0, 9, -1, -4, 12, 10, -66};
     OpenHashMap<char, int> val_map(20);
-    RedBlackTree<char, int> tree(20);
+    RedBlackTree<char, int> tree;
     for (size_type i = 0; i < 9; i++) {
         val_map.insert(keys[i], vals[i]);
         Pair<rbi, bool> res = tree.insert_unique(keys[i], vals[i]);
@@ -41,7 +41,7 @@ TEST(rb_tree_test, test_insert_iterator_order) {
 }
 
 TEST(rb_tree_test, test_insert_unique_find) {
-    rb_tree tree(42);
+    rb_tree tree;
     char keys[] = {
             'o', 'y', '8', 'D', 'B', '9', 'e', 'B', '2', '8',
             'P', 'p', 'k', 'j', 'd', 'M', 'm', 'c', 'Z', 'h',
@@ -104,7 +104,7 @@ TEST(rb_tree_test, test_insert_equal_and_range) {
     int values[] = {5, 6, 7, 8, 9, 10, 10, 11, 12, 13};
     ChainHashSet<int> val_set(20);
     size_type cnt = 10;
-    rb_tree tree(12);
+    rb_tree tree;
     for (int i = 0; i < cnt; i++) {
         rbi it = tree.insert_equal(keys[i], values[i]);
         ASSERT_EQ(values[i], *it);

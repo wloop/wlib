@@ -13,12 +13,11 @@
 #ifndef EMBEDDEDCPLUSPLUS_REDBLACKTREE_H
 #define EMBEDDEDCPLUSPLUS_REDBLACKTREE_H
 
-#include "Utility.h"
-#include "Comparator.h"
+#include "../utilities/Utility.h"
+#include "../utilities/Comparator.h"
 
 #include "../Types.h"
 
-#include "../memory/Allocator.h"
 #include "Pair.h"
 
 namespace wlp {
@@ -157,16 +156,6 @@ namespace wlp {
          */
         RedBlackTreeIterator(const self_type &it)
                 : m_node(it.m_node) {
-        }
-
-        /**
-         * Move constructor.
-         *
-         * @param it iterator to move
-         */
-        RedBlackTreeIterator(self_type &&it)
-                : m_node(move(it.m_node)) {
-            it.m_node = nullptr;
         }
 
         /**
@@ -318,17 +307,6 @@ namespace wlp {
             return *this;
         }
 
-        /**
-         * Move assignment operator.
-         *
-         * @param it iterator to move
-         * @return reference to this iterator
-         */
-        self_type &operator=(self_type &&it) {
-            m_node = move(it.m_node);
-            it.m_node = nullptr;
-            return *this;
-        }
     };
 
     /**
@@ -356,10 +334,6 @@ namespace wlp {
         typedef RedBlackTreeColor color;
 
         /**
-         * Class allocator instance used to allocate nodes.
-         */
-        Allocator m_node_allocator;
-        /**
          * Header node, which maintains reference to the leftmost node,
          * the rightmost node, and the root node.
          */
@@ -379,7 +353,7 @@ namespace wlp {
          * @return pointer to the new node
          */
         node_type *create_node() {
-            return static_cast<node_type *>(m_node_allocator.Allocate());
+            return malloc<node_type>();
         }
 
         /**
@@ -404,7 +378,7 @@ namespace wlp {
          * @param node node to deallocate
          */
         void destroy_node(node_type *node) {
-            m_node_allocator.Deallocate(node);
+            free<node_type>(node);
         }
 
         /**
@@ -461,7 +435,8 @@ namespace wlp {
          * @param val  the value to insert
          * @return iterator to the inserted node
          */
-        iterator insert(node_type *node, node_type *piv, const key_type &key, const val_type &val);
+        template<typename K, typename V>
+        iterator insert(node_type *node, node_type *piv, K &&key, V &&val);
 
         /**
          * Delete the supplied node from the tree and all
@@ -488,9 +463,8 @@ namespace wlp {
          *
          * @param n reserved space for nodes
          */
-        RedBlackTree(size_type n = 12)
-                : m_node_allocator(sizeof(node_type), n * sizeof(node_type)),
-                  m_header(nullptr),
+        explicit RedBlackTree()
+                : m_header(nullptr),
                   m_size(0),
                   m_cmp() {
             m_header = create_node();
@@ -508,8 +482,7 @@ namespace wlp {
          * @param tree tree to move
          */
         RedBlackTree(tree_type &&tree)
-                : m_node_allocator(move(tree.m_node_allocator)),
-                  m_header(move(tree.m_header)),
+                : m_header(move(tree.m_header)),
                   m_size(move(tree.m_size)),
                   m_cmp() {
             tree.m_header = nullptr;
@@ -605,7 +578,8 @@ namespace wlp {
          * or the node that prevented insertion and a flag indicating
          * whether insertion occurred
          */
-        Pair<iterator, bool> insert_unique(const key_type &key, const val_type &val);
+        template<typename K, typename V>
+        Pair<iterator, bool> insert_unique(K &&key, V &&val);
 
         /**
          * Insert a value with a given key into the tree. This function
@@ -615,7 +589,8 @@ namespace wlp {
          * @param val value to insert
          * @return iterator to the inserted node
          */
-        iterator insert_equal(const key_type &key, const val_type &val);
+        template<typename K, typename V>
+        iterator insert_equal(K &&key, V &&val);
 
         /**
          * Delete the node pointed to by the provided iterator.
@@ -713,6 +688,7 @@ namespace wlp {
          * @return const iterator to the first node with the key
          */
         const_iterator lower_bound(const key_type &key) const;
+
 /**
          * Obtain a const iterator to the node right after the last node in the
          * tree by natural order that has the provided key. May return pass-the-end
@@ -765,7 +741,6 @@ namespace wlp {
             destroy_node(m_header);
             m_size = move(tree.m_size);
             m_header = move(tree.m_header);
-            m_node_allocator = move(tree.m_node_allocator);
             tree.m_size = 0;
             tree.m_header = 0;
             return *this;
@@ -1013,11 +988,12 @@ namespace wlp {
     }
 
     template<typename Key, typename Val, typename Cmp>
+    template<typename K, typename V>
     typename RedBlackTree<Key, Val, Cmp>::iterator
-    RedBlackTree<Key, Val, Cmp>::insert(node_type *cur, node_type *carry, const key_type &key, const val_type &val) {
+    RedBlackTree<Key, Val, Cmp>::insert(node_type *cur, node_type *carry, K &&key, V &&val) {
         node_type *node = create_node();
-        node->m_key = key;
-        node->m_val = val;
+        node->m_key = forward<K>(key);
+        node->m_val = forward<V>(val);
         if (carry == m_header || cur || m_cmp.__lt__(key, carry->m_key)) {
             carry->m_left = node;
             if (carry == m_header) {
@@ -1041,8 +1017,9 @@ namespace wlp {
     }
 
     template<typename Key, typename Val, typename Cmp>
+    template<typename K, typename V>
     Pair<typename RedBlackTree<Key, Val, Cmp>::iterator, bool>
-    RedBlackTree<Key, Val, Cmp>::insert_unique(const key_type &key, const val_type &val) {
+    RedBlackTree<Key, Val, Cmp>::insert_unique(K &&key, V &&val) {
         node_type *carry = m_header;
         node_type *cur = m_header->m_parent;
         bool compare = true;
@@ -1054,27 +1031,28 @@ namespace wlp {
         iterator tmp = iterator(carry);
         if (compare) {
             if (tmp == begin()) {
-                return Pair<iterator, bool>(insert(cur, carry, key, val), true);
+                return Pair<iterator, bool>(insert(cur, carry, forward<K>(key), forward<V>(val)), true);
             } else {
                 --tmp;
             }
         }
         if (m_cmp.__lt__(tmp.m_node->m_key, key)) {
-            return Pair<iterator, bool>(insert(cur, carry, key, val), true);
+            return Pair<iterator, bool>(insert(cur, carry, forward<K>(key), forward<V>(val)), true);
         }
         return Pair<iterator, bool>(tmp, false);
     }
 
     template<typename Key, typename Val, typename Cmp>
+    template<typename K, typename V>
     typename RedBlackTree<Key, Val, Cmp>::iterator
-    RedBlackTree<Key, Val, Cmp>::insert_equal(const key_type &key, const val_type &val) {
+    RedBlackTree<Key, Val, Cmp>::insert_equal(K &&key, V &&val) {
         node_type *carry = m_header;
         node_type *cur = m_header->m_parent;
         while (cur) {
             carry = cur;
             cur = m_cmp.__lt__(key, cur->m_key) ? cur->m_left : cur->m_right;
         }
-        return insert(cur, carry, key, val);
+        return insert(cur, carry, forward<K>(key), forward<V>(val));
     }
 
     template<typename Key, typename Val, typename Cmp>

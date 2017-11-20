@@ -10,7 +10,6 @@
 #ifndef EMBEDDEDCPLUSPLUS_TREESET_H
 #define EMBEDDEDCPLUSPLUS_TREESET_H
 
-#include "Comparator.h"
 #include "RedBlackTree.h"
 
 namespace wlp {
@@ -86,8 +85,9 @@ namespace wlp {
             m_tree.clear();
         }
 
-        Pair<iterator, bool> insert(const key_type &key) {
-            return m_tree.insert_unique(key, key);
+        template<typename K>
+        Pair<iterator, bool> insert(K &&key) {
+            return m_tree.insert_unique(forward<K>(key), forward<K>(key));
         };
 
         bool contains(const key_type &key) const {
