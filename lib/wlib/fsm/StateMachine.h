@@ -3,6 +3,8 @@
 
 #include "../Wlib.h"
 #include "../Types.h"
+#include "../memory/Memory.h"
+#include "../utilities/Tmp.h"
 
 namespace wlp {
 
@@ -37,7 +39,7 @@ namespace wlp {
          * @param sm a state machine instance
          * @param data the event data
          */
-        virtual void InvokeStateAction(StateMachine *sm, const EventData *data) const = 0;
+        virtual void invokeStateAction(StateMachine *sm, const EventData *data) const = 0;
     };
 
     /**
@@ -56,7 +58,7 @@ namespace wlp {
         /**
          * @see StateBase::InvokeStateAction
          */
-        virtual void InvokeStateAction(StateMachine *sm, const EventData *data) const {
+        virtual void invokeStateAction(StateMachine *sm, const EventData *data) const {
             // Downcast the state machine and event data to the correct derived type
             SM *derivedSM = static_cast<SM *>(sm);
             /*
@@ -93,7 +95,7 @@ namespace wlp {
          * @return true if no guard condition or if the
          * condition evaluates to true
          */
-        virtual bool InvokeGuardCondition(StateMachine *sm, const EventData *data) const = 0;
+        virtual bool invokeGuardAction(StateMachine *sm, const EventData *data) const = 0;
     };
 
     /**
@@ -109,7 +111,7 @@ namespace wlp {
     public:
         virtual ~GuardCondition() {}
 
-        virtual bool InvokeGuardCondition(StateMachine *sm, const EventData *data) const {
+        virtual bool invokeGuardAction(StateMachine *sm, const EventData *data) const {
             SM *derivedSM = static_cast<SM *>(sm);
             const Data *derivedData = dynamic_cast<const Data *>(data);
             /* assert(derivedData != nullptr) */
@@ -136,7 +138,7 @@ namespace wlp {
          * @param sm a state machine instance
          * @param data the event data
          */
-        virtual void InvokeEntryAction(StateMachine *sm, const EventData *data) const = 0;
+        virtual void invokeEntryAction(StateMachine *sm, const EventData *data) const = 0;
     };
 
     /**
@@ -152,7 +154,7 @@ namespace wlp {
     public:
         virtual ~EntryAction() {}
 
-        virtual void InvokeEntryAction(StateMachine *sm, const EventData *data) const {
+        virtual void invokeEntryAction(StateMachine *sm, const EventData *data) const {
             SM *derivedSM = static_cast<SM *>(sm);
             const Data *derivedData = dynamic_cast<const Data *>(data);
             /* assert(derivedData != nullptr) */
@@ -178,7 +180,7 @@ namespace wlp {
          *
          * @param sm a state machine instance
          */
-        virtual void InvokeExitAction(StateMachine *sm) const = 0;
+        virtual void invokeExitAction(StateMachine *sm) const = 0;
     };
 
     /**
@@ -193,7 +195,7 @@ namespace wlp {
     public:
         virtual ~ExitAction() {}
 
-        virtual void InvokeExitAction(StateMachine *sm) const {
+        virtual void invokeExitAction(StateMachine *sm) const {
             SM *derivedSM = static_cast<SM *>(sm);
 
             // Call the exit function
@@ -205,17 +207,17 @@ namespace wlp {
      * A structure to hold a single row within the state map.
      */
     struct StateMapRow {
-        const StateBase *const State;
+        const StateBase *const state;
     };
 
     /**
      * A structure to hold a single row within the extended state map.
      */
     struct StateMapRowEx {
-        const StateBase *const State;
-        const GuardBase *const Guard;
-        const EntryBase *const Entry;
-        const ExitBase *const Exit;
+        const StateBase *const state;
+        const GuardBase *const guard;
+        const EntryBase *const entry;
+        const ExitBase *const exit;
     };
 
     /**
@@ -239,7 +241,14 @@ namespace wlp {
          * @param maxStates machine number of states
          * @param initialState initial machine state
          */
-        StateMachine(state_type maxStates, state_type initialState = 0);
+        StateMachine(state_type maxStates, state_type initialState = 0)
+                : m_max_states(maxStates),
+                  m_current_state(initialState),
+                  m_new_state(0),
+                  m_event_generated(false),
+                  m_event_data(nullptr) {
+            /* assert(m_max_states < EVENT_IGNORED) */
+        }
 
         virtual ~StateMachine() {}
 
@@ -264,7 +273,13 @@ namespace wlp {
          * @param pData the event data to send
          * to the new state
          */
-        void externalEvent(state_type newState, EventData *pData = nullptr);
+        template<typename EventDataType>
+        void externalEvent(state_type newState, EventDataType *pData = nullptr) {
+            if (newState != EVENT_IGNORED && newState != CANNOT_HAPPEN) {
+                internalEvent<EventDataType>(newState, pData);
+                stateEngine<EventDataType>();
+            }
+        }
 
         /**
          * Trigger an interval state machine event.
@@ -276,7 +291,15 @@ namespace wlp {
          * @param pData the event data to send
          * to the new state
          */
-        void internalEvent(state_type newState, EventData *pData = nullptr);
+        template<typename EventDataType>
+        void internalEvent(state_type newState, EventDataType *pData = nullptr) {
+            if (pData == nullptr) {
+                pData = static_cast<EventDataType *>(&m_dataless);
+            }
+            m_event_data = pData;
+            m_event_generated = true;
+            m_new_state = newState;
+        }
 
     private:
         /**
@@ -308,6 +331,12 @@ namespace wlp {
          * The state event data pointer.
          */
         EventData *m_event_data;
+
+        /**
+         * Class-level event data instance used to
+         * represent an event with no data.
+         */
+        EventData m_dataless;
 
         /**
          * Get the state map as defined in a derived class of State Machine.
@@ -348,7 +377,20 @@ namespace wlp {
          * map definition. If both the state map and the extended
          * state map are undefined, no execution occurs.
          */
-        void stateEngine(void);
+        template<typename EventDataType>
+        void stateEngine() {
+            const StateMapRow *pStateMap = getStateMap();
+            if (pStateMap != nullptr) {
+                stateEngine<EventDataType>(pStateMap);
+            } else {
+                const StateMapRowEx *pStateMapEx = getStateMapEx();
+                if (pStateMapEx != nullptr) {
+                    stateEngine<EventDataType>(pStateMapEx);
+                } else {
+                    /* fail() */
+                }
+            }
+        }
 
         /**
          * Execute the state transition as per the state map.
@@ -360,6 +402,7 @@ namespace wlp {
          *
          * @param pStateMap the state machine state map
          */
+        template<typename EventDataType>
         void stateEngine(const StateMapRow *const pStateMap);
 
         /**
@@ -375,8 +418,75 @@ namespace wlp {
          *
          * @param pStateMapEx the state machine extended state map
          */
+        template<typename EventDataType>
         void stateEngine(const StateMapRowEx *const pStateMapEx);
     };
+
+    template<typename EventDataType>
+    void StateMachine::stateEngine(const StateMapRow *const pStateMap) {
+        EventDataType *pDataTemp = nullptr;
+        while (m_event_generated) {
+            /* assert(m_new_state < m_max_states) */
+            if (m_new_state >= m_max_states) {
+                return;
+            }
+            const StateBase *state = pStateMap[m_new_state].state;
+            pDataTemp = static_cast<EventDataType *>(m_event_data);
+            m_event_data = nullptr;
+            m_event_generated = false;
+            setCurrentState(m_new_state);
+            /* assert(state != nullptr) */
+            if (state == nullptr) {
+                return;
+            }
+            state->invokeStateAction(this, pDataTemp);
+        }
+    }
+
+    template<typename EventDataType>
+    void StateMachine::stateEngine(const StateMapRowEx *const pStateMapEx) {
+        EventDataType *pDataTemp = nullptr;
+        while (m_event_generated) {
+            /* assert(m_new_state < m_max_states) */
+            if (m_new_state >= m_max_states) {
+                return;
+            }
+            const StateBase *state = pStateMapEx[m_new_state].state;
+            const GuardBase *guard = pStateMapEx[m_new_state].guard;
+            const EntryBase *entry = pStateMapEx[m_new_state].entry;
+            const ExitBase *exit = pStateMapEx[m_current_state].exit;
+            pDataTemp = static_cast<EventDataType *>(m_event_data);
+            m_event_data = nullptr;
+            m_event_generated = false;
+            bool guardResult = true;
+            if (guard != nullptr) {
+                guardResult = guard->invokeGuardAction(this, pDataTemp);
+            }
+            if (pDataTemp == nullptr) {
+                return;
+            }
+            if (guardResult == true) {
+                if (m_new_state != m_current_state) {
+                    if (exit != nullptr) {
+                        exit->invokeExitAction(this);
+                    }
+                    if (entry != nullptr) {
+                        entry->invokeEntryAction(this, pDataTemp);
+                    }
+                    /* assert(m_event_generated == false) */
+                    if (m_event_generated) {
+                        return;
+                    }
+                }
+                setCurrentState(m_new_state);
+                /* assert(state != nullptr) */
+                if (state == nullptr) {
+                    return;
+                }
+                state->invokeStateAction(this, pDataTemp);
+            }
+        }
+    }
 
 }
 
@@ -445,10 +555,10 @@ namespace wlp {
     static const state_type TRANSITIONS[] = {
 #define TRANSITION_MAP_ENTRY(entry) \
         entry,
-#define END_TRANSITION_MAP(data) \
+#define END_TRANSITION_MAP(data, dataType) \
     }; \
     ASSERT_TRUE(getCurrentState() < ST_MAX_STATES); \
-    externalEvent(TRANSITIONS[getCurrentState()], data); \
+    externalEvent<dataType>(TRANSITIONS[getCurrentState()], data); \
     static_assert((sizeof(TRANSITIONS) / sizeof(state_type)) == ST_MAX_STATES, "Invalid number of transitions");
 
 

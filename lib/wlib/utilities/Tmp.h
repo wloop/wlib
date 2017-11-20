@@ -134,6 +134,22 @@ namespace wlp {
         typedef T type;
     };
 
+    template<typename _Tp>
+    struct remove_volatile {
+        typedef _Tp type;
+    };
+
+    template<typename _Tp>
+    struct remove_volatile<_Tp volatile> {
+        typedef _Tp type;
+    };
+
+    template<typename _Tp>
+    struct remove_cv {
+        typedef typename
+        remove_const<typename remove_volatile<_Tp>::type>::type type;
+    };
+
     /**
      * Base declaration for a boolean or.
      * @tparam ... ignored parameteres
@@ -277,6 +293,24 @@ namespace wlp {
     struct is_reference
             : public or_<is_lvalue_reference<T>, is_rvalue_reference<T>>::type {
     };
+
+    template<typename T, typename>
+    struct __remove_pointer__ {
+        typedef T type;
+    };
+
+    template<typename T, typename U>
+    struct __remove_pointer__<T, U *> {
+        typedef U type;
+    };
+
+    template<typename T>
+    struct remove_pointer
+            : public __remove_pointer__<T, typename remove_cv<T>::type> {
+    };
+
+    template<typename T>
+    using remove_pointer_type = typename remove_pointer<T>::type;
 
     /**
      * Remove reference type. Base case for non-reference types.
@@ -709,22 +743,6 @@ namespace wlp {
         return __declval__<T>::__delegate__();
     }
 
-    template<typename _Tp>
-    struct remove_volatile {
-        typedef _Tp type;
-    };
-
-    template<typename _Tp>
-    struct remove_volatile<_Tp volatile> {
-        typedef _Tp type;
-    };
-
-    template<typename _Tp>
-    struct remove_cv {
-        typedef typename
-        remove_const<typename remove_volatile<_Tp>::type>::type type;
-    };
-
     template<typename>
     struct __is_null_pointer_helper
             : public false_type {
@@ -783,7 +801,8 @@ namespace wlp {
 #ifdef _GLIBCXX_USE_WCHAR_T
     template<>
     struct __is_integral_helper<wchar_t>
-    : public true_type { };
+            : public true_type {
+    };
 #endif
 
     template<>
@@ -869,7 +888,8 @@ namespace wlp {
 #if !defined(__STRICT_ANSI__) && defined(_GLIBCXX_USE_FLOAT128)
     template<>
     struct __is_floating_point_helper<__float128>
-    : public true_type { };
+            : public true_type {
+    };
 #endif
 
     /**
