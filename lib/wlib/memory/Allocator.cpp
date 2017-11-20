@@ -9,12 +9,13 @@
 
 #include <string.h>
 #include <math.h>
+#include "../utilities/Math.h"
 
 #include "Allocator.h"
-#include "../Wlib.h"
-#include "../stl/Utility.h"
+#include "../utilities/Utility.h"
 
-wlp::Allocator::Allocator(size32_type blockSize, size32_type poolSize, wlp::Allocator::Type allocationType, void *pPool) :
+wlp::Allocator::Allocator(size32_type blockSize, size32_type poolSize, wlp::Allocator::Type allocationType, void *pPool)
+        :
         m_poolType{allocationType},
         m_blockSize{blockSize},
         m_pHead{nullptr},
@@ -53,7 +54,8 @@ wlp::Allocator::Allocator(size32_type blockSize, size32_type poolSize, wlp::Allo
         // Fill m_pPool with m_poolSize blocks
         wlp::Allocator::Block *pBlock = m_pPool;
         for (size_type i = 1; i < m_poolTotalBlockCnt; i++) {
-            pBlock = pBlock->pNext = reinterpret_cast<Allocator::Block*>(reinterpret_cast<char*>(pBlock) + m_blockSize);
+            pBlock = pBlock->pNext = reinterpret_cast<Allocator::Block *>(reinterpret_cast<char *>(pBlock) +
+                                                                          m_blockSize);
         }
 
         // Initially, all in Deallocate'd state

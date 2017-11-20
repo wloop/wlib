@@ -18,8 +18,10 @@
 #define FIXED_MEMORY_MEMORY_H
 
 #include <new>
+#include "../utilities/Tmp.h"
 
 #include "../Types.h"
+
 
 /**
  * @brief Helper for initializing and destroying memory management
@@ -70,6 +72,9 @@ void __memory_free(void *ptr);
  * asked in order to accommodate fixed memory allocations. If there is not a sufficient memory
  * available, it returns a @code nullptr @endcode
  *
+ * If an array of Objects is need then provide malloc with a number to specify how many objects to
+ * create and it will create that many objects.
+ *
  * @pre this can also act a @code new @endcode keyword to create objects so there is no need to use
  * new keyword to create an object
  *
@@ -84,7 +89,18 @@ template<typename Type>
 Type *malloc(wlp::size32_type num = 1) {
     void *memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(Type)) * num);
 
-    return new(memory) Type;
+    if (!wlp::is_fundamental<Type>::value) {
+        char *pointer = static_cast<char *>(memory);
+        for (wlp::size32_type i = 0; i < num; ++i) {
+            new(pointer) Type;
+            pointer += sizeof(Type);
+        }
+
+        if (pointer < memory)
+            *pointer = '~';
+    }
+
+    return static_cast<Type *>(memory);
 }
 
 /**
@@ -106,15 +122,36 @@ Type *realloc(Type *ptr, wlp::size32_type num = 1) {
 }
 
 /**
+ * Returns the size of fixed sized block that was provided for @p ptr
+ *
+ * @param ptr memory address for which memory block is being searched
+ * @return the size of fixed size block
+ */
+wlp::size32_type getFixedMemorySize(void *ptr);
+
+/**
  * This frees the memory allocated. Only memory allocated using Memory will be freed and if another
  * type of memory is provided, results are undefined
+ *
+ * If an array of Objects is to be freed then provide free with a number along with the pointer to specify
+ * how many objects
  *
  * @tparam Type pointer type
  * @param ptr address to memory that will be freed
  */
-template<class Type>
+
+template<typename Type>
 void free(Type *ptr) {
-    ptr->~Type();
+    if (!wlp::is_fundamental<Type>::value) {
+        wlp::size32_type num = static_cast<wlp::size32_type>(getFixedMemorySize(ptr) / sizeof(Type));
+
+        Type *pointer = ptr;
+        for (wlp::size32_type i = 0; i < num; ++i) {
+            pointer->~Type();
+            ++pointer;
+        }
+    }
+
     __memory_free(ptr);
 }
 
@@ -180,6 +217,12 @@ uint16_t getNumBlocks();
  */
 uint16_t getMaxAllocations();
 
+/**
+ * Returns the smallest block of memory that is given
+ *
+ * @return the smallest block of memory
+ */
 wlp::size_type getSmallestBlockSize();
+
 
 #endif //FIXED_MEMORY_MEMORY_H

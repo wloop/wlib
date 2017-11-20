@@ -10,11 +10,11 @@
 #ifndef EMBEDDEDCPLUSPLUS_COMPARATOR_H
 #define EMBEDDEDCPLUSPLUS_COMPARATOR_H
 
-#include "Equal.h"
+#include "stl/Equal.h"
 
-#include "../Types.h"
+#include "Types.h"
 
-#include "../strings/StaticString.h"
+#include "strings/StaticString.h"
 
 namespace wlp {
 
@@ -138,31 +138,31 @@ namespace wlp {
      * @tparam tSize static string size
      */
     template<uint16_t tSize>
-    struct Comparator<StaticString<tSize>> {
-        bool __lt__(const StaticString<tSize> &s1, const StaticString<tSize> &s2) const {
-            return str_cmp(s1.c_str(), s2.c_str()) < 0;
-        }
+    struct Comparator<StaticString < tSize>> {
+    bool __lt__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+        return str_cmp(s1.c_str(), s2.c_str()) < 0;
+    }
 
-        bool __le__(const StaticString<tSize> &s1, const StaticString<tSize> &s2) const {
-            return str_cmp(s1.c_str(), s2.c_str()) <= 0;
-        }
+    bool __le__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+        return str_cmp(s1.c_str(), s2.c_str()) <= 0;
+    }
 
-        bool __eq__(const StaticString<tSize> &s1, const StaticString<tSize> &s2) const {
-            return str_cmp(s1.c_str(), s2.c_str()) == 0;
-        }
+    bool __eq__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+        return str_cmp(s1.c_str(), s2.c_str()) == 0;
+    }
 
-        bool __ne__(const StaticString<tSize> &s1, const StaticString<tSize> &s2) const {
-            return str_cmp(s1.c_str(), s2.c_str()) != 0;
-        }
+    bool __ne__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+        return str_cmp(s1.c_str(), s2.c_str()) != 0;
+    }
 
-        bool __gt__(const StaticString<tSize> &s1, const StaticString<tSize> &s2) const {
-            return str_cmp(s1.c_str(), s2.c_str()) > 0;
-        }
+    bool __gt__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+        return str_cmp(s1.c_str(), s2.c_str()) > 0;
+    }
 
-        bool __ge__(const StaticString<tSize> &s1, const StaticString<tSize> &s2) const {
-            return str_cmp(s1.c_str(), s2.c_str()) >= 0;
-        }
-    };
+    bool __ge__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+        return str_cmp(s1.c_str(), s2.c_str()) >= 0;
+    }
+};
 
 }
 

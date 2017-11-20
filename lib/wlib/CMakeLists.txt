@@ -19,13 +19,14 @@ set(CMAKE_CXX_STANDARD 11)
     * memory will be expanded at run time
     */
 ]]
-add_definitions(-DMAX_ALLOCATORS=10u -DNUM_BLOCKS=10u -DDYNAMIC_POOL)
+add_definitions(-DMAX_ALLOCATORS=10u -DNUM_BLOCKS=100u -DDYNAMIC_POOL)
 
 file(GLOB header_files
         "*.h"
         "strings/*.h"
         "stl/*.h"
-        "memory/*.h")
+        "memory/*.h"
+        "utilities/*.h")
 
 file(GLOB source_files
         "memory/*.cpp")

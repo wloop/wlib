@@ -12,7 +12,7 @@
 
 #include "strings/StaticString.h"
 
-namespace wlp{
+namespace wlp {
     // Static Strings
     typedef StaticString<8u> String8;
     typedef StaticString<16u> String16;

@@ -21,6 +21,10 @@
 
 namespace wlp {
 
+#if __cplusplus >= 201103L
+    typedef decltype(nullptr) nullptr_t;
+#endif
+
     /**
      * This function consumes, and does nothing with, the return
      * values of parameter pack expanded function calls. This function
@@ -709,6 +713,199 @@ namespace wlp {
         return __declval__<T>::__delegate__();
     }
 
+    template<typename _Tp>
+    struct remove_volatile {
+        typedef _Tp type;
+    };
+
+    template<typename _Tp>
+    struct remove_volatile<_Tp volatile> {
+        typedef _Tp type;
+    };
+
+    template<typename _Tp>
+    struct remove_cv {
+        typedef typename
+        remove_const<typename remove_volatile<_Tp>::type>::type type;
+    };
+
+    template<typename>
+    struct __is_null_pointer_helper
+            : public false_type {
+    };
+
+    template<>
+    struct __is_null_pointer_helper<nullptr_t>
+            : public true_type {
+    };
+
+    /**
+     * checks if @p _Tp type is a type that is a nullptr type
+     *
+     * @tparam _Tp type being verified
+     */
+    template<typename _Tp>
+    struct is_null_pointer
+            : public __is_null_pointer_helper<typename remove_cv<_Tp>::type>::type {
+    };
+
+    /**
+     * checks if @p _Tp type is a type that is a nullptr type
+     *
+     * @tparam _Tp type being verified
+     */
+    template<typename _Tp>
+    struct __is_nullptr_t
+            : public is_null_pointer<_Tp> {
+    };
+
+    template<typename>
+    struct __is_integral_helper
+            : public false_type {
+    };
+
+    template<>
+    struct __is_integral_helper<bool>
+            : public true_type {
+    };
+
+    template<>
+    struct __is_integral_helper<char>
+            : public true_type {
+    };
+
+    template<>
+    struct __is_integral_helper<signed char>
+            : public true_type {
+    };
+
+    template<>
+    struct __is_integral_helper<unsigned char>
+            : public true_type {
+    };
+
+#ifdef _GLIBCXX_USE_WCHAR_T
+    template<>
+    struct __is_integral_helper<wchar_t>
+    : public true_type { };
+#endif
+
+    template<>
+    struct __is_integral_helper<char16_t>
+            : public true_type {
+    };
+
+    template<>
+    struct __is_integral_helper<char32_t>
+            : public true_type {
+    };
+
+    template<>
+    struct __is_integral_helper<short>
+            : public true_type {
+    };
+
+    template<>
+    struct __is_integral_helper<unsigned short>
+            : public true_type {
+    };
+
+    template<>
+    struct __is_integral_helper<int>
+            : public true_type {
+    };
+
+    template<>
+    struct __is_integral_helper<unsigned int>
+            : public true_type {
+    };
+
+    template<>
+    struct __is_integral_helper<long>
+            : public true_type {
+    };
+
+    template<>
+    struct __is_integral_helper<unsigned long>
+            : public true_type {
+    };
+
+    template<>
+    struct __is_integral_helper<long long>
+            : public true_type {
+    };
+
+    template<>
+    struct __is_integral_helper<unsigned long long>
+            : public true_type {
+    };
+
+    /**
+     * checks if @p _Tp type is an integer
+     *
+     * @tparam _Tp type being verified
+     */
+    template<typename _Tp>
+    struct is_integral
+            : public __is_integral_helper<typename remove_cv<_Tp>::type>::type {
+    };
+
+    template<typename>
+    struct __is_floating_point_helper
+            : public false_type {
+    };
+
+    template<>
+    struct __is_floating_point_helper<float>
+            : public true_type {
+    };
+
+    template<>
+    struct __is_floating_point_helper<double>
+            : public true_type {
+    };
+
+    template<>
+    struct __is_floating_point_helper<long double>
+            : public true_type {
+    };
+
+#if !defined(__STRICT_ANSI__) && defined(_GLIBCXX_USE_FLOAT128)
+    template<>
+    struct __is_floating_point_helper<__float128>
+    : public true_type { };
+#endif
+
+    /**
+     * checks if @p _Tp type is a floating point
+     *
+     * @tparam _Tp type being verified
+     */
+    template<typename _Tp>
+    struct is_floating_point
+            : public __is_floating_point_helper<typename remove_cv<_Tp>::type>::type {
+    };
+
+    /**
+     * checks if @p _Tp type is a type that allow arithmetic operations
+     *
+     * @tparam _Tp type being verified
+     */
+    template<typename _Tp>
+    struct is_arithmetic
+            : public or_<is_integral<_Tp>, is_floating_point<_Tp>>::type {
+    };
+
+    /**
+     * checks if @p _Tp type is a type that is a fundamental type and not an object
+     *
+     * @tparam _Tp type being verified
+     */
+    template<typename _Tp>
+    struct is_fundamental
+            : public or_<is_arithmetic<_Tp>, is_void<_Tp>,
+                    is_null_pointer<_Tp>>::type {
+    };
 }
 
 #endif //EMBEDDEDCPLUSPLUS_TMP_H

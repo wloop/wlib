@@ -13,7 +13,7 @@
 #ifndef EMBEDDEDCPLUSPLUS_ARRAYLIST_H
 #define EMBEDDEDCPLUSPLUS_ARRAYLIST_H
 
-#include "Utility.h"
+#include "../utilities/Utility.h"
 #include "../Types.h"
 #include "../memory/Memory.h"
 

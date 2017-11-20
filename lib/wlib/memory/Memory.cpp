@@ -13,7 +13,7 @@
 #include "StaticAllocatorPool.h"
 #include "DynamicAllocatorPool.h"
 
-#include "../stl/Math.h"
+#include "../utilities/Math.h"
 #include "../Wlib.h"
 
 using namespace wlp;
@@ -86,7 +86,7 @@ struct insert {
      */
     static void apply() {
         constexpr size_type curr_pow = from + powStart;
-        constexpr size32_type blockSize = RestrictSize::apply<curr_pow, static_cast<size32_type>(1 << curr_pow)>();
+        constexpr size32_type blockSize = RestrictSize::apply<curr_pow, pow_const<size32_type>(2, curr_pow)>();
 
 #if defined(DYNAMIC_POOL)
         _allocators[from] = new DynamicAllocatorPool<blockSize, NUM_BLOCKS>();
@@ -112,7 +112,7 @@ struct insert<powStart, from, from> {
      */
     static void apply() {
         constexpr size_type curr_pow = from + powStart;
-        constexpr size32_type blockSize = RestrictSize::apply<curr_pow, static_cast<size32_type>(1 << curr_pow)>();
+        constexpr size32_type blockSize = RestrictSize::apply<curr_pow, pow_const<size32_type>(2, curr_pow)>();
 
 #if defined(DYNAMIC_POOL)
         _allocators[from] = new DynamicAllocatorPool<blockSize, NUM_BLOCKS>();
@@ -124,7 +124,7 @@ struct insert<powStart, from, from> {
 
 void memory_init() {
     // smallest pow of 2 a block can be created
-    constexpr auto powStart = static_cast<size_type>(log2_const<size_type>(required_extra_buffer) + 1);
+    constexpr auto powStart = log2_const<size_type>(required_extra_buffer) + 1;
     insert<powStart, 0, MAX_ALLOCATORS - 1>::apply();
 }
 
@@ -207,7 +207,7 @@ static inline void *set_block_allocator(void *block, Allocator *allocator) {
  * @param k value for which the higher power of two will be returned
  * @return the next higher power of two based on the input k
  */
-template<class T>
+template<typename T>
 T nextHigher(T k) {
     k--;
     for (size_t i = 1; i < sizeof(T) * BYTE_SIZE; i <<= 1) {
@@ -449,4 +449,9 @@ uint16_t getMaxAllocations() {
 
 size_type getSmallestBlockSize() {
     return static_cast<size_type>(pow_const(2, log2_const<size_type>(required_extra_buffer) + 1));
+}
+
+size32_type getFixedMemorySize(void *ptr) {
+    Allocator *allocator = get_block_allocator(ptr);
+    return allocator->GetBlockSize();
 }

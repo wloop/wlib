@@ -16,7 +16,7 @@
 #ifndef EMBEDDEDTESTS_PAIR_H
 #define EMBEDDEDTESTS_PAIR_H
 
-#include "Utility.h"
+#include "utilities/Utility.h"
 
 namespace wlp {
 
