@@ -18,14 +18,6 @@ TEST(open_map_test, test_constructor_parameters) {
     ASSERT_EQ(61, map.max_load());
 }
 
-TEST(open_map_test, test_constructor_allocator) {
-    string_map map(12, 75);
-    const Allocator *alloc = map.get_node_allocator();
-    size_t expected = sizeof(string_map::node_type);
-    ASSERT_EQ(expected, alloc->GetBlockSize());
-    ASSERT_EQ(expected * 12, alloc->GetPoolSize());
-}
-
 TEST(open_map_test, test_is_empty_on_construct) {
     string_map map(12, 75);
     ASSERT_TRUE(map.empty());
@@ -235,9 +227,6 @@ TEST(open_map_test, test_access_operator) {
 }
 
 TEST(open_map_test, test_rehash) {
-    // class gives segmentation try using new malloc that should fix it maybe cuz I changed a lot of stuff
-    // also do not directly use Allocator
-    /*
 	int_map map(2, 50);
 	map[0] = 0;
 	map[1] = 10;
@@ -254,7 +243,6 @@ TEST(open_map_test, test_rehash) {
 		ASSERT_TRUE(map.contains(keys[i]));
 		ASSERT_EQ(*map.find(keys[i]), values[i]);
 	}
-     */
 }
 
 TEST(open_map_test, test_clear_map) {
