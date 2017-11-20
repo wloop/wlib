@@ -6,19 +6,17 @@
  * or provided by the user. The goal is to eliminate memory fragmentation and make allocations
  * faster and much safer
  *
+ * This class should never be used because it is used internally
+ *
  * @author Deep Dhillon
- * @date October 22, 2017
+ * @date November 19, 2017
  * @bug No known bugs
  */
 
 #ifndef C_TEST_ALLOCATOR_H
 #define C_TEST_ALLOCATOR_H
 
-
-#include <stddef.h>
-#include <stdint.h>
-
-#include "../Wlib.h"
+#include "../Types.h"
 
 namespace wlp {
     class Allocator {
@@ -67,7 +65,7 @@ namespace wlp {
          * @param blockSize size of memory blocks that can acquired at a time
          * @param poolSize size of memory pool to be created
          */
-        explicit Allocator(uint16_t blockSize, uint16_t poolSize = 0);
+        explicit Allocator(size32_type blockSize, size32_type poolSize = 0);
 
         /**
          * Allocator used for allocating memory where memory is provided to the allocator. It uses the given
@@ -84,7 +82,7 @@ namespace wlp {
          * @param poolSize size of the memory pool provided
          * @param type type of memory pool provided (static or dynamic)
          */
-        Allocator(uint16_t blockSize, void *pPool, uint16_t poolSize, Type type);
+        Allocator(size32_type blockSize, void *pPool, size32_type poolSize, Type type);
 
         /**
          * Deletes memory and returns it back to the system
@@ -133,7 +131,7 @@ namespace wlp {
          *
          * @return size of memory block
          */
-        inline size_t GetBlockSize() const {
+        inline size32_type GetBlockSize() const {
             return m_blockSize;
         }
 
@@ -142,7 +140,7 @@ namespace wlp {
          *
          * @return size of pool
          */
-        inline size_t GetPoolSize() const {
+        inline size32_type GetPoolSize() const {
             return m_poolSize;
         }
 
@@ -220,14 +218,14 @@ namespace wlp {
          * @param allocationType type of memory in memory pool
          * @param pPool address to memory provided
          */
-        explicit Allocator(uint16_t blockSize, uint16_t poolSize, Allocator::Type allocationType, void *pPool);
+        explicit Allocator(size32_type blockSize, size32_type poolSize, Allocator::Type allocationType, void *pPool);
 
 
         Type m_poolType;
-        size_t m_blockSize;
+        size32_type m_blockSize;
         Block *m_pHead;
         Block *m_pPool;
-        size_t m_poolSize;
+        size32_type m_poolSize;
         uint16_t m_poolTotalBlockCnt;
         uint16_t m_poolCurrBlockCnt;
         uint16_t m_totalBlockCount;

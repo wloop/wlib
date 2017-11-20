@@ -15,7 +15,7 @@
 #define CORE_STL_HASH_H
 
 #include "../Types.h"
-#include "../Wlib.h"
+#include "../utilities/Math.h"
 #include "../WlibConfig.h"
 
 #include "../strings/StaticString.h"

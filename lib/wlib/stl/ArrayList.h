@@ -13,10 +13,8 @@
 #ifndef EMBEDDEDCPLUSPLUS_ARRAYLIST_H
 #define EMBEDDEDCPLUSPLUS_ARRAYLIST_H
 
-#include "Utility.h"
-
+#include "../utilities/Utility.h"
 #include "../Types.h"
-
 #include "../memory/Memory.h"
 
 namespace wlp {
@@ -675,7 +673,7 @@ namespace wlp {
             if (!m_data) {
                 return;
             }
-            memory_free(m_data);
+            free<val_type>(m_data);
             m_data = nullptr;
         }
 
@@ -688,7 +686,7 @@ namespace wlp {
          * @param initial_size the initial capacity for the backing array
          */
         void init_array(size_type initial_size) {
-            m_data = static_cast<val_type *>(memory_alloc(initial_size * sizeof(val_type)));
+            m_data = malloc<val_type>(initial_size);
         }
 
         /**
@@ -1062,7 +1060,7 @@ namespace wlp {
          * @return reference to this list
          */
         array_list &operator=(array_list &&list) {
-            memory_free(m_data);
+            free<val_type>(m_data);
             m_data = move(list.m_data);
             m_size = move(list.m_size);
             m_capacity = move(list.m_capacity);
@@ -1080,11 +1078,11 @@ namespace wlp {
             return;
         }
         size_type new_capacity = (size_type) (2 * m_capacity);
-        val_type *new_data = static_cast<val_type *>(memory_alloc(new_capacity * sizeof(val_type)));
+        val_type *new_data = malloc<val_type>(new_capacity);
         for (size_type i = 0; i < m_size; i++) {
             new_data[i] = m_data[i];
         }
-        memory_free(m_data);
+        free<val_type>(m_data);
         m_data = new_data;
         m_capacity = new_capacity;
     }
@@ -1094,11 +1092,11 @@ namespace wlp {
         if (new_capacity <= m_capacity) {
             return;
         }
-        val_type *new_data = static_cast<val_type *>(memory_alloc(new_capacity * sizeof(val_type)));
+        val_type *new_data = malloc<val_type>(new_capacity);
         for (size_type i = 0; i < m_size; i++) {
             new_data[i] = m_data[i];
         }
-        memory_free(m_data);
+        free<val_type>(m_data);
         m_data = new_data;
         m_capacity = new_capacity;
     }
@@ -1108,11 +1106,11 @@ namespace wlp {
         if (m_size == m_capacity) {
             return;
         }
-        val_type *new_data = static_cast<val_type *>(memory_alloc(m_size * sizeof(val_type)));
+        val_type *new_data = malloc<val_type>(m_size);
         for (size_type i = 0; i < m_size; i++) {
             new_data[i] = m_data[i];
         }
-        memory_free(m_data);
+        free<val_type>(m_data);
         m_data = new_data;
         m_capacity = m_size;
     }

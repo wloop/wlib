@@ -1,8 +1,8 @@
 #include "gtest/gtest.h"
-#include "strings/StaticString.h"
+
+#include "strings/String.h"
 #include "stl/Equal.h"
 
-#include "Types.h"
 #include "../template_defs.h"
 
 using namespace wlp;

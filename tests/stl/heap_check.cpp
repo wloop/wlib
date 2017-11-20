@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 
 #include "stl/ArrayHeap.h"
+
 #include "../template_defs.h"
 
 using namespace wlp;

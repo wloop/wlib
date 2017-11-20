@@ -16,10 +16,10 @@
 #define EMBEDDEDCPLUSPLUS_ARRAYHEAP_H
 
 #include "ArrayList.h"
-#include "Comparator.h"
+#include "utilities/Comparator.h"
 #include "Concept.h"
 #include "TypeTraits.h"
-#include "Utility.h"
+#include "utilities/Utility.h"
 
 namespace wlp {
 
