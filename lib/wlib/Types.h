@@ -1,6 +1,6 @@
 /**
  * @file Types.h
- * @brief type definition of all the types we will be using
+ * @brief Type definition of all the types we will be using
  *
  * @author Deep Dhillon
  * @date November 12, 2017
