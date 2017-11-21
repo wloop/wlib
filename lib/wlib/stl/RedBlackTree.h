@@ -13,12 +13,11 @@
 #ifndef EMBEDDEDCPLUSPLUS_REDBLACKTREE_H
 #define EMBEDDEDCPLUSPLUS_REDBLACKTREE_H
 
-#include "../utilities/Utility.h"
-#include "../utilities/Comparator.h"
+#include "Comparator.h"
+#include "Pair.h"
 
 #include "../Types.h"
-
-#include "Pair.h"
+#include "../utility/Utility.h"
 
 namespace wlp {
 
