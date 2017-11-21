@@ -196,6 +196,9 @@ Options:
   clean         Cleans the project and deletes every file from the bin folder
   run           Execute the Examples binary
   test          Execute the Tests binary
+  rebuild       Clean, build, and test
+  clcov         Clean and build, then run coverage
+  cltest        Cleans coverage data, builds, and then test
 HEREDOC
 }
 
@@ -245,6 +248,12 @@ _run(){
     echo "Execution Finished"
 }
 
+_cltest() {
+    find ./bin/tests/CMakeFiles/tests.dir/ -name '*.gcda' -delete
+    _build
+    ./bin/tests/tests
+}
+
 _test(){
     find ./bin/tests/CMakeFiles/tests.dir/ -name '*.gcda' -delete
     ./bin/tests/tests
@@ -282,6 +291,9 @@ _simple() {
         echo "Rebuilding and coverage"
         _clean
         _coverage
+    elif [ "$1" == 'cltest' ]; then
+        echo "Fresh testing"
+        _cltest
     else
         _print_help
     fi

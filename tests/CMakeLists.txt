@@ -12,7 +12,7 @@ include_directories(${WLIB_INCLUDE_DIR})
 
 file(GLOB files
 		"test.cpp"
-		"template_defs.h"
+		"*.h"
 		"strings/*.cpp"
 		"stl/*.cpp"
         "fsm/*.cpp"
