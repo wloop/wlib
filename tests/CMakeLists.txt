@@ -15,6 +15,7 @@ file(GLOB files
 		"template_defs.h"
 		"strings/*.cpp"
 		"stl/*.cpp"
+        "fsm/*.cpp"
 		"memory/*.cpp")
 
 add_executable(tests ${files})

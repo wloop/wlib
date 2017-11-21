@@ -18,6 +18,7 @@
 
 using namespace wlp;
 
+static constexpr uint8_t OBJECT_INFO_BUFFER = 2; // 2 bytes to store object info
 static constexpr size_type REQUIRED_EXTRA_BUFFER = sizeof(__Allocator *);
 
 /**
@@ -222,9 +223,10 @@ T nextHigher(T k) {
  * If there is no such Allocator available, create a new one
  *
  * @param size client's requested block size
+ * @param anObject specify if the memory will be used object(s) or fundamental types
  * @return an allocator instance that handles the block size
  */
-__Allocator *memory_get_allocator(size32_type size) {
+__Allocator *memory_get_allocator(size32_type size, bool anObject) {
     // Based on the size, find the next higher powers of two value.
     // Add REQUIRED_EXTRA_BUFFER to the requested block size to hold the size
     // of an Allocator* within the block memory region. Most blocks are powers of two,
@@ -233,6 +235,10 @@ __Allocator *memory_get_allocator(size32_type size) {
     // These restrictions can only imposed if no pool is being used
 
     size32_type blockSize = size + REQUIRED_EXTRA_BUFFER;
+
+    if (anObject)
+        blockSize += OBJECT_INFO_BUFFER;
+
 
 #if !defined(DYNAMIC_POOL) && !defined(STATIC_POOL)
     // set custom blocks if pool is not used
@@ -266,11 +272,12 @@ __Allocator *memory_get_allocator(size32_type size) {
  * the fixed block allocators
  *
  * @param size the client's requested size of the block
+ * @param anObject specify if the memory will be used object(s) or fundamental types
  * @return a pointer to the memory block
  */
-void *__memory_alloc(size32_type size) {
+void *__memory_alloc(size32_type size, bool anObject) {
     // Allocate a raw memory block
-    __Allocator *allocator = memory_get_allocator(size);
+    __Allocator *allocator = memory_get_allocator(size, anObject);
 
     // if not enough sizes available
     if (allocator == nullptr) {
@@ -285,7 +292,7 @@ void *__memory_alloc(size32_type size) {
         // give a block from them if available
         size32_type currBlockSize = allocator->getBlockSize();
         if (currBlockSize < __allocators[MAX_ALLOCATORS - 1]->getBlockSize()) {
-            return __memory_alloc(currBlockSize + 1);
+            return __memory_alloc(currBlockSize + 1, anObject);
         }
 
         return nullptr;
@@ -357,7 +364,7 @@ void __memory_free(void *ptr) {
  */
 void *__memory_realloc(void *oldMem, size32_type size) {
     if (oldMem == nullptr) {
-        return __memory_alloc(size);
+        return __memory_alloc(size, false);
     }
 
     if (size == 0) {
@@ -365,7 +372,7 @@ void *__memory_realloc(void *oldMem, size32_type size) {
         return nullptr;
     } else {
         // Create a new memory block
-        void *newMem = __memory_alloc(size);
+        void *newMem = __memory_alloc(size, false);
         if (newMem != nullptr) {
             // Get the original allocator instance from the old memory block
             __Allocator *oldAllocator = get_block_allocator(oldMem);
