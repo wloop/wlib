@@ -17,11 +17,9 @@
 #ifndef FIXED_MEMORY_MEMORY_H
 #define FIXED_MEMORY_MEMORY_H
 
-#include <new>
-#include "../utilities/Tmp.h"
-
 #include "../Types.h"
 
+#include "../utility/Tmp.h"
 
 /**
  * @brief Helper for initializing and destroying memory management
@@ -100,9 +98,11 @@ Type *malloc(wlp::size_type num = 1) {
             new(pointer) Type;
             pointer += sizeof(Type);
         }
-    } else{
-        memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(Type)) * num, false);
+
+        return reinterpret_cast<Type *>(objInfo);
     }
+
+    memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(Type)) * num, false);
 
     return static_cast<Type *>(memory);
 }
@@ -148,16 +148,18 @@ template<typename Type>
 void free(Type *ptr) {
     if (!wlp::is_fundamental<Type>::value) {
         uint16_t *objInfo = reinterpret_cast<uint16_t*>(ptr);
-        wlp::size_type numObjects = *objInfo;
+        wlp::size_type numObjects = *(--objInfo);
 
-        Type *pointer = reinterpret_cast<Type*>(++objInfo);
+        Type *pointer = ptr;
         for (wlp::size_type i = 0; i < numObjects; ++i) {
             pointer->~Type();
             ++pointer;
         }
-    }
 
-    __memory_free(ptr);
+        __memory_free(reinterpret_cast<Type *>(objInfo));
+    } else{
+        __memory_free(ptr);
+    }
 }
 
 /**
@@ -228,6 +230,5 @@ uint16_t getMaxAllocations();
  * @return the smallest block of memory
  */
 wlp::size_type getSmallestBlockSize();
-
 
 #endif //FIXED_MEMORY_MEMORY_H

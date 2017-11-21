@@ -13,13 +13,13 @@
 #include "StaticAllocatorPool.h"
 #include "DynamicAllocatorPool.h"
 
-#include "../utilities/Math.h"
 #include "../Wlib.h"
+#include "../utility/Math.h"
 
 using namespace wlp;
 
-static constexpr size_type required_extra_buffer = sizeof(Allocator *);
-static constexpr uint8_t OBJECT_INFO_BUFFER = 2;
+static constexpr uint8_t OBJECT_INFO_BUFFER = 2; // 2 bytes to store object info
+static constexpr size_type REQUIRED_EXTRA_BUFFER = sizeof(__Allocator *);
 
 /**
  * This class restricts the size of blocks as the power of 2 gets bigger
@@ -29,7 +29,8 @@ class RestrictSize {
     static constexpr uint16_t powOffsetFromZero = 9;    // which pow of 2 to start restriction from
 
     static constexpr uint16_t restrictions[numRestrictions] = {
-            300, 400, 500};
+            300, 400, 500
+    };
 
 public:
     /**
@@ -48,7 +49,7 @@ public:
     }
 };
 
-static Allocator *_allocators[MAX_ALLOCATORS];
+static __Allocator *__allocators[MAX_ALLOCATORS];
 int MemoryInitDestroy::m_srefCount = 0;
 
 /**
@@ -90,7 +91,7 @@ struct insert {
         constexpr size32_type blockSize = RestrictSize::apply<curr_pow, pow_const<size32_type>(2, curr_pow)>();
 
 #if defined(DYNAMIC_POOL)
-        _allocators[from] = new DynamicAllocatorPool<blockSize, NUM_BLOCKS>();
+        __allocators[from] = new DynamicAllocatorPool<blockSize, NUM_BLOCKS>();
 #elif defined(STATIC_POOL)
         _allocators[from] = new StaticAllocatorPool<blockSize, NUM_BLOCKS>();
 #endif
@@ -116,7 +117,7 @@ struct insert<powStart, from, from> {
         constexpr size32_type blockSize = RestrictSize::apply<curr_pow, pow_const<size32_type>(2, curr_pow)>();
 
 #if defined(DYNAMIC_POOL)
-        _allocators[from] = new DynamicAllocatorPool<blockSize, NUM_BLOCKS>();
+        __allocators[from] = new DynamicAllocatorPool<blockSize, NUM_BLOCKS>();
 #elif defined(STATIC_POOL)
         _allocators[from] = new StaticAllocatorPool<blockSize, NUM_BLOCKS>();
 #endif
@@ -125,17 +126,17 @@ struct insert<powStart, from, from> {
 
 void memory_init() {
     // smallest pow of 2 a block can be created
-    constexpr auto powStart = log2_const<size_type>(required_extra_buffer) + 1;
+    constexpr auto powStart = log2_const<size_type>(REQUIRED_EXTRA_BUFFER) + 1;
     insert<powStart, 0, MAX_ALLOCATORS - 1>::apply();
 }
 
 void memory_destroy() {
-    for (auto &_allocator : _allocators) {
-        if (_allocator == nullptr) {
+    for (auto &allocator : __allocators) {
+        if (allocator == nullptr) {
             break;
         }
-        delete _allocator;
-        _allocator = nullptr;
+        delete allocator;
+        allocator = nullptr;
     }
 }
 
@@ -145,15 +146,15 @@ void memory_destroy() {
  * @param size allocator blocks size
  * @return Allocator instance or nullptr if no allocator exists
  */
-static inline Allocator *find_allocator(size32_type size) {
-    for (auto &_allocator : _allocators) {
-        if (_allocator == nullptr) {
+static inline __Allocator *find_allocator(size32_type size) {
+    for (auto &allocator : __allocators) {
+        if (allocator == nullptr) {
             break;
         }
 
 #if defined(DYNAMIC_POOL) || defined(STATIC_POOL)
-        if (_allocator->GetBlockSize() >= size) {
-            return _allocator;
+        if (allocator->getBlockSize() >= size) {
+            return allocator;
         }
 #else
         if (_allocator->GetBlockSize() == size)
@@ -167,13 +168,13 @@ static inline Allocator *find_allocator(size32_type size) {
 /**
  * Insert an Allocator instance into the array
  *
- * @param allocator an Allocator instance
+ * @param new_allocator an Allocator instance
  * @return true or false based on if insertion is successful
  */
-static inline bool insert_allocator(Allocator *allocator) {
-    for (auto &_allocator : _allocators) {
-        if (_allocator == nullptr) {
-            _allocator = allocator;
+static inline bool insert_allocator(__Allocator *new_allocator) {
+    for (auto &allocator : __allocators) {
+        if (allocator == nullptr) {
+            allocator = new_allocator;
             return true;
         }
     }
@@ -188,9 +189,9 @@ static inline bool insert_allocator(Allocator *allocator) {
  * @param allocator allocator to set
  * @return a pointer to the client's area within the block
  */
-static inline void *set_block_allocator(void *block, Allocator *allocator) {
+static inline void *set_block_allocator(void *block, __Allocator *allocator) {
     // Cast the raw block memory to a Allocator pointer
-    auto **pAllocatorInBlock = static_cast<Allocator **>(block);
+    auto **pAllocatorInBlock = static_cast<__Allocator **>(block);
 
     // Write the size into the memory block
     *pAllocatorInBlock = allocator;
@@ -225,15 +226,15 @@ T nextHigher(T k) {
  * @param anObject specify if the memory will be used object(s) or fundamental types
  * @return an allocator instance that handles the block size
  */
-Allocator *memory_get_allocator(size32_type size, bool anObject) {
+__Allocator *memory_get_allocator(size32_type size, bool anObject) {
     // Based on the size, find the next higher powers of two value.
-    // Add required_extra_buffer to the requested block size to hold the size
+    // Add REQUIRED_EXTRA_BUFFER to the requested block size to hold the size
     // of an Allocator* within the block memory region. Most blocks are powers of two,
     // however some common allocator block sizes can be explicitly defined
     // to minimize wasted storage. This offers application specific tuning.
     // These restrictions can only imposed if no pool is being used
 
-    size32_type blockSize = size + required_extra_buffer;
+    size32_type blockSize = size + REQUIRED_EXTRA_BUFFER;
 
     if (anObject)
         blockSize += OBJECT_INFO_BUFFER;
@@ -250,7 +251,7 @@ Allocator *memory_get_allocator(size32_type size, bool anObject) {
         blockSize = nextHigher<size_t>(blockSize);
 #endif
 
-    Allocator *allocator = find_allocator(blockSize);
+    __Allocator *allocator = find_allocator(blockSize);
 
 #if !defined(DYNAMIC_POOL) && !defined(STATIC_POOL)
     if (allocator == nullptr){
@@ -276,21 +277,21 @@ Allocator *memory_get_allocator(size32_type size, bool anObject) {
  */
 void *__memory_alloc(size32_type size, bool anObject) {
     // Allocate a raw memory block
-    Allocator *allocator = memory_get_allocator(size, anObject);
+    __Allocator *allocator = memory_get_allocator(size, anObject);
 
     // if not enough sizes available
     if (allocator == nullptr) {
         return nullptr;
     }
 
-    void *blockMemoryPtr = allocator->Allocate();
+    void *blockMemoryPtr = allocator->allocate();
 
     // if not enough quantity of that particular size available
     if (blockMemoryPtr == nullptr) {
         // check if higher sizes have some blocks available and
         // give a block from them if available
-        size32_type currBlockSize = allocator->GetBlockSize();
-        if (currBlockSize < _allocators[MAX_ALLOCATORS - 1]->GetBlockSize()) {
+        size32_type currBlockSize = allocator->getBlockSize();
+        if (currBlockSize < __allocators[MAX_ALLOCATORS - 1]->getBlockSize()) {
             return __memory_alloc(currBlockSize + 1, anObject);
         }
 
@@ -308,9 +309,9 @@ void *__memory_alloc(size32_type size, bool anObject) {
  * @param block a pointer to the client's memory block
  * @return The original allocator instance stored in the memory block
  */
-static inline Allocator *get_block_allocator(void *block) {
+static inline __Allocator *get_block_allocator(void *block) {
     // Cast the client memory to a Allocator pointer
-    auto **pAllocatorInBlock = static_cast<Allocator **>(block);
+    auto **pAllocatorInBlock = static_cast<__Allocator **>(block);
 
     // Back up one Allocator* position to get the stored allocator instance
     pAllocatorInBlock--;
@@ -327,7 +328,7 @@ static inline Allocator *get_block_allocator(void *block) {
  */
 static inline void *get_block_ptr(void *block) {
     // Cast the client memory to a Allocator* pointer
-    auto **pAllocatorInBlock = static_cast<Allocator **>(block);
+    auto **pAllocatorInBlock = static_cast<__Allocator **>(block);
 
     // Back up one Allocator* position and return the original raw memory block pointer
     return --pAllocatorInBlock;
@@ -345,13 +346,13 @@ void __memory_free(void *ptr) {
     }
 
     // Extract the original allocator instance from the caller's block pointer
-    Allocator *allocator = get_block_allocator(ptr);
+    __Allocator *allocator = get_block_allocator(ptr);
 
     // Convert the client pointer into the original raw block pointer
     void *blockPtr = get_block_ptr(ptr);
 
     // Deallocate the block
-    allocator->Deallocate(blockPtr);
+    allocator->deallocate(blockPtr);
 }
 
 /**
@@ -374,8 +375,8 @@ void *__memory_realloc(void *oldMem, size32_type size) {
         void *newMem = __memory_alloc(size, false);
         if (newMem != nullptr) {
             // Get the original allocator instance from the old memory block
-            Allocator *oldAllocator = get_block_allocator(oldMem);
-            size_type oldSize = oldAllocator->GetBlockSize() - sizeof(Allocator *);
+            __Allocator *oldAllocator = get_block_allocator(oldMem);
+            size_type oldSize = oldAllocator->getBlockSize() - sizeof(__Allocator *);
 
             // Copy the bytes from the old memory block into the new (as much as will fit)
             memcpy(newMem, oldMem, (oldSize < size) ? oldSize : size);
@@ -393,8 +394,8 @@ void *__memory_realloc(void *oldMem, size32_type size) {
 size32_type getTotalMemoryUsed() {
     size32_type totalMemory = 0;
 
-    for (auto &_allocator : _allocators) {
-        totalMemory += _allocator->GetNumAllocations() * _allocator->GetBlockSize();
+    for (auto &_allocator : __allocators) {
+        totalMemory += _allocator->getNumAllocations() * _allocator->getBlockSize();
     }
 
     return totalMemory;
@@ -404,16 +405,16 @@ size32_type getTotalMemoryUsed() {
 size32_type getTotalMemoryAvailable() {
     size32_type totalMemory = 0;
 
-    for (auto &_allocator : _allocators) {
-        totalMemory += _allocator->GetTotalBlocks() * _allocator->GetBlockSize();
+    for (auto &_allocator : __allocators) {
+        totalMemory += _allocator->getTotalBlocks() * _allocator->getBlockSize();
     }
 
     return totalMemory;
 }
 
 bool isSizeAvailable(size32_type blockSize) {
-    for (auto &_allocator : _allocators) {
-        if (_allocator->GetBlockSize() == blockSize) {
+    for (auto &_allocator : __allocators) {
+        if (_allocator->getBlockSize() == blockSize) {
             return true;
         }
     }
@@ -422,10 +423,10 @@ bool isSizeAvailable(size32_type blockSize) {
 }
 
 bool isSizeMemAvailable(size32_type blockSize) {
-    for (auto &_allocator : _allocators) {
-        if (_allocator->GetBlockSize() == blockSize) {
-            uint32_t totalMemAvail = _allocator->GetTotalBlocks() * _allocator->GetBlockSize();
-            uint32_t totalMemUsed = _allocator->GetNumAllocations() * _allocator->GetBlockSize();
+    for (auto &_allocator : __allocators) {
+        if (_allocator->getBlockSize() == blockSize) {
+            uint32_t totalMemAvail = _allocator->getTotalBlocks() * _allocator->getBlockSize();
+            uint32_t totalMemUsed = _allocator->getNumAllocations() * _allocator->getBlockSize();
             return totalMemAvail - totalMemUsed != 0;
         }
     }
@@ -435,10 +436,10 @@ bool isSizeMemAvailable(size32_type blockSize) {
 uint16_t getNumBlocksAvailable(size32_type blockSize) {
     uint16_t numBlockAvail = 0;
 
-    for (auto &_allocator : _allocators) {
-        if (_allocator->GetBlockSize() == blockSize) {
-            uint32_t totalMemAvail = _allocator->GetTotalBlocks() * _allocator->GetBlockSize();
-            uint32_t totalMemUsed = _allocator->GetNumAllocations() * _allocator->GetBlockSize();
+    for (auto &_allocator : __allocators) {
+        if (_allocator->getBlockSize() == blockSize) {
+            uint32_t totalMemAvail = _allocator->getTotalBlocks() * _allocator->getBlockSize();
+            uint32_t totalMemUsed = _allocator->getNumAllocations() * _allocator->getBlockSize();
             numBlockAvail += (totalMemAvail - totalMemUsed) / blockSize;
         }
     }
@@ -455,10 +456,10 @@ uint16_t getMaxAllocations() {
 }
 
 size_type getSmallestBlockSize() {
-    return static_cast<size_type>(pow_const(2, log2_const<size_type>(required_extra_buffer) + 1));
+    return static_cast<size_type>(pow_const(2, log2_const<size_type>(REQUIRED_EXTRA_BUFFER) + 1));
 }
 
 size32_type getFixedMemorySize(void *ptr) {
-    Allocator *allocator = get_block_allocator(ptr);
-    return allocator->GetBlockSize();
+    __Allocator *allocator = get_block_allocator(ptr);
+    return allocator->getBlockSize();
 }

@@ -1,8 +1,8 @@
 project(wlib)
 
-SET(CMAKE_CXX_FLAGS_DISTRIBUTION "-fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -g -Os -Wall -ffunction-sections -fdata-sections -flto")
-SET(CMAKE_C_FLAGS_DISTRIBUTION "-std=gnu11 -fno-fat-lto-objects -g -Os -Wall -ffunction-sections -fdata-sections -flto")
 set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_FLAGS_DISTRIBUTION "-fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -g -Os -Wall -ffunction-sections -fdata-sections -flto")
+set(CMAKE_C_FLAGS_DISTRIBUTION "-std=gnu11 -fno-fat-lto-objects -g -Os -Wall -ffunction-sections -fdata-sections -flto")
 
 #[[
     These definitions are used for how the memory is allocated
@@ -27,7 +27,7 @@ file(GLOB header_files
         "strings/*.h"
         "stl/*.h"
         "memory/*.h"
-        "utilities/*.h")
+        "utility/*.h")
 
 file(GLOB source_files
         "memory/*.cpp")

@@ -7,12 +7,13 @@
  * @bug No known bug
  */
 
-#ifndef EMBEDDEDCPLUSPLUS_STRING_H
-#define EMBEDDEDCPLUSPLUS_STRING_H
+#ifndef EMBEDDEDCPLUSPLUS_STRINGTYPES_H
+#define EMBEDDEDCPLUSPLUS_STRINGTYPES_H
 
 #include "strings/StaticString.h"
 
 namespace wlp {
+
     // Static Strings
     typedef StaticString<8u> String8;
     typedef StaticString<16u> String16;
@@ -25,6 +26,7 @@ namespace wlp {
     // Dynamic String
     typedef wlp::DynamicString String;
     */
+
 }
 
-#endif //EMBEDDEDCPLUSPLUS_STRING_H
+#endif //EMBEDDEDCPLUSPLUS_STRINGTYPES_H

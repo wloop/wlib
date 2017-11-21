@@ -4,7 +4,7 @@
 #include "../Wlib.h"
 #include "../Types.h"
 #include "../memory/Memory.h"
-#include "../utilities/Tmp.h"
+#include "../utility/Tmp.h"
 
 namespace wlp {
 

@@ -17,9 +17,9 @@
 
 namespace wlp {
     template<size32_type tblockSize, size32_type tnumBlocks>
-    class DynamicAllocatorPool : public Allocator {
+    class DynamicAllocatorPool : public __Allocator {
     public:
-        DynamicAllocatorPool() : Allocator(tblockSize, (tblockSize * tnumBlocks)) {}
+        DynamicAllocatorPool() : __Allocator(tblockSize, (tblockSize * tnumBlocks)) {}
     };
 }
 

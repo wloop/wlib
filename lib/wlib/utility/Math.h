@@ -3,8 +3,8 @@
 
 namespace wlp {
 
-#define max(x, y) (((x) > (y)) ? (x) : (y))
-#define min(x, y) (((x) < (y)) ? (x) : (y))
+#define MAX(x, y) (((x) > (y)) ? (x) : (y))
+#define MIN(x, y) (((x) < (y)) ? (x) : (y))
 
 // Multiplication by Mersenne primes reduced as bit operations
 // for compilers that do not already perform this optimization
@@ -17,8 +17,13 @@ namespace wlp {
     }
 
     template<typename int_type>
-    inline constexpr int_type pow_const(const int_type a, const int_type b) {
+    inline constexpr int_type pow_const(int_type a, int_type b) {
         return (b == 0) ? 1 : (a * pow_const<int_type>(a, b - 1));
+    }
+
+    template<typename int_type>
+    inline int_type int_div_round(int_type n, int_type d) {
+        return ((n < 0) ^ (d < 0)) ? ((n - d / 2) / d) : ((n + d / 2) / d);
     }
 }
 
