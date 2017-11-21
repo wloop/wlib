@@ -260,7 +260,7 @@ namespace wlp {
             for (size_type i = bufferLength; i < bufferLength + otherLength && i < capacity(); i++) {
                 m_buffer[i] = str[i - bufferLength];
             }
-            m_len = MIN(tSize, bufferLength + otherLength);
+            m_len = static_cast<size_type>(MIN(tSize, bufferLength + otherLength));
             m_buffer[m_len] = '\0';
             return *this;
         }

@@ -12,8 +12,8 @@
 #include "memory/Memory.h"
 
 class Sample{
-    int constr = 0;
 public:
+    static int constr;
 
     Sample(){
         constr += 4;
@@ -22,11 +22,9 @@ public:
     ~Sample(){
         constr += 5;
     }
-
-    int getConstr(){
-        return constr;
-    }
 };
+
+int Sample::constr = 0;
 
 TEST(memory_check, general_usability) {
     ASSERT_EQ(getTotalMemoryAvailable(), getTotalMemoryAvailable() - getTotalMemoryUsed());
@@ -52,13 +50,14 @@ TEST(memory_check, general_usability) {
     character4 = realloc(character4, 8);
 
     // create an object
+    Sample::constr = 0;
     auto *test = malloc<Sample>();
-    ASSERT_EQ(4, test->getConstr());
+    ASSERT_EQ(4, Sample::constr);
 
     free(character4);
     free(test);
 
-    ASSERT_EQ(9, test->getConstr());
+    ASSERT_EQ(9, Sample::constr);
     ASSERT_EQ(getTotalMemoryAvailable(), getTotalMemoryAvailable() - getTotalMemoryUsed());
 }
 
@@ -85,11 +84,13 @@ TEST(memory_check, malloc_and_realloc){
 }
 
 TEST(memory_check, array_allocation){
+    Sample::constr = 0;
+
     Sample *s = malloc<Sample>(2);
-    ASSERT_EQ(8, s[0].getConstr() + s[1].getConstr());
+    ASSERT_EQ(8, Sample::constr);
 
     free(s);
-    ASSERT_EQ(18, s[0].getConstr() + s[1].getConstr());
+    ASSERT_EQ(18, Sample::constr);
 }
 
 TEST(memory_check, free){
