@@ -141,22 +141,6 @@ namespace wlp {
         }
 
         /**
-         * Addition assignment operator moves the
-         * iterator by the specified number of
-         * positions.
-         *
-         * @param d the number of positions to increment
-         * @return reference to this iterator
-         */
-        self_type &operator+=(const size_type &d) {
-            m_i = static_cast<size_type>(m_i + d);
-            if (m_i > m_list->m_size) {
-                m_i = m_list->m_size;
-            }
-            return *this;
-        }
-
-        /**
          * Decrement operator moves the iterator backwards
          * one element. If the iterator points to the first
          * element, does nothing.
@@ -180,6 +164,22 @@ namespace wlp {
             self_type tmp = *this;
             --*this;
             return tmp;
+        }
+
+        /**
+         * Addition assignment operator moves the
+         * iterator by the specified number of
+         * positions.
+         *
+         * @param d the number of positions to increment
+         * @return reference to this iterator
+         */
+        self_type &operator+=(const size_type &d) {
+            m_i = static_cast<size_type>(m_i + d);
+            if (m_i > m_list->m_size) {
+                m_i = m_list->m_size;
+            }
+            return *this;
         }
 
         /**
@@ -273,9 +273,9 @@ namespace wlp {
     template<typename T>
     class ArrayList {
     public:
-        typedef wlp::size_type size_type;
         typedef T val_type;
-        typedef ArrayList<T> array_list;
+        typedef wlp::size_type size_type;
+        typedef ArrayList<T> list_type;
         typedef ArrayListIterator<T, T &, T *> iterator;
         typedef ArrayListIterator<T, const T &, const T *> const_iterator;
 
@@ -294,6 +294,7 @@ namespace wlp {
         size_type m_capacity;
 
         friend class ArrayListIterator<T, T &, T *>;
+
         friend class ArrayListIterator<T, const T &, const T *>;
 
     public:
@@ -312,14 +313,14 @@ namespace wlp {
         /**
          * Disable copy constructor.
          */
-        ArrayList(const array_list &) = delete;
+        ArrayList(const list_type &) = delete;
 
         /**
          * Move constructor.
          *
          * @param list array list whose resources to transfer
          */
-        ArrayList(array_list &&list)
+        ArrayList(list_type &&list)
                 : m_data(move(list.m_data)),
                   m_size(move(list.m_size)),
                   m_capacity(move(list.m_capacity)) {
@@ -521,7 +522,7 @@ namespace wlp {
         /**
          * @return reference to the first element in the list
          */
-        val_type const &front() const {
+        const val_type &front() const {
             return m_data[0];
         }
 
@@ -538,7 +539,7 @@ namespace wlp {
         /**
          * @return reference to the last element in the list
          */
-        val_type const &back() const {
+        const val_type &back() const {
             if (m_size == 0) {
                 return m_data[0];
             }
@@ -563,7 +564,7 @@ namespace wlp {
          * Clear the contents of the array list
          * such that it is empty.
          */
-        void clear() {
+        void clear() noexcept {
             m_size = 0;
         }
 
@@ -665,12 +666,25 @@ namespace wlp {
         /**
          * Insert an element to the back of the list.
          *
-         * @param t element to insert
+         * @param val element to insert
          */
         template<typename V>
         void push_back(V &&val) {
             ensure_capacity();
             m_data[m_size] = forward<V>(val);
+            ++m_size;
+        }
+
+        /**
+         * Insert an element at the front of the list.
+         *
+         * @param val element to insert
+         */
+        template<typename V>
+        void push_front(V &&val) {
+            ensure_capacity();
+            shift_right(0);
+            m_data[0] = forward<V>(val);
             ++m_size;
         }
 
@@ -684,20 +698,26 @@ namespace wlp {
         }
 
         /**
-         * Swap the contents of two array lists.
-         *
-         * @param list array list with which to swap
+         * Remove the first element from the list.
          */
-        void swap(array_list &list) {
-            val_type *tmp = m_data;
-            m_data = list.m_data;
-            list.m_data = tmp;
-            size_type tmp_size = m_size;
-            m_size = list.m_size;
-            list.m_size = tmp_size;
-            size_type tmp_cap = m_capacity;
-            m_capacity = list.m_capacity;
-            list.m_capacity = tmp_cap;
+        void pop_front() {
+            if (m_size > 0) {
+                shift_left(0);
+                --m_size;
+            }
+        }
+
+        /**
+         * @param val the value to find
+         * @return the index of the value, or the size of the list
+         * if the value is not found
+         */
+        size_type index_of(const val_type &val) {
+            size_type i =0;
+            for (; i < m_size; ++i) {
+                if (val == m_data[i]) { return i; }
+            }
+            return i;
         }
 
         /**
@@ -705,7 +725,7 @@ namespace wlp {
          *
          * @return reference to this list
          */
-        array_list &operator=(const array_list &) = delete;
+        list_type &operator=(const list_type &) = delete;
 
         /**
          * Move assignment operator.
@@ -713,7 +733,7 @@ namespace wlp {
          * @param list array list to transfer
          * @return reference to this list
          */
-        array_list &operator=(array_list &&list) {
+        list_type &operator=(list_type &&list) {
             free<val_type>(m_data);
             m_data = move(list.m_data);
             m_size = move(list.m_size);
@@ -731,7 +751,7 @@ namespace wlp {
         if (m_size < m_capacity) {
             return;
         }
-        size_type new_capacity =  static_cast<size_type>(2 * m_capacity);
+        size_type new_capacity = static_cast<size_type>(2 * m_capacity);
         val_type *new_data = malloc<val_type>(new_capacity);
         for (size_type i = 0; i < m_size; i++) {
             new_data[i] = m_data[i];

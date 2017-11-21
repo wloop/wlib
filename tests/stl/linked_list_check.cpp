@@ -62,10 +62,10 @@ TEST(list_tests, indexing_tests) {
     numlist.push_front(1);
     numlist.push_back(2);
     numlist.push_front(3); // 3 1 2
-    ASSERT_EQ(numlist.indexOf(3), 0);
-    ASSERT_EQ(numlist.indexOf(1), 1);
-    ASSERT_EQ(numlist.indexOf(2), 2);
-    ASSERT_EQ(numlist.indexOf(4), 3);
+    ASSERT_EQ(numlist.index_of(3), 0);
+    ASSERT_EQ(numlist.index_of(1), 1);
+    ASSERT_EQ(numlist.index_of(2), 2);
+    ASSERT_EQ(numlist.index_of(4), 3);
     ASSERT_EQ(numlist.at(0), 3);
     ASSERT_EQ(numlist[2], 2);
     const LinkedList<int> constlist = move(numlist);

@@ -249,7 +249,225 @@ namespace wlp {
         /**
          * Default Destructor deallocates all the nodes.
          */
-        ~LinkedList();
+        ~LinkedList() {
+            clear();
+        }
+
+        /**
+         * @return whether the list has no elements
+         */
+        bool empty() const {
+            return m_size == 0;
+        };
+
+        /**
+         * @return the length of the list
+         */
+        size_type size() const {
+            return m_size;
+        }
+
+        /**
+         * @return the maximum number of elements storable in the list
+         */
+        size_type capacity() const {
+            return static_cast<size_type>(-1);
+        }
+
+        /**
+         * Return a reference to the value stored at the `index`
+         *
+         * @param i to get
+         * @return reference to the value at that index
+         */
+        val_type &at(size_type i);
+
+        /**
+         * Return a reference to the value stored at the `index` (const variant)
+         *
+         * @param u to get
+         * @return reference to the value at that index
+         */
+        const val_type &at(size_type u) const;
+
+        /**
+         * Array indexing operator
+         * `at` behind the scenes
+         *
+         * @param index to get
+         * @return reference to the value at that index
+         */
+        val_type &operator[](size_type index) {
+            return at(index);
+        }
+
+        /**
+         * Array indexing operator const variant
+         * `at` behind the scenes
+         *
+         * @param index to get
+         * @return reference to the value at that index
+         */
+        const val_type &operator[](size_type index) const {
+            return at(index);
+        }
+
+        /**
+         * @return a reference to the value at the start of the List
+         */
+        val_type &front() {
+            return m_head->m_val;
+        }
+
+        /**
+         * @return a const reference to the value at the start of the List
+         */
+        const val_type &front() const {
+            return m_head->m_val;
+        }
+
+        /**
+         * @return a reference to the value at the end of the List
+         */
+        val_type &back() {
+            return m_tail->m_val;
+        }
+
+        /**
+         * @return a const reference to the value at the end of the List
+         */
+        const val_type &back() const {
+            return m_tail->m_val;
+        }
+
+        /**
+         * Removes all the elements in the list.
+         */
+        void clear() noexcept;
+
+        /**
+         * Obtain an iterator to the first element in the list.
+         * Returns pass-the-end iterator (nullptr) if
+         * there are no elements (m_pStart == nullptr)
+         *
+         * @return iterator the first element
+         */
+        iterator begin() {
+            return iterator(m_head, this);
+        }
+
+        /**
+         * @return a pass-the-end iterator for this map
+         */
+        iterator end() {
+            return iterator(nullptr, this);
+        }
+
+        /**
+         * @see List<T>::begin()
+         * @return a constant iterator to the first element in the list
+         */
+        const_iterator begin() const {
+            return const_iterator(m_head, this);
+        }
+
+        /**
+         * @see List<T>::end()
+         * @return a constant pass-the-end iterator
+         */
+        const_iterator end() const {
+            return const_iterator(nullptr, this);
+        }
+
+        /**
+         * Insert a value at the given index.
+         *
+         * @param i the index of the node to insert
+         * @param val the value to insert
+         * @return iterator to the inserted element
+         */
+        template<typename V>
+        iterator insert(size_type i, V &&val) {
+            if (!m_size) { i = 0; }
+            else { i %= m_size; }
+            node_type *node = malloc<node_type>();
+            node->m_val = forward<V>(val);
+            if (m_head == nullptr) {
+                node->m_next = nullptr;
+                node->m_prev = nullptr;
+                m_head = node;
+                m_tail = node;
+                ++m_size;
+                return iterator(m_head, this);
+            }
+            node_type *pTmp = m_head;
+            while(i-- > 0) {
+                pTmp = pTmp->m_next;
+            }
+            node->m_next = pTmp;
+            node->m_prev = pTmp->m_prev;
+            node->m_next->m_prev = node;
+            if (node->m_prev) { node->m_prev->m_next = node; }
+            ++m_size;
+            return iterator(node, this);
+        }
+
+        /**
+         * Insert a value at the given iterator.
+         *
+         * @param it the iterator to the node to insert
+         * @param val the value to insert
+         * @return iterator to the inserted value
+         */
+        template<typename V>
+        iterator insert(const iterator &it, V &&val) {
+            if (it == end()) {
+                push_back(forward<V>(val));
+                return iterator(m_tail, this);
+            }
+            node_type *node = malloc<node_type>();
+            node->m_next = it.m_current;
+            node->m_prev = it.m_current->m_prev;
+            node->m_next->m_prev = node;
+            if (node->m_prev) { node->m_prev->m_next = node; }
+            ++m_size;
+            return iterator(node, this);
+        }
+
+        /**
+         * Removes the value stored at the given index
+         *
+         * @param i the index to remove at
+         * @return iterator to the next element, or pass-the-end
+         */
+        iterator erase(size_type i);
+
+        /**
+         * Removes the value pointed to by an iterator.
+         *
+         * @param it the iterator whose value to remove
+         * @return iterator to the next element, or pass-the-end
+         */
+        iterator erase(const iterator &it) {
+            if (m_size == 0 || !it.m_current) {
+                return end();
+            }
+            node_type *pTmp = it.m_current;
+            if (pTmp->m_prev != nullptr) {
+                pTmp->m_prev->m_next = pTmp->m_next;
+            } else {
+                m_head = pTmp->m_next;
+            }
+            if (pTmp->m_next != nullptr) {
+                pTmp->m_next->m_prev = pTmp->m_prev;
+            } else {
+                m_tail = pTmp->m_prev;
+            }
+            node_type *next = pTmp->m_next;
+            free<node_type>(pTmp);
+            --m_size;
+            return iterator(next, this);
+        }
 
         /**
          * Creates a new node and pushes it to the back of the list.
@@ -294,6 +512,9 @@ namespace wlp {
             m_size++;
         }
 
+        /**
+         * Remove the last element from the list.
+         */
         void pop_back() {
             if (!m_tail) {
                 return;
@@ -309,6 +530,9 @@ namespace wlp {
             m_size--;
         }
 
+        /**
+         * Remove the first element from the list.
+         */
         void pop_front() {
             if (!m_head) {
                 return;
@@ -325,132 +549,14 @@ namespace wlp {
         }
 
         /**
-         * @return a reference to the value at the start of the List
-         */
-        val_type &front() {
-            return m_head->m_val;
-        }
-
-        /**
-         * @return a const reference to the value at the start of the List
-         */
-        const val_type &front() const {
-            return m_head->m_val;
-        }
-
-        /**
-         * @return a reference to the value at the end of the List
-         */
-        val_type &back() {
-            return m_tail->m_val;
-        }
-
-        /**
-         * @return a const reference to the value at the end of the List
-         */
-        const val_type &back() const {
-            return m_tail->m_val;
-        }
-
-        /**
-         * Returns the length of the List
-         *
-         * @return the length of the list
-         */
-        size_type size() const {
-            return m_size;
-        }
-
-        void clear() noexcept;
-
-        /**
-         * Removes the value stored at the given index
-         *
-         * @param index the index to remove at
-         */
-        void erase(size_type index);
-
-        /**
-         * Return a reference to the value stored at the `index`
-         *
-         * @param index to get
-         * @return reference to the value at that index
-         */
-        val_type &at(size_type index);
-
-        /**
-         * Return a reference to the value stored at the `index` (const variant)
-         *
-         * @param index to get
-         * @return reference to the value at that index
-         */
-        const val_type &at(size_type index) const;
-
-        /**
-         * Array indexing operator
-         * `at` behind the scenes
-         *
-         * @param index to get
-         * @return reference to the value at that index
-         */
-        val_type &operator[](size_type index) {
-            return at(index);
-        }
-
-        /**
-         * Array indexing operator const variant
-         * `at` behind the scenes
-         *
-         * @param index to get
-         * @return reference to the value at that index
-         */
-        const val_type &operator[](size_type index) const {
-            return at(index);
-        }
-
-        /**
          * indexOf from Javascript land that finds the index of the
          * first element from the beginning of the List that equals `value`
          * but returns the length of the array instead of -1 on failure
          *
-         * @param value value to search for
+         * @param val value to search for
          * @return reference to the value at that index
          */
-        size_type indexOf(const T &value);
-
-        /**
-         * Obtain an iterator to the first element in the list.
-         * Returns pass-the-end iterator (nullptr) if
-         * there are no elements (m_pStart == nullptr)
-         *
-         * @return iterator the first element
-         */
-        iterator begin() {
-            return iterator(m_head, this);
-        }
-
-        /**
-         * @return a pass-the-end iterator for this map
-         */
-        iterator end() {
-            return iterator(nullptr, this);
-        }
-
-        /**
-         * @see List<T>::begin()
-         * @return a constant iterator to the first element in the list
-         */
-        const_iterator begin() const {
-            return const_iterator(m_head, this);
-        }
-
-        /**
-         * @see List<T>::end()
-         * @return a constant pass-the-end iterator
-         */
-        const_iterator end() const {
-            return const_iterator(nullptr, this);
-        }
+        size_type index_of(const val_type &val);
 
         /**
          * Delete copy assignment.
@@ -466,6 +572,7 @@ namespace wlp {
          * @return a reference to this list
          */
         list_type &operator=(list_type &&list) {
+            clear();
             m_size = list.m_size;
             m_head = list.m_head;
             m_tail = list.m_tail;
@@ -477,12 +584,7 @@ namespace wlp {
     };
 
     template<typename T>
-    LinkedList<T>::~LinkedList() {
-        clear();
-    }
-
-    template<typename T>
-    void LinkedList<T>::clear() noexcept {
+    inline void LinkedList<T>::clear() noexcept {
         node_type *pTmp;
         while (m_head != nullptr) {
             pTmp = m_head;
@@ -491,18 +593,19 @@ namespace wlp {
         }
         m_size = 0;
         m_tail = nullptr;
+        m_head = nullptr;
     }
 
     template<typename T>
-    void LinkedList<T>::erase(size_type index) {
+    iterator LinkedList<T>::erase(size_type i) {
         if (!m_size) {
-            return;
+            return end();
         }
-        if (index >= m_size) {
-            index %= m_size;
+        if (i >= m_size) {
+            i %= m_size;
         }
         node_type *pTmp = m_head;
-        while (index-- > 0) {
+        while (i-- > 0) {
             pTmp = pTmp->m_next;
         }
         if (pTmp->m_prev != nullptr) {
@@ -515,44 +618,46 @@ namespace wlp {
         } else {
             m_tail = pTmp->m_prev;
         }
+        node_type *next = pTmp->m_next;
         free<node_type>(pTmp);
         m_size--;
+        return iterator(next, this);
     }
 
     template<typename T>
-    typename LinkedList<T>::val_type &
-    LinkedList<T>::at(size_type index) {
-        if (index >= m_size) {
-            if (m_size) { index %= m_size; }
-            else { index = 0; }
+    inline typename LinkedList<T>::val_type &
+    LinkedList<T>::at(size_type i) {
+        if (i >= m_size) {
+            if (m_size) { i %= m_size; }
+            else { i = 0; }
         }
         node_type *pTmp = m_head;
-        while (index-- > 0) {
+        while (i-- > 0) {
             pTmp = pTmp->m_next;
         }
         return pTmp->m_val;
     }
 
     template<typename T>
-    const typename LinkedList<T>::val_type &
-    LinkedList<T>::at(size_type index) const {
-        if (index >= m_size) {
-            if (m_size) { index %= m_size; }
-            else { index = 0; }
+    inline const typename LinkedList<T>::val_type &
+    LinkedList<T>::at(size_type u) const {
+        if (u >= m_size) {
+            if (m_size) { u %= m_size; }
+            else { u = 0; }
         }
         node_type *pTmp = m_head;
-        while (index-- > 0) {
+        while (u-- > 0) {
             pTmp = pTmp->m_next;
         }
         return pTmp->m_val;
     }
 
     template<typename T>
-    typename LinkedList<T>::size_type
-    LinkedList<T>::indexOf(const T &value) {
+    inline typename LinkedList<T>::size_type
+    LinkedList<T>::index_of(const val_type &val) {
         node_type *pTmp = m_head;
         for (size_type i = 0; i < m_size; i++) {
-            if (pTmp->m_val == value) {
+            if (pTmp->m_val == val) {
                 return i;
             }
             pTmp = pTmp->m_next;
