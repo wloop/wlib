@@ -53,7 +53,7 @@ static MemoryInitDestroy __g_smemoryInitDestroy;
  * Used internally not for client's use
  * Use the @code malloc @endcode function
  */
-void *__memory_alloc(uint32_t size);
+void *__memory_alloc(uint32_t size, bool anObject);
 
 /**
  * Used internally not for client's use
@@ -86,15 +86,22 @@ void __memory_free(void *ptr);
  * @return address to memory allocated
  */
 template<typename Type>
-Type *malloc(wlp::size32_type num = 1) {
-    void *memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(Type)) * num);
+Type *malloc(wlp::size_type num = 1) {
+    void *memory = nullptr;
 
     if (!wlp::is_fundamental<Type>::value) {
-        char *pointer = static_cast<char *>(memory);
-        for (wlp::size32_type i = 0; i < num; ++i) {
+        memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(Type)) * num, true);
+
+        uint16_t *objInfo = static_cast<uint16_t *>(memory);
+        *objInfo = static_cast<uint16_t>(num);
+
+        char *pointer = reinterpret_cast<char *>(++objInfo);
+        for (wlp::size_type i = 0; i < num; ++i) {
             new(pointer) Type;
             pointer += sizeof(Type);
         }
+    } else{
+        memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(Type)) * num, false);
     }
 
     return static_cast<Type *>(memory);
@@ -140,10 +147,11 @@ wlp::size32_type getFixedMemorySize(void *ptr);
 template<typename Type>
 void free(Type *ptr) {
     if (!wlp::is_fundamental<Type>::value) {
-        wlp::size32_type num = static_cast<wlp::size32_type>(getFixedMemorySize(ptr) / sizeof(Type));
+        uint16_t *objInfo = reinterpret_cast<uint16_t*>(ptr);
+        wlp::size_type numObjects = *objInfo;
 
-        Type *pointer = ptr;
-        for (wlp::size32_type i = 0; i < num; ++i) {
+        Type *pointer = reinterpret_cast<Type*>(++objInfo);
+        for (wlp::size_type i = 0; i < numObjects; ++i) {
             pointer->~Type();
             ++pointer;
         }
