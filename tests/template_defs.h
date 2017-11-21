@@ -8,6 +8,7 @@
 #include "stl/ChainMap.h"
 #include "stl/OpenMap.h"
 #include "stl/ArrayHeap.h"
+#include "stl/LinkedList.h"
 
 namespace wlp {
     template
@@ -143,6 +144,9 @@ namespace wlp {
 
     template
     struct Comparator<String8>;
+
+    template
+    class LinkedList<int>;
 
 }
 
