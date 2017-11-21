@@ -1,3 +1,5 @@
+set(CMAKE_CXX_STANDARD 11)
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Waddress -Warray-bounds -Wbuiltin-macro-redefined -Wconversion")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Winit-self -Wnon-virtual-dtor -Woverloaded-virtual")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wswitch -Wunreachable-code")
