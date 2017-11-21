@@ -23,6 +23,7 @@ add_definitions(-DMAX_ALLOCATORS=10u -DNUM_BLOCKS=100u -DDYNAMIC_POOL)
 
 file(GLOB header_files
         "*.h"
+        "fsm/*.h"
         "strings/*.h"
         "stl/*.h"
         "memory/*.h"
