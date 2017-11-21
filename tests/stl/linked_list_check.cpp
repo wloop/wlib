@@ -5,6 +5,9 @@
 
 using namespace wlp;
 
+typedef LinkedList<int>::iterator lli_it;
+typedef LinkedList<int>::const_iterator lli_cit;
+
 TEST(list_tests, constructor_tests) {
     LinkedList<int> numlist;
     ASSERT_EQ(numlist.size(), 0);
@@ -76,7 +79,7 @@ TEST(list_tests, iterator_tests) {
     numlist.push_front(1);
     numlist.push_back(2);
     numlist.push_front(3); // 3 1 2
-    LinkedListIterator<int> it = numlist.begin();
+    lli_it it = numlist.begin();
     ASSERT_EQ(*it, 3);
     ++it;
     ASSERT_EQ(*it, 1);
@@ -86,7 +89,7 @@ TEST(list_tests, iterator_tests) {
     ++it;
     ASSERT_EQ(it, numlist.end());
     const LinkedList<int> constlist = move(numlist);
-    LinkedListConstIterator<int> it2 = constlist.begin();
+    lli_cit it2 = constlist.begin();
     ASSERT_EQ(*it2, 3);
     ++it2;
     ASSERT_EQ(*it2, 1);
