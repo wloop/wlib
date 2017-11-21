@@ -36,9 +36,9 @@ namespace wlp {
         typedef OpenHashMap<Key, Key, Hash, Equal> map_type;
         typedef OpenHashMapIterator<Key, Key, Hash, Equal> iterator;
         typedef OpenHashMapConstIterator<Key, Key, Hash, Equal> const_iterator;
-        typedef map_type::size_type size_type;
-        typedef map_type::percent_type percent_type;
-        typedef map_type::key_type key_type;
+        typedef typename map_type::size_type size_type;
+        typedef typename map_type::percent_type percent_type;
+        typedef typename map_type::key_type key_type;
 
     private:
         /**
