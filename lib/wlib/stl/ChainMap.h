@@ -567,7 +567,9 @@ namespace wlp {
          * @return the value mapped to by the key
          * @throws KeyException if the key does not map to a value
          */
-        iterator at(const key_type &key);
+        val_type &at(const key_type &key) {
+            return *find(key);
+        }
 
         /**
          * @see ChainHashMap<Key, Value, Hasher, Equals>::at()
@@ -575,7 +577,9 @@ namespace wlp {
          * @return the mapped value
          * @throws KeyException if the key does not exist
          */
-        const_iterator at(const key_type &key) const;
+        const val_type &at(const key_type &key) const {
+            return *find(key);
+        }
 
         /**
          * @param key key for which to check existence of a value
@@ -809,40 +813,6 @@ namespace wlp {
             }
         }
         return false;
-    }
-
-    template<class Key, class Value, class Hasher, class Equals>
-    typename ChainHashMap<Key, Value, Hasher, Equals>::iterator
-    ChainHashMap<Key, Value, Hasher, Equals>::at(const key_type &key) {
-        size_type i = hash(key);
-        node_type *cur = m_buckets[i];
-        if (!cur) {
-            return end();
-        }
-        while (cur && !m_equal(key, cur->m_key)) {
-            cur = cur->next;
-        }
-        if (!cur) {
-            return end();
-        }
-        return iterator(cur, this);
-    }
-
-    template<class Key, class Value, class Hasher, class Equals>
-    typename ChainHashMap<Key, Value, Hasher, Equals>::const_iterator
-    ChainHashMap<Key, Value, Hasher, Equals>::at(const key_type &key) const {
-        size_type i = hash(key);
-        node_type *cur = m_buckets[i];
-        if (!cur) {
-            return end();
-        }
-        while (cur && !m_equal(key, cur->m_key)) {
-            cur = cur->next;
-        }
-        if (!cur) {
-            return end();
-        }
-        return const_iterator(cur, this);
     }
 
     template<class Key, class Value, class Hasher, class Equals>
