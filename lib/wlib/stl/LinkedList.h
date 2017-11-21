@@ -285,10 +285,10 @@ namespace wlp {
         /**
          * Return a reference to the value stored at the `index` (const variant)
          *
-         * @param u to get
+         * @param i to get
          * @return reference to the value at that index
          */
-        const val_type &at(size_type u) const;
+        const val_type &at(size_type i) const;
 
         /**
          * Array indexing operator
@@ -408,6 +408,7 @@ namespace wlp {
             node->m_prev = pTmp->m_prev;
             node->m_next->m_prev = node;
             if (node->m_prev) { node->m_prev->m_next = node; }
+            else { m_head = node; }
             ++m_size;
             return iterator(node, this);
         }
@@ -426,10 +427,12 @@ namespace wlp {
                 return iterator(m_tail, this);
             }
             node_type *node = malloc<node_type>();
+            node->m_val = forward<V>(val);
             node->m_next = it.m_current;
             node->m_prev = it.m_current->m_prev;
             node->m_next->m_prev = node;
             if (node->m_prev) { node->m_prev->m_next = node; }
+            else { m_head = node; }
             ++m_size;
             return iterator(node, this);
         }
@@ -549,14 +552,50 @@ namespace wlp {
         }
 
         /**
-         * indexOf from Javascript land that finds the index of the
-         * first element from the beginning of the List that equals `value`
-         * but returns the length of the array instead of -1 on failure
+         * Find the index of the first element from the beginning of
+         * the List that equals @code val @endcode. Returns the size
+         * of the list if not found.
          *
          * @param val value to search for
-         * @return reference to the value at that index
+         * @return the index of the first occurrence of the element
          */
-        size_type index_of(const val_type &val);
+        size_type index_of(const val_type &val) const;
+
+        /**
+         * Find the first occurrence of a value in the list.
+         *
+         * @param val the value to find
+         * @return iterator to the first occurrence of the element
+         * or pass-the-end if not found
+         */
+        iterator find(const val_type &val) {
+            node_type *pTmp = m_head;
+            while(pTmp) {
+                if (pTmp->m_val == val) {
+                    return iterator(pTmp, this);
+                }
+                pTmp = pTmp->m_next;
+            }
+            return end();
+        }
+
+        /**
+         * Find the first occurrence of a value in the list.
+         *
+         * @param val the value to find
+         * @return iterator to the first occurrence of the element
+         * or pass-the-end if not found
+         */
+        const_iterator find(const val_type &val) const {
+            node_type *pTmp = m_head;
+            while(pTmp) {
+                if (pTmp->m_val == val) {
+                    return const_iterator(pTmp, this);
+                }
+                pTmp = pTmp->m_next;
+            }
+            return end();
+        }
 
         /**
          * Delete copy assignment.
@@ -597,7 +636,8 @@ namespace wlp {
     }
 
     template<typename T>
-    iterator LinkedList<T>::erase(size_type i) {
+    typename LinkedList<T>::iterator
+    LinkedList<T>::erase(size_type i) {
         if (!m_size) {
             return end();
         }
@@ -640,13 +680,13 @@ namespace wlp {
 
     template<typename T>
     inline const typename LinkedList<T>::val_type &
-    LinkedList<T>::at(size_type u) const {
-        if (u >= m_size) {
-            if (m_size) { u %= m_size; }
-            else { u = 0; }
+    LinkedList<T>::at(size_type i) const {
+        if (i >= m_size) {
+            if (m_size) { i %= m_size; }
+            else { i = 0; }
         }
         node_type *pTmp = m_head;
-        while (u-- > 0) {
+        while (i-- > 0) {
             pTmp = pTmp->m_next;
         }
         return pTmp->m_val;
@@ -654,7 +694,7 @@ namespace wlp {
 
     template<typename T>
     inline typename LinkedList<T>::size_type
-    LinkedList<T>::index_of(const val_type &val) {
+    LinkedList<T>::index_of(const val_type &val) const {
         node_type *pTmp = m_head;
         for (size_type i = 0; i < m_size; i++) {
             if (pTmp->m_val == val) {

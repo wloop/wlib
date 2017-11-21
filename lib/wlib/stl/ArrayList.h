@@ -712,12 +712,28 @@ namespace wlp {
          * @return the index of the value, or the size of the list
          * if the value is not found
          */
-        size_type index_of(const val_type &val) {
-            size_type i =0;
+        size_type index_of(const val_type &val) const {
+            size_type i = 0;
             for (; i < m_size; ++i) {
                 if (val == m_data[i]) { return i; }
             }
             return i;
+        }
+
+        /**
+         * @param val the value to find
+         * @return iterator to the value, or pass-the-end if not found
+         */
+        iterator find(const val_type &val) {
+            return iterator(index_of(val), this);
+        }
+
+        /**
+         * @param val the value to find
+         * @return iterator to the value, or pass-the-end if not found
+         */
+        const_iterator find(const val_type &val) const {
+            return const_iterator(index_of(val), this);
         }
 
         /**

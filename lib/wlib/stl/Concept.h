@@ -316,6 +316,71 @@ namespace wlp {
         return map_concept<C>::value;
     }
 
+    template<typename C, bool =
+    has_val_type<C>::value &&
+    has_size_type<C>::value &&
+    has_iterator<C>::value &&
+    has_const_iterator<C>::value
+    >
+    struct list_concept {
+        static constexpr bool value = false;
+    };
+
+    template<typename C>
+    struct list_concept<C, true> {
+    private:
+        typedef typename C::val_type val_type;
+        typedef typename C::size_type size_type;
+        typedef typename C::iterator iterator;
+        typedef typename C::const_iterator const_iterator;
+        typedef C list_type;
+
+        template<typename T>
+        static constexpr auto check(T *) -> typename and_<
+                __HAS_FCN(const T, size, size_type),
+                __HAS_FCN(const T, capacity, size_type),
+                __HAS_FCN(const T, empty, bool),
+                __HAS_FCN(T, at, size_type, val_type &),
+                __HAS_FCN(const T, at, size_type, const val_type &),
+                __HAS_FCN(T, operator[], size_type, val_type &),
+                __HAS_FCN(const T, operator[], size_type, const val_type &),
+                __HAS_FCN(T, front, val_type &),
+                __HAS_FCN(const T, front, const val_type &),
+                __HAS_FCN(T, back, val_type &),
+                __HAS_FCN(const T, back, const val_type &),
+                __HAS_FCN(T, clear, void),
+                __HAS_FCN(T, begin, iterator),
+                __HAS_FCN(const T, begin, const_iterator),
+                __HAS_FCN(T, end, iterator),
+                __HAS_FCN(const T, end, const_iterator),
+                __HAS_FCN(T, insert, size_type, const val_type &, iterator),
+                __HAS_FCN(T, insert, const iterator &, const val_type &, iterator),
+                __HAS_FCN(T, erase, size_type, iterator),
+                __HAS_FCN(T, erase, const iterator &, iterator),
+                __HAS_FCN(T, push_back, const val_type &, void),
+                __HAS_FCN(T, push_front, const val_type &, void),
+                __HAS_FCN(T, pop_back, void),
+                __HAS_FCN(T, pop_front, void),
+                __HAS_FCN(const T, index_of, const val_type &, size_type),
+                __HAS_FCN(T, find, const val_type &, iterator),
+                __HAS_FCN(const T, find, const val_type &, const_iterator),
+                __HAS_FCN(T, operator=, list_type &&, list_type &)
+        >::type;
+
+        template<typename>
+        static constexpr false_type check(...);
+
+        typedef decltype(check<C>(nullptr)) type;
+
+    public:
+        static constexpr bool value = type::value;
+    };
+
+    template<typename C>
+    static constexpr bool is_list() {
+        return list_concept<C>::value;
+    }
+
 }
 
 #endif //EMBEDDEDCPLUSPLUS_CONCEPTCHECKS_H
