@@ -98,13 +98,6 @@ namespace wlp {
         }
 
         /**
-         * @return a pointer to the backing map's node allocator
-         */
-        const Allocator *get_node_allocator() const {
-            return m_hash_map.get_node_allocator();
-        }
-
-        /**
          * @return a pointer to the backing hash map
          */
         const map_type *get_backing_hash_map() const {
@@ -163,8 +156,9 @@ namespace wlp {
          * @param key the element to insert
          * @return a pair of an iterator and boolean
          */
-        Pair<iterator, bool> insert(key_type key) {
-            return m_hash_map.insert(key, key);
+        template<typename K>
+        Pair<iterator, bool> insert(K &&key) {
+            return m_hash_map.insert(forward<K>(key), forward<K>(key));
         };
 
         /**
@@ -205,16 +199,7 @@ namespace wlp {
          * @return an iterator to the next element, or
          * pass the end if the iteration has reached the end
          */
-        iterator &erase(iterator &pos) {
-            return m_hash_map.erase(pos);
-        }
-
-        /**
-         * Erase an element pointed to by a const iterator.
-         * @param pos the iterator to the element to erase
-         * @return an iterator to the next element
-         */
-        const_iterator &erase(const_iterator &pos) {
+        iterator erase(const iterator &pos) {
             return m_hash_map.erase(pos);
         }
 
@@ -224,7 +209,7 @@ namespace wlp {
          * @return true if the value was removed,
          * false if the value was never in the set
          */
-        bool erase(key_type &key) {
+        bool erase(const key_type &key) {
             return m_hash_map.erase(key);
         }
 
