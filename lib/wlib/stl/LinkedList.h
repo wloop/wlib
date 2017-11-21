@@ -26,7 +26,8 @@ namespace wlp {
         typedef LinkedListNode<T> node_type;
 
         val_type m_val;
-        node_type *m_next, *m_prev;
+        node_type *m_next;
+        node_type *m_prev;
     };
 
     // Forward Declaration of List class
@@ -34,17 +35,17 @@ namespace wlp {
     class LinkedList;
 
     /**
-     * Iterator class over the elements of a List.
+     * Iterator class over the elements of a @code LinkedList @endcode.
      *
-     * @tparam T   value type
+     * @tparam T value type
      */
-    template<typename T>
+    template<typename T, typename Ref, typename Ptr>
     struct LinkedListIterator {
         typedef T val_type;
         typedef wlp::size_type size_type;
         typedef LinkedListNode<T> node_type;
-        typedef LinkedListIterator<T> iterator;
         typedef LinkedList<T> list_type;
+        typedef LinkedListIterator<T, Ref, Ptr> self_type;
 
         /**
          * Pointer to the node referenced by this iterator.
@@ -53,7 +54,7 @@ namespace wlp {
         /**
          * Pointer to the iterated List.
          */
-        list_type *m_list;
+        const list_type *m_list;
 
         /**
          * Default constructor.
@@ -68,7 +69,7 @@ namespace wlp {
          * @param node linked list node
          * @param list  parent linked list
          */
-        LinkedListIterator(node_type *node, list_type *list)
+        LinkedListIterator(node_type *node, const list_type *list)
                 : m_current(node),
                   m_list(list) {}
 
@@ -77,7 +78,7 @@ namespace wlp {
          *
          * @param it iterator copy
          */
-        LinkedListIterator(const iterator &it)
+        LinkedListIterator(const self_type &it)
                 : m_current(it.m_current),
                   m_list(it.m_list) {}
 
@@ -104,7 +105,7 @@ namespace wlp {
          *
          * @return this iterator
          */
-        iterator &operator++() {
+        self_type &operator++() {
             if (m_current) {
                 m_current = m_current->m_next;
             }
@@ -116,8 +117,8 @@ namespace wlp {
          *
          * @return this iterator
          */
-        iterator operator++(int) {
-            iterator clone(*this);
+        self_type operator++(int) {
+            self_type clone(*this);
             ++*this;
             return clone;
         }
@@ -130,7 +131,7 @@ namespace wlp {
          *
          * @return reference to this iterator
          */
-        iterator &operator--() {
+        self_type &operator--() {
             if (m_current && m_current != m_list->m_head) {
                 m_current = m_current->m_prev;
             }
@@ -142,8 +143,8 @@ namespace wlp {
          *
          * @return reference to this iterator
          */
-        iterator operator--(int) {
-            iterator clone(*this);
+        self_type operator--(int) {
+            self_type clone(*this);
             --*this;
             return *this;
         }
@@ -154,7 +155,7 @@ namespace wlp {
          * @param it iterator to compare
          * @return true if they are equal
          */
-        bool operator==(const iterator &it) const {
+        bool operator==(const self_type &it) const {
             return m_current == it.m_current;
         }
 
@@ -165,7 +166,7 @@ namespace wlp {
          * @param it iterator to compare
          * @return true if they point to different nodes
          */
-        bool operator!=(const iterator &it) const {
+        bool operator!=(const self_type &it) const {
             return m_current != it.m_current;
         }
 
@@ -176,86 +177,7 @@ namespace wlp {
          * @param it iterator to copy
          * @return reference to this iterator
          */
-        iterator &operator=(const iterator &it) {
-            m_current = it.m_current;
-            m_list = it.m_list;
-            return *this;
-        }
-    };
-
-    /**
-     * Constant iterator over a List. Values iterated by
-     * this class cannot be modified.
-     *
-     * @see ListIterator
-     * @tparam T value type
-     */
-    template<typename T>
-    struct LinkedListConstIterator {
-        typedef T val_type;
-        typedef wlp::size_type size_type;
-        typedef LinkedListNode<T> node_type;
-        typedef LinkedListConstIterator<T> const_iterator;
-        typedef LinkedList<T> list_type;
-
-        const node_type *m_current;
-        const list_type *m_list;
-
-        LinkedListConstIterator()
-                : m_current(nullptr),
-                  m_list(nullptr) {}
-
-        LinkedListConstIterator(const node_type *node, const list_type *list)
-                : m_current(node),
-                  m_list(list) {}
-
-        LinkedListConstIterator(const const_iterator &it)
-                : m_current(it.m_current),
-                  m_list(it.m_list) {}
-
-        const val_type &operator*() const {
-            return m_current->m_val;
-        }
-
-        const val_type *operator->() const {
-            return &(operator*());
-        }
-
-        const_iterator &operator++() {
-            if (m_current) {
-                m_current = m_current->m_next;
-            }
-            return *this;
-        }
-
-        const_iterator operator++(int) {
-            const_iterator clone(*this);
-            ++*this;
-            return clone;
-        }
-
-        const_iterator &operator--() {
-            if (m_current && m_current != m_list->m_head) {
-                m_current = m_current->m_prev;
-            }
-            return *this;
-        }
-
-        const_iterator operator--(int) {
-            const_iterator clone(*this);
-            --*this;
-            return *this;
-        }
-
-        bool operator==(const const_iterator &it) const {
-            return m_current == it.m_current;
-        }
-
-        bool operator!=(const const_iterator &it) const {
-            return m_current != it.m_current;
-        }
-
-        const_iterator &operator=(const const_iterator &it) {
+        self_type &operator=(const self_type &it) {
             m_current = it.m_current;
             m_list = it.m_list;
             return *this;
@@ -274,8 +196,8 @@ namespace wlp {
         typedef wlp::size_type size_type;
         typedef LinkedList<T> list_type;
         typedef LinkedListNode<T> node_type;
-        typedef LinkedListIterator<T> iterator;
-        typedef LinkedListConstIterator<T> const_iterator;
+        typedef LinkedListIterator<T, T &, T *> iterator;
+        typedef LinkedListIterator<T, const T &, const T *> const_iterator;
 
     private:
         /**
@@ -291,9 +213,8 @@ namespace wlp {
          */
         node_type *m_tail;
 
-        friend struct LinkedListIterator<T>;
-
-        friend struct LinkedListConstIterator<T>;
+        friend struct LinkedListIterator<T, T &, T *>;
+        friend struct LinkedListIterator<T, const T &, const T *>;
 
     public:
         /**
