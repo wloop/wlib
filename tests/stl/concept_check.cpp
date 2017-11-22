@@ -1,3 +1,4 @@
+#include <stl/RedBlackTree.h>
 #include "gtest/gtest.h"
 
 #include "stl/Concept.h"
@@ -5,6 +6,7 @@
 #include "stl/ChainMap.h"
 #include "stl/OpenMap.h"
 #include "stl/ArrayList.h"
+#include "stl/LinkedList.h"
 
 using namespace wlp;
 
@@ -82,4 +84,13 @@ TEST(concept_checks, check_map_concept) {
     ASSERT_TRUE((is_map<OpenHashMap<int, int>>()));
     ASSERT_FALSE((is_map<int>()));
     ASSERT_FALSE((is_map<ArrayList<int>>()));
+}
+
+TEST(concept_checks, check_list_concept) {
+    ASSERT_FALSE((is_list<ChainHashMap<int, int>>()));
+    ASSERT_FALSE((is_list<int>()));
+    ASSERT_FALSE((is_list<Comparator<int>>()));
+
+    ASSERT_TRUE((is_list<ArrayList<int>>()));
+    ASSERT_TRUE((is_list<LinkedList<int>>()));
 }
