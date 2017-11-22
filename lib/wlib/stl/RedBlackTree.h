@@ -17,6 +17,7 @@
 #include "Pair.h"
 
 #include "../Types.h"
+#include "../memory/Memory.h"
 #include "../utility/Utility.h"
 
 namespace wlp {
