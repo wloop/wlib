@@ -9,6 +9,7 @@
 #include "stl/ChainSet.h"
 #include "stl/OpenSet.h"
 #include "stl/TreeSet.h"
+#include "stl/LinkedList.h"
 
 using namespace wlp;
 
@@ -97,4 +98,13 @@ TEST(concept_checks, check_set_concept) {
     ASSERT_TRUE((is_set<OpenHashSet<int>>()));
     ASSERT_TRUE((is_set<ChainHashSet<int>>()));
     ASSERT_TRUE((is_set<TreeSet<int>>()));
+}
+
+TEST(concept_checks, check_list_concept) {
+    ASSERT_FALSE((is_list<ChainHashMap<int, int>>()));
+    ASSERT_FALSE((is_list<int>()));
+    ASSERT_FALSE((is_list<Comparator<int>>()));
+
+    ASSERT_TRUE((is_list<ArrayList<int>>()));
+    ASSERT_TRUE((is_list<LinkedList<int>>()));
 }

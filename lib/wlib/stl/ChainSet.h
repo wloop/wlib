@@ -33,8 +33,8 @@ namespace wlp {
     public:
         typedef ChainHashSet<Key, Hash, Equal> set_type;
         typedef ChainHashMap<Key, Key, Hash, Equal> table_type;
-        typedef ChainHashMapIterator<Key, Key, Hash, Equal> iterator;
-        typedef ChainHashMapConstIterator<Key, Key, Hash, Equal> const_iterator;
+        typedef typename ChainHashMap<Key, Key, Hash, Equal>::iterator iterator;
+        typedef typename ChainHashMap<Key, Key, Hash, Equal>::const_iterator const_iterator;
         typedef typename table_type::size_type size_type;
         typedef typename table_type::percent_type percent_type;
         typedef typename table_type::key_type key_type;
