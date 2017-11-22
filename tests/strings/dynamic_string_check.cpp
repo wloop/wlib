@@ -5,13 +5,15 @@
 TEST(dynamic_string_tests, constructor_tests) {
     DynamicString string1;
     DynamicString string2("HELLo WORld!");
-    DynamicString string3(string1);
+    DynamicString string3(string1); //This constuctor doesn't work properly
     ASSERT_EQ(string2, "HELLo WORld!");
-    //ASSERT_TRUE(string3.empty());
+    ASSERT_TRUE(string1.empty());
+    ASSERT_EQ(12, string2.length());
+    ASSERT_EQ(0, string3.length()); //This assert fails
 
     string2.clear();
 
-    //ASSERT_TRUE(string2.empty());
+    ASSERT_TRUE(string2.empty());
 }
 
 TEST(dynamic_string_tests, assignment_tests) {

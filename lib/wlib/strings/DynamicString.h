@@ -10,6 +10,7 @@
 class DynamicString {
 private:
 	char * m_buffer;
+	size_type len;
 public:
 	/**
 	 * Default constructor creates string with no characters
@@ -17,6 +18,7 @@ public:
 	DynamicString(){
 		m_buffer = (char *)memory_alloc(sizeof(char));
 		m_buffer[0] = '\0';
+		len = 0;
 	}
 
 	/**
@@ -25,10 +27,11 @@ public:
 	 * @param str char string
 	 */
 	DynamicString(const char* str){
-		size_type size = (size_type) strlen(str);
+		size_type size = (size_type)strlen(str);
 		m_buffer = (char *)memory_alloc((size + 1) * sizeof(char));
 		strncpy(m_buffer, str, size);
 		m_buffer[size] = '\0';
+		len = size;
 	}
 
 	/**
@@ -38,6 +41,15 @@ public:
 	 */
 	DynamicString(const DynamicString &str){
 		DynamicString(str.c_str());
+	}
+
+	/**
+ 	 * Destructor for DynamicString object
+ 	 */
+	~DynamicString(){
+		//if (m_buffer) {
+		//	memory_free(m_buffer);
+		//}
 	}
 
 	/**
@@ -60,6 +72,7 @@ public:
 		m_buffer = (char *)memory_realloc(m_buffer, (size + 1) * sizeof(char));
 		strncpy(m_buffer, str, size);
 		m_buffer[size] = '\0';
+		len = size;
 
 		return *this;
 	}
@@ -70,9 +83,7 @@ public:
 	 * @return string length
 	 */
 	size_type length() const{
-		size_type i = 0;
-		while (m_buffer[i] != '\0') i++;
-		return i;
+		return len;
 	}
 
 	/**
@@ -80,6 +91,7 @@ public:
 	 */
 	void clear(){
 		m_buffer[0] = '\0';
+		len = 0;
 	}
 
 	/**
@@ -104,23 +116,23 @@ public:
 	}
 
 	/**
-	 * Provides access to character at @code pos
+	 * Provides access to character at @code pos with bounds checking
 	 *
 	 * @param pos the position of the character
 	 * @return character at @code position
 	 */
 	char &at(size_type pos){
-		return m_buffer[pos];
+		return pos < len ? m_buffer[pos] : m_buffer[len];
 	}
 
 	/**
-	 * Provides access to character at @code pos. Character is constant
+	 * Provides access to character at @code pos with bounds checking. Character is constant
 	 *
 	 * @param pos the position of the character
 	 * @return character at @code position
 	 */
 	const char &at(size_type pos) const{
-		return m_buffer[pos];
+		return pos < len ? m_buffer[pos] : m_buffer[len];
 	}
 
 	/**
@@ -156,9 +168,7 @@ public:
 	 * @return the last character
 	 */
 	char &end(){
-		if (empty()) return m_buffer[0];
-
-		return m_buffer[length() - 1];
+		return empty() ? m_buffer[0] : m_buffer[len - 1];
 	}
 
 	/**
@@ -167,9 +177,7 @@ public:
 	 * @return the last character
 	 */
 	const char &end() const{
-		if (empty()) return m_buffer[0];
-
-		return m_buffer[length() - 1];
+		return empty() ? m_buffer[0] : m_buffer[len - 1];
 	}
 
 	/**
@@ -230,6 +238,7 @@ public:
 		}
 		
 		m_buffer[newLength] = '\0';
+		len = newLength;
 
 		return *this;
 	}
@@ -262,12 +271,11 @@ public:
      * @return the modified String
      */
     DynamicString &erase(size_type pos = 0){
-		size_type len = this->length();
         if (len == 0 || pos >= len) return *this;
 
 		len--;
 
-        for (size_type i = pos; i < len; ++i) {
+        for (size_type i = pos; i < len; i++) {
             m_buffer[i] = m_buffer[i+1];
         }
 
@@ -275,15 +283,15 @@ public:
         return *this;
     }
 
-    /**
-     * Deletes the last character in the String
-     */
-    void pop_back(){
-		size_type len = this->length();
-        if (len == 0) return;
-
-        m_buffer[len - 1] = '\0';
-    }
+	/**
+	 * Deletes the last character in the String
+	 */
+	void pop_back(){
+		if (len != 0) {
+			m_buffer[len - 1] = '\0';
+			len--;
+		}
+	}
 
 	/**
 	 * Provides access to character array that string uses behind the screen
@@ -304,7 +312,7 @@ public:
 	DynamicString substr(size_type pos, size_type length) const{
 		char newBuffer[length + 1];
 
-		for(size_type i = pos; i < pos + length ;i++){
+		for(size_type i = pos; i < pos + length; i++){
 			newBuffer[i-pos] = m_buffer[i];
 		}
 
@@ -323,7 +331,7 @@ public:
 	 * @param str @code DynamicString string to compare against current string
 	 * @return a signed number based on how strings compare
 	 */
-	int16_t compare(const DynamicString &str) const{
+	diff_type compare(const DynamicString &str) const{
 		return compare(str.c_str());
 	}
 
@@ -335,8 +343,8 @@ public:
 	 * @param str character string to compare against current string
 	 * @return a signed number based on how strings compare
 	 */
-	int16_t compare(const char *str) const{
-		return (int16_t) strcmp(this->c_str(), str);
+	diff_type compare(const char *str) const{
+		return (diff_type) strcmp(this->c_str(), str);
 	}
 
 	/**
@@ -347,9 +355,9 @@ public:
 	 * @param c character to compare against current string
 	 * @return a signed number based on how strings compare
 	 */
-	int16_t compare(const char c) const{
+	diff_type compare(const char c) const{
 		char array[2] = {c, '\0'};
-		return (int16_t) strcmp(this->c_str(), array);
+		return (diff_type) strcmp(this->c_str(), array);
 	}
 };
 
@@ -417,8 +425,8 @@ bool operator== (const DynamicString &lhs, const char rhs){
  * @return a @code DynamicString that is build from left hand string and right hand string
  */
 DynamicString operator+(const DynamicString &lhs, const DynamicString &rhs){
-	DynamicString newStr;
-	newStr.append(lhs).append(rhs);
+	DynamicString newStr(lhs.c_str());
+	newStr.append(rhs);
 	return newStr;
 }
 
@@ -430,8 +438,8 @@ DynamicString operator+(const DynamicString &lhs, const DynamicString &rhs){
  * @return a @code DynamicString that is build from left hand string and right hand string
  */
 DynamicString operator+(const char *lhs, const DynamicString &rhs){
-	DynamicString newStr;
-	newStr.append(lhs).append(rhs);
+	DynamicString newStr(lhs);
+	newStr.append(rhs);
 	return newStr;
 }
 
@@ -443,8 +451,8 @@ DynamicString operator+(const char *lhs, const DynamicString &rhs){
  * @return a @code DynamicString that is build from left hand string and right hand string
  */
 DynamicString operator+(const DynamicString &lhs, const char *rhs){
-	DynamicString newStr;
-	newStr.append(lhs).append(rhs);
+	DynamicString newStr(lhs.c_str());
+	newStr.append(rhs);
 	return newStr;
 }
 
@@ -456,8 +464,9 @@ DynamicString operator+(const DynamicString &lhs, const char *rhs){
  * @return a @code DynamicString that is build from left hand string and right hand string
  */
 DynamicString operator+(const char lhs, const DynamicString &rhs){
-	DynamicString newStr;
-	newStr.append(lhs).append(rhs);
+	char temp[1] = {lhs};
+	DynamicString newStr(temp);
+	newStr.append(rhs);
 	return newStr;
 }
 
@@ -469,16 +478,9 @@ DynamicString operator+(const char lhs, const DynamicString &rhs){
  * @return a @code DynamicString that is build from left hand string and right hand string
  */
 DynamicString operator+(const DynamicString &lhs, const char rhs){
-	DynamicString newStr;
-	newStr.append(lhs).append(rhs);
+	DynamicString newStr(lhs.c_str());
+	newStr.append(rhs);
 	return newStr;
-}
-
-/**
- * Destructor function for dynamic string
- */
-~DynamicString() {
-	memory_free(m_buffer);
 }
 
 #endif //WLIB_DYNAMICSTRING_H

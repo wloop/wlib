@@ -17,13 +17,15 @@
 // size
 typedef uint16_t size_type;
 
+typedef int16_t diff_type;
+
 // Static Strings
-typedef wlp::StaticString<8> String8;
+/*typedef wlp::StaticString<8> String8;
 typedef wlp::StaticString<16> String16;
 typedef wlp::StaticString<32> String32;
 typedef wlp::StaticString<64> String64;
 typedef wlp::StaticString<128> String128;
-typedef wlp::StaticString<256> String256;
+typedef wlp::StaticString<256> String256;*/
 
 /*
 // Dynamic String
