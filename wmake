@@ -196,6 +196,9 @@ Options:
   clean         Cleans the project and deletes every file from the bin folder
   run           Execute the Examples binary
   test          Execute the Tests binary
+  rebuild       Cleans, builds, and tests the project, add 'notest' to skip tests
+  clcov         Cleans, builds, and runs coverage
+  cltest        Builds and runs tests
 HEREDOC
 }
 
@@ -227,7 +230,7 @@ _coverage(){
     cd bin
     echo "Generating Coverage Report"
     lcov --directory . --capture --output-file coverage.info
-    lcov --remove coverage.info 'tests/*' '/include/*' 'examples/*' --output-file coverage.info
+    lcov --remove coverage.info '/usr/*' "$(pwd)/tests/*" "$(pwd)/include/*" "$(pwd)/examples/*" --output-file coverage.info
     lcov --list coverage.info
     mkdir -p coverage
     genhtml -no-branch-coverage -o coverage coverage.info
@@ -246,6 +249,7 @@ _run(){
 }
 
 _test(){
+    find ./bin/tests/CMakeFiles/tests.dir/ -name '*.gcda' -delete
     ./bin/tests/tests
     echo "Tests Finished Running"
 }
@@ -281,6 +285,10 @@ _simple() {
         echo "Rebuilding and coverage"
         _clean
         _coverage
+    elif [ "$1" == "cltest" ]; then
+        echo "Building and testing"
+        _build
+        _test
     else
         _print_help
     fi

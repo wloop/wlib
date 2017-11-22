@@ -19,7 +19,8 @@
 #include "Comparator.h"
 #include "Concept.h"
 #include "TypeTraits.h"
-#include "Utility.h"
+
+#include "utility/Utility.h"
 
 namespace wlp {
 
@@ -486,7 +487,7 @@ namespace wlp {
         typedef ArrayHeap<T> array_heap;
         typedef typename ArrayList<T>::val_type val_type;
         typedef typename ArrayList<T>::size_type size_type;
-        typedef typename ArrayList<T>::array_list array_list;
+        typedef typename ArrayList<T>::list_type array_list;
         typedef typename ArrayList<T>::iterator iterator;
         typedef typename ArrayList<T>::const_iterator const_iterator;
 

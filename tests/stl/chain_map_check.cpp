@@ -1,14 +1,15 @@
 #include "gtest/gtest.h"
-#include "stl/ChainMap.h"
 
-#include "Types.h"
+#include "stl/ChainMap.h"
+#include "strings/String.h"
+
 #include "../template_defs.h"
 
 using namespace wlp;
 
 typedef uint16_t ui16;
 typedef ChainHashMap<String16, String16> string_map;
-typedef ChainHashMap<ui16, ui16> int_map;
+typedef ChainHashMap<int, int> int_map;
 typedef int_map::iterator imi;
 typedef int_map::const_iterator cimi;
 typedef Pair<imi, bool> P_imi_b;
@@ -36,7 +37,7 @@ TEST(chain_map_test, test_const_iterator) {
     map[5] = 5;
     map[6] = 6;
     map[7] = 7;
-	const int_map const_map(move(map));
+    const int_map const_map(move(map));
     int_map::const_iterator it = const_map.begin();
     ASSERT_EQ(5, *it);
     ++it;
@@ -108,7 +109,7 @@ TEST(chain_map_test, test_erase_cases) {
     map[21] = 21;
     map[31] = 31;
     map[2] = 2;
-    map.erase(it);
+    it = map.erase(it);
     ASSERT_EQ(2, *it);
     it = map.end();
     map.erase(it);
@@ -121,13 +122,6 @@ TEST(chain_map_test, test_constructor_params) {
     ASSERT_EQ(150, map.max_load());
     ASSERT_EQ(0, map.size());
     ASSERT_TRUE(map.empty());
-}
-
-TEST(chain_map_test, test_constructor_allocator) {
-    string_map map(10, 100);
-    const size_t expected = sizeof(string_map::node_type);
-    ASSERT_EQ(expected, map.get_node_allocator()->GetBlockSize());
-    ASSERT_EQ(expected * 10, map.get_node_allocator()->GetPoolSize());
 }
 
 TEST(chain_map_test, test_begin_returns_end_when_empty) {
@@ -274,16 +268,16 @@ TEST(chain_map_test, test_erase_iterator) {
     map.insert(40, 40);
     ASSERT_EQ(6, map.size());
     imi it = r1.first();
-    map.erase(it);
+    it = map.erase(it);
     ASSERT_EQ(5, map.size());
     ASSERT_EQ(33, *it);
     ASSERT_EQ(it, r33.first());
-    map.erase(it);
+    it = map.erase(it);
     ASSERT_EQ(4, map.size());
     ASSERT_EQ(3, *it);
     ASSERT_NE(it, r3.first()); // iterator invalidated by erase
     ASSERT_EQ(*it, *r3.first());
-    map.erase(it);
+    it = map.erase(it);
     ASSERT_EQ(3, map.size());
     ASSERT_EQ(map.end(), it);
     ASSERT_EQ(40, *map.at(40));
@@ -293,12 +287,12 @@ TEST(chain_map_test, test_erase_iterator) {
     ASSERT_EQ(map.end(), map.at(3));
     ASSERT_EQ(map.end(), map.at(33));
     it = r20.first();
-    map.erase(it);
+    it = map.erase(it);
     ASSERT_EQ(2, map.size());
     ASSERT_EQ(0, *it);
     ASSERT_NE(it, r0.first());
     ASSERT_EQ(0, *r0.first());
-    map.erase(it);
+    it = map.erase(it);
     ASSERT_EQ(map.end(), it);
     ASSERT_EQ(1, map.size());
     ASSERT_EQ(40, *map.begin());

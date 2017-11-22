@@ -10,6 +10,8 @@
 #ifndef CORE_STL_EQUAL_H
 #define CORE_STL_EQUAL_H
 
+#include <string.h> // strcmp
+
 #include "../Types.h"
 
 #include "../strings/StaticString.h"
@@ -28,53 +30,47 @@ namespace wlp {
         }
     };
 
-    template<uint16_t tSize>
-    inline bool static_string_equals(const StaticString<tSize> &str1, const StaticString<tSize> &str2) {
-        if (str1.length() != str2.length()) {
-            return false;
-        }
-        for (size_type i = 0; i < str1.length(); ++i) {
-            if (str1[i] != str2[i]) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    inline bool string_equals(const char *&str1, const char *&str2) {
-        for (; *str1 && *str2; ++str1, ++str2) {
-            if (*str1 != *str2) {
-                return false;
-            }
-        }
-        return *str1 == *str2;
-    }
-
+    /**
+     * Template specialization for static string.
+     *
+     * @tparam tSize static string size
+     */
     template<uint16_t tSize>
     struct Equal<StaticString<tSize>> {
         bool operator()(const StaticString<tSize> &key1, const StaticString<tSize> &key2) const {
-            return static_string_equals(key1, key2);
+            return strcmp(key1.c_str(), key2.c_str()) == 0;
         }
     };
 
+    /**
+     * Template specialization for const static string.
+     *
+     * @tparam tSize static string size
+     */
     template<uint16_t tSize>
     struct Equal<const StaticString<tSize>> {
         bool operator()(const StaticString<tSize> &key1, const StaticString<tSize> &key2) const {
-            return static_string_equals(key1, key2);
+            return strcmp(key1.c_str(), key2.c_str()) == 0;
         }
     };
 
+    /**
+     * Template specialization for character arrays.
+     */
     template<>
     struct Equal<char *> {
         bool operator()(const char *key1, const char *key2) const {
-            return string_equals(key1, key2);
+            return strcmp(key1, key2) == 0;
         }
     };
 
+    /**
+     * Template specialization for C strings.
+     */
     template<>
     struct Equal<const char *> {
         bool operator()(const char *key1, const char *key2) const {
-            return string_equals(key1, key2);
+            return strcmp(key1, key2) == 0;
         }
     };
 

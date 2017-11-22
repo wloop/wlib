@@ -13,11 +13,10 @@
 #ifndef EMBEDDEDCPLUSPLUS_ARRAYLIST_H
 #define EMBEDDEDCPLUSPLUS_ARRAYLIST_H
 
-#include "Utility.h"
-
 #include "../Types.h"
 
 #include "../memory/Memory.h"
+#include "../utility/Utility.h"
 
 namespace wlp {
 
@@ -27,15 +26,18 @@ namespace wlp {
 
     /**
      * Array list forward iterator type.
+     *
      * @tparam T list element type
+     * @tparam Ref reference type, which may be const
+     * @tparam Ptr pointer type, which may be const
      */
-    template<typename T>
+    template<typename T, typename Ref, typename Ptr>
     class ArrayListIterator {
     public:
         typedef wlp::size_type size_type;
         typedef T val_type;
         typedef ArrayList<T> array_list;
-        typedef ArrayListIterator<T> iterator;
+        typedef ArrayListIterator<T, Ref, Ptr> self_type;
 
     private:
         /**
@@ -45,7 +47,7 @@ namespace wlp {
         /**
          * Pointer to the backing array list.
          */
-        array_list *m_list;
+        const array_list *m_list;
 
         friend class ArrayList<T>;
 
@@ -63,20 +65,9 @@ namespace wlp {
          *
          * @param it iterator to copy
          */
-        ArrayListIterator(const iterator &it)
+        ArrayListIterator(const self_type &it)
                 : m_i(it.m_i),
                   m_list(it.m_list) {
-            check_bounds();
-        }
-
-        /**
-         * Move constructor.
-         *
-         * @param it iterator to move
-         */
-        ArrayListIterator(iterator &&it)
-                : m_i(move(it.m_i)),
-                  m_list(move(it.m_list)) {
             check_bounds();
         }
 
@@ -87,21 +78,8 @@ namespace wlp {
          * @param i array index
          * @param list backing array list
          */
-        explicit ArrayListIterator(const size_type &i, array_list *list)
+        explicit ArrayListIterator(const size_type &i, const array_list *list)
                 : m_i(i),
-                  m_list(list) {
-            check_bounds();
-        }
-
-        /**
-         * Constructor from an array index rvalue
-         * and a backing array list.
-         *
-         * @param i array index rvalue
-         * @param list backing array list
-         */
-        explicit ArrayListIterator(size_type &&i, array_list *list)
-                : m_i(move(i)),
                   m_list(list) {
             check_bounds();
         }
@@ -142,7 +120,7 @@ namespace wlp {
          *
          * @return reference to this iterator
          */
-        iterator &operator++() {
+        self_type &operator++() {
             if (m_i == m_list->m_size) {
                 return *this;
             }
@@ -156,42 +134,10 @@ namespace wlp {
          *
          * @return copy of this iterator before increment
          */
-        iterator operator++(int) {
-            iterator tmp = *this;
+        self_type operator++(int) {
+            self_type tmp = *this;
             ++*this;
             return tmp;
-        }
-
-        /**
-         * Addition assignment operator moves the
-         * iterator by the specified number of
-         * positions.
-         *
-         * @param d the number of positions to increment
-         * @return reference to this iterator
-         */
-        iterator &operator+=(const size_type &d) {
-            m_i = (size_type) (m_i + d);
-            if (m_i > m_list->m_size) {
-                m_i = m_list->m_size;
-            }
-            return *this;
-        }
-
-        /**
-         * Addition assignment operator moves the
-         * iterator by the specified number of
-         * positions.
-         *
-         * @param d the number of positions to increment
-         * @return reference to this iterator
-         */
-        iterator &operator+=(size_type &&d) {
-            m_i = (size_type) (m_i + d);
-            if (m_i > m_list->m_size) {
-                m_i = m_list->m_size;
-            }
-            return *this;
         }
 
         /**
@@ -201,7 +147,7 @@ namespace wlp {
          *
          * @return reference to this iterator
          */
-        iterator &operator--() {
+        self_type &operator--() {
             if (m_i == 0) {
                 return *this;
             }
@@ -214,24 +160,24 @@ namespace wlp {
          *
          * @return a copy of the iterator before moving
          */
-        iterator operator--(int) {
-            iterator tmp = *this;
+        self_type operator--(int) {
+            self_type tmp = *this;
             --*this;
             return tmp;
         }
 
         /**
-         * Subtraction assignment operator moves the iterator
-         * backwards a certain number of elements.
+         * Addition assignment operator moves the
+         * iterator by the specified number of
+         * positions.
          *
-         * @param d the number of elements to move back
+         * @param d the number of positions to increment
          * @return reference to this iterator
          */
-        iterator &operator-=(const size_type &d) {
-            if (d >= m_i) {
-                m_i = 0;
-            } else {
-                m_i = (size_type) (m_i - d);
+        self_type &operator+=(const size_type &d) {
+            m_i = static_cast<size_type>(m_i + d);
+            if (m_i > m_list->m_size) {
+                m_i = m_list->m_size;
             }
             return *this;
         }
@@ -243,11 +189,11 @@ namespace wlp {
          * @param d the number of elements to move back
          * @return reference to this iterator
          */
-        iterator &operator-=(size_type &&d) {
+        self_type &operator-=(const size_type &d) {
             if (d >= m_i) {
                 m_i = 0;
             } else {
-                m_i = (size_type) (m_i - d);
+                m_i = static_cast<size_type>(m_i - d);
             }
             return *this;
         }
@@ -256,15 +202,7 @@ namespace wlp {
          * @param it iterator to compare
          * @return true if they point to the same element
          */
-        bool operator==(iterator &it) const {
-            return m_i == it.m_i;
-        }
-
-        /**
-         * @param it iterator to compare
-         * @return true if they point to the same element
-         */
-        bool operator==(const iterator &it) const {
+        bool operator==(const self_type &it) const {
             return m_i == it.m_i;
         }
 
@@ -272,28 +210,8 @@ namespace wlp {
          * @param it iterator to compare
          * @return true if they point to different elements
          */
-        bool operator!=(iterator &it) const {
+        bool operator!=(const self_type &it) const {
             return m_i != it.m_i;
-        }
-
-        /**
-         * @param it iterator to compare
-         * @return true if they point to different elements
-         */
-        bool operator!=(const iterator &it) const {
-            return m_i != it.m_i;
-        }
-
-        /**
-         * Move assignment operator.
-         *
-         * @param it iterator to move
-         * @return reference to this iterator
-         */
-        iterator &operator=(iterator &&it) {
-            m_i = move(it.m_i);
-            m_list = move(it.m_list);
-            return *this;
         }
 
         /**
@@ -302,7 +220,7 @@ namespace wlp {
          * @param it iterator to copy
          * @return reference to this iterator
          */
-        iterator &operator=(const iterator &it) {
+        self_type &operator=(const self_type &it) {
             m_i = it.m_i;
             m_list = it.m_list;
             return *this;
@@ -315,19 +233,8 @@ namespace wlp {
          * @param d number of positions to increment
          * @return
          */
-        iterator operator+(const size_type &d) const {
-            return iterator(move((size_type) (m_i + d)), m_list);
-        }
-
-        /**
-         * Addition operator returns a new iterator
-         * incremented by the specified number of positions.
-         *
-         * @param d number of positions to increment
-         * @return a new iterator
-         */
-        iterator operator+(size_type &&d) const {
-            return iterator(move((size_type) (m_i + d)), m_list);
+        self_type operator+(const size_type &d) const {
+            return self_type(static_cast<size_type>(m_i + d), m_list);
         }
 
         /**
@@ -337,19 +244,8 @@ namespace wlp {
          * @param d number of positions to decrement
          * @return a new iterator
          */
-        iterator operator-(const size_type &d) const {
-            return iterator(move((size_type) (m_i - d)), m_list);
-        }
-
-        /**
-         * Subtraction operator returns a new iterator
-         * decremented by the specified number of positions.
-         *
-         * @param d number of positions to decrement
-         * @return a new iterator
-         */
-        iterator operator-(size_type &&d) const {
-            return iterator(move((size_type) (m_i - d)), m_list);
+        self_type operator-(const size_type &d) const {
+            return self_type(static_cast<size_type>(m_i - d), m_list);
         }
 
         /**
@@ -359,214 +255,13 @@ namespace wlp {
          * @param it iterator to subtract
          * @return the integer distance
          */
-        size_type operator-(const iterator &it) const {
+        size_type operator-(const self_type &it) const {
             if (m_i < it.m_i) {
-                return (size_type) (it.m_i - m_i);
+                return static_cast<size_type>(it.m_i - m_i);
             }
-            return (size_type) (m_i - it.m_i);
+            return static_cast<size_type>(m_i - it.m_i);
         }
 
-        /**
-         * Subtraction of two iterators returns the
-         * integer distance between them.
-         *
-         * @param it iterator to subtract
-         * @return the integer distance
-         */
-        size_type operator-(iterator &&it) const {
-            if (m_i < it.m_i) {
-                return (size_type) (it.m_i - m_i);
-            }
-            return (size_type) (m_i - it.m_i);
-        }
-    };
-
-    /**
-     * Const iterator for array list.
-     *
-     * @see ArrayListIterator
-     * @tparam T iterator value type
-     */
-    template<typename T>
-    class ArrayListConstIterator {
-    public:
-        typedef wlp::size_type size_type;
-        typedef T val_type;
-        typedef ArrayList<T> array_list;
-        typedef ArrayListConstIterator<T> const_iterator;
-
-    private:
-        size_type m_i;
-        const array_list *m_list;
-
-        friend class ArrayList<T>;
-
-    public:
-        ArrayListConstIterator()
-                : m_i(static_cast<size_type>(-1)),
-                  m_list(nullptr) {
-        }
-
-        ArrayListConstIterator(const const_iterator &it)
-                : m_i(it.m_i),
-                  m_list(it.m_list) {
-            check_bounds();
-        }
-
-        ArrayListConstIterator(const_iterator &&it)
-                : m_i(move(it.m_i)),
-                  m_list(move(it.m_list)) {
-            check_bounds();
-        }
-
-        explicit ArrayListConstIterator(const size_type &i, const array_list *list)
-                : m_i(i),
-                  m_list(list) {
-            check_bounds();
-        }
-
-        explicit ArrayListConstIterator(size_type &&i, const array_list *list)
-                : m_i(move(i)),
-                  m_list(list) {
-            check_bounds();
-        }
-
-    private:
-        void check_bounds() {
-            if (m_i > m_list->m_size) {
-                m_i = m_list->m_size;
-            }
-        }
-
-    public:
-
-        val_type &operator*() const {
-            return m_list->m_data[m_i];
-        }
-
-        val_type *operator->() const {
-            return &(operator*());
-        }
-
-        const_iterator &operator++() {
-            if (m_i == m_list->m_size) {
-                return *this;
-            }
-            ++m_i;
-            return *this;
-        }
-
-        const_iterator operator++(int) {
-            const_iterator tmp = *this;
-            ++*this;
-            return tmp;
-        }
-
-        const_iterator &operator+=(const size_type &d) {
-            m_i = (size_type) (m_i + d);
-            if (m_i > m_list->m_size) {
-                m_i = m_list->m_size;
-            }
-            return *this;
-        }
-
-        const_iterator &operator+=(size_type &&d) {
-            m_i = (size_type) (m_i + d);
-            if (m_i > m_list->m_size) {
-                m_i = m_list->m_size;
-            }
-            return *this;
-        }
-
-        const_iterator &operator--() {
-            if (m_i == 0) {
-                return *this;
-            }
-            --m_i;
-            return *this;
-        }
-
-        const_iterator operator--(int) {
-            const_iterator tmp = *this;
-            --*this;
-            return tmp;
-        }
-
-        const_iterator &operator-=(const size_type &d) {
-            if (d >= m_i) {
-                m_i = 0;
-            } else {
-                m_i = (size_type) (m_i - d);
-            }
-            return *this;
-        }
-
-        const_iterator &operator-=(size_type &&d) {
-            if (d >= m_i) {
-                m_i = 0;
-            } else {
-                m_i = (size_type) (m_i - d);
-            }
-            return *this;
-        }
-
-        bool operator==(const_iterator &it) const {
-            return m_i == it.m_i;
-        }
-
-        bool operator==(const const_iterator &it) const {
-            return m_i == it.m_i;
-        }
-
-        bool operator!=(const_iterator &it) const {
-            return m_i != it.m_i;
-        }
-
-        bool operator!=(const const_iterator &it) const {
-            return m_i != it.m_i;
-        }
-
-        const_iterator &operator=(const_iterator &&it) {
-            m_i = move(it.m_i);
-            m_list = move(it.m_list);
-            return *this;
-        }
-
-        const_iterator &operator=(const const_iterator &it) {
-            m_i = it.m_i;
-            m_list = it.m_list;
-            return *this;
-        }
-
-        const_iterator operator+(const size_type &d) const {
-            return const_iterator(move((size_type) (m_i + d)), m_list);
-        }
-
-        const_iterator operator+(size_type &&d) const {
-            return const_iterator(move((size_type) (m_i + d)), m_list);
-        }
-
-        const_iterator operator-(const size_type &d) const {
-            return const_iterator(move((size_type) (m_i - d)), m_list);
-        }
-
-        const_iterator operator-(size_type &&d) const {
-            return const_iterator(move((size_type) (m_i - d)), m_list);
-        }
-
-        size_type operator-(const const_iterator &it) const {
-            if (m_i < it.m_i) {
-                return (size_type) (it.m_i - m_i);
-            }
-            return (size_type) (m_i - it.m_i);
-        }
-
-        size_type operator-(const_iterator &&it) const {
-            if (m_i < it.m_i) {
-                return (size_type) (it.m_i - m_i);
-            }
-            return (size_type) (m_i - move(it.m_i));
-        }
     };
 
     /**
@@ -578,11 +273,11 @@ namespace wlp {
     template<typename T>
     class ArrayList {
     public:
-        typedef wlp::size_type size_type;
         typedef T val_type;
-        typedef ArrayList<T> array_list;
-        typedef ArrayListIterator<T> iterator;
-        typedef ArrayListConstIterator<T> const_iterator;
+        typedef wlp::size_type size_type;
+        typedef ArrayList<T> list_type;
+        typedef ArrayListIterator<T, T &, T *> iterator;
+        typedef ArrayListIterator<T, const T &, const T *> const_iterator;
 
     private:
         /**
@@ -598,9 +293,9 @@ namespace wlp {
          */
         size_type m_capacity;
 
-        friend class ArrayListIterator<T>;
+        friend class ArrayListIterator<T, T &, T *>;
 
-        friend class ArrayListConstIterator<T>;
+        friend class ArrayListIterator<T, const T &, const T *>;
 
     public:
         /**
@@ -618,14 +313,14 @@ namespace wlp {
         /**
          * Disable copy constructor.
          */
-        ArrayList(const array_list &) = delete;
+        ArrayList(const list_type &) = delete;
 
         /**
          * Move constructor.
          *
          * @param list array list whose resources to transfer
          */
-        ArrayList(array_list &&list)
+        ArrayList(list_type &&list)
                 : m_data(move(list.m_data)),
                   m_size(move(list.m_size)),
                   m_capacity(move(list.m_capacity)) {
@@ -675,7 +370,7 @@ namespace wlp {
             if (!m_data) {
                 return;
             }
-            memory_free(m_data);
+            free<val_type>(m_data);
             m_data = nullptr;
         }
 
@@ -688,7 +383,7 @@ namespace wlp {
          * @param initial_size the initial capacity for the backing array
          */
         void init_array(size_type initial_size) {
-            m_data = static_cast<val_type *>(memory_alloc(initial_size * sizeof(val_type)));
+            m_data = malloc<val_type>(initial_size);
         }
 
         /**
@@ -827,7 +522,7 @@ namespace wlp {
         /**
          * @return reference to the first element in the list
          */
-        val_type const &front() const {
+        const val_type &front() const {
             return m_data[0];
         }
 
@@ -844,7 +539,7 @@ namespace wlp {
         /**
          * @return reference to the last element in the list
          */
-        val_type const &back() const {
+        const val_type &back() const {
             if (m_size == 0) {
                 return m_data[0];
             }
@@ -869,7 +564,7 @@ namespace wlp {
          * Clear the contents of the array list
          * such that it is empty.
          */
-        void clear() {
+        void clear() noexcept {
             m_size = 0;
         }
 
@@ -910,29 +605,12 @@ namespace wlp {
          * @param t element to insert
          * @return iterator to the inserted element
          */
-        iterator insert(size_type i, const val_type &t) {
+        template<typename V>
+        iterator insert(size_type i, V &&val) {
             ensure_capacity();
             normalize(i);
             shift_right(i);
-            m_data[i] = t;
-            ++m_size;
-            return iterator(i, this);
-        }
-
-        /**
-         * Insert an element in the array at the specified
-         * position such that the previous element at the position
-         * and all elements after are shifted to the right.
-         *
-         * @param i position to insert
-         * @param t element to insert
-         * @return iterator to the inserted element
-         */
-        iterator insert(size_type i, val_type &&t) {
-            ensure_capacity();
-            normalize(i);
-            shift_right(i);
-            m_data[i] = forward<val_type>(t);
+            m_data[i] = forward<V>(val);
             ++m_size;
             return iterator(i, this);
         }
@@ -945,26 +623,11 @@ namespace wlp {
          * @param t element to insert
          * @return iterator to the inserted element
          */
-        iterator &insert(iterator &it, const val_type &t) {
+        template<typename V>
+        iterator insert(const iterator &it, V &&val) {
             ensure_capacity();
             shift_right(it.m_i);
-            m_data[it.m_i] = t;
-            ++m_size;
-            return it;
-        }
-
-        /**
-         * Insert an element at the position pointed to by
-         * the iterator.
-         *
-         * @param it iterator to the inserted position
-         * @param t element to insert
-         * @return iterator to the inserted element
-         */
-        iterator &insert(iterator &it, val_type &&t) {
-            ensure_capacity();
-            shift_right(it.m_i);
-            m_data[it.m_i] = t;
+            m_data[it.m_i] = forward<V>(val);
             ++m_size;
             return it;
         }
@@ -991,7 +654,7 @@ namespace wlp {
          * @param it position whose element to erase.
          * @return iterator to the next element in the list
          */
-        iterator erase(iterator &it) {
+        iterator erase(const iterator &it) {
             if (m_size == 0 || it.m_i >= m_size) {
                 return end();
             }
@@ -1003,22 +666,25 @@ namespace wlp {
         /**
          * Insert an element to the back of the list.
          *
-         * @param t element to insert
+         * @param val element to insert
          */
-        void push_back(const val_type &t) {
+        template<typename V>
+        void push_back(V &&val) {
             ensure_capacity();
-            m_data[m_size] = t;
+            m_data[m_size] = forward<V>(val);
             ++m_size;
         }
 
         /**
-         * Insert an element to the back of the list.
+         * Insert an element at the front of the list.
          *
-         * @param t element to insert
+         * @param val element to insert
          */
-        void push_back(val_type &&t) {
+        template<typename V>
+        void push_front(V &&val) {
             ensure_capacity();
-            m_data[m_size] = move(t);
+            shift_right(0);
+            m_data[0] = forward<V>(val);
             ++m_size;
         }
 
@@ -1032,20 +698,42 @@ namespace wlp {
         }
 
         /**
-         * Swap the contents of two array lists.
-         *
-         * @param list array list with which to swap
+         * Remove the first element from the list.
          */
-        void swap(array_list &list) {
-            val_type *tmp = m_data;
-            m_data = list.m_data;
-            list.m_data = tmp;
-            size_type tmp_size = m_size;
-            m_size = list.m_size;
-            list.m_size = tmp_size;
-            size_type tmp_cap = m_capacity;
-            m_capacity = list.m_capacity;
-            list.m_capacity = tmp_cap;
+        void pop_front() {
+            if (m_size > 0) {
+                shift_left(0);
+                --m_size;
+            }
+        }
+
+        /**
+         * @param val the value to find
+         * @return the index of the value, or the size of the list
+         * if the value is not found
+         */
+        size_type index_of(const val_type &val) const {
+            size_type i = 0;
+            for (; i < m_size; ++i) {
+                if (val == m_data[i]) { return i; }
+            }
+            return i;
+        }
+
+        /**
+         * @param val the value to find
+         * @return iterator to the value, or pass-the-end if not found
+         */
+        iterator find(const val_type &val) {
+            return iterator(index_of(val), this);
+        }
+
+        /**
+         * @param val the value to find
+         * @return iterator to the value, or pass-the-end if not found
+         */
+        const_iterator find(const val_type &val) const {
+            return const_iterator(index_of(val), this);
         }
 
         /**
@@ -1053,7 +741,7 @@ namespace wlp {
          *
          * @return reference to this list
          */
-        array_list &operator=(const array_list &) = delete;
+        list_type &operator=(const list_type &) = delete;
 
         /**
          * Move assignment operator.
@@ -1061,8 +749,8 @@ namespace wlp {
          * @param list array list to transfer
          * @return reference to this list
          */
-        array_list &operator=(array_list &&list) {
-            memory_free(m_data);
+        list_type &operator=(list_type &&list) {
+            free<val_type>(m_data);
             m_data = move(list.m_data);
             m_size = move(list.m_size);
             m_capacity = move(list.m_capacity);
@@ -1079,12 +767,12 @@ namespace wlp {
         if (m_size < m_capacity) {
             return;
         }
-        size_type new_capacity = (size_type) (2 * m_capacity);
-        val_type *new_data = static_cast<val_type *>(memory_alloc(new_capacity * sizeof(val_type)));
+        size_type new_capacity = static_cast<size_type>(2 * m_capacity);
+        val_type *new_data = malloc<val_type>(new_capacity);
         for (size_type i = 0; i < m_size; i++) {
             new_data[i] = m_data[i];
         }
-        memory_free(m_data);
+        free<val_type>(m_data);
         m_data = new_data;
         m_capacity = new_capacity;
     }
@@ -1094,11 +782,11 @@ namespace wlp {
         if (new_capacity <= m_capacity) {
             return;
         }
-        val_type *new_data = static_cast<val_type *>(memory_alloc(new_capacity * sizeof(val_type)));
+        val_type *new_data = malloc<val_type>(new_capacity);
         for (size_type i = 0; i < m_size; i++) {
             new_data[i] = m_data[i];
         }
-        memory_free(m_data);
+        free<val_type>(m_data);
         m_data = new_data;
         m_capacity = new_capacity;
     }
@@ -1108,11 +796,11 @@ namespace wlp {
         if (m_size == m_capacity) {
             return;
         }
-        val_type *new_data = static_cast<val_type *>(memory_alloc(m_size * sizeof(val_type)));
+        val_type *new_data = malloc<val_type>(m_size);
         for (size_type i = 0; i < m_size; i++) {
             new_data[i] = m_data[i];
         }
-        memory_free(m_data);
+        free<val_type>(m_data);
         m_data = new_data;
         m_capacity = m_size;
     }
