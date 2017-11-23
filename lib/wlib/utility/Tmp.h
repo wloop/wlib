@@ -466,6 +466,45 @@ namespace wlp {
             : public true_type {
     };
 
+    template<typename>
+    struct is_sized_array
+            : public false_type {
+    };
+
+    template<typename T>
+    struct is_sized_array<T[]>
+            : public false_type {
+    };
+
+    template<typename T, size_type size>
+    struct is_sized_array<T[size]>
+            : public true_type {
+    };
+
+    template<typename>
+    struct is_unsized_array
+            : public false_type {
+    };
+
+    template<typename T>
+    struct is_unsized_array<T[]>
+            : public true_type {
+    };
+
+    template<typename T, size_type size>
+    struct is_unsized_array<T[size]>
+            : public false_type {
+    };
+
+    template<typename>
+    struct get_array_size {
+    };
+
+    template<typename T, size_type size>
+    struct get_array_size<T[size]> {
+        static constexpr size_type value = size;
+    };
+
     /**
      * Decay metafunction strips pointers and references
      * from a type, allowing comparisons of the
