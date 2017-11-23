@@ -1,0 +1,2 @@
+/usr/bin/ar.exe qc libe4c.a  CMakeFiles/e4c.dir/e4c.c.o
+/usr/bin/ranlib.exe libe4c.a

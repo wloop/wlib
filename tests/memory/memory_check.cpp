@@ -19,6 +19,10 @@ public:
         constr += 4;
     }
 
+    Sample(const char*){
+        constr += 2;
+    }
+
     ~Sample(){
         constr += 5;
     }

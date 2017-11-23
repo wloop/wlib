@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/e4c/e4c.c
+stdio.h
+-
+signal.h
+-
+errno.h
+-
+stdarg.h
+-
+e4c.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/e4c/e4c.h
+pthread.h
+-
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/e4c/e4c.h
+stdlib.h
+-
+setjmp.h
+-
+stdbool.h
+-
+

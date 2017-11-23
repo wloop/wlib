@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../lib/wlib/Types.h
+stdint.h
+-
+
+../lib/wlib/memory/Memory.h
+../utility/Utility.h
+../lib/wlib/utility/Utility.h
+../Types.h
+../lib/wlib/Types.h
+../utility/Tmp.h
+../lib/wlib/utility/Tmp.h
+
+../lib/wlib/utility/Tmp.h
+../Types.h
+../lib/wlib/Types.h
+
+../lib/wlib/utility/Utility.h
+Tmp.h
+../lib/wlib/utility/Tmp.h
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/examples/main.cpp
+iostream
+-
+memory/Memory.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/examples/memory/Memory.h
+

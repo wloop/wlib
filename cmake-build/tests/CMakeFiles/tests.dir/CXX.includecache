@@ -1,0 +1,572 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/gtest-1.8.0/include/gtest/gtest-death-test.h
+gtest/internal/gtest-death-test-internal.h
+../include/gtest-1.8.0/include/gtest/gtest/internal/gtest-death-test-internal.h
+
+../include/gtest-1.8.0/include/gtest/gtest-message.h
+limits
+-
+gtest/internal/gtest-port.h
+../include/gtest-1.8.0/include/gtest/gtest/internal/gtest-port.h
+
+../include/gtest-1.8.0/include/gtest/gtest-param-test.h
+gtest/internal/gtest-port.h
+../include/gtest-1.8.0/include/gtest/gtest/internal/gtest-port.h
+utility
+-
+gtest/internal/gtest-internal.h
+../include/gtest-1.8.0/include/gtest/gtest/internal/gtest-internal.h
+gtest/internal/gtest-param-util.h
+../include/gtest-1.8.0/include/gtest/gtest/internal/gtest-param-util.h
+gtest/internal/gtest-param-util-generated.h
+../include/gtest-1.8.0/include/gtest/gtest/internal/gtest-param-util-generated.h
+
+../include/gtest-1.8.0/include/gtest/gtest-printers.h
+ostream
+-
+sstream
+-
+string
+-
+utility
+-
+vector
+-
+gtest/internal/gtest-port.h
+../include/gtest-1.8.0/include/gtest/gtest/internal/gtest-port.h
+gtest/internal/gtest-internal.h
+../include/gtest-1.8.0/include/gtest/gtest/internal/gtest-internal.h
+tuple
+-
+gtest/internal/custom/gtest-printers.h
+../include/gtest-1.8.0/include/gtest/gtest/internal/custom/gtest-printers.h
+
+../include/gtest-1.8.0/include/gtest/gtest-test-part.h
+iosfwd
+-
+vector
+-
+gtest/internal/gtest-internal.h
+../include/gtest-1.8.0/include/gtest/gtest/internal/gtest-internal.h
+gtest/internal/gtest-string.h
+../include/gtest-1.8.0/include/gtest/gtest/internal/gtest-string.h
+
+../include/gtest-1.8.0/include/gtest/gtest-typed-test.h
+gtest/internal/gtest-port.h
+../include/gtest-1.8.0/include/gtest/gtest/internal/gtest-port.h
+gtest/internal/gtest-type-util.h
+../include/gtest-1.8.0/include/gtest/gtest/internal/gtest-type-util.h
+
+../include/gtest-1.8.0/include/gtest/gtest.h
+limits
+-
+ostream
+-
+vector
+-
+gtest/internal/gtest-internal.h
+../include/gtest-1.8.0/include/gtest/gtest/internal/gtest-internal.h
+gtest/internal/gtest-string.h
+../include/gtest-1.8.0/include/gtest/gtest/internal/gtest-string.h
+gtest/gtest-death-test.h
+../include/gtest-1.8.0/include/gtest/gtest/gtest-death-test.h
+gtest/gtest-message.h
+../include/gtest-1.8.0/include/gtest/gtest/gtest-message.h
+gtest/gtest-param-test.h
+../include/gtest-1.8.0/include/gtest/gtest/gtest-param-test.h
+gtest/gtest-printers.h
+../include/gtest-1.8.0/include/gtest/gtest/gtest-printers.h
+gtest/gtest_prod.h
+../include/gtest-1.8.0/include/gtest/gtest/gtest_prod.h
+gtest/gtest-test-part.h
+../include/gtest-1.8.0/include/gtest/gtest/gtest-test-part.h
+gtest/gtest-typed-test.h
+../include/gtest-1.8.0/include/gtest/gtest/gtest-typed-test.h
+gtest/gtest_pred_impl.h
+../include/gtest-1.8.0/include/gtest/gtest/gtest_pred_impl.h
+
+../include/gtest-1.8.0/include/gtest/gtest_pred_impl.h
+
+../include/gtest-1.8.0/include/gtest/gtest_prod.h
+
+../include/gtest-1.8.0/include/gtest/internal/custom/gtest-port.h
+
+../include/gtest-1.8.0/include/gtest/internal/custom/gtest-printers.h
+
+../include/gtest-1.8.0/include/gtest/internal/gtest-death-test-internal.h
+gtest/internal/gtest-internal.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/internal/gtest-internal.h
+stdio.h
+-
+
+../include/gtest-1.8.0/include/gtest/internal/gtest-filepath.h
+gtest/internal/gtest-string.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/internal/gtest-string.h
+
+../include/gtest-1.8.0/include/gtest/internal/gtest-internal.h
+gtest/internal/gtest-port.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/internal/gtest-port.h
+stdlib.h
+-
+sys/types.h
+-
+sys/wait.h
+-
+unistd.h
+-
+stdexcept
+-
+ctype.h
+-
+float.h
+-
+string.h
+-
+iomanip
+-
+limits
+-
+map
+-
+set
+-
+string
+-
+vector
+-
+gtest/gtest-message.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/gtest-message.h
+gtest/internal/gtest-string.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/internal/gtest-string.h
+gtest/internal/gtest-filepath.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/internal/gtest-filepath.h
+gtest/internal/gtest-type-util.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/internal/gtest-type-util.h
+
+../include/gtest-1.8.0/include/gtest/internal/gtest-linked_ptr.h
+stdlib.h
+-
+assert.h
+-
+gtest/internal/gtest-port.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/internal/gtest-port.h
+
+../include/gtest-1.8.0/include/gtest/internal/gtest-param-util-generated.h
+gtest/internal/gtest-param-util.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/internal/gtest-param-util.h
+gtest/internal/gtest-port.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/internal/gtest-port.h
+
+../include/gtest-1.8.0/include/gtest/internal/gtest-param-util.h
+ctype.h
+-
+iterator
+-
+set
+-
+utility
+-
+vector
+-
+gtest/internal/gtest-internal.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/internal/gtest-internal.h
+gtest/internal/gtest-linked_ptr.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/internal/gtest-linked_ptr.h
+gtest/internal/gtest-port.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/internal/gtest-port.h
+gtest/gtest-printers.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/gtest-printers.h
+
+../include/gtest-1.8.0/include/gtest/internal/gtest-port-arch.h
+winapifamily.h
+-
+
+../include/gtest-1.8.0/include/gtest/internal/gtest-port.h
+ctype.h
+-
+stddef.h
+-
+stdlib.h
+-
+stdio.h
+-
+string.h
+-
+sys/types.h
+-
+sys/stat.h
+-
+AvailabilityMacros.h
+-
+TargetConditionals.h
+-
+algorithm
+-
+iostream
+-
+sstream
+-
+string
+-
+utility
+-
+vector
+-
+gtest/internal/gtest-port-arch.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/internal/gtest-port-arch.h
+gtest/internal/custom/gtest-port.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/internal/custom/gtest-port.h
+direct.h
+-
+io.h
+-
+unistd.h
+-
+strings.h
+-
+android/api-level.h
+-
+regex.h
+-
+typeinfo
+-
+pthread.h
+-
+time.h
+-
+tuple
+-
+gtest/internal/gtest-tuple.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/internal/gtest-tuple.h
+tuple
+-
+tuple
+-
+tr1/tuple
+-
+tr1/tuple
+-
+tuple
+-
+
+../include/gtest-1.8.0/include/gtest/internal/gtest-string.h
+mem.h
+-
+string.h
+-
+string
+-
+gtest/internal/gtest-port.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/internal/gtest-port.h
+
+../include/gtest-1.8.0/include/gtest/internal/gtest-tuple.h
+utility
+-
+
+../include/gtest-1.8.0/include/gtest/internal/gtest-type-util.h
+gtest/internal/gtest-port.h
+../include/gtest-1.8.0/include/gtest/internal/gtest/internal/gtest-port.h
+cxxabi.h
+-
+acxx_demangle.h
+-
+
+../lib/wlib/Types.h
+stdint.h
+-
+
+../lib/wlib/Wlib.h
+
+../lib/wlib/WlibConfig.h
+
+../lib/wlib/fsm/StateMachine.h
+../Wlib.h
+../lib/wlib/Wlib.h
+../Types.h
+../lib/wlib/Types.h
+../memory/Memory.h
+../lib/wlib/memory/Memory.h
+../utility/Tmp.h
+../lib/wlib/utility/Tmp.h
+
+../lib/wlib/memory/Memory.h
+../utility/Utility.h
+../lib/wlib/utility/Utility.h
+../Types.h
+../lib/wlib/Types.h
+../utility/Tmp.h
+../lib/wlib/utility/Tmp.h
+
+../lib/wlib/stl/ArrayHeap.h
+ArrayList.h
+../lib/wlib/stl/ArrayList.h
+Comparator.h
+../lib/wlib/stl/Comparator.h
+Concept.h
+../lib/wlib/stl/Concept.h
+TypeTraits.h
+../lib/wlib/stl/TypeTraits.h
+utility/Utility.h
+../lib/wlib/stl/utility/Utility.h
+
+../lib/wlib/stl/ArrayList.h
+../Types.h
+../lib/wlib/Types.h
+../memory/Memory.h
+../lib/wlib/memory/Memory.h
+../utility/Utility.h
+../lib/wlib/utility/Utility.h
+
+../lib/wlib/stl/Bitset.h
+math.h
+-
+Types.h
+../lib/wlib/stl/Types.h
+Wlib.h
+../lib/wlib/stl/Wlib.h
+
+../lib/wlib/stl/ChainMap.h
+Equal.h
+../lib/wlib/stl/Equal.h
+Hash.h
+../lib/wlib/stl/Hash.h
+Pair.h
+../lib/wlib/stl/Pair.h
+../memory/Memory.h
+../lib/wlib/memory/Memory.h
+../utility/Utility.h
+../lib/wlib/utility/Utility.h
+
+../lib/wlib/stl/Comparator.h
+string.h
+-
+Types.h
+../lib/wlib/stl/Types.h
+stl/Equal.h
+../lib/wlib/stl/stl/Equal.h
+strings/String.h
+../lib/wlib/stl/strings/String.h
+strings/StaticString.h
+../lib/wlib/stl/strings/StaticString.h
+
+../lib/wlib/stl/Concept.h
+Pair.h
+../lib/wlib/stl/Pair.h
+TypeTraits.h
+../lib/wlib/stl/TypeTraits.h
+../Wlib.h
+../lib/wlib/Wlib.h
+../utility/Tmp.h
+../lib/wlib/utility/Tmp.h
+
+../lib/wlib/stl/Equal.h
+string.h
+-
+../Types.h
+../lib/wlib/Types.h
+../strings/StaticString.h
+../lib/wlib/strings/StaticString.h
+
+../lib/wlib/stl/Hash.h
+../Types.h
+../lib/wlib/Types.h
+../WlibConfig.h
+../lib/wlib/WlibConfig.h
+../utility/Math.h
+../lib/wlib/utility/Math.h
+../strings/StaticString.h
+../lib/wlib/strings/StaticString.h
+
+../lib/wlib/stl/OpenMap.h
+Equal.h
+../lib/wlib/stl/Equal.h
+Hash.h
+../lib/wlib/stl/Hash.h
+Pair.h
+../lib/wlib/stl/Pair.h
+../memory/Memory.h
+../lib/wlib/memory/Memory.h
+../utility/Utility.h
+../lib/wlib/utility/Utility.h
+
+../lib/wlib/stl/Pair.h
+../utility/Utility.h
+../lib/wlib/utility/Utility.h
+
+../lib/wlib/stl/Tuple.h
+Pair.h
+../lib/wlib/stl/Pair.h
+../utility/Tmp.h
+../lib/wlib/utility/Tmp.h
+
+../lib/wlib/stl/TypeTraits.h
+../utility/Tmp.h
+../lib/wlib/utility/Tmp.h
+
+../lib/wlib/strings/StaticString.h
+string.h
+-
+../Types.h
+../lib/wlib/Types.h
+../utility/Math.h
+../lib/wlib/utility/Math.h
+
+../lib/wlib/strings/String.h
+strings/StaticString.h
+../lib/wlib/strings/strings/StaticString.h
+
+../lib/wlib/utility/Math.h
+
+../lib/wlib/utility/Tmp.h
+../Types.h
+../lib/wlib/Types.h
+
+../lib/wlib/utility/Utility.h
+Tmp.h
+../lib/wlib/utility/Tmp.h
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/fsm/fsm_check.cpp
+gtest/gtest.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/fsm/gtest/gtest.h
+fsm/StateMachine.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/fsm/fsm/StateMachine.h
+stl/ArrayList.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/fsm/stl/ArrayList.h
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/memory/memory_check.cpp
+gtest/gtest.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/memory/gtest/gtest.h
+memory/Memory.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/memory/memory/Memory.h
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/bitset_check.cpp
+gtest/gtest.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/gtest/gtest.h
+stl/Bitset.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/stl/Bitset.h
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/chain_map_check.cpp
+gtest/gtest.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/gtest/gtest.h
+stl/ChainMap.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/stl/ChainMap.h
+strings/String.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/strings/String.h
+../template_defs.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/template_defs.h
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/comparator_check.cpp
+gtest/gtest.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/gtest/gtest.h
+stl/Comparator.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/stl/Comparator.h
+strings/String.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/strings/String.h
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/concept_check.cpp
+gtest/gtest.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/gtest/gtest.h
+stl/Concept.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/stl/Concept.h
+stl/Comparator.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/stl/Comparator.h
+stl/ChainMap.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/stl/ChainMap.h
+stl/OpenMap.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/stl/OpenMap.h
+stl/ArrayList.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/stl/ArrayList.h
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/equals_check.cpp
+gtest/gtest.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/gtest/gtest.h
+strings/String.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/strings/String.h
+stl/Equal.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/stl/Equal.h
+../template_defs.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/template_defs.h
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/hash_check.cpp
+gtest/gtest.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/gtest/gtest.h
+strings/String.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/strings/String.h
+stl/Hash.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/stl/Hash.h
+../template_defs.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/template_defs.h
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/heap_check.cpp
+gtest/gtest.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/gtest/gtest.h
+stl/ArrayHeap.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/stl/ArrayHeap.h
+../template_defs.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/template_defs.h
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/list_check.cpp
+gtest/gtest.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/gtest/gtest.h
+stl/ArrayList.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/stl/ArrayList.h
+../template_defs.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/template_defs.h
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/open_map_check.cpp
+gtest/gtest.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/gtest/gtest.h
+stl/OpenMap.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/stl/OpenMap.h
+../template_defs.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/template_defs.h
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/pair_check.cpp
+gtest/gtest.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/gtest/gtest.h
+stl/Pair.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/stl/Pair.h
+../template_defs.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/template_defs.h
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/tuple_check.cpp
+gtest/gtest.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/gtest/gtest.h
+stl/Tuple.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/stl/Tuple.h
+stl/OpenMap.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/stl/OpenMap.h
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/strings/static_string_check.cpp
+gtest/gtest.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/strings/gtest/gtest.h
+Types.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/strings/Types.h
+strings/String.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/strings/strings/String.h
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/template_defs.h
+Types.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/Types.h
+strings/String.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/strings/String.h
+utility/Utility.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/utility/Utility.h
+stl/ChainMap.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/ChainMap.h
+stl/OpenMap.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/OpenMap.h
+stl/ArrayHeap.h
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/ArrayHeap.h
+
+/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/test.cpp
+gtest/gtest.h
+-
+

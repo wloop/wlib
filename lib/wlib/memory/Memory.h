@@ -17,6 +17,7 @@
 #ifndef FIXED_MEMORY_MEMORY_H
 #define FIXED_MEMORY_MEMORY_H
 
+#include "../utility/Utility.h"
 #include "../Types.h"
 
 #include "../utility/Tmp.h"
@@ -66,15 +67,52 @@ void *__memory_realloc(void *ptr, uint32_t size);
 void __memory_free(void *ptr);
 
 /**
- * This allocates memory of the size provided. Memory allocated could be greater than what has been
+ * This allocates memory for Objects. Memory allocated could be greater than what has been
  * asked in order to accommodate fixed memory allocations. If there is not a sufficient memory
  * available, it returns a @code nullptr @endcode
  *
- * If an array of Objects is need then provide malloc with a number to specify how many objects to
- * create and it will create that many objects.
+ * If an array of Objects is need then provide malloc with a number as a template arg to specify
+ * how many objects to create and it will create that many objects.
  *
  * @pre this can also act a @code new @endcode keyword to create objects so there is no need to use
  * new keyword to create an object
+ *
+ * @pre malloc creates number of blocks of given Object and it does not allocate memory by proving it
+ * number of bytes
+ *
+ * @tparam Type pointer type
+ * @param num number of blocks of size @p Type
+ * @tparam Args argument types for the Object
+ * @param args argument values for the Object
+ * @return address to memory allocated
+ */
+template<
+        typename Type,
+        wlp::size_type num = 1,
+        typename... Args,
+        typename = typename wlp::enable_if<!wlp::is_fundamental<Type>::value, bool>::type>
+Type *malloc(Args&&... args){
+    void *memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(Type)) * num, true);
+
+    uint16_t *objInfo = static_cast<uint16_t *>(memory);
+    *objInfo = static_cast<uint16_t>(num);
+
+    char *pointer = reinterpret_cast<char *>(++objInfo);
+    for (wlp::size_type i = 0; i < num; ++i) {
+        new(pointer) Type(wlp::forward<Args>(args)...);
+        pointer += sizeof(Type);
+    }
+
+    return reinterpret_cast<Type *>(objInfo);
+};
+
+/**
+ * This allocates memory of the size provided or a primitive type. Memory allocated could be greater
+ * than what has been asked in order to accommodate fixed memory allocations. If there is not a sufficient memory
+ * available, it returns a @code nullptr @endcode
+ *
+ * If an array of primitive types is need then provide malloc with a number as a function argument to specify
+ * how many to create and it will create that many.
  *
  * @pre malloc creates number of blocks of given type and it does not allocate memory by proving it
  * number of bytes
@@ -83,29 +121,35 @@ void __memory_free(void *ptr);
  * @param num number of blocks of size @p Type
  * @return address to memory allocated
  */
-template<typename Type>
+template<
+        typename Type,
+        typename = typename wlp::enable_if<wlp::is_fundamental<Type>::value, bool>::type>
 Type *malloc(wlp::size_type num = 1) {
-    void *memory = nullptr;
-
-    if (!wlp::is_fundamental<Type>::value) {
-        memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(Type)) * num, true);
-
-        uint16_t *objInfo = static_cast<uint16_t *>(memory);
-        *objInfo = static_cast<uint16_t>(num);
-
-        char *pointer = reinterpret_cast<char *>(++objInfo);
-        for (wlp::size_type i = 0; i < num; ++i) {
-            new(pointer) Type;
-            pointer += sizeof(Type);
-        }
-
-        return reinterpret_cast<Type *>(objInfo);
-    }
-
-    memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(Type)) * num, false);
+    void *memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(Type)) * num, false);
 
     return static_cast<Type *>(memory);
 }
+
+/**
+ * Works exactly like malloc but initializes the memory by filling it with 0
+ *
+ * @tparam Type pointer type
+ * @param num number of blocks of size @p Type
+ * @return address to memory allocated
+ */
+template<
+        typename Type,
+        typename = typename wlp::enable_if<wlp::is_fundamental<Type>::value, bool>::type>
+Type *calloc(wlp::size_type num = 1){
+    wlp::size32_type numBytes = static_cast<wlp::size32_type>(sizeof(Type)) * num;
+    char *memory = malloc<char>(num);
+
+    for (int i = 0; i < numBytes; ++i) {
+        memory[i] = '\0';
+    }
+
+    return static_cast<Type *>(memory);
+};
 
 /**
  * This reallocates the memory to accommodate the new size provided. The memory address has to be
@@ -124,6 +168,7 @@ template<typename Type>
 Type *realloc(Type *ptr, wlp::size32_type num = 1) {
     return static_cast<Type *>(__memory_realloc(ptr, static_cast<wlp::size32_type>(sizeof(Type)) * num));
 }
+
 
 /**
  * Returns the size of fixed sized block that was provided for @p ptr

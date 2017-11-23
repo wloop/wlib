@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="wlib"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\include\;CMake Files\include\gtest-1.8.0\;CMake Files\include\gtest-1.8.0\cmake\;CMake Files\lib\;CMake Files\lib\wlib\;CMake Files\examples\;CMake Files\tests\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/lib/wlib"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/d/Code/Waterloop/Goose\ 3/embedded-cplusplus/cmake-build/lib/wlib/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/d/Code/Waterloop/Goose\ 3/embedded-cplusplus/cmake-build/lib/wlib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/d/Code/Waterloop/Goose\ 3/embedded-cplusplus/cmake-build/lib/wlib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/d/Code/Waterloop/Goose\ 3/embedded-cplusplus/cmake-build/lib/wlib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="wlib">
+				<Option output="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/lib/wlib/libwlib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/lib/wlib"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DMAX_ALLOCATORS=10u"/>
+					<Add option="-DNUM_BLOCKS=100u"/>
+					<Add option="-DDYNAMIC_POOL"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/../../../../lib/../include/w32api"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/d/Code/Waterloop/Goose\ 3/embedded-cplusplus/cmake-build/lib/wlib/Makefile&quot;  VERBOSE=1 wlib"/>
+					<CompileFile command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/d/Code/Waterloop/Goose\ 3/embedded-cplusplus/cmake-build/lib/wlib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/d/Code/Waterloop/Goose\ 3/embedded-cplusplus/cmake-build/lib/wlib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/d/Code/Waterloop/Goose\ 3/embedded-cplusplus/cmake-build/lib/wlib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="wlib/fast">
+				<Option output="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/lib/wlib/libwlib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/lib/wlib"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DMAX_ALLOCATORS=10u"/>
+					<Add option="-DNUM_BLOCKS=100u"/>
+					<Add option="-DDYNAMIC_POOL"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/../../../../lib/../include/w32api"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/d/Code/Waterloop/Goose\ 3/embedded-cplusplus/cmake-build/lib/wlib/Makefile&quot;  VERBOSE=1 wlib/fast"/>
+					<CompileFile command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/d/Code/Waterloop/Goose\ 3/embedded-cplusplus/cmake-build/lib/wlib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/d/Code/Waterloop/Goose\ 3/embedded-cplusplus/cmake-build/lib/wlib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/d/Code/Waterloop/Goose\ 3/embedded-cplusplus/cmake-build/lib/wlib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/Types.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/Wlib.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/WlibConfig.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/fsm/StateMachine.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/memory/Allocator.cpp">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/memory/Allocator.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/memory/DynamicAllocatorPool.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/memory/Memory.cpp">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/memory/Memory.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/memory/StaticAllocatorPool.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/ArrayHeap.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/ArrayList.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/Bitset.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/ChainMap.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/ChainSet.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/Comparator.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/Concept.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/Equal.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/Hash.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/OpenMap.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/OpenSet.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/Pair.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/Tuple.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/TypeTraits.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/strings/StaticString.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/strings/String.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/utility/Math.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/utility/Tmp.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/utility/Utility.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/include/gtest-1.8.0/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\include\gtest-1.8.0\"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/include/gtest-1.8.0/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\include\gtest-1.8.0\"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/include/gtest-1.8.0/cmake/internal_utils.cmake">
+			<Option virtualFolder="CMake Files\include\gtest-1.8.0\cmake\"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/include/gtest-1.8.0/cmake/internal_utils.cmake">
+			<Option virtualFolder="CMake Files\include\gtest-1.8.0\cmake\"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lib\wlib\"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lib\wlib\"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/examples/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\examples\"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

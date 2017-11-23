@@ -1,0 +1,11 @@
+C:\Users\ds3dhill\.CLion2017.2\system\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus"
+CMake Error at CMakeLists.txt:15 (add_subdirectory):
+  The source directory
+
+    /cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/e4c
+
+  does not contain a CMakeLists.txt file.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles/CMakeOutput.log".
