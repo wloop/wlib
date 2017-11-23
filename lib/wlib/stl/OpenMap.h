@@ -82,6 +82,8 @@ namespace wlp {
         typedef OpenHashMapIterator<Key, Val, Ref, Ptr, Hasher, Equals> self_type;
 
         typedef Val val_type;
+        typedef Ref reference;
+        typedef Ptr pointer;
 
         typedef wlp::size_type size_type;
 
@@ -125,7 +127,7 @@ namespace wlp {
          * @return reference to the value of the node
          * pointed to by the iterator
          */
-        val_type &operator*() const {
+        reference operator*() const {
             return m_current->m_val;
         }
 
@@ -133,7 +135,7 @@ namespace wlp {
          * @return pointer to the value of the node
          * pointed to by the iterator
          */
-        val_type *operator->() const {
+        pointer operator->() const {
             return &(operator*());
         }
 
