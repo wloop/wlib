@@ -170,6 +170,9 @@ namespace wlp {
     template
     struct LinkedListIterator<int, const int &, const int *>;
 
+    //template
+    //class UniquePtr<int>;
+
 }
 
 #endif // TEMPLATE_DEFS_H

@@ -83,7 +83,7 @@ template<
 T *malloc(Args... args) {
     if (wlp::is_fundamental<typename wlp::remove_extent<T>::type>::value) {
         void *memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(T)), false);
-        return static_cast<T *>(memory);
+        return new(memory) T(wlp::forward<Args>(args)...);
     }
 
     void *memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(T)), true);

@@ -66,6 +66,13 @@ namespace wlp {
         v2 = move(tmp);
     }
 
+    template<typename IntType>
+    static inline IntType exchange_and_add(IntType *mem, IntType val) {
+        IntType res = *mem;
+        *mem += val;
+        return res;
+    }
+
 }
 
 #endif //EMBEDDEDCPLUSPLUS_UTILITY_H
