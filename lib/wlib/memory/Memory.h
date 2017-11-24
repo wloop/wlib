@@ -159,7 +159,6 @@ template<
         typename T,
         typename... Args,
         typename NonArrayType = typename wlp::remove_extent<T>::type,
-        typename = typename wlp::enable_if<wlp::is_fundamental<NonArrayType>::value>,
         typename = typename wlp::enable_if<wlp::is_array<T>::value, bool>::type>
 NonArrayType *arg_array_malloc(wlp::size_type num, Args... args){
     void *memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(NonArrayType)) * num, true);
