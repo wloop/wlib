@@ -1,1 +1,0 @@
-/usr/bin/c++.exe  -g -O0 --coverage -g  -Wl,--enable-auto-import CMakeFiles/examples.dir/main.cpp.o  -o examples.exe -Wl,--out-implib,libexamples.dll.a -Wl,--major-image-version,0,--minor-image-version,0 ../lib/wlib/libwlib.a 

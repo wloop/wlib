@@ -1,2 +1,0 @@
-/usr/bin/ar.exe qc libwlib.a  CMakeFiles/wlib.dir/memory/Allocator.cpp.o CMakeFiles/wlib.dir/memory/Memory.cpp.o
-/usr/bin/ranlib.exe libwlib.a
