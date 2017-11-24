@@ -931,6 +931,24 @@ namespace wlp {
     };
 #endif
 
+    template<typename>
+    struct __is_pointer_helper
+            : public false_type { };
+
+    template<typename _Tp>
+    struct __is_pointer_helper<_Tp*>
+            : public true_type { };
+
+    /*
+     * checks if @p _Tp type is a pointer type
+     *
+     * @tparam _Tp type being verified
+     */
+    template<typename _Tp>
+    struct is_pointer
+            : public __is_pointer_helper<typename remove_cv<_Tp>::type>::type
+    { };
+
     /**
      * checks if @p _Tp type is a floating point
      *

@@ -556,7 +556,7 @@ namespace wlp {
 
     template<typename Key, typename Val, typename Hasher, typename Equals>
     void OpenHashMap<Key, Val, Hasher, Equals>::init_buckets(OpenHashMap<Key, Val, Hasher, Equals>::size_type n) {
-        m_buckets = malloc<node_type *>(n);
+        m_buckets = malloc<node_type *[]>(n);
         for (size_type i = 0; i < n; ++i) {
             m_buckets[i] = nullptr;
         }
@@ -568,7 +568,7 @@ namespace wlp {
             return;
         }
         size_type new_capacity = static_cast<size_type>(m_capacity * 2);
-        node_type **new_buckets = malloc<node_type *>(new_capacity);
+        node_type **new_buckets = malloc<node_type *[]>(new_capacity);
         for (size_type i = 0; i < new_capacity; ++i) {
             new_buckets[i] = nullptr;
         }
@@ -669,7 +669,7 @@ namespace wlp {
         m_buckets[i] = nullptr;
         while (++i < m_capacity && !m_buckets[i]) {}
         node_type *next_node = i >= m_capacity ? nullptr : m_buckets[i];
-        node_type **new_buckets = malloc<node_type *>(m_capacity);
+        node_type **new_buckets = malloc<node_type *[]>(m_capacity);
         for (size_type k = 0; k < m_capacity; k++) {
             new_buckets[k] = nullptr;
         }
@@ -705,7 +705,7 @@ namespace wlp {
         --m_num_elements;
         free<node_type>(m_buckets[i]);
         m_buckets[i] = nullptr;
-        node_type **new_buckets = malloc<node_type *>(m_capacity);
+        node_type **new_buckets = malloc<node_type *[]>(m_capacity);
         for (size_type k = 0; k < m_capacity; k++) {
             new_buckets[k] = nullptr;
         }

@@ -385,7 +385,7 @@ namespace wlp {
          * @param initial_size the initial capacity for the backing array
          */
         void init_array(size_type initial_size) {
-            m_data = malloc<val_type>(initial_size);
+            m_data = malloc<val_type[]>(initial_size);
         }
 
         /**
@@ -770,7 +770,7 @@ namespace wlp {
             return;
         }
         size_type new_capacity = static_cast<size_type>(2 * m_capacity);
-        val_type *new_data = malloc<val_type>(new_capacity);
+        val_type *new_data = malloc<val_type[]>(new_capacity);
         for (size_type i = 0; i < m_size; i++) {
             new_data[i] = m_data[i];
         }
