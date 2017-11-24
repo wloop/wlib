@@ -355,42 +355,6 @@ void __memory_free(void *ptr) {
     allocator->deallocate(blockPtr);
 }
 
-/**
- * Reallocates a memory block previously allocated with @code __memory_alloc @endcode
- *
- * @param oldMem a pointer to a block created with @code __memory_alloc @endcode
- * @param size the client requested block size
- * @return pointer to new memory block
- */
-void *__memory_realloc(void *oldMem, size32_type size) {
-    if (oldMem == nullptr) {
-        return __memory_alloc(size, false);
-    }
-
-    if (size == 0) {
-        __memory_free(oldMem);
-        return nullptr;
-    } else {
-        // Create a new memory block
-        void *newMem = __memory_alloc(size, false);
-        if (newMem != nullptr) {
-            // Get the original allocator instance from the old memory block
-            __Allocator *oldAllocator = get_block_allocator(oldMem);
-            size_type oldSize = oldAllocator->getBlockSize() - sizeof(__Allocator *);
-
-            // Copy the bytes from the old memory block into the new (as much as will fit)
-            memcpy(newMem, oldMem, (oldSize < size) ? oldSize : size);
-
-            // Free the old memory block
-            __memory_free(oldMem);
-
-            // Return the client pointer to the new memory block
-            return newMem;
-        }
-        return nullptr;
-    }
-}
-
 size32_type getTotalMemoryUsed() {
     size32_type totalMemory = 0;
 
@@ -399,6 +363,10 @@ size32_type getTotalMemoryUsed() {
     }
 
     return totalMemory;
+}
+
+wlp::size32_type getTotalMemoryFree(){
+    return getTotalMemoryAvailable() - getTotalMemoryUsed();
 }
 
 
@@ -460,6 +428,9 @@ size_type getSmallestBlockSize() {
 }
 
 size32_type getFixedMemorySize(void *ptr) {
+    if (ptr == nullptr)
+        return 0;
+
     __Allocator *allocator = get_block_allocator(ptr);
     return allocator->getBlockSize();
 }

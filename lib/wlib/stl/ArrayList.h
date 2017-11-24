@@ -36,6 +36,8 @@ namespace wlp {
     public:
         typedef wlp::size_type size_type;
         typedef T val_type;
+        typedef Ref reference;
+        typedef Ptr pointer;
         typedef ArrayList<T> array_list;
         typedef ArrayListIterator<T, Ref, Ptr> self_type;
 
@@ -100,7 +102,7 @@ namespace wlp {
          * @return a reference to the value pointed to
          * by this iterator
          */
-        val_type &operator*() const {
+        reference operator*() const {
             return m_list->m_data[m_i];
         }
 
@@ -108,7 +110,7 @@ namespace wlp {
          * @return a pointer to the value pointer to
          * by this iterator
          */
-        val_type *operator->() const {
+        pointer operator->() const {
             return &(operator*());
         }
 
@@ -383,7 +385,7 @@ namespace wlp {
          * @param initial_size the initial capacity for the backing array
          */
         void init_array(size_type initial_size) {
-            m_data = malloc<val_type>(initial_size);
+            m_data = malloc<val_type[]>(initial_size);
         }
 
         /**
@@ -768,7 +770,7 @@ namespace wlp {
             return;
         }
         size_type new_capacity = static_cast<size_type>(2 * m_capacity);
-        val_type *new_data = malloc<val_type>(new_capacity);
+        val_type *new_data = malloc<val_type[]>(new_capacity);
         for (size_type i = 0; i < m_size; i++) {
             new_data[i] = m_data[i];
         }
