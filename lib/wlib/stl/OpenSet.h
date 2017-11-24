@@ -32,19 +32,19 @@ namespace wlp {
             class Equal = Equal<Key>>
     class OpenHashSet {
     public:
-        typedef OpenHashSet<Key, Hash, Equal> hash_set;
-        typedef OpenHashMap<Key, Key, Hash, Equal> map_type;
+        typedef OpenHashSet<Key, Hash, Equal> set_type;
+        typedef OpenHashMap<Key, Key, Hash, Equal> table_type;
         typedef typename OpenHashMap<Key, Key, Hash, Equal>::iterator iterator;
         typedef typename OpenHashMap<Key, Key, Hash, Equal>::const_iterator const_iterator;
-        typedef typename map_type::size_type size_type;
-        typedef typename map_type::percent_type percent_type;
-        typedef typename map_type::key_type key_type;
+        typedef typename table_type::size_type size_type;
+        typedef typename table_type::percent_type percent_type;
+        typedef typename table_type::key_type key_type;
 
     private:
         /**
          * The backing hash map.
          */
-        map_type m_hash_map;
+        table_type m_hash_map;
 
     public:
         /**
@@ -64,14 +64,14 @@ namespace wlp {
         /**
          * Disable copy constructor.
          */
-        OpenHashSet(const hash_set &) = delete;
+        OpenHashSet(const set_type &) = delete;
 
         /**
          * Move constructor.
          *
          * @param set hash set to move
          */
-        OpenHashSet(hash_set &&set)
+        OpenHashSet(set_type &&set)
                 : m_hash_map(move(set.m_hash_map)) {
         }
 
@@ -106,7 +106,7 @@ namespace wlp {
         /**
          * @return a pointer to the backing hash map
          */
-        const map_type *get_backing_hash_map() const {
+        const table_type *get_backing_hash_map() const {
             return &m_hash_map;
         }
 
@@ -222,7 +222,7 @@ namespace wlp {
          *
          * @return reference to this set
          */
-        hash_set &operator=(const hash_set &) = delete;
+        set_type &operator=(const set_type &) = delete;
 
         /**
          * Move assignment operator.
@@ -230,7 +230,7 @@ namespace wlp {
          * @param set hash set to move
          * @return reference to this set
          */
-        hash_set &operator=(hash_set &&set) {
+        set_type &operator=(set_type &&set) {
             m_hash_map = move(set.m_hash_map);
             return *this;
         }
