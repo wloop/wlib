@@ -81,7 +81,7 @@ template<
         typename... Args,
         typename = typename wlp::enable_if<!wlp::is_array<T>::value, bool>::type>
 T *malloc(Args... args) {
-    if (wlp::is_fundamental<typename wlp::remove_extent<T>::type>::value){
+    if (wlp::is_fundamental<typename wlp::remove_extent<T>::type>::value) {
         void *memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(T)), false);
         return static_cast<T *>(memory);
     }
@@ -114,8 +114,8 @@ template<
         typename T,
         typename NonArrayType = typename wlp::remove_extent<T>::type,
         typename = typename wlp::enable_if<wlp::is_array<T>::value, bool>::type>
-NonArrayType *malloc(wlp::size_type num){
-    if (wlp::is_fundamental<typename wlp::remove_extent<T>::type>::value){
+NonArrayType *malloc(wlp::size_type num) {
+    if (wlp::is_fundamental<typename wlp::remove_extent<T>::type>::value) {
         void *memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(NonArrayType)) * num, false);
         return static_cast<NonArrayType *>(memory);
     }
@@ -160,7 +160,7 @@ template<
         typename... Args,
         typename NonArrayType = typename wlp::remove_extent<T>::type,
         typename = typename wlp::enable_if<wlp::is_array<T>::value, bool>::type>
-NonArrayType *arg_array_malloc(wlp::size_type num, Args... args){
+NonArrayType *arg_array_malloc(wlp::size_type num, Args... args) {
     void *memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(NonArrayType)) * num, true);
 
     uint16_t *objInfo = static_cast<uint16_t *>(memory);
@@ -187,7 +187,7 @@ template<
         typename T,
         typename = typename wlp::enable_if<!wlp::is_pointer<T>::value, bool>::type,
         typename = typename wlp::enable_if<wlp::is_arithmetic<T>::value, bool>::type>
-T *calloc(){
+T *calloc() {
     T *memory = malloc<T>();
 
     for (wlp::size32_type i = 0; i < sizeof(T); ++i) {
@@ -211,7 +211,7 @@ template<
         typename = typename wlp::enable_if<!wlp::is_pointer<NonArrayType>::value, bool>::type,
         typename = typename wlp::enable_if<wlp::is_arithmetic<NonArrayType>::value, bool>::type,
         typename = typename wlp::enable_if<wlp::is_array<T>::value, bool>::type>
-NonArrayType *calloc(wlp::size_type num = 1){
+NonArrayType *calloc(wlp::size_type num = 1) {
     NonArrayType *memory = malloc<T>(num);
 
     for (wlp::size32_type i = 0; i < num; ++i) {
@@ -231,11 +231,10 @@ NonArrayType *calloc(wlp::size_type num = 1){
  * @tparam Type pointer type
  * @param ptr address to memory that will be freed
  */
-
 template<typename Type>
 void free(Type *&ptr) {
     if (!wlp::is_fundamental<Type>::value) {
-        uint16_t *objInfo = reinterpret_cast<uint16_t*>(ptr);
+        uint16_t *objInfo = reinterpret_cast<uint16_t *>(ptr);
         wlp::size_type numObjects = *(--objInfo);
 
         Type *pointer = ptr;
@@ -245,11 +244,36 @@ void free(Type *&ptr) {
         }
 
         __memory_free(reinterpret_cast<Type *>(objInfo));
-    } else{
+    } else {
         __memory_free(ptr);
     }
 
     ptr = nullptr;
+}
+
+/**
+ * Overload for rvalue pointers.
+ *
+ * @see free<Type>
+ * @tparam Type
+ * @param ptr
+ */
+template<typename Type>
+void free(Type *&&ptr) {
+    if (!wlp::is_fundamental<Type>::value) {
+        uint16_t *objInfo = reinterpret_cast<uint16_t *>(ptr);
+        wlp::size_type numObjects = *(--objInfo);
+
+        Type *pointer = ptr;
+        for (wlp::size_type i = 0; i < numObjects; ++i) {
+            pointer->~Type();
+            ++pointer;
+        }
+
+        __memory_free(reinterpret_cast<Type *>(objInfo));
+    } else {
+        __memory_free(ptr);
+    }
 }
 
 /**
@@ -293,14 +317,15 @@ Type *realloc(Type *ptr, wlp::size_type num = 1) {
     Type *newPtr = malloc<Type[]>(num);
 
     // Typecast old and dest addresses to (char *)
-    char *cnew = reinterpret_cast<char*>(newPtr);
-    char *cold = reinterpret_cast<char*>(ptr);
+    char *cnew = reinterpret_cast<char *>(newPtr);
+    char *cold = reinterpret_cast<char *>(ptr);
 
     wlp::size32_type copySize = (oldMemSize < newMemSize) ? oldMemSize : newMemSize;
 
     // Copy contents of src[] to dest[]
-    for (wlp::size32_type i=0; i < copySize; i++)
+    for (wlp::size32_type i = 0; i < copySize; i++) {
         cnew[i] = cold[i];
+    }
 
     free<Type>(ptr);
 
