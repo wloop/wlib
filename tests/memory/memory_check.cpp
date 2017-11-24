@@ -11,20 +11,43 @@
 
 #include "memory/Memory.h"
 
-class Sample{
+class Sample {
 public:
     static int constr;
 
-    Sample(){
+    Sample() {
         constr += 4;
     }
 
-    Sample(const char*){
+    Sample(const char *) {
         constr += 2;
     }
 
-    ~Sample(){
+    ~Sample() {
         constr += 5;
+    }
+};
+
+class SamplePtrContainer {
+public:
+    Sample *simp;
+
+    SamplePtrContainer()
+            : simp(malloc<Sample>()) {
+    }
+
+    ~SamplePtrContainer() {
+        if (get() != nullptr) {
+            free<Sample>(get()); // calls rvalue overload
+        }
+    }
+
+    void destroy() {
+        free<Sample>(simp);
+    }
+
+    Sample *get() {
+        return simp;
     }
 };
 
@@ -65,7 +88,7 @@ TEST(memory_check, general_usability) {
     ASSERT_EQ(getTotalMemoryAvailable(), getTotalMemoryAvailable() - getTotalMemoryUsed());
 }
 
-TEST(memory_check, malloc_realloc_and_calloc){
+TEST(memory_check, malloc_realloc_and_calloc) {
     int *v = malloc<int[]>(75);
     v[0] = 75;
     v[1] = 175;
@@ -88,7 +111,7 @@ TEST(memory_check, malloc_realloc_and_calloc){
     ASSERT_EQ('\0', v3[0]);
     ASSERT_EQ('\0', v3[1]);
 
-    uint16_t *v4 = calloc<uint16_t []>(2);
+    uint16_t *v4 = calloc<uint16_t[]>(2);
     ASSERT_EQ(0u, v4[0]);
     ASSERT_EQ(0u, v4[1]);
 
@@ -106,7 +129,7 @@ TEST(memory_check, malloc_realloc_and_calloc){
     free(v6);
 }
 
-TEST(memory_check, array_allocation){
+TEST(memory_check, array_allocation) {
     Sample::constr = 0;
 
     Sample *s = malloc<Sample[]>(2);
@@ -121,11 +144,34 @@ TEST(memory_check, array_allocation){
     ASSERT_EQ(39, Sample::constr);
 }
 
-TEST(memory_check, free){
+TEST(memory_check, free) {
     int *g = malloc<int>(7);
     free<int>(g);
     ASSERT_EQ(nullptr, g);
 
     free<int>(g);
     ASSERT_EQ(nullptr, g);
+}
+
+TEST(memory_check, free_rvalue) {
+    Sample::constr = 0;
+    SamplePtrContainer *pSpc = malloc<SamplePtrContainer>();
+    ASSERT_EQ(4, Sample::constr);
+    ASSERT_NE(nullptr, pSpc->simp);
+    ASSERT_NE(nullptr, pSpc->get());
+    free<SamplePtrContainer>(pSpc);
+    ASSERT_EQ(9, Sample::constr);
+    ASSERT_EQ(nullptr, pSpc);
+    Sample::constr = 0;
+    SamplePtrContainer spc;
+    ASSERT_EQ(4, Sample::constr);
+    spc.destroy();
+    ASSERT_EQ(9, Sample::constr);
+    ASSERT_EQ(nullptr, spc.simp);
+    Sample::constr = 0;
+    {
+        SamplePtrContainer local_spc;
+        ASSERT_EQ(4, Sample::constr);
+    } // ~SamplePtrContainer called on local_spc
+    ASSERT_EQ(9, Sample::constr);
 }
