@@ -211,15 +211,6 @@ ProcessorCount_cmd_getconf:FILEPATH=/usr/bin/getconf.exe
 ProcessorCount_cmd_sysctl:FILEPATH=ProcessorCount_cmd_sysctl-NOTFOUND
 
 //Value Computed by CMake
-e4c_BINARY_DIR:STATIC=/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/lib/e4c
-
-//Dependencies for target
-e4c_LIB_DEPENDS:STATIC=
-
-//Value Computed by CMake
-e4c_SOURCE_DIR:STATIC=/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/e4c
-
-//Value Computed by CMake
 gtest_BINARY_DIR:STATIC=/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/include/gtest-1.8.0
 
 //Dependencies for target

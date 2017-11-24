@@ -33,11 +33,11 @@ namespace wlp {
     public:
         typedef ChainHashSet<Key, Hash, Equal> set_type;
         typedef ChainHashMap<Key, Key, Hash, Equal> map_type;
-        typedef ChainHashMapIterator<Key, Key, Hash, Equal> iterator;
-        typedef ChainHashMapConstIterator<Key, Key, Hash, Equal> const_iterator;
-        typedef map_type::size_type size_type;
-        typedef map_type::percent_type percent_type;
-        typedef map_type::key_type key_type;
+        typedef typename ChainHashMap<Key, Key, Hash, Equal>::iterator iterator;
+        typedef typename ChainHashMap<Key, Key, Hash, Equal>::const_iterator const_iterator;
+        typedef typename map_type::size_type size_type;
+        typedef typename map_type::percent_type percent_type;
+        typedef typename map_type::key_type key_type;
 
     private:
         map_type m_hash_map;
@@ -100,7 +100,7 @@ namespace wlp {
         /**
          * @return a pointer to the backing hash map
          */
-        const map_type *get_backing_hash_map() const {
+        const map_type *get_backing_table() const {
             return &m_hash_map;
         }
 

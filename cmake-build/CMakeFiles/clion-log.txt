@@ -1,11 +1,24 @@
 C:\Users\ds3dhill\.CLion2017.2\system\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus"
-CMake Error at CMakeLists.txt:15 (add_subdirectory):
-  The source directory
-
-    /cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/e4c
-
-  does not contain a CMakeLists.txt file.
-
-
--- Configuring incomplete, errors occurred!
-See also "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles/CMakeOutput.log".
+-- The C compiler identification is GNU 6.4.0
+-- The CXX compiler identification is GNU 6.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++.exe
+-- Check for working CXX compiler: /usr/bin/c++.exe -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found PythonInterp: /usr/bin/python (found version "2.7.13") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for pthread_create
+-- Looking for pthread_create - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build

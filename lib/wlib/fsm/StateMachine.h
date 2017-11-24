@@ -207,17 +207,17 @@ namespace wlp {
      * A structure to hold a single row within the state map.
      */
     struct StateMapRow {
-        const StateBase *const State;
+        const StateBase *const state;
     };
 
     /**
      * A structure to hold a single row within the extended state map.
      */
     struct StateMapRowEx {
-        const StateBase *const State;
-        const GuardBase *const Guard;
-        const EntryBase *const Entry;
-        const ExitBase *const Exit;
+        const StateBase *const state;
+        const GuardBase *const guard;
+        const EntryBase *const entry;
+        const ExitBase *const exit;
     };
 
     /**
@@ -275,15 +275,9 @@ namespace wlp {
          */
         template<typename EventDataType>
         void externalEvent(state_type newState, EventDataType *pData = nullptr) {
-            if (newState == EVENT_IGNORED || newState == CANNOT_HAPPEN) {
-                if (pData != nullptr) {
-                    free<EventDataType>(pData);
-                }
-            } else {
-                // TODO - capture software lock here for thread-safety if necessary
+            if (newState != EVENT_IGNORED && newState != CANNOT_HAPPEN) {
                 internalEvent<EventDataType>(newState, pData);
                 stateEngine<EventDataType>();
-                // TODO - release software lock here
             }
         }
 
@@ -300,7 +294,7 @@ namespace wlp {
         template<typename EventDataType>
         void internalEvent(state_type newState, EventDataType *pData = nullptr) {
             if (pData == nullptr) {
-                pData = malloc<EventDataType>();
+                pData = static_cast<EventDataType *>(&m_dataless);
             }
             m_event_data = pData;
             m_event_generated = true;
@@ -337,6 +331,12 @@ namespace wlp {
          * The state event data pointer.
          */
         EventData *m_event_data;
+
+        /**
+         * Class-level event data instance used to
+         * represent an event with no data.
+         */
+        EventData m_dataless;
 
         /**
          * Get the state map as defined in a derived class of State Machine.
@@ -430,7 +430,7 @@ namespace wlp {
             if (m_new_state >= m_max_states) {
                 return;
             }
-            const StateBase *state = pStateMap[m_new_state].State;
+            const StateBase *state = pStateMap[m_new_state].state;
             pDataTemp = static_cast<EventDataType *>(m_event_data);
             m_event_data = nullptr;
             m_event_generated = false;
@@ -440,9 +440,6 @@ namespace wlp {
                 return;
             }
             state->invokeStateAction(this, pDataTemp);
-            if (pDataTemp) {
-                free<EventDataType>(pDataTemp);
-            }
         }
     }
 
@@ -454,10 +451,10 @@ namespace wlp {
             if (m_new_state >= m_max_states) {
                 return;
             }
-            const StateBase *state = pStateMapEx[m_new_state].State;
-            const GuardBase *guard = pStateMapEx[m_new_state].Guard;
-            const EntryBase *entry = pStateMapEx[m_new_state].Entry;
-            const ExitBase *exit = pStateMapEx[m_current_state].Exit;
+            const StateBase *state = pStateMapEx[m_new_state].state;
+            const GuardBase *guard = pStateMapEx[m_new_state].guard;
+            const EntryBase *entry = pStateMapEx[m_new_state].entry;
+            const ExitBase *exit = pStateMapEx[m_current_state].exit;
             pDataTemp = static_cast<EventDataType *>(m_event_data);
             m_event_data = nullptr;
             m_event_generated = false;
@@ -487,9 +484,6 @@ namespace wlp {
                     return;
                 }
                 state->invokeStateAction(this, pDataTemp);
-            }
-            if (pDataTemp) {
-                free<EventDataType>(pDataTemp);
             }
         }
     }

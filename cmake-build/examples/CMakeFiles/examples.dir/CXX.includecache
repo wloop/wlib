@@ -17,6 +17,10 @@ stdint.h
 ../lib/wlib/Types.h
 ../utility/Tmp.h
 ../lib/wlib/utility/Tmp.h
+new
+-
+cstring
+-
 
 ../lib/wlib/utility/Tmp.h
 ../Types.h
@@ -28,6 +32,8 @@ Tmp.h
 
 /cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/examples/main.cpp
 iostream
+-
+unordered_map
 -
 memory/Memory.h
 /cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/examples/memory/Memory.h

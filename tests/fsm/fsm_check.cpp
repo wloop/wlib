@@ -17,14 +17,14 @@ public:
     }
 
     void setValue(int value) {
-        TestData* data = malloc<TestData>();
-        data->value = value;
+        TestData data;
+        data.value = value;
         BEGIN_TRANSITION_MAP
             TRANSITION_MAP_ENTRY(ST_START)        // ST_IDLE
             TRANSITION_MAP_ENTRY(CANNOT_HAPPEN)   // ST_STOP
             TRANSITION_MAP_ENTRY(ST_CHANGE_SPEED) // ST_START
             TRANSITION_MAP_ENTRY(ST_CHANGE_SPEED) // ST_CHANGE_SPEED
-        END_TRANSITION_MAP(data, TestData)
+        END_TRANSITION_MAP(&data, TestData)
     }
 
     void zero() {

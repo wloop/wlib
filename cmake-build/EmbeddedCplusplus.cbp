@@ -384,6 +384,9 @@
 		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/Hash.h">
 			<Option target="wlib"/>
 		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/LinkedList.h">
+			<Option target="wlib"/>
+		</Unit>
 		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/OpenMap.h">
 			<Option target="wlib"/>
 		</Unit>
@@ -391,6 +394,15 @@
 			<Option target="wlib"/>
 		</Unit>
 		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/Pair.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/RedBlackTree.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/TreeMap.h">
+			<Option target="wlib"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/TreeSet.h">
 			<Option target="wlib"/>
 		</Unit>
 		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/lib/wlib/stl/Tuple.h">
@@ -420,6 +432,9 @@
 		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/memory/memory_check.cpp">
 			<Option target="tests"/>
 		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/array_list_check.cpp">
+			<Option target="tests"/>
+		</Unit>
 		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/bitset_check.cpp">
 			<Option target="tests"/>
 		</Unit>
@@ -441,13 +456,16 @@
 		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/heap_check.cpp">
 			<Option target="tests"/>
 		</Unit>
-		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/list_check.cpp">
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/linked_list_check.cpp">
 			<Option target="tests"/>
 		</Unit>
 		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/open_map_check.cpp">
 			<Option target="tests"/>
 		</Unit>
 		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/pair_check.cpp">
+			<Option target="tests"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/red_black_tree_check.cpp">
 			<Option target="tests"/>
 		</Unit>
 		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/tuple_check.cpp">
@@ -460,6 +478,9 @@
 			<Option target="tests"/>
 		</Unit>
 		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/test.cpp">
+			<Option target="tests"/>
+		</Unit>
+		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/test_helper.h">
 			<Option target="tests"/>
 		</Unit>
 		<Unit filename="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/CMakeLists.txt">

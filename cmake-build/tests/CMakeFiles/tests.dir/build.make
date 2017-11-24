@@ -105,9 +105,33 @@ tests/CMakeFiles/tests.dir/strings/static_string_check.cpp.o.provides: tests/CMa
 tests/CMakeFiles/tests.dir/strings/static_string_check.cpp.o.provides.build: tests/CMakeFiles/tests.dir/strings/static_string_check.cpp.o
 
 
+tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.o: tests/CMakeFiles/tests.dir/flags.make
+tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.o: ../tests/stl/array_list_check.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.o"
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/stl/array_list_check.cpp.o -c "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/array_list_check.cpp"
+
+tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tests.dir/stl/array_list_check.cpp.i"
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/array_list_check.cpp" > CMakeFiles/tests.dir/stl/array_list_check.cpp.i
+
+tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tests.dir/stl/array_list_check.cpp.s"
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/array_list_check.cpp" -o CMakeFiles/tests.dir/stl/array_list_check.cpp.s
+
+tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.o.requires:
+
+.PHONY : tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.o.requires
+
+tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.o.provides: tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.o.requires
+	$(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.o.provides.build
+.PHONY : tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.o.provides
+
+tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.o.provides.build: tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.o
+
+
 tests/CMakeFiles/tests.dir/stl/bitset_check.cpp.o: tests/CMakeFiles/tests.dir/flags.make
 tests/CMakeFiles/tests.dir/stl/bitset_check.cpp.o: ../tests/stl/bitset_check.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object tests/CMakeFiles/tests.dir/stl/bitset_check.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object tests/CMakeFiles/tests.dir/stl/bitset_check.cpp.o"
 	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/stl/bitset_check.cpp.o -c "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/bitset_check.cpp"
 
 tests/CMakeFiles/tests.dir/stl/bitset_check.cpp.i: cmake_force
@@ -131,7 +155,7 @@ tests/CMakeFiles/tests.dir/stl/bitset_check.cpp.o.provides.build: tests/CMakeFil
 
 tests/CMakeFiles/tests.dir/stl/chain_map_check.cpp.o: tests/CMakeFiles/tests.dir/flags.make
 tests/CMakeFiles/tests.dir/stl/chain_map_check.cpp.o: ../tests/stl/chain_map_check.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object tests/CMakeFiles/tests.dir/stl/chain_map_check.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object tests/CMakeFiles/tests.dir/stl/chain_map_check.cpp.o"
 	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/stl/chain_map_check.cpp.o -c "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/chain_map_check.cpp"
 
 tests/CMakeFiles/tests.dir/stl/chain_map_check.cpp.i: cmake_force
@@ -155,7 +179,7 @@ tests/CMakeFiles/tests.dir/stl/chain_map_check.cpp.o.provides.build: tests/CMake
 
 tests/CMakeFiles/tests.dir/stl/comparator_check.cpp.o: tests/CMakeFiles/tests.dir/flags.make
 tests/CMakeFiles/tests.dir/stl/comparator_check.cpp.o: ../tests/stl/comparator_check.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object tests/CMakeFiles/tests.dir/stl/comparator_check.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object tests/CMakeFiles/tests.dir/stl/comparator_check.cpp.o"
 	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/stl/comparator_check.cpp.o -c "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/comparator_check.cpp"
 
 tests/CMakeFiles/tests.dir/stl/comparator_check.cpp.i: cmake_force
@@ -179,7 +203,7 @@ tests/CMakeFiles/tests.dir/stl/comparator_check.cpp.o.provides.build: tests/CMak
 
 tests/CMakeFiles/tests.dir/stl/concept_check.cpp.o: tests/CMakeFiles/tests.dir/flags.make
 tests/CMakeFiles/tests.dir/stl/concept_check.cpp.o: ../tests/stl/concept_check.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object tests/CMakeFiles/tests.dir/stl/concept_check.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object tests/CMakeFiles/tests.dir/stl/concept_check.cpp.o"
 	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/stl/concept_check.cpp.o -c "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/concept_check.cpp"
 
 tests/CMakeFiles/tests.dir/stl/concept_check.cpp.i: cmake_force
@@ -203,7 +227,7 @@ tests/CMakeFiles/tests.dir/stl/concept_check.cpp.o.provides.build: tests/CMakeFi
 
 tests/CMakeFiles/tests.dir/stl/equals_check.cpp.o: tests/CMakeFiles/tests.dir/flags.make
 tests/CMakeFiles/tests.dir/stl/equals_check.cpp.o: ../tests/stl/equals_check.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object tests/CMakeFiles/tests.dir/stl/equals_check.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object tests/CMakeFiles/tests.dir/stl/equals_check.cpp.o"
 	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/stl/equals_check.cpp.o -c "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/equals_check.cpp"
 
 tests/CMakeFiles/tests.dir/stl/equals_check.cpp.i: cmake_force
@@ -227,7 +251,7 @@ tests/CMakeFiles/tests.dir/stl/equals_check.cpp.o.provides.build: tests/CMakeFil
 
 tests/CMakeFiles/tests.dir/stl/hash_check.cpp.o: tests/CMakeFiles/tests.dir/flags.make
 tests/CMakeFiles/tests.dir/stl/hash_check.cpp.o: ../tests/stl/hash_check.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object tests/CMakeFiles/tests.dir/stl/hash_check.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object tests/CMakeFiles/tests.dir/stl/hash_check.cpp.o"
 	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/stl/hash_check.cpp.o -c "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/hash_check.cpp"
 
 tests/CMakeFiles/tests.dir/stl/hash_check.cpp.i: cmake_force
@@ -251,7 +275,7 @@ tests/CMakeFiles/tests.dir/stl/hash_check.cpp.o.provides.build: tests/CMakeFiles
 
 tests/CMakeFiles/tests.dir/stl/heap_check.cpp.o: tests/CMakeFiles/tests.dir/flags.make
 tests/CMakeFiles/tests.dir/stl/heap_check.cpp.o: ../tests/stl/heap_check.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object tests/CMakeFiles/tests.dir/stl/heap_check.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object tests/CMakeFiles/tests.dir/stl/heap_check.cpp.o"
 	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/stl/heap_check.cpp.o -c "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/heap_check.cpp"
 
 tests/CMakeFiles/tests.dir/stl/heap_check.cpp.i: cmake_force
@@ -273,33 +297,33 @@ tests/CMakeFiles/tests.dir/stl/heap_check.cpp.o.provides: tests/CMakeFiles/tests
 tests/CMakeFiles/tests.dir/stl/heap_check.cpp.o.provides.build: tests/CMakeFiles/tests.dir/stl/heap_check.cpp.o
 
 
-tests/CMakeFiles/tests.dir/stl/list_check.cpp.o: tests/CMakeFiles/tests.dir/flags.make
-tests/CMakeFiles/tests.dir/stl/list_check.cpp.o: ../tests/stl/list_check.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object tests/CMakeFiles/tests.dir/stl/list_check.cpp.o"
-	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/stl/list_check.cpp.o -c "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/list_check.cpp"
+tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.o: tests/CMakeFiles/tests.dir/flags.make
+tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.o: ../tests/stl/linked_list_check.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.o"
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/stl/linked_list_check.cpp.o -c "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/linked_list_check.cpp"
 
-tests/CMakeFiles/tests.dir/stl/list_check.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tests.dir/stl/list_check.cpp.i"
-	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/list_check.cpp" > CMakeFiles/tests.dir/stl/list_check.cpp.i
+tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tests.dir/stl/linked_list_check.cpp.i"
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/linked_list_check.cpp" > CMakeFiles/tests.dir/stl/linked_list_check.cpp.i
 
-tests/CMakeFiles/tests.dir/stl/list_check.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tests.dir/stl/list_check.cpp.s"
-	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/list_check.cpp" -o CMakeFiles/tests.dir/stl/list_check.cpp.s
+tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tests.dir/stl/linked_list_check.cpp.s"
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/linked_list_check.cpp" -o CMakeFiles/tests.dir/stl/linked_list_check.cpp.s
 
-tests/CMakeFiles/tests.dir/stl/list_check.cpp.o.requires:
+tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.o.requires:
 
-.PHONY : tests/CMakeFiles/tests.dir/stl/list_check.cpp.o.requires
+.PHONY : tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.o.requires
 
-tests/CMakeFiles/tests.dir/stl/list_check.cpp.o.provides: tests/CMakeFiles/tests.dir/stl/list_check.cpp.o.requires
-	$(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/list_check.cpp.o.provides.build
-.PHONY : tests/CMakeFiles/tests.dir/stl/list_check.cpp.o.provides
+tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.o.provides: tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.o.requires
+	$(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.o.provides.build
+.PHONY : tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.o.provides
 
-tests/CMakeFiles/tests.dir/stl/list_check.cpp.o.provides.build: tests/CMakeFiles/tests.dir/stl/list_check.cpp.o
+tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.o.provides.build: tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.o
 
 
 tests/CMakeFiles/tests.dir/stl/open_map_check.cpp.o: tests/CMakeFiles/tests.dir/flags.make
 tests/CMakeFiles/tests.dir/stl/open_map_check.cpp.o: ../tests/stl/open_map_check.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object tests/CMakeFiles/tests.dir/stl/open_map_check.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object tests/CMakeFiles/tests.dir/stl/open_map_check.cpp.o"
 	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/stl/open_map_check.cpp.o -c "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/open_map_check.cpp"
 
 tests/CMakeFiles/tests.dir/stl/open_map_check.cpp.i: cmake_force
@@ -323,7 +347,7 @@ tests/CMakeFiles/tests.dir/stl/open_map_check.cpp.o.provides.build: tests/CMakeF
 
 tests/CMakeFiles/tests.dir/stl/pair_check.cpp.o: tests/CMakeFiles/tests.dir/flags.make
 tests/CMakeFiles/tests.dir/stl/pair_check.cpp.o: ../tests/stl/pair_check.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object tests/CMakeFiles/tests.dir/stl/pair_check.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object tests/CMakeFiles/tests.dir/stl/pair_check.cpp.o"
 	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/stl/pair_check.cpp.o -c "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/pair_check.cpp"
 
 tests/CMakeFiles/tests.dir/stl/pair_check.cpp.i: cmake_force
@@ -345,9 +369,33 @@ tests/CMakeFiles/tests.dir/stl/pair_check.cpp.o.provides: tests/CMakeFiles/tests
 tests/CMakeFiles/tests.dir/stl/pair_check.cpp.o.provides.build: tests/CMakeFiles/tests.dir/stl/pair_check.cpp.o
 
 
+tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.o: tests/CMakeFiles/tests.dir/flags.make
+tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.o: ../tests/stl/red_black_tree_check.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.o"
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.o -c "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/red_black_tree_check.cpp"
+
+tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.i"
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/red_black_tree_check.cpp" > CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.i
+
+tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.s"
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/red_black_tree_check.cpp" -o CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.s
+
+tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.o.requires:
+
+.PHONY : tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.o.requires
+
+tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.o.provides: tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.o.requires
+	$(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.o.provides.build
+.PHONY : tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.o.provides
+
+tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.o.provides.build: tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.o
+
+
 tests/CMakeFiles/tests.dir/stl/tuple_check.cpp.o: tests/CMakeFiles/tests.dir/flags.make
 tests/CMakeFiles/tests.dir/stl/tuple_check.cpp.o: ../tests/stl/tuple_check.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object tests/CMakeFiles/tests.dir/stl/tuple_check.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object tests/CMakeFiles/tests.dir/stl/tuple_check.cpp.o"
 	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/stl/tuple_check.cpp.o -c "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/stl/tuple_check.cpp"
 
 tests/CMakeFiles/tests.dir/stl/tuple_check.cpp.i: cmake_force
@@ -371,7 +419,7 @@ tests/CMakeFiles/tests.dir/stl/tuple_check.cpp.o.provides.build: tests/CMakeFile
 
 tests/CMakeFiles/tests.dir/fsm/fsm_check.cpp.o: tests/CMakeFiles/tests.dir/flags.make
 tests/CMakeFiles/tests.dir/fsm/fsm_check.cpp.o: ../tests/fsm/fsm_check.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object tests/CMakeFiles/tests.dir/fsm/fsm_check.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object tests/CMakeFiles/tests.dir/fsm/fsm_check.cpp.o"
 	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/fsm/fsm_check.cpp.o -c "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/fsm/fsm_check.cpp"
 
 tests/CMakeFiles/tests.dir/fsm/fsm_check.cpp.i: cmake_force
@@ -395,7 +443,7 @@ tests/CMakeFiles/tests.dir/fsm/fsm_check.cpp.o.provides.build: tests/CMakeFiles/
 
 tests/CMakeFiles/tests.dir/memory/memory_check.cpp.o: tests/CMakeFiles/tests.dir/flags.make
 tests/CMakeFiles/tests.dir/memory/memory_check.cpp.o: ../tests/memory/memory_check.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object tests/CMakeFiles/tests.dir/memory/memory_check.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object tests/CMakeFiles/tests.dir/memory/memory_check.cpp.o"
 	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/memory/memory_check.cpp.o -c "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/tests/memory/memory_check.cpp"
 
 tests/CMakeFiles/tests.dir/memory/memory_check.cpp.i: cmake_force
@@ -421,6 +469,7 @@ tests/CMakeFiles/tests.dir/memory/memory_check.cpp.o.provides.build: tests/CMake
 tests_OBJECTS = \
 "CMakeFiles/tests.dir/test.cpp.o" \
 "CMakeFiles/tests.dir/strings/static_string_check.cpp.o" \
+"CMakeFiles/tests.dir/stl/array_list_check.cpp.o" \
 "CMakeFiles/tests.dir/stl/bitset_check.cpp.o" \
 "CMakeFiles/tests.dir/stl/chain_map_check.cpp.o" \
 "CMakeFiles/tests.dir/stl/comparator_check.cpp.o" \
@@ -428,9 +477,10 @@ tests_OBJECTS = \
 "CMakeFiles/tests.dir/stl/equals_check.cpp.o" \
 "CMakeFiles/tests.dir/stl/hash_check.cpp.o" \
 "CMakeFiles/tests.dir/stl/heap_check.cpp.o" \
-"CMakeFiles/tests.dir/stl/list_check.cpp.o" \
+"CMakeFiles/tests.dir/stl/linked_list_check.cpp.o" \
 "CMakeFiles/tests.dir/stl/open_map_check.cpp.o" \
 "CMakeFiles/tests.dir/stl/pair_check.cpp.o" \
+"CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.o" \
 "CMakeFiles/tests.dir/stl/tuple_check.cpp.o" \
 "CMakeFiles/tests.dir/fsm/fsm_check.cpp.o" \
 "CMakeFiles/tests.dir/memory/memory_check.cpp.o"
@@ -440,6 +490,7 @@ tests_EXTERNAL_OBJECTS =
 
 tests/tests.exe: tests/CMakeFiles/tests.dir/test.cpp.o
 tests/tests.exe: tests/CMakeFiles/tests.dir/strings/static_string_check.cpp.o
+tests/tests.exe: tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.o
 tests/tests.exe: tests/CMakeFiles/tests.dir/stl/bitset_check.cpp.o
 tests/tests.exe: tests/CMakeFiles/tests.dir/stl/chain_map_check.cpp.o
 tests/tests.exe: tests/CMakeFiles/tests.dir/stl/comparator_check.cpp.o
@@ -447,9 +498,10 @@ tests/tests.exe: tests/CMakeFiles/tests.dir/stl/concept_check.cpp.o
 tests/tests.exe: tests/CMakeFiles/tests.dir/stl/equals_check.cpp.o
 tests/tests.exe: tests/CMakeFiles/tests.dir/stl/hash_check.cpp.o
 tests/tests.exe: tests/CMakeFiles/tests.dir/stl/heap_check.cpp.o
-tests/tests.exe: tests/CMakeFiles/tests.dir/stl/list_check.cpp.o
+tests/tests.exe: tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.o
 tests/tests.exe: tests/CMakeFiles/tests.dir/stl/open_map_check.cpp.o
 tests/tests.exe: tests/CMakeFiles/tests.dir/stl/pair_check.cpp.o
+tests/tests.exe: tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.o
 tests/tests.exe: tests/CMakeFiles/tests.dir/stl/tuple_check.cpp.o
 tests/tests.exe: tests/CMakeFiles/tests.dir/fsm/fsm_check.cpp.o
 tests/tests.exe: tests/CMakeFiles/tests.dir/memory/memory_check.cpp.o
@@ -457,7 +509,7 @@ tests/tests.exe: tests/CMakeFiles/tests.dir/build.make
 tests/tests.exe: include/gtest-1.8.0/libgtest.a
 tests/tests.exe: lib/wlib/libwlib.a
 tests/tests.exe: tests/CMakeFiles/tests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable tests.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable tests.exe"
 	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build/tests" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -467,6 +519,7 @@ tests/CMakeFiles/tests.dir/build: tests/tests.exe
 
 tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/test.cpp.o.requires
 tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/strings/static_string_check.cpp.o.requires
+tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.o.requires
 tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/stl/bitset_check.cpp.o.requires
 tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/stl/chain_map_check.cpp.o.requires
 tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/stl/comparator_check.cpp.o.requires
@@ -474,9 +527,10 @@ tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/stl/concept_chec
 tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/stl/equals_check.cpp.o.requires
 tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/stl/hash_check.cpp.o.requires
 tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/stl/heap_check.cpp.o.requires
-tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/stl/list_check.cpp.o.requires
+tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.o.requires
 tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/stl/open_map_check.cpp.o.requires
 tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/stl/pair_check.cpp.o.requires
+tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.o.requires
 tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/stl/tuple_check.cpp.o.requires
 tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/fsm/fsm_check.cpp.o.requires
 tests/CMakeFiles/tests.dir/requires: tests/CMakeFiles/tests.dir/memory/memory_check.cpp.o.requires

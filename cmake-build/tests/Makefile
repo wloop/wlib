@@ -236,6 +236,33 @@ memory/memory_check.cpp.s:
 	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build" && $(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/memory/memory_check.cpp.s
 .PHONY : memory/memory_check.cpp.s
 
+stl/array_list_check.o: stl/array_list_check.cpp.o
+
+.PHONY : stl/array_list_check.o
+
+# target to build an object file
+stl/array_list_check.cpp.o:
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build" && $(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.o
+.PHONY : stl/array_list_check.cpp.o
+
+stl/array_list_check.i: stl/array_list_check.cpp.i
+
+.PHONY : stl/array_list_check.i
+
+# target to preprocess a source file
+stl/array_list_check.cpp.i:
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build" && $(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.i
+.PHONY : stl/array_list_check.cpp.i
+
+stl/array_list_check.s: stl/array_list_check.cpp.s
+
+.PHONY : stl/array_list_check.s
+
+# target to generate assembly for a file
+stl/array_list_check.cpp.s:
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build" && $(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/array_list_check.cpp.s
+.PHONY : stl/array_list_check.cpp.s
+
 stl/bitset_check.o: stl/bitset_check.cpp.o
 
 .PHONY : stl/bitset_check.o
@@ -425,32 +452,32 @@ stl/heap_check.cpp.s:
 	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build" && $(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/heap_check.cpp.s
 .PHONY : stl/heap_check.cpp.s
 
-stl/list_check.o: stl/list_check.cpp.o
+stl/linked_list_check.o: stl/linked_list_check.cpp.o
 
-.PHONY : stl/list_check.o
+.PHONY : stl/linked_list_check.o
 
 # target to build an object file
-stl/list_check.cpp.o:
-	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build" && $(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/list_check.cpp.o
-.PHONY : stl/list_check.cpp.o
+stl/linked_list_check.cpp.o:
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build" && $(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.o
+.PHONY : stl/linked_list_check.cpp.o
 
-stl/list_check.i: stl/list_check.cpp.i
+stl/linked_list_check.i: stl/linked_list_check.cpp.i
 
-.PHONY : stl/list_check.i
+.PHONY : stl/linked_list_check.i
 
 # target to preprocess a source file
-stl/list_check.cpp.i:
-	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build" && $(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/list_check.cpp.i
-.PHONY : stl/list_check.cpp.i
+stl/linked_list_check.cpp.i:
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build" && $(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.i
+.PHONY : stl/linked_list_check.cpp.i
 
-stl/list_check.s: stl/list_check.cpp.s
+stl/linked_list_check.s: stl/linked_list_check.cpp.s
 
-.PHONY : stl/list_check.s
+.PHONY : stl/linked_list_check.s
 
 # target to generate assembly for a file
-stl/list_check.cpp.s:
-	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build" && $(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/list_check.cpp.s
-.PHONY : stl/list_check.cpp.s
+stl/linked_list_check.cpp.s:
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build" && $(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/linked_list_check.cpp.s
+.PHONY : stl/linked_list_check.cpp.s
 
 stl/open_map_check.o: stl/open_map_check.cpp.o
 
@@ -505,6 +532,33 @@ stl/pair_check.s: stl/pair_check.cpp.s
 stl/pair_check.cpp.s:
 	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build" && $(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/pair_check.cpp.s
 .PHONY : stl/pair_check.cpp.s
+
+stl/red_black_tree_check.o: stl/red_black_tree_check.cpp.o
+
+.PHONY : stl/red_black_tree_check.o
+
+# target to build an object file
+stl/red_black_tree_check.cpp.o:
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build" && $(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.o
+.PHONY : stl/red_black_tree_check.cpp.o
+
+stl/red_black_tree_check.i: stl/red_black_tree_check.cpp.i
+
+.PHONY : stl/red_black_tree_check.i
+
+# target to preprocess a source file
+stl/red_black_tree_check.cpp.i:
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build" && $(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.i
+.PHONY : stl/red_black_tree_check.cpp.i
+
+stl/red_black_tree_check.s: stl/red_black_tree_check.cpp.s
+
+.PHONY : stl/red_black_tree_check.s
+
+# target to generate assembly for a file
+stl/red_black_tree_check.cpp.s:
+	cd "/cygdrive/d/Code/Waterloop/Goose 3/embedded-cplusplus/cmake-build" && $(MAKE) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/stl/red_black_tree_check.cpp.s
+.PHONY : stl/red_black_tree_check.cpp.s
 
 stl/tuple_check.o: stl/tuple_check.cpp.o
 
@@ -607,6 +661,9 @@ help:
 	@echo "... memory/memory_check.o"
 	@echo "... memory/memory_check.i"
 	@echo "... memory/memory_check.s"
+	@echo "... stl/array_list_check.o"
+	@echo "... stl/array_list_check.i"
+	@echo "... stl/array_list_check.s"
 	@echo "... stl/bitset_check.o"
 	@echo "... stl/bitset_check.i"
 	@echo "... stl/bitset_check.s"
@@ -628,15 +685,18 @@ help:
 	@echo "... stl/heap_check.o"
 	@echo "... stl/heap_check.i"
 	@echo "... stl/heap_check.s"
-	@echo "... stl/list_check.o"
-	@echo "... stl/list_check.i"
-	@echo "... stl/list_check.s"
+	@echo "... stl/linked_list_check.o"
+	@echo "... stl/linked_list_check.i"
+	@echo "... stl/linked_list_check.s"
 	@echo "... stl/open_map_check.o"
 	@echo "... stl/open_map_check.i"
 	@echo "... stl/open_map_check.s"
 	@echo "... stl/pair_check.o"
 	@echo "... stl/pair_check.i"
 	@echo "... stl/pair_check.s"
+	@echo "... stl/red_black_tree_check.o"
+	@echo "... stl/red_black_tree_check.i"
+	@echo "... stl/red_black_tree_check.s"
 	@echo "... stl/tuple_check.o"
 	@echo "... stl/tuple_check.i"
 	@echo "... stl/tuple_check.s"

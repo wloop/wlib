@@ -41,14 +41,14 @@ TEST(memory_check, general_usability) {
     ASSERT_NE(getTotalMemoryAvailable(), getTotalMemoryAvailable() - getTotalMemoryUsed());
 
     // allocate 2 characters
-    auto *character2 = malloc<char>(2);
+    auto *character2 = malloc<char[]>(2);
 
     // free all of them
     free(character);
     free(character2);
 
     // allocate 4 characters
-    auto *character4 = malloc<char>(4);
+    auto *character4 = malloc<char[]>(4);
 
     // reallocate
     character4 = realloc(character4, 8);
@@ -65,45 +65,67 @@ TEST(memory_check, general_usability) {
     ASSERT_EQ(getTotalMemoryAvailable(), getTotalMemoryAvailable() - getTotalMemoryUsed());
 }
 
-TEST(memory_check, malloc_and_realloc){
-    int *v = malloc<int>(75);
-    *v = 75;
+TEST(memory_check, malloc_realloc_and_calloc){
+    int *v = malloc<int[]>(75);
+    v[0] = 75;
+    v[1] = 175;
+    v[2] = 375;
+
     int *v2 = malloc<int>();
-    *v2 = 68;
+    v2[0] = 68;
 
-    v2 = realloc(v2);
-    ASSERT_EQ(68, *v2);
+    v = realloc(v, 2);
+    ASSERT_EQ(75, v[0]);
+    ASSERT_EQ(175, v[1]);
 
-    v2 = realloc(v2, 15);
-    ASSERT_EQ(68, *v2);
-
-    v2 = realloc(v, 15);
-    ASSERT_EQ(75, *v2);
+    v2 = realloc(v2, 4);
+    ASSERT_EQ(68, v2[0]);
 
     v2 = realloc(v2, 0);
     ASSERT_EQ(nullptr, v2);
 
+    char *v3 = calloc<char[]>(2);
+    ASSERT_EQ('\0', v3[0]);
+    ASSERT_EQ('\0', v3[1]);
+
+    uint16_t *v4 = calloc<uint16_t []>(2);
+    ASSERT_EQ(0u, v4[0]);
+    ASSERT_EQ(0u, v4[1]);
+
+    uint32_t *v5 = calloc<uint32_t>();
+    ASSERT_EQ(0u, v5[0]);
+
+    char *v6 = calloc<char>();
+    ASSERT_EQ('\0', v6[0]);
+
     free(v);
     free(v2);
+    free(v3);
+    free(v4);
+    free(v5);
+    free(v6);
 }
 
 TEST(memory_check, array_allocation){
     Sample::constr = 0;
 
-    Sample *s = malloc<Sample>(2);
+    Sample *s = malloc<Sample[]>(2);
     ASSERT_EQ(8, Sample::constr);
 
+    Sample *d = arg_array_malloc<Sample[]>(3, "hello");
+    ASSERT_EQ(14, Sample::constr);
+
+    free(d);
+    ASSERT_EQ(29, Sample::constr);
     free(s);
-    ASSERT_EQ(18, Sample::constr);
+    ASSERT_EQ(39, Sample::constr);
 }
 
 TEST(memory_check, free){
-    free(nullptr);
-
     int *g = malloc<int>(7);
-    free(g);
-    int *l = malloc<int>(7);
-    ASSERT_EQ(l, g);
-    free(g);
-}
+    free<int>(g);
+    ASSERT_EQ(nullptr, g);
 
+    free<int>(g);
+    ASSERT_EQ(nullptr, g);
+}
