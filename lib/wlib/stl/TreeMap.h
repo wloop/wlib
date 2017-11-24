@@ -43,8 +43,8 @@ namespace wlp {
         table_type m_tree;
 
     public:
-        explicit TreeMap(size_type n = 12)
-                : m_tree(n) {
+        explicit TreeMap()
+                : m_tree() {
         }
 
         TreeMap(const map_type &) = delete;
@@ -134,8 +134,9 @@ namespace wlp {
             return m_tree.find(key);
         }
 
-        val_type &operator[](const key_type &key) {
-            Pair<iterator, bool> result = m_tree.insert_unique(key, val_type());
+        template<typename K>
+        val_type &operator[](K &&key) {
+            Pair<iterator, bool> result = m_tree.insert_unique(forward<K>(key), val_type());
             return *result.m_first;
         }
 

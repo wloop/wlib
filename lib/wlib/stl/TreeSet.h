@@ -39,8 +39,8 @@ namespace wlp {
         table_type m_tree;
 
     public:
-        explicit TreeSet(size_type n = 12)
-                : m_tree(n) {
+        explicit TreeSet()
+                : m_tree() {
         }
 
         TreeSet(const set_type &) = delete;
@@ -102,10 +102,11 @@ namespace wlp {
             return m_tree.find(key);
         }
 
-        iterator &erase(iterator &pos) {
-            iterator tmp = pos++;
-            m_tree.erase(tmp);
-            return pos;
+        iterator erase(const iterator &pos) {
+            iterator tmp = pos;
+            ++tmp;
+            m_tree.erase(pos);
+            return tmp;
         }
 
         bool erase(const key_type &key) {
