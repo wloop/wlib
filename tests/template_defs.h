@@ -9,6 +9,8 @@
 #include "stl/OpenMap.h"
 #include "stl/ArrayHeap.h"
 #include "stl/LinkedList.h"
+#include "stl/UniquePtr.h"
+#include "stl/SharedPtr.h"
 
 namespace wlp {
     template
@@ -170,8 +172,13 @@ namespace wlp {
     template
     struct LinkedListIterator<int, const int &, const int *>;
 
-    //template
-    //class UniquePtr<int>;
+    template
+    class UniquePtr<int>;
+
+
+    template class SharedPtr<int>;
+
+    template class WeakPtr<int>;
 
 }
 

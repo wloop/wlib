@@ -6,28 +6,13 @@ using namespace wlp;
 
 static int __constructs;
 static int __deconstructs;
-static int __del_calls;
 static int __assignments;
 
 void __reset_test() {
-    __del_calls = 0;
     __constructs = 0;
     __deconstructs = 0;
     __assignments = 0;
 }
-
-template<typename __T>
-struct __TestDeleter {
-
-    __TestDeleter() {}
-
-
-    void operator()(__T *__ptr) {
-        free<__T>(__ptr);
-        ++__del_calls;
-    }
-
-};
 
 struct __TestObject {
 
@@ -76,41 +61,29 @@ TEST(unique_ptr_test, test_default_ctor) {
 
 TEST(unique_ptr_test, test_custom_deleter_move_ctor) {
     __reset_test();
-    UniquePtr<__TestObject, __TestDeleter<__TestObject>> ptr = UniquePtr<
-            __TestObject, __TestDeleter<__TestObject>
-    >(malloc<__TestObject>(), __TestDeleter<__TestObject>());
+    UniquePtr<__TestObject> ptr = UniquePtr<__TestObject>(malloc<__TestObject>());
     ASSERT_EQ(1, __constructs);
     ptr->value = 10;
     ASSERT_EQ(10, ptr->value);
     ptr.reset();
     ASSERT_EQ(1, __deconstructs);
-    ASSERT_EQ(1, __del_calls);
 }
 
 TEST(unique_ptr_test, test_deleter_ctor) {
     __reset_test();
-    using deleter_type = __TestDeleter<const char *>;
-    deleter_type deleter;
-    UniquePtr<const char *, deleter_type> cstr_ptr = UniquePtr<
-            const char *, deleter_type
-    >(malloc<const char *>(), deleter);
+    UniquePtr<const char *> cstr_ptr = UniquePtr<const char *>(malloc<const char *>());
     const char *string = "Stars, hide your fires; Let not "
             "light see my black and deep desires";
     *cstr_ptr = string;
     ASSERT_STREQ(string, *cstr_ptr);
     cstr_ptr.reset(malloc<const char *>());
-    ASSERT_EQ(1, __del_calls);
-    cstr_ptr = UniquePtr<
-            const char *, deleter_type
-    >(malloc<const char *>(), deleter);
-    ASSERT_EQ(2, __del_calls);
+    cstr_ptr = UniquePtr<const char *>(malloc<const char *>());
 }
 
 TEST(unique_ptr_test, test_array_ptr) {
     __reset_test();
     using obj = __TestObject;
-    using deleter = __TestDeleter<obj>;
-    UniquePtr<obj[], deleter> arr = UniquePtr<obj[], deleter>(malloc<obj>(5));
+    UniquePtr<obj[]> arr = UniquePtr<obj[]>(malloc<obj[]>(5));
     // malloc should call constructor
     ASSERT_EQ(5, __constructs);
     int values[] = {1, 2, 3, 4, 5};
@@ -126,14 +99,12 @@ TEST(unique_ptr_test, test_array_ptr) {
         ASSERT_EQ(values[i], arr.operator[](i).value);
     }
     arr.reset(malloc<obj>());
-    ASSERT_EQ(1, __del_calls);
     ASSERT_EQ(10, __deconstructs);
     ASSERT_EQ(11, __constructs);
     arr.operator[](0).value = 10;
     obj *ptr = arr.release();
     free<obj>(ptr);
     ASSERT_EQ(11, __deconstructs);
-    ASSERT_EQ(1, __del_calls);
 }
 
 TEST(unique_ptr_test, test_comparison_operators) {

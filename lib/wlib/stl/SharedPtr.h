@@ -1,3 +1,19 @@
+/**
+ * @file SharedPtr.h
+ * @brief Shared pointer implementation.
+ *
+ * Implementation of a shared pointer class, many of which may have
+ * ownership of the same underlying pointer, and which intelligently
+ * disposes of the pointer.
+ *
+ * The implementation is not thread-safe, and is assuming single-threaded
+ * use on Arduino.
+ *
+ * @author Jeff Niu
+ * @date November 24, 2017
+ * @bug No known bugs
+ */
+
 #ifndef EMBEDDEDCPLUSPLUS_SHAREDPTR_H
 #define EMBEDDEDCPLUSPLUS_SHAREDPTR_H
 
@@ -6,91 +22,159 @@
 #include "../Types.h"
 #include "../utility/Tmp.h"
 #include "../utility/Utility.h"
-//#include "../utility/Utility.h"
 
 namespace wlp {
 
-    typedef int16_t ptr_use_count;
+    /**
+     * This class tracks the number of weak references and strong references
+     * to an underlying pointer. That is, the number of weak pointers and
+     * shared pointers which refer to the managed pointer, respectively.
+     *
+     * This class is dynamically allocated by using classes once per managed
+     * pointer and is shared between all classes which refer to the managed pointer.
+     * The class frees the managed pointer when there are no more strong references
+     * to the pointer and destroys itself when there are no references at all.
+     *
+     * @tparam Ptr
+     */
+    template<typename Ptr>
+    class ReferenceCount {
+    public:
+        typedef uint16_t ptr_use_count;
+        typedef Ptr pointer;
 
-    static inline ptr_use_count __exchange_add(ptr_use_count *mem, int16_t val) {
-        ptr_use_count res = *mem;
-        *mem += val;
-        return res;
-    }
-
-    static inline void __add(ptr_use_count *mem, int16_t val) {
-        *mem += val;
-    }
-
-    class __BaseCount {
+    private:
+        /**
+         * The number of shared pointers which claim ownership
+         * of the underlying pointer.
+         */
         ptr_use_count m_use_count;
+        /**
+         * The number of weak pointers which have a view
+         * of the underlying pointer.
+         */
         ptr_use_count m_weak_count;
+        /**
+         * The managed underlying pointer. This class cannot
+         * be used to access the pointe directly; it only
+         * has a copy to manage its deletion.
+         */
+        pointer m_ptr;
 
     public:
-        __BaseCount()
+        /**
+         * A reference count is created with a copy of the underlying pointer
+         * and with the use count and weak count set to 1. There is always
+         * exactly one shared pointer referring to the pointer when this class
+         * is constructed for the first time. The choice of 1 for weak count
+         * is to avoid underflow.
+         *
+         * @param ptr the underlying pointer
+         */
+        ReferenceCount(pointer ptr)
                 : m_use_count(1),
-                  m_weak_count(1) {
+                  m_weak_count(1),
+                  m_ptr(ptr) {}
+
+        ~ReferenceCount() {}
+
+        /**
+         * Free the underlying pointer.
+         */
+        void dispose() {
+            free(m_ptr);
         }
 
-        virtual ~__BaseCount() {
+        /**
+         * Destroy the reference count instance.
+         * The instance must be dynamically allocated.
+         */
+        void destroy() {
+            free(this);
         }
 
-        virtual void dispose() = 0;
-
-        virtual void destroy() {
-            delete this;
+        /**
+         * A shared pointer has been copied through construction
+         * or assignment, thus increment the use count.
+         */
+        void add_copied_reference() {
+            ++m_use_count;
         }
 
-        virtual void *get_deleter() = 0;
-
-        void add_ref_copy() {
-            __add(&m_use_count, 1);
-        }
-
-        void add_ref_lock() {
-            if (__exchange_add(&m_use_count, 1) == 0) {
+        /**
+         * A weak pointer is locking its reference to the
+         * underlying pointer, but if the actual strong reference
+         * count is zero, then the underlying pointer has expired.
+         */
+        void add_locked_reference() {
+            if (exchange_and_add<ptr_use_count>(&m_use_count, 1) == 0) {
                 m_use_count = 0;
                 // Bad weak pointer
             }
         }
 
+        /**
+         * Method called when a strong reference is releasing ownership
+         * of the underlying pointer. If all strong references have been
+         * released, then the underlying pointer is freed. If there are
+         * no more weak references, then this object is also destroyed.
+         */
         void release() {
-            if (__exchange_add(&m_use_count, -1) == 1) {
+            if (exchange_and_sub<ptr_use_count>(&m_use_count, 1) == 1) {
                 dispose();
-                if (__exchange_add(&m_weak_count, -1) == 1) {
+                if (exchange_and_sub<ptr_use_count>(&m_weak_count, 1) == 1) {
                     destroy();
                 }
             }
         }
 
-        void add_weak_ref() {
-            __add(&m_weak_count, 1);
+        /**
+         * A weak reference has been created to the underlying pointer,
+         * that reference must be locked before accessing the pointer, thus
+         * increment the weak reference count.
+         */
+        void add_weak_reference() {
+            ++m_weak_count;
         }
 
+        /**
+         * Method called when a weak reference is releasing its temporary
+         * ownership of the underlying pointer. If the weak reference is the
+         * last remaining reference which claims ownership of the (now-expired)
+         * underlying pointer, then this object is subsequently destroyed.
+         */
         void weak_release() {
-            if (__exchange_add(&m_weak_count, -1) == 1) {
+            if (exchange_and_sub<ptr_use_count>(&m_weak_count, 1) == 1) {
                 destroy();
             }
         }
 
-        int16_t get_use_count() const {
+        /**
+         * @return the number of active strong references
+         */
+        ptr_use_count use_count() const {
             return m_use_count;
         }
 
-    private:
-        __BaseCount(const __BaseCount &) = delete;
+        /**
+         * @return the number of active weak references
+         */
+        ptr_use_count weak_count() const {
+            return m_weak_count;
+        }
 
-        __BaseCount &operator=(const __BaseCount &) = delete;
+    private:
+        ReferenceCount(const ReferenceCount &) = delete;
+
+        ReferenceCount &operator=(const ReferenceCount &) = delete;
     };
 
-    template<typename T>
-    class __SharedPtr;
-
-    template<typename T>
-    class __WeakPtr;
-
-    template<typename T>
-    class __EnableSharedFromThis;
+    /**
+     * Specialization for null pointers which avoid freeing
+     * null pointers upon destruction.
+     */
+    template<>
+    inline void ReferenceCount<nullptr_t>::dispose() {}
 
     template<typename T>
     class SharedPtr;
@@ -98,335 +182,568 @@ namespace wlp {
     template<typename T>
     class WeakPtr;
 
-    template<typename T>
-    struct Ownerless;
-
-    template<typename T>
-    struct EnableSharedFromThis;
-
-    class __WeakCount;
-
-    class __SharedCount;
+    template<typename Ptr>
+    class SharedCount;
 
     template<typename Ptr>
-    class __CountedPtr : public __BaseCount {
+    class WeakCount;
+
+    /**
+     * This class is responsible for managing a reference count
+     * object shared among all classes which refer to the same
+     * underlying pointer, for shared pointers.
+     *
+     * @tparam Ptr the type of the managed pointer
+     */
+    template<typename Ptr>
+    class SharedCount {
     public:
         typedef Ptr pointer;
-
-    protected:
-        pointer m_ptr;
-
-    public:
-        explicit __CountedPtr(pointer ptr)
-                : m_ptr(ptr) {
-        }
-
-        virtual void dispose() {
-            delete m_ptr;
-        }
-
-        virtual void destroy() {
-            delete this;
-        }
-
-        virtual void *get_deleter() {
-            return nullptr;
-        }
+        typedef typename ReferenceCount<Ptr>::ptr_use_count ptr_use_count;
 
     private:
-        __CountedPtr(const __CountedPtr &) = delete;
+        friend class WeakCount<Ptr>;
 
-        __CountedPtr *operator=(const __CountedPtr &) = delete;
-    };
-
-    template<>
-    inline void __CountedPtr<nullptr_t>::dispose() {
-    }
-
-    template<typename Ptr, typename DeleterType, typename AllocType>
-    class __CountedDeleter : public __BaseCount {
-    public:
-        typedef Ptr pointer;
-        typedef DeleterType deleter_type;
-        typedef AllocType alloc_type;
-
-    protected:
-        pointer m_ptr;
-        deleter_type m_deleter;
-        alloc_type m_alloc;
+        ReferenceCount<Ptr> *m_pi;
 
     public:
-        __CountedDeleter(pointer ptr, deleter_type deleter)
-                : m_ptr(ptr),
-                  m_deleter(deleter),
-                  m_alloc(alloc_type()) {
-        }
+        constexpr SharedCount()
+                : m_pi(nullptr) {}
 
-        __CountedDeleter(pointer ptr, deleter_type deleter, const alloc_type &alloc)
-                : m_ptr(ptr),
-                  m_deleter(deleter),
-                  m_alloc(alloc) {
-        }
-
-        virtual void dispose() {
-            m_deleter(m_ptr);
-        }
-
-        virtual void destroy() {
-            alloc_type alloc(m_alloc);
-            this->~__CountedDeleter();
-            alloc.deallocate(this, 1);
-        }
-
-        virtual void *get_deleter() {
-            return &m_deleter;
-        }
-    };
-
-    template<typename T>
-    struct __DestroyInplace {
-        void operator()(T *ptr) const {
-            if (ptr) {
-                ptr->~T();
-            }
-        }
-    };
-
-    struct __MakeSharedTag {
-    };
-
-    template<typename T, typename Alloc>
-    class __CountedPtrInplace : public __CountedDeleter<T *, __DestroyInplace<T>, Alloc> {
-    public:
-        typedef T val_type;
-        typedef Alloc alloc_type;
-
-    private:
-        typedef __CountedDeleter<T *, __DestroyInplace<T>, Alloc> base_type;
-
-        typename aligned_storage<sizeof(T), alignment_of<T>::value>::type m_storage;
-
-    public:
-        explicit __CountedPtrInplace(alloc_type alloc)
-                : base_type(nullptr, __DestroyInplace<T>(), alloc),
-                  m_storage() {
-            void *ptr = &m_storage;
-            ::new(ptr) T();
-            base_type::m_ptr = static_cast<T *>(ptr);
-        }
-
-        template<typename... Args>
-        __CountedPtrInplace(alloc_type alloc, Args &&... args)
-                : base_type(nullptr, __DestroyInplace<T>(), alloc),
-                  m_storage() {
-            void *ptr = &m_storage;
-            ::new(ptr) T(forward<Args>(args)...);
-            base_type::m_ptr = static_cast<T *>(ptr);
-        }
-
-        virtual void destroy() {
-            alloc_type alloc(base_type::m_alloc);
-            this->~__CountedPtrInplace();
-            alloc.deallocate(this, 1);
-        }
-
-    };
-
-    class __SharedCount {
-        friend class __WeakCount;
-
-        template<typename T, typename Del>
-        static __BaseCount *create_from_unique(
-                UniquePtr<T, Del> &&up,
-                typename enable_if<!is_referenceable<Del>::value>::type * = 0
-        ) {
-            return new __CountedDeleter<T *, Del, DefaultAlloc<T>>(up.get(), up.get_deleter());
-        };
-
-        __BaseCount *m_pi;
-
-    public:
-        constexpr __SharedCount()
+        /**
+         * Constructor called upon first creation of a strong reference
+         * to a pointer. The reference count object is created here.
+         *
+         * The caller must relinquish control of the pointer to the class,
+         * or else undefined behaviour may result.
+         *
+         * @tparam PtrType the supplied pointer type
+         * @param ptr the new underlying pointer
+         */
+        template<typename PtrType>
+        explicit SharedCount(PtrType ptr)
                 : m_pi(nullptr) {
+            m_pi = malloc<ReferenceCount<PtrType>>(ptr);
         }
 
-        template<typename Ptr>
-        explicit __SharedCount(Ptr ptr)
+        /**
+         * Constructor from a unique pointer. This class assumes ownership
+         * of the pointer managed from the unique pointer such that the latter
+         * no longer controls any pointers.
+         *
+         * @tparam U unique pointer type
+         * @param up the unique pointer to take
+         */
+        template<typename U>
+        SharedCount(UniquePtr <U> &&up)
                 : m_pi(nullptr) {
-            m_pi = new __CountedPtr<Ptr>(ptr);
-        }
-
-        template<typename Ptr, typename Del>
-        __SharedCount(Ptr ptr, Del deleter)
-                : m_pi(nullptr) {
-            typedef DefaultAlloc<int> base_alloc;
-            typedef __CountedDeleter<Ptr, Del, base_alloc> cd_type;
-            typedef DefaultAlloc<cd_type> alloc_type;
-            alloc_type alloc;
-            m_pi = alloc(1);
-            ::new(static_cast<void *>(m_pi)) cd_type(ptr, deleter);
-        };
-
-        template<typename Ptr, typename Del, typename Alloc>
-        __SharedCount(Ptr ptr, Del deleter, Alloc alloc)
-                : m_pi(nullptr) {
-            typedef __CountedDeleter<Ptr, Del, Alloc> cd_type;
-            m_pi = alloc(1);
-            ::new(static_cast<void *>(m_pi)) cd_type(ptr, deleter, alloc);
-        };
-
-        template<typename T, typename Alloc, typename... Args>
-        __SharedCount(__MakeSharedTag, T *, const Alloc &alloc, Args &&... args)
-                : m_pi(nullptr) {
-            typedef __CountedPtrInplace<T, Alloc> cp_type;
-            m_pi = alloc(1);
-            ::new(static_cast<void *>(m_pi)) cp_type(alloc, forward<Args>(args)...);
-        };
-
-        template<typename T, typename Del>
-        __SharedCount(UniquePtr<T, Del> &&up)
-                : m_pi(create_from_unique(move(up))) {
+            m_pi = malloc<ReferenceCount<U *>>(up.get());
             up.release();
-        };
-
-        explicit __SharedCount(const __WeakCount &wc)
-                : m_pi(wc.m_pi) {
-            if (m_pi != nullptr) {
-                m_pi->add_ref_lock();
-            } // else bad weak pointer
         }
 
-        ~__SharedCount() {
-            if (m_pi != nullptr) {
-                m_pi->release();
-            }
+        explicit SharedCount(const WeakCount<Ptr> &);
+
+        /**
+         * Upon destruction, the shared pointer managing
+         * this object has been destroyed, thus decrement
+         * the number of strong references. The @code release
+         * @endcode function handles freeing resources.
+         */
+        ~SharedCount() {
+            if (m_pi) { m_pi->release(); }
         }
 
-        __SharedCount(const __SharedCount &sc)
+        /**
+         * When copy-constructing this object, another reference
+         * to the underlying pointer is created, thus the reference
+         * count object has its use count incremented.
+         *
+         * @param sc shared count to copy
+         */
+        SharedCount(const SharedCount<Ptr> &sc)
                 : m_pi(sc.m_pi) {
-            if (m_pi != nullptr) {
-                m_pi->add_ref_copy();
-            }
+            if (m_pi) { m_pi->add_copied_reference(); }
         }
 
-        __SharedCount &operator=(const __SharedCount &sc) {
-            __BaseCount *tmp = sc.m_pi;
-            if (tmp != sc.m_pi) {
-                if (tmp != nullptr) {
-                    tmp->add_ref_copy();
-                }
-                if (m_pi != nullptr) {
-                    m_pi->release();
-                }
+        /**
+         * When copy-assigning this object, another reference
+         * to the underlying pointer is created, thus the reference
+         * count object has its use count incremented. If this
+         * shared count refers to a different existing pointer,
+         * that pointer has one strong reference released.
+         *
+         * @param sc shared count to copy
+         * @return reference to this shared count
+         */
+        SharedCount<Ptr> &operator=(const SharedCount<Ptr> &sc) {
+            ReferenceCount<Ptr> *tmp = sc.m_pi;
+            if (tmp != m_pi) {
+                if (tmp) { tmp->add_copied_reference(); }
+                if (m_pi) { m_pi->release(); }
                 m_pi = tmp;
             }
             return *this;
         }
 
-        void swap(__SharedCount &sc) {
-            __BaseCount *tmp = sc.m_pi;
-            sc.m_pi = m_pi;
-            m_pi = tmp;
+        void swap(SharedCount<Ptr> &sc) {
+            wlp::swap(m_pi, sc.m_pi);
         }
 
-        int16_t get_use_count() const {
-            return m_pi != nullptr ? m_pi->get_use_count() : static_cast<int16_t>(0);
+        /**
+         * @return the current number of strong references to the
+         * underlying pointer, or zero if the reference is null.
+         */
+        ptr_use_count use_count() const {
+            return m_pi ? m_pi->use_count() : static_cast<ptr_use_count>(0);
         }
 
+        /**
+         * @return whether there is exactly one shared pointer
+         * which claims ownership to the underlying pointer.
+         */
         bool unique() const {
-            return this->get_use_count() == 1;
+            return use_count() == 1;
         }
 
-        void *get_deleter() const {
-            return m_pi ? m_pi->get_deleter() : nullptr;
-        }
+        bool less(const SharedCount<Ptr> &) const;
 
-        bool less(const __SharedCount &sc) const {
-            return m_pi < sc.m_pi;
-        }
+        bool less(const WeakCount<Ptr> &) const;
 
-        bool less(const __WeakCount &wc) const {
-            return m_pi < wc.m_pi;
-        }
-
-        friend inline bool operator==(const __SharedCount& sc1, const __SharedCount& sc2) {
+        template<typename PtrType>
+        friend inline bool operator==(const SharedCount<PtrType> &sc1, const SharedCount<PtrType> &sc2) {
             return sc1.m_pi == sc2.m_pi;
         }
 
     };
 
-    class __WeakCount {
-        friend class __SharedCount;
+    /**
+     * This class is responsible for managing a reference count
+     * object that all weak references to the underlying pointer
+     * contain, for weak pointers.
+     *
+     * @tparam Ptr pointer type
+     */
+    template<typename Ptr>
+    class WeakCount {
+    public:
+        typedef Ptr pointer;
+        typedef typename ReferenceCount<Ptr>::ptr_use_count ptr_use_count;
 
-        __BaseCount *m_pi;
+    private:
+        friend class SharedCount<Ptr>;
+
+        ReferenceCount<Ptr> *m_pi;
 
     public:
-        constexpr __WeakCount()
-                : m_pi(nullptr) {
-        }
+        constexpr WeakCount()
+                : m_pi(nullptr) {}
 
-        __WeakCount(const __SharedCount &sc)
+        /**
+         * When creating a weak reference from a shared reference,
+         * a weak pointer is being created, thus increment the
+         * number of weak references to the underlying pointer.
+         *
+         * @param sc shared count to copy
+         */
+        WeakCount(const SharedCount<Ptr> &sc)
                 : m_pi(sc.m_pi) {
-            if (m_pi != nullptr) {
-                m_pi->add_weak_ref();
-            }
+            if (m_pi) { m_pi->add_weak_reference(); }
         }
 
-        __WeakCount(const __WeakCount &wc)
+        /**
+         * When creating a weak reference from another weak reference,
+         * a weak pointer is being created, this increment the
+         * number of weak references to the underlying pointer.
+         *
+         * @param wc weak count to copy
+         */
+        WeakCount(const WeakCount<Ptr> &wc)
                 : m_pi(wc.m_pi) {
-            if (m_pi != nullptr) {
-                m_pi->add_weak_ref();
-            }
+            if (m_pi) { m_pi->add_weak_reference(); }
         }
 
-        ~__WeakCount() {
-            if (m_pi != nullptr) {
-                m_pi->weak_release();
-            }
+        /**
+         * When this object is destructed, the using weak pointer
+         * is also being destructed, thus reduce the number of
+         * weak references. @code weak_release @endcode handles
+         * cleaning up the resource count resource.
+         */
+        ~WeakCount() {
+            if (m_pi) { m_pi->weak_release(); }
         }
 
-        __WeakCount &operator=(const __SharedCount &sc) {
-            __BaseCount *tmp = sc.m_pi;
-            if (tmp != nullptr) {
-                tmp->add_weak_ref();
-            }
-            if (m_pi != nullptr) {
-                m_pi->weak_release();
-            }
+        /**
+         * When copying a shared count, a new weak reference is being
+         * created. If there is a previous and different pointer,
+         * that pointer has one weak reference released, and a
+         * new weak reference is created to the current pointer.
+         *
+         * @param sc shared count to copy
+         * @return reference to this weak count
+         */
+        WeakCount<Ptr> &operator=(const SharedCount<Ptr> &sc) {
+            ReferenceCount<Ptr> *tmp = sc.m_pi;
+            if (tmp) { tmp->add_weak_reference(); }
+            if (m_pi) { m_pi->weak_release(); }
             m_pi = tmp;
             return *this;
         }
 
-        __WeakCount &operator=(const __WeakCount &wc) {
-            __BaseCount *tmp = wc.m_pi;
-            if (tmp != nullptr) {
-                tmp->add_weak_ref();
-            }
-            if (m_pi != nullptr) {
-                m_pi->weak_release();
-            }
+        /**
+         * When copying a weak count, a new weak reference is being
+         * created. If there is a previous and different pointer,
+         * that pointer has one weak reference released, and a
+         * new weak reference is created to the current pointer.
+         *
+         * @param sc shared count to copy
+         * @return reference to this weak count
+         */
+        WeakCount<Ptr> &operator=(const WeakCount<Ptr> &wc) {
+            ReferenceCount<Ptr> *tmp = wc.m_pi;
+            if (tmp) { tmp->add_weak_reference(); }
+            if (m_pi) { m_pi->weak_release(); }
             m_pi = tmp;
             return *this;
         }
 
-        void swap(__WeakCount &wc) {
-            __BaseCount *tmp = wc.m_pi;
-            wc.m_pi = m_pi;
-            m_pi = tmp;
+        void swap(WeakCount<Ptr> &wc) {
+            wlp::swap(m_pi, wc.m_pi);
         }
 
-        int16_t get_use_count() const {
-            return m_pi != nullptr ? m_pi->get_use_count() : static_cast<int16_t>(0);
+        ptr_use_count use_count() const {
+            return m_pi->use_count();
         }
 
-        bool less(const __SharedCount &sc) const {
-            return m_pi < sc.m_pi;
+        bool less(const SharedCount<Ptr> &) const;
+
+        bool less(const WeakCount<Ptr> &) const;
+    };
+
+    template<typename Ptr>
+    inline bool SharedCount<Ptr>::less(const WeakCount<Ptr> &wc) const {
+        return m_pi < wc.m_pi;
+    }
+
+    template<typename Ptr>
+    inline bool SharedCount<Ptr>::less(const SharedCount<Ptr> &sc) const {
+        return m_pi < sc.m_pi;
+    }
+
+    template<typename Ptr>
+    inline bool WeakCount<Ptr>::less(const WeakCount<Ptr> &wc) const {
+        return m_pi < wc.m_pi;
+    }
+
+    template<typename Ptr>
+    inline bool WeakCount<Ptr>::less(const SharedCount<Ptr> &sc) const {
+        return m_pi < sc.m_pi;
+    }
+
+    /**
+     * Creation of a shared count from a weak count, means that
+     * the weak pointer is locking its reference to a shared pointer.
+     *
+     * @tparam Ptr pointer type
+     * @param wc weak count to copy
+     */
+    template<typename Ptr>
+    inline SharedCount<Ptr>::SharedCount(const WeakCount<Ptr> &wc)
+            : m_pi(wc.m_pi) {
+        if (m_pi) { m_pi->add_locked_reference(); }
+        // Else bad weak pointer
+    }
+
+    template<typename T>
+    class SharedPtr {
+    public:
+        typedef T val_type;
+        typedef typename ReferenceCount<T *>::ptr_use_count ptr_use_count;
+
+    private:
+        template<typename U> friend
+        class SharedPtr;
+
+        template<typename U> friend
+        class WeakPtr;
+
+        val_type *m_ptr;
+        SharedCount<T *> m_refcount;
+
+    public:
+        constexpr SharedPtr()
+                : m_ptr(nullptr),
+                  m_refcount() {
         }
 
-        bool less(const __WeakCount &wc) const {
-            return m_pi < wc.m_pi;
+        template<typename U, typename = typename enable_if<
+                is_convertible<U *, T *>::value
+        >::type>
+        explicit SharedPtr(U *ptr)
+                : m_ptr(ptr),
+                  m_refcount(ptr) {
+            static_assert(sizeof(U) > 0, "Pointer to incomplete type");
+        }
+
+        template<typename U>
+        SharedPtr(const SharedPtr<U> &sp, T *ptr)
+                : m_ptr(ptr),
+                  m_refcount(sp.m_refcount) {
+        }
+
+        template<typename U, typename = typename enable_if<
+                is_convertible<U *, T *>::value
+        >::type>
+        SharedPtr(const SharedPtr<U> &sp)
+                : m_ptr(sp.m_ptr),
+                  m_refcount(sp.m_refcount) {
+        }
+
+        SharedPtr(const SharedPtr<T> &sp)
+                : m_ptr(sp.m_ptr),
+                  m_refcount(sp.m_refcount) {
+        }
+
+        SharedPtr(SharedPtr<T> &&sp)
+                : m_ptr(sp.m_ptr),
+                  m_refcount() {
+            m_refcount.swap(sp.m_refcount);
+            sp.m_ptr = nullptr;
+        }
+
+        template<typename U, typename = typename enable_if<
+                is_convertible<U *, T *>::value
+        >::type>
+        SharedPtr(SharedPtr<U> &&sp)
+                : m_ptr(sp.m_ptr),
+                  m_refcount() {
+            m_refcount.swap(sp.m_refcount);
+            sp.m_ptr = nullptr;
+        }
+
+        template<typename U, typename = typename enable_if<
+                is_convertible<U *, T *>::value
+        >::type>
+        explicit SharedPtr(const WeakPtr<U> &wp)
+                : m_ptr(wp.m_ptr),
+                  m_refcount(wp.m_refcount) {
+        }
+
+        template<typename U, typename = typename enable_if<
+                is_convertible<U *, T *>::value
+        >::type>
+        SharedPtr(UniquePtr <U> &&up)
+                : m_ptr(up.get()),
+                  m_refcount() {
+            U *tmp = up.get();
+            m_refcount = SharedCount<T *>(move(up));
+        }
+
+        constexpr SharedPtr(nullptr_t)
+                : m_ptr(nullptr),
+                  m_refcount() {
+        }
+
+        SharedPtr<T> &operator=(const SharedPtr<T> &sp) {
+            m_ptr = sp.m_ptr;
+            m_refcount = sp.m_refcount;
+            return *this;
+        }
+
+        template<typename U>
+        SharedPtr<T> &operator=(const SharedPtr<U> &sp) {
+            m_ptr = sp.m_ptr;
+            m_refcount = sp.m_refcount;
+            return *this;
+        }
+
+        SharedPtr<T> &operator=(SharedPtr<T> &&sp) {
+            SharedPtr(move(sp)).swap(*this);
+            return *this;
+        }
+
+        template<typename U>
+        SharedPtr<T> &operator=(SharedPtr<U> &&sp) {
+            SharedPtr(move(sp)).swap(*this);
+            return *this;
+        }
+
+        template<typename U>
+        SharedPtr<T> &operator=(UniquePtr <U> &&up) {
+            SharedPtr(move(up)).swap(*this);
+            return *this;
+        }
+
+        void reset() {
+            SharedPtr().swap(*this);
+        }
+
+        template<typename U>
+        void reset(U *ptr) {
+            SharedPtr(ptr).swap(*this);
+        }
+
+        typename add_lvalue_reference<T>::type operator*() const {
+            return *m_ptr;
+        }
+
+        val_type *operator->() const {
+            return m_ptr;
+        }
+
+        val_type *get() const {
+            return m_ptr;
+        }
+
+        explicit operator bool() const {
+            return m_ptr == 0 ? false : true;
+        }
+
+        bool unique() const {
+            return m_refcount.unique();
+        }
+
+        ptr_use_count use_count() const {
+            return m_refcount.use_count();
+        }
+
+        void swap(SharedPtr<T> &sp) {
+            wlp::swap(m_ptr, sp.m_ptr);
+            m_refcount.swap(sp.m_refcount);
+        }
+
+        template<typename U>
+        bool owner_before(const SharedPtr<U> &sp) const {
+            return m_refcount.less(sp.m_refcount);
+        }
+
+        template<typename U>
+        bool owner_before(const WeakPtr<U> &wp) const {
+            return m_refcount.less(wp.m_refcount);
+        }
+
+        WeakPtr<T> weak() const {
+            return WeakPtr<T>(*this);
+        }
+
+    };
+
+    template<typename T>
+    inline void swap(SharedPtr<T> &sp1, SharedPtr<T> &sp2) {
+        sp1.swap(sp2);
+    }
+
+    template<typename T, typename U>
+    inline SharedPtr<T> static_pointer_cast(const SharedPtr<U> &sp) {
+        return SharedPtr<T>(sp, static_cast<T *>(sp.get()));
+    }
+
+    template<typename T, typename U>
+    inline SharedPtr<T> const_pointer_cast(const SharedPtr<U> &sp) {
+        return SharedPtr<T>(sp, const_cast<T *>(sp.get()));
+    };
+
+    template<typename T, typename U>
+    inline SharedPtr<T> dynamic_pointer_cast(const SharedPtr<U> &sp) {
+        if (T *ptr = dynamic_cast<T *>(sp.get())) {
+            return SharedPtr<T>(sp, ptr);
+        }
+        return SharedPtr<T>();
+    };
+
+    template<typename T, typename U>
+    inline SharedPtr<T> reinterpret_pointer_cast(const SharedPtr<U> &sp) {
+        return SharedPtr<T>(sp, reinterpret_cast<T *>(sp.get()));
+    };
+
+    template<typename T>
+    class WeakPtr {
+    public:
+        typedef T val_type;
+        typedef typename ReferenceCount<T *>::ptr_use_count ptr_use_count;
+
+    private:
+
+        template<typename U> friend
+        class SharedPtr;
+
+        template<typename U> friend
+        class WeakPtr;
+
+        val_type *m_ptr;
+        WeakCount<T *> m_refcount;
+
+    public:
+        constexpr WeakPtr()
+                : m_ptr(nullptr),
+                  m_refcount() {
+        }
+
+        template<typename U, typename = typename enable_if<
+                is_convertible<U *, T *>::value
+        >::type>
+        WeakPtr(const WeakPtr<U> &wp)
+                : m_refcount(wp.m_refcount) {
+            m_ptr = wp.lock().get();
+        };
+
+        template<typename U, typename = typename enable_if<
+                is_convertible<U *, T *>::value
+        >::type>
+        WeakPtr(const SharedPtr<U> &sp)
+                : m_ptr(sp.m_ptr),
+                  m_refcount(sp.m_refcount) {
+        };
+
+        template<typename U>
+        WeakPtr &operator=(const WeakPtr<U> &wp) {
+            m_ptr = wp.lock().get();
+            m_refcount = wp.m_refcount;
+            return *this;
+        }
+
+        template<typename U>
+        WeakPtr &operator=(const SharedPtr<U> &sp) {
+            m_ptr = sp.m_ptr;
+            m_refcount = sp.m_refcount;
+            return *this;
+        }
+
+        SharedPtr<T> lock() const {
+            return expired() ? SharedPtr<T>() : SharedPtr<T>(*this);
+        }
+
+        ptr_use_count use_count() const {
+            return m_refcount.use_count();
+        }
+
+        bool expired() const {
+            return m_refcount.use_count() == 0;
+        }
+
+        template<typename U>
+        bool owner_before(const SharedPtr<U> &sp) {
+            return m_refcount.less(sp.m_refcount);
+        }
+
+        template<typename U>
+        bool owner_before(const WeakPtr<U> &wp) {
+            return m_refcount.less(wp.m_refcount);
+        }
+
+        void reset() {
+            WeakPtr().swap(*this);
+        }
+
+        void swap(WeakPtr<T> &wp) {
+            wlp::swap(m_ptr, wp.m_ptr);
+            m_refcount.swap(wp.m_refcount);
         }
     };
+
+    template<typename T>
+    inline void swap(WeakPtr<T> &wp1, WeakPtr<T> &wp2) {
+        wp1.swap(wp2);
+    }
 
 }
 

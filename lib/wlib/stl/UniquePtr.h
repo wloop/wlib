@@ -1,6 +1,6 @@
 /**
  * @file UniquePtr.h
- * @brief
+ * @brief Unique pointer implementation
  *
  * Implementation of a unique pointer class, a smart pointer which
  * manages a single pointer and cannot share with another unique pointer.
@@ -12,9 +12,6 @@
 
 #ifndef EMBEDDEDCPLUSPLUS_UNIQUEPTR_H
 #define EMBEDDEDCPLUSPLUS_UNIQUEPTR_H
-
-#include "Tuple.h"
-#include "DefaultAlloc.h"
 
 #include "../memory/Memory.h"
 
@@ -38,55 +35,46 @@ namespace wlp {
      * with Memory, segmentation faults.
      *
      * Construction is recommended with @code make_unique @endcode.
+     * 
+     * Unique pointer class does not currently support multiple deleter
+     * types, and uses only functions in Memory. Adding deleters for other
+     * Memory solutions can be a future feature, but makes the class more complex.
      *
      * @tparam T the type pointed to by this unique pointer
      * @tparam T_Deleter deleter type used to free the pointer
      */
-    template<typename T, typename T_Deleter = DefaultDeleter<T>>
+    template<typename T>
     class UniquePtr {
-        typedef Tuple<T *, T_Deleter> tuple_type;
-        typedef tuple_type UniquePtr::* unspecified_bool_type;
+        typedef T *UniquePtr::* unspecified_bool_type;
         typedef T *UniquePtr::* unspecified_pointer_type;
-        typedef UniquePtr<T, T_Deleter> unique_ptr;
+        typedef UniquePtr<T> unique_ptr;
 
     public:
         typedef T *pointer;
         typedef T val_type;
-        typedef T_Deleter deleter_type;
 
     private:
-        tuple_type m_ptr;
+        val_type *m_ptr;
 
     public:
 
         UniquePtr()
-                : m_ptr(pointer(), deleter_type()) {
+                : m_ptr(pointer()) {
         }
 
         explicit
         UniquePtr(pointer ptr)
-                : m_ptr(ptr, deleter_type()) {
+                : m_ptr(ptr) {
         }
 
-        UniquePtr(pointer ptr, typename conditional<
-                is_reference<deleter_type>::value,
-                deleter_type,
-                const deleter_type &>
-        ::type deleter)
-                : m_ptr(ptr, deleter) {
-        }
-
-        UniquePtr(pointer ptr, typename remove_reference<deleter_type>::type &&deleter)
-                : m_ptr(move(ptr), move(deleter)) {
-        }
 
         UniquePtr(unique_ptr &&ptr)
-                : m_ptr(ptr.release(), forward<deleter_type>(ptr.get_deleter())) {
+                : m_ptr(ptr.release()) {
         }
 
-        template<typename U, typename U_Deleter>
-        UniquePtr(UniquePtr<U, U_Deleter> &&ptr)
-                : m_ptr(ptr.release(), forward<deleter_type>(ptr.get_deleter())) {
+        template<typename U>
+        UniquePtr(UniquePtr<U> &&ptr)
+                : m_ptr(ptr.release()) {
         };
 
         ~UniquePtr() {
@@ -95,14 +83,12 @@ namespace wlp {
 
         unique_ptr &operator=(unique_ptr &&ptr) {
             reset(ptr.release());
-            get_deleter() = move(ptr.get_deleter());
             return *this;
         }
 
-        template<typename U, typename U_Deleter>
-        unique_ptr &operator=(UniquePtr<U, U_Deleter> &&ptr) {
+        template<typename U>
+        unique_ptr &operator=(UniquePtr<U> &&ptr) {
             reset(ptr.release());
-            get_deleter() = move(ptr.get_deleter());
             return *this;
         };
 
@@ -112,41 +98,32 @@ namespace wlp {
         }
 
         typename add_lvalue_reference<val_type>::type operator*() const {
-            return *get();
+            return *m_ptr;
         };
 
         pointer operator->() const {
-            return get();
+            return m_ptr;
         }
 
         pointer get() const {
-            return wlp::get<0>(m_ptr);
+            return m_ptr;
         }
 
-        typename add_lvalue_reference<deleter_type>::type get_deleter() {
-            return wlp::get<1>(m_ptr);
-        }
-
-        typename add_lvalue_reference<
-                typename add_const<deleter_type>::type
-        >::type get_deleter() const {
-            return wlp::get<1>(m_ptr);
-        }
 
         operator unspecified_bool_type() const {
-            return get() == nullptr ? 0 : &unique_ptr::m_ptr;
+            return m_ptr == nullptr ? 0 : &unique_ptr::m_ptr;
         }
 
         pointer release() {
-            pointer ptr = get();
-            wlp::get<0>(m_ptr) = nullptr;
+            pointer ptr = m_ptr;
+            m_ptr = nullptr;
             return ptr;
         }
 
         void reset(pointer ptr = pointer()) {
-            if (ptr != get()) {
-                get_deleter()(get());
-                wlp::get<0>(m_ptr) = ptr;
+            if (ptr != m_ptr) {
+                free<val_type>(m_ptr);
+                m_ptr = ptr;
             }
         }
 
@@ -157,61 +134,38 @@ namespace wlp {
     private:
         UniquePtr(const unique_ptr &) = delete;
 
-        template<typename U, typename U_Deleter>
-        UniquePtr(const UniquePtr<U, U_Deleter> &) = delete;
+        template<typename U>
+        UniquePtr(const UniquePtr<U> &) = delete;
 
         unique_ptr &operator=(const unique_ptr &) = delete;
 
-        template<typename U, typename U_Deleter>
-        unique_ptr &operator=(const UniquePtr<U, U_Deleter> &) = delete;
+        template<typename U>
+        unique_ptr &operator=(const UniquePtr<U> &) = delete;
 
     };
 
-    template<typename T, typename T_Deleter>
-    class UniquePtr<T[], T_Deleter> {
-        typedef Tuple<T *, T_Deleter> tuple_type;
-        typedef tuple_type UniquePtr::* unspecified_bool_type;
+    template<typename T>
+    class UniquePtr<T[]> {
+        typedef T *UniquePtr::* unspecified_bool_type;
         typedef T *UniquePtr::* unspecified_pointer_type;
-        typedef UniquePtr<T, T_Deleter> unique_ptr;
+        typedef UniquePtr<T> unique_ptr;
 
     public:
         typedef T *pointer;
         typedef T val_type;
-        typedef T_Deleter deleter_type;
 
     private:
-        tuple_type m_ptr;
+        val_type *m_ptr;
 
     public:
         UniquePtr()
-                : m_ptr(pointer(), deleter_type()) {
+                : m_ptr(pointer()) {
         }
 
         explicit
         UniquePtr(pointer ptr)
-                : m_ptr(ptr, deleter_type()) {
+                : m_ptr(ptr) {
         }
-
-        UniquePtr(pointer ptr, typename conditional<
-                is_reference<deleter_type>::value,
-                deleter_type,
-                const deleter_type &
-        >::type deleter)
-                : m_ptr(ptr, deleter) {
-        }
-
-        UniquePtr(pointer ptr, typename remove_reference<deleter_type>::type &&deleter)
-                : m_ptr(move(ptr), move(deleter)) {
-        }
-
-        UniquePtr(unique_ptr &&ptr)
-                : m_ptr(ptr.release(), forward<deleter_type>(ptr.get_deleter())) {
-        }
-
-        template<typename U, typename U_Deleter>
-        UniquePtr(UniquePtr<U, U_Deleter> &&ptr)
-                : m_ptr(ptr.release(), forward<deleter_type>(ptr.get_deleter())) {
-        };
 
         ~UniquePtr() {
             reset();
@@ -219,14 +173,12 @@ namespace wlp {
 
         unique_ptr &operator=(unique_ptr &&ptr) {
             reset(ptr.release());
-            get_deleter() = move(ptr.get_deleter());
             return *this;
         }
 
-        template<typename U, typename U_Deleter>
-        unique_ptr &operator=(UniquePtr<U, U_Deleter> &&ptr) {
+        template<typename U>
+        unique_ptr &operator=(UniquePtr<U> &&ptr) {
             reset(ptr.release());
-            get_deleter() = move(ptr.get_deleter());
             return *this;
         };
 
@@ -236,37 +188,27 @@ namespace wlp {
         }
 
         typename add_lvalue_reference<val_type>::type operator[](size_type i) const {
-            return get()[i];
+            return m_ptr[i];
         }
 
         pointer get() const {
-            return wlp::get<0>(m_ptr);
-        }
-
-        typename add_lvalue_reference<deleter_type>::type get_deleter() {
-            return wlp::get<1>(m_ptr);
-        }
-
-        typename add_lvalue_reference<
-                typename add_const<deleter_type>::type
-        >::type get_deleter() const {
-            return wlp::get<1>(m_ptr);
+            return m_ptr;
         }
 
         operator unspecified_bool_type() const {
-            return get() == nullptr ? 0 : &unique_ptr::m_ptr;
+            return m_ptr == nullptr ? 0 : &unique_ptr::m_ptr;
         };
 
         pointer release() {
-            pointer ptr = get();
-            wlp::get<0>(m_ptr) = nullptr;
+            pointer ptr = m_ptr;
+            m_ptr = nullptr;
             return ptr;
         }
 
         void reset(pointer ptr = pointer()) {
-            if (ptr != get()) {
-                get_deleter()(get());
-                wlp::get<0>(m_ptr) = ptr;
+            if (ptr != m_ptr) {
+                free<val_type>(m_ptr);
+                m_ptr = ptr;
             }
         }
 
@@ -281,89 +223,68 @@ namespace wlp {
         UniquePtr(const unique_ptr &) = delete;
 
         template<typename U>
-        UniquePtr(U *,
-                  typename conditional<
-                          is_reference<deleter_type>::value,
-                          deleter_type,
-                          const deleter_type &
-                  >::type,
-                  typename enable_if<
-                          is_convertible<U *, pointer>::value
-                  >::type * = nullptr
-        ) = delete;
-
-        template<typename U>
-        UniquePtr(U *,
-                  typename remove_reference<deleter_type>::type &&,
-                  typename enable_if<
-                          is_convertible<U *, pointer>::value
-                  >::type * = nullptr
-        ) = delete;
-
-        template<typename U>
         explicit
         UniquePtr(U *,
                   typename enable_if<
                           is_convertible<U *, pointer>::value
-                  >::type * = nullptr
+                  >::type * = 0
         ) = delete;
 
         unique_ptr &operator=(const unique_ptr &) = delete;
 
         template<typename U, typename U_Deleter>
-        unique_ptr &operator=(const UniquePtr<U, U_Deleter> &) = delete;
+        unique_ptr &operator=(const UniquePtr<U> &) = delete;
     };
 
-    template<typename T, typename T_Deleter>
-    inline void swap(UniquePtr<T, T_Deleter> &x, UniquePtr<T, T_Deleter> &y) {
+    template<typename T>
+    inline void swap(UniquePtr<T> &x, UniquePtr<T> &y) {
         x.swap(y);
     };
 
-    template<typename T, typename T_Deleter>
-    inline void swap(UniquePtr<T, T_Deleter> &&x, UniquePtr<T, T_Deleter> &y) {
+    template<typename T>
+    inline void swap(UniquePtr<T> &&x, UniquePtr<T> &y) {
         x.swap(y);
     };
 
-    template<typename T, typename T_Deleter>
-    inline void swap(UniquePtr<T, T_Deleter> &x, UniquePtr<T, T_Deleter> &&y) {
+    template<typename T>
+    inline void swap(UniquePtr<T> &x, UniquePtr<T> &&y) {
         x.swap(y);
     }
 
-    template<typename T, typename T_Deleter, typename U, typename U_Deleter>
-    inline bool operator==(const UniquePtr<T, T_Deleter> &x, const UniquePtr<U, U_Deleter> &y) {
+    template<typename T, typename U>
+    inline bool operator==(const UniquePtr<T> &x, const UniquePtr<U> &y) {
         return x.get() == y.get();
     }
 
-    template<typename T, typename T_Deleter, typename U, typename U_Deleter>
-    inline bool operator!=(const UniquePtr<T, T_Deleter> &x, const UniquePtr<U, U_Deleter> &y) {
+    template<typename T, typename U>
+    inline bool operator!=(const UniquePtr<T> &x, const UniquePtr<U> &y) {
         return !(x.get() == y.get());
     }
 
-    template<typename T, typename T_Deleter, typename U, typename U_Deleter>
-    inline bool operator<(const UniquePtr<T, T_Deleter> &x, const UniquePtr<U, U_Deleter> &y) {
+    template<typename T, typename U>
+    inline bool operator<(const UniquePtr<T> &x, const UniquePtr<U> &y) {
         return x.get() < y.get();
     }
 
-    template<typename T, typename T_Deleter, typename U, typename U_Deleter>
-    inline bool operator<=(const UniquePtr<T, T_Deleter> &x, const UniquePtr<U, U_Deleter> &y) {
+    template<typename T, typename U>
+    inline bool operator<=(const UniquePtr<T> &x, const UniquePtr<U> &y) {
         return !(y.get() < x.get());
     }
 
-    template<typename T, typename T_Deleter, typename U, typename U_Deleter>
-    inline bool operator>(const UniquePtr<T, T_Deleter> &x, const UniquePtr<U, U_Deleter> &y) {
+    template<typename T, typename U>
+    inline bool operator>(const UniquePtr<T> &x, const UniquePtr<U> &y) {
         return y.get() < x.get();
     }
 
-    template<typename T, typename T_Deleter, typename U, typename U_Deleter>
-    inline bool operator>=(const UniquePtr<T, T_Deleter> &x, const UniquePtr<U, U_Deleter> &y) {
+    template<typename T, typename U>
+    inline bool operator>=(const UniquePtr<T> &x, const UniquePtr<U> &y) {
         return !(x.get() < y.get());
     }
 
-    // TODO waiting on vararg `malloc`
-    /*template<typename T, typename... Args>
+    template<typename T, typename... Args>
     UniquePtr<T> make_unique(Args &&... args) {
         return UniquePtr<T>(malloc<T>(forward<Args>(args)...));
-    };*/
+    };
 
 };
 

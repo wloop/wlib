@@ -69,7 +69,14 @@ namespace wlp {
     template<typename IntType>
     static inline IntType exchange_and_add(IntType *mem, IntType val) {
         IntType res = *mem;
-        *mem += val;
+        *mem = static_cast<IntType>(*mem + val);
+        return res;
+    }
+
+    template<typename IntType>
+    static inline IntType exchange_and_sub(IntType *mem, IntType val) {
+        IntType res = *mem;
+        *mem = static_cast<IntType>(*mem - val);
         return res;
     }
 
