@@ -175,3 +175,12 @@ TEST(memory_check, free_rvalue) {
     } // ~SamplePtrContainer called on local_spc
     ASSERT_EQ(9, Sample::constr);
 }
+
+TEST(memory_check, placement_fundamental) {
+    int *i = malloc<int>(5);
+    ASSERT_EQ(5, *i);
+    free<int>(i);
+    char *l = malloc<char>('c');
+    ASSERT_EQ('c', *l);
+    free<char>(l);
+}
