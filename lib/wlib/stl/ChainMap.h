@@ -553,7 +553,7 @@ namespace wlp {
 
     template<typename Key, typename Val, typename Hasher, typename Equals>
     void ChainHashMap<Key, Val, Hasher, Equals>::init_buckets(ChainHashMap<Key, Val, Hasher, Equals>::size_type n) {
-        m_buckets = malloc<node_type *>(n);
+        m_buckets = malloc<node_type *[]>(n);
         for (size_type i = 0; i < n; ++i) {
             m_buckets[i] = nullptr;
         }
@@ -565,7 +565,7 @@ namespace wlp {
             return;
         }
         size_type new_capacity = static_cast<size_type>(m_capacity * 2);
-        node_type **new_buckets = malloc<node_type *>(new_capacity);
+        node_type **new_buckets = malloc<node_type *[]>(new_capacity);
         for (size_type i = 0; i < new_capacity; ++i) {
             new_buckets[i] = nullptr;
         }
