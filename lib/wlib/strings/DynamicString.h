@@ -11,7 +11,8 @@
 #define EMBEDDEDCPLUSPLUS_DYNAMICSTRING_H
 
 #include <string.h>
-#include "memory/Memory.h"
+
+#include "../memory/Memory.h"
 #include "../Types.h"
 
 namespace wlp {
@@ -23,26 +24,26 @@ namespace wlp {
         /**
          * Default constructor creates string with no characters
          */
-        DynamicString(){};
+        DynamicString();
 
         /**
          * Constructor creates string using character array
          *
          * @param str char string
          */
-        explicit DynamicString(const char *str){};
+        explicit DynamicString(const char *str);
 
         /**
          * Constructor creates string using DynamicString object
          *
          * @param str @code DynamicString object
          */
-        DynamicString(const DynamicString &str) : DynamicString(str.c_str()) {};
+        DynamicString(const DynamicString &str);
 
         /**
           * Destructor for DynamicString object
           */
-        ~DynamicString() {};
+        ~DynamicString();
 
         /**
          * Assign operator assigns current object to given object
@@ -50,26 +51,26 @@ namespace wlp {
          * @param str @code DynamicString object
          * @return current object
          */
-        DynamicString &operator=(const DynamicString &str) {};
+        DynamicString &operator=(const DynamicString &str);
 
         /**
          * Assign operator assigns current object to given character string
          * @param str
          * @return current object
          */
-        DynamicString &operator=(const char *str) {};
+        DynamicString &operator=(const char *str);
 
         /**
          * Provides current length of string
          *
          * @return string length
          */
-        size_type length() const {};
+        size_type length() const;
 
         /**
          * Clears the string such that there are no characters left in it
          */
-        void clear() {};
+        void clear();
 
         /**
          * Element access operator gives access to character at @code pos
@@ -77,7 +78,7 @@ namespace wlp {
          * @param pos the position of the character
          * @return character at @code position
          */
-        char &operator[](size_type pos) {};
+        char &operator[](size_type pos);
 
         /**
          * Element access operator gives access to character at @code pos.
@@ -86,7 +87,7 @@ namespace wlp {
          * @param pos the position of the character
          * @return character at @code position
          */
-        const char &operator[](size_type pos) const {};
+        const char &operator[](size_type pos) const;
 
         /**
          * Provides access to character at @code pos with bounds checking
@@ -94,49 +95,49 @@ namespace wlp {
          * @param pos the position of the character
          * @return character at @code position
          */
-        char &at(size_type pos) {};
+        char &at(size_type pos);
         /**
          * Provides access to character at @code pos with bounds checking. Character is constant
          *
          * @param pos the position of the character
          * @return character at @code position
          */
-        const char &at(size_type pos) const {};
+        const char &at(size_type pos) const;
 
         /**
          * Checks if string is empty or not
          *
          * @return if string is empty or not
          */
-        bool empty() const {};
+        bool empty() const;
 
         /**
          * Provides access to the first character in the string
          *
          * @return the first character
          */
-        char &front() {};
+        char &front();
 
         /**
          * Provides access to the first character in the string. Character is constant
          *
          * @return the first character
          */
-        const char &front() const {};
+        const char &front() const;
 
         /**
          * Provides access to the last character in the string
          *
          * @return the last character
          */
-        char &end() {};
+        char &end();
 
         /**
          * Provides access to the last character in the string. Character is constant
          *
          * @return the last character
          */
-        const char &end() const {};
+        const char &end() const;
 
         /**
          * Modifier operator adds character to the current string.
@@ -144,7 +145,7 @@ namespace wlp {
          * @param c character to add
          * @return the current string
          */
-        DynamicString &operator+=(char c) {};
+        DynamicString &operator+=(char c);
 
         /**
          * Modifier operator adds char string to the current string.
@@ -152,7 +153,7 @@ namespace wlp {
          * @param val char string to add
          * @return the current string
          */
-        DynamicString &operator+=(const char *val) {};
+        DynamicString &operator+=(const char *val);
 
         /**
          * Modifier operator adds @code DynamicString object to the current string.
@@ -160,7 +161,7 @@ namespace wlp {
          * @param other @code DynamicString string to add
          * @return the current string
          */
-        DynamicString &operator+=(DynamicString &other) {};
+        DynamicString &operator+=(DynamicString &other);
 
         /**
          * Appends a character to the current string.
@@ -168,7 +169,7 @@ namespace wlp {
          * @param c character to add
          * @return the current string
          */
-        DynamicString &append(const char c) {};
+        DynamicString &append(const char c);
 
         /**
          * Appends a character string to the current string.
@@ -176,7 +177,7 @@ namespace wlp {
          * @param str character string to add
          * @return the current string
          */
-        DynamicString &append(const char *str) {};
+        DynamicString &append(const char *str);
 
         /**
          * Appends a DynamicString string to the current string.
@@ -184,7 +185,7 @@ namespace wlp {
          * @param str DynamicString string to add
          * @return the current string
          */
-        DynamicString &append(const DynamicString &str) {};
+        DynamicString &append(const DynamicString &str);
 
         /**
          * Appends a character to the current string.
@@ -192,7 +193,7 @@ namespace wlp {
          * @param c character to add
          * @return the current string
          */
-        DynamicString &push_back(const char c) {};
+        DynamicString &push_back(const char c);
 
         /**
          * Deletes the element @p pos from the String
@@ -200,19 +201,19 @@ namespace wlp {
          * @param pos position of the element to be deleted
          * @return the modified String
          */
-        DynamicString &erase(size_type pos = 0) {};
+        DynamicString &erase(size_type pos = 0);
 
         /**
          * Deletes the last character in the String
          */
-        void pop_back() {};
+        void pop_back();
 
         /**
          * Provides access to character array that string uses behind the screen
          *
          * @return character array
          */
-        const char *c_str() const {};
+        const char *c_str() const;
 
         /**
          * Makes substring of the current string
@@ -221,7 +222,7 @@ namespace wlp {
          * @param length length of the new string
          * @return new string which is a substring of current string
          */
-        DynamicString substr(size_type pos, size_type length) const {};
+        DynamicString substr(size_type pos, size_type length) const;
 
         /**
          * Compares two strings and return 0 if they are equal, less than 0 if
@@ -231,7 +232,7 @@ namespace wlp {
          * @param str @code DynamicString string to compare against current string
          * @return a signed number based on how strings compare
          */
-        diff_type compare(const DynamicString &str) const {};
+        diff_type compare(const DynamicString &str) const;
 
         /**
          * Compares two strings and return 0 if they are equal, less than 0 if
@@ -241,7 +242,7 @@ namespace wlp {
          * @param str character string to compare against current string
          * @return a signed number based on how strings compare
          */
-        diff_type compare(const char *str) const {};
+        diff_type compare(const char *str) const;
 
         /**
          * Compares a string and character and return 0 if they are equal, less than 0 if
@@ -251,7 +252,7 @@ namespace wlp {
          * @param c character to compare against current string
          * @return a signed number based on how strings compare
          */
-        diff_type compare(const char c) const {};
+        diff_type compare(const char c) const;
     };
 
     /**
@@ -262,7 +263,7 @@ namespace wlp {
     * @return true or false based on if two strings are equal
     */
 
-    bool operator==(const DynamicString &lhs, const DynamicString &rhs) {};
+    bool operator==(const DynamicString &lhs, const DynamicString &rhs);
 
     /**
     * Comparative operator compares if two strings are equal or not
@@ -271,7 +272,7 @@ namespace wlp {
     * @param rhs @code DynamicString @endcode string as right hand side string
     * @return true or false based on if two strings are equal
     */
-    bool operator==(const char *lhs, const DynamicString &rhs) {};
+    bool operator==(const char *lhs, const DynamicString &rhs);
 
     /**
     * Comparative operator compares if two strings are equal or not
@@ -280,7 +281,7 @@ namespace wlp {
     * @param rhs character string as right hand side string
     * @return true or false based on if two strings are equal
     */
-    bool operator==(const DynamicString &lhs, const char *rhs) {};
+    bool operator==(const DynamicString &lhs, const char *rhs);
 
     /**
     * Comparative operator compares if string and single character are equal or not
@@ -289,7 +290,7 @@ namespace wlp {
     * @param rhs @code DynamicString string as right hand side string
     * @return true or false based on if two strings are equal
     */
-    bool operator==(const char lhs, const DynamicString &rhs) {};
+    bool operator==(const char lhs, const DynamicString &rhs);
 
     /**
     * Comparative operator compares if string and single character are equal or not
@@ -298,7 +299,7 @@ namespace wlp {
     * @param rhs character as right hand side
     * @return true or false based on if two strings are equal
     */
-    bool operator==(const DynamicString &lhs, const char rhs) {};
+    bool operator==(const DynamicString &lhs, const char rhs);
 
     /**
     * Additive operator adds two given strings
@@ -307,7 +308,7 @@ namespace wlp {
     * @param rhs @code DynamicString string as right hand side string
     * @return a @code DynamicString that is build from left hand string and right hand string
     */
-    DynamicString operator+(const DynamicString &lhs, const DynamicString &rhs) {};
+    DynamicString operator+(const DynamicString &lhs, const DynamicString &rhs);
 
     /**
     * Additive operator adds two given strings
@@ -316,7 +317,7 @@ namespace wlp {
     * @param rhs @code DynamicString string as right hand side string
     * @return a @code DynamicString that is build from left hand string and right hand string
     */
-    DynamicString operator+(const char *lhs, const DynamicString &rhs) {};
+    DynamicString operator+(const char *lhs, const DynamicString &rhs);
 
     /**
     * Additive operator adds two given strings
@@ -325,7 +326,7 @@ namespace wlp {
     * @param rhs character string as right hand side string
     * @return a @code DynamicString that is build from left hand string and right hand string
     */
-    DynamicString operator+(const DynamicString &lhs, const char *rhs) {};
+    DynamicString operator+(const DynamicString &lhs, const char *rhs);
 
     /**
     * Additive operator single character to string
@@ -334,7 +335,7 @@ namespace wlp {
     * @param rhs @code DynamicString string as right hand side string
     * @return a @code DynamicString that is build from left hand string and right hand string
     */
-    DynamicString operator+(const char lhs, const DynamicString &rhs) {};
+    DynamicString operator+(const char lhs, const DynamicString &rhs);
 
     /**
     * Additive operator adds string to single character
@@ -343,7 +344,7 @@ namespace wlp {
     * @param rhs character as right hand side
     * @return a @code DynamicString that is build from left hand string and right hand string
     */
-    DynamicString operator+(const DynamicString &lhs, const char rhs) {};
+    DynamicString operator+(const DynamicString &lhs, const char rhs);
 }
 
 #endif //EMBEDDEDCPLUSPLUS_DYNAMICSTRING_H

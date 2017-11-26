@@ -25,7 +25,7 @@ DynamicString::DynamicString() {
  *
  * @param str char string
  */
-explicit DynamicString::DynamicString(const char *str) {
+DynamicString::DynamicString(const char *str) {
     m_buffer = nullptr;
     auto size = (size_type) strlen(str);
     m_buffer = malloc<char[]>(static_cast<size_type>(size + 1u));
@@ -268,7 +268,7 @@ DynamicString &DynamicString::push_back(const char c) {
  * @param pos position of the element to be deleted
  * @return the modified String
  */
-DynamicString &DynamicString::erase(size_type pos = 0) {
+DynamicString &DynamicString::erase(size_type pos) {
     if (len == 0 || pos >= len) return *this;
 
     len--;
