@@ -28,7 +28,7 @@ namespace wlp {
      */
     template<uint8_t exp>
     struct pow_mask {
-        static const uint32_t value = (uint32_t) ((1 << exp) - 1);
+        static const uint32_t value = static_cast<uint32_t>((1 << exp) - 1);
     };
 
     /**
@@ -47,7 +47,7 @@ namespace wlp {
      */
     template<uint8_t nBits>
     struct ceil_bits {
-        static const uint32_t value = (nBits + INT32_SIZE - 1) / INT32_SIZE;
+        static const uint32_t value = static_cast<uint32_t>((nBits + INT32_SIZE - 1) / INT32_SIZE);
     };
 
     template<uint8_t nBits>
@@ -99,14 +99,14 @@ namespace wlp {
          */
         void setFromNumber(uint64_t n) {
             memset(m_array, 0, sizeof(m_array));
-            constexpr uint32_t end = nBits / INT32_SIZE;
-            constexpr uint32_t extra = nBits - end * INT32_SIZE;
+            constexpr uint32_t end = static_cast<uint32_t>(nBits / INT32_SIZE);
+            constexpr uint32_t extra = static_cast<uint32_t>(nBits - end * INT32_SIZE);
             for (size_type i = 0; i < end; ++i) {
-                m_array[i] = (uint32_t) n;
+                m_array[i] = static_cast<uint32_t>(n);
                 n >>= INT32_SIZE;
             }
             if (extra) {
-                m_array[end] = ((uint32_t) n) & pow_mask<extra>::value;
+                m_array[end] = (static_cast<uint32_t>(n)) & pow_mask<extra>::value;
             }
         }
 
