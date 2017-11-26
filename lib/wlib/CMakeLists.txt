@@ -30,7 +30,8 @@ file(GLOB header_files
         "utility/*.h")
 
 file(GLOB source_files
-        "memory/*.cpp")
+        "memory/*.cpp"
+        "strings/*.cpp")
 
 set(HEADER_FILES ${header_files})
 set(SOURCE_FILES ${source_files})
