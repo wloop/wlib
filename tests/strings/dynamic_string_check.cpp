@@ -7,7 +7,7 @@ using namespace wlp;
 TEST(dynamic_string_tests, constructor_tests) {
     DynamicString string1;
     DynamicString string2("HELLo WORld!");
-    DynamicString string3(string1); //This constuctor doesn't work properly
+    DynamicString string3(string1);
     ASSERT_EQ(string2, "HELLo WORld!");
     ASSERT_TRUE(string1.empty());
     ASSERT_EQ(12, string2.length());
@@ -53,7 +53,7 @@ TEST(dynamic_string_tests, append_operator_tests) {
     ASSERT_STREQ((string1 += "Water").c_str(), "HeyWater");
     ASSERT_STREQ((string1 += "!").c_str(), "HeyWater!");
     ASSERT_STREQ((string1 += array1).c_str(), "HeyWater!yooo");
-    ASSERT_STREQ((string2 += string3).c_str(), "WaterLoo");  
+    ASSERT_STREQ((string2 += string3).c_str(), "WaterLoo");
 }
 
 TEST(dynamic_string_tests, append_tests) {
@@ -96,12 +96,12 @@ TEST(dynamic_string_tests, equality_operator_tests) {
     DynamicString string2("mannns");
     DynamicString string3("x");
 
-    ASSERT_TRUE(string1==string1);
-    ASSERT_FALSE(string2==string1);
-    ASSERT_TRUE(string1=="boiii");
-    ASSERT_TRUE("mannns"==string2);
-    ASSERT_TRUE('x'==string3);
-    ASSERT_TRUE(string3=='x');
+    ASSERT_TRUE(string1 == string1);
+    ASSERT_FALSE(string2 == string1);
+    ASSERT_TRUE(string1 == "boiii");
+    ASSERT_TRUE("mannns" == string2);
+    ASSERT_TRUE('x' == string3);
+    ASSERT_TRUE(string3 == 'x');
 }
 
 TEST(dynamic_string_tests, erase_popback_tests) {
