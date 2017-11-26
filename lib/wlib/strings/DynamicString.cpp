@@ -14,25 +14,15 @@ namespace wlp {
     /**
      * Default constructor creates string with no characters
      */
-    DynamicString::DynamicString() {
-        m_buffer = malloc<char>();
-        m_buffer[0] = '\0';
-        len = 0;
-    }
+    DynamicString::DynamicString() : DynamicString(nullptr, nullptr, 0, 0) {}
 
     /**
      * Constructor creates string using character array
      *
      * @param str char string
      */
-    DynamicString::DynamicString(const char *str) {
-        m_buffer = nullptr;
-        auto size = (size_type) strlen(str);
-        m_buffer = malloc<char[]>(static_cast<size_type>(size + 1u));
-        strncpy(m_buffer, str, size);
-        m_buffer[size] = '\0';
-        len = size;
-    }
+    DynamicString::DynamicString(const char *str)
+            : DynamicString(str, nullptr, static_cast<size_type>(strlen(str)), 0) {}
 
     /**
      * Constructor creates string using DynamicString object
@@ -40,6 +30,16 @@ namespace wlp {
      * @param str @code DynamicString object
      */
     DynamicString::DynamicString(const DynamicString &str) : DynamicString(str.c_str()) {}
+
+    DynamicString::DynamicString(const char *str1, const char *str2, size_type len1, size_type len2) {
+        m_len = len1 + len2;
+        m_buffer = malloc<char[]>(static_cast<size_type>(m_len + 1));
+
+        memcpy(m_buffer, str1, len1);
+        memcpy(m_buffer + len1, str2, len2);
+
+        m_buffer[m_len] = '\0';
+    }
 
     /**
      * Destructor for DynamicString object
@@ -68,20 +68,20 @@ namespace wlp {
     DynamicString &DynamicString::operator=(const char *str) {
         auto size = static_cast<size_type>(strlen(str));
         m_buffer = realloc<char>(m_buffer, static_cast<size_type>(size + 1));
-        strncpy(m_buffer, str, size);
+        strcpy(m_buffer, str);
         m_buffer[size] = '\0';
-        len = size;
+        m_len = size;
 
         return *this;
     }
 
     /**
-     * Provides current length of string
+     * Provides current m_length of string
      *
-     * @return string length
+     * @return string m_length
      */
     size_type DynamicString::length() const {
-        return len;
+        return m_len;
     }
 
     /**
@@ -89,7 +89,7 @@ namespace wlp {
      */
     void DynamicString::clear() {
         m_buffer[0] = '\0';
-        len = 0;
+        m_len = 0;
     }
 
     /**
@@ -120,7 +120,7 @@ namespace wlp {
      * @return character at @code position
      */
     char &DynamicString::at(size_type pos) {
-        return pos < len ? m_buffer[pos] : m_buffer[len];
+        return pos < m_len ? m_buffer[pos] : m_buffer[m_len];
     }
 
     /**
@@ -130,7 +130,7 @@ namespace wlp {
      * @return character at @code position
      */
     const char &DynamicString::at(size_type pos) const {
-        return pos < len ? m_buffer[pos] : m_buffer[len];
+        return pos < m_len ? m_buffer[pos] : m_buffer[m_len];
     }
 
     /**
@@ -139,7 +139,7 @@ namespace wlp {
      * @return if string is empty or not
      */
     bool DynamicString::empty() const {
-        return length() == 0;
+        return m_len == 0;
     }
 
     /**
@@ -166,7 +166,7 @@ namespace wlp {
      * @return the last character
      */
     char &DynamicString::end() {
-        return empty() ? m_buffer[0] : m_buffer[len - 1];
+        return empty() ? m_buffer[0] : m_buffer[m_len - 1];
     }
 
     /**
@@ -175,7 +175,7 @@ namespace wlp {
      * @return the last character
      */
     const char &DynamicString::end() const {
-        return empty() ? m_buffer[0] : m_buffer[len - 1];
+        return empty() ? m_buffer[0] : m_buffer[m_len - 1];
     }
 
     /**
@@ -185,7 +185,7 @@ namespace wlp {
      * @return the current string
      */
     DynamicString &DynamicString::operator+=(char c) {
-        char array[1] = {c};
+        const char array[2] = {c, '\0'};
         return append(array);
     }
 
@@ -196,7 +196,7 @@ namespace wlp {
      * @return the current string
      */
     DynamicString &DynamicString::operator+=(const char *val) {
-        return append(val);
+        return append(val, static_cast<size_type>(strlen(val)));
     }
 
     /**
@@ -206,18 +206,19 @@ namespace wlp {
      * @return the current string
      */
     DynamicString &DynamicString::operator+=(DynamicString &other) {
-        return append(other.c_str());
+        return append(other.c_str(), other.length());
     }
 
-    /**
-     * Appends a character to the current string.
-     *
-     * @param c character to add
-     * @return the current string
-     */
-    DynamicString &DynamicString::append(const char c) {
-        char array[2] = {c, '\0'};
-        return append(array);
+    DynamicString &DynamicString::append(const char *cstr, size_type len) {
+        auto newLength = static_cast<size_type>(m_len + len);
+        m_buffer = realloc<char>(m_buffer, static_cast<size_type>(newLength + 1));
+
+        memcpy(m_buffer + m_len, cstr, newLength);
+
+        m_buffer[newLength] = '\0';
+        m_len = newLength;
+
+        return *this;
     }
 
     /**
@@ -227,18 +228,7 @@ namespace wlp {
      * @return the current string
      */
     DynamicString &DynamicString::append(const char *str) {
-        size_type bufferLength = this->length();
-        auto newLength = static_cast<size_type>(bufferLength + strlen(str));
-        m_buffer = realloc<char>(m_buffer, static_cast<size_type>(newLength + 1));
-
-        for (int i = bufferLength; i < newLength; i++) {
-            m_buffer[i] = str[i - bufferLength];
-        }
-
-        m_buffer[newLength] = '\0';
-        len = newLength;
-
-        return *this;
+        return append(str, static_cast<size_type>(strlen(str)));
     }
 
     /**
@@ -248,7 +238,7 @@ namespace wlp {
      * @return the current string
      */
     DynamicString &DynamicString::append(const DynamicString &str) {
-        return append(str.c_str());
+        return append(str.c_str(), str.length());
     }
 
     /**
@@ -258,8 +248,8 @@ namespace wlp {
      * @return the current string
      */
     DynamicString &DynamicString::push_back(const char c) {
-        char array[2] = {c, '\0'};
-        return append(array);
+        const char array[2] = {c, '\0'};
+        return append(array, 1);
     }
 
     /**
@@ -269,15 +259,15 @@ namespace wlp {
      * @return the modified String
      */
     DynamicString &DynamicString::erase(size_type pos) {
-        if (len == 0 || pos >= len) return *this;
+        if (m_len == 0 || pos >= m_len) return *this;
 
-        len--;
+        m_len--;
 
-        for (size_type i = pos; i < len; i++) {
+        for (size_type i = pos; i < m_len; i++) {
             m_buffer[i] = m_buffer[i + 1];
         }
 
-        m_buffer[len] = '\0';
+        m_buffer[m_len] = '\0';
         return *this;
     }
 
@@ -285,9 +275,9 @@ namespace wlp {
      * Deletes the last character in the String
      */
     void DynamicString::pop_back() {
-        if (len != 0) {
-            m_buffer[len - 1] = '\0';
-            len--;
+        if (m_len != 0) {
+            m_buffer[m_len - 1] = '\0';
+            m_len--;
         }
     }
 
@@ -304,17 +294,17 @@ namespace wlp {
      * Makes substring of the current string
      *
      * @param pos starting position
-     * @param length length of the new string
+     * @param m_length m_length of the new string
      * @return new string which is a substring of current string
      */
-    DynamicString DynamicString::substr(size_type pos, size_type length) const {
-        char newBuffer[length + 1];
+    DynamicString DynamicString::substr(size_type pos, size_type m_length) const {
+        char newBuffer[m_length + 1];
 
-        for (size_type i = pos; i < pos + length; i++) {
+        for (size_type i = pos; i < pos + m_length; i++) {
             newBuffer[i - pos] = m_buffer[i];
         }
 
-        newBuffer[length] = '\0';
+        newBuffer[m_length] = '\0';
 
         DynamicString s{newBuffer};
 
@@ -342,7 +332,7 @@ namespace wlp {
      * @return a signed number based on how strings compare
      */
     diff_type DynamicString::compare(const char *str) const {
-        return (diff_type) strcmp(this->c_str(), str);
+        return static_cast<diff_type>(strcmp(c_str(), str));
     }
 
     /**
@@ -353,9 +343,9 @@ namespace wlp {
      * @param c character to compare against current string
      * @return a signed number based on how strings compare
      */
-    diff_type DynamicString::compare(const char c) const {
-        char array[2] = {c, '\0'};
-        return (diff_type) strcmp(this->c_str(), array);
+    diff_type DynamicString::compare(char c) const {
+        const char array[2] = {c, '\0'};
+        return static_cast<diff_type>(strcmp(c_str(), array));
     }
 
     /**
@@ -399,7 +389,7 @@ namespace wlp {
     * @param rhs @code DynamicString string as right hand side string
     * @return true or false based on if two strings are equal
     */
-    bool operator==(const char lhs, const DynamicString &rhs) {
+    bool operator==(char lhs, const DynamicString &rhs) {
         return rhs.compare(lhs) == 0;
     }
 
@@ -410,7 +400,7 @@ namespace wlp {
     * @param rhs character as right hand side
     * @return true or false based on if two strings are equal
     */
-    bool operator==(const DynamicString &lhs, const char rhs) {
+    bool operator==(const DynamicString &lhs, char rhs) {
         return lhs.compare(rhs) == 0;
     }
 
@@ -422,8 +412,8 @@ namespace wlp {
     * @return a @code DynamicString that is build from left hand string and right hand string
     */
     DynamicString operator+(const DynamicString &lhs, const DynamicString &rhs) {
-        DynamicString newStr(lhs.c_str());
-        newStr.append(rhs);
+        DynamicString newStr(lhs.c_str(), rhs.c_str(), static_cast<size_type>(strlen(lhs.c_str())),
+                             static_cast<size_type>(strlen(rhs.c_str())));
         return newStr;
     }
 
@@ -435,8 +425,8 @@ namespace wlp {
     * @return a @code DynamicString that is build from left hand string and right hand string
     */
     DynamicString operator+(const char *lhs, const DynamicString &rhs) {
-        DynamicString newStr(lhs);
-        newStr.append(rhs);
+        DynamicString newStr(lhs, rhs.c_str(), static_cast<size_type>(strlen(lhs)),
+                             static_cast<size_type>(strlen(rhs.c_str())));
         return newStr;
     }
 
@@ -448,8 +438,8 @@ namespace wlp {
     * @return a @code DynamicString that is build from left hand string and right hand string
     */
     DynamicString operator+(const DynamicString &lhs, const char *rhs) {
-        DynamicString newStr(lhs.c_str());
-        newStr.append(rhs);
+        DynamicString newStr(lhs.c_str(), rhs, static_cast<size_type>(strlen(lhs.c_str())),
+                             static_cast<size_type>(strlen(rhs)));
         return newStr;
     }
 
@@ -460,10 +450,9 @@ namespace wlp {
     * @param rhs @code DynamicString string as right hand side string
     * @return a @code DynamicString that is build from left hand string and right hand string
     */
-    DynamicString operator+(const char lhs, const DynamicString &rhs) {
-        char temp[1] = {lhs};
-        DynamicString newStr(temp);
-        newStr.append(rhs);
+    DynamicString operator+(char lhs, const DynamicString &rhs) {
+        const char temp[2] = {lhs, '\0'};
+        DynamicString newStr(temp, rhs.c_str(), 1, static_cast<size_type>(strlen(rhs.c_str())));
         return newStr;
     }
 
@@ -474,9 +463,9 @@ namespace wlp {
     * @param rhs character as right hand side
     * @return a @code DynamicString that is build from left hand string and right hand string
     */
-    DynamicString operator+(const DynamicString &lhs, const char rhs) {
-        DynamicString newStr(lhs.c_str());
-        newStr.append(rhs);
+    DynamicString operator+(const DynamicString &lhs, char rhs) {
+        const char temp[2] = {rhs, '\0'};
+        DynamicString newStr(lhs.c_str(), temp, static_cast<size_type>(strlen(lhs.c_str())), 1);
         return newStr;
     }
 }

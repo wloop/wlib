@@ -17,9 +17,6 @@
 
 namespace wlp {
     class DynamicString {
-    private:
-        char *m_buffer;
-        size_type len;
     public:
         /**
          * Default constructor creates string with no characters
@@ -96,6 +93,7 @@ namespace wlp {
          * @return character at @code position
          */
         char &at(size_type pos);
+
         /**
          * Provides access to character at @code pos with bounds checking. Character is constant
          *
@@ -162,14 +160,6 @@ namespace wlp {
          * @return the current string
          */
         DynamicString &operator+=(DynamicString &other);
-
-        /**
-         * Appends a character to the current string.
-         *
-         * @param c character to add
-         * @return the current string
-         */
-        DynamicString &append(const char c);
 
         /**
          * Appends a character string to the current string.
@@ -253,6 +243,41 @@ namespace wlp {
          * @return a signed number based on how strings compare
          */
         diff_type compare(const char c) const;
+
+    private:
+        char *m_buffer;
+        size_type m_len;
+
+        /**
+         * Constructor used by other String constructors to create @code DynamicString @endcode
+         *
+         * @param str1 first string to use in making
+         * @param str2 second string to use in making
+         * @param len1 length of first string
+         * @param len2 length of second string
+         */
+        DynamicString(const char *str1, const char *str2, size_type len1, size_type len2);
+
+        /**
+         * Append method used by other public append methods
+         *
+         * @param cstr c style string to append
+         * @param len length of @p cstr
+         * @return the @code DynamicString @endcode with @p cstr append to it
+         */
+        DynamicString &append(const char *cstr, size_type len);
+
+        friend DynamicString operator+(const DynamicString &lhs, const DynamicString &rhs);
+
+        friend DynamicString operator+(const char *lhs, const DynamicString &rhs);
+
+        friend DynamicString operator+(const DynamicString &lhs, const char *rhs);
+
+        friend DynamicString operator+(const DynamicString &lhs, const DynamicString &rhs);
+
+        friend DynamicString operator+(char lhs, const DynamicString &rhs);
+
+        friend DynamicString operator+(const DynamicString &lhs, char rhs);
     };
 
     /**
@@ -290,7 +315,7 @@ namespace wlp {
     * @param rhs @code DynamicString string as right hand side string
     * @return true or false based on if two strings are equal
     */
-    bool operator==(const char lhs, const DynamicString &rhs);
+    bool operator==(char lhs, const DynamicString &rhs);
 
     /**
     * Comparative operator compares if string and single character are equal or not
@@ -299,7 +324,7 @@ namespace wlp {
     * @param rhs character as right hand side
     * @return true or false based on if two strings are equal
     */
-    bool operator==(const DynamicString &lhs, const char rhs);
+    bool operator==(const DynamicString &lhs, char rhs);
 
     /**
     * Additive operator adds two given strings
@@ -335,7 +360,7 @@ namespace wlp {
     * @param rhs @code DynamicString string as right hand side string
     * @return a @code DynamicString that is build from left hand string and right hand string
     */
-    DynamicString operator+(const char lhs, const DynamicString &rhs);
+    DynamicString operator+(char lhs, const DynamicString &rhs);
 
     /**
     * Additive operator adds string to single character
@@ -344,7 +369,7 @@ namespace wlp {
     * @param rhs character as right hand side
     * @return a @code DynamicString that is build from left hand string and right hand string
     */
-    DynamicString operator+(const DynamicString &lhs, const char rhs);
+    DynamicString operator+(const DynamicString &lhs, char rhs);
 }
 
 #endif //EMBEDDEDCPLUSPLUS_DYNAMICSTRING_H
