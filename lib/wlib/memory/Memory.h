@@ -327,11 +327,7 @@ Type *realloc(Type *ptr, wlp::size_type num = 1) {
     char *cold = reinterpret_cast<char *>(ptr);
 
     wlp::size32_type copySize = (oldMemSize < newMemSize) ? oldMemSize : newMemSize;
-
-    // Copy contents of src[] to dest[]
-    for (wlp::size32_type i = 0; i < copySize; i++) {
-        cnew[i] = cold[i];
-    }
+    memcpy(newPtr, ptr, copySize);
 
     free<Type>(ptr);
 
