@@ -31,6 +31,13 @@ namespace wlp {
      */
     DynamicString::DynamicString(const DynamicString &str) : DynamicString(str.c_str()) {}
 
+    DynamicString::DynamicString(DynamicString &&str) 
+            : m_len(str.m_len),
+              m_buffer(str.m_buffer) {
+        str.m_len = 0;
+        str.m_buffer = nullptr;
+    }
+
     DynamicString::DynamicString(const char *str1, const char *str2, size_type len1, size_type len2) {
         m_len = len1 + len2;
         m_buffer = malloc<char[]>(static_cast<size_type>(m_len + 1));
@@ -75,6 +82,15 @@ namespace wlp {
         return *this;
     }
 
+    DynamicString &DynamicString::operator=(DynamicString &&str) {
+        free<char>(m_buffer);
+        m_buffer = str.m_buffer;
+        m_len = str.m_len;
+        str.m_len = 0;
+        str.m_buffer = nullptr;
+        return *this;
+    }
+
     /**
      * Provides current m_length of string
      *
@@ -87,7 +103,7 @@ namespace wlp {
     /**
      * Clears the string such that there are no characters left in it
      */
-    void DynamicString::clear() {
+    void DynamicString::clear() noexcept {
         m_buffer[0] = '\0';
         m_len = 0;
     }
@@ -469,3 +485,4 @@ namespace wlp {
         return newStr;
     }
 }
+
