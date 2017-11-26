@@ -3,7 +3,7 @@
 CMakeListsPrivate.txt
 src/main.cpp
 bin/
-doc/
+docs/
 # Created by https://www.gitignore.io/api/clion
 
 ### CLion ###
