@@ -284,6 +284,12 @@ void free(Type *&&ptr) {
  */
 wlp::size32_type getFixedMemorySize(void *ptr);
 
+/**
+ * Returns the smallest block of memory that is given
+ *
+ * @return the smallest block of memory
+ */
+wlp::size_type getSmallestBlockSize();
 
 /**
  * This reallocates the memory to accommodate the new size provided. The memory address has to be
@@ -310,22 +316,14 @@ Type *realloc(Type *ptr, wlp::size_type num = 1) {
     wlp::size32_type oldMemSize = getFixedMemorySize(ptr);
     wlp::size32_type newMemSize = static_cast<wlp::size32_type>(sizeof(Type)) * num;
 
-    if (oldMemSize == newMemSize) {
+    if (oldMemSize >= newMemSize + getSmallestBlockSize()) {
         return ptr;
     }
 
     Type *newPtr = malloc<Type[]>(num);
 
-    // Typecast old and dest addresses to (char *)
-    char *cnew = reinterpret_cast<char *>(newPtr);
-    char *cold = reinterpret_cast<char *>(ptr);
-
     wlp::size32_type copySize = (oldMemSize < newMemSize) ? oldMemSize : newMemSize;
-
-    // Copy contents of src[] to dest[]
-    for (wlp::size32_type i = 0; i < copySize; i++) {
-        cnew[i] = cold[i];
-    }
+    memcpy(newPtr, ptr, copySize);
 
     free<Type>(ptr);
 
@@ -401,11 +399,5 @@ uint16_t getNumBlocks();
  */
 uint16_t getMaxAllocations();
 
-/**
- * Returns the smallest block of memory that is given
- *
- * @return the smallest block of memory
- */
-wlp::size_type getSmallestBlockSize();
 
 #endif //FIXED_MEMORY_MEMORY_H
