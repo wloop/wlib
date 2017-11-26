@@ -35,7 +35,8 @@ namespace wlp {
             : m_len(str.m_len),
               m_buffer(str.m_buffer) {
         str.m_len = 0;
-        str.m_buffer = nullptr;
+        str.m_buffer = malloc<char[]>(1);
+        str.m_buffer[0] = '\0';
     }
 
     DynamicString::DynamicString(const char *str1, const char *str2, size_type len1, size_type len2) {
@@ -87,7 +88,8 @@ namespace wlp {
         m_buffer = str.m_buffer;
         m_len = str.m_len;
         str.m_len = 0;
-        str.m_buffer = nullptr;
+        str.m_buffer = malloc<char[]>(1);
+        str.m_buffer[0] = '\0';
         return *this;
     }
 

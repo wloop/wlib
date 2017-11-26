@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "strings/DynamicString.h"
+#include "utility/Utility.h"
 
 using namespace wlp;
 
@@ -114,3 +115,20 @@ TEST(dynamic_string_tests, erase_popback_tests) {
 
     ASSERT_STREQ("astonesoclosetofinishe", string1.c_str());
 }
+
+TEST(dynamic_string_tests, move_tests) {
+    char str[] = "Tis an unweeded garden that grows to seed; things rank and gross in Nature possess";
+    DynamicString s1(str);
+    DynamicString s2(move(s1));
+    ASSERT_EQ(0, s1.length());
+    ASSERT_STREQ("", s1.c_str());
+    ASSERT_EQ(strlen(str), s2.length());
+    ASSERT_STREQ(str, s2.c_str());
+    DynamicString s3("To sleep; to die");
+    s3 = move(s2);
+    ASSERT_EQ(0, s2.length());
+    ASSERT_STREQ("", s2.c_str());
+    ASSERT_EQ(strlen(str), s3.length());
+    ASSERT_STREQ(str, s3.c_str());
+}
+
