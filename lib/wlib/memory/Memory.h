@@ -322,10 +322,6 @@ Type *realloc(Type *ptr, wlp::size_type num = 1) {
 
     Type *newPtr = malloc<Type[]>(num);
 
-    // Typecast old and dest addresses to (char *)
-    char *cnew = reinterpret_cast<char *>(newPtr);
-    char *cold = reinterpret_cast<char *>(ptr);
-
     wlp::size32_type copySize = (oldMemSize < newMemSize) ? oldMemSize : newMemSize;
     memcpy(newPtr, ptr, copySize);
 
