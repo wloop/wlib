@@ -12,6 +12,8 @@
 
 #include <string.h>
 
+#include "StringIterator.h"
+
 #include "../memory/Memory.h"
 #include "../Types.h"
 
@@ -19,6 +21,14 @@ namespace wlp {
 
     class DynamicString {
     public:
+        // Required types for concept check
+        typedef wlp::size_type size_type;
+        typedef wlp::diff_type diff_type;
+
+        // Iterator types
+        typedef StringIterator<DynamicString, char &, char *> iterator;
+        typedef StringIterator<const DynamicString, const char &, const char *> const_iterator;
+
         /**
          * Default constructor creates string with no characters.
          */
@@ -43,7 +53,7 @@ namespace wlp {
          *
          * @param str the @code DynamicString @endcode to move
          */
-        DynamicString(DynamicString &&str);
+        DynamicString(DynamicString &&str) noexcept;
 
         /**
           * Destructor for DynamicString object.
@@ -72,7 +82,15 @@ namespace wlp {
          *
          * @param str the @code DynamicString @endcode to move
          */
-        DynamicString &operator=(DynamicString &&str);
+        DynamicString &operator=(DynamicString &&str) noexcept;
+
+        /**
+         * Assignment operator for a single character.
+         *
+         * @param c character to assign
+         * @return reference to this string
+         */
+        DynamicString &operator=(char c);
 
         /**
          * Provides current length of string.
@@ -80,6 +98,14 @@ namespace wlp {
          * @return string length
          */
         size_type length() const;
+
+        /**
+         * The DynamicString has capacity equal to the maximum
+         * possible value of @code size_type @endcode.
+         *
+         * @return the maximum dynamic string capcacity
+         */
+        size_type capacity() const;
 
         /**
          * Clears the string such that there are no characters left in it.
@@ -146,14 +172,14 @@ namespace wlp {
          *
          * @return the last character
          */
-        char &end();
+        char &back();
 
         /**
          * Provides access to the last character in the string. Character is constant.
          *
          * @return the last character
          */
-        const char &end() const;
+        const char &back() const;
 
         /**
          * Modifier operator adds character to the current string.
@@ -177,7 +203,7 @@ namespace wlp {
          * @param other @code DynamicString @endcode string to add
          * @return the current string
          */
-        DynamicString &operator+=(DynamicString &other);
+        DynamicString &operator+=(const DynamicString &other);
 
         /**
          * Appends a character string to the current string.
@@ -201,7 +227,7 @@ namespace wlp {
          * @param c character to add
          * @return the current string
          */
-        DynamicString &push_back(const char c);
+        void push_back(char c);
 
         /**
          * Deletes the element @p pos from the String.
@@ -209,7 +235,7 @@ namespace wlp {
          * @param pos position of the element to be deleted
          * @return the modified String
          */
-        DynamicString &erase(size_type pos = 0);
+        void erase(size_type pos = 0);
 
         /**
          * Deletes the last character in the String.
@@ -260,7 +286,23 @@ namespace wlp {
          * @param c character to compare against current string
          * @return a signed number based on how strings compare
          */
-        diff_type compare(const char c) const;
+        diff_type compare(char c) const;
+
+        iterator begin() {
+            return iterator(0, this);
+        }
+
+        iterator end() {
+            return iterator(m_len, this);
+        }
+
+        const_iterator begin() const {
+            return const_iterator(0, this);
+        }
+
+        const_iterator end() const {
+            return const_iterator(m_len, this);
+        }
 
     private:
         char *m_buffer;
@@ -277,6 +319,15 @@ namespace wlp {
         DynamicString(const char *str1, const char *str2, size_type len1, size_type len2);
 
         /**
+         * Constructor for populating a DynamicString with a dynamically allocated
+         * character array which the string takes ownership of and its length.
+         *
+         * @param str dynamically allocated character array filled with characters
+         * @param len length of the string
+         */
+        DynamicString(char *str, size_type len);
+
+        /**
          * Append method used by other public append methods.
          *
          * @param cstr c style string to append
@@ -290,8 +341,6 @@ namespace wlp {
         friend DynamicString operator+(const char *lhs, const DynamicString &rhs);
 
         friend DynamicString operator+(const DynamicString &lhs, const char *rhs);
-
-        friend DynamicString operator+(const DynamicString &lhs, const DynamicString &rhs);
 
         friend DynamicString operator+(char lhs, const DynamicString &rhs);
 
@@ -344,50 +393,6 @@ namespace wlp {
     */
     bool operator==(const DynamicString &lhs, char rhs);
 
-    /**
-    * Additive operator adds two given strings.
-    *
-    * @param lhs @code DynamicString @endcode string as left hand side string
-    * @param rhs @code DynamicString @endcode string as right hand side string
-    * @return a @code DynamicString @endcode that is build from left hand string and right hand string
-    */
-    DynamicString operator+(const DynamicString &lhs, const DynamicString &rhs);
-
-    /**
-    * Additive operator adds two given strings.
-    *
-    * @param lhs character string as left hand side string
-    * @param rhs @code DynamicString @endcode string as right hand side string
-    * @return a @code DynamicString @endcode that is build from left hand string and right hand string
-    */
-    DynamicString operator+(const char *lhs, const DynamicString &rhs);
-
-    /**
-    * Additive operator adds two given strings.
-    *
-    * @param lhs @code DynamicString @endcode string as left hand side string
-    * @param rhs character string as right hand side string
-    * @return a @code DynamicString @endcode that is build from left hand string and right hand string
-    */
-    DynamicString operator+(const DynamicString &lhs, const char *rhs);
-
-    /**
-    * Additive operator single character to string.
-    *
-    * @param lhs character as left hand side
-    * @param rhs @code DynamicString @endcode string as right hand side string
-    * @return a @code DynamicString @endcode that is build from left hand string and right hand string
-    */
-    DynamicString operator+(char lhs, const DynamicString &rhs);
-
-    /**
-    * Additive operator adds string to single character.
-    *
-    * @param lhs @code DynamicString @endcode string as left hand side string
-    * @param rhs character as right hand side
-    * @return a @code DynamicString @endcode that is build from left hand string and right hand string
-    */
-    DynamicString operator+(const DynamicString &lhs, char rhs);
 }
 
 #endif //EMBEDDEDCPLUSPLUS_DYNAMICSTRING_H
