@@ -556,10 +556,12 @@ namespace wlp {
      */
     struct ignore_type {
         template<typename U>
-        ignore_type &operator=(U &&) {
+        const ignore_type &operator=(U &&) const {
             return *this;
         }
-    } ignore;
+    };
+
+    const ignore_type ignore{};
 
     /**
      * Tie creates a tuple of lvalues that can be
