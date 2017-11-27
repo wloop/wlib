@@ -429,10 +429,10 @@ TEST(list_iterator_test, test_add_subtract) {
     size_type v = 2;
     it1 = it2 - v;
     ASSERT_EQ(3, *it1);
-    ASSERT_EQ(7, list.begin() - list.end());
+    ASSERT_EQ(-7, list.begin() - list.end());
     ASSERT_EQ(7, list.end() - list.begin());
     it1 = list.end();
-    ASSERT_EQ(7, list.begin() - it1);
+    ASSERT_EQ(-7, list.begin() - it1);
 }
 
 TEST(list_const_iterator_test, test_arrow_op) {
@@ -508,9 +508,9 @@ TEST(list_const_iterator_test, test_bulk_functions) {
     ASSERT_EQ(g7, g8);
     ASSERT_EQ(2, *g8);
     ASSERT_EQ(8, list.end() - list.begin());
-    ASSERT_EQ(8, list.begin() - list.end());
+    ASSERT_EQ(-8, list.begin() - list.end());
     g8 = list.end();
-    ASSERT_EQ(8, list.begin() - g8);
+    ASSERT_EQ(-8, list.begin() - g8);
     g8 = list.begin();
     ASSERT_EQ(8, list.end() - g8);
     cit g9 = move(g8);

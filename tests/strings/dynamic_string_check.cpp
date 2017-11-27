@@ -41,7 +41,7 @@ TEST(dynamic_string_tests, character_access_tests) {
     EXPECT_TRUE(string1[4] == 'o');
     EXPECT_TRUE(string1.at(3) == 'l');
     EXPECT_TRUE(string1.front() == 'H');
-    EXPECT_TRUE(string1.end() == 'B');
+    EXPECT_TRUE(string1.back() == 'B');
 }
 
 TEST(dynamic_string_tests, append_operator_tests) {
@@ -68,8 +68,10 @@ TEST(dynamic_string_tests, append_tests) {
     ASSERT_STREQ((string1.append("!")).c_str(), "HeyWater!");
     ASSERT_STREQ((string1.append(array1)).c_str(), "HeyWater!yooo");
     ASSERT_STREQ((string2.append(string3)).c_str(), "WaterLoo");
-    ASSERT_STREQ((string3.push_back('k')).c_str(), "Look");
-    ASSERT_STREQ((string2.push_back('x')).c_str(), "WaterLoox");
+    string3.push_back('k');
+    ASSERT_STREQ(string3.c_str(), "Look");
+    string2.push_back('x');
+    ASSERT_STREQ(string2.c_str(), "WaterLoox");
 }
 
 TEST(dynamic_string_tests, substring_tests) {
@@ -108,8 +110,10 @@ TEST(dynamic_string_tests, equality_operator_tests) {
 TEST(dynamic_string_tests, erase_popback_tests) {
     DynamicString string1("lastone,soclosetofinished");
 
-    ASSERT_STREQ("astone,soclosetofinished", (string1.erase(0)).c_str());
-    ASSERT_STREQ("astonesoclosetofinished", (string1.erase(6)).c_str());
+    string1.erase(0);
+    ASSERT_STREQ("astone,soclosetofinished", string1.c_str());
+    string1.erase(6);
+    ASSERT_STREQ("astonesoclosetofinished", string1.c_str());
 
     string1.pop_back();
 

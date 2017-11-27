@@ -48,18 +48,13 @@ struct obtain_##TypeName { \
 namespace wlp {
 
     __WLIB_HAS_TYPE(size_type)
-
     __WLIB_HAS_TYPE(val_type)
-
     __WLIB_HAS_TYPE(key_type)
-
     __WLIB_HAS_TYPE(iterator)
-
     __WLIB_HAS_TYPE(const_iterator)
-
     __WLIB_HAS_TYPE(map_type)
-
     __WLIB_HAS_TYPE(node_type)
+    __WLIB_HAS_TYPE(diff_type)
 
     __WLIB_OBTAIN_TYPE(size_type)
     __WLIB_OBTAIN_TYPE(val_type)
@@ -68,6 +63,7 @@ namespace wlp {
     __WLIB_OBTAIN_TYPE(const_iterator)
     __WLIB_OBTAIN_TYPE(map_type)
     __WLIB_OBTAIN_TYPE(node_type)
+    __WLIB_OBTAIN_TYPE(diff_type)
 
 }
 

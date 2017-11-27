@@ -1,5 +1,8 @@
 #include "gtest/gtest.h"
 
+#include "strings/StaticString.h"
+#include "strings/DynamicString.h"
+
 #include "stl/Concept.h"
 #include "stl/Comparator.h"
 #include "stl/ChainMap.h"
@@ -107,4 +110,14 @@ TEST(concept_checks, check_list_concept) {
 
     ASSERT_TRUE((is_list<ArrayList<int>>()));
     ASSERT_TRUE((is_list<LinkedList<int>>()));
+}
+
+TEST(concept_checks, check_string_concept) {
+    ASSERT_FALSE((is_string<ArrayList<char>>()));
+    ASSERT_FALSE((is_string<const char *>()));
+    ASSERT_FALSE((is_string<ChainHashMap<char, char>>()));
+
+    ASSERT_TRUE((is_string<StaticString<8>>()));
+    ASSERT_TRUE((is_string<StaticString<32>>()));
+    ASSERT_TRUE((is_string<DynamicString>()));
 }
