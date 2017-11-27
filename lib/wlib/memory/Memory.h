@@ -237,10 +237,10 @@ void free(Type *&ptr) {
         uint16_t *objInfo = reinterpret_cast<uint16_t *>(ptr);
         wlp::size_type numObjects = *(--objInfo);
 
-        Type *pointer = ptr;
+        Type *pointer = ptr + numObjects - 1;
         for (wlp::size_type i = 0; i < numObjects; ++i) {
             pointer->~Type();
-            ++pointer;
+            --pointer;
         }
 
         __memory_free(reinterpret_cast<Type *>(objInfo));
@@ -264,10 +264,10 @@ void free(Type *&&ptr) {
         uint16_t *objInfo = reinterpret_cast<uint16_t *>(ptr);
         wlp::size_type numObjects = *(--objInfo);
 
-        Type *pointer = ptr;
+        Type *pointer = ptr + numObjects - 1;
         for (wlp::size_type i = 0; i < numObjects; ++i) {
             pointer->~Type();
-            ++pointer;
+            --pointer;
         }
 
         __memory_free(reinterpret_cast<Type *>(objInfo));
