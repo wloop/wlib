@@ -17,9 +17,7 @@
 
 namespace wlp {
 
-#if __cplusplus >= 201103L
     typedef decltype(nullptr) nullptr_t;
-#endif
 
     /**
      * This function consumes, and does nothing with, the return
@@ -134,20 +132,20 @@ namespace wlp {
         typedef T type;
     };
 
-    template<typename _Tp>
+    template<typename T>
     struct remove_volatile {
-        typedef _Tp type;
+        typedef T type;
     };
 
-    template<typename _Tp>
-    struct remove_volatile<_Tp volatile> {
-        typedef _Tp type;
+    template<typename T>
+    struct remove_volatile<T volatile> {
+        typedef T type;
     };
 
-    template<typename _Tp>
+    template<typename T>
     struct remove_cv {
         typedef typename
-        remove_const<typename remove_volatile<_Tp>::type>::type type;
+        remove_const<typename remove_volatile<T>::type>::type type;
     };
 
     /**
@@ -754,6 +752,11 @@ namespace wlp {
     struct add_rvalue_reference : public __rvalue__<T> {
     };
 
+    template<typename T>
+    struct add_const {
+        typedef T const type;
+    };
+
     /**
      * Declared value helper.
      *
@@ -793,23 +796,23 @@ namespace wlp {
     };
 
     /**
-     * checks if @p _Tp type is a type that is a nullptr type
+     * checks if @p T type is a type that is a nullptr type
      *
-     * @tparam _Tp type being verified
+     * @tparam T type being verified
      */
-    template<typename _Tp>
+    template<typename T>
     struct is_null_pointer
-            : public __is_null_pointer_helper<typename remove_cv<_Tp>::type>::type {
+            : public __is_null_pointer_helper<typename remove_cv<T>::type>::type {
     };
 
     /**
-     * checks if @p _Tp type is a type that is a nullptr type
+     * checks if @p T type is a type that is a nullptr type
      *
-     * @tparam _Tp type being verified
+     * @tparam T type being verified
      */
-    template<typename _Tp>
+    template<typename T>
     struct __is_nullptr_t
-            : public is_null_pointer<_Tp> {
+            : public is_null_pointer<T> {
     };
 
     template<typename>
@@ -837,12 +840,10 @@ namespace wlp {
             : public true_type {
     };
 
-#ifdef _GLIBCXX_USE_WCHAR_T
     template<>
     struct __is_integral_helper<wchar_t>
             : public true_type {
     };
-#endif
 
     template<>
     struct __is_integral_helper<char16_t>
@@ -895,13 +896,13 @@ namespace wlp {
     };
 
     /**
-     * checks if @p _Tp type is an integer
+     * checks if @p T type is an integer
      *
-     * @tparam _Tp type being verified
+     * @tparam T type being verified
      */
-    template<typename _Tp>
+    template<typename T>
     struct is_integral
-            : public __is_integral_helper<typename remove_cv<_Tp>::type>::type {
+            : public __is_integral_helper<typename remove_cv<T>::type>::type {
     };
 
     template<typename>
@@ -924,13 +925,6 @@ namespace wlp {
             : public true_type {
     };
 
-#if !defined(__STRICT_ANSI__) && defined(_GLIBCXX_USE_FLOAT128)
-    template<>
-    struct __is_floating_point_helper<__float128>
-            : public true_type {
-    };
-#endif
-
     template<typename>
     struct __is_pointer_helper
             : public false_type { };
@@ -950,35 +944,89 @@ namespace wlp {
     { };
 
     /**
-     * checks if @p _Tp type is a floating point
+     * checks if @p T type is a floating point
      *
-     * @tparam _Tp type being verified
+     * @tparam T type being verified
      */
-    template<typename _Tp>
+    template<typename T>
     struct is_floating_point
-            : public __is_floating_point_helper<typename remove_cv<_Tp>::type>::type {
+            : public __is_floating_point_helper<typename remove_cv<T>::type>::type {
     };
 
     /**
-     * checks if @p _Tp type is a type that allow arithmetic operations
+     * checks if @p T type is a type that allow arithmetic operations
      *
-     * @tparam _Tp type being verified
+     * @tparam T type being verified
      */
-    template<typename _Tp>
+    template<typename T>
     struct is_arithmetic
-            : public or_<is_integral<_Tp>, is_floating_point<_Tp>>::type {
+            : public or_<is_integral<T>, is_floating_point<T>>::type {
     };
 
     /**
-     * checks if @p _Tp type is a type that is a fundamental type and not an object
+     * checks if @p T type is a type that is a fundamental type and not an object
      *
-     * @tparam _Tp type being verified
+     * @tparam T type being verified
      */
-    template<typename _Tp>
+    template<typename T>
     struct is_fundamental
-            : public or_<is_arithmetic<_Tp>, is_void<_Tp>,
-                    is_null_pointer<_Tp>>::type {
+            : public or_<is_arithmetic<T>, is_void<T>,
+                    is_null_pointer<T>>::type {
     };
+
+    template<typename From, typename To, bool = or_<
+            is_void<From>,
+            is_function<To>,
+            is_array<To>
+    >::value>
+    struct __convertible__ {
+        typedef typename is_void<To>::type type;
+    };
+
+    template<typename From, typename To>
+    struct __convertible__<From, To, false> {
+    private:
+        template<typename U>
+        static void __aux__(U);
+
+        template<typename F, typename T, typename = decltype(__aux__<T>(declval<F>()))>
+        static true_type __test__(int);
+
+        template<typename, typename>
+        static false_type __test__(...);
+
+    public:
+        typedef decltype(__test__<From, To>(0)) type;
+    };
+
+    template<typename From, typename To>
+    struct is_convertible
+            : public __convertible__<From, To>::type {
+    };
+
+    template<size_type size>
+    struct __storage__ {
+        union __type__ {
+            uint8_t __data__[size];
+            struct __attribute__((__aligned__)) {
+            } __align__;
+        };
+    };
+
+    template<size_type size, size_type align = __alignof__(typename __storage__<size>::__type__)>
+    struct aligned_storage {
+        union type {
+            uint8_t data[size];
+            struct __attribute__((__aligned__((align)))) {
+            } __align__;
+        };
+    };
+
+    template<typename T>
+    struct alignment_of
+            : public integral_constant<size_type, __alignof__(T)> {
+    };
+
 }
 
 #endif //EMBEDDEDCPLUSPLUS_TMP_H
