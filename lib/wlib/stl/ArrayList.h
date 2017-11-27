@@ -35,6 +35,7 @@ namespace wlp {
     class ArrayListIterator {
     public:
         typedef wlp::size_type size_type;
+        typedef wlp::diff_type diff_type;
         typedef T val_type;
         typedef Ref reference;
         typedef Ptr pointer;
@@ -257,11 +258,8 @@ namespace wlp {
          * @param it iterator to subtract
          * @return the integer distance
          */
-        size_type operator-(const self_type &it) const {
-            if (m_i < it.m_i) {
-                return static_cast<size_type>(it.m_i - m_i);
-            }
-            return static_cast<size_type>(m_i - it.m_i);
+        diff_type operator-(const self_type &it) const {
+            return static_cast<diff_type>(m_i - it.m_i);
         }
 
     };

@@ -13,13 +13,24 @@
 
 #include <string.h> // strlen, strncpy, strcmp
 
+#include "StringIterator.h"
+
 #include "../Types.h"
 #include "../utility/Math.h"
 
 namespace wlp {
+
     template<size_type tSize>
     class StaticString {
     public:
+        // Iterator types
+        typedef StringIterator<StaticString<tSize>, char &, char *> iterator;
+        typedef StringIterator<const StaticString<tSize>, const char &, const char *> const_iterator;
+
+        // Required types for concept check
+        typedef wlp::size_type size_type;
+        typedef wlp::diff_type diff_type;
+
         /**
          * Default constructor creates string with no character
          */
@@ -41,9 +52,8 @@ namespace wlp {
          * @param str char string
          */
         explicit StaticString<tSize>(const char *str) {
-            m_len = static_cast<size_type>(strlen(str));
-            if (m_len > capacity()) { m_len = capacity(); }
-            strncpy(m_buffer, str, m_len);
+            m_len = MIN(static_cast<size_type>(strlen(str)), tSize);
+            memcpy(m_buffer, str, m_len + 1);
             m_buffer[m_len] = '\0';
         }
 
@@ -54,7 +64,23 @@ namespace wlp {
          * @return current object
          */
         StaticString<tSize> &operator=(const StaticString<tSize> &str) {
-            return operator=(str.c_str());
+            m_len = str.m_len;
+            memcpy(m_buffer, str.m_buffer, m_len + 1);
+            return *this;
+        }
+
+        /**
+         * The move assignment operator for a StaticString
+         * must do a copy of the static array. This function
+         * exists for string concept.
+         *
+         * @param str
+         * @return
+         */
+        StaticString<tSize> &operator=(StaticString<tSize> &&str) noexcept {
+            m_len = str.m_len;
+            memcpy(m_buffer, str.m_buffer, m_len + 1);
+            return *this;
         }
 
         /**
@@ -65,9 +91,7 @@ namespace wlp {
          */
         StaticString<tSize> &operator=(const char *str) {
             m_len = MIN(static_cast<size_type>(strlen(str)), tSize);
-            strncpy(m_buffer, str, m_len);
-            m_buffer[m_len] = '\0';
-
+            memcpy(m_buffer, str, m_len + 1);
             return *this;
         }
 
@@ -78,8 +102,12 @@ namespace wlp {
          * @return current object
          */
         StaticString<tSize> &operator=(const char c) {
-            char string[] = {c, '\0'};
-            return operator=(string);
+            if (tSize == 0) {
+                return *this;
+            }
+            m_len = 1;
+            reinterpret_cast<uint16_t *>(m_buffer)[0] = static_cast<uint16_t>(c);
+            return *this;
         }
 
         /**
@@ -96,7 +124,7 @@ namespace wlp {
          *
          * @return string capacity
          */
-        size_type capacity() {
+        size_type capacity() const {
             return tSize;
         }
 
@@ -112,7 +140,7 @@ namespace wlp {
         /**
          * Clears the string such that there are no characters left in it
          */
-        void clear() {
+        void clear() noexcept {
             m_buffer[0] = '\0';
             m_len = 0;
         }
@@ -222,7 +250,7 @@ namespace wlp {
          * @return the current string
          */
         StaticString<tSize> &operator+=(const char *val) {
-            return append(val);
+            return append(val, static_cast<size_type>(strlen(val)));
         }
 
         /**
@@ -233,7 +261,8 @@ namespace wlp {
          * @return the current string
          */
         StaticString<tSize> &operator+=(char c) {
-            return push_back(c);
+            push_back(c);
+            return *this;
         }
 
         /**
@@ -244,7 +273,11 @@ namespace wlp {
          * @return the current string
          */
         StaticString<tSize> &append(const StaticString<tSize> &str) {
-            return append(str.c_str());
+            return append(str.c_str(), str.length());
+        }
+
+        StaticString<tSize> &append(const char *str) {
+            return append(str, static_cast<size_type>(strlen(str)));
         }
 
         /**
@@ -254,13 +287,11 @@ namespace wlp {
          * @param str character string to add
          * @return the current string
          */
-        StaticString<tSize> &append(const char *str) {
-            size_type bufferLength = m_len;
-            size_type otherLength = static_cast<size_type>(strlen(str));
-            for (size_type i = bufferLength; i < bufferLength + otherLength && i < capacity(); i++) {
-                m_buffer[i] = str[i - bufferLength];
-            }
-            m_len = static_cast<size_type>(MIN(tSize, bufferLength + otherLength));
+        StaticString<tSize> &append(const char *str, size_type len) {
+            char *start = m_buffer + m_len;
+            size_type new_len = MIN(tSize, static_cast<size_type>(m_len + len));
+            memcpy(start, str, new_len - m_len);
+            m_len = new_len;
             m_buffer[m_len] = '\0';
             return *this;
         }
@@ -272,9 +303,12 @@ namespace wlp {
          * @param c character to add
          * @return the current string
          */
-        StaticString<tSize> &push_back(const char c) {
-            char str[2] = {c, '\0'};
-            return append(str);
+        void push_back(char c) {
+            if (m_len == tSize) {
+                return;
+            }
+            reinterpret_cast<uint16_t *>(m_buffer + m_len)[0] = static_cast<uint16_t>(c);
+            ++m_len;
         }
 
         /**
@@ -283,14 +317,11 @@ namespace wlp {
          * @param pos position of the element to be deleted
          * @return the modified String
          */
-        StaticString<tSize> &erase(size_type pos = 0) {
-            if (m_len == 0 || pos >= m_len) { return *this; }
+        void erase(size_type pos = 0) {
+            if (m_len == 0 || pos >= m_len) { return; }
             --m_len;
-            for (size_type i = pos; i < m_len; ++i) {
-                m_buffer[i] = m_buffer[i + 1];
-            }
+            memmove(m_buffer + pos, m_buffer + pos + 1, m_len - pos);
             m_buffer[m_len] = '\0';
-            return *this;
         }
 
         /**
@@ -327,13 +358,10 @@ namespace wlp {
             if (pos + length >= m_len) {
                 length = static_cast<size_type>(m_len - pos);
             }
-            char newBuffer[length + 1];
-            for (size_type i = pos; i < pos + length; i++) {
-                newBuffer[i - pos] = m_buffer[i];
-            }
-            newBuffer[length] = '\0';
-            StaticString<tSize> s{newBuffer};
-            return s;
+            StaticString<tSize> sub;
+            memcpy(sub.m_buffer, m_buffer + pos, length);
+            sub.m_buffer[length] = '\0';
+            return sub;
         }
 
         /**
@@ -344,7 +372,7 @@ namespace wlp {
          * @param str @code StaticString @endcode string to compare against current string
          * @return a signed number based on how strings compare
          */
-        int16_t compare(const StaticString<tSize> &str) const {
+        diff_type compare(const StaticString<tSize> &str) const {
             return compare(str.c_str());
         }
 
@@ -356,8 +384,8 @@ namespace wlp {
          * @param str character string to compare against current string
          * @return a signed number based on how strings compare
          */
-        int16_t compare(const char *str) const {
-            return (int16_t) strcmp(this->c_str(), str);
+        diff_type compare(const char *str) const {
+            return static_cast<diff_type>(strcmp(this->c_str(), str));
         }
 
         /**
@@ -368,14 +396,53 @@ namespace wlp {
          * @param c character to compare against current string
          * @return a signed number based on how strings compare
          */
-        int16_t compare(char c) const {
+        diff_type compare(char c) const {
             char array[] = {c, '\0'};
-            return (int16_t) strcmp(this->c_str(), array);
+            return static_cast<diff_type>(strcmp(this->c_str(), array));
+        }
+
+        iterator begin() {
+            return iterator(0, this);
+        }
+
+        iterator end() {
+            return iterator(m_len, this);
+        }
+
+        const_iterator begin() const {
+            return const_iterator(0, this);
+        }
+
+        const_iterator end() const {
+            return const_iterator(m_len, this);
         }
 
     private:
+        StaticString(const char *str1, const char *str2, size_type len1, size_type len2) {
+            m_len = MIN(static_cast<size_type>(len1 + len2), tSize);
+            size_type min_len = MIN(m_len, len1);
+            memcpy(m_buffer, str1, min_len);
+            memcpy(m_buffer + min_len, str2, m_len - min_len);
+            m_buffer[m_len] = '\0';
+        }
+
         char m_buffer[tSize + 1];
         size_type m_len;
+
+        template<size_type size>
+        friend StaticString<size> operator+(const StaticString<size> &, const StaticString<size> &);
+
+        template<size_type size>
+        friend StaticString<size> operator+(const StaticString<size> &, const char *);
+
+        template<size_type size>
+        friend StaticString<size> operator+(const char *, const StaticString<size> &);
+
+        template<size_type size>
+        friend StaticString<size> operator+(const StaticString<size> &, char);
+
+        template<size_type size>
+        friend StaticString<size> operator+(char, const StaticString<size> &);
     };
 
     /**
@@ -453,9 +520,7 @@ namespace wlp {
      */
     template<size_type tSize>
     StaticString<tSize> operator+(const StaticString<tSize> &lhs, const StaticString<tSize> &rhs) {
-        StaticString<tSize> newStr;
-        newStr.append(lhs).append(rhs);
-        return newStr;
+        return {lhs.c_str(), rhs.c_str(), lhs.length(), rhs.length()};
     }
 
     /**
@@ -468,9 +533,7 @@ namespace wlp {
      */
     template<size_type tSize>
     StaticString<tSize> operator+(const char *lhs, const StaticString<tSize> &rhs) {
-        StaticString<tSize> newStr;
-        newStr.append(lhs).append(rhs);
-        return newStr;
+        return {lhs, rhs.c_str(), static_cast<size_type>(strlen(lhs)), rhs.length()};
     }
 
     /**
@@ -483,9 +546,7 @@ namespace wlp {
      */
     template<size_type tSize>
     StaticString<tSize> operator+(const StaticString<tSize> &lhs, const char *rhs) {
-        StaticString<tSize> newStr;
-        newStr.append(lhs).append(rhs);
-        return newStr;
+        return {lhs.c_str(), rhs, lhs.length(), static_cast<size_type>(strlen(rhs))};
     }
 
     /**
@@ -498,9 +559,7 @@ namespace wlp {
      */
     template<size_type tSize>
     StaticString<tSize> operator+(const StaticString<tSize> &lhs, const char rhs) {
-        StaticString<tSize> newStr;
-        newStr.append(lhs).push_back(rhs);
-        return newStr;
+        return {lhs.c_str(), &rhs, lhs.length(), 1};
     }
 
     /**
@@ -513,9 +572,7 @@ namespace wlp {
      */
     template<size_type tSize>
     StaticString<tSize> operator+(const char lhs, const StaticString<tSize> &rhs) {
-        StaticString<tSize> newStr;
-        newStr.push_back(lhs).append(rhs);
-        return newStr;
+        return {&lhs, rhs.c_str(), 1, rhs.length()};
     }
 }
 

@@ -104,8 +104,11 @@ TEST(static_string_test, concat_append_push_back) {
     ASSERT_STREQ(string5.c_str(), (string5.append("hhjsdjhs")).c_str());
 
     // individual char
-    ASSERT_STREQ("hibrooooooooooo7", (string3.push_back(char1)).c_str());
-    ASSERT_STREQ(string3.c_str(), (string3.push_back('d')).c_str());
+    string3.push_back(char1);
+    ASSERT_STREQ("hibrooooooooooo7", string3.c_str());
+    String16 string6{string3};
+    string6.push_back('d');
+    ASSERT_STREQ(string3.c_str(), string6.c_str());
 }
 
 TEST(static_string_test, equal_to_operator) {
@@ -223,7 +226,8 @@ TEST(static_string_test, erase_popBack){
     ASSERT_EQ(2, string1.length());
     ASSERT_STREQ("ep", string1.c_str());
 
-    string2.erase(0).erase(1);
+    string2.erase(0);
+    string2.erase(1);
     ASSERT_EQ(1, string2.length());
     ASSERT_STREQ("y", string2.c_str());
 
@@ -231,7 +235,8 @@ TEST(static_string_test, erase_popBack){
     ASSERT_EQ(1, string2.length());
     ASSERT_STREQ("y", string2.c_str());
 
-    string2.erase().erase();
+    string2.erase();
+    string2.erase();
     ASSERT_EQ(0, string2.length());
     ASSERT_STREQ("", string2.c_str());
 
