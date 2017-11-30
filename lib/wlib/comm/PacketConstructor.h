@@ -109,13 +109,5 @@ private:
 
 #endif // EMBEDDEDCPLUSPLUS_PACKETCONSTRUCTOR_H
 
-class SensorPacket : public PacketConstructor {
 
-public:
-    SensorPacket(const float* p_data, const Bitset<2> &packetType, const Bitset<6> &packetName) : PacketConstructor(p_data, packetType, packetName) {}
-
-    void getFromParent(float *data) {
-        get(data);
-    }
-};
 
