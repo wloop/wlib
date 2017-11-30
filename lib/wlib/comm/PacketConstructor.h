@@ -12,7 +12,6 @@
 #ifndef EMBEDDEDCPLUSPLUS_PACKETCONSTRUCTOR_H
 #define EMBEDDEDCPLUSPLUS_PACKETCONSTRUCTOR_H
 
-#include <string>
 #include "../stl/Bitset.h"
 
 using namespace wlp;
@@ -23,10 +22,35 @@ using namespace wlp;
 class PacketConstructor {
 
 public:
-    PacketConstructor();
-    PacketConstructor(float *p_data); // Create a new Packet
-    ~PacketConstructor(); // Destroy this packet freeing all dynamically allocated memory.
+    PacketConstructor(const float *p_data, const Bitset<2> &packetType, const Bitset<6> &packetName); // Create a new Packet
 
+    /** @brief Accessor method for the data pointer
+     *
+     * @return data pointer
+    */
+    /*const float* getData() const;*/
+
+    /** @brief Accessor method for the bit array
+     *
+     * @return bit array
+    */
+    /*Bitset<64> getBitArray();*/
+
+    /** @brief Returns number specified by the 64-bit array
+     *
+     * @return number
+    */
+    uint64_t getBitsetNum();
+
+    /** @brief Returns updated packet and updates the float array
+     *
+     * Must be declared in the derived class when instantiated.
+     *
+     * @param data pointer to the array of packet values
+     * @return Bitset
+    */
+    virtual void getFromParent(float* data)=0;
+private:
     //Helper Methods
     /** @brief Sets the start and end bits.
      *
@@ -37,16 +61,13 @@ public:
      * @return Void.
     */
     void setStartAndEnd();
+
     /** @brief Sets the type and name of the packet.
-     *
-     * There are 4 types of packets: sensor, command, state, and log.
-     * This method sets the bit representation of these types and the name
-     * pertaining to the specific packet. This function must be defined in each
-     * subclass of PacketConstructor so that the child class may be instantiated.
      *
      * @return Void.
     */
-    virtual void setTypeAndName()=0;
+    void setTypeAndName();
+
     /** @brief Converts data points addressed by the float pointer to bits.
      *
      * Splits each data point into its integer and decimal parts. It send the integer
@@ -55,6 +76,7 @@ public:
      * @return Void.
     */
     void dataToBin();
+
     /** @brief Converts the integer portion of a float to its 10 bit representation.
      *
      * @param num the integer portion of the float
@@ -63,6 +85,7 @@ public:
      * @return Void.
     */
     void intToBin(int num, int pos);
+
     /** @brief Converts the decimal portion of a float to its 7 bit representation.
      *
      * @param num the decimal portion of the float
@@ -71,72 +94,28 @@ public:
      * @return Void.
     */
     void floatToBin(int num, int pos);
-    /** @brief Accessor method for the data pointer
+protected:
+    /** @brief Returns updated packet and updates the float array
      *
-     * @return data pointer
+     * @return Bitset
     */
-    float* getData();
-    /** @brief Accessor method for the bit array
-     *
-     * @return bit array
-    */
-    Bitset<64> getBitArray();
-
+    Bitset<64> get(float* data);
 private:
-    float *m_pdata = new float [3];
+    const float *m_pdata;
     Bitset<64> m_bitArray;
+    const Bitset<2> m_packetType;
+    const Bitset<6> m_packetName;
 };
 
-/**
- *  @brief Child of PacketConstructor for sensor data.
-*/
+#endif // EMBEDDEDCPLUSPLUS_PACKETCONSTRUCTOR_H
+
 class SensorPacket : public PacketConstructor {
-    using PacketConstructor::PacketConstructor;
-    void setTypeAndName() override {
-        getBitArray().reset(1);
-        getBitArray().reset(2);
+
+public:
+    SensorPacket(const float* p_data, const Bitset<2> &packetType, const Bitset<6> &packetName) : PacketConstructor(p_data, packetType, packetName) {}
+
+    void getFromParent(float *data) {
+        get(data);
     }
 };
 
-/**
- *  @brief Child of PacketConstructor for command data.
-*/
-class CommandPacket : public PacketConstructor {
-    using PacketConstructor::PacketConstructor;
-    void setTypeAndName() override {
-        getBitArray().reset(1);
-        getBitArray().set(2);
-    }
-};
-
-/**
- *  @brief Child of PacketConstructor for state data.
- *
- *  This data will be used to monitor the state of each part of the pod.
-*/
-class StatePacket : public PacketConstructor {
-
-    public:
-
-        StatePacket(float *data) : PacketConstructor(data) {
-            setTypeAndName();
-        }
-    void setTypeAndName() override {
-        getBitArray().set(1);
-        getBitArray().reset(2);
-    }
-};
-
-/**
- *  @brief Child of PacketConstructor for log data.
-*/
-class LogPacket : public PacketConstructor {
-
-    using PacketConstructor::PacketConstructor;
-    void setTypeAndName() override {
-        getBitArray().set(1);
-        getBitArray().set(2);
-    }
-};
-
-#endif //EMBEDDEDCPLUSPLUS_PACKETCONSTRUCTOR_H
