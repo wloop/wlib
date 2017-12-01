@@ -3,7 +3,7 @@ var searchData=
   ['set_5fconcept',['set_concept',['../d3/d03/structwlp_1_1set__concept.html',1,'wlp']]],
   ['set_5fconcept_3c_20c_2c_20true_20_3e',['set_concept&lt; C, true &gt;',['../d1/d02/structwlp_1_1set__concept_3_01_c_00_01true_01_4.html',1,'wlp']]],
   ['sharedcount',['SharedCount',['../da/dbb/classwlp_1_1_shared_count.html',1,'wlp']]],
-  ['sharedcount_3c_20t_20_2a_3e',['SharedCount&lt; T *&gt;',['../da/dbb/classwlp_1_1_shared_count.html',1,'wlp']]],
+  ['sharedcount_3c_20t_20_2a_20_3e',['SharedCount&lt; T * &gt;',['../da/dbb/classwlp_1_1_shared_count.html',1,'wlp']]],
   ['sharedptr',['SharedPtr',['../d1/d52/classwlp_1_1_shared_ptr.html',1,'wlp']]],
   ['stateaction',['StateAction',['../dc/d2b/classwlp_1_1_state_action.html',1,'wlp']]],
   ['statebase',['StateBase',['../d3/d54/classwlp_1_1_state_base.html',1,'wlp']]],

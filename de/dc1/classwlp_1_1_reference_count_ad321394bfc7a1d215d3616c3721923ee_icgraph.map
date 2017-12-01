@@ -1,4 +1,4 @@
 <map id="wlp::ReferenceCount::destroy" name="wlp::ReferenceCount::destroy">
-<area shape="rect" id="node2" href="$de/dc1/classwlp_1_1_reference_count.html#ae23090c22e7fb693253759713af25304" title="wlp::ReferenceCount\l\&lt; T *\&gt;::release" alt="" coords="197,5,338,47"/>
-<area shape="rect" id="node3" href="$de/dc1/classwlp_1_1_reference_count.html#a3176bbfb56daae75179a1a652e5eccd8" title="wlp::ReferenceCount\l\&lt; T *\&gt;::weak_release" alt="" coords="195,71,340,112"/>
+<area shape="rect" id="node2" href="$de/dc1/classwlp_1_1_reference_count.html#ae23090c22e7fb693253759713af25304" title="wlp::ReferenceCount\l\&lt; T * \&gt;::release" alt="" coords="203,5,349,46"/>
+<area shape="rect" id="node3" href="$de/dc1/classwlp_1_1_reference_count.html#a3176bbfb56daae75179a1a652e5eccd8" title="wlp::ReferenceCount\l\&lt; T * \&gt;::weak_release" alt="" coords="201,70,351,111"/>
 </map>

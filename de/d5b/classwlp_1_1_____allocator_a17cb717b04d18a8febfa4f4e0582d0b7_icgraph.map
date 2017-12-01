@@ -1,0 +1,6 @@
+<map id="wlp::__Allocator::getBlockSize" name="wlp::__Allocator::getBlockSize">
+<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#ae94046dbccfe12303d31bb8aaff3e523" title="__memory_alloc" alt="" coords="268,29,385,56"/>
+<area shape="rect" id="node4" href="$d3/de6/_memory_8h.html#a19776500cfa4d32aeb17adb0c2f3c5fe" title="getFixedMemorySize" alt="" coords="254,80,399,107"/>
+<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8" title="malloc" alt="" coords="449,29,509,56"/>
+<area shape="rect" id="node5" href="$d3/de6/_memory_8h.html#a50569d96c5b87927563caa7281eb9a8a" title="realloc" alt="" coords="449,80,509,107"/>
+</map>

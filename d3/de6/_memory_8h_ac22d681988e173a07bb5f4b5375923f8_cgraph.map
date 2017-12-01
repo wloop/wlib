@@ -1,10 +1,10 @@
 <map id="malloc" name="malloc">
-<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#ae94046dbccfe12303d31bb8aaff3e523" title="__memory_alloc" alt="" coords="113,121,231,148"/>
-<area shape="rect" id="node3" href="$df/d64/_memory_8cpp.html#a5d4603ab26200d9bb1e69dcefde2ef7f" title="__memory_alloc" alt="" coords="279,121,396,148"/>
-<area shape="rect" id="node4" href="$de/d5b/classwlp_1_1_____allocator.html#ad1cc8c68a5c26a2869be2d7809c8d4f6" title="wlp::__Allocator::allocate" alt="" coords="460,5,627,32"/>
-<area shape="rect" id="node5" href="$de/d5b/classwlp_1_1_____allocator.html#ac32c40378bdd3630f7babc93aa0fab58" title="wlp::__Allocator::getBlockSize" alt="" coords="444,93,643,120"/>
-<area shape="rect" id="node6" href="$df/d64/_memory_8cpp.html#ae2e1e5eb229847e60461811e59883e94" title="memory_get_allocator" alt="" coords="468,163,619,189"/>
-<area shape="rect" id="node9" href="$df/d64/_memory_8cpp.html#a3449e9c53dbd01237556c8a36a18970c" title="set_block_allocator" alt="" coords="476,213,611,240"/>
-<area shape="rect" id="node7" href="$df/d64/_memory_8cpp.html#a183874ce1293611655792ea9a96386e9" title="find_allocator" alt="" coords="697,137,795,164"/>
-<area shape="rect" id="node8" href="$df/d64/_memory_8cpp.html#a8fd0fd773b28e67bdee6e672e5491b53" title="insert_allocator" alt="" coords="691,188,801,215"/>
+<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#ae94046dbccfe12303d31bb8aaff3e523" title="__memory_alloc" alt="" coords="115,121,232,148"/>
+<area shape="rect" id="node3" href="$df/d64/_memory_8cpp.html#a5d4603ab26200d9bb1e69dcefde2ef7f" title="__memory_alloc" alt="" coords="280,121,397,148"/>
+<area shape="rect" id="node4" href="$de/d5b/classwlp_1_1_____allocator.html#ad1cc8c68a5c26a2869be2d7809c8d4f6" title="wlp::__Allocator::allocate" alt="" coords="461,5,629,32"/>
+<area shape="rect" id="node5" href="$de/d5b/classwlp_1_1_____allocator.html#a17cb717b04d18a8febfa4f4e0582d0b7" title="wlp::__Allocator::getBlockSize" alt="" coords="445,93,645,120"/>
+<area shape="rect" id="node6" href="$df/d64/_memory_8cpp.html#ae2e1e5eb229847e60461811e59883e94" title="memory_get_allocator" alt="" coords="470,163,621,189"/>
+<area shape="rect" id="node9" href="$df/d64/_memory_8cpp.html#a3449e9c53dbd01237556c8a36a18970c" title="set_block_allocator" alt="" coords="478,213,613,240"/>
+<area shape="rect" id="node7" href="$df/d64/_memory_8cpp.html#a183874ce1293611655792ea9a96386e9" title="find_allocator" alt="" coords="700,137,799,164"/>
+<area shape="rect" id="node8" href="$df/d64/_memory_8cpp.html#a8fd0fd773b28e67bdee6e672e5491b53" title="insert_allocator" alt="" coords="694,188,805,215"/>
 </map>

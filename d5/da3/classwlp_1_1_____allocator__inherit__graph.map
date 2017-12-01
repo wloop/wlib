@@ -1,4 +1,4 @@
 <map id="wlp::__Allocator" name="wlp::__Allocator">
-<area shape="rect" id="node2" href="$d6/dda/classwlp_1_1_dynamic_allocator_pool.html" title="wlp::DynamicAllocatorPool\l\&lt; tblockSize, tnumBlocks \&gt;" alt="" coords="168,5,352,47"/>
-<area shape="rect" id="node3" href="$d1/dba/classwlp_1_1_static_allocator_pool.html" title="wlp::StaticAllocatorPool\l\&lt; tblockSize, tnumBlocks \&gt;" alt="" coords="168,71,352,112"/>
+<area shape="rect" id="node2" href="$d6/dda/classwlp_1_1_dynamic_allocator_pool.html" title="wlp::DynamicAllocatorPool\l\&lt; tblockSize, tnumBlocks \&gt;" alt="" coords="168,5,352,46"/>
+<area shape="rect" id="node3" href="$d1/dba/classwlp_1_1_static_allocator_pool.html" title="wlp::StaticAllocatorPool\l\&lt; tblockSize, tnumBlocks \&gt;" alt="" coords="168,70,352,111"/>
 </map>

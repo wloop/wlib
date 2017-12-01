@@ -1,6 +1,5 @@
 <map id="wlp::count" name="wlp::count">
-<area shape="rect" id="node2" href="$d3/def/classwlp_1_1_red_black_tree.html#a7793eefdb0119eecad74fafc926b49dd" title="wlp::RedBlackTree\&lt;\l Key, Key, Cmp \&gt;::clear" alt="" coords="137,5,299,47"/>
-<area shape="rect" id="node3" href="$d5/dca/namespacewlp.html#a800c1b1a4f7c0eb3fe043e65e7213170" title="wlp::count" alt="" coords="177,71,259,98"/>
-<area shape="rect" id="node4" href="$d3/def/classwlp_1_1_red_black_tree.html#ab504db4e227989925608658d7183b211" title="wlp::RedBlackTree\&lt;\l Key, Key, Cmp \&gt;::count" alt="" coords="135,123,301,164"/>
-<area shape="rect" id="node5" href="$d3/def/classwlp_1_1_red_black_tree.html#ad7b1dbee6c1a2cfcbddd4be5adfa7e2b" title="wlp::RedBlackTree\&lt;\l Key, Key, Cmp \&gt;::erase" alt="" coords="135,188,301,229"/>
+<area shape="rect" id="node2" href="$d5/dca/namespacewlp.html#a800c1b1a4f7c0eb3fe043e65e7213170" title="wlp::count" alt="" coords="165,5,248,32"/>
+<area shape="rect" id="node3" href="$d3/def/classwlp_1_1_red_black_tree.html#adc4825766dcf463c2a841dcdd28e6817" title="wlp::RedBlackTree::\lcount" alt="" coords="136,57,277,98"/>
+<area shape="rect" id="node4" href="$d3/def/classwlp_1_1_red_black_tree.html#ad7b1dbee6c1a2cfcbddd4be5adfa7e2b" title="wlp::RedBlackTree::\lerase" alt="" coords="136,122,277,163"/>
 </map>

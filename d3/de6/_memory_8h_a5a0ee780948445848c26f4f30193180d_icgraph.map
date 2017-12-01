@@ -1,4 +1,3 @@
 <map id="getTotalMemoryAvailable" name="getTotalMemoryAvailable">
-<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#a99889aa03daa4a4f14de872618fd5c3b" title="getTotalMemoryFree" alt="" coords="220,5,361,32"/>
-<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html#a50569d96c5b87927563caa7281eb9a8a" title="realloc" alt="" coords="409,31,469,57"/>
+<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#a99889aa03daa4a4f14de872618fd5c3b" title="getTotalMemoryFree" alt="" coords="225,5,367,32"/>
 </map>

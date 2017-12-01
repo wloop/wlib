@@ -1,10 +1,6 @@
 <map id="wlp::UniquePtr::reset" name="wlp::UniquePtr::reset">
-<area shape="rect" id="node2" href="$df/d24/classwlp_1_1_unique_ptr.html#a3bc3cd6a7d5253b54a72d7f11f65950c" title="wlp::UniquePtr::operator=" alt="" coords="201,35,370,61"/>
-<area shape="rect" id="node6" href="$dd/d28/classwlp_1_1_unique_ptr_3_01_t[]_4.html#a0e66c7b26c8fcbd14aba96bd91d00112" title="wlp::UniquePtr\&lt; T[]\l\&gt;::operator=" alt="" coords="219,86,352,127"/>
-<area shape="rect" id="node7" href="$dd/d28/classwlp_1_1_unique_ptr_3_01_t[]_4.html#a4d94b32bec217cc5c50d8a4947b319bc" title="wlp::UniquePtr\&lt; T[]\l\&gt;::reset" alt="" coords="219,151,352,193"/>
-<area shape="rect" id="node8" href="$df/d24/classwlp_1_1_unique_ptr.html#ac972f5f7ae3e17a58140cfe3a694667d" title="wlp::UniquePtr::~UniquePtr" alt="" coords="196,217,375,244"/>
-<area shape="rect" id="node9" href="$dd/d28/classwlp_1_1_unique_ptr_3_01_t[]_4.html#a9e589243e6070266b6b4a9ac5e0e0ac0" title="wlp::UniquePtr\&lt; T[]\l\&gt;::~UniquePtr" alt="" coords="219,269,352,310"/>
-<area shape="rect" id="node3" href="$df/d24/classwlp_1_1_unique_ptr.html#aa903b0743277e9ff139b00ae22ca4f36" title="wlp::UniquePtr::swap" alt="" coords="423,5,567,32"/>
-<area shape="rect" id="node5" href="$dd/d28/classwlp_1_1_unique_ptr_3_01_t[]_4.html#afd506c1c471dd2a3589437308d104343" title="wlp::UniquePtr\&lt; T[]\l\&gt;::swap" alt="" coords="428,57,561,98"/>
-<area shape="rect" id="node4" href="$d5/dca/namespacewlp.html#a0ced7f385d1e9c4e0cb5e429ba21e8ee" title="wlp::swap" alt="" coords="615,5,693,32"/>
+<area shape="rect" id="node2" href="$df/d24/classwlp_1_1_unique_ptr.html#a3bc3cd6a7d5253b54a72d7f11f65950c" title="wlp::UniquePtr::operator=" alt="" coords="207,5,377,32"/>
+<area shape="rect" id="node3" href="$dd/d28/classwlp_1_1_unique_ptr_3_01_t[]_4.html#a0e66c7b26c8fcbd14aba96bd91d00112" title="wlp::UniquePtr\&lt; T[]\l\&gt;::operator=" alt="" coords="224,57,360,98"/>
+<area shape="rect" id="node4" href="$df/d24/classwlp_1_1_unique_ptr.html#ac972f5f7ae3e17a58140cfe3a694667d" title="wlp::UniquePtr::~UniquePtr" alt="" coords="201,123,383,149"/>
+<area shape="rect" id="node5" href="$dd/d28/classwlp_1_1_unique_ptr_3_01_t[]_4.html#a9e589243e6070266b6b4a9ac5e0e0ac0" title="wlp::UniquePtr\&lt; T[]\l\&gt;::~UniquePtr" alt="" coords="224,174,360,215"/>
 </map>

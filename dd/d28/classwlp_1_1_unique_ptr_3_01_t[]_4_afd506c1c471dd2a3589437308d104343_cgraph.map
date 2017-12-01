@@ -1,8 +1,4 @@
 <map id="wlp::UniquePtr&lt; T[]&gt;::swap" name="wlp::UniquePtr&lt; T[]&gt;::swap">
-<area shape="rect" id="node2" href="$df/d24/classwlp_1_1_unique_ptr.html#a3bc3cd6a7d5253b54a72d7f11f65950c" title="wlp::UniquePtr::operator=" alt="" coords="187,5,357,32"/>
-<area shape="rect" id="node4" href="$d5/dca/namespacewlp.html#a14fbfebbc21b2593185c686b26a9d8fb" title="wlp::swap" alt="" coords="233,56,311,83"/>
-<area shape="rect" id="node7" href="$df/d24/classwlp_1_1_unique_ptr.html#ac39e7cdc995e53ef2d8eca44f5bf7ee0" title="wlp::UniquePtr::UniquePtr" alt="" coords="187,107,357,133"/>
-<area shape="rect" id="node3" href="$df/d24/classwlp_1_1_unique_ptr.html#ae00b309e112269490c58c5db1d32966f" title="wlp::UniquePtr::reset" alt="" coords="407,5,549,32"/>
-<area shape="rect" id="node5" href="$d1/d52/classwlp_1_1_shared_ptr.html#aeb4cc93940627a04b0414bad11b4c020" title="wlp::SharedPtr::swap" alt="" coords="405,56,551,83"/>
-<area shape="rect" id="node6" href="$da/dbb/classwlp_1_1_shared_count.html#ad9de7cb486018b547abbf4416fb31029" title="wlp::SharedCount::swap" alt="" coords="599,56,761,83"/>
+<area shape="rect" id="node2" href="$d5/dca/namespacewlp.html#a14fbfebbc21b2593185c686b26a9d8fb" title="wlp::swap" alt="" coords="190,12,271,39"/>
+<area shape="rect" id="node3" href="$d1/d52/classwlp_1_1_shared_ptr.html#aeb4cc93940627a04b0414bad11b4c020" title="wlp::SharedPtr::swap" alt="" coords="320,12,467,39"/>
 </map>

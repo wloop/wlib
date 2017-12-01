@@ -1,4 +1,3 @@
 <map id="getSmallestBlockSize" name="getSmallestBlockSize">
-<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#a8d8f3aabf2f8d9c20d03a917f7dd3c91" title="free" alt="" coords="213,5,255,32"/>
-<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html#a50569d96c5b87927563caa7281eb9a8a" title="realloc" alt="" coords="204,56,264,83"/>
+<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#a50569d96c5b87927563caa7281eb9a8a" title="realloc" alt="" coords="206,5,266,32"/>
 </map>

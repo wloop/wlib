@@ -1,9 +1,5 @@
 <map id="memory" name="memory">
-<area shape="rect" id="node1" href="dir_267116d250309cbe7bd39c0026ee016a.html" title="memory" alt="" coords="43,5,115,53"/>
-<area shape="rect" id="node2" href="dir_64e73385a8b7738563c26ce10415b58d.html" title="utility" alt="" coords="5,197,77,245"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000001_000004.html" title="5" alt="" coords="34,170,42,185"/>
-<area shape="rect" id="node3" href="dir_73a3cc5065b223eb41b02873c0e19f0e.html" title="strings" alt="" coords="43,101,115,149"/>
-<area shape="rect" id="edge2-headlabel" href="dir_000001_000003.html" title="2" alt="" coords="74,75,82,90"/>
-<area shape="rect" id="edge3-headlabel" href="dir_000003_000001.html" title="1" alt="" coords="75,65,83,80"/>
-<area shape="rect" id="edge4-headlabel" href="dir_000003_000004.html" title="1" alt="" coords="61,176,69,191"/>
+<area shape="rect" id="node1" href="dir_267116d250309cbe7bd39c0026ee016a.html" title="memory" alt="" coords="5,5,77,53"/>
+<area shape="rect" id="node2" href="dir_64e73385a8b7738563c26ce10415b58d.html" title="utility" alt="" coords="5,101,77,149"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000001_000004.html" title="5" alt="" coords="46,76,54,90"/>
 </map>

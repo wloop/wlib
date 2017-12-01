@@ -1,23 +1,22 @@
 <map id="Wlib.h" name="Wlib.h">
-<area shape="rect" id="node2" href="$df/dcf/_state_machine_8h.html" title="fsm/StateMachine.h" alt="" coords="5,80,144,107"/>
-<area shape="rect" id="node3" href="$df/d64/_memory_8cpp.html" title="Implementation of Memory functions. " alt="" coords="231,379,377,405"/>
-<area shape="rect" id="node4" href="$d8/dd7/_concept_8h.html" title="Concept definitions. " alt="" coords="168,80,267,107"/>
-<area shape="rect" id="node22" href="$de/d6d/_bitset_8h.html" title="Bitset is a class that provides bits manipulation methods. " alt="" coords="341,80,427,107"/>
-<area shape="rect" id="node5" href="$df/d03/_array_heap_8h.html" title="Heap manipulation and implementation. " alt="" coords="312,528,424,555"/>
-<area shape="rect" id="node6" href="$de/d0b/_string_iterator_8h.html" title="strings/StringIterator.h" alt="" coords="406,155,557,181"/>
-<area shape="rect" id="node7" href="$d8/d65/_static_string_8h.html" title="StaticString provides a String that is on stack and is of fixed size. " alt="" coords="640,229,784,256"/>
-<area shape="rect" id="node20" href="$d6/d60/_dynamic_string_8h.html" title="DynamicString is a class that provides dynamic strings and functions for dynamic strings. " alt="" coords="401,379,562,405"/>
-<area shape="rect" id="node8" href="$d7/d0c/_comparator_8h.html" title="Comparator implementation for basic types. " alt="" coords="631,453,750,480"/>
-<area shape="rect" id="node12" href="$d2/dc2/_equal_8h.html" title="stl/Equal.h" alt="" coords="862,379,946,405"/>
-<area shape="rect" id="node17" href="$d2/dad/_hash_8h.html" title="Provides hash functions for basic data types. " alt="" coords="977,379,1058,405"/>
-<area shape="rect" id="node18" href="$db/db5/_string_8h.html" title="strings/String.h" alt="" coords="657,304,767,331"/>
-<area shape="rect" id="node9" href="$d5/d08/_red_black_tree_8h.html" title="Red black tree implementation. " alt="" coords="625,528,757,555"/>
-<area shape="rect" id="node10" href="$df/d87/_tree_map_8h.html" title="Map implementation using red black tree. " alt="" coords="579,603,680,629"/>
-<area shape="rect" id="node11" href="$dd/dba/_tree_set_8h.html" title="Set implementation using red black tree. " alt="" coords="704,603,800,629"/>
-<area shape="rect" id="node13" href="$d3/dbe/_chain_map_8h.html" title="Hasher map implementation. " alt="" coords="975,453,1084,480"/>
-<area shape="rect" id="node15" href="$d5/d7a/_open_map_8h.html" title="Hash map implementation. " alt="" coords="844,453,951,480"/>
-<area shape="rect" id="node16" href="$d0/de6/_open_set_8h.html" title="Hash set implementation. " alt="" coords="846,528,949,555"/>
-<area shape="rect" id="node14" href="$d6/d59/_chain_set_8h.html" title="Hash set implementation. " alt="" coords="977,528,1081,555"/>
-<area shape="rect" id="node19" href="$d0/d55/_allocator_8cpp.html" title="Implementation of Allocator. " alt="" coords="637,379,787,405"/>
-<area shape="rect" id="node21" href="$d9/d8a/_dynamic_string_8cpp.html" title="DynamicString is a class that provides dynamic strings and functions for dynamic strings. " alt="" coords="394,453,569,480"/>
+<area shape="rect" id="node2" href="$df/dcf/_state_machine_8h.html" title="fsm/StateMachine.h" alt="" coords="140,80,279,107"/>
+<area shape="rect" id="node3" href="$df/d64/_memory_8cpp.html" title="Implementation of Memory functions. " alt="" coords="303,80,448,107"/>
+<area shape="rect" id="node4" href="$d8/dd7/_concept_8h.html" title="Concept definitions. " alt="" coords="473,80,572,107"/>
+<area shape="rect" id="node21" href="$de/d6d/_bitset_8h.html" title="Bitset is a class that provides bits manipulation methods. " alt="" coords="597,80,683,107"/>
+<area shape="rect" id="node5" href="$df/d03/_array_heap_8h.html" title="Heap manipulation and implementation. " alt="" coords="593,453,705,480"/>
+<area shape="rect" id="node6" href="$de/d0b/_string_iterator_8h.html" title="strings/StringIterator.h" alt="" coords="319,155,469,181"/>
+<area shape="rect" id="node7" href="$d8/d65/_static_string_8h.html" title="StaticString provides a String that is on stack and is of fixed size. " alt="" coords="323,229,467,256"/>
+<area shape="rect" id="node19" href="$d6/d60/_dynamic_string_8h.html" title="DynamicString is a class that provides dynamic strings and functions for dynamic strings. " alt="" coords="55,229,217,256"/>
+<area shape="rect" id="node8" href="$d7/d0c/_comparator_8h.html" title="Comparator implementation for basic types. " alt="" coords="467,379,585,405"/>
+<area shape="rect" id="node12" href="$d2/dc2/_equal_8h.html" title="stl/Equal.h" alt="" coords="313,304,396,331"/>
+<area shape="rect" id="node17" href="$d2/dad/_hash_8h.html" title="stl/Hash.h" alt="" coords="205,304,287,331"/>
+<area shape="rect" id="node18" href="$db/db5/_string_8h.html" title="strings/String.h" alt="" coords="473,304,583,331"/>
+<area shape="rect" id="node9" href="$d5/d08/_red_black_tree_8h.html" title="Red black tree implementation. " alt="" coords="434,453,568,480"/>
+<area shape="rect" id="node10" href="$df/d87/_tree_map_8h.html" title="Map implementation using red black tree. " alt="" coords="389,528,491,555"/>
+<area shape="rect" id="node11" href="$dd/dba/_tree_set_8h.html" title="Set implementation using red black tree. " alt="" coords="515,528,612,555"/>
+<area shape="rect" id="node13" href="$d3/dbe/_chain_map_8h.html" title="Hasher map implementation. " alt="" coords="333,379,443,405"/>
+<area shape="rect" id="node15" href="$d5/d7a/_open_map_8h.html" title="Hash map implementation. " alt="" coords="151,379,257,405"/>
+<area shape="rect" id="node16" href="$d0/de6/_open_set_8h.html" title="Hash set implementation. " alt="" coords="153,453,255,480"/>
+<area shape="rect" id="node14" href="$d6/d59/_chain_set_8h.html" title="Hash set implementation. " alt="" coords="305,453,409,480"/>
+<area shape="rect" id="node20" href="$d9/d8a/_dynamic_string_8cpp.html" title="DynamicString is a class that provides dynamic strings and functions for dynamic strings. " alt="" coords="5,304,181,331"/>
 </map>

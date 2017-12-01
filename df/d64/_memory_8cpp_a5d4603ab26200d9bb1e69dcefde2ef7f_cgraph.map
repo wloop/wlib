@@ -1,8 +1,8 @@
 <map id="__memory_alloc" name="__memory_alloc">
-<area shape="rect" id="node2" href="$de/d5b/classwlp_1_1_____allocator.html#ad1cc8c68a5c26a2869be2d7809c8d4f6" title="wlp::__Allocator::allocate" alt="" coords="187,5,353,32"/>
-<area shape="rect" id="node3" href="$de/d5b/classwlp_1_1_____allocator.html#ac32c40378bdd3630f7babc93aa0fab58" title="wlp::__Allocator::getBlockSize" alt="" coords="171,56,369,83"/>
-<area shape="rect" id="node4" href="$df/d64/_memory_8cpp.html#ae2e1e5eb229847e60461811e59883e94" title="memory_get_allocator" alt="" coords="195,107,345,133"/>
-<area shape="rect" id="node7" href="$df/d64/_memory_8cpp.html#a3449e9c53dbd01237556c8a36a18970c" title="set_block_allocator" alt="" coords="203,157,337,184"/>
-<area shape="rect" id="node5" href="$df/d64/_memory_8cpp.html#a183874ce1293611655792ea9a96386e9" title="find_allocator" alt="" coords="423,81,522,108"/>
-<area shape="rect" id="node6" href="$df/d64/_memory_8cpp.html#a8fd0fd773b28e67bdee6e672e5491b53" title="insert_allocator" alt="" coords="417,132,528,159"/>
+<area shape="rect" id="node2" href="$de/d5b/classwlp_1_1_____allocator.html#ad1cc8c68a5c26a2869be2d7809c8d4f6" title="wlp::__Allocator::allocate" alt="" coords="187,5,355,32"/>
+<area shape="rect" id="node3" href="$de/d5b/classwlp_1_1_____allocator.html#a17cb717b04d18a8febfa4f4e0582d0b7" title="wlp::__Allocator::getBlockSize" alt="" coords="171,56,371,83"/>
+<area shape="rect" id="node4" href="$df/d64/_memory_8cpp.html#ae2e1e5eb229847e60461811e59883e94" title="memory_get_allocator" alt="" coords="195,107,346,133"/>
+<area shape="rect" id="node7" href="$df/d64/_memory_8cpp.html#a3449e9c53dbd01237556c8a36a18970c" title="set_block_allocator" alt="" coords="203,157,338,184"/>
+<area shape="rect" id="node5" href="$df/d64/_memory_8cpp.html#a183874ce1293611655792ea9a96386e9" title="find_allocator" alt="" coords="425,81,524,108"/>
+<area shape="rect" id="node6" href="$df/d64/_memory_8cpp.html#a8fd0fd773b28e67bdee6e672e5491b53" title="insert_allocator" alt="" coords="419,132,530,159"/>
 </map>

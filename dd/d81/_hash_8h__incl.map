@@ -1,14 +1,13 @@
 <map id="stl/Hash.h" name="stl/Hash.h">
-<area shape="rect" id="node2" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="217,528,297,555"/>
-<area shape="rect" id="node4" href="$d2/ddf/_wlib_config_8h.html" title="Some basic definitions for compilers. " alt="" coords="43,80,149,107"/>
-<area shape="rect" id="node5" href="$da/db8/_math_8h.html" title="../utility/Math.h" alt="" coords="85,155,195,181"/>
-<area shape="rect" id="node6" href="$d8/d65/_static_string_8h.html" title="StaticString provides a String that is on stack and is of fixed size. " alt="" coords="225,80,381,107"/>
-<area shape="rect" id="node7" href="$db/db5/_string_8h.html" title="string.h" alt="" coords="270,155,335,181"/>
-<area shape="rect" id="node8" href="$de/d0b/_string_iterator_8h.html" title="StringIterator.h" alt="" coords="360,155,467,181"/>
-<area shape="rect" id="node9" href="$d8/dd7/_concept_8h.html" title="Concept definitions. " alt="" coords="417,229,527,256"/>
-<area shape="rect" id="node10" href="$d4/dda/_pair_8h.html" title="Implementation of a 2&#45;element tuple. " alt="" coords="364,304,420,331"/>
-<area shape="rect" id="node12" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="395,453,453,480"/>
-<area shape="rect" id="node13" href="$d4/dd5/_type_traits_8h.html" title="Metafunctions for types. " alt="" coords="509,379,603,405"/>
-<area shape="rect" id="node14" href="$d2/db4/_wlib_8h.html" title="../Wlib.h" alt="" coords="561,304,631,331"/>
-<area shape="rect" id="node11" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="321,379,434,405"/>
+<area shape="rect" id="node2" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="242,528,323,555"/>
+<area shape="rect" id="node4" href="$d2/ddf/_wlib_config_8h.html" title="Some basic definitions for compilers. " alt="" coords="43,80,152,107"/>
+<area shape="rect" id="node5" href="$da/db8/_math_8h.html" title="../utility/Math.h" alt="" coords="111,155,220,181"/>
+<area shape="rect" id="node6" href="$d8/d65/_static_string_8h.html" title="StaticString provides a String that is on stack and is of fixed size. " alt="" coords="227,80,383,107"/>
+<area shape="rect" id="node8" href="$de/d0b/_string_iterator_8h.html" title="StringIterator.h" alt="" coords="385,155,492,181"/>
+<area shape="rect" id="node9" href="$d8/dd7/_concept_8h.html" title="Concept definitions. " alt="" coords="441,229,552,256"/>
+<area shape="rect" id="node10" href="$d4/dda/_pair_8h.html" title="Implementation of a 2&#45;element tuple. " alt="" coords="389,304,444,331"/>
+<area shape="rect" id="node12" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="420,453,477,480"/>
+<area shape="rect" id="node13" href="$d4/dd5/_type_traits_8h.html" title="Metafunctions for types. " alt="" coords="535,379,629,405"/>
+<area shape="rect" id="node14" href="$d2/db4/_wlib_8h.html" title="../Wlib.h" alt="" coords="586,304,656,331"/>
+<area shape="rect" id="node11" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="345,379,460,405"/>
 </map>

@@ -1,5 +1,0 @@
-<map id="wlp::ReferenceCount::use_count" name="wlp::ReferenceCount::use_count">
-<area shape="rect" id="node2" href="$da/dbb/classwlp_1_1_shared_count.html#a441d6d0db29c49c22897caadc89bac86" title="wlp::SharedCount\&lt; T\l *\&gt;::unique" alt="" coords="200,5,343,47"/>
-<area shape="rect" id="node3" href="$da/dbb/classwlp_1_1_shared_count.html#a01286e8dfad415bb83dab9b74be78f8e" title="wlp::SharedCount\&lt; T\l *\&gt;::use_count" alt="" coords="200,71,343,112"/>
-<area shape="rect" id="node4" href="$d4/d8d/classwlp_1_1_weak_count.html#aa5728c823169308403ba9af8a8ffa22b" title="wlp::WeakCount\&lt; T *\&gt;\l::use_count" alt="" coords="195,136,348,177"/>
-</map>
