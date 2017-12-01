@@ -79,12 +79,8 @@ cd ..
 rm -rf library/*
 cp -r lib/wlib/. library
 cp README.md library
-cp .travis.yml library
-cp .deploy.sh library
-cp deploy_key.enc library
-cp LICENSE library
-cp .coveralls.yml library
 cp .gitignore library
+cp LICENSE library
 
 cd library
 git add .
