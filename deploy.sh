@@ -5,10 +5,10 @@ SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
-if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
-    echo "Skipping deploy"
-    exit 0
-fi
+#if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
+#    echo "Skipping deploy"
+#    exit 0
+#fi
 
 # Save some useful information
 REPO=`git config remote.origin.url`
@@ -17,23 +17,26 @@ SHA=`git rev-parse --verify HEAD`
 
 echo "Pushing to gh-pages"
 
-# Clone the existing gh-pages for this repo into out/
+# Clone the existing gh-pages for this repo into doc_out/
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
-git clone $REPO out
-cd out
+git clone $REPO doc_out
+cd doc_out
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 cd ..
 
 echo "Removing current files"
 
 # Clean out existing contents
-rm -rf out/**/* || exit 0
+rm -rf doc_out/**/* || exit 0
+
+cd doc_out
 
 # Run our compile script
 doxygen doxygen.conf
 
 # Move content from html folder
-cp -r docs/html/* out/
+cp -r html/* .
+rm -r html
 
 # Now let's go have some fun with the cloned repo
 cd out
