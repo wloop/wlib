@@ -3,6 +3,7 @@ set -e # Exit with nonzero exit code if anything fails
 
 SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
+Wlib_BRANCH="library"
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
 #if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
@@ -40,12 +41,6 @@ cd ../docs_out
 git config user.name "Travis CI"
 git config user.email "deep.dhill6@gmail.com"
 
-# If there are no changes (e.g. this is a README update) then just bail.
-if [ -z `git diff --exit-code` ]; then
-    echo "No changes to the spec on this push; exiting."
-    exit 0
-fi
-
 echo "Deploying to gh-pages"
 
 # Commit the "changes", i.e. the new version.
@@ -68,3 +63,22 @@ rm deploy_key
 git push $SSH_REPO $TARGET_BRANCH
 
 echo "Deployed to gh-pages"
+
+# Clone the existing gh-pages for this repo into docs_out
+# Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
+git clone $REPO library
+cd library
+git checkout $Wlib_BRANCH || git checkout --orphan $Wlib_BRANCH
+cd ..
+
+# Clean out existing contents and copy new content
+rm -rf library/**/* || exit 0
+cp -r lib/wlib/**/* library
+
+cd library
+git add .
+git commit -m "Deploy to Wlib Library: ${SHA}"
+
+git push $SSH_REPO $Wlib_BRANCH
+
+echo "Deployed Wlib library"
