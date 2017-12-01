@@ -17,29 +17,26 @@ SHA=`git rev-parse --verify HEAD`
 
 echo "Pushing to gh-pages"
 
-# Clone the existing gh-pages for this repo into doc_out/
+# Clone the existing gh-pages for this repo into docs_out
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
-git clone $REPO doc_out
-cd doc_out
+git clone $REPO docs_out
+cd docs_out
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
-cd ..
+cd ../docs
 
 echo "Removing current files"
 
 # Clean out existing contents
-rm -rf doc_out/**/* || exit 0
-
-cd doc_out
+rm -rf ../docs_out/**/* || exit 0
 
 # Run our compile script
 doxygen doxygen.conf
 
 # Move content from html folder
-cp -r html/* .
-rm -r html
+cp -r html/* ../docs_out
 
 # Now let's go have some fun with the cloned repo
-cd out
+cd ../docs_out
 git config user.name "Travis CI"
 git config user.email "deep.dhill6@gmail.com"
 
