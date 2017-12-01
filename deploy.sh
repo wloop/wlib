@@ -62,6 +62,8 @@ rm deploy_key
 # Now that we're all set up, we can push.
 git push $SSH_REPO $TARGET_BRANCH
 
+cd ..
+
 echo "Deployed to gh-pages"
 
 # Clone the existing gh-pages for this repo into docs_out
