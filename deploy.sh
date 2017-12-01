@@ -29,7 +29,7 @@ cd ../docs
 echo "Removing current files"
 
 # Clean out existing contents
-rm -rf ../docs_out/**/* || exit 0
+rm -rf ../docs_out/*
 
 # Run our compile script
 doxygen doxygen.conf
@@ -75,7 +75,7 @@ git checkout $Wlib_BRANCH || git checkout --orphan $Wlib_BRANCH
 cd ..
 
 # Clean out existing contents and copy new content
-rm -rf library/**/* || exit 0
+rm -rf library/*
 cp -r lib/wlib/. library
 
 cd library
