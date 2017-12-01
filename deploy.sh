@@ -3,13 +3,13 @@ set -e # Exit with nonzero exit code if anything fails
 
 SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
-Wlib_BRANCH="library"
+WLIB_BRANCH="library"
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
-#if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
-#    echo "Skipping deploy"
-#    exit 0
-#fi
+if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
+    echo "Skipping deploy"
+    exit 0
+fi
 
 # Save some useful information
 REPO=`git config remote.origin.url`
@@ -73,17 +73,18 @@ echo "Deployed to gh-pages"
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
 git clone $REPO library
 cd library
-git checkout $Wlib_BRANCH || git checkout --orphan $Wlib_BRANCH
+git checkout $WLIB_BRANCH || git checkout --orphan $WLIB_BRANCH
 cd ..
 
 # Clean out existing contents and copy new content
 rm -rf library/*
 cp -r lib/wlib/. library
+cp README.md library
 
 cd library
 git add .
 git commit -m "Deploy to Wlib Library: ${SHA}"
 
-git push $SSH_REPO $Wlib_BRANCH
+git push $SSH_REPO $WLIB_BRANCH
 
 echo "Deployed Wlib library"
