@@ -79,10 +79,16 @@ cd ..
 rm -rf library/*
 cp -r lib/wlib/. library
 cp README.md library
+cp .travis.yml library
+cp .deploy.sh library
+cp deploy_key.enc library
+cp LICENSE library
+cp .coveralls.yml library
+cp .gitignore library
 
 cd library
 git add .
-git commit -m "Deploy to Wlib Library: ${SHA}"
+git commit -m "Deploying Wlib Library: ${SHA}"
 
 git push $SSH_REPO $WLIB_BRANCH
 
