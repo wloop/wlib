@@ -30,7 +30,6 @@ echo "Removing current files"
 
 # Clean out existing contents
 rm -rf docs_out/*
-
 cd docs
 
 # Run our compile script
