@@ -24,7 +24,7 @@ namespace wlp {
 
     // Forward declaration of ChainHashMap
     template<typename Key,
-            class Val,
+            typename Val,
             typename Hasher,
             typename Equals>
     class ChainHashMap;
@@ -36,7 +36,7 @@ namespace wlp {
      * @tparam Key key type
      * @tparam Val value type
      */
-    template<typename Key, class Val>
+    template<typename Key, typename Val>
     struct ChainHashMapNode {
         typedef ChainHashMapNode<Key, Val> node_type;
         typedef Key key_type;
@@ -85,6 +85,8 @@ namespace wlp {
         typedef ChainHashMapIterator<Key, Val, Ref, Ptr, Hasher, Equals> self_type;
 
         typedef Val val_type;
+        typedef Ref reference;
+        typedef Ptr pointer;
 
         typedef wlp::size_type size_type;
 
@@ -128,7 +130,7 @@ namespace wlp {
          * @return reference to the value of the node
          * pointed to by the iterator
          */
-        val_type &operator*() const {
+        reference operator*() const {
             return m_current->m_val;
         }
 
@@ -136,7 +138,7 @@ namespace wlp {
          * @return pointer to the value of the node
          * pointed to by the iterator
          */
-        val_type *operator->() const {
+        pointer operator->() const {
             return &(operator*());
         }
 
@@ -485,7 +487,9 @@ namespace wlp {
          * @return the value mapped to by the key
          * @throws KeyException if the key does not map to a value
          */
-        iterator at(const key_type &key);
+        val_type &at(const key_type &key) {
+            return *find(key);
+        }
 
         /**
          * @see ChainHashMap<Key, Val, Hasher, Equals>::at()
@@ -493,7 +497,9 @@ namespace wlp {
          * @return the mapped value
          * @throws KeyException if the key does not exist
          */
-        const_iterator at(const key_type &key) const;
+        const val_type &at(const key_type &key) const {
+            return *find(key);
+        }
 
         /**
          * @param key key for which to check existence of a value
@@ -551,7 +557,7 @@ namespace wlp {
 
     template<typename Key, typename Val, typename Hasher, typename Equals>
     void ChainHashMap<Key, Val, Hasher, Equals>::init_buckets(ChainHashMap<Key, Val, Hasher, Equals>::size_type n) {
-        m_buckets = malloc<node_type *>(n);
+        m_buckets = malloc<node_type *[]>(n);
         for (size_type i = 0; i < n; ++i) {
             m_buckets[i] = nullptr;
         }
@@ -563,7 +569,7 @@ namespace wlp {
             return;
         }
         size_type new_capacity = static_cast<size_type>(m_capacity * 2);
-        node_type **new_buckets = malloc<node_type *>(new_capacity);
+        node_type **new_buckets = malloc<node_type *[]>(new_capacity);
         for (size_type i = 0; i < new_capacity; ++i) {
             new_buckets[i] = nullptr;
         }
@@ -601,7 +607,7 @@ namespace wlp {
         m_num_elements = 0;
     }
 
-    template<typename Key, class Val, typename Hasher, typename Equals>
+    template<typename Key, typename Val, typename Hasher, typename Equals>
     template<typename K, typename V>
     Pair<typename ChainHashMap<Key, Val, Hasher, Equals>::iterator, bool>
     ChainHashMap<Key, Val, Hasher, Equals>::insert(K &&key, V &&val) {
@@ -622,7 +628,7 @@ namespace wlp {
         return Pair<iterator, bool>(iterator(tmp, this), true);
     };
 
-    template<typename Key, class Val, typename Hasher, typename Equals>
+    template<typename Key, typename Val, typename Hasher, typename Equals>
     template<typename K, typename V>
     Pair<typename ChainHashMap<Key, Val, Hasher, Equals>::iterator, bool>
     ChainHashMap<Key, Val, Hasher, Equals>::insert_or_assign(K &&key, V &&val) {
@@ -730,40 +736,6 @@ namespace wlp {
     }
 
     template<typename Key, typename Val, typename Hasher, typename Equals>
-    typename ChainHashMap<Key, Val, Hasher, Equals>::iterator
-    ChainHashMap<Key, Val, Hasher, Equals>::at(const key_type &key) {
-        size_type i = hash(key);
-        node_type *cur = m_buckets[i];
-        if (!cur) {
-            return end();
-        }
-        while (cur && !m_equal(key, cur->m_key)) {
-            cur = cur->next;
-        }
-        if (!cur) {
-            return end();
-        }
-        return iterator(cur, this);
-    }
-
-    template<typename Key, typename Val, typename Hasher, typename Equals>
-    typename ChainHashMap<Key, Val, Hasher, Equals>::const_iterator
-    ChainHashMap<Key, Val, Hasher, Equals>::at(const key_type &key) const {
-        size_type i = hash(key);
-        node_type *cur = m_buckets[i];
-        if (!cur) {
-            return end();
-        }
-        while (cur && !m_equal(key, cur->m_key)) {
-            cur = cur->next;
-        }
-        if (!cur) {
-            return end();
-        }
-        return const_iterator(cur, this);
-    }
-
-    template<typename Key, typename Val, typename Hasher, typename Equals>
     bool ChainHashMap<Key, Val, Hasher, Equals>::contains(const key_type &key) const {
         size_type i = hash(key);
         node_type *cur = m_buckets[i];
@@ -862,7 +834,7 @@ namespace wlp {
         m_buckets = nullptr;
     }
 
-    template<typename Key, class Val, typename Hasher, typename Equals>
+    template<typename Key, typename Val, typename Hasher, typename Equals>
     ChainHashMap<Key, Val, Hasher, Equals> &
     ChainHashMap<Key, Val, Hasher, Equals>::operator=(ChainHashMap<Key, Val, Hasher, Equals> &&map) {
         clear();

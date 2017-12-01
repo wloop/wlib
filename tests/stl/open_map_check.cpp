@@ -57,14 +57,12 @@ TEST(open_map_test, test_at_const) {
     map[9] = 9;
     map[17] = 17;
     const int_map const_map(move(map));
-    ASSERT_EQ(const_map.end(), const_map.at(10));
-    ASSERT_EQ(7, *const_map.at(7));
-    ASSERT_EQ(8, *const_map.at(8));
-    ASSERT_EQ(9, *const_map.at(9));
-    ASSERT_EQ(17, *const_map.at(17));
-    ASSERT_EQ(const_map.at(7), const_map.find(7));
-    ASSERT_EQ(const_map.at(10), const_map.find(10));
-    ASSERT_EQ(const_map.at(9), const_map.find(9));
+    ASSERT_EQ(7, const_map.at(7));
+    ASSERT_EQ(8, const_map.at(8));
+    ASSERT_EQ(9, const_map.at(9));
+    ASSERT_EQ(17, const_map.at(17));
+    ASSERT_EQ(const_map.at(7), *const_map.find(7));
+    ASSERT_EQ(const_map.at(9), *const_map.find(9));
     int_map::const_iterator it = const_map.begin();
     ASSERT_EQ(17, *it);
     ++it;
@@ -156,29 +154,29 @@ TEST(open_map_test, test_at_returns_value) {
     map.insert(20, 19);
     map.insert(4, 16);
     ASSERT_EQ(4, map.size());
-    ASSERT_EQ(12, *map.at(10));
-    ASSERT_EQ(15, *map.at(16));
-    ASSERT_EQ(19, *map.at(20));
-    ASSERT_EQ(16, *map.at(4));
+    ASSERT_EQ(12, map.at(10));
+    ASSERT_EQ(15, map.at(16));
+    ASSERT_EQ(19, map.at(20));
+    ASSERT_EQ(16, map.at(4));
 }
 
 TEST(open_map_test, test_at_is_assignable) {
     int_map map(10, 75);
     map.insert(10, 12);
     map.insert(16, 15);
-    ASSERT_EQ(15, *map.at(16));
-    ASSERT_EQ(12, *map.at(10));
+    ASSERT_EQ(15, map.at(16));
+    ASSERT_EQ(12, map.at(10));
     ASSERT_EQ(2, map.size());
-    *map.at(16) = 100;
-    *map.at(10) = 101;
-    ASSERT_EQ(100, *map.at(16));
-    ASSERT_EQ(101, *map.at(10));
+    map.at(16) = 100;
+    map.at(10) = 101;
+    ASSERT_EQ(100, map.at(16));
+    ASSERT_EQ(101, map.at(10));
     ASSERT_EQ(2, map.size());
 }
 
 TEST(open_map_test, test_at_returns_pass_the_end) {
     int_map map(10, 75);
-    ASSERT_EQ(map.end(), map.at(4));
+    ASSERT_EQ(map.end(), map.find(4));
 }
 
 TEST(open_map_test, test_contains_key) {
@@ -195,9 +193,9 @@ TEST(open_map_test, test_contains_key) {
     ASSERT_TRUE(map.contains(key1));
     ASSERT_TRUE(map.contains(key2));
     ASSERT_TRUE(map.contains(key3));
-    ASSERT_EQ(val1, *map.at(key1));
-    ASSERT_EQ(val2, *map.at(key2));
-    ASSERT_EQ(val3, *map.at(key3));
+    ASSERT_EQ(val1, map.at(key1));
+    ASSERT_EQ(val2, map.at(key2));
+    ASSERT_EQ(val3, map.at(key3));
 }
 
 TEST(open_map_test, test_find) {

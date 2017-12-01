@@ -1,11 +1,17 @@
-#include <stl/RedBlackTree.h>
 #include "gtest/gtest.h"
+
+#include "strings/StaticString.h"
+#include "strings/DynamicString.h"
 
 #include "stl/Concept.h"
 #include "stl/Comparator.h"
 #include "stl/ChainMap.h"
 #include "stl/OpenMap.h"
+#include "stl/TreeMap.h"
 #include "stl/ArrayList.h"
+#include "stl/ChainSet.h"
+#include "stl/OpenSet.h"
+#include "stl/TreeSet.h"
 #include "stl/LinkedList.h"
 
 using namespace wlp;
@@ -68,22 +74,33 @@ TEST(concept_checks, check_random_access_iterator_concept) {
 }
 
 TEST(concept_checks, check_forward_iterator_concept) {
-    ASSERT_TRUE((is_forward_iterator<ChainHashMap<int, int>::iterator>()));
-    ASSERT_TRUE((is_forward_iterator<ChainHashMap<int, int>::const_iterator>()));
-    ASSERT_TRUE((is_forward_iterator<OpenHashMap<int, int>::iterator>()));
-    ASSERT_TRUE((is_forward_iterator<OpenHashMap<int, int>::const_iterator>()));
-    ASSERT_TRUE((is_forward_iterator<ArrayList<int>::iterator>()));
-    ASSERT_TRUE((is_forward_iterator<ArrayList<int>::const_iterator>()));
+    ASSERT_TRUE((is_iterator<ChainHashMap<int, int>::iterator>()));
+    ASSERT_TRUE((is_iterator<ChainHashMap<int, int>::const_iterator>()));
+    ASSERT_TRUE((is_iterator<OpenHashMap<int, int>::iterator>()));
+    ASSERT_TRUE((is_iterator<OpenHashMap<int, int>::const_iterator>()));
+    ASSERT_TRUE((is_iterator<ArrayList<int>::iterator>()));
+    ASSERT_TRUE((is_iterator<ArrayList<int>::const_iterator>()));
 
-    ASSERT_FALSE((is_forward_iterator<ArrayList<int>>()));
-    ASSERT_FALSE((is_forward_iterator<Comparator<int>>()));
+    ASSERT_FALSE((is_iterator<ArrayList<int>>()));
+    ASSERT_FALSE((is_iterator<Comparator<int>>()));
 }
 
 TEST(concept_checks, check_map_concept) {
     ASSERT_TRUE((is_map<ChainHashMap<int, int>>()));
     ASSERT_TRUE((is_map<OpenHashMap<int, int>>()));
+    ASSERT_TRUE((is_map<TreeMap<int, int>>()));
+
     ASSERT_FALSE((is_map<int>()));
     ASSERT_FALSE((is_map<ArrayList<int>>()));
+}
+
+TEST(concept_checks, check_set_concept) {
+    ASSERT_FALSE((is_set<ArrayList<int>>()));
+    ASSERT_FALSE((is_set<int>()));
+
+    ASSERT_TRUE((is_set<OpenHashSet<int>>()));
+    ASSERT_TRUE((is_set<ChainHashSet<int>>()));
+    ASSERT_TRUE((is_set<TreeSet<int>>()));
 }
 
 TEST(concept_checks, check_list_concept) {
@@ -93,4 +110,14 @@ TEST(concept_checks, check_list_concept) {
 
     ASSERT_TRUE((is_list<ArrayList<int>>()));
     ASSERT_TRUE((is_list<LinkedList<int>>()));
+}
+
+TEST(concept_checks, check_string_concept) {
+    ASSERT_FALSE((is_string<ArrayList<char>>()));
+    ASSERT_FALSE((is_string<const char *>()));
+    ASSERT_FALSE((is_string<ChainHashMap<char, char>>()));
+
+    ASSERT_TRUE((is_string<StaticString<8>>()));
+    ASSERT_TRUE((is_string<StaticString<32>>()));
+    ASSERT_TRUE((is_string<DynamicString>()));
 }

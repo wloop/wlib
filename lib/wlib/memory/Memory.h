@@ -17,9 +17,11 @@
 #ifndef FIXED_MEMORY_MEMORY_H
 #define FIXED_MEMORY_MEMORY_H
 
+#include "../utility/Utility.h"
 #include "../Types.h"
 
 #include "../utility/Tmp.h"
+#include <new>
 
 /**
  * @brief Helper for initializing and destroying memory management
@@ -55,57 +57,239 @@ void *__memory_alloc(uint32_t size, bool anObject);
 
 /**
  * Used internally not for client's use
- * Use the @code realloc @endcode function
- */
-void *__memory_realloc(void *ptr, uint32_t size);
-
-/**
- * Used internally not for client's use
  * Use the @code free @endcode function
  */
 void __memory_free(void *ptr);
 
 /**
- * This allocates memory of the size provided. Memory allocated could be greater than what has been
- * asked in order to accommodate fixed memory allocations. If there is not a sufficient memory
+ * This allocates memory of the size of the type provided. Memory allocated could be greater
+ * than what has been asked in order to accommodate fixed memory allocations. If there is not a sufficient memory
  * available, it returns a @code nullptr @endcode
  *
- * If an array of Objects is need then provide malloc with a number to specify how many objects to
- * create and it will create that many objects.
+ * This is only used for creating single block of memory and not for array
  *
- * @pre this can also act a @code new @endcode keyword to create objects so there is no need to use
- * new keyword to create an object
- *
- * @pre malloc creates number of blocks of given type and it does not allocate memory by proving it
+ * @pre malloc creates number of blocks of given type and it does not allocate memory by providing it
  * number of bytes
+ *
+ * @tparam T pointer type
+ * @tparam Args Argument types for non-fundamental Types
+ * @param args the arguments for @code Args @end types
+ * @return address to memory allocated
+ */
+template<
+        typename T,
+        typename... Args,
+        typename = typename wlp::enable_if<!wlp::is_array<T>::value, bool>::type>
+T *malloc(Args... args) {
+    if (wlp::is_fundamental<typename wlp::remove_extent<T>::type>::value) {
+        void *memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(T)), false);
+        return new(memory) T(wlp::forward<Args>(args)...);
+    }
+
+    void *memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(T)), true);
+
+    uint16_t *objInfo = static_cast<uint16_t *>(memory);
+    *objInfo = static_cast<uint16_t>(1);
+
+    return new(reinterpret_cast<char *>(++objInfo)) T(wlp::forward<Args>(args)...);
+}
+
+/**
+ * This allocates memory of the size of the type provided. Memory allocated could be greater
+ * than what has been asked in order to accommodate fixed memory allocations. If there is not a sufficient memory
+ * available, it returns a @code nullptr @endcode
+ *
+ * This is only used for creating multiple block of memory and hence should be used for arrays. This
+ * only supports default Ctors for objects
+ *
+ * @pre malloc creates number of blocks of given type and it does not allocate memory by providing it
+ * number of bytes
+ *
+ * @tparam T pointer array type
+ * @tparam NonArrayType pointer non array type
+ * @param num number of elements needed
+ * @return address to memory allocated
+ */
+template<
+        typename T,
+        typename NonArrayType = typename wlp::remove_extent<T>::type,
+        typename = typename wlp::enable_if<wlp::is_array<T>::value, bool>::type>
+NonArrayType *malloc(wlp::size_type num) {
+    if (wlp::is_fundamental<typename wlp::remove_extent<T>::type>::value) {
+        void *memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(NonArrayType)) * num, false);
+        return static_cast<NonArrayType *>(memory);
+    }
+
+    void *memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(NonArrayType)) * num, true);
+
+    uint16_t *objInfo = static_cast<uint16_t *>(memory);
+    *objInfo = static_cast<uint16_t>(num);
+
+    char *pointer = reinterpret_cast<char *>(++objInfo);
+    for (wlp::size_type i = 0; i < num; ++i) {
+        new(pointer) NonArrayType();
+        pointer += sizeof(NonArrayType);
+    }
+
+    return reinterpret_cast<NonArrayType *>(objInfo);
+};
+
+/**
+ * This allocates memory of the size of the type provided. Memory allocated could be greater
+ * than what has been asked in order to accommodate fixed memory allocations. If there is not a sufficient memory
+ * available, it returns a @code nullptr @endcode
+ *
+ * This is only used for creating multiple block of memory and hence should be used for arrays. This
+ * is a special case of @code malloc @endcode which supports creation of an array of objects where you can
+ * use non default ctor
+ *
+ * @pre this creates number of blocks of given type and it does not allocate memory by providing it
+ * number of bytes
+ *
+ * @warning should be avoided and used only where this is must
+ *
+ * @tparam T pointer array type
+ * @tparam Args Argument types for non-fundamental Types
+ * @param args the arguments for @code Args @end types
+ * @tparam NonArrayType pointer non array type
+ * @param num number of elements needed
+ * @return address to memory allocated
+ */
+template<
+        typename T,
+        typename... Args,
+        typename NonArrayType = typename wlp::remove_extent<T>::type,
+        typename = typename wlp::enable_if<wlp::is_array<T>::value, bool>::type>
+NonArrayType *arg_array_malloc(wlp::size_type num, Args... args) {
+    void *memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(NonArrayType)) * num, true);
+
+    uint16_t *objInfo = static_cast<uint16_t *>(memory);
+    *objInfo = static_cast<uint16_t>(num);
+
+    char *pointer = reinterpret_cast<char *>(++objInfo);
+    for (wlp::size_type i = 0; i < num; ++i) {
+        new(pointer) NonArrayType(wlp::forward<Args>(args)...);
+        pointer += sizeof(NonArrayType);
+    }
+
+    return reinterpret_cast<NonArrayType *>(objInfo);
+};
+
+/**
+ * Works exactly like malloc but initializes the memory by filling it with 0. This is the non
+ * array version of @code calloc @endcode
  *
  * @tparam Type pointer type
  * @param num number of blocks of size @p Type
  * @return address to memory allocated
  */
-template<typename Type>
-Type *malloc(wlp::size_type num = 1) {
-    void *memory = nullptr;
+template<
+        typename T,
+        typename = typename wlp::enable_if<!wlp::is_pointer<T>::value, bool>::type,
+        typename = typename wlp::enable_if<wlp::is_arithmetic<T>::value, bool>::type>
+T *calloc() {
+    T *memory = malloc<T>();
 
-    if (!wlp::is_fundamental<Type>::value) {
-        memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(Type)) * num, true);
-
-        uint16_t *objInfo = static_cast<uint16_t *>(memory);
-        *objInfo = static_cast<uint16_t>(num);
-
-        char *pointer = reinterpret_cast<char *>(++objInfo);
-        for (wlp::size_type i = 0; i < num; ++i) {
-            new(pointer) Type;
-            pointer += sizeof(Type);
-        }
-
-        return reinterpret_cast<Type *>(objInfo);
+    for (wlp::size32_type i = 0; i < sizeof(T); ++i) {
+        memory[i] = 0;
     }
 
-    memory = __memory_alloc(static_cast<wlp::size32_type>(sizeof(Type)) * num, false);
+    return memory;
+};
 
-    return static_cast<Type *>(memory);
+/**
+ * Works exactly like malloc but initializes the memory by filling it with 0. This is the
+ * array version of @code calloc @endcode
+ *
+ * @tparam Type pointer type
+ * @param num number of blocks of size @p Type
+ * @return address to memory allocated
+ */
+template<
+        typename T,
+        typename NonArrayType = typename wlp::remove_extent<T>::type,
+        typename = typename wlp::enable_if<!wlp::is_pointer<NonArrayType>::value, bool>::type,
+        typename = typename wlp::enable_if<wlp::is_arithmetic<NonArrayType>::value, bool>::type,
+        typename = typename wlp::enable_if<wlp::is_array<T>::value, bool>::type>
+NonArrayType *calloc(wlp::size_type num = 1) {
+    NonArrayType *memory = malloc<T>(num);
+
+    for (wlp::size32_type i = 0; i < num; ++i) {
+        memory[i] = 0;
+    }
+
+    return memory;
+};
+
+/**
+ * This frees the memory allocated. Only memory allocated using Memory will be freed and if another
+ * type of memory is provided, results are undefined
+ *
+ * If an array of Objects is to be freed then provide free with a number along with the pointer to specify
+ * how many objects
+ *
+ * @tparam Type pointer type
+ * @param ptr address to memory that will be freed
+ */
+template<typename Type>
+void free(Type *&ptr) {
+    if (!wlp::is_fundamental<Type>::value) {
+        uint16_t *objInfo = reinterpret_cast<uint16_t *>(ptr);
+        wlp::size_type numObjects = *(--objInfo);
+
+        Type *pointer = ptr + numObjects - 1;
+        for (wlp::size_type i = 0; i < numObjects; ++i) {
+            pointer->~Type();
+            --pointer;
+        }
+
+        __memory_free(reinterpret_cast<Type *>(objInfo));
+    } else {
+        __memory_free(ptr);
+    }
+
+    ptr = nullptr;
 }
+
+/**
+ * Overload for rvalue pointers.
+ *
+ * @see free<Type>
+ * @tparam Type
+ * @param ptr
+ */
+template<typename Type>
+void free(Type *&&ptr) {
+    if (!wlp::is_fundamental<Type>::value) {
+        uint16_t *objInfo = reinterpret_cast<uint16_t *>(ptr);
+        wlp::size_type numObjects = *(--objInfo);
+
+        Type *pointer = ptr + numObjects - 1;
+        for (wlp::size_type i = 0; i < numObjects; ++i) {
+            pointer->~Type();
+            --pointer;
+        }
+
+        __memory_free(reinterpret_cast<Type *>(objInfo));
+    } else {
+        __memory_free(ptr);
+    }
+}
+
+/**
+ * Returns the size of fixed sized block that was provided for @p ptr
+ *
+ * @param ptr memory address for which memory block is being searched
+ * @return the size of fixed size block
+ */
+wlp::size32_type getFixedMemorySize(void *ptr);
+
+/**
+ * Returns the smallest block of memory that is given
+ *
+ * @return the smallest block of memory
+ */
+wlp::size_type getSmallestBlockSize();
 
 /**
  * This reallocates the memory to accommodate the new size provided. The memory address has to be
@@ -120,46 +304,30 @@ Type *malloc(wlp::size_type num = 1) {
  * @param size number of blocks of size @p Type
  * @return address to new memory address
  */
-template<typename Type>
-Type *realloc(Type *ptr, wlp::size32_type num = 1) {
-    return static_cast<Type *>(__memory_realloc(ptr, static_cast<wlp::size32_type>(sizeof(Type)) * num));
-}
-
-/**
- * Returns the size of fixed sized block that was provided for @p ptr
- *
- * @param ptr memory address for which memory block is being searched
- * @return the size of fixed size block
- */
-wlp::size32_type getFixedMemorySize(void *ptr);
-
-/**
- * This frees the memory allocated. Only memory allocated using Memory will be freed and if another
- * type of memory is provided, results are undefined
- *
- * If an array of Objects is to be freed then provide free with a number along with the pointer to specify
- * how many objects
- *
- * @tparam Type pointer type
- * @param ptr address to memory that will be freed
- */
-
-template<typename Type>
-void free(Type *ptr) {
-    if (!wlp::is_fundamental<Type>::value) {
-        uint16_t *objInfo = reinterpret_cast<uint16_t*>(ptr);
-        wlp::size_type numObjects = *(--objInfo);
-
-        Type *pointer = ptr;
-        for (wlp::size_type i = 0; i < numObjects; ++i) {
-            pointer->~Type();
-            ++pointer;
-        }
-
-        __memory_free(reinterpret_cast<Type *>(objInfo));
-    } else{
-        __memory_free(ptr);
+template<
+        typename Type,
+        typename = typename wlp::enable_if<wlp::is_fundamental<Type>::value, bool>::type>
+Type *realloc(Type *ptr, wlp::size_type num = 1) {
+    if (num == 0) {
+        free<Type>(ptr);
+        return ptr;
     }
+
+    wlp::size32_type oldMemSize = getFixedMemorySize(ptr);
+    wlp::size32_type newMemSize = static_cast<wlp::size32_type>(sizeof(Type)) * num;
+
+    if (oldMemSize >= newMemSize + getSmallestBlockSize()) {
+        return ptr;
+    }
+
+    Type *newPtr = malloc<Type[]>(num);
+
+    wlp::size32_type copySize = (oldMemSize < newMemSize) ? oldMemSize : newMemSize;
+    memcpy(newPtr, ptr, copySize);
+
+    free<Type>(ptr);
+
+    return newPtr;
 }
 
 /**
@@ -168,6 +336,13 @@ void free(Type *ptr) {
  * @return the total memory usage
  */
 wlp::size32_type getTotalMemoryUsed();
+
+/**
+ * Returns the total memory that is free for use(in bytes)
+ *
+ * @return the total memory usage
+ */
+wlp::size32_type getTotalMemoryFree();
 
 /**
  * Returns the total memory available to use (in bytes). If no pool is
@@ -224,11 +399,5 @@ uint16_t getNumBlocks();
  */
 uint16_t getMaxAllocations();
 
-/**
- * Returns the smallest block of memory that is given
- *
- * @return the smallest block of memory
- */
-wlp::size_type getSmallestBlockSize();
 
 #endif //FIXED_MEMORY_MEMORY_H

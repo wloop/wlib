@@ -26,33 +26,33 @@
  * function with a function name, return type, and
  * argument types.
  */
-#define __HAS_FCN(...) VFUNC(__HAS_FCN, __VA_ARGS__)
-#define __HAS_FCN3(TypeName, FcnName, RetType) \
+#define HAS_FCN(...) VFUNC(HAS_FCN, __VA_ARGS__)
+#define HAS_FCN3(TypeName, FcnName, RetType) \
     is_same<decltype(declval<TypeName>().FcnName( \
     )), RetType>
-#define __HAS_FCN4(TypeName, FcnName, ArgType1, RetType) \
+#define HAS_FCN4(TypeName, FcnName, ArgType1, RetType) \
     is_same<decltype(declval<TypeName>().FcnName( \
         declval<ArgType1>()  \
     )), RetType>
-#define __HAS_FCN5(TypeName, FcnName, ArgType1, ArgType2, RetType) \
+#define HAS_FCN5(TypeName, FcnName, ArgType1, ArgType2, RetType) \
     is_same<decltype(declval<TypeName>().FcnName( \
         declval<ArgType1>(), \
         declval<ArgType2>()  \
     )), RetType>
-#define __HAS_FCN6(TypeName, FcnName, ArgType1, ArgType2, ArgType3, RetType) \
+#define HAS_FCN6(TypeName, FcnName, ArgType1, ArgType2, ArgType3, RetType) \
     is_same<decltype(declval<TypeName>().FcnName( \
         declval<ArgType1>(), \
         declval<ArgType2>(), \
         declval<ArgType3>()  \
     )), RetType>
-#define __HAS_FCN7(TypeName, FcnName, ArgType1, ArgType2, ArgType3, ArgType4, RetType) \
+#define HAS_FCN7(TypeName, FcnName, ArgType1, ArgType2, ArgType3, ArgType4, RetType) \
     is_same<decltype(declval<TypeName>().FcnName( \
         declval<ArgType1>(), \
         declval<ArgType2>(), \
         declval<ArgType3>(), \
         declval<ArgType4>()  \
     )), RetType>
-#define __HAS_FCN8(TypeName, FcnName, ArgType1, ArgType2, ArgType3, ArgType4, ArgType5, RetType) \
+#define HAS_FCN8(TypeName, FcnName, ArgType1, ArgType2, ArgType3, ArgType4, ArgType5, RetType) \
     is_same<decltype(declval<TypeName>().FcnName( \
         declval<ArgType1>(), \
         declval<ArgType2>(), \
@@ -60,6 +60,23 @@
         declval<ArgType4>(), \
         declval,ArgType5>()  \
     )), RetType>
+
+#define OP_EXIST(...) VFUNC(OP_EXIST, __VA_ARGS__)
+#define OP_EXIST3(Operator, UnaryArg, RetType) \
+    is_same<decltype(Operator( \
+        declval<UnaryArg>() \
+    )), RetType>
+#define OP_EXIST4(Operator, BinArg1, BinArg2, RetType) \
+    is_same<decltype(Operator( \
+        declval<BinArg1>(), \
+        declval<BinArg2>()  \
+    )), RetType>
+#define OP_EXIST5(Operator, TriArg1, TriArg2, TriArg3, RetType) \
+    is_same<decltype(Operator( \
+        declval<TriArg1>(), \
+        declval<TriArg2>(), \
+        declval<TriArg3>()  \
+    )), RetTye>
 
 namespace wlp {
 
@@ -75,12 +92,12 @@ namespace wlp {
     private:
         template<typename T, typename Q>
         static constexpr auto check(T *) -> typename and_<
-                __HAS_FCN(const T, __lt__, const Q &, const Q &, bool),
-                __HAS_FCN(const T, __le__, const Q &, const Q &, bool),
-                __HAS_FCN(const T, __eq__, const Q &, const Q &, bool),
-                __HAS_FCN(const T, __ne__, const Q &, const Q &, bool),
-                __HAS_FCN(const T, __gt__, const Q &, const Q &, bool),
-                __HAS_FCN(const T, __ge__, const Q &, const Q &, bool)
+                HAS_FCN(const T, __lt__, const Q &, const Q &, bool),
+                HAS_FCN(const T, __le__, const Q &, const Q &, bool),
+                HAS_FCN(const T, __eq__, const Q &, const Q &, bool),
+                HAS_FCN(const T, __ne__, const Q &, const Q &, bool),
+                HAS_FCN(const T, __gt__, const Q &, const Q &, bool),
+                HAS_FCN(const T, __ge__, const Q &, const Q &, bool)
         >::type;
 
         template<typename, typename>
@@ -111,7 +128,7 @@ namespace wlp {
      * @tparam C candidate forward iterator type
      */
     template<typename C, bool = has_size_type<C>::value && has_val_type<C>::value>
-    struct forward_iterator_concept {
+    struct iterator_concept {
         static constexpr bool value = false;
     };
 
@@ -123,7 +140,7 @@ namespace wlp {
      * @tparam C forward iterator type
      */
     template<typename C>
-    struct forward_iterator_concept<C, true> {
+    struct iterator_concept<C, true> {
     private:
         typedef typename C::val_type val_type;
         typedef typename C::size_type size_type;
@@ -132,18 +149,18 @@ namespace wlp {
         template<typename T>
         static constexpr auto check(T *) -> typename and_<
                 typename or_<
-                        __HAS_FCN(const T, operator*, val_type &),
-                        __HAS_FCN(const T, operator*, const val_type &)
+                        HAS_FCN(const T, operator*, val_type &),
+                        HAS_FCN(const T, operator*, const val_type &)
                 >::type,
                 typename or_<
-                        __HAS_FCN(T, operator->, val_type *),
-                        __HAS_FCN(T, operator->, const val_type *)
+                        HAS_FCN(T, operator->, val_type *),
+                        HAS_FCN(T, operator->, const val_type *)
                 >::type,
-                __HAS_FCN(T, operator++, iterator &),
-                __HAS_FCN(T, operator++, int, iterator),
-                __HAS_FCN(const T, operator==, const iterator &, bool),
-                __HAS_FCN(const T, operator!=, const iterator &, bool),
-                __HAS_FCN(T, operator=, const iterator &, iterator &)
+                HAS_FCN(T, operator++, iterator &),
+                HAS_FCN(T, operator++, int, iterator),
+                HAS_FCN(const T, operator==, const iterator &, bool),
+                HAS_FCN(const T, operator!=, const iterator &, bool),
+                HAS_FCN(T, operator=, const iterator &, iterator &)
         >::type;
 
 
@@ -163,8 +180,8 @@ namespace wlp {
      * @return true if the class is a forward iterator
      */
     template<typename C>
-    static constexpr bool is_forward_iterator() {
-        return forward_iterator_concept<C>::value;
+    static constexpr bool is_iterator() {
+        return iterator_concept<C>::value;
     }
 
     /**
@@ -172,7 +189,11 @@ namespace wlp {
      *
      * @tparam C candidate random access iterator
      */
-    template<typename C, bool = has_size_type<C>::value && has_val_type<C>::value>
+    template<typename C, bool =
+    has_size_type<C>::value &&
+    has_val_type<C>::value &&
+    has_diff_type<C>::value
+    >
     struct random_access_iterator_concept {
         static constexpr bool value = false;
     };
@@ -190,30 +211,31 @@ namespace wlp {
     private:
         typedef typename C::val_type val_type;
         typedef typename C::size_type size_type;
+        typedef typename C::diff_type diff_type;
         typedef C iterator;
 
         template<typename T>
         static constexpr auto check(T *) -> typename and_<
                 typename or_<
-                        __HAS_FCN(const T, operator*, val_type &),
-                        __HAS_FCN(const T, operator*, const val_type &)
+                        HAS_FCN(const T, operator*, val_type &),
+                        HAS_FCN(const T, operator*, const val_type &)
                 >::type,
                 typename or_<
-                        __HAS_FCN(const T, operator->, val_type *),
-                        __HAS_FCN(const T, operator->, const val_type *)
+                        HAS_FCN(const T, operator->, val_type *),
+                        HAS_FCN(const T, operator->, const val_type *)
                 >::type,
-                __HAS_FCN(T, operator++, iterator &),
-                __HAS_FCN(T, operator++, int, iterator),
-                __HAS_FCN(T, operator--, iterator &),
-                __HAS_FCN(T, operator--, int, iterator),
-                __HAS_FCN(T, operator==, const iterator &, bool),
-                __HAS_FCN(T, operator!=, const iterator &, bool),
-                __HAS_FCN(T, operator=, const iterator &, iterator &),
-                __HAS_FCN(const T, operator+, const size_type &, iterator),
-                __HAS_FCN(const T, operator-, const size_type &, iterator),
-                __HAS_FCN(const T, operator-, const iterator &, size_type),
-                __HAS_FCN(T, operator-=, const size_type &, iterator &),
-                __HAS_FCN(T, operator+=, const size_type &, iterator &)
+                HAS_FCN(T, operator++, iterator &),
+                HAS_FCN(T, operator++, int, iterator),
+                HAS_FCN(T, operator--, iterator &),
+                HAS_FCN(T, operator--, int, iterator),
+                HAS_FCN(const T, operator==, const iterator &, bool),
+                HAS_FCN(const T, operator!=, const iterator &, bool),
+                HAS_FCN(T, operator=, const iterator &, iterator &),
+                HAS_FCN(const T, operator+, const size_type &, iterator),
+                HAS_FCN(const T, operator-, const size_type &, iterator),
+                HAS_FCN(const T, operator-, const iterator &, diff_type),
+                HAS_FCN(T, operator-=, const size_type &, iterator &),
+                HAS_FCN(T, operator+=, const size_type &, iterator &)
         >::type;
 
         template<typename>
@@ -275,25 +297,25 @@ namespace wlp {
 
         template<typename T>
         static constexpr auto check(T *) -> typename and_<
-                __HAS_FCN(const T, size, size_type),
-                __HAS_FCN(const T, capacity, size_type),
-                __HAS_FCN(const T, empty, bool),
-                __HAS_FCN(T, begin, iterator),
-                __HAS_FCN(T, end, iterator),
-                __HAS_FCN(const T, begin, const_iterator),
-                __HAS_FCN(const T, end, const_iterator),
-                __HAS_FCN(T, clear, void),
-                __HAS_FCN(T, insert, const key_type &, const val_type &, insert_ret_type),
-                __HAS_FCN(T, insert_or_assign, const key_type &, const val_type &, insert_ret_type),
-                __HAS_FCN(T, erase, const key_type &, bool),
-                __HAS_FCN(T, erase, const iterator &, iterator),
-                __HAS_FCN(T, at, const key_type &, iterator),
-                __HAS_FCN(const T, at, const key_type &, const_iterator),
-                __HAS_FCN(const T, contains, const key_type &, bool),
-                __HAS_FCN(T, find, const key_type &, iterator),
-                __HAS_FCN(const T, find, const key_type &, const_iterator),
-                __HAS_FCN(T, operator[], const key_type &, val_type &),
-                __HAS_FCN(T, operator=, map_type &&, map_type &)
+                HAS_FCN(const T, size, size_type),
+                HAS_FCN(const T, capacity, size_type),
+                HAS_FCN(const T, empty, bool),
+                HAS_FCN(T, begin, iterator),
+                HAS_FCN(T, end, iterator),
+                HAS_FCN(const T, begin, const_iterator),
+                HAS_FCN(const T, end, const_iterator),
+                HAS_FCN(T, clear, void),
+                HAS_FCN(T, insert, const key_type &, const val_type &, insert_ret_type),
+                HAS_FCN(T, insert_or_assign, const key_type &, const val_type &, insert_ret_type),
+                HAS_FCN(T, erase, const key_type &, bool),
+                HAS_FCN(T, erase, const iterator &, iterator),
+                HAS_FCN(T, at, const key_type &, val_type &),
+                HAS_FCN(const T, at, const key_type &, const val_type &),
+                HAS_FCN(const T, contains, const key_type &, bool),
+                HAS_FCN(T, find, const key_type &, iterator),
+                HAS_FCN(const T, find, const key_type &, const_iterator),
+                HAS_FCN(T, operator[], const key_type &, val_type &),
+                HAS_FCN(T, operator=, map_type &&, map_type &)
         >::type;
 
         template<typename>
@@ -317,6 +339,60 @@ namespace wlp {
     }
 
     template<typename C, bool =
+    has_key_type<C>::value &&
+    has_size_type<C>::value &&
+    has_iterator<C>::value &&
+    has_const_iterator<C>::value
+    >
+    struct set_concept {
+        static constexpr bool value = false;
+    };
+
+    template<typename C>
+    struct set_concept<C, true> {
+    private:
+        typedef typename C::key_type key_type;
+        typedef typename C::size_type size_type;
+        typedef typename C::iterator iterator;
+        typedef typename C::const_iterator const_iterator;
+        typedef C set_type;
+
+        typedef Pair<iterator, bool> insert_ret_type;
+
+        template<typename T>
+        static constexpr auto check(T *) -> typename and_<
+                HAS_FCN(const T, size, size_type),
+                HAS_FCN(const T, capacity, size_type),
+                HAS_FCN(const T, empty, bool),
+                HAS_FCN(T, begin, iterator),
+                HAS_FCN(T, end, iterator),
+                HAS_FCN(const T, begin, const_iterator),
+                HAS_FCN(const T, end, const_iterator),
+                HAS_FCN(T, clear, void),
+                HAS_FCN(T, insert, const key_type &, insert_ret_type),
+                HAS_FCN(const T, contains, const key_type &, bool),
+                HAS_FCN(T, find, const key_type &, iterator),
+                HAS_FCN(const T, find, const key_type &, const_iterator),
+                HAS_FCN(T, erase, const iterator &, iterator),
+                HAS_FCN(T, erase, const key_type &, bool),
+                HAS_FCN(T, operator=, set_type &&, set_type &)
+        >::type;
+
+        template<typename>
+        static constexpr false_type check(...);
+
+        typedef decltype(check<C>(nullptr)) type;
+
+    public:
+        static constexpr bool value = type::value;
+    };
+
+    template<typename C>
+    static constexpr bool is_set() {
+        return set_concept<C>::value;
+    }
+
+    template<typename C, bool =
     has_val_type<C>::value &&
     has_size_type<C>::value &&
     has_iterator<C>::value &&
@@ -337,34 +413,34 @@ namespace wlp {
 
         template<typename T>
         static constexpr auto check(T *) -> typename and_<
-                __HAS_FCN(const T, size, size_type),
-                __HAS_FCN(const T, capacity, size_type),
-                __HAS_FCN(const T, empty, bool),
-                __HAS_FCN(T, at, size_type, val_type &),
-                __HAS_FCN(const T, at, size_type, const val_type &),
-                __HAS_FCN(T, operator[], size_type, val_type &),
-                __HAS_FCN(const T, operator[], size_type, const val_type &),
-                __HAS_FCN(T, front, val_type &),
-                __HAS_FCN(const T, front, const val_type &),
-                __HAS_FCN(T, back, val_type &),
-                __HAS_FCN(const T, back, const val_type &),
-                __HAS_FCN(T, clear, void),
-                __HAS_FCN(T, begin, iterator),
-                __HAS_FCN(const T, begin, const_iterator),
-                __HAS_FCN(T, end, iterator),
-                __HAS_FCN(const T, end, const_iterator),
-                __HAS_FCN(T, insert, size_type, const val_type &, iterator),
-                __HAS_FCN(T, insert, const iterator &, const val_type &, iterator),
-                __HAS_FCN(T, erase, size_type, iterator),
-                __HAS_FCN(T, erase, const iterator &, iterator),
-                __HAS_FCN(T, push_back, const val_type &, void),
-                __HAS_FCN(T, push_front, const val_type &, void),
-                __HAS_FCN(T, pop_back, void),
-                __HAS_FCN(T, pop_front, void),
-                __HAS_FCN(const T, index_of, const val_type &, size_type),
-                __HAS_FCN(T, find, const val_type &, iterator),
-                __HAS_FCN(const T, find, const val_type &, const_iterator),
-                __HAS_FCN(T, operator=, list_type &&, list_type &)
+                HAS_FCN(const T, size, size_type),
+                HAS_FCN(const T, capacity, size_type),
+                HAS_FCN(const T, empty, bool),
+                HAS_FCN(T, at, size_type, val_type &),
+                HAS_FCN(const T, at, size_type, const val_type &),
+                HAS_FCN(T, operator[], size_type, val_type &),
+                HAS_FCN(const T, operator[], size_type, const val_type &),
+                HAS_FCN(T, front, val_type &),
+                HAS_FCN(const T, front, const val_type &),
+                HAS_FCN(T, back, val_type &),
+                HAS_FCN(const T, back, const val_type &),
+                HAS_FCN(T, clear, void),
+                HAS_FCN(T, begin, iterator),
+                HAS_FCN(const T, begin, const_iterator),
+                HAS_FCN(T, end, iterator),
+                HAS_FCN(const T, end, const_iterator),
+                HAS_FCN(T, insert, size_type, const val_type &, iterator),
+                HAS_FCN(T, insert, const iterator &, const val_type &, iterator),
+                HAS_FCN(T, erase, size_type, iterator),
+                HAS_FCN(T, erase, const iterator &, iterator),
+                HAS_FCN(T, push_back, const val_type &, void),
+                HAS_FCN(T, push_front, const val_type &, void),
+                HAS_FCN(T, pop_back, void),
+                HAS_FCN(T, pop_front, void),
+                HAS_FCN(const T, index_of, const val_type &, size_type),
+                HAS_FCN(T, find, const val_type &, iterator),
+                HAS_FCN(const T, find, const val_type &, const_iterator),
+                HAS_FCN(T, operator=, list_type &&, list_type &)
         >::type;
 
         template<typename>
@@ -379,6 +455,75 @@ namespace wlp {
     template<typename C>
     static constexpr bool is_list() {
         return list_concept<C>::value;
+    }
+
+    template<typename C, bool = has_size_type<C>::value && has_diff_type<C>::value>
+    struct string_concept {
+        static constexpr bool value = false;
+    };
+
+    template<typename C>
+    struct string_concept<C, true> {
+    private:
+        typedef C string_type;
+        typedef typename C::size_type size_type;
+        typedef typename C::diff_type diff_type;
+
+        template<typename T>
+        static constexpr auto check(T *) -> typename and_<
+                HAS_FCN(T, operator=, const string_type &, string_type &),
+                HAS_FCN(T, operator=, string_type &&, string_type &),
+                HAS_FCN(T, operator=, const char *, string_type &),
+                HAS_FCN(T, operator=, const char, string_type &),
+                HAS_FCN(const T, length, size_type),
+                HAS_FCN(const T, capacity, size_type),
+                HAS_FCN(const T, empty, bool),
+                HAS_FCN(T, clear, void),
+                HAS_FCN(T, operator[], size_type, char &),
+                HAS_FCN(const T, operator[], size_type, const char &),
+                HAS_FCN(T, at, size_type, char &),
+                HAS_FCN(const T, at, size_type, const char &),
+                HAS_FCN(T, back, char &),
+                HAS_FCN(const T, back, const char &),
+                HAS_FCN(T, front, char &),
+                HAS_FCN(const T, front, const char &),
+                HAS_FCN(T, operator+=, const string_type &, string_type &),
+                HAS_FCN(T, operator+=, const char *, string_type &),
+                HAS_FCN(T, operator+=, char, string_type &),
+                HAS_FCN(T, append, const string_type &, string_type &),
+                HAS_FCN(T, append, const char *, string_type &),
+                HAS_FCN(T, push_back, char, void),
+                HAS_FCN(T, pop_back, void),
+                HAS_FCN(T, erase, size_type, void),
+                HAS_FCN(const T, c_str, const char *),
+                HAS_FCN(const T, substr, size_type, size_type, string_type),
+                HAS_FCN(const T, compare, const string_type &, diff_type),
+                HAS_FCN(const T, compare, const char *, diff_type),
+                HAS_FCN(const T, compare, char, diff_type),
+                OP_EXIST(operator==, const string_type &, const string_type &, bool),
+                OP_EXIST(operator==, const string_type &, const char *, bool),
+                OP_EXIST(operator==, const char *, const string_type &, bool),
+                OP_EXIST(operator==, const string_type &, char, bool),
+                OP_EXIST(operator==, char, const string_type &, bool),
+                OP_EXIST(operator+, const string_type &, const string_type &, string_type),
+                OP_EXIST(operator+, const string_type &, const char *, string_type),
+                OP_EXIST(operator+, const char *, const string_type &, string_type),
+                OP_EXIST(operator+, const string_type &, char, string_type),
+                OP_EXIST(operator+, char, const string_type &, string_type)
+        >::type;
+
+        template<typename>
+        static constexpr false_type check(...);
+
+        typedef decltype(check<C>(nullptr)) type;
+
+    public:
+        static constexpr bool value = type::value;
+    };
+
+    template<typename C>
+    static constexpr bool is_string() {
+        return string_concept<C>::value;
     }
 
 }

@@ -149,7 +149,7 @@ TEST(chain_map_test, test_insert_at_iterator_no_collision) {
     for (ui16 i = 0; i < 5; i++) {
         ASSERT_TRUE(r[i].second());
         ASSERT_EQ(values[i], *r[i].first());
-        ASSERT_EQ(values[i], *map.at(keys[i]));
+        ASSERT_EQ(values[i], map.at(keys[i]));
     }
     P_imi_b failed = map.insert(0, 10);
     ASSERT_FALSE(failed.second());
@@ -228,13 +228,13 @@ TEST(chain_map_test, test_insert_or_assign) {
     ASSERT_EQ(2, map.size());
     ASSERT_TRUE(r1.second());
     ASSERT_TRUE(r2.second());
-    ASSERT_EQ(v1, *map.at(a1));
-    ASSERT_EQ(v2, *map.at(a2));
+    ASSERT_EQ(v1, map.at(a1));
+    ASSERT_EQ(v2, map.at(a2));
     P_smi_b r3 = map.insert_or_assign(a1, v3);
     ASSERT_EQ(2, map.size());
     ASSERT_FALSE(r3.second());
     ASSERT_EQ(v3, *r3.first());
-    ASSERT_EQ(v3, *map.at(a1));
+    ASSERT_EQ(v3, map.at(a1));
 }
 
 TEST(chain_map_test, test_erase_key_nothing) {
@@ -280,12 +280,9 @@ TEST(chain_map_test, test_erase_iterator) {
     it = map.erase(it);
     ASSERT_EQ(3, map.size());
     ASSERT_EQ(map.end(), it);
-    ASSERT_EQ(40, *map.at(40));
-    ASSERT_EQ(20, *map.at(20));
-    ASSERT_EQ(0, *map.at(0));
-    ASSERT_EQ(map.end(), map.at(1));
-    ASSERT_EQ(map.end(), map.at(3));
-    ASSERT_EQ(map.end(), map.at(33));
+    ASSERT_EQ(40, map.at(40));
+    ASSERT_EQ(20, map.at(20));
+    ASSERT_EQ(0, map.at(0));
     it = r20.first();
     it = map.erase(it);
     ASSERT_EQ(2, map.size());
@@ -308,10 +305,10 @@ TEST(chain_map_test, test_contains_access_operator) {
     ASSERT_EQ(5, map.size());
     map.insert(3, 30);
     ASSERT_EQ(6, map.size());
-    ASSERT_EQ(30, *map.at(3));
+    ASSERT_EQ(30, map.at(3));
     map[3] = 33;
     ASSERT_EQ(6, map.size());
-    ASSERT_EQ(33, *map.at(3));
+    ASSERT_EQ(33, map.at(3));
     ASSERT_EQ(50, map[5]);
     ASSERT_EQ(150, map[15]);
     ASSERT_EQ(200, map[20]);
@@ -401,7 +398,7 @@ TEST(chain_map_test, test_at_const) {
     map.insert(3, 15);
     const int_map const_map(move(map));
     const int v = 3;
-    ASSERT_EQ(15, *const_map.at(v));
+    ASSERT_EQ(15, const_map.at(v));
     ASSERT_EQ(15, *const_map.find(v));
 }
 

@@ -11,8 +11,8 @@ include_directories(${GTEST_INCLUDE_DIR})
 include_directories(${WLIB_INCLUDE_DIR})
 
 file(GLOB files
-		"test.cpp"
 		"*.h"
+		"test.cpp"
 		"strings/*.cpp"
 		"stl/*.cpp"
         "fsm/*.cpp"

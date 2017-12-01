@@ -82,6 +82,8 @@ namespace wlp {
         typedef OpenHashMapIterator<Key, Val, Ref, Ptr, Hasher, Equals> self_type;
 
         typedef Val val_type;
+        typedef Ref reference;
+        typedef Ptr pointer;
 
         typedef wlp::size_type size_type;
 
@@ -125,7 +127,7 @@ namespace wlp {
          * @return reference to the value of the node
          * pointed to by the iterator
          */
-        val_type &operator*() const {
+        reference operator*() const {
             return m_current->m_val;
         }
 
@@ -133,7 +135,7 @@ namespace wlp {
          * @return pointer to the value of the node
          * pointed to by the iterator
          */
-        val_type *operator->() const {
+        pointer operator->() const {
             return &(operator*());
         }
 
@@ -489,7 +491,9 @@ namespace wlp {
          * @return the value mapped to by the key
          * @throws KeyException if the key does not map to a value
          */
-        iterator at(const key_type &key);
+        val_type &at(const key_type &key) {
+            return *find(key);
+        }
 
         /**
          * @see OpenHashMap<Key, Val, Hasher, Equals>::at()
@@ -497,7 +501,9 @@ namespace wlp {
          * @return the mapped value
          * @throws KeyException if the key does not exist
          */
-        const_iterator at(const key_type &key) const;
+        const val_type &at(const key_type &key) const {
+            return *find(key);
+        }
 
         /**
          * @param key key for which to check existence of a value
@@ -554,7 +560,7 @@ namespace wlp {
 
     template<typename Key, typename Val, typename Hasher, typename Equals>
     void OpenHashMap<Key, Val, Hasher, Equals>::init_buckets(OpenHashMap<Key, Val, Hasher, Equals>::size_type n) {
-        m_buckets = malloc<node_type *>(n);
+        m_buckets = malloc<node_type *[]>(n);
         for (size_type i = 0; i < n; ++i) {
             m_buckets[i] = nullptr;
         }
@@ -566,7 +572,7 @@ namespace wlp {
             return;
         }
         size_type new_capacity = static_cast<size_type>(m_capacity * 2);
-        node_type **new_buckets = malloc<node_type *>(new_capacity);
+        node_type **new_buckets = malloc<node_type *[]>(new_capacity);
         for (size_type i = 0; i < new_capacity; ++i) {
             new_buckets[i] = nullptr;
         }
@@ -667,7 +673,7 @@ namespace wlp {
         m_buckets[i] = nullptr;
         while (++i < m_capacity && !m_buckets[i]) {}
         node_type *next_node = i >= m_capacity ? nullptr : m_buckets[i];
-        node_type **new_buckets = malloc<node_type *>(m_capacity);
+        node_type **new_buckets = malloc<node_type *[]>(m_capacity);
         for (size_type k = 0; k < m_capacity; k++) {
             new_buckets[k] = nullptr;
         }
@@ -703,7 +709,7 @@ namespace wlp {
         --m_num_elements;
         free<node_type>(m_buckets[i]);
         m_buckets[i] = nullptr;
-        node_type **new_buckets = malloc<node_type *>(m_capacity);
+        node_type **new_buckets = malloc<node_type *[]>(m_capacity);
         for (size_type k = 0; k < m_capacity; k++) {
             new_buckets[k] = nullptr;
         }
@@ -723,38 +729,6 @@ namespace wlp {
         free<node_type *>(m_buckets);
         m_buckets = new_buckets;
         return true;
-    }
-
-    template<typename Key, typename Val, typename Hasher, typename Equals>
-    typename OpenHashMap<Key, Val, Hasher, Equals>::iterator
-    OpenHashMap<Key, Val, Hasher, Equals>::at(const key_type &key) {
-        size_type i = hash(key);
-        while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
-            if (++i >= m_capacity) {
-                i = 0;
-            }
-        }
-        if (m_buckets[i]) {
-            return iterator(m_buckets[i], this);
-        } else {
-            return end();
-        }
-    }
-
-    template<typename Key, typename Val, typename Hasher, typename Equals>
-    typename OpenHashMap<Key, Val, Hasher, Equals>::const_iterator
-    OpenHashMap<Key, Val, Hasher, Equals>::at(const key_type &key) const {
-        size_type i = hash(key);
-        while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
-            if (++i >= m_capacity) {
-                i = 0;
-            }
-        }
-        if (m_buckets[i]) {
-            return const_iterator(m_buckets[i], this);
-        } else {
-            return end();
-        }
     }
 
     template<typename Key, typename Val, typename Hasher, typename Equals>
@@ -795,7 +769,7 @@ namespace wlp {
     }
 
     template<typename Key, typename Val, typename Hasher, typename Equals>
-    typename OpenHashMap<Key, Val, Hasher, Equals>::iterator
+    inline typename OpenHashMap<Key, Val, Hasher, Equals>::iterator
     OpenHashMap<Key, Val, Hasher, Equals>::find(const key_type &key) {
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
@@ -811,7 +785,7 @@ namespace wlp {
     }
 
     template<typename Key, typename Val, typename Hasher, typename Equals>
-    typename OpenHashMap<Key, Val, Hasher, Equals>::const_iterator
+    inline typename OpenHashMap<Key, Val, Hasher, Equals>::const_iterator
     OpenHashMap<Key, Val, Hasher, Equals>::find(const key_type &key) const {
         size_type i = hash(key);
         while (m_buckets[i] && !m_equal(key, m_buckets[i]->m_key)) {
