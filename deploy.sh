@@ -37,6 +37,7 @@ doxygen doxygen.conf
 
 # Move content from html folder
 cp -r html/. ../docs_out
+cp ../.nojekyll ../docs_out
 
 # Now let's go have some fun with the cloned repo
 cd ../docs_out
