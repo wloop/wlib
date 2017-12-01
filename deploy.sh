@@ -22,6 +22,7 @@ echo "Pushing to gh-pages"
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
 git clone $REPO docs_out
 cd docs_out
+
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 cd ../docs
 
