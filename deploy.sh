@@ -35,7 +35,7 @@ rm -rf ../docs_out/**/* || exit 0
 doxygen doxygen.conf
 
 # Move content from html folder
-cp -r html/* ../docs_out
+cp -r html/. ./docs_out
 
 # Now let's go have some fun with the cloned repo
 cd ../docs_out
@@ -76,7 +76,7 @@ cd ..
 
 # Clean out existing contents and copy new content
 rm -rf library/**/* || exit 0
-cp -r lib/wlib/**/* library
+cp -r lib/wlib/. library
 
 cd library
 git add .
