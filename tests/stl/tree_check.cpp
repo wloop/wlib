@@ -1,4 +1,4 @@
-#include "../../lib/wlib/stl/BinTree.h"
+#include "stl/BinTree.h"
 #include "gtest/gtest.h"
 
 

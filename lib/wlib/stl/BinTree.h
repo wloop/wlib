@@ -3,9 +3,11 @@
 
 #include <stdint.h>
 #include <stdlib.h>
+#include  "ArrayList.h"
+#include "../memory/Memory.h"
 
 // TODO: delete below lines after array list implementation
-#include <vector>
+//#include <vector>
 using namespace std;
 
 /* Implement a (Binary) Tree using array list
