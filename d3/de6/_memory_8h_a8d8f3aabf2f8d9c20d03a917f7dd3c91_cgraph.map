@@ -1,0 +1,11 @@
+<map id="free" name="free">
+<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#aa359f6271adac5034612761142de9195" title="__memory_free" alt="" coords="116,70,227,97"/>
+<area shape="rect" id="node7" href="$d3/de6/_memory_8h.html#a19776500cfa4d32aeb17adb0c2f3c5fe" title="getFixedMemorySize" alt="" coords="99,127,244,154"/>
+<area shape="rect" id="node9" href="$d3/de6/_memory_8h.html#a449842ab76bd106ec789d778081bbb72" title="getSmallestBlockSize" alt="" coords="96,190,247,217"/>
+<area shape="rect" id="node3" href="$de/d5b/classwlp_1_1_____allocator.html#aed0aab73d3ff2598dbe833a32c17321a" title="wlp::__Allocator::deallocate" alt="" coords="303,13,485,39"/>
+<area shape="rect" id="node5" href="$df/d64/_memory_8cpp.html#af94c4a48637bc573da1bbea9fec52d54" title="get_block_allocator" alt="" coords="327,114,461,141"/>
+<area shape="rect" id="node6" href="$df/d64/_memory_8cpp.html#ab333f945dc0df95c1535b49820195985" title="get_block_ptr" alt="" coords="344,63,444,90"/>
+<area shape="rect" id="node4" href="$de/d5b/classwlp_1_1_____allocator.html#a1406cda3dc4bb2cb8cf9d5a8d41a4781" title="wlp::__Allocator::isPool\lBlock" alt="" coords="541,5,700,47"/>
+<area shape="rect" id="node8" href="$de/d5b/classwlp_1_1_____allocator.html#ac32c40378bdd3630f7babc93aa0fab58" title="wlp::__Allocator::getBlockSize" alt="" coords="295,165,493,191"/>
+<area shape="rect" id="node10" href="$d5/dca/namespacewlp.html#abcf07b4864595e780577d83d294c4676" title="wlp::pow_const" alt="" coords="339,215,449,242"/>
+</map>

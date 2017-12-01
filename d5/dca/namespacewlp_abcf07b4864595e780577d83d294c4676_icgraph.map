@@ -1,0 +1,5 @@
+<map id="wlp::pow_const" name="wlp::pow_const">
+<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#a449842ab76bd106ec789d778081bbb72" title="getSmallestBlockSize" alt="" coords="164,31,315,57"/>
+<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html#a8d8f3aabf2f8d9c20d03a917f7dd3c91" title="free" alt="" coords="371,5,414,32"/>
+<area shape="rect" id="node4" href="$d3/de6/_memory_8h.html#a50569d96c5b87927563caa7281eb9a8a" title="realloc" alt="" coords="363,56,423,83"/>
+</map>
