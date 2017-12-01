@@ -24,18 +24,20 @@ git clone $REPO docs_out
 cd docs_out
 
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
-cd ../docs
+cd ..
 
 echo "Removing current files"
 
 # Clean out existing contents
-rm -rf ../docs_out/*
+rm -rf docs_out/*
+
+cd docs
 
 # Run our compile script
 doxygen doxygen.conf
 
 # Move content from html folder
-cp -r html/. ./docs_out
+cp -r html/. ../docs_out
 
 # Now let's go have some fun with the cloned repo
 cd ../docs_out
