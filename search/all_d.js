@@ -9,5 +9,6 @@ var searchData=
   ['normalize',['normalize',['../db/d49/classwlp_1_1_array_list.html#a99f1a0425263ff5addca684ba9840784',1,'wlp::ArrayList']]],
   ['not_5f',['not_',['../d4/d9c/structwlp_1_1not__.html',1,'wlp']]],
   ['nullptr_5ft',['nullptr_t',['../d5/dca/namespacewlp.html#aefad5e6cfd26514c355ff6e925b9f502',1,'wlp']]],
+  ['num_5ftypes',['NUM_TYPES',['../dd/daf/structwlp_1_1_packet_type.html#a8a8e8bc7862ff0cac7d3583ce0e99ab3af883fc6a2a732a9d5423f88f7385cc03',1,'wlp::PacketType']]],
   ['numrestrictions',['numRestrictions',['../de/d7b/class_restrict_size.html#a7082ff46ecf016989a7cc63fb209e9a7',1,'RestrictSize']]]
 ];

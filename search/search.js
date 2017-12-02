@@ -15,9 +15,9 @@ var indexSectionsWithContent =
   5: "_bdegimnoprstv",
   6: "abcdfiklmnprstuv",
   7: "t",
-  8: "cdes",
+  8: "cdelns",
   9: "aclosw",
-  10: "_beghimnopstv",
+  10: "_abeghimnopstv",
   11: "b"
 };
 

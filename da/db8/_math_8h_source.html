@@ -92,36 +92,37 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
 <div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="../../da/db8/_math_8h.html#aacc3ee1a7f283f8ef65cea31f4436a95">    6</a></span>&#160;<span class="preprocessor">#define MAX(x, y) (((x) &gt; (y)) ? (x) : (y))</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="../../da/db8/_math_8h.html#a74e75242132eaabbc1c512488a135926">    7</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MIN(x, y) (((x) &lt; (y)) ? (x) : (y))</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// Multiplication by Mersenne primes reduced as bit operations</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// for compilers that do not already perform this optimization</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="../../da/db8/_math_8h.html#abadf03a0ea08be5bd2a248e403fb917d">   11</a></span>&#160;<span class="preprocessor">#define MUL_31(x)  (((x) &lt;&lt; 5) - (x))</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="../../da/db8/_math_8h.html#a28639dd0298e8a48ed254a79cdf3f127">   12</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUL_127(x) (((x) &lt;&lt; 7) - (x))</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> <span class="keywordtype">int</span>_type&gt;</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="../../d5/dca/namespacewlp.html#a87904547072bebdfb5168afb989600de">   15</a></span>&#160;    <span class="keyword">inline</span> constexpr int_type <a class="code" href="../../d5/dca/namespacewlp.html#a87904547072bebdfb5168afb989600de">log2_const</a>(int_type n) {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordflow">return</span> ((n &lt; 2) ? 0 : 1 + <a class="code" href="../../d5/dca/namespacewlp.html#a87904547072bebdfb5168afb989600de">log2_const</a>(n / 2));</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    }</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> <span class="keywordtype">int</span>_type&gt;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="../../d5/dca/namespacewlp.html#abcf07b4864595e780577d83d294c4676">   20</a></span>&#160;    <span class="keyword">inline</span> constexpr int_type <a class="code" href="../../d5/dca/namespacewlp.html#abcf07b4864595e780577d83d294c4676">pow_const</a>(int_type a, int_type b) {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">return</span> (b == 0) ? 1 : (a * pow_const&lt;int_type&gt;(a, b - 1));</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> <span class="keywordtype">int</span>_type&gt;</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../d5/dca/namespacewlp.html#a8a4b88d192547421fe4455216a6852d3">   25</a></span>&#160;    <span class="keyword">inline</span> int_type <a class="code" href="../../d5/dca/namespacewlp.html#a8a4b88d192547421fe4455216a6852d3">int_div_round</a>(int_type n, int_type d) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">return</span> ((n &lt; 0) ^ (d &lt; 0)) ? ((n - d / 2) / d) : ((n + d / 2) / d);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif //EMBEDDEDCPLUSPLUS_MATH_H</span></div>
-<div class="ttc" id="namespacewlp_html_a8a4b88d192547421fe4455216a6852d3"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a8a4b88d192547421fe4455216a6852d3">wlp::int_div_round</a></div><div class="ttdeci">int_type int_div_round(int_type n, int_type d)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/db8/_math_8h_source.html#l00025">Math.h:25</a></div></div>
-<div class="ttc" id="namespacewlp_html_abcf07b4864595e780577d83d294c4676"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#abcf07b4864595e780577d83d294c4676">wlp::pow_const</a></div><div class="ttdeci">constexpr int_type pow_const(int_type a, int_type b)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/db8/_math_8h_source.html#l00020">Math.h:20</a></div></div>
-<div class="ttc" id="namespacewlp_html_a87904547072bebdfb5168afb989600de"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a87904547072bebdfb5168afb989600de">wlp::log2_const</a></div><div class="ttdeci">constexpr int_type log2_const(int_type n)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/db8/_math_8h_source.html#l00015">Math.h:15</a></div></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="../../da/db8/_math_8h.html#a996f7be338ccb40d1a2a5abc1ad61759">    8</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define ABS(x) ((x) &lt; 0 ? -(x) : (x))</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// Multiplication by Mersenne primes reduced as bit operations</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// for compilers that do not already perform this optimization</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="../../da/db8/_math_8h.html#abadf03a0ea08be5bd2a248e403fb917d">   12</a></span>&#160;<span class="preprocessor">#define MUL_31(x)  (((x) &lt;&lt; 5) - (x))</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="../../da/db8/_math_8h.html#a28639dd0298e8a48ed254a79cdf3f127">   13</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MUL_127(x) (((x) &lt;&lt; 7) - (x))</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> <span class="keywordtype">int</span>_type&gt;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="../../d5/dca/namespacewlp.html#a87904547072bebdfb5168afb989600de">   16</a></span>&#160;    <span class="keyword">inline</span> constexpr int_type <a class="code" href="../../d5/dca/namespacewlp.html#a87904547072bebdfb5168afb989600de">log2_const</a>(int_type n) {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">return</span> ((n &lt; 2) ? 0 : 1 + <a class="code" href="../../d5/dca/namespacewlp.html#a87904547072bebdfb5168afb989600de">log2_const</a>(n / 2));</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> <span class="keywordtype">int</span>_type&gt;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="../../d5/dca/namespacewlp.html#abcf07b4864595e780577d83d294c4676">   21</a></span>&#160;    <span class="keyword">inline</span> constexpr int_type <a class="code" href="../../d5/dca/namespacewlp.html#abcf07b4864595e780577d83d294c4676">pow_const</a>(int_type a, int_type b) {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">return</span> (b == 0) ? 1 : (a * pow_const&lt;int_type&gt;(a, b - 1));</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> <span class="keywordtype">int</span>_type&gt;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../d5/dca/namespacewlp.html#a8a4b88d192547421fe4455216a6852d3">   26</a></span>&#160;    <span class="keyword">inline</span> int_type <a class="code" href="../../d5/dca/namespacewlp.html#a8a4b88d192547421fe4455216a6852d3">int_div_round</a>(int_type n, int_type d) {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">return</span> ((n &lt; 0) ^ (d &lt; 0)) ? ((n - d / 2) / d) : ((n + d / 2) / d);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif //EMBEDDEDCPLUSPLUS_MATH_H</span></div>
+<div class="ttc" id="namespacewlp_html_a8a4b88d192547421fe4455216a6852d3"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a8a4b88d192547421fe4455216a6852d3">wlp::int_div_round</a></div><div class="ttdeci">int_type int_div_round(int_type n, int_type d)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/db8/_math_8h_source.html#l00026">Math.h:26</a></div></div>
+<div class="ttc" id="namespacewlp_html_abcf07b4864595e780577d83d294c4676"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#abcf07b4864595e780577d83d294c4676">wlp::pow_const</a></div><div class="ttdeci">constexpr int_type pow_const(int_type a, int_type b)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/db8/_math_8h_source.html#l00021">Math.h:21</a></div></div>
+<div class="ttc" id="namespacewlp_html_a87904547072bebdfb5168afb989600de"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a87904547072bebdfb5168afb989600de">wlp::log2_const</a></div><div class="ttdeci">constexpr int_type log2_const(int_type n)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/db8/_math_8h_source.html#l00016">Math.h:16</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 1 2017 18:02:04 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Dec 2 2017 10:26:59 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

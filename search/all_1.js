@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['abs',['ABS',['../da/db8/_math_8h.html#a996f7be338ccb40d1a2a5abc1ad61759',1,'Math.h']]],
   ['add_5fconst',['add_const',['../d2/d8e/structwlp_1_1add__const.html',1,'wlp']]],
   ['add_5fcopied_5freference',['add_copied_reference',['../de/dc1/classwlp_1_1_reference_count.html#aa47455dca2316b32351ede82dbc5c113',1,'wlp::ReferenceCount']]],
   ['add_5flocked_5freference',['add_locked_reference',['../de/dc1/classwlp_1_1_reference_count.html#a7d73c7941a6785f8130a4ae5c0add061',1,'wlp::ReferenceCount']]],

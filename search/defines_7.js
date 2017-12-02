@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['namespace_5fend',['NAMESPACE_END',['../d2/ddf/_wlib_config_8h.html#a552036593282adfb00999ab4152fc0ac',1,'WlibConfig.h']]],
-  ['namespace_5fstart',['NAMESPACE_START',['../d2/ddf/_wlib_config_8h.html#a843bc4b6c51d8d183eac18b32bb4ce3c',1,'WlibConfig.h']]]
+  ['max',['MAX',['../da/db8/_math_8h.html#aacc3ee1a7f283f8ef65cea31f4436a95',1,'Math.h']]],
+  ['min',['MIN',['../da/db8/_math_8h.html#a74e75242132eaabbc1c512488a135926',1,'Math.h']]],
+  ['mul_5f127',['MUL_127',['../da/db8/_math_8h.html#a28639dd0298e8a48ed254a79cdf3f127',1,'Math.h']]],
+  ['mul_5f31',['MUL_31',['../da/db8/_math_8h.html#abadf03a0ea08be5bd2a248e403fb917d',1,'Math.h']]]
 ];
