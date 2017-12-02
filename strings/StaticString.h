@@ -51,8 +51,11 @@ namespace wlp {
          *
          * @param str char string
          */
-        explicit StaticString<tSize>(const char *str) {
-            m_len = MIN(static_cast<size_type>(strlen(str)), tSize);
+        explicit StaticString<tSize>(const char *str)
+                : StaticString(str, static_cast<size_type>(strlen(str))) {}
+
+        StaticString<tSize>(const char *str, size_type len) {
+            m_len = MIN(static_cast<size_type>(len), tSize);
             memcpy(m_buffer, str, m_len + 1);
             m_buffer[m_len] = '\0';
         }

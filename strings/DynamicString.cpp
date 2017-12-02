@@ -16,7 +16,10 @@ namespace wlp {
     DynamicString::DynamicString(const char *str)
             : DynamicString(str, nullptr, static_cast<size_type>(strlen(str)), 0) {}
 
-    DynamicString::DynamicString(char *str, size_type len)
+    DynamicString::DynamicString(const char *str, size_type len)
+            : DynamicString(str, nullptr, len, 0) {}
+
+    DynamicString::DynamicString(size_type len, char *str)
             : m_buffer(str),
               m_len(len) {}
 
@@ -181,7 +184,7 @@ namespace wlp {
         char *newBuffer = malloc<char[]>(static_cast<size_type>(length + 1));
         memcpy(newBuffer, m_buffer + pos, length);
         newBuffer[length] = '\0';
-        return {newBuffer, length};
+        return {length, newBuffer};
     }
 
     diff_type DynamicString::compare(const DynamicString &str) const {
