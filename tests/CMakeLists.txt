@@ -11,12 +11,13 @@ include_directories(${GTEST_INCLUDE_DIR})
 include_directories(${WLIB_INCLUDE_DIR})
 
 file(GLOB files
-		"*.h"
-		"test.cpp"
-		"strings/*.cpp"
-		"stl/*.cpp"
+        "*.h"
+        "test.cpp"
+        "strings/*.cpp"
+        "stl/*.cpp"
         "fsm/*.cpp"
-		"memory/*.cpp")
+        "comm/*.cpp"
+        "memory/*.cpp")
 
 add_executable(tests ${files})
 target_link_libraries(tests gtest)

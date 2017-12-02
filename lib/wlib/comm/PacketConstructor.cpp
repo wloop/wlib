@@ -1,114 +1,62 @@
-/** @file PacketConstructor.cpp
- *  @brief Creates a packet for sending data from the slave systems to the main computer.
+/**
+ * @file PacketConstructor.cpp
+ * @brief Creates a packet for sending data from the slave systems to the main computer.
  *
- *  Implements the functions defined in PacketConstructor.h.
+ * Implements the functions defined in PacketConstructor.h.
  *
- *  @author Heather D'Souza (heathkd)
- *  @date November 7, 2017
- *  @bug No known bugs.
+ * @author Heather D'Souza
+ * @author Jeff Niu
+ * @date December 2, 2017
+ * @bug No known bugs
  */
 
-#include <stdlib.h>
-//#include "../stl/Bitset.h"
 #include "PacketConstructor.h"
-#include <iostream>
 
-PacketConstructor::PacketConstructor(const float* p_data, const Bitset<2> &packetType, const Bitset<6> &packetName)
-        : m_pdata{p_data}, m_packetType{packetType}, m_packetName{packetName}  {
-    m_pdata = p_data;
-}
-/*
-const float* PacketConstructor::getData() const {
-    return m_pdata;
-}
+using namespace wlp;
 
-//returns current Bitset
-Bitset<64> PacketConstructor::getBitArray() {
-    return m_bitArray;
-}*/
-
-void PacketConstructor::setStartAndEnd() {
-    m_bitArray.set(0);
-    m_bitArray.set(63);
-}
-
-void PacketConstructor::dataToBin()
-{
-    uint16_t intPart, floatPart;
-    uint16_t posArray [] = {10,20,28,38,46,56};
-    float temp;
-
-    for (int j=0;j<3;j++) {
-        //negative or positive bit
-        if (m_pdata[j] < 0) {
-            m_bitArray.set(posArray[j*2] - 1);
-            temp = m_pdata[j] * (-1);
-        }
-        else {
-            m_bitArray.reset(posArray[j*2]-1);
-            temp = m_pdata[j];
-        }
-
-        //separate integer and decimal part of float;
-        intPart = static_cast<int>(temp);
-        floatPart = abs(nearbyint((((temp - static_cast<float>(intPart)) * 100))));
-
-        intToBin(intPart, posArray[j*2]);
-        floatToBin(floatPart, posArray[j*2+1]);
-        std::cout << m_pdata[j] << std::endl;
-        std::cout << temp << std::endl;
-
+inline uint32_t __encode_float18(float val) {
+    uint32_t sign = 0;
+    if (val < 0) {
+        sign = 1;
+        val = -val;
     }
+    uint16_t int_part = static_cast<uint16_t>(val);
+    uint16_t float_part = static_cast<uint16_t>(floorf(((val - int_part) * 100) + 0.5f));
+    uint32_t res = (sign << 17) | (int_part << 7) | float_part;
+    return res;
 }
 
-void PacketConstructor::intToBin(int num, int pos) {
-    //bit assignment
-    for(int i = 0; i < 10; i++)
-        ((1<<i) & num) != 0 ? m_bitArray.set(pos+i):m_bitArray.reset(pos+i);
-    std::cout << num << std::endl;
+inline uint64_t __join_data(uint32_t bits1, uint32_t bits2, uint32_t bits3) {
+    return static_cast<uint64_t>(bits1) | (static_cast<uint64_t>(bits2) << 18) | (static_cast<uint64_t>(bits3) << 36);
 }
 
-void PacketConstructor::floatToBin(int num, int pos) {
-    //bit assignment
-    for(int i = 0; i < 7; i++)
-        ((1<<i) & num) != 0 ? m_bitArray.set(pos+i):m_bitArray.reset(pos+i);
-
-    std::cout << num << std::endl;
+inline void __set_start_and_end(packet64 &packet) {
+    packet.set(0);
+    packet.set(63);
 }
 
-uint64_t PacketConstructor::getBitsetNum() {
-    return m_bitArray.to_uint64_t();
+inline void __set_packet_type(packet64 &packet, const packet_type &type) {
+    *packet.data() |= *type.data() << 1;
 }
 
-
-Bitset<64> PacketConstructor::get(float *data) {
-    m_pdata = data;
-    setStartAndEnd();
-    setTypeAndName();
-    dataToBin();
+inline void __set_packet_name(packet64 &packet, packet_name name) {
+    *packet.data() |= *name.data() << 3;
 }
 
-void PacketConstructor::setTypeAndName() {
-    Bitset<1> zero;
-    zero.reset(0);
-    for (int i=1;i<3;i++) {
-        if (!(m_packetType.test(0)==zero.test(0))) {
-            m_bitArray.set(i);
-        }
-    }
-    for (int i=3;i<9;i++) {
-        if (!(m_packetName.test(0)==zero.test(0))) {
-            m_bitArray.set(i);
-        }
-    }
+inline void __set_bulk_data(packet64 &packet, uint64_t joined_bits) {
+    *packet.data() |= static_cast<uint32_t>(joined_bits << 9);
+    *(packet.data() + 1) |= static_cast<uint32_t>(joined_bits >> 23);
 }
 
-
-
-
-
-
-
-
-
-
+packet64 __packet_maker::build(const float data[3], const packet_type &type, const packet_name &name) {
+    packet64 packet;
+    __set_start_and_end(packet);
+    __set_packet_type(packet, type);
+    __set_packet_name(packet, name);
+    __set_bulk_data(packet, __join_data(
+            __encode_float18(data[0]),
+            __encode_float18(data[1]),
+            __encode_float18(data[2])
+    ));
+    return packet;
+}

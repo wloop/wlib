@@ -371,7 +371,7 @@ namespace wlp {
             RandomAccessIterator last,
             Cmp cmp
     ) {
-        SizeType length = last - first;
+        SizeType length = static_cast<SizeType>(last - first);
         if (length < 2) {
             return;
         }
@@ -408,7 +408,7 @@ namespace wlp {
             RandomAccessIterator first,
             RandomAccessIterator last
     ) {
-        SizeType length = last - first;
+        SizeType length = static_cast<SizeType>(last - first);
         if (length < 2) {
             return;
         }

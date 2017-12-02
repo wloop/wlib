@@ -5,6 +5,7 @@ namespace wlp {
 
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
+#define ABS(x) ((x) < 0 ? -(x) : (x))
 
 // Multiplication by Mersenne primes reduced as bit operations
 // for compilers that do not already perform this optimization
