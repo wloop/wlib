@@ -34,10 +34,10 @@ TEST(bitset_test, test_constructor_64) {
     for (ui16 i = 0; i < 64; i++) {
         ASSERT_EQ(expected[i], b.test(i));
     }
-    ASSERT_EQ(n, b.to_uint64_t());
-    ASSERT_EQ(n & 0xffffffff, b.to_uint32_t());
-    ASSERT_EQ(n & 0xffff, b.to_uint16_t());
-    ASSERT_EQ(n & 0xff, b.to_uint8_t());
+    ASSERT_EQ(n, b.to_uint64());
+    ASSERT_EQ(n & 0xffffffff, b.to_uint32());
+    ASSERT_EQ(n & 0xffff, b.to_uint16());
+    ASSERT_EQ(n & 0xff, b.to_uint8());
 }
 
 TEST(bitset_test, test_constructor_underflow) {
@@ -52,10 +52,10 @@ TEST(bitset_test, test_constructor_underflow) {
     for (ui16 i = 0; i < 64; i++) {
         ASSERT_EQ(expected[i], b.test(i));
     }
-    ASSERT_EQ(n & 0x3fffffffffff, b.to_uint64_t());
-    ASSERT_EQ(n & 0xffffffff, b.to_uint32_t());
-    ASSERT_EQ(n & 0xffff, b.to_uint16_t());
-    ASSERT_EQ(n & 0xff, b.to_uint8_t());
+    ASSERT_EQ(n & 0x3fffffffffff, b.to_uint64());
+    ASSERT_EQ(n & 0xffffffff, b.to_uint32());
+    ASSERT_EQ(n & 0xffff, b.to_uint16());
+    ASSERT_EQ(n & 0xff, b.to_uint8());
 }
 
 TEST(bitset_test, test_constructor_overflow) {
@@ -68,10 +68,10 @@ TEST(bitset_test, test_constructor_overflow) {
     for (ui16 i = 0; i < 32; i++) {
         ASSERT_EQ(expected[i], b.test(i));
     }
-    ASSERT_EQ(n & 0x7ffffff, b.to_uint64_t());
-    ASSERT_EQ(n & 0x7ffffff, b.to_uint32_t());
-    ASSERT_EQ(n & 0xffff, b.to_uint16_t());
-    ASSERT_EQ(n & 0xff, b.to_uint8_t());
+    ASSERT_EQ(n & 0x7ffffff, b.to_uint64());
+    ASSERT_EQ(n & 0x7ffffff, b.to_uint32());
+    ASSERT_EQ(n & 0xffff, b.to_uint16());
+    ASSERT_EQ(n & 0xff, b.to_uint8());
 }
 
 TEST(bitset_test, test_set_reset_flip_get) {
@@ -117,11 +117,11 @@ TEST(bitset_test, test_copy_constructors) {
     Bitset<42> source2(6426756347354645451u);
     const Bitset<42> copy1_1 = source1;
     const Bitset<42> copy1_2 = copy1_1;
-    ASSERT_EQ(source1.to_uint64_t(), copy1_1.to_uint64_t());
-    ASSERT_EQ(source1.to_uint64_t(), copy1_2.to_uint64_t());
+    ASSERT_EQ(source1.to_uint64(), copy1_1.to_uint64());
+    ASSERT_EQ(source1.to_uint64(), copy1_2.to_uint64());
     Bitset<42> copy2;
     copy2 = source2;
-    ASSERT_EQ(copy2.to_uint64_t(), source2.to_uint64_t());
+    ASSERT_EQ(copy2.to_uint64(), source2.to_uint64());
     copy2 = copy1_1;
-    ASSERT_EQ(copy2.to_uint64_t(), source1.to_uint64_t());
+    ASSERT_EQ(copy2.to_uint64(), source1.to_uint64());
 }
