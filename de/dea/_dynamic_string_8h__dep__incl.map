@@ -1,3 +1,6 @@
 <map id="strings/DynamicString.h" name="strings/DynamicString.h">
-<area shape="rect" id="node2" href="$d9/d8a/_dynamic_string_8cpp.html" title="DynamicString is a class that provides dynamic strings and functions for dynamic strings. " alt="" coords="5,80,181,107"/>
+<area shape="rect" id="node2" href="$de/d6d/_bitset_8h.html" title="Bitset is a class that provides bits manipulation methods. " alt="" coords="60,80,145,107"/>
+<area shape="rect" id="node5" href="$d9/d8a/_dynamic_string_8cpp.html" title="DynamicString is a class that provides dynamic strings and functions for dynamic strings. " alt="" coords="169,80,345,107"/>
+<area shape="rect" id="node3" href="$de/d66/_packet_constructor_8h.html" title="comm/PacketConstructor.h" alt="" coords="11,155,193,181"/>
+<area shape="rect" id="node4" href="$d9/dde/_packet_constructor_8cpp.html" title="Creates a packet for sending data from the slave systems to the main computer. " alt="" coords="5,229,200,256"/>
 </map>
