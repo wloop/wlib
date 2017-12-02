@@ -125,3 +125,10 @@ TEST(bitset_test, test_copy_constructors) {
     copy2 = copy1_1;
     ASSERT_EQ(copy2.to_uint64(), source1.to_uint64());
 }
+
+TEST(bitset_test, test_to_string) {
+    Bitset<64> bits(7359837697304912481u);
+    char expected[] = "abc@de#f";
+    ASSERT_STREQ(expected, bits.to_static_string().c_str());
+    ASSERT_STREQ(expected, bits.to_dynamic_string().c_str());
+}

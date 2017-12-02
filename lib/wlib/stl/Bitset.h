@@ -19,6 +19,8 @@
 
 #include "../Types.h"
 #include "../Wlib.h"
+#include "../strings/StaticString.h"
+#include "../strings/DynamicString.h"
 
 namespace wlp {
 
@@ -49,6 +51,11 @@ namespace wlp {
     template<uint8_t nBits>
     struct ceil_bits {
         static const uint32_t value = static_cast<uint32_t>((nBits + INT32_SIZE - 1) / INT32_SIZE);
+    };
+
+    template<uint8_t nBits>
+    struct next_byte {
+        static constexpr uint16_t value = static_cast<const uint16_t>((nBits + BYTE_SIZE - 1) / BYTE_SIZE);
     };
 
     template<uint8_t nBits>
@@ -210,6 +217,16 @@ namespace wlp {
          */
         const uint32_t *data() const {
             return m_array;
+        }
+
+        StaticString<next_byte<nBits>::value> to_static_string() const {
+            uint16_t num_bytes = static_cast<uint16_t>(ceil_bits<nBits>::value * INT32_SIZE / BYTE_SIZE);
+            return {reinterpret_cast<const char *>(m_array), num_bytes};
+        }
+
+        DynamicString to_dynamic_string() const {
+            uint16_t num_bytes = static_cast<uint16_t>(ceil_bits<nBits>::value * INT32_SIZE / BYTE_SIZE);
+            return {reinterpret_cast<const char *>(m_array), num_bytes};
         }
 
     private:
