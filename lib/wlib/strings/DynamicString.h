@@ -41,6 +41,8 @@ namespace wlp {
          */
         explicit DynamicString(const char *str);
 
+        DynamicString(const char *str, size_type len);
+
         /**
          * Constructor creates string using DynamicString object.
          *
@@ -325,7 +327,7 @@ namespace wlp {
          * @param str dynamically allocated character array filled with characters
          * @param len length of the string
          */
-        DynamicString(char *str, size_type len);
+        DynamicString(size_type len, char *str);
 
         /**
          * Append method used by other public append methods.
