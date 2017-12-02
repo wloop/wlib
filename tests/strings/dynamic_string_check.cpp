@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "strings/DynamicString.h"
+#include "strings/String.h"
 #include "utility/Utility.h"
 
 using namespace wlp;
