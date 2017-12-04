@@ -4,17 +4,18 @@
 // test initialization
 TEST(tree_test, test_root_val){
     float rootVal = 5;
-    Tree tree = Tree(rootVal);
-    ASSERT_EQ(tree.getRoot(), rootVal);
+    Tree<float> tree(rootVal);
+    float returned = tree.getRoot();
+    ASSERT_EQ(returned, rootVal);
 }
 
 // test inserting and deleting
 TEST(tree_test, test_insert_and_delete){
-    Tree tree = Tree(0);
+    Tree<float> tree(0);
 
-    tree.insertChild(0, 1);
-    tree.insertChild(0, 2);
-    ASSERT_EQ(tree.getNumLeaves(), 3);
+    tree.insertChildAt(0, 1);
+    tree.insertChildAt(0, 2);
+    ASSERT_EQ(tree.getNumLeaves(), (size_t)3);
     ASSERT_EQ(tree.getVal(1), 2);
     ASSERT_EQ(tree.getVal(2), 1);
 
@@ -23,20 +24,20 @@ TEST(tree_test, test_insert_and_delete){
     ASSERT_EQ(leftChild, 2);
     ASSERT_EQ(rightChild, 1);
 
-    tree.insertChild(1, 3);
-    float leftChild = tree.getLeftChildVal(1);
-    float rightChild = tree.getRightChildVal(1);
+    tree.insertChildAt(1, 3);
+    leftChild = tree.getLeftChildVal(1);
+    rightChild = tree.getRightChildVal(1);
     ASSERT_EQ(leftChild, 3);
-    ASSERT_EQ(rightChild, -1.1999); // null
 
     size_t leftChildIndex = tree.getLeftChildIndex(1);
     size_t rightChildIndex = tree.getRightChildIndex(1);
     size_t parentIndex1 = tree.getParentIndex(leftChildIndex);
     size_t parentIndex2 = tree.getParentIndex(rightChildIndex);
-    ASSERT_EQ(parentIndex1, parentIndex2, 1);
+    ASSERT_EQ(parentIndex1, parentIndex2);
+    ASSERT_EQ(parentIndex1, (size_t)1);
 
-    ASSERT_EQ(tree.getNumLeaves(), 4);
+    ASSERT_EQ(tree.getNumLeaves(), (size_t)4);
 
     tree.clear();
-    ASSERT_EQ(tree.getNumLeaves(), 0);
+    ASSERT_EQ(tree.getNumLeaves(), (size_t)0);
 }
