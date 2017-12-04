@@ -17,7 +17,7 @@
 #include "../Types.h"
 #include "../WlibConfig.h"
 #include "../utility/Math.h"
-#include "../strings/StaticString.h"
+#include "../strings/String.h"
 
 namespace wlp {
 

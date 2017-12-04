@@ -16,7 +16,6 @@
 
 #include "stl/Equal.h"
 #include "strings/String.h"
-#include "strings/StaticString.h"
 
 namespace wlp {
 
