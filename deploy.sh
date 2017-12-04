@@ -3,6 +3,7 @@ set -e # Exit with nonzero exit code if anything fails
 
 SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
+WLIB_BRANCH="library"
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
 if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
@@ -17,34 +18,31 @@ SHA=`git rev-parse --verify HEAD`
 
 echo "Pushing to gh-pages"
 
-# Clone the existing gh-pages for this repo into out/
+# Clone the existing gh-pages for this repo into docs_out
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
-git clone $REPO out
-cd out
+git clone $REPO docs_out
+cd docs_out
+
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 cd ..
 
 echo "Removing current files"
 
 # Clean out existing contents
-rm -rf out/**/* || exit 0
+rm -rf docs_out/*
+cd docs
 
 # Run our compile script
 doxygen doxygen.conf
 
 # Move content from html folder
-cp -r docs/html/* out/
+cp -r html/. ../docs_out
+cp ../.nojekyll ../docs_out
 
 # Now let's go have some fun with the cloned repo
-cd out
+cd ../docs_out
 git config user.name "Travis CI"
 git config user.email "deep.dhill6@gmail.com"
-
-# If there are no changes (e.g. this is a README update) then just bail.
-if [ -z `git diff --exit-code` ]; then
-    echo "No changes to the spec on this push; exiting."
-    exit 0
-fi
 
 echo "Deploying to gh-pages"
 
@@ -67,4 +65,28 @@ rm deploy_key
 # Now that we're all set up, we can push.
 git push $SSH_REPO $TARGET_BRANCH
 
+cd ..
+
 echo "Deployed to gh-pages"
+
+# Clone the existing gh-pages for this repo into docs_out
+# Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
+git clone $REPO library
+cd library
+git checkout $WLIB_BRANCH || git checkout --orphan $WLIB_BRANCH
+cd ..
+
+# Clean out existing contents and copy new content
+rm -rf library/*
+cp -r lib/wlib/. library
+cp README.md library
+cp .gitignore library
+cp LICENSE library
+
+cd library
+git add .
+git commit -m "Deploying Wlib Library: ${SHA}"
+
+git push $SSH_REPO $WLIB_BRANCH
+
+echo "Deployed Wlib library"

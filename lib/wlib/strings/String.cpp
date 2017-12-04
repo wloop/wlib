@@ -3,11 +3,12 @@
  * @brief DynamicString is a class that provides dynamic strings and functions for dynamic strings
  *
  * @author Bob Wei
+ * @author Jeff Niu
  * @date November 25, 2017
  * @bug No known bugs
  */
 
-#include "DynamicString.h"
+#include "String.h"
 
 namespace wlp {
 
@@ -16,7 +17,10 @@ namespace wlp {
     DynamicString::DynamicString(const char *str)
             : DynamicString(str, nullptr, static_cast<size_type>(strlen(str)), 0) {}
 
-    DynamicString::DynamicString(char *str, size_type len)
+    DynamicString::DynamicString(const char *str, size_type len)
+            : DynamicString(str, nullptr, len, 0) {}
+
+    DynamicString::DynamicString(size_type len, char *str)
             : m_buffer(str),
               m_len(len) {}
 
@@ -44,14 +48,23 @@ namespace wlp {
         }
     }
 
+    void DynamicString::set_value(const char *str, size_type len) {
+        if (len > m_len) {
+            free(m_buffer);
+            m_buffer = malloc<char[]>(static_cast<size_type>(len + 1));
+        }
+        m_len = len;
+        memcpy(m_buffer, str, len);
+        m_buffer[len] = '\0';
+    }
+
     DynamicString &DynamicString::operator=(const DynamicString &str) {
-        return operator=(str.c_str());
+        set_value(str.c_str(), str.length());
+        return *this;
     }
 
     DynamicString &DynamicString::operator=(const char *str) {
-        m_len = static_cast<size_type>(strlen(str));
-        m_buffer = realloc<char>(m_buffer, static_cast<size_type>(m_len + 1));
-        memcpy(m_buffer, str, m_len + 1);
+        set_value(str, static_cast<size_type>(strlen(str)));
         return *this;
     }
 
@@ -134,11 +147,11 @@ namespace wlp {
         return append(other.c_str(), other.length());
     }
 
-    DynamicString &DynamicString::append(const char *cstr, size_type len) {
+    DynamicString &DynamicString::append(const char *c_str, size_type len) {
         auto newLength = static_cast<size_type>(m_len + len);
         m_buffer = realloc<char>(m_buffer, static_cast<size_type>(newLength + 1));
 
-        memcpy(m_buffer + m_len, cstr, newLength);
+        memcpy(m_buffer + m_len, c_str, newLength);
 
         m_buffer[newLength] = '\0';
         m_len = newLength;
@@ -181,7 +194,7 @@ namespace wlp {
         char *newBuffer = malloc<char[]>(static_cast<size_type>(length + 1));
         memcpy(newBuffer, m_buffer + pos, length);
         newBuffer[length] = '\0';
-        return {newBuffer, length};
+        return {length, newBuffer};
     }
 
     diff_type DynamicString::compare(const DynamicString &str) const {
@@ -201,12 +214,72 @@ namespace wlp {
         return lhs.compare(rhs) == 0;
     }
 
+    bool operator!=(const DynamicString &lhs, const DynamicString &rhs) {
+        return lhs.compare(rhs) != 0;
+    }
+
+    bool operator>(const DynamicString &lhs, const DynamicString &rhs) {
+        return lhs.compare(rhs) > 0;
+    }
+
+    bool operator>=(const DynamicString &lhs, const DynamicString &rhs) {
+        return lhs.compare(rhs) >= 0;
+    }
+
+    bool operator<(const DynamicString &lhs, const DynamicString &rhs) {
+        return lhs.compare(rhs) < 0;
+    }
+
+    bool operator<=(const DynamicString &lhs, const DynamicString &rhs) {
+        return lhs.compare(rhs) <= 0;
+    }
+
     bool operator==(const char *lhs, const DynamicString &rhs) {
         return rhs.compare(lhs) == 0;
     }
 
+    bool operator!=(const char *lhs, const DynamicString &rhs) {
+        return rhs.compare(lhs) != 0;
+    }
+
+    bool operator>(const char *lhs, const DynamicString &rhs) {
+        return rhs.compare(lhs) <= 0;
+    }
+
+    bool operator>=(const char *lhs, const DynamicString &rhs) {
+        return rhs.compare(lhs) < 0;
+    }
+
+    bool operator<(const char *lhs, const DynamicString &rhs) {
+        return rhs.compare(lhs) >= 0;
+    }
+
+    bool operator<=(const char *lhs, const DynamicString &rhs) {
+        return rhs.compare(lhs) > 0;
+    }
+
     bool operator==(const DynamicString &lhs, const char *rhs) {
         return lhs.compare(rhs) == 0;
+    }
+
+    bool operator!=(const DynamicString &lhs, const char *rhs) {
+        return lhs.compare(rhs) != 0;
+    }
+
+    bool operator>(const DynamicString &lhs, const char *rhs) {
+        return lhs.compare(rhs) > 0;
+    }
+
+    bool operator>=(const DynamicString &lhs, const char *rhs) {
+        return lhs.compare(rhs) >= 0;
+    }
+
+    bool operator<(const DynamicString &lhs, const char *rhs) {
+        return lhs.compare(rhs) < 0;
+    }
+
+    bool operator<=(const DynamicString &lhs, const char *rhs) {
+        return lhs.compare(rhs) <= 0;
     }
 
     bool operator==(char lhs, const DynamicString &rhs) {

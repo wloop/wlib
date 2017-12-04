@@ -15,9 +15,11 @@
 #define CORE_STL_BITSET_H
 
 #include <math.h>
+#include <string.h>
 
-#include "Types.h"
-#include "Wlib.h"
+#include "../Types.h"
+#include "../Wlib.h"
+#include "../strings/String.h"
 
 namespace wlp {
 
@@ -51,6 +53,11 @@ namespace wlp {
     };
 
     template<uint8_t nBits>
+    struct next_byte {
+        static constexpr uint16_t value = static_cast<const uint16_t>((nBits + BYTE_SIZE - 1) / BYTE_SIZE);
+    };
+
+    template<uint8_t nBits>
     class Bitset {
     public:
         /**
@@ -68,17 +75,6 @@ namespace wlp {
          */
         explicit Bitset(uint64_t n) {
             setFromNumber(n);
-        }
-
-        /**
-         * Copy constructor.
-         * @param b Bitset to copy
-         */
-        Bitset(Bitset<nBits> &b) {
-            uint32_t end = ceil_bits<nBits>::value;
-            for (size_type i = 0; i < end; i++) {
-                m_array[i] = (m_array[i] & 0) | b.m_array[i];
-            }
         }
 
         /**
@@ -153,9 +149,9 @@ namespace wlp {
          *
          * @return unsigned 64 bit integer
          */
-        uint64_t to_uint64_t() const {
+        uint64_t to_uint64() const {
             if (nBits <= 32) {
-                return to_uint32_t();
+                return to_uint32();
             }
             return (((uint64_t) m_array[1]) << INT32_SIZE) | ((uint32_t) m_array[0]);
         }
@@ -165,7 +161,7 @@ namespace wlp {
          *
          * @return unsigned 32 bit integer
          */
-        uint32_t to_uint32_t() const {
+        uint32_t to_uint32() const {
             return (uint32_t) m_array[0];
         }
 
@@ -174,7 +170,7 @@ namespace wlp {
          *
          * @return unsigned 16 bit integer
          */
-        uint16_t to_uint16_t() const {
+        uint16_t to_uint16() const {
             return (uint16_t) (m_array[0] & pow_mask<16>::value);
         }
 
@@ -183,7 +179,7 @@ namespace wlp {
          *
          * @return unsigned 8 bit integer
          */
-        uint8_t to_uint8_t() const {
+        uint8_t to_uint8() const {
             return (uint8_t) (m_array[0] & pow_mask<8>::value);
         }
 
@@ -209,15 +205,27 @@ namespace wlp {
         }
 
         /**
-         * Assignment operator copies the contents of the bitset.
-         * @param b Bitset to assign
+         * @return a reference to mutable elements of the bits
          */
-        Bitset<nBits> &operator=(Bitset<nBits> &b) {
-            uint32_t end = ceil_bits<nBits>::value;
-            for (size_type i = 0; i < end; i++) {
-                m_array[i] = (m_array[i] & 0) | b.m_array[i];
-            }
-            return *this;
+        uint32_t *data() {
+            return m_array;
+        }
+
+        /**
+         * @return a reference to const elements of the bits
+         */
+        const uint32_t *data() const {
+            return m_array;
+        }
+
+        StaticString<next_byte<nBits>::value> to_static_string() const {
+            uint16_t num_bytes = static_cast<uint16_t>(ceil_bits<nBits>::value * INT32_SIZE / BYTE_SIZE);
+            return {reinterpret_cast<const char *>(m_array), num_bytes};
+        }
+
+        DynamicString to_dynamic_string() const {
+            uint16_t num_bytes = static_cast<uint16_t>(ceil_bits<nBits>::value * INT32_SIZE / BYTE_SIZE);
+            return {reinterpret_cast<const char *>(m_array), num_bytes};
         }
 
     private:
