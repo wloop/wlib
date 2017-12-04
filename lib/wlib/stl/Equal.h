@@ -14,7 +14,7 @@
 
 #include "../Types.h"
 
-#include "../strings/StaticString.h"
+#include "../strings/String.h"
 
 namespace wlp {
 
