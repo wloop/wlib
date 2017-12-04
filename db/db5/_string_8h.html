@@ -82,28 +82,43 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">String.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d8/d65/_static_string_8h_source.html">strings/StaticString.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &lt;string.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="../../de/d0b/_string_iterator_8h_source.html">StringIterator.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d0/db6/_types_8h_source.html">../Types.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../da/db8/_math_8h_source.html">../utility/Math.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d3/de6/_memory_8h_source.html">../memory/Memory.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for String.h:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../de/dff/_string_8h__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../de/dff/_string_8h__incl.svg" width="571" height="560"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/def/_string_8h__dep__incl.svg" width="324" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/def/_string_8h__dep__incl.svg" width="100%" height="552"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 </div>
 <p><a href="../../db/db5/_string_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d6b/classwlp_1_1_static_string.html">wlp::StaticString&lt; tSize &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d6b/classwlp_1_1_static_string.html">wlp::StaticString&lt; tSize &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/db4/classwlp_1_1_dynamic_string.html">wlp::DynamicString</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:d5/dca/namespacewlp"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html">wlp</a></td></tr>
@@ -123,11 +138,140 @@ Typedefs</h2></td></tr>
 <tr class="separator:ab5a7dc4a0d9d7c264d1318ca801d7bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad339c3cc565ceac36d9f8fe698c55a6e"><td class="memItemLeft" align="right" valign="top">typedef StaticString&lt; 256u &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ad339c3cc565ceac36d9f8fe698c55a6e">wlp::String256</a></td></tr>
 <tr class="separator:ad339c3cc565ceac36d9f8fe698c55a6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab27d3b19953fca1e6b8f1114eb458dd1"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d8/db4/classwlp_1_1_dynamic_string.html">wlp::DynamicString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ab27d3b19953fca1e6b8f1114eb458dd1">wlp::String</a></td></tr>
+<tr class="separator:ab27d3b19953fca1e6b8f1114eb458dd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ae634042f246da2e2a3d78d7e61086317"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:ae634042f246da2e2a3d78d7e61086317"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ae634042f246da2e2a3d78d7e61086317">wlp::operator==</a> (const char *lhs, const StaticString&lt; tSize &gt; &amp;rhs)</td></tr>
+<tr class="separator:ae634042f246da2e2a3d78d7e61086317"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a560e73c3f0994d3822e5df9bc013d2c3"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a560e73c3f0994d3822e5df9bc013d2c3"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a560e73c3f0994d3822e5df9bc013d2c3">wlp::operator!=</a> (const char *lhs, const StaticString&lt; tSize &gt; &amp;rhs)</td></tr>
+<tr class="separator:a560e73c3f0994d3822e5df9bc013d2c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b682a838df6433acd42ab83479a7272"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a7b682a838df6433acd42ab83479a7272"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a7b682a838df6433acd42ab83479a7272">wlp::operator&gt;</a> (const char *lhs, const StaticString&lt; tSize &gt; &amp;rhs)</td></tr>
+<tr class="separator:a7b682a838df6433acd42ab83479a7272"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a901689b30526410f4376d2f2f30fa425"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a901689b30526410f4376d2f2f30fa425"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a901689b30526410f4376d2f2f30fa425">wlp::operator&gt;=</a> (const char *lhs, const StaticString&lt; tSize &gt; &amp;rhs)</td></tr>
+<tr class="separator:a901689b30526410f4376d2f2f30fa425"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa251d8dcc8effe75c54086fe8e3e2af7"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:aa251d8dcc8effe75c54086fe8e3e2af7"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#aa251d8dcc8effe75c54086fe8e3e2af7">wlp::operator&lt;</a> (const char *lhs, const StaticString&lt; tSize &gt; &amp;rhs)</td></tr>
+<tr class="separator:aa251d8dcc8effe75c54086fe8e3e2af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04a3b4fe08be582ee7cafcf9deeb9eeb"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a04a3b4fe08be582ee7cafcf9deeb9eeb"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a04a3b4fe08be582ee7cafcf9deeb9eeb">wlp::operator&lt;=</a> (const char *lhs, const StaticString&lt; tSize &gt; &amp;rhs)</td></tr>
+<tr class="separator:a04a3b4fe08be582ee7cafcf9deeb9eeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63b5172d2ec746df83fac69d82a212bd"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a63b5172d2ec746df83fac69d82a212bd"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a63b5172d2ec746df83fac69d82a212bd">wlp::operator==</a> (const StaticString&lt; tSize &gt; &amp;lhs, const char *rhs)</td></tr>
+<tr class="separator:a63b5172d2ec746df83fac69d82a212bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a735dea7085a66b11de70ab9c8310428b"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a735dea7085a66b11de70ab9c8310428b"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a735dea7085a66b11de70ab9c8310428b">wlp::operator!=</a> (const StaticString&lt; tSize &gt; &amp;lhs, const char *rhs)</td></tr>
+<tr class="separator:a735dea7085a66b11de70ab9c8310428b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f5f195c67b4d7aaa53598aa8f58ca97"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a1f5f195c67b4d7aaa53598aa8f58ca97"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a1f5f195c67b4d7aaa53598aa8f58ca97">wlp::operator&gt;</a> (const StaticString&lt; tSize &gt; &amp;lhs, const char *rhs)</td></tr>
+<tr class="separator:a1f5f195c67b4d7aaa53598aa8f58ca97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2e8539b0a4b8ef2310d98ed87dbd358"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:aa2e8539b0a4b8ef2310d98ed87dbd358"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#aa2e8539b0a4b8ef2310d98ed87dbd358">wlp::operator&gt;=</a> (const StaticString&lt; tSize &gt; &amp;lhs, const char *rhs)</td></tr>
+<tr class="separator:aa2e8539b0a4b8ef2310d98ed87dbd358"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c448b2086d036b68c3b7469d3041c6a"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a6c448b2086d036b68c3b7469d3041c6a"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a6c448b2086d036b68c3b7469d3041c6a">wlp::operator&lt;</a> (const StaticString&lt; tSize &gt; &amp;lhs, const char *rhs)</td></tr>
+<tr class="separator:a6c448b2086d036b68c3b7469d3041c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa795838d71172379edb19d1e060a9219"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:aa795838d71172379edb19d1e060a9219"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#aa795838d71172379edb19d1e060a9219">wlp::operator&lt;=</a> (const StaticString&lt; tSize &gt; &amp;lhs, const char *rhs)</td></tr>
+<tr class="separator:aa795838d71172379edb19d1e060a9219"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a219cc3812d6d3410a78343376451827f"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a219cc3812d6d3410a78343376451827f"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a219cc3812d6d3410a78343376451827f">wlp::operator==</a> (const StaticString&lt; tSize &gt; &amp;lhs, const char rhs)</td></tr>
+<tr class="separator:a219cc3812d6d3410a78343376451827f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca6b27afe37a9bd499de3e8e49004a4b"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:aca6b27afe37a9bd499de3e8e49004a4b"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#aca6b27afe37a9bd499de3e8e49004a4b">wlp::operator!=</a> (const StaticString&lt; tSize &gt; &amp;lhs, const char rhs)</td></tr>
+<tr class="separator:aca6b27afe37a9bd499de3e8e49004a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b2db42a4657d6464216a2a1673a853e"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a2b2db42a4657d6464216a2a1673a853e"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a2b2db42a4657d6464216a2a1673a853e">wlp::operator&gt;</a> (const StaticString&lt; tSize &gt; &amp;lhs, const char rhs)</td></tr>
+<tr class="separator:a2b2db42a4657d6464216a2a1673a853e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99c0d07ff9dff4af5515928a0f5b5e6a"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a99c0d07ff9dff4af5515928a0f5b5e6a"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a99c0d07ff9dff4af5515928a0f5b5e6a">wlp::operator&gt;=</a> (const StaticString&lt; tSize &gt; &amp;lhs, const char rhs)</td></tr>
+<tr class="separator:a99c0d07ff9dff4af5515928a0f5b5e6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d60e3ac52c403a05ce474f0ee91f004"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a0d60e3ac52c403a05ce474f0ee91f004"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a0d60e3ac52c403a05ce474f0ee91f004">wlp::operator&lt;</a> (const StaticString&lt; tSize &gt; &amp;lhs, const char rhs)</td></tr>
+<tr class="separator:a0d60e3ac52c403a05ce474f0ee91f004"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48b0c59d22f33360bfbb8430e118f4cc"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a48b0c59d22f33360bfbb8430e118f4cc"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a48b0c59d22f33360bfbb8430e118f4cc">wlp::operator&lt;=</a> (const StaticString&lt; tSize &gt; &amp;lhs, const char rhs)</td></tr>
+<tr class="separator:a48b0c59d22f33360bfbb8430e118f4cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae995a1b364aac50dd169d4755727027e"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:ae995a1b364aac50dd169d4755727027e"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ae995a1b364aac50dd169d4755727027e">wlp::operator==</a> (const char lhs, const StaticString&lt; tSize &gt; &amp;rhs)</td></tr>
+<tr class="separator:ae995a1b364aac50dd169d4755727027e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f6c71bdb8605fa13044c20bebb8742a"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a8f6c71bdb8605fa13044c20bebb8742a"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a8f6c71bdb8605fa13044c20bebb8742a">wlp::operator!=</a> (const char lhs, const StaticString&lt; tSize &gt; &amp;rhs)</td></tr>
+<tr class="separator:a8f6c71bdb8605fa13044c20bebb8742a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33530a25927cf705fe0ff0b4b58d8014"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a33530a25927cf705fe0ff0b4b58d8014"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a33530a25927cf705fe0ff0b4b58d8014">wlp::operator&gt;</a> (const char lhs, const StaticString&lt; tSize &gt; &amp;rhs)</td></tr>
+<tr class="separator:a33530a25927cf705fe0ff0b4b58d8014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af74ec48687b4f487f6fdd0553d3e2c6c"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:af74ec48687b4f487f6fdd0553d3e2c6c"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#af74ec48687b4f487f6fdd0553d3e2c6c">wlp::operator&gt;=</a> (const char lhs, const StaticString&lt; tSize &gt; &amp;rhs)</td></tr>
+<tr class="separator:af74ec48687b4f487f6fdd0553d3e2c6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a389dcf85832ea23b5c7a6ed614c7d2c8"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a389dcf85832ea23b5c7a6ed614c7d2c8"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a389dcf85832ea23b5c7a6ed614c7d2c8">wlp::operator&lt;</a> (const char lhs, const StaticString&lt; tSize &gt; &amp;rhs)</td></tr>
+<tr class="separator:a389dcf85832ea23b5c7a6ed614c7d2c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab97547cbf045711b70aebd9d752f9e4a"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:ab97547cbf045711b70aebd9d752f9e4a"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ab97547cbf045711b70aebd9d752f9e4a">wlp::operator&lt;=</a> (const char lhs, const StaticString&lt; tSize &gt; &amp;rhs)</td></tr>
+<tr class="separator:ab97547cbf045711b70aebd9d752f9e4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30826fc441d64bfa6b733ec554dbbf4d"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a30826fc441d64bfa6b733ec554dbbf4d"><td class="memTemplItemLeft" align="right" valign="top">StaticString&lt; tSize &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a30826fc441d64bfa6b733ec554dbbf4d">wlp::operator+</a> (const char *lhs, const StaticString&lt; tSize &gt; &amp;rhs)</td></tr>
+<tr class="separator:a30826fc441d64bfa6b733ec554dbbf4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96d8e2019902b92cac633ce8fcc7ebc7"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a96d8e2019902b92cac633ce8fcc7ebc7"><td class="memTemplItemLeft" align="right" valign="top">StaticString&lt; tSize &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a96d8e2019902b92cac633ce8fcc7ebc7">wlp::operator+</a> (const StaticString&lt; tSize &gt; &amp;lhs, const char *rhs)</td></tr>
+<tr class="separator:a96d8e2019902b92cac633ce8fcc7ebc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac0389f988a756011beea713b27c2b49"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:aac0389f988a756011beea713b27c2b49"><td class="memTemplItemLeft" align="right" valign="top">StaticString&lt; tSize &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#aac0389f988a756011beea713b27c2b49">wlp::operator+</a> (const StaticString&lt; tSize &gt; &amp;lhs, const char rhs)</td></tr>
+<tr class="separator:aac0389f988a756011beea713b27c2b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81097c7268d61f3681ff420261604778"><td class="memTemplParams" colspan="2">template&lt;size_type tSize&gt; </td></tr>
+<tr class="memitem:a81097c7268d61f3681ff420261604778"><td class="memTemplItemLeft" align="right" valign="top">StaticString&lt; tSize &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a81097c7268d61f3681ff420261604778">wlp::operator+</a> (const char lhs, const StaticString&lt; tSize &gt; &amp;rhs)</td></tr>
+<tr class="separator:a81097c7268d61f3681ff420261604778"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2079578274a7dcf78eea786ca7ba474"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ad2079578274a7dcf78eea786ca7ba474">wlp::operator==</a> (const DynamicString &amp;lhs, const DynamicString &amp;rhs)</td></tr>
+<tr class="separator:ad2079578274a7dcf78eea786ca7ba474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1349728e698fffcddd150e18dbcf3710"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a1349728e698fffcddd150e18dbcf3710">wlp::operator!=</a> (const DynamicString &amp;lhs, const DynamicString &amp;rhs)</td></tr>
+<tr class="separator:a1349728e698fffcddd150e18dbcf3710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57b276de1dfb4feb5495ffdc73787b30"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a57b276de1dfb4feb5495ffdc73787b30">wlp::operator&gt;</a> (const DynamicString &amp;lhs, const DynamicString &amp;rhs)</td></tr>
+<tr class="separator:a57b276de1dfb4feb5495ffdc73787b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4a03a1eafa6eaa7593a88161fa059af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ab4a03a1eafa6eaa7593a88161fa059af">wlp::operator&gt;=</a> (const DynamicString &amp;lhs, const DynamicString &amp;rhs)</td></tr>
+<tr class="separator:ab4a03a1eafa6eaa7593a88161fa059af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae78e6ac18fa8ab7ebf5cbf6a73e1a880"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ae78e6ac18fa8ab7ebf5cbf6a73e1a880">wlp::operator&lt;</a> (const DynamicString &amp;lhs, const DynamicString &amp;rhs)</td></tr>
+<tr class="separator:ae78e6ac18fa8ab7ebf5cbf6a73e1a880"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a448c712928e56c3a27e4c1fbe1cec53b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a448c712928e56c3a27e4c1fbe1cec53b">wlp::operator&lt;=</a> (const DynamicString &amp;lhs, const DynamicString &amp;rhs)</td></tr>
+<tr class="separator:a448c712928e56c3a27e4c1fbe1cec53b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3106a3ac25f366dcede6c9a18ebbb45e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a3106a3ac25f366dcede6c9a18ebbb45e">wlp::operator==</a> (const char *lhs, const DynamicString &amp;rhs)</td></tr>
+<tr class="separator:a3106a3ac25f366dcede6c9a18ebbb45e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a950e7d684fcd117c7152db6b0666e032"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a950e7d684fcd117c7152db6b0666e032">wlp::operator!=</a> (const char *lhs, const DynamicString &amp;rhs)</td></tr>
+<tr class="separator:a950e7d684fcd117c7152db6b0666e032"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f7fd5ed13b8a6d83af892e3e0c11512"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a9f7fd5ed13b8a6d83af892e3e0c11512">wlp::operator&gt;</a> (const char *lhs, const DynamicString &amp;rhs)</td></tr>
+<tr class="separator:a9f7fd5ed13b8a6d83af892e3e0c11512"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb66ae2d63a2ea6a2c2ba2d3210f3e84"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#afb66ae2d63a2ea6a2c2ba2d3210f3e84">wlp::operator&gt;=</a> (const char *lhs, const DynamicString &amp;rhs)</td></tr>
+<tr class="separator:afb66ae2d63a2ea6a2c2ba2d3210f3e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae742ce46fcfa8a30f4ea299fea872d56"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ae742ce46fcfa8a30f4ea299fea872d56">wlp::operator&lt;</a> (const char *lhs, const DynamicString &amp;rhs)</td></tr>
+<tr class="separator:ae742ce46fcfa8a30f4ea299fea872d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdf8b7b6c6fc4e1685fe7809f9acc04b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#acdf8b7b6c6fc4e1685fe7809f9acc04b">wlp::operator&lt;=</a> (const char *lhs, const DynamicString &amp;rhs)</td></tr>
+<tr class="separator:acdf8b7b6c6fc4e1685fe7809f9acc04b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4eea1fc68ba5d2800aba97c6a27d3399"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a4eea1fc68ba5d2800aba97c6a27d3399">wlp::operator==</a> (const DynamicString &amp;lhs, const char *rhs)</td></tr>
+<tr class="separator:a4eea1fc68ba5d2800aba97c6a27d3399"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada0105c8def3dd9385c2ca46671763d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ada0105c8def3dd9385c2ca46671763d3">wlp::operator!=</a> (const DynamicString &amp;lhs, const char *rhs)</td></tr>
+<tr class="separator:ada0105c8def3dd9385c2ca46671763d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4d2042e8a39b4c028efa80d7d1cadca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#aa4d2042e8a39b4c028efa80d7d1cadca">wlp::operator&gt;</a> (const DynamicString &amp;lhs, const char *rhs)</td></tr>
+<tr class="separator:aa4d2042e8a39b4c028efa80d7d1cadca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58f2b82c7fc3c56b80a5f681ff102163"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a58f2b82c7fc3c56b80a5f681ff102163">wlp::operator&gt;=</a> (const DynamicString &amp;lhs, const char *rhs)</td></tr>
+<tr class="separator:a58f2b82c7fc3c56b80a5f681ff102163"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c8de50c9166785b086dbf0358b33860"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a6c8de50c9166785b086dbf0358b33860">wlp::operator&lt;</a> (const DynamicString &amp;lhs, const char *rhs)</td></tr>
+<tr class="separator:a6c8de50c9166785b086dbf0358b33860"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf29f206492bf41f2efcb2b4ca7de34a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#aaf29f206492bf41f2efcb2b4ca7de34a">wlp::operator&lt;=</a> (const DynamicString &amp;lhs, const char *rhs)</td></tr>
+<tr class="separator:aaf29f206492bf41f2efcb2b4ca7de34a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a173e44187b05822e5a9e4165f915ebb9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a173e44187b05822e5a9e4165f915ebb9">wlp::operator==</a> (char lhs, const DynamicString &amp;rhs)</td></tr>
+<tr class="separator:a173e44187b05822e5a9e4165f915ebb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae56a7b9735cc009669172d6a130ee4b0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ae56a7b9735cc009669172d6a130ee4b0">wlp::operator==</a> (const DynamicString &amp;lhs, char rhs)</td></tr>
+<tr class="separator:ae56a7b9735cc009669172d6a130ee4b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Dec 2 2017 11:01:49 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 4 2017 21:07:17 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

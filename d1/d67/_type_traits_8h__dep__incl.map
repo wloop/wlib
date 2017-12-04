@@ -1,22 +1,20 @@
 <map id="stl/TypeTraits.h" name="stl/TypeTraits.h">
-<area shape="rect" id="node2" href="$d8/dd7/_concept_8h.html" title="Concept definitions. " alt="" coords="657,80,756,107"/>
-<area shape="rect" id="node9" href="$df/d03/_array_heap_8h.html" title="Heap manipulation and implementation. " alt="" coords="714,453,827,480"/>
-<area shape="rect" id="node3" href="$de/d0b/_string_iterator_8h.html" title="strings/StringIterator.h" alt="" coords="398,155,548,181"/>
-<area shape="rect" id="node4" href="$d8/d65/_static_string_8h.html" title="StaticString provides a String that is on stack and is of fixed size. " alt="" coords="401,229,545,256"/>
-<area shape="rect" id="node20" href="$d6/d60/_dynamic_string_8h.html" title="DynamicString is a class that provides dynamic strings and functions for dynamic strings. " alt="" coords="176,229,339,256"/>
-<area shape="rect" id="node5" href="$de/d6d/_bitset_8h.html" title="Bitset is a class that provides bits manipulation methods. " alt="" coords="215,304,300,331"/>
-<area shape="rect" id="node8" href="$d7/d0c/_comparator_8h.html" title="Comparator implementation for basic types. " alt="" coords="587,379,705,405"/>
-<area shape="rect" id="node13" href="$d2/dc2/_equal_8h.html" title="stl/Equal.h" alt="" coords="431,304,515,331"/>
-<area shape="rect" id="node18" href="$d2/dad/_hash_8h.html" title="stl/Hash.h" alt="" coords="324,304,405,331"/>
-<area shape="rect" id="node19" href="$db/db5/_string_8h.html" title="strings/String.h" alt="" coords="591,304,701,331"/>
-<area shape="rect" id="node6" href="$de/d66/_packet_constructor_8h.html" title="comm/PacketConstructor.h" alt="" coords="11,379,193,405"/>
-<area shape="rect" id="node7" href="$d9/dde/_packet_constructor_8cpp.html" title="Creates a packet for sending data from the slave systems to the main computer. " alt="" coords="5,453,200,480"/>
-<area shape="rect" id="node10" href="$d5/d08/_red_black_tree_8h.html" title="Red black tree implementation. " alt="" coords="555,453,689,480"/>
-<area shape="rect" id="node11" href="$df/d87/_tree_map_8h.html" title="Map implementation using red black tree. " alt="" coords="509,528,611,555"/>
-<area shape="rect" id="node12" href="$dd/dba/_tree_set_8h.html" title="Set implementation using red black tree. " alt="" coords="635,528,732,555"/>
-<area shape="rect" id="node14" href="$d3/dbe/_chain_map_8h.html" title="Hasher map implementation. " alt="" coords="401,379,511,405"/>
-<area shape="rect" id="node16" href="$d5/d7a/_open_map_8h.html" title="Hash map implementation. " alt="" coords="269,379,376,405"/>
-<area shape="rect" id="node17" href="$d0/de6/_open_set_8h.html" title="Hash set implementation. " alt="" coords="271,453,373,480"/>
-<area shape="rect" id="node15" href="$d6/d59/_chain_set_8h.html" title="Hash set implementation. " alt="" coords="403,453,508,480"/>
-<area shape="rect" id="node21" href="$d9/d8a/_dynamic_string_8cpp.html" title="DynamicString is a class that provides dynamic strings and functions for dynamic strings. " alt="" coords="15,304,191,331"/>
+<area shape="rect" id="node2" href="$d8/dd7/_concept_8h.html" title="Concept definitions. " alt="" coords="77,80,176,107"/>
+<area shape="rect" id="node9" href="$df/d03/_array_heap_8h.html" title="Heap manipulation and implementation. " alt="" coords="5,453,117,480"/>
+<area shape="rect" id="node3" href="$de/d0b/_string_iterator_8h.html" title="strings/StringIterator.h" alt="" coords="186,155,336,181"/>
+<area shape="rect" id="node4" href="$db/db5/_string_8h.html" title="strings/String.h" alt="" coords="265,229,375,256"/>
+<area shape="rect" id="node5" href="$de/d6d/_bitset_8h.html" title="Bitset is a class that provides bits manipulation methods. " alt="" coords="632,304,717,331"/>
+<area shape="rect" id="node8" href="$d7/d0c/_comparator_8h.html" title="Comparator implementation for basic types. " alt="" coords="127,379,245,405"/>
+<area shape="rect" id="node13" href="$d2/dc2/_equal_8h.html" title="stl/Equal.h" alt="" coords="342,304,425,331"/>
+<area shape="rect" id="node18" href="$d2/dad/_hash_8h.html" title="stl/Hash.h" alt="" coords="463,304,544,331"/>
+<area shape="rect" id="node19" href="$d9/dae/_string_8cpp.html" title="strings/String.cpp" alt="" coords="194,304,317,331"/>
+<area shape="rect" id="node6" href="$de/d66/_packet_constructor_8h.html" title="comm/PacketConstructor.h" alt="" coords="639,379,821,405"/>
+<area shape="rect" id="node7" href="$d9/dde/_packet_constructor_8cpp.html" title="Creates a packet for sending data from the slave systems to the main computer. " alt="" coords="633,453,828,480"/>
+<area shape="rect" id="node10" href="$d5/d08/_red_black_tree_8h.html" title="Red black tree implementation. " alt="" coords="142,453,276,480"/>
+<area shape="rect" id="node11" href="$df/d87/_tree_map_8h.html" title="Map implementation using red black tree. " alt="" coords="95,528,197,555"/>
+<area shape="rect" id="node12" href="$dd/dba/_tree_set_8h.html" title="Set implementation using red black tree. " alt="" coords="222,528,319,555"/>
+<area shape="rect" id="node14" href="$d3/dbe/_chain_map_8h.html" title="Hasher map implementation. " alt="" coords="322,379,432,405"/>
+<area shape="rect" id="node16" href="$d5/d7a/_open_map_8h.html" title="Hash map implementation. " alt="" coords="457,379,564,405"/>
+<area shape="rect" id="node17" href="$d0/de6/_open_set_8h.html" title="Hash set implementation. " alt="" coords="459,453,561,480"/>
+<area shape="rect" id="node15" href="$d6/d59/_chain_set_8h.html" title="Hash set implementation. " alt="" coords="325,453,429,480"/>
 </map>

@@ -1,17 +1,16 @@
 <map id="stl/TreeMap.h" name="stl/TreeMap.h">
-<area shape="rect" id="node2" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="237,752,317,779"/>
-<area shape="rect" id="node4" href="$d5/d08/_red_black_tree_8h.html" title="Red black tree implementation. " alt="" coords="547,80,663,107"/>
-<area shape="rect" id="node5" href="$d7/d0c/_comparator_8h.html" title="Comparator implementation for basic types. " alt="" coords="187,155,288,181"/>
-<area shape="rect" id="node11" href="$d4/dda/_pair_8h.html" title="Implementation of a 2&#45;element tuple. " alt="" coords="537,528,592,555"/>
-<area shape="rect" id="node12" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="511,603,625,629"/>
-<area shape="rect" id="node18" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="669,528,811,555"/>
-<area shape="rect" id="node7" href="$d2/dc2/_equal_8h.html" title="stl/Equal.h" alt="" coords="155,229,239,256"/>
-<area shape="rect" id="node8" href="$d8/d65/_static_string_8h.html" title="StaticString provides a String that is on stack and is of fixed size. " alt="" coords="246,304,401,331"/>
-<area shape="rect" id="node17" href="$db/db5/_string_8h.html" title="strings/String.h" alt="" coords="315,229,425,256"/>
-<area shape="rect" id="node9" href="$de/d0b/_string_iterator_8h.html" title="StringIterator.h" alt="" coords="301,379,408,405"/>
-<area shape="rect" id="node16" href="$da/db8/_math_8h.html" title="../utility/Math.h" alt="" coords="433,379,543,405"/>
-<area shape="rect" id="node10" href="$d8/dd7/_concept_8h.html" title="Concept definitions. " alt="" coords="348,453,459,480"/>
-<area shape="rect" id="node13" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="409,677,467,704"/>
-<area shape="rect" id="node14" href="$d4/dd5/_type_traits_8h.html" title="Metafunctions for types. " alt="" coords="391,603,485,629"/>
-<area shape="rect" id="node15" href="$d2/db4/_wlib_8h.html" title="../Wlib.h" alt="" coords="442,528,512,555"/>
+<area shape="rect" id="node2" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="233,752,313,779"/>
+<area shape="rect" id="node4" href="$d5/d08/_red_black_tree_8h.html" title="Red black tree implementation. " alt="" coords="405,80,520,107"/>
+<area shape="rect" id="node5" href="$d7/d0c/_comparator_8h.html" title="Comparator implementation for basic types. " alt="" coords="208,155,309,181"/>
+<area shape="rect" id="node11" href="$d4/dda/_pair_8h.html" title="Implementation of a 2&#45;element tuple. " alt="" coords="613,528,668,555"/>
+<area shape="rect" id="node12" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="585,603,700,629"/>
+<area shape="rect" id="node17" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="745,528,887,555"/>
+<area shape="rect" id="node7" href="$d2/dc2/_equal_8h.html" title="stl/Equal.h" alt="" coords="217,229,300,256"/>
+<area shape="rect" id="node8" href="$db/db5/_string_8h.html" title="../strings/String.h" alt="" coords="296,304,419,331"/>
+<area shape="rect" id="node9" href="$de/d0b/_string_iterator_8h.html" title="StringIterator.h" alt="" coords="337,379,444,405"/>
+<area shape="rect" id="node16" href="$da/db8/_math_8h.html" title="../utility/Math.h" alt="" coords="469,379,579,405"/>
+<area shape="rect" id="node10" href="$d8/dd7/_concept_8h.html" title="Concept definitions. " alt="" coords="424,453,535,480"/>
+<area shape="rect" id="node13" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="484,677,541,704"/>
+<area shape="rect" id="node14" href="$d4/dd5/_type_traits_8h.html" title="Metafunctions for types. " alt="" coords="466,603,560,629"/>
+<area shape="rect" id="node15" href="$d2/db4/_wlib_8h.html" title="../Wlib.h" alt="" coords="518,528,588,555"/>
 </map>

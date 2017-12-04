@@ -1,8 +1,10 @@
 <map id="get_block_allocator" name="get_block_allocator">
-<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#aa359f6271adac5034612761142de9195" title="__memory_free" alt="" coords="207,44,319,71"/>
-<area shape="rect" id="node6" href="$d3/de6/_memory_8h.html#a19776500cfa4d32aeb17adb0c2f3c5fe" title="getFixedMemorySize" alt="" coords="190,95,335,121"/>
-<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html#a137edc434b402c4f8ea23892006a38b6" title="free" alt="" coords="393,44,437,71"/>
+<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#aa359f6271adac5034612761142de9195" title="__memory_free" alt="" coords="207,77,319,104"/>
+<area shape="rect" id="node8" href="$d3/de6/_memory_8h.html#a19776500cfa4d32aeb17adb0c2f3c5fe" title="getFixedMemorySize" alt="" coords="190,128,335,155"/>
+<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html#a137edc434b402c4f8ea23892006a38b6" title="free" alt="" coords="393,77,437,104"/>
 <area shape="rect" id="node4" href="$de/dc1/classwlp_1_1_reference_count.html#a7fab13d2d8b36614b06fc53581ca6b17" title="wlp::ReferenceCount\l\&lt; T * \&gt;::dispose" alt="" coords="494,5,639,46"/>
 <area shape="rect" id="node5" href="$de/dc1/classwlp_1_1_reference_count.html#ad321394bfc7a1d215d3616c3721923ee" title="wlp::ReferenceCount\l\&lt; T * \&gt;::destroy" alt="" coords="494,70,639,111"/>
-<area shape="rect" id="node7" href="$d3/de6/_memory_8h.html#a50569d96c5b87927563caa7281eb9a8a" title="realloc" alt="" coords="385,95,445,121"/>
+<area shape="rect" id="node6" href="$d8/db4/classwlp_1_1_dynamic_string.html#a7decbdc48439b5582da46d18e6b51041" title="wlp::DynamicString\l::set_value" alt="" coords="499,135,635,177"/>
+<area shape="rect" id="node7" href="$d8/db4/classwlp_1_1_dynamic_string.html#a7e2df6a940f04fa17d203c9e2c84703a" title="wlp::DynamicString\l::operator=" alt="" coords="688,135,824,177"/>
+<area shape="rect" id="node9" href="$d3/de6/_memory_8h.html#a50569d96c5b87927563caa7281eb9a8a" title="realloc" alt="" coords="385,128,445,155"/>
 </map>

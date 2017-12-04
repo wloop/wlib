@@ -1,6 +1,8 @@
 <map id="get_block_ptr" name="get_block_ptr">
-<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#aa359f6271adac5034612761142de9195" title="__memory_free" alt="" coords="155,45,267,72"/>
-<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html#a137edc434b402c4f8ea23892006a38b6" title="free" alt="" coords="315,45,359,72"/>
+<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#aa359f6271adac5034612761142de9195" title="__memory_free" alt="" coords="155,77,267,104"/>
+<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html#a137edc434b402c4f8ea23892006a38b6" title="free" alt="" coords="315,77,359,104"/>
 <area shape="rect" id="node4" href="$de/dc1/classwlp_1_1_reference_count.html#a7fab13d2d8b36614b06fc53581ca6b17" title="wlp::ReferenceCount\l\&lt; T * \&gt;::dispose" alt="" coords="409,5,554,46"/>
 <area shape="rect" id="node5" href="$de/dc1/classwlp_1_1_reference_count.html#ad321394bfc7a1d215d3616c3721923ee" title="wlp::ReferenceCount\l\&lt; T * \&gt;::destroy" alt="" coords="409,70,554,111"/>
+<area shape="rect" id="node6" href="$d8/db4/classwlp_1_1_dynamic_string.html#a7decbdc48439b5582da46d18e6b51041" title="wlp::DynamicString\l::set_value" alt="" coords="413,135,549,177"/>
+<area shape="rect" id="node7" href="$d8/db4/classwlp_1_1_dynamic_string.html#a7e2df6a940f04fa17d203c9e2c84703a" title="wlp::DynamicString\l::operator=" alt="" coords="603,135,739,177"/>
 </map>
