@@ -1,9 +1,7 @@
 #include "gtest/gtest.h"
 
-#include "strings/StaticString.h"
-#include "strings/DynamicString.h"
+#include "strings/String.h"
 
-#include "stl/Concept.h"
 #include "stl/Comparator.h"
 #include "stl/ChainMap.h"
 #include "stl/OpenMap.h"

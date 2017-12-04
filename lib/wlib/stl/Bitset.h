@@ -19,8 +19,7 @@
 
 #include "../Types.h"
 #include "../Wlib.h"
-#include "../strings/StaticString.h"
-#include "../strings/DynamicString.h"
+#include "../strings/String.h"
 
 namespace wlp {
 

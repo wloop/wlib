@@ -1,8 +1,7 @@
 #include "gtest/gtest.h"
 
 #include "strings/StringIterator.h"
-#include "strings/StaticString.h"
-#include "strings/DynamicString.h"
+#include "strings/String.h"
 #include "stl/ArrayHeap.h"
 
 using namespace wlp;

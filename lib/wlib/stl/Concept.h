@@ -499,17 +499,7 @@ namespace wlp {
                 HAS_FCN(const T, substr, size_type, size_type, string_type),
                 HAS_FCN(const T, compare, const string_type &, diff_type),
                 HAS_FCN(const T, compare, const char *, diff_type),
-                HAS_FCN(const T, compare, char, diff_type),
-                OP_EXIST(operator==, const string_type &, const string_type &, bool),
-                OP_EXIST(operator==, const string_type &, const char *, bool),
-                OP_EXIST(operator==, const char *, const string_type &, bool),
-                OP_EXIST(operator==, const string_type &, char, bool),
-                OP_EXIST(operator==, char, const string_type &, bool),
-                OP_EXIST(operator+, const string_type &, const string_type &, string_type),
-                OP_EXIST(operator+, const string_type &, const char *, string_type),
-                OP_EXIST(operator+, const char *, const string_type &, string_type),
-                OP_EXIST(operator+, const string_type &, char, string_type),
-                OP_EXIST(operator+, char, const string_type &, string_type)
+                HAS_FCN(const T, compare, char, diff_type)
         >::type;
 
         template<typename>
