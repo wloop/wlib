@@ -424,7 +424,10 @@ uint16_t getMaxAllocations() {
 }
 
 size_type getSmallestBlockSize() {
-    return static_cast<size_type>(pow_const(2, log2_const<size_type>(REQUIRED_EXTRA_BUFFER) + 1));
+    return static_cast<size_type>(pow_const(
+            static_cast<size_type>(2),
+            static_cast<size_type>(log2_const<size_type>(REQUIRED_EXTRA_BUFFER) + 1))
+    );
 }
 
 size32_type getFixedMemorySize(void *ptr) {

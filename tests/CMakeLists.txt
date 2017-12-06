@@ -10,6 +10,8 @@ set(WLIB_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/lib/wlib)
 include_directories(${GTEST_INCLUDE_DIR})
 include_directories(${WLIB_INCLUDE_DIR})
 
+add_definitions(-DWLIB_DEBUG)
+
 file(GLOB files
         "*.h"
         "test.cpp"

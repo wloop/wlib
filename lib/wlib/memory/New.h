@@ -2,7 +2,13 @@
  * @file New.h
  * @brief New operators defined for Arduino boards and for other boards use the normal new
  *
+ * Some versions of Arduino provide a @code new.h @endcode but these do not include
+ * a definition for placement new. In debug mode, for Wlib develop, the standard C++
+ * @code <new> @endcode is included, and for all other cases, these operators fall
+ * back on the C allocation functions.
+ *
  * @author Deep Dhillon
+ * @author Jeff Niu
  * @date December 4, 2017
  * @bug No known bugs.
  */
@@ -11,33 +17,36 @@
 #define EMBEDDEDCPLUSPLUS_NEW_H
 
 #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega1284__) || defined(__AVR_ATmega1284P__) || defined(__AVR_ATmega644__) || defined(__AVR_ATmega644A__) || defined(__AVR_ATmega644P__) || defined(__AVR_ATmega644PA__)
-#include <stdlib.h>
+#include <new.h>
 
-void *operator new(decltype(sizeof(0)) n) noexcept(false) {
+inline void* operator new(decltype(sizeof(0)), void* ptr) noexcept(false){
+    return ptr;
+}
+#elif defined(WLIB_DEBUG)
+#include <new>
+#else
+#include <stdlib.h>
+inline void *operator new(decltype(sizeof(0)) n) noexcept(false) {
     void *memory = malloc(n);
     return memory;
 }
 
-void* operator new(decltype(sizeof(0)) n, void* ptr) noexcept(false){
+inline void* operator new(decltype(sizeof(0)), void* ptr) noexcept(false){
     return ptr;
 }
 
-void operator delete(void *p) throw() {
+inline void operator delete(void *p) throw() {
     free(p);
 }
 
-void *operator new[](decltype(sizeof(0)) n) noexcept(false) {
+inline void *operator new[](decltype(sizeof(0)) n) noexcept(false) {
     void *memory = malloc(n);
     return memory;
 }
 
-void operator delete[](void *p) throw() {
+inline void operator delete[](void *p) throw() {
     free(p);
 }
-#else
-
-#include "new"
-
 #endif
 
 #endif //EMBEDDEDCPLUSPLUS_NEW_H
