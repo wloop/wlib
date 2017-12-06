@@ -74,10 +74,10 @@ __Allocator::__Allocator(
 
 __Allocator::__Allocator(__Allocator &&allocator)
         : m_poolType(move(allocator.m_poolType)),
-          m_blockSize(move(allocator.m_blockSize)),
-          m_poolSize(move(allocator.m_poolSize)),
           m_pHead(move(allocator.m_pHead)),
           m_pPool(move(allocator.m_pPool)),
+          m_blockSize(move(allocator.m_blockSize)),
+          m_poolSize(move(allocator.m_poolSize)),
           m_poolTotalBlockCnt(move(allocator.m_poolTotalBlockCnt)),
           m_poolCurrBlockCnt(move(allocator.m_poolCurrBlockCnt)),
           m_totalBlockCount(move(allocator.m_totalBlockCount)),
