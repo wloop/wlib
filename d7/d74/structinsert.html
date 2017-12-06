@@ -141,7 +141,7 @@ template&lt;uint16_t powStart, uint16_t from, uint16_t to&gt; </div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#if defined(DYNAMIC_POOL)</span></div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor"></span>        <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>[from] = <span class="keyword">new</span> <a class="code" href="../../d6/dda/classwlp_1_1_dynamic_allocator_pool.html">DynamicAllocatorPool&lt;blockSize, NUM_BLOCKS&gt;</a>();</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#elif defined(STATIC_POOL)</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor"></span>        _allocators[from] = <span class="keyword">new</span> <a class="code" href="../../d1/dba/classwlp_1_1_static_allocator_pool.html">StaticAllocatorPool&lt;blockSize, NUM_BLOCKS&gt;</a>();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor"></span>        <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>[from] = <span class="keyword">new</span> <a class="code" href="../../d1/dba/classwlp_1_1_static_allocator_pool.html">StaticAllocatorPool&lt;blockSize, NUM_BLOCKS&gt;</a>();</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor"></span>        <a class="code" href="../../d7/d74/structinsert.html#a576cd041e8bb284bacd92640c3e0b9dc">insert&lt;powStart, from + 1, to&gt;::apply</a>();</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
@@ -168,7 +168,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Dec 6 2017 05:48:51 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 6 2017 06:08:17 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
