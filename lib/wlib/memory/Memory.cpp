@@ -157,8 +157,8 @@ static inline __Allocator *find_allocator(size32_type size) {
             return allocator;
         }
 #else
-        if (_allocator->GetBlockSize() == size)
-            return _allocator;
+        if (allocator->GetBlockSize() == size)
+            return allocator;
 #endif
     }
 
@@ -358,8 +358,8 @@ void __memory_free(void *ptr) {
 size32_type getTotalMemoryUsed() {
     size32_type totalMemory = 0;
 
-    for (auto &_allocator : __allocators) {
-        totalMemory += _allocator->getNumAllocations() * _allocator->getBlockSize();
+    for (auto &allocator : __allocators) {
+        totalMemory += allocator->getNumAllocations() * allocator->getBlockSize();
     }
 
     return totalMemory;
@@ -373,16 +373,16 @@ wlp::size32_type getTotalMemoryFree(){
 size32_type getTotalMemoryAvailable() {
     size32_type totalMemory = 0;
 
-    for (auto &_allocator : __allocators) {
-        totalMemory += _allocator->getTotalBlocks() * _allocator->getBlockSize();
+    for (auto &allocator : __allocators) {
+        totalMemory += allocator->getTotalBlocks() * allocator->getBlockSize();
     }
 
     return totalMemory;
 }
 
 bool isSizeAvailable(size32_type blockSize) {
-    for (auto &_allocator : __allocators) {
-        if (_allocator->getBlockSize() == blockSize) {
+    for (auto &allocator : __allocators) {
+        if (allocator->getBlockSize() == blockSize) {
             return true;
         }
     }
@@ -391,10 +391,10 @@ bool isSizeAvailable(size32_type blockSize) {
 }
 
 bool isSizeMemAvailable(size32_type blockSize) {
-    for (auto &_allocator : __allocators) {
-        if (_allocator->getBlockSize() == blockSize) {
-            uint32_t totalMemAvail = _allocator->getTotalBlocks() * _allocator->getBlockSize();
-            uint32_t totalMemUsed = _allocator->getNumAllocations() * _allocator->getBlockSize();
+    for (auto &allocator : __allocators) {
+        if (allocator->getBlockSize() == blockSize) {
+            uint32_t totalMemAvail = allocator->getTotalBlocks() * allocator->getBlockSize();
+            uint32_t totalMemUsed = allocator->getNumAllocations() * allocator->getBlockSize();
             return totalMemAvail - totalMemUsed != 0;
         }
     }
@@ -404,10 +404,10 @@ bool isSizeMemAvailable(size32_type blockSize) {
 uint16_t getNumBlocksAvailable(size32_type blockSize) {
     uint16_t numBlockAvail = 0;
 
-    for (auto &_allocator : __allocators) {
-        if (_allocator->getBlockSize() == blockSize) {
-            uint32_t totalMemAvail = _allocator->getTotalBlocks() * _allocator->getBlockSize();
-            uint32_t totalMemUsed = _allocator->getNumAllocations() * _allocator->getBlockSize();
+    for (auto &allocator : __allocators) {
+        if (allocator->getBlockSize() == blockSize) {
+            uint32_t totalMemAvail = allocator->getTotalBlocks() * allocator->getBlockSize();
+            uint32_t totalMemUsed = allocator->getNumAllocations() * allocator->getBlockSize();
             numBlockAvail += (totalMemAvail - totalMemUsed) / blockSize;
         }
     }

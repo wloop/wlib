@@ -219,7 +219,12 @@ namespace wlp {
          * @param allocationType type of memory in memory pool
          * @param pPool address to memory provided
          */
-        explicit __Allocator(size32_type blockSize, size32_type poolSize, __Allocator::Type allocationType, void *pPool);
+        explicit __Allocator(
+                size32_type blockSize,
+                size32_type poolSize,
+                __Allocator::Type allocationType,
+                void *pPool
+        );
 
         Type m_poolType;
         Block *m_pHead;
