@@ -139,7 +139,7 @@ template&lt;uint16_t powStart, uint16_t from&gt; </div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#if defined(DYNAMIC_POOL)</span></div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor"></span>        <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>[from] = <span class="keyword">new</span> <a class="code" href="../../d6/dda/classwlp_1_1_dynamic_allocator_pool.html">DynamicAllocatorPool&lt;blockSize, NUM_BLOCKS&gt;</a>();</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#elif defined(STATIC_POOL)</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor"></span>        _allocators[from] = <span class="keyword">new</span> <a class="code" href="../../d1/dba/classwlp_1_1_static_allocator_pool.html">StaticAllocatorPool&lt;blockSize, NUM_BLOCKS&gt;</a>();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor"></span>        <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>[from] = <span class="keyword">new</span> <a class="code" href="../../d1/dba/classwlp_1_1_static_allocator_pool.html">StaticAllocatorPool&lt;blockSize, NUM_BLOCKS&gt;</a>();</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor"></span>    }</div>
 <div class="ttc" id="namespacewlp_html_adb997846b89cf8d4b485be5f3c80e762"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#adb997846b89cf8d4b485be5f3c80e762">wlp::size32_type</a></div><div class="ttdeci">uint32_t size32_type</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db6/_types_8h_source.html#l00022">Types.h:22</a></div></div>
@@ -156,7 +156,7 @@ template&lt;uint16_t powStart, uint16_t from&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Dec 6 2017 06:08:17 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 6 2017 06:15:19 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
