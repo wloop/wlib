@@ -15,38 +15,27 @@
 
 #ifndef EMBEDDEDCPLUSPLUS_NEW_H
 #define EMBEDDEDCPLUSPLUS_NEW_H
-
 #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega1284__) || defined(__AVR_ATmega1284P__) || defined(__AVR_ATmega644__) || defined(__AVR_ATmega644A__) || defined(__AVR_ATmega644P__) || defined(__AVR_ATmega644PA__)
+
 #include <new.h>
 
-inline void* operator new(decltype(sizeof(0)), void* ptr) noexcept(false){
-    return ptr;
-}
+void* operator new(decltype(sizeof(0)), void* ptr) noexcept;
+
 #elif defined(WLIB_DEBUG)
+
 #include <new>
+
 #else
-#include <stdlib.h>
-inline void *operator new(decltype(sizeof(0)) n) noexcept(false) {
-    void *memory = malloc(n);
-    return memory;
-}
 
-inline void* operator new(decltype(sizeof(0)), void* ptr) noexcept(false){
-    return ptr;
-}
+void *operator new(decltype(sizeof(0)) n) noexcept(false);
 
-inline void operator delete(void *p) throw() {
-    free(p);
-}
+void *operator new(decltype(sizeof(0)), void *ptr) noexcept;
 
-inline void *operator new[](decltype(sizeof(0)) n) noexcept(false) {
-    void *memory = malloc(n);
-    return memory;
-}
+void operator delete(void *ptr) throw();
 
-inline void operator delete[](void *p) throw() {
-    free(p);
-}
+void *operator new[](decltype(sizeof(0)) n) noexcept(false);
+
+void operator delete[](void *ptr) throw();
+
 #endif
-
 #endif //EMBEDDEDCPLUSPLUS_NEW_H

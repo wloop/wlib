@@ -34,6 +34,15 @@ namespace wlp {
     };
 
     /**
+     * Template specialization for 16 bits to
+     * prevent overflow.
+     */
+    template<>
+    struct pow_mask<16> {
+        static const uint32_t value = 0xffff;
+    };
+
+    /**
      * Template specialization for 32 bits to
      * prevent overflow.
      */

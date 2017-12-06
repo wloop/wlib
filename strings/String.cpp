@@ -27,8 +27,8 @@ namespace wlp {
     DynamicString::DynamicString(const DynamicString &str) : DynamicString(str.c_str()) {}
 
     DynamicString::DynamicString(DynamicString &&str) noexcept
-            : m_len(str.m_len),
-              m_buffer(str.m_buffer) {
+            : m_buffer(str.m_buffer),
+              m_len(str.m_len) {
         str.m_len = 0;
         str.m_buffer = malloc<char[]>(1);
         str.m_buffer[0] = '\0';

@@ -19,7 +19,7 @@ set(CMAKE_C_FLAGS_DISTRIBUTION "-std=gnu11 -fno-fat-lto-objects -g -Os -Wall -ff
     * memory will be expanded at run time
     */
 ]]
-add_definitions(-DMAX_ALLOCATORS=10u -DNUM_BLOCKS=100u -DDYNAMIC_POOL)
+add_definitions(-DWLIB_DEBUG -DMAX_ALLOCATORS=10u -DNUM_BLOCKS=100u -DDYNAMIC_POOL)
 
 file(GLOB header_files
         "*.h"
