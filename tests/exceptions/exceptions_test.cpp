@@ -117,8 +117,8 @@ TEST(exception_test, multifunction_exception) {
 }
 
 TEST(exception_test, unexpected_exception) {
-    int startMem;
-    int endMem;
+    wlp::size32_type startMem;
+    wlp::size32_type endMem;
 
     startMem = getTotalMemoryFree();
     while (true){
