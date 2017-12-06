@@ -1,5 +1,5 @@
 #include "comm/PacketConstructor.h"
-#include "../../include/gtest-1.8.0/include/gtest/gtest.h"
+#include "gtest/gtest.h"
 
 using namespace wlp;
 
