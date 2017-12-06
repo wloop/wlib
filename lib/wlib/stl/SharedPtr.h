@@ -584,6 +584,9 @@ namespace wlp {
         }
 
         typename add_lvalue_reference<T>::type operator*() const {
+            if (m_ptr == nullptr) {
+                THROW(NULLPTR_EXCEPTION("Shared pointer is null"))
+            }
             return *m_ptr;
         }
 
