@@ -1,8 +1,10 @@
 <map id="wlp::__Allocator::deallocate" name="wlp::__Allocator::deallocate">
-<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#aa359f6271adac5034612761142de9195" title="__memory_free" alt="" coords="237,77,349,104"/>
-<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html#a137edc434b402c4f8ea23892006a38b6" title="free" alt="" coords="398,77,442,104"/>
+<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#aa359f6271adac5034612761142de9195" title="__memory_free" alt="" coords="237,136,349,163"/>
+<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html#a137edc434b402c4f8ea23892006a38b6" title="free" alt="" coords="398,136,442,163"/>
 <area shape="rect" id="node4" href="$de/dc1/classwlp_1_1_reference_count.html#ad321394bfc7a1d215d3616c3721923ee" title="wlp::ReferenceCount\l\&lt; T * \&gt;::destroy" alt="" coords="491,5,637,46"/>
 <area shape="rect" id="node5" href="$de/dc1/classwlp_1_1_reference_count.html#a7fab13d2d8b36614b06fc53581ca6b17" title="wlp::ReferenceCount\l\&lt; T * \&gt;::dispose" alt="" coords="491,70,637,111"/>
-<area shape="rect" id="node6" href="$d8/db4/classwlp_1_1_dynamic_string.html#a7decbdc48439b5582da46d18e6b51041" title="wlp::DynamicString\l::set_value" alt="" coords="496,135,632,177"/>
-<area shape="rect" id="node7" href="$d8/db4/classwlp_1_1_dynamic_string.html#a7e2df6a940f04fa17d203c9e2c84703a" title="wlp::DynamicString\l::operator=" alt="" coords="685,135,821,177"/>
+<area shape="rect" id="node6" href="$d9/d8a/_new_8h.html#a86107594327f3a001230df9802cd4422" title="operator delete" alt="" coords="510,136,618,163"/>
+<area shape="rect" id="node7" href="$d9/d8a/_new_8h.html#aaa8d8403dca7d813a59dd1f07728349d" title="operator delete[]" alt="" coords="506,187,622,213"/>
+<area shape="rect" id="node8" href="$d8/db4/classwlp_1_1_dynamic_string.html#a7decbdc48439b5582da46d18e6b51041" title="wlp::DynamicString\l::set_value" alt="" coords="496,238,632,279"/>
+<area shape="rect" id="node9" href="$d8/db4/classwlp_1_1_dynamic_string.html#a7e2df6a940f04fa17d203c9e2c84703a" title="wlp::DynamicString\l::operator=" alt="" coords="685,238,821,279"/>
 </map>

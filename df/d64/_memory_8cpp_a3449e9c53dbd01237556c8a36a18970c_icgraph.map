@@ -1,4 +1,6 @@
 <map id="set_block_allocator" name="set_block_allocator">
-<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#ae94046dbccfe12303d31bb8aaff3e523" title="__memory_alloc" alt="" coords="189,29,307,56"/>
-<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8" title="malloc" alt="" coords="355,29,415,56"/>
+<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#ae94046dbccfe12303d31bb8aaff3e523" title="__memory_alloc" alt="" coords="189,31,307,57"/>
+<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8" title="malloc" alt="" coords="355,31,415,57"/>
+<area shape="rect" id="node4" href="$d9/d8a/_new_8h.html#a2be7f3b9f5f2189e467551f094f6dc67" title="operator new" alt="" coords="469,5,566,32"/>
+<area shape="rect" id="node5" href="$d9/d8a/_new_8h.html#a60b33dbd1804d9a08cec7f1e34e6bdf4" title="operator new[]" alt="" coords="465,56,570,83"/>
 </map>

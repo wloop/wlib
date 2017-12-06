@@ -1,4 +1,6 @@
 <map id="memory_get_allocator" name="memory_get_allocator">
-<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#ae94046dbccfe12303d31bb8aaff3e523" title="__memory_alloc" alt="" coords="205,29,323,56"/>
-<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8" title="malloc" alt="" coords="371,29,431,56"/>
+<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#ae94046dbccfe12303d31bb8aaff3e523" title="__memory_alloc" alt="" coords="205,31,323,57"/>
+<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8" title="malloc" alt="" coords="371,31,431,57"/>
+<area shape="rect" id="node4" href="$d9/d8a/_new_8h.html#a2be7f3b9f5f2189e467551f094f6dc67" title="operator new" alt="" coords="485,5,582,32"/>
+<area shape="rect" id="node5" href="$d9/d8a/_new_8h.html#a60b33dbd1804d9a08cec7f1e34e6bdf4" title="operator new[]" alt="" coords="481,56,586,83"/>
 </map>

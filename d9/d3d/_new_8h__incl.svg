@@ -16,8 +16,8 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<polygon fill="white" stroke="#bfbfbf" points="23.5,-0.5 23.5,-19.5 58.5,-19.5 58.5,-0.5 23.5,-0.5"/>
-<text text-anchor="middle" x="41" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">new</text>
+<polygon fill="white" stroke="#bfbfbf" points="17,-0.5 17,-19.5 65,-19.5 65,-0.5 17,-0.5"/>
+<text text-anchor="middle" x="41" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">stdlib.h</text>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge"><title>Node1&#45;&gt;Node2</title>

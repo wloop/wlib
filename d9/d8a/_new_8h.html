@@ -81,6 +81,8 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">New.h File Reference</div>  </div>
 </div><!--header-->
@@ -88,7 +90,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 
 <p>New operators defined for Arduino boards and for other boards use the normal new.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;new&quot;</code><br/>
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for New.h:</div>
 <div class="dyncontent">
@@ -103,17 +105,252 @@ This graph shows which files directly or indirectly include this file:</div>
 </div>
 </div>
 <p><a href="../../d9/d8a/_new_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a2be7f3b9f5f2189e467551f094f6dc67"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d8a/_new_8h.html#a2be7f3b9f5f2189e467551f094f6dc67">operator new</a> (decltype(sizeof(0)) n) noexcept(false)</td></tr>
+<tr class="separator:a2be7f3b9f5f2189e467551f094f6dc67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea6ddceb86552784761cc9950d4aab2e"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d8a/_new_8h.html#aea6ddceb86552784761cc9950d4aab2e">operator new</a> (decltype(sizeof(0)), void *ptr) noexcept(false)</td></tr>
+<tr class="separator:aea6ddceb86552784761cc9950d4aab2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86107594327f3a001230df9802cd4422"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d8a/_new_8h.html#a86107594327f3a001230df9802cd4422">operator delete</a> (void *p)  throw ()</td></tr>
+<tr class="separator:a86107594327f3a001230df9802cd4422"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60b33dbd1804d9a08cec7f1e34e6bdf4"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d8a/_new_8h.html#a60b33dbd1804d9a08cec7f1e34e6bdf4">operator new[]</a> (decltype(sizeof(0)) n) noexcept(false)</td></tr>
+<tr class="separator:a60b33dbd1804d9a08cec7f1e34e6bdf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa8d8403dca7d813a59dd1f07728349d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d8a/_new_8h.html#aaa8d8403dca7d813a59dd1f07728349d">operator delete[]</a> (void *p)  throw ()</td></tr>
+<tr class="separator:aaa8d8403dca7d813a59dd1f07728349d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>New operators defined for Arduino boards and for other boards use the normal new. </p>
-<dl class="section author"><dt>Author</dt><dd>Deep Dhillon </dd></dl>
+<p>Some versions of Arduino provide a</p>
+<div class="fragment"><div class="line"><span class="keyword">new</span>.h </div>
+</div><!-- fragment --><p> but these do not include a definition for placement new. In debug mode, for Wlib develop, the standard C++ </p>
+<div class="fragment"><div class="line">&lt;<span class="keyword">new</span>&gt; </div>
+</div><!-- fragment --><p> is included, and for all other cases, these operators fall back on the C allocation functions.</p>
+<dl class="section author"><dt>Author</dt><dd>Deep Dhillon </dd>
+<dd>
+Jeff Niu </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>December 4, 2017 </dd></dl>
 <dl class="bug"><dt><b><a class="el" href="../../de/da5/bug.html#_bug000010">Bug:</a></b></dt><dd>No known bugs. </dd></dl>
 
 <p>Definition in file <a class="el" href="../../d9/d8a/_new_8h_source.html">New.h</a>.</p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a86107594327f3a001230df9802cd4422"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operator delete </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td align="right">throw </td><td>(</td><td colspan="2"></td>
+        </tr>
+        <tr>
+          <td align="right"></td><td>)</td><td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="../../d9/d8a/_new_8h_source.html#l00038">38</a> of file <a class="el" href="../../d9/d8a/_new_8h_source.html">New.h</a>.</p>
+
+<p>References <a class="el" href="../../d3/de6/_memory_8h_source.html#l00237">free()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                             {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="../../d3/de6/_memory_8h.html#a137edc434b402c4f8ea23892006a38b6">free</a>(p);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="ttc" id="_memory_8h_html_a137edc434b402c4f8ea23892006a38b6"><div class="ttname"><a href="../../d3/de6/_memory_8h.html#a137edc434b402c4f8ea23892006a38b6">free</a></div><div class="ttdeci">void free(Type *&amp;ptr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/de6/_memory_8h_source.html#l00237">Memory.h:237</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d9/d8a/_new_8h_a86107594327f3a001230df9802cd4422_cgraph.svg" width="100%" height="409"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aaa8d8403dca7d813a59dd1f07728349d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operator delete[] </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td align="right">throw </td><td>(</td><td colspan="2"></td>
+        </tr>
+        <tr>
+          <td align="right"></td><td>)</td><td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="../../d9/d8a/_new_8h_source.html#l00047">47</a> of file <a class="el" href="../../d9/d8a/_new_8h_source.html">New.h</a>.</p>
+
+<p>References <a class="el" href="../../d3/de6/_memory_8h_source.html#l00237">free()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                               {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="../../d3/de6/_memory_8h.html#a137edc434b402c4f8ea23892006a38b6">free</a>(p);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<div class="ttc" id="_memory_8h_html_a137edc434b402c4f8ea23892006a38b6"><div class="ttname"><a href="../../d3/de6/_memory_8h.html#a137edc434b402c4f8ea23892006a38b6">free</a></div><div class="ttdeci">void free(Type *&amp;ptr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/de6/_memory_8h_source.html#l00237">Memory.h:237</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d9/d8a/_new_8h_aaa8d8403dca7d813a59dd1f07728349d_cgraph.svg" width="100%" height="409"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a2be7f3b9f5f2189e467551f094f6dc67"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* operator new </td>
+          <td>(</td>
+          <td class="paramtype">decltype(sizeof(0))&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="../../d9/d8a/_new_8h_source.html#l00029">29</a> of file <a class="el" href="../../d9/d8a/_new_8h_source.html">New.h</a>.</p>
+
+<p>References <a class="el" href="../../d3/de6/_memory_8h_source.html#l00119">malloc()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                                                                 {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> *memory = <a class="code" href="../../d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8">malloc</a>(n);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">return</span> memory;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
+<div class="ttc" id="_memory_8h_html_ac22d681988e173a07bb5f4b5375923f8"><div class="ttname"><a href="../../d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8">malloc</a></div><div class="ttdeci">NonArrayType * malloc(wlp::size_type num)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/de6/_memory_8h_source.html#l00119">Memory.h:119</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d9/d8a/_new_8h_a2be7f3b9f5f2189e467551f094f6dc67_cgraph.svg" width="100%" height="484"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aea6ddceb86552784761cc9950d4aab2e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* operator new </td>
+          <td>(</td>
+          <td class="paramtype">decltype(sizeof(0))&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="../../d9/d8a/_new_8h_source.html#l00034">34</a> of file <a class="el" href="../../d9/d8a/_new_8h_source.html">New.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                                                         {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">return</span> ptr;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a60b33dbd1804d9a08cec7f1e34e6bdf4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* operator new[] </td>
+          <td>(</td>
+          <td class="paramtype">decltype(sizeof(0))&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="../../d9/d8a/_new_8h_source.html#l00042">42</a> of file <a class="el" href="../../d9/d8a/_new_8h_source.html">New.h</a>.</p>
+
+<p>References <a class="el" href="../../d3/de6/_memory_8h_source.html#l00119">malloc()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                                                   {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> *memory = <a class="code" href="../../d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8">malloc</a>(n);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> memory;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="ttc" id="_memory_8h_html_ac22d681988e173a07bb5f4b5375923f8"><div class="ttname"><a href="../../d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8">malloc</a></div><div class="ttdeci">NonArrayType * malloc(wlp::size_type num)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/de6/_memory_8h_source.html#l00119">Memory.h:119</a></div></div>
+</div><!-- fragment -->
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d9/d8a/_new_8h_a60b33dbd1804d9a08cec7f1e34e6bdf4_cgraph.svg" width="100%" height="484"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Dec 6 2017 06:15:19 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 6 2017 07:04:51 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

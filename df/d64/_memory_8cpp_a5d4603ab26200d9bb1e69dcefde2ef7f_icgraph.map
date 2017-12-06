@@ -1,4 +1,6 @@
 <map id="__memory_alloc" name="__memory_alloc">
 <area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#ae94046dbccfe12303d31bb8aaff3e523" title="__memory_alloc" alt="" coords="171,29,288,56"/>
 <area shape="rect" id="node3" href="$d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8" title="malloc" alt="" coords="337,55,397,81"/>
+<area shape="rect" id="node4" href="$d9/d8a/_new_8h.html#a2be7f3b9f5f2189e467551f094f6dc67" title="operator new" alt="" coords="450,29,547,56"/>
+<area shape="rect" id="node5" href="$d9/d8a/_new_8h.html#a60b33dbd1804d9a08cec7f1e34e6bdf4" title="operator new[]" alt="" coords="446,80,551,107"/>
 </map>
