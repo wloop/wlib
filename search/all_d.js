@@ -2,6 +2,7 @@ var searchData=
 [
   ['namespace_5fend',['NAMESPACE_END',['../d2/ddf/_wlib_config_8h.html#a552036593282adfb00999ab4152fc0ac',1,'WlibConfig.h']]],
   ['namespace_5fstart',['NAMESPACE_START',['../d2/ddf/_wlib_config_8h.html#a843bc4b6c51d8d183eac18b32bb4ce3c',1,'WlibConfig.h']]],
+  ['new_2ecpp',['New.cpp',['../d5/d07/_new_8cpp.html',1,'']]],
   ['new_2eh',['New.h',['../d9/d8a/_new_8h.html',1,'']]],
   ['next',['next',['../d2/d9d/structwlp_1_1_chain_hash_map_node.html#a4d02ca0991aa6e7352aeeb81fbee1eb2',1,'wlp::ChainHashMapNode']]],
   ['nexthigher',['nextHigher',['../df/d64/_memory_8cpp.html#a607a0aa45fc4a2c1545b2bf23cdb7a0f',1,'Memory.cpp']]],

@@ -452,8 +452,8 @@ template&lt;size_type tSize&gt; </div>
 </dl>
 
 <p>Definition at line <a class="el" href="../../d9/dae/_string_8cpp_source.html#l00029">29</a> of file <a class="el" href="../../d9/dae/_string_8cpp_source.html">String.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            : m_len(str.m_len),</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;              m_buffer(str.m_buffer) {</div>
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            : m_buffer(str.m_buffer),</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;              m_len(str.m_len) {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        str.m_len = 0;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        str.m_buffer = malloc&lt;char[]&gt;(1);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        str.m_buffer[0] = <span class="charliteral">&#39;\0&#39;</span>;</div>
@@ -1924,7 +1924,7 @@ Here is the call graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Dec 6 2017 07:04:52 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 6 2017 08:10:52 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

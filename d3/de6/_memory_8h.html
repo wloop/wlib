@@ -100,7 +100,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Memory.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../de/d5b/_memory_8h__incl.svg" width="404" height="336"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../de/d5b/_memory_8h__incl.svg" width="400" height="336"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -509,7 +509,7 @@ template&lt;typename Type &gt; </div>
 
 <p>References <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00343">__memory_free()</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00092">wlp::ReferenceCount&lt; T * &gt;::destroy()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00084">wlp::ReferenceCount&lt; T * &gt;::dispose()</a>, <a class="el" href="../../d9/d8a/_new_8h_source.html#l00038">operator delete()</a>, <a class="el" href="../../d9/d8a/_new_8h_source.html#l00047">operator delete[]()</a>, and <a class="el" href="../../d9/dae/_string_8cpp_source.html#l00051">wlp::DynamicString::set_value()</a>.</p>
+<p>Referenced by <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00092">wlp::ReferenceCount&lt; T * &gt;::destroy()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00084">wlp::ReferenceCount&lt; T * &gt;::dispose()</a>, <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00023">operator delete()</a>, <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00031">operator delete[]()</a>, and <a class="el" href="../../d9/dae/_string_8cpp_source.html#l00051">wlp::DynamicString::set_value()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                      {</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../d3/d80/structwlp_1_1is__fundamental.html">wlp::is_fundamental&lt;Type&gt;::value</a>) {</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        uint16_t *objInfo = <span class="keyword">reinterpret_cast&lt;</span>uint16_t *<span class="keyword">&gt;</span>(ptr);</div>
@@ -741,10 +741,10 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                                                      {</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    uint16_t numBlockAvail = 0;</div>
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_allocator : <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>) {</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <span class="keywordflow">if</span> (_allocator-&gt;getBlockSize() == blockSize) {</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            uint32_t totalMemAvail = _allocator-&gt;getTotalBlocks() * _allocator-&gt;getBlockSize();</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            uint32_t totalMemUsed = _allocator-&gt;getNumAllocations() * _allocator-&gt;getBlockSize();</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;allocator : <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>) {</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <span class="keywordflow">if</span> (allocator-&gt;getBlockSize() == blockSize) {</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            uint32_t totalMemAvail = allocator-&gt;getTotalBlocks() * allocator-&gt;getBlockSize();</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            uint32_t totalMemUsed = allocator-&gt;getNumAllocations() * allocator-&gt;getBlockSize();</div>
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            numBlockAvail += (totalMemAvail - totalMemUsed) / blockSize;</div>
 <div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        }</div>
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    }</div>
@@ -826,8 +826,8 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                                      {</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <a class="code" href="../../d5/dca/namespacewlp.html#adb997846b89cf8d4b485be5f3c80e762">size32_type</a> totalMemory = 0;</div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_allocator : <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>) {</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        totalMemory += _allocator-&gt;getTotalBlocks() * _allocator-&gt;getBlockSize();</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;allocator : <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>) {</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        totalMemory += allocator-&gt;getTotalBlocks() * allocator-&gt;getBlockSize();</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    }</div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;</div>
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <span class="keywordflow">return</span> totalMemory;</div>
@@ -902,8 +902,8 @@ Here is the call graph for this function:</div>
 <div class="fragment"><div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                                 {</div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <a class="code" href="../../d5/dca/namespacewlp.html#adb997846b89cf8d4b485be5f3c80e762">size32_type</a> totalMemory = 0;</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_allocator : <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>) {</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        totalMemory += _allocator-&gt;getNumAllocations() * _allocator-&gt;getBlockSize();</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;allocator : <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>) {</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        totalMemory += allocator-&gt;getNumAllocations() * allocator-&gt;getBlockSize();</div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    }</div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="keywordflow">return</span> totalMemory;</div>
@@ -948,8 +948,8 @@ Here is the caller graph for this function:</div>
 
 <p>References <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00052">__allocators</a>.</p>
 <div class="fragment"><div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                                            {</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_allocator : <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>) {</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        <span class="keywordflow">if</span> (_allocator-&gt;getBlockSize() == blockSize) {</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;allocator : <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>) {</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        <span class="keywordflow">if</span> (allocator-&gt;getBlockSize() == blockSize) {</div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        }</div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    }</div>
@@ -987,10 +987,10 @@ Here is the caller graph for this function:</div>
 
 <p>References <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00052">__allocators</a>.</p>
 <div class="fragment"><div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                                               {</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;_allocator : <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>) {</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        <span class="keywordflow">if</span> (_allocator-&gt;getBlockSize() == blockSize) {</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            uint32_t totalMemAvail = _allocator-&gt;getTotalBlocks() * _allocator-&gt;getBlockSize();</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            uint32_t totalMemUsed = _allocator-&gt;getNumAllocations() * _allocator-&gt;getBlockSize();</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;allocator : <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>) {</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        <span class="keywordflow">if</span> (allocator-&gt;getBlockSize() == blockSize) {</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            uint32_t totalMemAvail = allocator-&gt;getTotalBlocks() * allocator-&gt;getBlockSize();</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            uint32_t totalMemUsed = allocator-&gt;getNumAllocations() * allocator-&gt;getBlockSize();</div>
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            <span class="keywordflow">return</span> totalMemAvail - totalMemUsed != 0;</div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        }</div>
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    }</div>
@@ -1074,7 +1074,7 @@ template&lt;typename T , typename NonArrayType  = typename wlp::remove_extent&lt
 
 <p>References <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00278">__memory_alloc()</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d9/d8a/_new_8h_source.html#l00029">operator new()</a>, and <a class="el" href="../../d9/d8a/_new_8h_source.html#l00042">operator new[]()</a>.</p>
+<p>Referenced by <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00015">operator new()</a>, and <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00027">operator new[]()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                                       {</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d3/d80/structwlp_1_1is__fundamental.html">wlp::is_fundamental</a>&lt;<span class="keyword">typename</span> <a class="code" href="../../d3/dcf/structwlp_1_1remove__extent.html#aacf1efc422b53e5ddc513bb3d60e94f6">wlp::remove_extent&lt;T&gt;::type</a>&gt;::value) {</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordtype">void</span> *memory = <a class="code" href="../../d3/de6/_memory_8h.html#ae94046dbccfe12303d31bb8aaff3e523">__memory_alloc</a>(static_cast&lt;wlp::size32_type&gt;(<span class="keyword">sizeof</span>(NonArrayType)) * num, <span class="keyword">false</span>);</div>
@@ -1226,7 +1226,7 @@ Here is the call graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Dec 6 2017 07:04:51 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 6 2017 08:10:51 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -101,7 +101,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<g id="a_node4"><a xlink:href="../../d9/d8a/_new_8h.html#a86107594327f3a001230df9802cd4422" target="_top" xlink:title="operator delete">
+<g id="a_node4"><a xlink:href="../../d9/d8a/_new_8h.html#a3d97a7e2a0208075b4b37328c96ed390" target="_top" xlink:title="operator delete">
 <polygon fill="white" stroke="black" points="380.5,-185.5 380.5,-204.5 461.5,-204.5 461.5,-185.5 380.5,-185.5"/>
 <text text-anchor="middle" x="421" y="-192.5" font-family="Helvetica,sans-Serif" font-size="10.00">operator delete</text>
 </a>
@@ -114,7 +114,7 @@ var sectionId = 'dynsection-6';
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
-<g id="a_node5"><a xlink:href="../../d9/d8a/_new_8h.html#aaa8d8403dca7d813a59dd1f07728349d" target="_top" xlink:title="operator delete[]">
+<g id="a_node5"><a xlink:href="../../d9/d8a/_new_8h.html#a1d8b2d6f17242ae0d182b0f7a98ba54f" target="_top" xlink:title="operator delete[]">
 <polygon fill="white" stroke="black" points="377.5,-147.5 377.5,-166.5 464.5,-166.5 464.5,-147.5 377.5,-147.5"/>
 <text text-anchor="middle" x="421" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">operator delete[]</text>
 </a>
