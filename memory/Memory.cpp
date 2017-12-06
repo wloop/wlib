@@ -119,7 +119,7 @@ struct insert<powStart, from, from> {
 #if defined(DYNAMIC_POOL)
         __allocators[from] = new DynamicAllocatorPool<blockSize, NUM_BLOCKS>();
 #elif defined(STATIC_POOL)
-        _allocators[from] = new StaticAllocatorPool<blockSize, NUM_BLOCKS>();
+        __allocators[from] = new StaticAllocatorPool<blockSize, NUM_BLOCKS>();
 #endif
     }
 };
