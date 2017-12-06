@@ -166,26 +166,26 @@ namespace wlp {
 
     /**
      * Template specialization for unary or.
-     * @tparam B1 boolean condition
+     * @tparam Q1 boolean condition
      */
-    template<typename B1>
-    struct or_<B1>
-            : public B1 {
+    template<typename Q1>
+    struct or_<Q1>
+            : public Q1 {
     };
 
     /**
      * Template specialization of binary or.
-     * @tparam B1 first boolean condition
-     * @tparam B2 second boolean condition
+     * @tparam Q1 first boolean condition
+     * @tparam Q2 second boolean condition
      */
-    template<typename B1, typename B2>
-    struct or_<B1, B2>
-            : public conditional<B1::value, B1, B2>::type {
+    template<typename Q1, typename Q2>
+    struct or_<Q1, Q2>
+            : public conditional<Q1::value, Q1, Q2>::type {
     };
 
-    template<typename B1, typename B2, typename B3, typename... Bn>
-    struct or_<B1, B2, B3, Bn...>
-            : public conditional<B1::value, B1, or_<B2, B3, Bn...>>::type {
+    template<typename Q1, typename Q2, typename Q3, typename... Qn>
+    struct or_<Q1, Q2, Q3, Qn...>
+            : public conditional<Q1::value, Q1, or_<Q2, Q3, Qn...>>::type {
     };
 
     template<typename...>
@@ -196,19 +196,19 @@ namespace wlp {
             : public true_type {
     };
 
-    template<typename B1>
-    struct and_<B1>
-            : public B1 {
+    template<typename Q1>
+    struct and_<Q1>
+            : public Q1 {
     };
 
-    template<typename B1, typename B2>
-    struct and_<B1, B2>
-            : public conditional<B1::value, B2, B1>::type {
+    template<typename Q1, typename Q2>
+    struct and_<Q1, Q2>
+            : public conditional<Q1::value, Q2, Q1>::type {
     };
 
-    template<typename B1, typename B2, typename B3, typename... Bn>
-    struct and_<B1, B2, B3, Bn...>
-            : public conditional<B1::value, and_<B2, B3, Bn...>, B1>::type {
+    template<typename Q1, typename Q2, typename Q3, typename... Qn>
+    struct and_<Q1, Q2, Q3, Qn...>
+            : public conditional<Q1::value, and_<Q2, Q3, Qn...>, Q1>::type {
     };
 
     /**
