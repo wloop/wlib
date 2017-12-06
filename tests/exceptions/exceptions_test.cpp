@@ -1,6 +1,7 @@
+#include "gtest/gtest.h"
+
 #include "memory/Memory.h"
 #include "exceptions/Exceptions.h"
-#include "gtest/gtest.h"
 
 TEST(exceptions_test, simple_try_catch) {
     int h = 0;
@@ -155,16 +156,20 @@ TEST(exceptions_test, scopes) {
 
     TRY
         int y = 7;
+        wlp::swallow(y);
     CATCH(e)
         int y = 8;
+        wlp::swallow(y, e);
     TRY_END
 
     // y was only in the scope of TRY and CATCH
     int y = 9;
+    wlp::swallow(y);
 
     TRY
         Sample obj;
     CATCH(e)
+        wlp::swallow(e);
     TRY_END
 
     // objects are destroyed after that scope is gone
