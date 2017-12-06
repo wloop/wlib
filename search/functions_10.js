@@ -10,5 +10,6 @@ var searchData=
   ['reserve',['reserve',['../db/d49/classwlp_1_1_array_list.html#a539e669a71ef4d86f8d257a222d4850d',1,'wlp::ArrayList']]],
   ['reset',['reset',['../d1/d52/classwlp_1_1_shared_ptr.html#a81766edaf2a4ac181ed7138746b7143d',1,'wlp::SharedPtr::reset()'],['../d1/d52/classwlp_1_1_shared_ptr.html#ab23c41a2677f24cb64110096b0cb397a',1,'wlp::SharedPtr::reset(U *ptr)'],['../d8/d0b/classwlp_1_1_weak_ptr.html#a879429b9311b2d19e9e9819b81fb16c8',1,'wlp::WeakPtr::reset()'],['../df/d24/classwlp_1_1_unique_ptr.html#ae00b309e112269490c58c5db1d32966f',1,'wlp::UniquePtr::reset()'],['../dd/d28/classwlp_1_1_unique_ptr_3_01_t[]_4.html#a4d94b32bec217cc5c50d8a4947b319bc',1,'wlp::UniquePtr&lt; T[]&gt;::reset(pointer ptr=pointer())'],['../dd/d28/classwlp_1_1_unique_ptr_3_01_t[]_4.html#a7c542e5fbed5c1ef2681caf6ce56685f',1,'wlp::UniquePtr&lt; T[]&gt;::reset(U)=delete']]],
   ['rotateleft',['rotateLeft',['../d3/def/classwlp_1_1_red_black_tree.html#a84aeffac58978580d9d4fc9892e769b1',1,'wlp::RedBlackTree']]],
-  ['rotateright',['rotateRight',['../d3/def/classwlp_1_1_red_black_tree.html#acbea277ee3eeb711bb7dede177b2a6bf',1,'wlp::RedBlackTree']]]
+  ['rotateright',['rotateRight',['../d3/def/classwlp_1_1_red_black_tree.html#acbea277ee3eeb711bb7dede177b2a6bf',1,'wlp::RedBlackTree']]],
+  ['runtimeexception',['RuntimeException',['../d9/da8/class_runtime_exception.html#ad9545385f8f15727a05d81edba017e8e',1,'RuntimeException']]]
 ];

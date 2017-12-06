@@ -10,6 +10,7 @@ var searchData=
   ['equal_3c_20const_20staticstring_3c_20tsize_20_3e_20_3e',['Equal&lt; const StaticString&lt; tSize &gt; &gt;',['../d1/d38/structwlp_1_1_equal_3_01const_01_static_string_3_01t_size_01_4_01_4.html',1,'wlp']]],
   ['equal_3c_20staticstring_3c_20tsize_20_3e_20_3e',['Equal&lt; StaticString&lt; tSize &gt; &gt;',['../d4/da7/structwlp_1_1_equal_3_01_static_string_3_01t_size_01_4_01_4.html',1,'wlp']]],
   ['eventdata',['EventData',['../d2/dfe/classwlp_1_1_event_data.html',1,'wlp']]],
+  ['exception',['Exception',['../df/d70/class_exception.html',1,'']]],
   ['exitaction',['ExitAction',['../dd/d7c/classwlp_1_1_exit_action.html',1,'wlp']]],
   ['exitbase',['ExitBase',['../dd/dd5/classwlp_1_1_exit_base.html',1,'wlp']]]
 ];

@@ -74,6 +74,7 @@ var searchData=
   ['memory_5fget_5fallocator',['memory_get_allocator',['../df/d64/_memory_8cpp.html#ae2e1e5eb229847e60461811e59883e94',1,'Memory.cpp']]],
   ['memory_5finit',['memory_init',['../df/d64/_memory_8cpp.html#a10193827ed980198f6a4ed8a92a5a27f',1,'Memory.cpp']]],
   ['memoryinitdestroy',['MemoryInitDestroy',['../da/d14/class_memory_init_destroy.html',1,'MemoryInitDestroy'],['../da/d14/class_memory_init_destroy.html#a0725cd50d293d69d50db3f3a831daa08',1,'MemoryInitDestroy::MemoryInitDestroy()']]],
+  ['message',['message',['../df/d70/class_exception.html#a40e3f625f4d9beb0f050182fccfcf15c',1,'Exception']]],
   ['min',['MIN',['../da/db8/_math_8h.html#a74e75242132eaabbc1c512488a135926',1,'Math.h']]],
   ['move',['move',['../d5/dca/namespacewlp.html#aa09e615d02daee5123e80ddaee3d2323',1,'wlp']]],
   ['mul_5f127',['MUL_127',['../da/db8/_math_8h.html#a28639dd0298e8a48ed254a79cdf3f127',1,'Math.h']]],

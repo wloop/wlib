@@ -6,5 +6,6 @@ var searchData=
   ['linkedlistiterator',['LinkedListIterator',['../d7/dea/structwlp_1_1_linked_list_iterator.html#aa648d38b0cfd2831ee40e7f9a4574d2f',1,'wlp::LinkedListIterator::LinkedListIterator()'],['../d7/dea/structwlp_1_1_linked_list_iterator.html#af0e82443ffeadeb5c09730f082ef6454',1,'wlp::LinkedListIterator::LinkedListIterator(node_type *node, const list_type *list)'],['../d7/dea/structwlp_1_1_linked_list_iterator.html#ae0ca86b797f4e0c61c114da2ad1a2dc5',1,'wlp::LinkedListIterator::LinkedListIterator(const self_type &amp;it)']]],
   ['lock',['lock',['../d8/d0b/classwlp_1_1_weak_ptr.html#a52a7adfe65356ce976c8cecf764fee91',1,'wlp::WeakPtr']]],
   ['log2_5fconst',['log2_const',['../d5/dca/namespacewlp.html#a87904547072bebdfb5168afb989600de',1,'wlp']]],
+  ['logicfailureexception',['LogicFailureException',['../d3/d89/class_logic_failure_exception.html#a8b3453927dfb8474f19838e4075182e1',1,'LogicFailureException']]],
   ['lower_5fbound',['lower_bound',['../d3/def/classwlp_1_1_red_black_tree.html#a5ce687d479b09b99976a9cec201536ca',1,'wlp::RedBlackTree::lower_bound(const key_type &amp;key)'],['../d3/def/classwlp_1_1_red_black_tree.html#aed6cd4dd0ad6372d7454066adf948128',1,'wlp::RedBlackTree::lower_bound(const key_type &amp;key) const ']]]
 ];

@@ -1,7 +1,8 @@
 <map id="stl/SharedPtr.h" name="stl/SharedPtr.h">
-<area shape="rect" id="node2" href="$d8/df6/_unique_ptr_8h.html" title="Unique pointer implementation. " alt="" coords="129,80,220,107"/>
-<area shape="rect" id="node4" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="21,229,136,256"/>
-<area shape="rect" id="node5" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="97,304,155,331"/>
-<area shape="rect" id="node6" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="255,379,336,405"/>
-<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="117,155,259,181"/>
+<area shape="rect" id="node2" href="$d8/df6/_unique_ptr_8h.html" title="Unique pointer implementation. " alt="" coords="273,80,364,107"/>
+<area shape="rect" id="node5" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="320,229,435,256"/>
+<area shape="rect" id="node6" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="305,304,363,331"/>
+<area shape="rect" id="node7" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="106,379,187,405"/>
+<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="177,155,319,181"/>
+<area shape="rect" id="node9" href="$d9/d8a/_new_8h.html" title="New operators defined for Arduino boards and for other boards use the normal new. ..." alt="" coords="185,229,244,256"/>
 </map>

@@ -3,11 +3,12 @@
 <area shape="rect" id="node8" href="$d5/d08/_red_black_tree_8h.html" title="Red black tree implementation. " alt="" coords="155,304,289,331"/>
 <area shape="rect" id="node12" href="$d3/dbe/_chain_map_8h.html" title="Hasher map implementation. " alt="" coords="766,229,876,256"/>
 <area shape="rect" id="node14" href="$d5/d7a/_open_map_8h.html" title="Hash map implementation. " alt="" coords="584,229,691,256"/>
-<area shape="rect" id="node18" href="$df/dcf/_state_machine_8h.html" title="fsm/StateMachine.h" alt="" coords="779,80,917,107"/>
-<area shape="rect" id="node19" href="$df/d64/_memory_8cpp.html" title="Implementation of Memory functions. " alt="" coords="942,80,1087,107"/>
-<area shape="rect" id="node20" href="$d2/db9/_array_list_8h.html" title="List implementation using an array. " alt="" coords="5,229,107,256"/>
-<area shape="rect" id="node21" href="$de/dc6/_linked_list_8h.html" title="stl/LinkedList.h" alt="" coords="1111,80,1221,107"/>
-<area shape="rect" id="node22" href="$d8/df6/_unique_ptr_8h.html" title="Unique pointer implementation. " alt="" coords="1247,80,1356,107"/>
+<area shape="rect" id="node18" href="$d7/d9e/_exceptions_8cpp.html" title="Implementation of Exceptions using C style. " alt="" coords="779,80,957,107"/>
+<area shape="rect" id="node19" href="$df/dcf/_state_machine_8h.html" title="fsm/StateMachine.h" alt="" coords="981,80,1120,107"/>
+<area shape="rect" id="node20" href="$df/d64/_memory_8cpp.html" title="Implementation of Memory functions. " alt="" coords="1145,80,1289,107"/>
+<area shape="rect" id="node21" href="$d2/db9/_array_list_8h.html" title="List implementation using an array. " alt="" coords="5,229,107,256"/>
+<area shape="rect" id="node22" href="$de/dc6/_linked_list_8h.html" title="stl/LinkedList.h" alt="" coords="1314,80,1424,107"/>
+<area shape="rect" id="node23" href="$d8/df6/_unique_ptr_8h.html" title="Unique pointer implementation. " alt="" coords="1449,80,1559,107"/>
 <area shape="rect" id="node3" href="$de/d6d/_bitset_8h.html" title="Bitset is a class that provides bits manipulation methods. " alt="" coords="405,155,491,181"/>
 <area shape="rect" id="node6" href="$d7/d0c/_comparator_8h.html" title="Comparator implementation for basic types. " alt="" coords="183,229,301,256"/>
 <area shape="rect" id="node11" href="$d2/dc2/_equal_8h.html" title="stl/Equal.h" alt="" coords="515,155,599,181"/>
@@ -20,5 +21,5 @@
 <area shape="rect" id="node10" href="$dd/dba/_tree_set_8h.html" title="Set implementation using red black tree. " alt="" coords="235,379,332,405"/>
 <area shape="rect" id="node15" href="$d0/de6/_open_set_8h.html" title="Hash set implementation. " alt="" coords="586,304,688,331"/>
 <area shape="rect" id="node13" href="$d6/d59/_chain_set_8h.html" title="Hash set implementation. " alt="" coords="769,304,873,331"/>
-<area shape="rect" id="node23" href="$d1/d13/_shared_ptr_8h.html" title="Shared pointer implementation. " alt="" coords="1247,155,1356,181"/>
+<area shape="rect" id="node24" href="$d1/d13/_shared_ptr_8h.html" title="Shared pointer implementation. " alt="" coords="1449,155,1559,181"/>
 </map>

@@ -41,5 +41,7 @@ var searchData=
   ['restrictsize',['RestrictSize',['../de/d7b/class_restrict_size.html',1,'']]],
   ['reversecomparator',['ReverseComparator',['../d4/de3/structwlp_1_1_reverse_comparator.html',1,'wlp']]],
   ['rotateleft',['rotateLeft',['../d3/def/classwlp_1_1_red_black_tree.html#a84aeffac58978580d9d4fc9892e769b1',1,'wlp::RedBlackTree']]],
-  ['rotateright',['rotateRight',['../d3/def/classwlp_1_1_red_black_tree.html#acbea277ee3eeb711bb7dede177b2a6bf',1,'wlp::RedBlackTree']]]
+  ['rotateright',['rotateRight',['../d3/def/classwlp_1_1_red_black_tree.html#acbea277ee3eeb711bb7dede177b2a6bf',1,'wlp::RedBlackTree']]],
+  ['runtime_5fexception',['RUNTIME_EXCEPTION',['../d7/d2f/_exceptions_8h.html#aac666514e227d3e8a65f48f5def68380',1,'Exceptions.h']]],
+  ['runtimeexception',['RuntimeException',['../d9/da8/class_runtime_exception.html',1,'RuntimeException'],['../d9/da8/class_runtime_exception.html#ad9545385f8f15727a05d81edba017e8e',1,'RuntimeException::RuntimeException()']]]
 ];

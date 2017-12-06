@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vfunc',['VFUNC',['../d2/db4/_wlib_8h.html#a3e0752bf8d30fabf71bc0c786a0eeaf8',1,'Wlib.h']]]
+  ['runtime_5fexception',['RUNTIME_EXCEPTION',['../d7/d2f/_exceptions_8h.html#aac666514e227d3e8a65f48f5def68380',1,'Exceptions.h']]]
 ];

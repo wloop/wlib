@@ -9,9 +9,13 @@ var searchData=
   ['get_5ftuple_5fsize',['get_tuple_size',['../d5/dca/namespacewlp.html#a99c64f36bc958fbdedea8d1c8be9b6a4',1,'wlp']]],
   ['getblocksize',['getBlockSize',['../de/d5b/classwlp_1_1_____allocator.html#a17cb717b04d18a8febfa4f4e0582d0b7',1,'wlp::__Allocator']]],
   ['getcurrentstate',['getCurrentState',['../d6/d67/classwlp_1_1_state_machine.html#a84d88c4f27a58111b7764697c6f2c88c',1,'wlp::StateMachine']]],
+  ['getfilename',['getFileName',['../df/d70/class_exception.html#ac92706cd948b2dd5c772388ebbc9093a',1,'Exception']]],
   ['getfixedmemorysize',['getFixedMemorySize',['../df/d64/_memory_8cpp.html#a1eb03e534eb92e02c4d648d49529fa71',1,'getFixedMemorySize(void *ptr):&#160;Memory.cpp'],['../d3/de6/_memory_8h.html#a19776500cfa4d32aeb17adb0c2f3c5fe',1,'getFixedMemorySize(void *ptr):&#160;Memory.cpp']]],
+  ['getlinenum',['getLineNum',['../df/d70/class_exception.html#ac45d049bebbe7279d94a059eec9e45a2',1,'Exception']]],
   ['getmaxallocations',['getMaxAllocations',['../df/d64/_memory_8cpp.html#ac809ae3b2441a89614b3879a99eb03e7',1,'getMaxAllocations():&#160;Memory.cpp'],['../d3/de6/_memory_8h.html#ac809ae3b2441a89614b3879a99eb03e7',1,'getMaxAllocations():&#160;Memory.cpp']]],
   ['getmaxstates',['getMaxStates',['../d6/d67/classwlp_1_1_state_machine.html#a9d080afae7e808e052138ddb85411c54',1,'wlp::StateMachine']]],
+  ['getmessage',['getMessage',['../df/d70/class_exception.html#a831925ff6592e16274a71c615152d41b',1,'Exception']]],
+  ['getname',['getName',['../df/d70/class_exception.html#a5ba9edea9bbe99b2776fb8b7d2ce08fd',1,'Exception']]],
   ['getnumallocations',['getNumAllocations',['../de/d5b/classwlp_1_1_____allocator.html#a338866d48da18ab9b37fe92f3bda65ff',1,'wlp::__Allocator']]],
   ['getnumblocks',['getNumBlocks',['../df/d64/_memory_8cpp.html#ae2b8e128a301ccdfd1b3f32eb9bbfd3a',1,'getNumBlocks():&#160;Memory.cpp'],['../d3/de6/_memory_8h.html#ae2b8e128a301ccdfd1b3f32eb9bbfd3a',1,'getNumBlocks():&#160;Memory.cpp']]],
   ['getnumblocksavailable',['getNumBlocksAvailable',['../df/d64/_memory_8cpp.html#a427ce244b681c5ba6d7a4449041572cb',1,'getNumBlocksAvailable(size32_type blockSize):&#160;Memory.cpp'],['../d3/de6/_memory_8h.html#a2cfd1c1648fae4adaa63d995143c12d9',1,'getNumBlocksAvailable(wlp::size32_type blockSize):&#160;Memory.cpp']]],
@@ -25,5 +29,6 @@ var searchData=
   ['gettotalmemoryavailable',['getTotalMemoryAvailable',['../df/d64/_memory_8cpp.html#a60026c708b80a09c60079af842141c97',1,'getTotalMemoryAvailable():&#160;Memory.cpp'],['../d3/de6/_memory_8h.html#a5a0ee780948445848c26f4f30193180d',1,'getTotalMemoryAvailable():&#160;Memory.cpp']]],
   ['gettotalmemoryfree',['getTotalMemoryFree',['../df/d64/_memory_8cpp.html#a99889aa03daa4a4f14de872618fd5c3b',1,'getTotalMemoryFree():&#160;Memory.cpp'],['../d3/de6/_memory_8h.html#a99889aa03daa4a4f14de872618fd5c3b',1,'getTotalMemoryFree():&#160;Memory.cpp']]],
   ['gettotalmemoryused',['getTotalMemoryUsed',['../df/d64/_memory_8cpp.html#a90b9024644421883331b2c8c86570716',1,'getTotalMemoryUsed():&#160;Memory.cpp'],['../d3/de6/_memory_8h.html#a31e3226aec062dd779b65935719a737d',1,'getTotalMemoryUsed():&#160;Memory.cpp']]],
-  ['gettotalpoolblocks',['getTotalPoolBlocks',['../de/d5b/classwlp_1_1_____allocator.html#a3a51e8ee8d42dc1665fdae2b3458990d',1,'wlp::__Allocator']]]
+  ['gettotalpoolblocks',['getTotalPoolBlocks',['../de/d5b/classwlp_1_1_____allocator.html#a3a51e8ee8d42dc1665fdae2b3458990d',1,'wlp::__Allocator']]],
+  ['gettype',['getType',['../df/d70/class_exception.html#a241e7078f39fb8e88d407b8fc247a4fa',1,'Exception']]]
 ];

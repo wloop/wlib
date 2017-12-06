@@ -22,5 +22,6 @@ var searchData=
   ['remove_5fvolatile',['remove_volatile',['../d1/dd2/structwlp_1_1remove__volatile.html',1,'wlp']]],
   ['remove_5fvolatile_3c_20t_20volatile_20_3e',['remove_volatile&lt; T volatile &gt;',['../d4/d99/structwlp_1_1remove__volatile_3_01_t_01volatile_01_4.html',1,'wlp']]],
   ['restrictsize',['RestrictSize',['../de/d7b/class_restrict_size.html',1,'']]],
-  ['reversecomparator',['ReverseComparator',['../d4/de3/structwlp_1_1_reverse_comparator.html',1,'wlp']]]
+  ['reversecomparator',['ReverseComparator',['../d4/de3/structwlp_1_1_reverse_comparator.html',1,'wlp']]],
+  ['runtimeexception',['RuntimeException',['../d9/da8/class_runtime_exception.html',1,'']]]
 ];

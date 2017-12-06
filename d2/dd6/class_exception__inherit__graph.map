@@ -1,0 +1,6 @@
+<map id="Exception" name="Exception">
+<area shape="rect" id="node2" href="$d7/da3/class_bad_alloc_exception.html" title="BadAllocException" alt="" coords="5,80,136,107"/>
+<area shape="rect" id="node3" href="$d3/d89/class_logic_failure_exception.html" title="LogicFailureException" alt="" coords="161,80,311,107"/>
+<area shape="rect" id="node4" href="$dc/d56/class_null_ptr_exception.html" title="NullPtrException" alt="" coords="336,80,456,107"/>
+<area shape="rect" id="node5" href="$d9/da8/class_runtime_exception.html" title="RuntimeException" alt="" coords="481,80,609,107"/>
+</map>

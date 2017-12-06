@@ -7,6 +7,7 @@ var searchData=
   ['cat_5fpair_5ftype',['cat_pair_type',['../d2/d32/structwlp_1_1cat__pair__type.html',1,'wlp']]],
   ['cat_5fpair_5ftype_5fsub',['cat_pair_type_sub',['../db/df1/structwlp_1_1cat__pair__type__sub.html',1,'wlp']]],
   ['cat_5fpair_5ftype_5fsub_3c_20tuplea_2c_20indexsequence_3c_20indicesa_2e_2e_2e_3e_2c_20tupleb_2c_20indexsequence_3c_20indicesb_2e_2e_2e_3e_20_3e',['cat_pair_type_sub&lt; TupleA, IndexSequence&lt; IndicesA...&gt;, TupleB, IndexSequence&lt; IndicesB...&gt; &gt;',['../d7/d45/structwlp_1_1cat__pair__type__sub_3_01_tuple_a_00_01_index_sequence_3_01_indices_a_8_8_8_4_00_014579772d960c62a325c7f1ef0ba2ab47.html',1,'wlp']]],
+  ['catch',['CATCH',['../d7/d2f/_exceptions_8h.html#ab3271e393133e395129cc74272f9fae2',1,'Exceptions.h']]],
   ['chainhashmap',['ChainHashMap',['../d9/dc5/classwlp_1_1_chain_hash_map.html',1,'wlp']]],
   ['chainhashmap',['ChainHashMap',['../d9/dc5/classwlp_1_1_chain_hash_map.html#af54e6291f9d155cf5e314dfcafba3b00',1,'wlp::ChainHashMap::ChainHashMap(size_type n=12, percent_type max_load=75)'],['../d9/dc5/classwlp_1_1_chain_hash_map.html#a3835bcd0d0c227d1e9fd52bbec756b8f',1,'wlp::ChainHashMap::ChainHashMap(const map_type &amp;)=delete'],['../d9/dc5/classwlp_1_1_chain_hash_map.html#a24a0f1d57113f22c1273b3661d44882e',1,'wlp::ChainHashMap::ChainHashMap(map_type &amp;&amp;map)']]],
   ['chainhashmap_3c_20key_2c_20key_2c_20hash_2c_20equal_20_3e',['ChainHashMap&lt; Key, Key, Hash, Equal &gt;',['../d9/dc5/classwlp_1_1_chain_hash_map.html',1,'wlp']]],

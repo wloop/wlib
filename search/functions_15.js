@@ -7,6 +7,7 @@ var searchData=
   ['_7eentryaction',['~EntryAction',['../d9/d5b/classwlp_1_1_entry_action.html#a69119698fee6e6bbf78d762ff7177b41',1,'wlp::EntryAction']]],
   ['_7eentrybase',['~EntryBase',['../d9/d8c/classwlp_1_1_entry_base.html#ae62c83563e60478bbe75e3406d513704',1,'wlp::EntryBase']]],
   ['_7eeventdata',['~EventData',['../d2/dfe/classwlp_1_1_event_data.html#a2c9c2dd68b1d15462eb7dacbe930d4a1',1,'wlp::EventData']]],
+  ['_7eexception',['~Exception',['../df/d70/class_exception.html#a33518b66e6d09a8eee2e7c51d96d991d',1,'Exception']]],
   ['_7eexitaction',['~ExitAction',['../dd/d7c/classwlp_1_1_exit_action.html#a37a43f09ed8e1474bedff852012d98db',1,'wlp::ExitAction']]],
   ['_7eexitbase',['~ExitBase',['../dd/dd5/classwlp_1_1_exit_base.html#a133db2824e0d178496343cc1757e2221',1,'wlp::ExitBase']]],
   ['_7eguardbase',['~GuardBase',['../d2/d06/classwlp_1_1_guard_base.html#a511360f8607c8d5bc763bffb942102ec',1,'wlp::GuardBase']]],

@@ -175,7 +175,7 @@ Variables</h2></td></tr>
 <div class="textblock"><p>Implementation of Memory functions. </p>
 <dl class="section author"><dt>Author</dt><dd>Deep Dhillon </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>November 19, 2017 </dd></dl>
-<dl class="bug"><dt><b><a class="el" href="../../de/da5/bug.html#_bug000006">Bug:</a></b></dt><dd>No known bugs </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="../../de/da5/bug.html#_bug000008">Bug:</a></b></dt><dd>No known bugs </dd></dl>
 
 <p>Definition in file <a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -216,7 +216,7 @@ Variables</h2></td></tr>
 
 <p>References <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00052">__allocators</a>, <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00278">__memory_alloc()</a>, <a class="el" href="../../d0/d55/_allocator_8cpp_source.html#l00163">wlp::__Allocator::allocate()</a>, <a class="el" href="../../df/d4d/_allocator_8h_source.html#l00135">wlp::__Allocator::getBlockSize()</a>, <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00229">memory_get_allocator()</a>, and <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00192">set_block_allocator()</a>.</p>
 
-<p>Referenced by <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00278">__memory_alloc()</a>, and <a class="el" href="../../d3/de6/_memory_8h_source.html#l00117">malloc()</a>.</p>
+<p>Referenced by <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00278">__memory_alloc()</a>, and <a class="el" href="../../d3/de6/_memory_8h_source.html#l00119">malloc()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                                                      {</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <span class="comment">// Allocate a raw memory block</span></div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <a class="code" href="../../de/d5b/classwlp_1_1_____allocator.html">__Allocator</a> *allocator = <a class="code" href="../../df/d64/_memory_8cpp.html#ae2e1e5eb229847e60461811e59883e94">memory_get_allocator</a>(size, anObject);</div>
@@ -298,7 +298,7 @@ Here is the caller graph for this function:</div>
 
 <p>References <a class="el" href="../../d0/d55/_allocator_8cpp_source.html#l00186">wlp::__Allocator::deallocate()</a>, <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00312">get_block_allocator()</a>, and <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00329">get_block_ptr()</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d3/de6/_memory_8h_source.html#l00235">free()</a>.</p>
+<p>Referenced by <a class="el" href="../../d3/de6/_memory_8h_source.html#l00237">free()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                              {</div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keywordflow">if</span> (ptr == <span class="keyword">nullptr</span>) {</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <span class="keywordflow">return</span>;</div>
@@ -534,7 +534,7 @@ Here is the caller graph for this function:</div>
 
 <p>References <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00312">get_block_allocator()</a>, and <a class="el" href="../../df/d4d/_allocator_8h_source.html#l00135">wlp::__Allocator::getBlockSize()</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d3/de6/_memory_8h_source.html#l00310">realloc()</a>.</p>
+<p>Referenced by <a class="el" href="../../d3/de6/_memory_8h_source.html#l00312">realloc()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                                          {</div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    <span class="keywordflow">if</span> (ptr == <span class="keyword">nullptr</span>)</div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        <span class="keywordflow">return</span> 0;</div>
@@ -669,7 +669,7 @@ Here is the caller graph for this function:</div>
 
 <p>References <a class="el" href="../../da/db8/_math_8h_source.html#l00021">wlp::pow_const()</a>, and <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00022">REQUIRED_EXTRA_BUFFER</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d3/de6/_memory_8h_source.html#l00310">realloc()</a>.</p>
+<p>Referenced by <a class="el" href="../../d3/de6/_memory_8h_source.html#l00312">realloc()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                                 {</div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="../../d5/dca/namespacewlp.html#aa769294e00f256f59aa1235b8385989f">size_type</a><span class="keyword">&gt;</span>(<a class="code" href="../../d5/dca/namespacewlp.html#abcf07b4864595e780577d83d294c4676">pow_const</a>(2, log2_const&lt;size_type&gt;(<a class="code" href="../../df/d64/_memory_8cpp.html#a61adbb634061006c1efd8e99f09feec9">REQUIRED_EXTRA_BUFFER</a>) + 1));</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;}</div>
@@ -1328,7 +1328,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 4 2017 21:07:17 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 6 2017 05:39:07 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
