@@ -22,6 +22,7 @@
 #include "../Types.h"
 #include "../utility/Tmp.h"
 #include "../utility/Utility.h"
+#include "../exceptions/Exceptions.h"
 
 namespace wlp {
 
@@ -109,7 +110,7 @@ namespace wlp {
         void add_locked_reference() {
             if (exchange_and_add<ptr_use_count>(&m_use_count, 1) == 0) {
                 m_use_count = 0;
-                // Bad weak pointer
+                THROW(BAD_WEAK_PTR_EXCEPTION("Locking expired weak pointer"))
             }
         }
 
@@ -450,7 +451,7 @@ namespace wlp {
     inline SharedCount<Ptr>::SharedCount(const WeakCount<Ptr> &wc)
             : m_pi(wc.m_pi) {
         if (m_pi) { m_pi->add_locked_reference(); }
-        // Else bad weak pointer
+        else { THROW(BAD_WEAK_PTR_EXCEPTION("Creating shared ptr from expired weak ptr")) }
     }
 
     template<typename T>
@@ -595,7 +596,7 @@ namespace wlp {
         }
 
         explicit operator bool() const {
-            return m_ptr == 0 ? false : true;
+            return m_ptr != 0;
         }
 
         bool unique() const {

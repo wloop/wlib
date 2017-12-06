@@ -5,6 +5,7 @@
 #include "../Types.h"
 #include "../memory/Memory.h"
 #include "../utility/Tmp.h"
+#include "../exceptions/Exceptions.h"
 
 namespace wlp {
 
@@ -64,12 +65,12 @@ namespace wlp {
             /*
              * If the derived data dynamic cast returns a null pointer, then
              * there is a mismatch between the event type in STATE_DECLARE and
-             * the event type passed to the fucntion.
+             * the event type passed to the function.
              */
             const Data *derivedData = dynamic_cast<const Data *>(data);
             /* assert(derivedData != nullptr) */
             if (derivedData == nullptr) {
-                return;
+                THROW(BAD_STATE_EXCEPTION("Invalid EventData type passed to state"))
             }
             // Call the state function
             (derivedSM->*Func)(derivedData);
@@ -116,7 +117,7 @@ namespace wlp {
             const Data *derivedData = dynamic_cast<const Data *>(data);
             /* assert(derivedData != nullptr) */
             if (derivedData == nullptr) {
-                return false;
+                THROW(BAD_STATE_EXCEPTION("Invalid EventData type passed to guard"))
             }
             // Call the guard function
             return (derivedSM->*Func)(derivedData);
@@ -159,7 +160,7 @@ namespace wlp {
             const Data *derivedData = dynamic_cast<const Data *>(data);
             /* assert(derivedData != nullptr) */
             if (derivedData == nullptr) {
-                return;
+                THROW(BAD_STATE_EXCEPTION("Invalid EventData type passed to entry"))
             }
             // Call the entry function
             (derivedSM->*Func)(derivedData);
@@ -248,6 +249,9 @@ namespace wlp {
                   m_event_generated(false),
                   m_event_data(nullptr) {
             /* assert(m_max_states < EVENT_IGNORED) */
+            if (m_max_states >= EVENT_IGNORED) {
+                THROW(BAD_STATE_EXCEPTION("Max states cannot equal or exceed EVENT_IGNORED"))
+            }
         }
 
         virtual ~StateMachine() {}
@@ -275,7 +279,10 @@ namespace wlp {
          */
         template<typename EventDataType>
         void externalEvent(state_type newState, EventDataType *pData = nullptr) {
-            if (newState != EVENT_IGNORED && newState != CANNOT_HAPPEN) {
+            if (newState == CANNOT_HAPPEN) {
+                THROW(ILLEGAL_TRANSITION_EXCEPTION("Transition cannot occur"))
+            }
+            if (newState != EVENT_IGNORED) {
                 internalEvent<EventDataType>(newState, pData);
                 stateEngine<EventDataType>();
             }
@@ -388,6 +395,7 @@ namespace wlp {
                     stateEngine<EventDataType>(pStateMapEx);
                 } else {
                     /* fail() */
+                    THROW(BAD_STATE_EXCEPTION("Unable to find state map"))
                 }
             }
         }
@@ -428,7 +436,7 @@ namespace wlp {
         while (m_event_generated) {
             /* assert(m_new_state < m_max_states) */
             if (m_new_state >= m_max_states) {
-                return;
+                THROW(UNEXPECTED_STATE_EXCEPTION("New state ordinal exceeds maximum states"))
             }
             const StateBase *state = pStateMap[m_new_state].state;
             pDataTemp = static_cast<EventDataType *>(m_event_data);
@@ -437,7 +445,7 @@ namespace wlp {
             setCurrentState(m_new_state);
             /* assert(state != nullptr) */
             if (state == nullptr) {
-                return;
+                THROW(UNEXPECTED_STATE_EXCEPTION("Target state does not exist"))
             }
             state->invokeStateAction(this, pDataTemp);
         }
@@ -449,7 +457,7 @@ namespace wlp {
         while (m_event_generated) {
             /* assert(m_new_state < m_max_states) */
             if (m_new_state >= m_max_states) {
-                return;
+                THROW(UNEXPECTED_STATE_EXCEPTION("New state ordinal exceeds maximum states"))
             }
             const StateBase *state = pStateMapEx[m_new_state].state;
             const GuardBase *guard = pStateMapEx[m_new_state].guard;
@@ -465,7 +473,7 @@ namespace wlp {
             if (pDataTemp == nullptr) {
                 return;
             }
-            if (guardResult == true) {
+            if (guardResult) {
                 if (m_new_state != m_current_state) {
                     if (exit != nullptr) {
                         exit->invokeExitAction(this);
@@ -475,13 +483,13 @@ namespace wlp {
                     }
                     /* assert(m_event_generated == false) */
                     if (m_event_generated) {
-                        return;
+                        THROW(UNEXPECTED_STATE_EXCEPTION("Entry or Exit action cannot generate events"))
                     }
                 }
                 setCurrentState(m_new_state);
                 /* assert(state != nullptr) */
                 if (state == nullptr) {
-                    return;
+                    THROW(UNEXPECTED_STATE_EXCEPTION("Target state does not exist"))
                 }
                 state->invokeStateAction(this, pDataTemp);
             }
