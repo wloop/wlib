@@ -21,6 +21,7 @@ install:
   - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
 
   - cd ${TRAVIS_BUILD_DIR}
+  - ./deploy.sh
   - wget http://ftp.de.debian.org/debian/pool/main/l/lcov/lcov_1.11.orig.tar.gz
   - tar xf lcov_1.11.orig.tar.gz
   - sudo make -C lcov-1.11/ install
@@ -53,7 +54,6 @@ after_success:
   - lcov --remove coverage.info 'tests/*' '/include/*' 'examples/*' --output-file coverage.info
   - lcov --list coverage.info
   - coveralls-lcov coverage.info
-  - ./deploy.sh
 
 env:
   global:
