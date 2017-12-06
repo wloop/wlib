@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['b1',['B1',['../de/d4e/class_b1.html',1,'']]],
   ['back',['back',['../db/d49/classwlp_1_1_array_list.html#af8d2a676d3c5f918235b4fc2782ce2a5',1,'wlp::ArrayList::back()'],['../db/d49/classwlp_1_1_array_list.html#a122e8fd363a81b57d1437ea75a69cfff',1,'wlp::ArrayList::back() const '],['../d6/d0e/classwlp_1_1_linked_list.html#a9d5b7896c3de478fd4b41d6e8477ca83',1,'wlp::LinkedList::back()'],['../d6/d0e/classwlp_1_1_linked_list.html#a4508753b806051973d49ba0d11c523f2',1,'wlp::LinkedList::back() const '],['../d6/d6b/classwlp_1_1_static_string.html#aad996be27886424f74f6ff489196c93a',1,'wlp::StaticString::back()'],['../d6/d6b/classwlp_1_1_static_string.html#a58d3da8bdda5338b1dffcfbf9fe02ac1',1,'wlp::StaticString::back() const '],['../d8/db4/classwlp_1_1_dynamic_string.html#a1435f3590ec8dee192043b05b397b0c4',1,'wlp::DynamicString::back()'],['../d8/db4/classwlp_1_1_dynamic_string.html#a7a2c4ba212c3553b213e15263d5bec70',1,'wlp::DynamicString::back() const ']]],
   ['bad_5falloc_5fexception',['BAD_ALLOC_EXCEPTION',['../d7/d2f/_exceptions_8h.html#a2644a42f36ee4ac1cef005f198212fe6',1,'Exceptions.h']]],
   ['badallocexception',['BadAllocException',['../d7/da3/class_bad_alloc_exception.html',1,'BadAllocException'],['../d7/da3/class_bad_alloc_exception.html#a3d409faa6a878b895e86d8dd2a8be2d3',1,'BadAllocException::BadAllocException()']]],
