@@ -28,11 +28,13 @@ file(GLOB header_files
         "stl/*.h"
         "memory/*.h"
         "comm/*.h"
+        "exceptions/*.h"
         "utility/*.h")
 
 file(GLOB source_files
         "memory/*.cpp"
         "comm/*.cpp"
+        "exceptions/*.cpp"
         "strings/*.cpp")
 
 set(HEADER_FILES ${header_files})
