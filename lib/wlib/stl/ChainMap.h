@@ -19,6 +19,7 @@
 
 #include "../memory/Memory.h"
 #include "../utility/Utility.h"
+#include "../exceptions/Exceptions.h"
 
 namespace wlp {
 
@@ -131,6 +132,9 @@ namespace wlp {
          * pointed to by the iterator
          */
         reference operator*() const {
+            if (m_current == nullptr) {
+                THROW(KEY_EXCEPTION("Accessing invalid iterator"))
+            }
             return m_current->m_val;
         }
 
