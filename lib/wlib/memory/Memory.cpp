@@ -157,7 +157,7 @@ static inline __Allocator *find_allocator(size32_type size) {
             return allocator;
         }
 #else
-        if (allocator->GetBlockSize() == size)
+        if (allocator->getBlockSize() == size)
             return allocator;
 #endif
     }
@@ -256,7 +256,7 @@ __Allocator *memory_get_allocator(size32_type size, bool anObject) {
 #if !defined(DYNAMIC_POOL) && !defined(STATIC_POOL)
     if (allocator == nullptr){
         // Create a new allocator to handle blocks of the size required
-        allocator = new Allocator(blockSize);
+        allocator = new __Allocator(blockSize);
 
         // Insert allocator into array
         if (!insert_allocator(allocator))
