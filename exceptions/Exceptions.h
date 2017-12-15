@@ -143,9 +143,27 @@ Exception *__new_logic_failure_exception(const char *message = "");
 
 Exception *__new_runtime_exception(const char *message = "");
 
+Exception *__new_illegal_transition_exception(const char *message = "");
+
+Exception *__new_unexpected_state_exception(const char *message = "");
+
+Exception *__new_index_exception(const char *message = "");
+
+Exception *__new_key_exception(const char *message = "");
+
+Exception *__new_bad_state_exception(const char *message = "");
+
+Exception *__new_bad_weak_ptr_exception(const char *message = "");
+
 #define NULLPTR_EXCEPTION(str) __new_nullptr_exception(str)
 #define BAD_ALLOC_EXCEPTION(str) __new_bad_alloc_exception(str)
 #define LOGIC_FAILURE_EXCEPTION(str) __new_logic_failure_exception(str)
 #define RUNTIME_EXCEPTION(str) __new_runtime_exception(str)
+#define ILLEGAL_TRANSITION_EXCEPTION(str) __new_illegal_transition_exception(str)
+#define UNEXPECTED_STATE_EXCEPTION(str) __new_unexpected_state_exception(str)
+#define INDEX_EXCEPTION(str) __new_index_exception(str)
+#define KEY_EXCEPTION(str) __new_key_exception(str)
+#define BAD_STATE_EXCEPTION(str) __new_bad_state_exception(str)
+#define BAD_WEAK_PTR_EXCEPTION(str) __new_bad_weak_ptr_exception(str)
 
 #endif //EMBEDDEDCPLUSPLUS_EXCEPTIONS_H

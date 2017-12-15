@@ -37,7 +37,7 @@ uint16_t Exception::getLineNum() { return lineNum; }
 
 void Exception::__setLineNum(uint16_t lineNum) { this->lineNum = lineNum; }
 
-void Exception::__setFileName(const char* fileName) { this->fileName = fileName; }
+void Exception::__setFileName(const char *fileName) { this->fileName = fileName; }
 
 const char *Exception::getMessage() { return message; }
 
@@ -45,7 +45,7 @@ jmp_buf *__exc_context = nullptr;
 Exception *__exception_ptr = nullptr;
 
 void __exc_clear() {
-    if (__exception_ptr == nullptr) return;
+    if (__exception_ptr == nullptr) { return; }
 
     free<Exception>(__exception_ptr);
     __exception_ptr = nullptr;
@@ -58,29 +58,23 @@ void __exc_default_handler() {
     __exc_clear();
 }
 
-class NullPtrException : public Exception {
-public:
-    NullPtrException(const char *fileName, const uint16_t lineNum, const char *message)
-            : Exception(0, fileName, lineNum, message) {}
+#define DEFINE_EXCEPTION(Index, ExceptionName) \
+class ExceptionName : public Exception { \
+public: \
+    ExceptionName(const char *fileName, const uint16_t lineNum, const char *message) \
+            : Exception(Index, fileName, lineNum, message) {} \
 };
 
-class BadAllocException : public Exception {
-public:
-    BadAllocException(const char *fileName, const uint16_t lineNum, const char *message)
-            : Exception(1, fileName, lineNum, message) {}
-};
-
-class LogicFailureException : public Exception {
-public:
-    LogicFailureException(const char *fileName, const uint16_t lineNum, const char *message)
-            : Exception(2, fileName, lineNum, message) {}
-};
-
-class RuntimeException : public Exception {
-public:
-    RuntimeException(const char *fileName, const uint16_t lineNum, const char *message)
-            : Exception(3, fileName, lineNum, message)  {}
-};
+DEFINE_EXCEPTION(0, NullPtrException)
+DEFINE_EXCEPTION(1, BadAllocException)
+DEFINE_EXCEPTION(2, LogicFailureException)
+DEFINE_EXCEPTION(3, RuntimeException)
+DEFINE_EXCEPTION(4, IllegalTransitionException)
+DEFINE_EXCEPTION(5, UnexpectedStateException)
+DEFINE_EXCEPTION(6, IndexException)
+DEFINE_EXCEPTION(7, KeyException)
+DEFINE_EXCEPTION(8, BadStateException)
+DEFINE_EXCEPTION(9, BadWeakPtrException)
 
 Exception *__new_nullptr_exception(const char *message) {
     auto *exception = malloc<NullPtrException>(__FILE__, __LINE__, message);
@@ -102,6 +96,42 @@ Exception *__new_logic_failure_exception(const char *message) {
 
 Exception *__new_runtime_exception(const char *message) {
     auto *exception = malloc<RuntimeException>(__FILE__, __LINE__, message);
+
+    return exception;
+}
+
+Exception *__new_illegal_transition_exception(const char *message) {
+    auto *exception = malloc<IllegalTransitionException>(__FILE__, __LINE__, message);
+
+    return exception;
+}
+
+Exception *__new_unexpected_state_exception(const char *message) {
+    auto *exception = malloc<UnexpectedStateException>(__FILE__, __LINE__, message);
+
+    return exception;
+}
+
+Exception *__new_index_exception(const char *message) {
+    auto *exception = malloc<IndexException>(__FILE__, __LINE__, message);
+
+    return exception;
+}
+
+Exception *__new_key_exception(const char *message) {
+    auto *exception = malloc<KeyException>(__FILE__, __LINE__, message);
+
+    return exception;
+}
+
+Exception *__new_bad_state_exception(const char *message) {
+    auto *exception = malloc<BadStateException>(__FILE__, __LINE__, message);
+
+    return exception;
+}
+
+Exception *__new_bad_weak_ptr_exception(const char *message) {
+    auto *exception = malloc<BadWeakPtrException>(__FILE__, __LINE__, message);
 
     return exception;
 }

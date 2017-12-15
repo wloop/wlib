@@ -17,6 +17,7 @@
 
 #include "../memory/Memory.h"
 #include "../utility/Utility.h"
+#include "../exceptions/Exceptions.h"
 
 namespace wlp {
 
@@ -104,11 +105,14 @@ namespace wlp {
          * by this iterator
          */
         reference operator*() const {
+            if (m_i >= m_list->m_size) {
+                THROW(INDEX_EXCEPTION("Accessing invalid iterator"))
+            }
             return m_list->m_data[m_i];
         }
 
         /**
-         * @return a pointer to the value pointer to
+         * @return a pointer to the value pointed to
          * by this iterator
          */
         pointer operator->() const {
@@ -473,6 +477,9 @@ namespace wlp {
          * @return reference to the element
          */
         val_type &at(size_type i) {
+            if (i == 0 && m_size == 0) {
+                THROW(INDEX_EXCEPTION("Accessing empty list"))
+            }
             normalize(i);
             return m_data[i];
         }
@@ -484,6 +491,9 @@ namespace wlp {
          * @return reference to the element
          */
         val_type const &at(size_type i) const {
+            if (i == 0 && m_size == 0) {
+                THROW(INDEX_EXCEPTION("Accessing empty list"))
+            }
             normalize(i);
             return m_data[i];
         }
@@ -625,6 +635,9 @@ namespace wlp {
          */
         template<typename V>
         iterator insert(const iterator &it, V &&val) {
+            if (it.m_i > m_size) {
+                return end();
+            }
             ensure_capacity();
             shift_right(it.m_i);
             m_data[it.m_i] = forward<V>(val);
