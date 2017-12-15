@@ -14,6 +14,7 @@
 #define EMBEDDEDCPLUSPLUS_UNIQUEPTR_H
 
 #include "../memory/Memory.h"
+#include "../exceptions/Exceptions.h"
 
 namespace wlp {
 
@@ -98,6 +99,9 @@ namespace wlp {
         }
 
         typename add_lvalue_reference<val_type>::type operator*() const {
+            if (m_ptr == nullptr) {
+                THROW(NULLPTR_EXCEPTION("Unique pointer is null"))
+            }
             return *m_ptr;
         };
 
