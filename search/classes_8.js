@@ -1,6 +1,8 @@
 var searchData=
 [
   ['ignore_5ftype',['ignore_type',['../d0/d13/structwlp_1_1ignore__type.html',1,'wlp']]],
+  ['illegaltransitionexception',['IllegalTransitionException',['../d3/d07/class_illegal_transition_exception.html',1,'']]],
+  ['indexexception',['IndexException',['../dc/d04/class_index_exception.html',1,'']]],
   ['indexsequence',['IndexSequence',['../d8/dcd/structwlp_1_1_index_sequence.html',1,'wlp']]],
   ['indexsequence_3c_200_20_3e',['IndexSequence&lt; 0 &gt;',['../d8/dcd/structwlp_1_1_index_sequence.html',1,'wlp']]],
   ['indexsequence_3c_20indices_2e_2e_2e_2c_20i_20_3e',['IndexSequence&lt; Indices..., I &gt;',['../d8/dcd/structwlp_1_1_index_sequence.html',1,'wlp']]],

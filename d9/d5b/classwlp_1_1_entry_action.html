@@ -114,7 +114,7 @@ class wlp::EntryAction&lt; SM, Data, Func &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00153">153</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00154">154</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 </div><div class="dynheader">
 Inheritance diagram for wlp::EntryAction&lt; SM, Data, Func &gt;:</div>
 <div class="dyncontent">
@@ -151,8 +151,8 @@ template&lt;class SM , class Data , void(SM::*)(const Data *) Func&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00155">155</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;{}</div>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00156">156</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -201,17 +201,21 @@ template&lt;class SM , class Data , void(SM::*)(const Data *) Func&gt; </div>
 
 <p>Implements <a class="el" href="../../d9/d8c/classwlp_1_1_entry_base.html#a61cd43e7aa28d48c26bff7a924be4a9d">wlp::EntryBase</a>.</p>
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00157">157</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                                                                                      {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            SM *derivedSM = <span class="keyword">static_cast&lt;</span>SM *<span class="keyword">&gt;</span>(sm);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keyword">const</span> Data *derivedData = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>Data *<span class="keyword">&gt;</span>(data);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="comment">/* assert(derivedData != nullptr) */</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="keywordflow">if</span> (derivedData == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            }</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="comment">// Call the entry function</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            (derivedSM-&gt;*Func)(derivedData);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00158">158</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+
+<p>References <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00166">BAD_STATE_EXCEPTION</a>, and <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00121">THROW</a>.</p>
+<div class="fragment"><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                                                                                      {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            SM *derivedSM = <span class="keyword">static_cast&lt;</span>SM *<span class="keyword">&gt;</span>(sm);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="keyword">const</span> Data *derivedData = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>Data *<span class="keyword">&gt;</span>(data);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="comment">/* assert(derivedData != nullptr) */</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <span class="keywordflow">if</span> (derivedData == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                <a class="code" href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a>(<a class="code" href="../../d7/d2f/_exceptions_8h.html#ad69dbc5028434f70b3e7fd3875d33ce7">BAD_STATE_EXCEPTION</a>(<span class="stringliteral">&quot;Invalid EventData type passed to entry&quot;</span>))</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            <span class="comment">// Call the entry function</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            (derivedSM-&gt;*Func)(derivedData);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        }</div>
+<div class="ttc" id="_exceptions_8h_html_a8d940770e78617d670d314ca0b8c35ef"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a></div><div class="ttdeci">#define THROW(e)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00121">Exceptions.h:121</a></div></div>
+<div class="ttc" id="_exceptions_8h_html_ad69dbc5028434f70b3e7fd3875d33ce7"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#ad69dbc5028434f70b3e7fd3875d33ce7">BAD_STATE_EXCEPTION</a></div><div class="ttdeci">#define BAD_STATE_EXCEPTION(str)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00166">Exceptions.h:166</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -221,7 +225,7 @@ template&lt;class SM , class Data , void(SM::*)(const Data *) Func&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 7 2017 01:26:49 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 15 2017 22:11:02 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

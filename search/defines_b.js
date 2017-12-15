@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['op_5fexist',['OP_EXIST',['../d8/dd7/_concept_8h.html#a535e285602827554e410843c521c91a5',1,'Concept.h']]],
-  ['op_5fexist3',['OP_EXIST3',['../d8/dd7/_concept_8h.html#aa498d7519ce47266efce76a38f750743',1,'Concept.h']]],
-  ['op_5fexist4',['OP_EXIST4',['../d8/dd7/_concept_8h.html#a00a77c3bc3504fe089a447e629b7dfaa',1,'Concept.h']]],
-  ['op_5fexist5',['OP_EXIST5',['../d8/dd7/_concept_8h.html#aec989ba6a3785895599742f462de7a61',1,'Concept.h']]]
+  ['max',['MAX',['../da/db8/_math_8h.html#aacc3ee1a7f283f8ef65cea31f4436a95',1,'Math.h']]],
+  ['min',['MIN',['../da/db8/_math_8h.html#a74e75242132eaabbc1c512488a135926',1,'Math.h']]],
+  ['mul_5f127',['MUL_127',['../da/db8/_math_8h.html#a28639dd0298e8a48ed254a79cdf3f127',1,'Math.h']]],
+  ['mul_5f31',['MUL_31',['../da/db8/_math_8h.html#abadf03a0ea08be5bd2a248e403fb917d',1,'Math.h']]]
 ];

@@ -1,8 +1,9 @@
 <map id="fsm/StateMachine.h" name="fsm/StateMachine.h">
 <area shape="rect" id="node2" href="$d2/db4/_wlib_8h.html" title="../Wlib.h" alt="" coords="5,80,75,107"/>
-<area shape="rect" id="node3" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="123,304,204,331"/>
-<area shape="rect" id="node5" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="221,80,363,107"/>
+<area shape="rect" id="node3" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="239,304,320,331"/>
+<area shape="rect" id="node5" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="278,80,420,107"/>
 <area shape="rect" id="node8" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="367,229,424,256"/>
+<area shape="rect" id="node10" href="$d7/d2f/_exceptions_8h.html" title="Implementation of Exceptions using C style. " alt="" coords="618,80,795,107"/>
 <area shape="rect" id="node7" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="292,155,407,181"/>
 <area shape="rect" id="node9" href="$d9/d8a/_new_8h.html" title="New operators defined for Arduino boards and for other boards use the normal new. ..." alt="" coords="482,155,541,181"/>
 </map>

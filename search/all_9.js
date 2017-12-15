@@ -2,8 +2,12 @@ var searchData=
 [
   ['ignore',['ignore',['../d5/dca/namespacewlp.html#a78e9e7e7349ced3fe04732a693654918',1,'wlp']]],
   ['ignore_5ftype',['ignore_type',['../d0/d13/structwlp_1_1ignore__type.html',1,'wlp']]],
+  ['illegal_5ftransition_5fexception',['ILLEGAL_TRANSITION_EXCEPTION',['../d7/d2f/_exceptions_8h.html#a7a1801e2dfc330a4850836d773ff81c2',1,'Exceptions.h']]],
+  ['illegaltransitionexception',['IllegalTransitionException',['../d3/d07/class_illegal_transition_exception.html',1,'IllegalTransitionException'],['../d3/d07/class_illegal_transition_exception.html#a37de6fdca0d377c545d26b386f3b2e60',1,'IllegalTransitionException::IllegalTransitionException()']]],
   ['increment',['increment',['../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a2f215023ae489da683bc009bc8ac474f',1,'wlp::RedBlackTreeIterator']]],
+  ['index_5fexception',['INDEX_EXCEPTION',['../d7/d2f/_exceptions_8h.html#a05a84855618793cfb007f8e7dd4915f7',1,'Exceptions.h']]],
   ['index_5fof',['index_of',['../db/d49/classwlp_1_1_array_list.html#a99ffa98d4bdde19567508c54031a1b78',1,'wlp::ArrayList::index_of()'],['../d6/d0e/classwlp_1_1_linked_list.html#a310f913dcd244e2bd9a0e341f3e0f560',1,'wlp::LinkedList::index_of()']]],
+  ['indexexception',['IndexException',['../dc/d04/class_index_exception.html',1,'IndexException'],['../dc/d04/class_index_exception.html#ad22d0ba382a2250d279c0267e4bc9a5e',1,'IndexException::IndexException()']]],
   ['indexsequence',['IndexSequence',['../d8/dcd/structwlp_1_1_index_sequence.html',1,'wlp']]],
   ['indexsequence_3c_200_20_3e',['IndexSequence&lt; 0 &gt;',['../d8/dcd/structwlp_1_1_index_sequence.html',1,'wlp']]],
   ['indexsequence_3c_20indices_2e_2e_2e_2c_20i_20_3e',['IndexSequence&lt; Indices..., I &gt;',['../d8/dcd/structwlp_1_1_index_sequence.html',1,'wlp']]],

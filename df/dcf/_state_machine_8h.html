@@ -94,10 +94,11 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <code>#include &quot;<a class="el" href="../../d0/db6/_types_8h_source.html">../Types.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../d3/de6/_memory_8h_source.html">../memory/Memory.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../d2/d37/_tmp_8h_source.html">../utility/Tmp.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d7/d2f/_exceptions_8h_source.html">../exceptions/Exceptions.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for StateMachine.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d5/d3f/_state_machine_8h__incl.svg" width="566" height="411"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d5/d3f/_state_machine_8h__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 </div>
@@ -224,7 +225,7 @@ Typedefs</h2></td></tr>
 </div><!-- fragment --><p>State map macros, used to define a state map with its entries.</p>
 <p>A static assertion occurs if the number of states in the state map does not equal the number of defined states. </p>
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00584">584</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00592">592</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -244,7 +245,7 @@ Typedefs</h2></td></tr>
 </div><!-- fragment --><p>Extended state map macros, used to support entries, exits, and guards in the state map</p>
 <p>A static assertion occurs if the number of states in the state map does not equal the number of defined states. </p>
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00606">606</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00614">614</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -260,7 +261,7 @@ Typedefs</h2></td></tr>
 <p>Transition map definition macros, used to define the valid transitions between states. Upon ending the transition map, the current state is called and executed.</p>
 <p>A static assertion will fail if the number of transitions defined does not equal the number of states. </p>
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00554">554</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00562">562</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -278,7 +279,7 @@ Typedefs</h2></td></tr>
 <div class="line">            return &amp;STATE_MAP[0]; \</div>
 <div class="line">        }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00591">591</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00599">599</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -296,7 +297,7 @@ Typedefs</h2></td></tr>
 <div class="line">            return &amp;STATE_MAP[0]; \</div>
 <div class="line">        }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00615">615</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00623">623</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -327,9 +328,9 @@ Typedefs</h2></td></tr>
 <div class="line">    ASSERT_TRUE(getCurrentState() &lt; ST_MAX_STATES); \</div>
 <div class="line">    externalEvent&lt;dataType&gt;(TRANSITIONS[getCurrentState()], data); \</div>
 <div class="line">    static_assert((<span class="keyword">sizeof</span>(TRANSITIONS) / <span class="keyword">sizeof</span>(<a class="code" href="../../d5/dca/namespacewlp.html#a33ff48750b6214585c38114516a22d7e">state_type</a>)) == ST_MAX_STATES, <span class="stringliteral">&quot;Invalid number of transitions&quot;</span>);</div>
-<div class="ttc" id="namespacewlp_html_a33ff48750b6214585c38114516a22d7e"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a33ff48750b6214585c38114516a22d7e">wlp::state_type</a></div><div class="ttdeci">uint8_t state_type</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcf/_state_machine_8h_source.html#l00020">StateMachine.h:20</a></div></div>
+<div class="ttc" id="namespacewlp_html_a33ff48750b6214585c38114516a22d7e"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a33ff48750b6214585c38114516a22d7e">wlp::state_type</a></div><div class="ttdeci">uint8_t state_type</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcf/_state_machine_8h_source.html#l00021">StateMachine.h:21</a></div></div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00558">558</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00566">566</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -358,9 +359,9 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">void</span> EN_##entryName(<span class="keyword">const</span> <a class="code" href="../../d5/dca/namespacewlp.html#a63d84231a88e14c435f2580151e9e764">NoEventData</a>*); \</div>
 <div class="line">    EntryAction&lt;stateMachine, NoEventData, &amp;stateMachine::EN_##entryName&gt; entryName;</div>
-<div class="ttc" id="namespacewlp_html_a63d84231a88e14c435f2580151e9e764"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a63d84231a88e14c435f2580151e9e764">wlp::NoEventData</a></div><div class="ttdeci">EventData NoEventData</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcf/_state_machine_8h_source.html#l00021">StateMachine.h:21</a></div></div>
+<div class="ttc" id="namespacewlp_html_a63d84231a88e14c435f2580151e9e764"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a63d84231a88e14c435f2580151e9e764">wlp::NoEventData</a></div><div class="ttdeci">EventData NoEventData</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcf/_state_machine_8h_source.html#l00022">StateMachine.h:22</a></div></div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00526">526</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00534">534</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -396,7 +397,7 @@ Typedefs</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">void</span> EN_##entryName(<span class="keyword">const</span> eventData*); \</div>
 <div class="line">    EntryAction&lt;stateMachine, eventData, &amp;stateMachine::EN_##entryName&gt; entryName;</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00529">529</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00537">537</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -414,7 +415,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00525">525</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00533">533</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -442,7 +443,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00532">532</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00540">540</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -476,7 +477,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00534">534</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00542">542</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -494,7 +495,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00524">524</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00532">532</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -524,7 +525,7 @@ Typedefs</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">void</span> EX_##exitName(<span class="keywordtype">void</span>); \</div>
 <div class="line">    ExitAction&lt;stateMachine, &amp;stateMachine::EX_##exitName&gt; exitName;</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00537">537</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00545">545</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -552,7 +553,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00540">540</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00548">548</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -570,7 +571,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00511">511</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00519">519</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -599,9 +600,9 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">bool</span> GD_##guardName(<span class="keyword">const</span> <a class="code" href="../../d5/dca/namespacewlp.html#a63d84231a88e14c435f2580151e9e764">NoEventData</a>*); \</div>
 <div class="line">    GuardCondition&lt;stateMachine, NoEventData, &amp;stateMachine::GD_##guardName&gt; guardName;</div>
-<div class="ttc" id="namespacewlp_html_a63d84231a88e14c435f2580151e9e764"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a63d84231a88e14c435f2580151e9e764">wlp::NoEventData</a></div><div class="ttdeci">EventData NoEventData</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcf/_state_machine_8h_source.html#l00021">StateMachine.h:21</a></div></div>
+<div class="ttc" id="namespacewlp_html_a63d84231a88e14c435f2580151e9e764"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a63d84231a88e14c435f2580151e9e764">wlp::NoEventData</a></div><div class="ttdeci">EventData NoEventData</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcf/_state_machine_8h_source.html#l00022">StateMachine.h:22</a></div></div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00513">513</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00521">521</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -637,7 +638,7 @@ Typedefs</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">bool</span> GD_##guardName(<span class="keyword">const</span> eventData*); \</div>
 <div class="line">    GuardCondition&lt;stateMachine, eventData, &amp;stateMachine::GD_##guardName&gt; guardName;</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00516">516</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00524">524</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -655,7 +656,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00512">512</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00520">520</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -683,7 +684,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00519">519</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00527">527</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -717,7 +718,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00521">521</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00529">529</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -740,7 +741,7 @@ Typedefs</h2></td></tr>
 <div class="line">    }</div>
 </div><!-- fragment --><p>Transition in the parent StateMachine class, used to trigger that transition </p>
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00569">569</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00577">577</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -759,7 +760,7 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 <p>Macros used to declare and define state machine states, guards, entries, and exits. </p>
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00498">498</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00506">506</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -788,9 +789,9 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">void</span> ST_##stateName(<span class="keyword">const</span> <a class="code" href="../../d5/dca/namespacewlp.html#a63d84231a88e14c435f2580151e9e764">NoEventData</a>*); \</div>
 <div class="line">    StateAction&lt;stateMachine, NoEventData, &amp;stateMachine::ST_##stateName&gt; stateName;</div>
-<div class="ttc" id="namespacewlp_html_a63d84231a88e14c435f2580151e9e764"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a63d84231a88e14c435f2580151e9e764">wlp::NoEventData</a></div><div class="ttdeci">EventData NoEventData</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcf/_state_machine_8h_source.html#l00021">StateMachine.h:21</a></div></div>
+<div class="ttc" id="namespacewlp_html_a63d84231a88e14c435f2580151e9e764"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a63d84231a88e14c435f2580151e9e764">wlp::NoEventData</a></div><div class="ttdeci">EventData NoEventData</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dcf/_state_machine_8h_source.html#l00022">StateMachine.h:22</a></div></div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00500">500</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00508">508</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -826,7 +827,7 @@ Typedefs</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">void</span> ST_##stateName(<span class="keyword">const</span> eventData*); \</div>
 <div class="line">    StateAction&lt;stateMachine, eventData, &amp;stateMachine::ST_##stateName&gt; stateName;</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00503">503</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00511">511</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -844,7 +845,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00499">499</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00507">507</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -872,7 +873,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00506">506</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00514">514</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -906,7 +907,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00508">508</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00516">516</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -924,7 +925,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00589">589</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00597">597</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -964,7 +965,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00613">613</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00621">621</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -982,7 +983,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00611">611</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00619">619</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1000,14 +1001,14 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00556">556</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00564">564</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 7 2017 01:26:48 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 15 2017 22:11:02 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

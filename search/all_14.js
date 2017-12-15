@@ -1,6 +1,8 @@
 var searchData=
 [
   ['unexpected',['UNEXPECTED',['../d7/d2f/_exceptions_8h.html#a33ed6c61d07247de6740d898a9935984',1,'Exceptions.h']]],
+  ['unexpected_5fstate_5fexception',['UNEXPECTED_STATE_EXCEPTION',['../d7/d2f/_exceptions_8h.html#a48d3131f1c636fc96464420b384684ff',1,'Exceptions.h']]],
+  ['unexpectedstateexception',['UnexpectedStateException',['../d4/da3/class_unexpected_state_exception.html',1,'UnexpectedStateException'],['../d4/da3/class_unexpected_state_exception.html#acacbb4ede4a0e838b79f35d7fbc05ab3',1,'UnexpectedStateException::UnexpectedStateException()']]],
   ['unique',['unique',['../da/dbb/classwlp_1_1_shared_count.html#a9c8cf04efdd03a9dc9c9691d881c833d',1,'wlp::SharedCount::unique()'],['../d1/d52/classwlp_1_1_shared_ptr.html#a90dd85f1281fa7ffe62edafa8ef4154a',1,'wlp::SharedPtr::unique()']]],
   ['unique_5fptr',['unique_ptr',['../df/d24/classwlp_1_1_unique_ptr.html#a7255764577db7a2b7bd5abe1321a8acd',1,'wlp::UniquePtr::unique_ptr()'],['../dd/d28/classwlp_1_1_unique_ptr_3_01_t[]_4.html#aa8a30d4e610f41ebac7ec2bc1e00dda3',1,'wlp::UniquePtr&lt; T[]&gt;::unique_ptr()']]],
   ['uniqueptr',['UniquePtr',['../df/d24/classwlp_1_1_unique_ptr.html',1,'wlp']]],

@@ -1,8 +1,9 @@
 <map id="stl/SharedPtr.h" name="stl/SharedPtr.h">
-<area shape="rect" id="node2" href="$d8/df6/_unique_ptr_8h.html" title="Unique pointer implementation. " alt="" coords="159,80,249,107"/>
-<area shape="rect" id="node5" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="249,229,364,256"/>
-<area shape="rect" id="node6" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="277,304,335,331"/>
-<area shape="rect" id="node7" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="266,379,347,405"/>
-<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="101,155,243,181"/>
-<area shape="rect" id="node9" href="$d9/d8a/_new_8h.html" title="New operators defined for Arduino boards and for other boards use the normal new. ..." alt="" coords="25,229,84,256"/>
+<area shape="rect" id="node2" href="$d8/df6/_unique_ptr_8h.html" title="Unique pointer implementation. " alt="" coords="409,80,500,107"/>
+<area shape="rect" id="node5" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="369,229,484,256"/>
+<area shape="rect" id="node6" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="224,304,281,331"/>
+<area shape="rect" id="node7" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="139,379,220,405"/>
+<area shape="rect" id="node10" href="$d7/d2f/_exceptions_8h.html" title="Implementation of Exceptions using C style. " alt="" coords="454,155,631,181"/>
+<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="190,155,332,181"/>
+<area shape="rect" id="node9" href="$d9/d8a/_new_8h.html" title="New operators defined for Arduino boards and for other boards use the normal new. ..." alt="" coords="145,229,204,256"/>
 </map>
