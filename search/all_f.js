@@ -1,8 +1,8 @@
 var searchData=
 [
   ['packet64',['packet64',['../d5/dca/namespacewlp.html#a4b1327c0806af2cfe7553b3d7f5169d6',1,'wlp']]],
-  ['packet_5fname',['packet_name',['../d5/dca/namespacewlp.html#a8dc2a4cbe1b9ac54c815aa8cd81541ed',1,'wlp']]],
-  ['packet_5ftype',['packet_type',['../d5/dca/namespacewlp.html#aeef42edeb2a984d16700a4415a3fc8b1',1,'wlp']]],
+  ['packet_5fname',['packet_name',['../d5/dca/namespacewlp.html#a8b5573ff502ece14b2e96c9b6b0745f6',1,'wlp']]],
+  ['packet_5ftype',['packet_type',['../d5/dca/namespacewlp.html#a5a65cb1c94b3088254ca1efff6678d71',1,'wlp']]],
   ['packetconstructor_2ecpp',['PacketConstructor.cpp',['../d9/dde/_packet_constructor_8cpp.html',1,'']]],
   ['packetconstructor_2eh',['PacketConstructor.h',['../de/d66/_packet_constructor_8h.html',1,'']]],
   ['packettype',['PacketType',['../dd/daf/structwlp_1_1_packet_type.html',1,'wlp']]],

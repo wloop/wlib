@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d0/d93/structwlp_1_1_type_at_tuple.html" title="wlp::TypeAtTuple\&lt; size\l_type, typename \&gt;" alt="" coords="5,5,165,46"/>
+<area shape="rect" id="node1" href="$dd/dec/structwlp_1_1_type_at_index.html" title="wlp::TypeAtIndex\&lt; I,\l Types...\&gt;" alt="" coords="5,5,149,46"/>
+<area shape="rect" id="node2" href="$dc/dc8/structwlp_1_1_type_at_tuple_3_01_i_00_01_tuple_3_01_types_8_8_8_4_01_4.html" title="wlp::TypeAtTuple\&lt; I,\l Tuple\&lt; Types...\&gt; \&gt;" alt="" coords="197,5,341,46"/>
 </map>

@@ -11,10 +11,10 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-34 100,-34 100,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:href="dd/da7/structwlp_1_1list__concept_3_01_c_00_01true_01_4.html" target="_top" xlink:title="wlp::list_concept\&lt;\l C, true \&gt;">
+<g id="a_node1"><a xlink:href="d3/d90/structwlp_1_1list__concept.html" target="_top" xlink:title="wlp::list_concept\&lt;\l C, bool \&gt;">
 <polygon fill="white" stroke="black" points="0,-0 0,-30 96,-30 96,-0 0,-0"/>
 <text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::list_concept&lt;</text>
-<text text-anchor="middle" x="48" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00"> C, true &gt;</text>
+<text text-anchor="middle" x="48" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00"> C, bool &gt;</text>
 </a>
 </g>
 </g>

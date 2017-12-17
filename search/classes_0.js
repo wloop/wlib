@@ -8,6 +8,7 @@ var searchData=
   ['_5f_5fdecay_5f_5f_3c_20u_2c_20false_2c_20true_20_3e',['__decay__&lt; U, false, true &gt;',['../d3/d5b/structwlp_1_1____decay_____3_01_u_00_01false_00_01true_01_4.html',1,'wlp']]],
   ['_5f_5fdecay_5f_5f_3c_20u_2c_20true_2c_20false_20_3e',['__decay__&lt; U, true, false &gt;',['../da/d1d/structwlp_1_1____decay_____3_01_u_00_01true_00_01false_01_4.html',1,'wlp']]],
   ['_5f_5fdeclval_5f_5f',['__declval__',['../d3/d0b/structwlp_1_1____declval____.html',1,'wlp']]],
+  ['_5f_5ffloat_5fencoder',['__float_encoder',['../d3/df0/union____float__encoder.html',1,'']]],
   ['_5f_5fis_5ffloating_5fpoint_5fhelper',['__is_floating_point_helper',['../d9/dce/structwlp_1_1____is__floating__point__helper.html',1,'wlp']]],
   ['_5f_5fis_5ffloating_5fpoint_5fhelper_3c_20double_20_3e',['__is_floating_point_helper&lt; double &gt;',['../d5/df8/structwlp_1_1____is__floating__point__helper_3_01double_01_4.html',1,'wlp']]],
   ['_5f_5fis_5ffloating_5fpoint_5fhelper_3c_20float_20_3e',['__is_floating_point_helper&lt; float &gt;',['../d1/d18/structwlp_1_1____is__floating__point__helper_3_01float_01_4.html',1,'wlp']]],

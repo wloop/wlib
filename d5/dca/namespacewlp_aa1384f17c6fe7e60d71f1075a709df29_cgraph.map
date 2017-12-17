@@ -1,10 +1,9 @@
 <map id="wlp::make_packet64" name="wlp::make_packet64">
-<area shape="rect" id="node2" href="$d5/dca/namespacewlp.html#a343c72fba73b1a2f2b20521200f47811" title="wlp::__type_bits_from_enum" alt="" coords="197,73,387,100"/>
-<area shape="rect" id="node3" href="$d3/dff/structwlp_1_1____packet__maker.html#ac92621e6244b3cdd4fdb8ee6ad81d3f8" title="wlp::__packet_maker\l::build" alt="" coords="219,125,365,166"/>
-<area shape="rect" id="node4" href="$d9/dde/_packet_constructor_8cpp.html#ae551fd73966e6ee5973797ea03912a56" title="__set_start_and_end" alt="" coords="435,5,578,32"/>
-<area shape="rect" id="node5" href="$d9/dde/_packet_constructor_8cpp.html#a0468b3bb6449253081adf2146313a72b" title="__set_packet_type" alt="" coords="441,56,573,83"/>
-<area shape="rect" id="node6" href="$d9/dde/_packet_constructor_8cpp.html#ade9d3fa70b9b41958d7159768715e060" title="__set_packet_name" alt="" coords="437,107,576,133"/>
-<area shape="rect" id="node7" href="$d9/dde/_packet_constructor_8cpp.html#a56bb6b421b1132856b6851ce78263fc2" title="__set_bulk_data" alt="" coords="448,157,565,184"/>
-<area shape="rect" id="node8" href="$d9/dde/_packet_constructor_8cpp.html#a3be76d25d7377ecb287f9d4079dccaa4" title="__join_data" alt="" coords="463,208,551,235"/>
-<area shape="rect" id="node9" href="$d9/dde/_packet_constructor_8cpp.html#aac44b71f14784aec68658e5835499a48" title="__encode_float18" alt="" coords="445,259,569,285"/>
+<area shape="rect" id="node2" href="$d5/dca/namespacewlp.html#a343c72fba73b1a2f2b20521200f47811" title="wlp::__type_bits_from_enum" alt="" coords="197,48,387,75"/>
+<area shape="rect" id="node3" href="$d3/dff/structwlp_1_1____packet__maker.html#ac92621e6244b3cdd4fdb8ee6ad81d3f8" title="wlp::__packet_maker\l::build" alt="" coords="219,99,365,141"/>
+<area shape="rect" id="node4" href="$d9/dde/_packet_constructor_8cpp.html#a0468b3bb6449253081adf2146313a72b" title="__set_packet_type" alt="" coords="438,5,570,32"/>
+<area shape="rect" id="node5" href="$d9/dde/_packet_constructor_8cpp.html#ade9d3fa70b9b41958d7159768715e060" title="__set_packet_name" alt="" coords="435,56,573,83"/>
+<area shape="rect" id="node6" href="$d9/dde/_packet_constructor_8cpp.html#a56bb6b421b1132856b6851ce78263fc2" title="__set_bulk_data" alt="" coords="445,107,563,133"/>
+<area shape="rect" id="node7" href="$d9/dde/_packet_constructor_8cpp.html#a3be76d25d7377ecb287f9d4079dccaa4" title="__join_data" alt="" coords="460,157,548,184"/>
+<area shape="rect" id="node8" href="$d9/dde/_packet_constructor_8cpp.html#aac44b71f14784aec68658e5835499a48" title="__encode_float18" alt="" coords="442,208,566,235"/>
 </map>
