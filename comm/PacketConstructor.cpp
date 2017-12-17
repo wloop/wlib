@@ -14,29 +14,31 @@
 
 using namespace wlp;
 
+union __float_encoder {
+    static_assert(sizeof(float) == sizeof(uint32_t), "Expected float to be 32-bits");
+    float r;
+    uint32_t n;
+};
+
 inline uint32_t __encode_float18(float val) {
-    uint32_t sign = 0;
-    if (val < 0) {
-        sign = 1;
-        val = -val;
+    if (val == 0.0f) {
+        // hack for zero values in place of a better compression algorithm
+        return 0;
     }
-    uint16_t int_part = static_cast<uint16_t>(val);
-    uint16_t float_part = static_cast<uint16_t>(floorf(((val - int_part) * 100) + 0.5f));
-    uint32_t res = (sign << 17) | (int_part << 7) | float_part;
-    return res;
+    __float_encoder encoder{};
+    encoder.r = val;
+    uint32_t t = (encoder.n & 0x7ff800) >> 11;
+    t |= (((encoder.n & 0x7f800000) >> 23) - 0x70) << 12;
+    t |= (encoder.n & 0x80000000) >> 14;
+    return t;
 }
 
 inline uint64_t __join_data(uint32_t bits1, uint32_t bits2, uint32_t bits3) {
     return static_cast<uint64_t>(bits1) | (static_cast<uint64_t>(bits2) << 18) | (static_cast<uint64_t>(bits3) << 36);
 }
 
-inline void __set_start_and_end(packet64 &packet) {
-    packet.set(0);
-    packet.set(63);
-}
-
 inline void __set_packet_type(packet64 &packet, const packet_type &type) {
-    *packet.data() |= *type.data() << 1;
+    *packet.data() |= *type.data();
 }
 
 inline void __set_packet_name(packet64 &packet, packet_name name) {
@@ -44,13 +46,14 @@ inline void __set_packet_name(packet64 &packet, packet_name name) {
 }
 
 inline void __set_bulk_data(packet64 &packet, uint64_t joined_bits) {
-    *packet.data() |= static_cast<uint32_t>(joined_bits << 9);
-    *(packet.data() + 1) |= static_cast<uint32_t>(joined_bits >> 23);
+    *packet.data() |= static_cast<uint32_t>(joined_bits << 10);
+    *(packet.data() + 1) |= static_cast<uint32_t>(joined_bits >> 22);
 }
 
 packet64 __packet_maker::build(const float data[3], const packet_type &type, const packet_name &name) {
     packet64 packet;
-    __set_start_and_end(packet);
+    // type and name are less than or equal to a byte
+    // so byte order does not matter
     __set_packet_type(packet, type);
     __set_packet_name(packet, name);
     __set_bulk_data(packet, __join_data(
