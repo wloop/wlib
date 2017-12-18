@@ -5,7 +5,7 @@
 
 #include "strings/String.h"
 #include "utility/Utility.h"
-#include "stl/ChainMap.h"
+#include "stl/HashMap.h"
 #include "stl/OpenMap.h"
 #include "stl/ArrayHeap.h"
 #include "stl/LinkedList.h"
@@ -17,19 +17,19 @@ namespace wlp {
     struct Pair<uint16_t, const char *>;
 
     template
-    class ChainHashMap<String16, String16>;
+    class HashMap<String16, String16>;
 
     template
-    class ChainHashMap<uint16_t, uint16_t>;
+    class HashMap<uint16_t, uint16_t>;
 
     template
-    struct Pair<ChainHashMap<uint16_t, uint16_t>::iterator, bool>;
+    struct Pair<HashMap<uint16_t, uint16_t>::iterator, bool>;
 
     template
-    struct Pair<ChainHashMap<String16, String16>::iterator, bool>;
+    struct Pair<HashMap<String16, String16>::iterator, bool>;
 
     template
-    struct ChainHashMapIterator<
+    struct HashMapIterator<
             String16,
             String16,
             String16 &,
@@ -38,7 +38,7 @@ namespace wlp {
             Equal<String16>>;
 
     template
-    struct ChainHashMapIterator<
+    struct HashMapIterator<
             uint16_t,
             uint16_t,
             uint16_t &,
@@ -47,7 +47,7 @@ namespace wlp {
             Equal<uint16_t>>;
 
     template
-    struct ChainHashMapIterator<
+    struct HashMapIterator<
             String16,
             String16,
             const String16 &,
@@ -56,7 +56,7 @@ namespace wlp {
             Equal<String16>>;
 
     template
-    struct ChainHashMapIterator<
+    struct HashMapIterator<
             uint16_t,
             uint16_t,
             const uint16_t &,

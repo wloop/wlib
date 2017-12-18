@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "stl/ChainMap.h"
+#include "stl/HashMap.h"
 #include "strings/String.h"
 
 #include "../template_defs.h"
@@ -8,8 +8,8 @@
 using namespace wlp;
 
 typedef uint16_t ui16;
-typedef ChainHashMap<String16, String16> string_map;
-typedef ChainHashMap<int, int> int_map;
+typedef HashMap<String16, String16> string_map;
+typedef HashMap<int, int> int_map;
 typedef int_map::iterator imi;
 typedef int_map::const_iterator cimi;
 typedef Pair<imi, bool> P_imi_b;

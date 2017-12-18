@@ -13,7 +13,7 @@
 #ifndef EMBEDDEDCPLUSPLUS_CHAINSET_H
 #define EMBEDDEDCPLUSPLUS_CHAINSET_H
 
-#include "ChainMap.h"
+#include "HashMap.h"
 #include "Equal.h"
 #include "Hash.h"
 
@@ -29,12 +29,12 @@ namespace wlp {
     template<class Key,
             class Hash = Hash<Key, uint16_t>,
             class Equal = Equal<Key>>
-    class ChainHashSet {
+    class HashSet {
     public:
-        typedef ChainHashSet<Key, Hash, Equal> set_type;
-        typedef ChainHashMap<Key, Key, Hash, Equal> table_type;
-        typedef typename ChainHashMap<Key, Key, Hash, Equal>::iterator iterator;
-        typedef typename ChainHashMap<Key, Key, Hash, Equal>::const_iterator const_iterator;
+        typedef HashSet<Key, Hash, Equal> set_type;
+        typedef HashMap<Key, Key, Hash, Equal> table_type;
+        typedef typename HashMap<Key, Key, Hash, Equal>::iterator iterator;
+        typedef typename HashMap<Key, Key, Hash, Equal>::const_iterator const_iterator;
         typedef typename table_type::size_type size_type;
         typedef typename table_type::percent_type percent_type;
         typedef typename table_type::key_type key_type;
@@ -49,7 +49,7 @@ namespace wlp {
          * @param n        the initial size of the backing array
          * @param max_load the maximum load factor before rehash
          */
-        explicit ChainHashSet(
+        explicit HashSet(
                 size_type n = 12,
                 percent_type max_load = 75)
                 : m_hash_map(n, max_load) {
@@ -58,14 +58,14 @@ namespace wlp {
         /**
          * Disable copy constructor.
          */
-        ChainHashSet(const set_type &) = delete;
+        HashSet(const set_type &) = delete;
 
         /**
          * Move constructor.
          *
          * @param set hash set to move
          */
-        ChainHashSet(set_type &&set)
+        HashSet(set_type &&set)
                 : m_hash_map(move(set.m_hash_map)) {
         }
 
