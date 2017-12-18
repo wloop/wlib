@@ -4,6 +4,7 @@
 
 #include "stl/ArrayList.h"
 #include "stl/ArrayHeap.h"
+#include "stl/OpenMap.h"
 #include "stl/RedBlackTree.h"
 #include "stl/Tuple.h"
 #include "stl/TreeMap.h"
@@ -13,8 +14,8 @@
 using namespace wlp;
 
 typedef Tuple<char, int> _rb_element;
-typedef TreeMapGetKey<char, int> _rb_key;
-typedef TreeMapGetVal<char, int> _rb_val;
+typedef MapGetKey<char, int> _rb_key;
+typedef MapGetVal<char, int> _rb_val;
 
 typedef typename RedBlackTree<_rb_element, char, int, _rb_key, _rb_val>::iterator rbi;
 typedef RedBlackTree<_rb_element, char, int, _rb_key, _rb_val> rb_tree;

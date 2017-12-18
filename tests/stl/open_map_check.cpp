@@ -283,12 +283,10 @@ TEST(open_map_test, test_erase_iterator_invalid_node) {
     map[0] = 0;
     map[1] = 10;
     map[2] = 20;
-    int_map::node_type invalid_node;
-    invalid_node.m_key = 10;
-    invalid_node.m_val = 100;
+    int_map::table_type::element_type invalid_node = make_tuple(10, 100);
     int_map::iterator it;
     it.m_current = &invalid_node;
-    it.m_hash_map = &map;
+    it.m_table = map.get_backing_table();
     ASSERT_EQ(map.end(), map.erase(it));
 }
 

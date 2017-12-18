@@ -440,7 +440,7 @@ namespace wlp {
          * @param rightmost the right most node in the tree
          * @return a pointer to the node that can be deleted
          */
-        node_type *eraseRebalance(
+        node_type *erase_rebalance(
                 node_type *node,
                 node_type *&root,
                 node_type *&leftmost,
@@ -753,7 +753,7 @@ namespace wlp {
          * Move assignment operator. Resources in this tree
          * are freed and replaced by moving those from the
          * assigned tree. The assigned tree is prepared for
-         * destrution.
+         * destruction.
          *
          * @param tree the tree to move
          * @return reference to this tree
@@ -859,7 +859,7 @@ namespace wlp {
             typename GetKey, typename GetVal, typename Cmp>
     inline typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::node_type *
     RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
-    ::eraseRebalance(
+    ::erase_rebalance(
             node_type *node,
             node_type *&root,
             node_type *&leftmost,
@@ -1128,7 +1128,7 @@ namespace wlp {
             typename GetKey, typename GetVal, typename Cmp>
     inline void RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::erase(const iterator &pos) {
-        node_type *carry = eraseRebalance(pos.m_node, m_header->m_parent, m_header->m_left, m_header->m_right);
+        node_type *carry = erase_rebalance(pos.m_node, m_header->m_parent, m_header->m_left, m_header->m_right);
         destroy_node(carry);
         --m_size;
     }
