@@ -92,42 +92,6 @@ namespace wlp {
     struct Pair<OpenHashMap<String16, String16>::iterator, bool>;
 
     template
-    struct OpenHashMapIterator<
-            String16,
-            String16,
-            String16 &,
-            String16 *,
-            Hash<String16, uint16_t>,
-            Equal<String16>>;
-
-    template
-    struct OpenHashMapIterator<
-            uint16_t,
-            uint16_t,
-            uint16_t &,
-            uint16_t *,
-            Hash<uint16_t, uint16_t>,
-            Equal<uint16_t>>;
-
-    template
-    struct OpenHashMapIterator<
-            String16,
-            String16,
-            const String16 &,
-            const String16 *,
-            Hash<String16, uint16_t>,
-            Equal<String16>>;
-
-    template
-    struct OpenHashMapIterator<
-            uint16_t,
-            uint16_t,
-            const uint16_t &,
-            const uint16_t *,
-            Hash<uint16_t, uint16_t>,
-            Equal<uint16_t>>;
-
-    template
     class ArrayHeap<int>;
 
     template
