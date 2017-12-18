@@ -14,6 +14,28 @@
 
 namespace wlp {
 
+    template<typename Key>
+    struct TreeSetGetKey {
+        typedef Key element_type;
+        typedef Key key_type;
+
+        template<typename E>
+        const key_type &operator()(E &&element) const {
+            return forward<E>(element);
+        }
+    };
+
+    template<typename Key>
+    struct TreeSetGetVal {
+        typedef Key element_type;
+        typedef Key val_type;
+
+        template<typename E>
+        val_type &operator()(E &&element) const {
+            return forward<E>(element);
+        }
+    };
+
     /**
      * Set implementation using @code RedBlackTree @endcode as the
      * backing data structure.
@@ -28,10 +50,10 @@ namespace wlp {
     class TreeSet {
     public:
         typedef TreeSet<Key, Cmp> set_type;
-        typedef RedBlackTree<Key, Key, Cmp> table_type;
-        typedef typename RedBlackTree<Key, Key, Cmp>::iterator iterator;
-        typedef typename RedBlackTree<Key, Key, Cmp>::const_iterator const_iterator;
-        typedef typename RedBlackTree<Key, Key, Cmp>::size_type size_type;
+        typedef RedBlackTree<Key, Key, Cmp, TreeSetGetKey<Key>, TreeSetGetVal<Key>> table_type;
+        typedef typename table_type::iterator iterator;
+        typedef typename table_type::const_iterator const_iterator;
+        typedef typename table_type::size_type size_type;
 
         typedef Key key_type;
 
@@ -87,7 +109,7 @@ namespace wlp {
 
         template<typename K>
         Pair<iterator, bool> insert(K &&key) {
-            return m_tree.insert_unique(forward<K>(key), forward<K>(key));
+            return m_tree.insert_unique(key);
         };
 
         bool contains(const key_type &key) const {

@@ -12,8 +12,31 @@
 
 #include "../Types.h"
 #include "RedBlackTree.h"
+#include "Tuple.h"
 
 namespace wlp {
+
+    template<typename Key, typename Val>
+    struct TreeMapGetKey {
+        typedef Tuple<Key, Val> element_type;
+        typedef Key key_type;
+
+        template<typename E>
+        const key_type &operator()(E &&element) const {
+            return get<0>(forward<E>(element));
+        }
+    };
+
+    template<typename Key, typename Val>
+    struct TreeMapGetVal {
+        typedef Tuple<Key, Val> element_type;
+        typedef Val val_type;
+
+        template<typename E>
+        val_type &operator()(E &&element) const {
+            return get<1>(forward<E>(element));
+        }
+    };
 
     /**
      * Map implementation using @code RedBlackTree @endcode as the
@@ -30,11 +53,11 @@ namespace wlp {
     class TreeMap {
     public:
         typedef TreeMap<Key, Val, Cmp> map_type;
-        typedef RedBlackTree<Key, Val, Cmp> table_type;
-        typedef typename RedBlackTree<Key, Val, Cmp>::node_type node_type;
-        typedef typename RedBlackTree<Key, Val, Cmp>::iterator iterator;
-        typedef typename RedBlackTree<Key, Val, Cmp>::const_iterator const_iterator;
-        typedef typename RedBlackTree<Key, Val, Cmp>::size_type size_type;
+        typedef RedBlackTree<Key, Val, Cmp, TreeMapGetKey<Key, Val>, TreeMapGetVal<Key, Val>> table_type;
+        typedef typename table_type::node_type node_type;
+        typedef typename table_type::iterator iterator;
+        typedef typename table_type::const_iterator const_iterator;
+        typedef typename table_type::size_type size_type;
 
         typedef Key key_type;
         typedef Val val_type;
@@ -91,12 +114,12 @@ namespace wlp {
 
         template<typename K, typename V>
         Pair<iterator, bool> insert(K &&key, V &&val) {
-            return m_tree.insert_unique(forward<K>(key), forward<V>(val));
+            return m_tree.insert_unique(make_tuple(forward<K>(key), forward<V>(val)));
         };
 
         template<typename K, typename V>
         Pair<iterator, bool> insert_or_assign(K &&key, V &&val) {
-            Pair<iterator, bool> result = m_tree.insert_unique(forward<K>(key), forward<V>(val));
+            Pair<iterator, bool> result = m_tree.insert_unique(make_tuple(forward<K>(key), forward<V>(val)));
             if (!result.m_second) {
                 *result.m_first = forward<V>(val);
             }
@@ -136,7 +159,7 @@ namespace wlp {
 
         template<typename K>
         val_type &operator[](K &&key) {
-            Pair<iterator, bool> result = m_tree.insert_unique(forward<K>(key), val_type());
+            Pair<iterator, bool> result = m_tree.insert_unique(make_tuple(forward<K>(key), val_type()));
             return *result.m_first;
         }
 

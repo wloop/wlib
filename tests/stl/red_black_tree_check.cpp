@@ -5,22 +5,28 @@
 #include "stl/ArrayList.h"
 #include "stl/ArrayHeap.h"
 #include "stl/RedBlackTree.h"
+#include "stl/Tuple.h"
+#include "stl/TreeMap.h"
 
 #include "../test_helper.h"
 
 using namespace wlp;
 
-typedef RedBlackTree<char, int>::iterator rbi;
-typedef RedBlackTree<char, int> rb_tree;
+typedef Tuple<char, int> _rb_element;
+typedef TreeMapGetKey<char, int> _rb_key;
+typedef TreeMapGetVal<char, int> _rb_val;
+
+typedef typename RedBlackTree<_rb_element, char, int, _rb_key, _rb_val>::iterator rbi;
+typedef RedBlackTree<_rb_element, char, int, _rb_key, _rb_val> rb_tree;
 
 TEST(rb_tree_test, test_insert_iterator_order) {
     char keys[] = {'g', 'h', 'j', 'k', 'y', 'c', 'd', 'q', 'w'};
     int vals[] = {5, 1, 0, 9, -1, -4, 12, 10, -66};
     OpenHashMap<char, int> val_map(20);
-    RedBlackTree<char, int> tree;
+    rb_tree tree;
     for (size_type i = 0; i < 9; i++) {
         val_map.insert(keys[i], vals[i]);
-        Pair<rbi, bool> res = tree.insert_unique(keys[i], vals[i]);
+        Pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));
         ASSERT_TRUE(res.second());
         ASSERT_EQ(vals[i], *res.first());
     }
@@ -31,7 +37,7 @@ TEST(rb_tree_test, test_insert_iterator_order) {
     for (size_type i = 0; i < key_list.size(); i++) {
         char expected_key = key_list[i];
         int expected_val = val_map[expected_key];
-        char key = it.key();
+        char key = get<0>(it.m_node->m_element);
         int val = *it;
         ASSERT_EQ(expected_key, key);
         ASSERT_EQ(expected_val, val);
@@ -53,7 +59,7 @@ TEST(rb_tree_test, test_insert_unique_find) {
     OpenHashSet<char> key_set(80);
     for (int i = 0; i < 40; i++) {
         vals[i] = random_int();
-        Pair<rbi, bool> res = tree.insert_unique(keys[i], vals[i]);
+        Pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));
         if (key_set.contains(keys[i])) {
             ASSERT_FALSE(res.second());
         } else {
@@ -70,16 +76,16 @@ TEST(rb_tree_test, test_insert_unique_find) {
     ReverseComparator<char> cmp;
     heap_sort(key_list, cmp);
     for (int i = 0; i < 40; i++) {
-        Pair<rbi, bool> res = tree.insert_unique(keys[i], vals[i]);
+        Pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));
         ASSERT_FALSE(res.second());
         ASSERT_EQ(val_map[keys[i]], *res.first());
-        ASSERT_EQ(keys[i], res.first().key());
+        ASSERT_EQ(keys[i], get<0>(res.first().m_node->m_element));
     }
     ASSERT_EQ(key_set.size(), tree.size());
     int count = 0;
     ArrayList<char>::iterator kit = key_list.begin();
     for (rbi it = --tree.end();; --it) {
-        ASSERT_EQ(*kit, it.key());
+        ASSERT_EQ(*kit, get<0>(it.m_node->m_element));
         ASSERT_EQ(val_map[*kit], *it);
         ++kit;
         if (it == tree.begin()) {
@@ -106,9 +112,9 @@ TEST(rb_tree_test, test_insert_equal_and_range) {
     size_type cnt = 10;
     rb_tree tree;
     for (int i = 0; i < cnt; i++) {
-        rbi it = tree.insert_equal(keys[i], values[i]);
+        rbi it = tree.insert_equal(make_tuple(keys[i], values[i]));
         ASSERT_EQ(values[i], *it);
-        ASSERT_EQ(keys[i], it.key());
+        ASSERT_EQ(keys[i], get<0>(it.m_node->m_element));
         val_set.insert(values[i]);
     }
     char ukeys[] = {'a', 'b', 'c', 'd'};
