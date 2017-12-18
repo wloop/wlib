@@ -1,5 +1,11 @@
 <map id="wlp::make_tuple" name="wlp::make_tuple">
-<area shape="rect" id="node2" href="$d5/dca/namespacewlp.html#ae41053c70e843746dca64067cf8c0569" title="wlp::tuple_cat_pair_sub" alt="" coords="171,5,330,32"/>
-<area shape="rect" id="node3" href="$d5/dca/namespacewlp.html#a447cceb8493717b7192963b2266d1553" title="wlp::tuple_cat_pair" alt="" coords="379,5,509,32"/>
-<area shape="rect" id="node4" href="$d5/dca/namespacewlp.html#afdd2db039584f8a0aafea650ffa9299b" title="wlp::tuple_cat" alt="" coords="558,5,661,32"/>
+<area shape="rect" id="node2" href="$da/d4c/classwlp_1_1_tree_map.html#a977d58371702e294ec6706c56a5d4163" title="wlp::TreeMap::insert" alt="" coords="200,5,341,32"/>
+<area shape="rect" id="node3" href="$d3/d28/classwlp_1_1_open_hash_map.html#a2007a5d41f9ced43ddbc623d989e083d" title="wlp::OpenHashMap::insert" alt="" coords="182,56,359,83"/>
+<area shape="rect" id="node4" href="$da/d4c/classwlp_1_1_tree_map.html#a94a4d16a031a4d049aa174b68baaa06b" title="wlp::TreeMap::insert\l_or_assign" alt="" coords="200,107,341,149"/>
+<area shape="rect" id="node5" href="$d3/d28/classwlp_1_1_open_hash_map.html#a323b95f06a380bb8900243f2931fa84c" title="wlp::OpenHashMap::insert\l_or_assign" alt="" coords="182,173,359,214"/>
+<area shape="rect" id="node6" href="$da/d4c/classwlp_1_1_tree_map.html#a9f2fa21232ceaf0c2e0eda9a37e4e31a" title="wlp::TreeMap::operator[]" alt="" coords="189,239,353,265"/>
+<area shape="rect" id="node7" href="$d3/d28/classwlp_1_1_open_hash_map.html#a055bcdf97997e43e0a42bb5ff50e5d39" title="wlp::OpenHashMap::operator[]" alt="" coords="171,289,371,316"/>
+<area shape="rect" id="node8" href="$d5/dca/namespacewlp.html#ae41053c70e843746dca64067cf8c0569" title="wlp::tuple_cat_pair_sub" alt="" coords="191,340,350,367"/>
+<area shape="rect" id="node9" href="$d5/dca/namespacewlp.html#a447cceb8493717b7192963b2266d1553" title="wlp::tuple_cat_pair" alt="" coords="419,340,549,367"/>
+<area shape="rect" id="node10" href="$d5/dca/namespacewlp.html#afdd2db039584f8a0aafea650ffa9299b" title="wlp::tuple_cat" alt="" coords="598,340,701,367"/>
 </map>

@@ -11,10 +11,10 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-34 106,-34 106,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:href="da/d0d/structwlp_1_1tuple__cat__type_3_01_tuple_a_00_01_tuple_b_01_4.html" target="_top" xlink:title="wlp::tuple_cat_type\l\&lt; TupleA, TupleB \&gt;">
-<polygon fill="white" stroke="black" points="0,-0 0,-30 102,-30 102,-0 0,-0"/>
-<text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::tuple_cat_type</text>
-<text text-anchor="middle" x="51" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; TupleA, TupleB &gt;</text>
+<g id="a_node1"><a xlink:href="d2/ddb/structwlp_1_1string__concept.html" target="_top" xlink:title="wlp::string_concept\l\&lt; C, bool \&gt;">
+<polygon fill="white" stroke="black" points="0.5,-0 0.5,-30 101.5,-30 101.5,-0 0.5,-0"/>
+<text text-anchor="start" x="8.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::string_concept</text>
+<text text-anchor="middle" x="51" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; C, bool &gt;</text>
 </a>
 </g>
 </g>

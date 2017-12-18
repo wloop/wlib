@@ -1,21 +1,23 @@
 <map id="stl/Pair.h" name="stl/Pair.h">
-<area shape="rect" id="node2" href="$d8/dd7/_concept_8h.html" title="Concept definitions. " alt="" coords="577,80,677,107"/>
-<area shape="rect" id="node10" href="$d5/d08/_red_black_tree_8h.html" title="Red black tree implementation. " alt="" coords="687,453,821,480"/>
-<area shape="rect" id="node14" href="$d3/dbe/_chain_map_8h.html" title="Hasher map implementation. " alt="" coords="153,379,263,405"/>
-<area shape="rect" id="node16" href="$d5/d7a/_open_map_8h.html" title="Hash map implementation. " alt="" coords="22,379,129,405"/>
-<area shape="rect" id="node20" href="$d7/d2a/_tuple_8h.html" title="Template oriented tuple implementation. " alt="" coords="791,80,873,107"/>
-<area shape="rect" id="node3" href="$de/d0b/_string_iterator_8h.html" title="strings/StringIterator.h" alt="" coords="437,155,587,181"/>
-<area shape="rect" id="node9" href="$df/d03/_array_heap_8h.html" title="Heap manipulation and implementation. " alt="" coords="549,453,662,480"/>
-<area shape="rect" id="node4" href="$db/db5/_string_8h.html" title="strings/String.h" alt="" coords="400,229,510,256"/>
-<area shape="rect" id="node5" href="$de/d6d/_bitset_8h.html" title="Bitset is a class that provides bits manipulation methods. " alt="" coords="494,304,579,331"/>
-<area shape="rect" id="node8" href="$d7/d0c/_comparator_8h.html" title="Comparator implementation for basic types. " alt="" coords="547,379,665,405"/>
-<area shape="rect" id="node13" href="$d2/dc2/_equal_8h.html" title="stl/Equal.h" alt="" coords="385,304,469,331"/>
-<area shape="rect" id="node18" href="$d2/dad/_hash_8h.html" title="stl/Hash.h" alt="" coords="79,304,161,331"/>
-<area shape="rect" id="node19" href="$d9/dae/_string_8cpp.html" title="strings/String.cpp" alt="" coords="237,304,361,331"/>
-<area shape="rect" id="node6" href="$de/d66/_packet_constructor_8h.html" title="comm/PacketConstructor.h" alt="" coords="340,379,522,405"/>
-<area shape="rect" id="node7" href="$d9/dde/_packet_constructor_8cpp.html" title="Creates a packet for sending data from the slave systems to the main computer. " alt="" coords="329,453,525,480"/>
-<area shape="rect" id="node11" href="$df/d87/_tree_map_8h.html" title="Map implementation using red black tree. " alt="" coords="641,528,743,555"/>
-<area shape="rect" id="node12" href="$dd/dba/_tree_set_8h.html" title="Set implementation using red black tree. " alt="" coords="768,528,865,555"/>
-<area shape="rect" id="node17" href="$d0/de6/_open_set_8h.html" title="Hash set implementation. " alt="" coords="24,453,126,480"/>
-<area shape="rect" id="node15" href="$d6/d59/_chain_set_8h.html" title="Hash set implementation. " alt="" coords="156,453,261,480"/>
+<area shape="rect" id="node2" href="$d8/dd7/_concept_8h.html" title="Concept definitions. " alt="" coords="558,80,657,107"/>
+<area shape="rect" id="node10" href="$d5/d08/_red_black_tree_8h.html" title="Red black tree implementation. " alt="" coords="610,453,744,480"/>
+<area shape="rect" id="node14" href="$d3/dbe/_chain_map_8h.html" title="Hasher map implementation. " alt="" coords="353,379,463,405"/>
+<area shape="rect" id="node17" href="$d8/d2e/_open_table_8h.html" title="stl/OpenTable.h" alt="" coords="783,379,897,405"/>
+<area shape="rect" id="node18" href="$d0/de6/_open_set_8h.html" title="Hash set implementation. " alt="" coords="901,453,1003,480"/>
+<area shape="rect" id="node21" href="$d7/d2a/_tuple_8h.html" title="Template oriented tuple implementation. " alt="" coords="1073,304,1155,331"/>
+<area shape="rect" id="node3" href="$de/d0b/_string_iterator_8h.html" title="strings/StringIterator.h" alt="" coords="533,155,683,181"/>
+<area shape="rect" id="node9" href="$df/d03/_array_heap_8h.html" title="Heap manipulation and implementation. " alt="" coords="225,453,337,480"/>
+<area shape="rect" id="node4" href="$db/db5/_string_8h.html" title="strings/String.h" alt="" coords="553,229,663,256"/>
+<area shape="rect" id="node5" href="$de/d6d/_bitset_8h.html" title="Bitset is a class that provides bits manipulation methods. " alt="" coords="285,304,371,331"/>
+<area shape="rect" id="node8" href="$d7/d0c/_comparator_8h.html" title="Comparator implementation for basic types. " alt="" coords="487,379,605,405"/>
+<area shape="rect" id="node13" href="$d2/dc2/_equal_8h.html" title="stl/Equal.h" alt="" coords="753,304,836,331"/>
+<area shape="rect" id="node19" href="$d2/dad/_hash_8h.html" title="stl/Hash.h" alt="" coords="645,304,727,331"/>
+<area shape="rect" id="node20" href="$d9/dae/_string_8cpp.html" title="strings/String.cpp" alt="" coords="446,304,569,331"/>
+<area shape="rect" id="node6" href="$de/d66/_packet_constructor_8h.html" title="comm/PacketConstructor.h" alt="" coords="17,379,199,405"/>
+<area shape="rect" id="node7" href="$d9/dde/_packet_constructor_8cpp.html" title="Creates a packet for sending data from the slave systems to the main computer. " alt="" coords="5,453,200,480"/>
+<area shape="rect" id="node11" href="$df/d87/_tree_map_8h.html" title="Map implementation using red black tree. " alt="" coords="1063,528,1165,555"/>
+<area shape="rect" id="node12" href="$dd/dba/_tree_set_8h.html" title="Set implementation using red black tree. " alt="" coords="786,528,883,555"/>
+<area shape="rect" id="node16" href="$d5/d7a/_open_map_8h.html" title="Hash map implementation. " alt="" coords="769,453,876,480"/>
+<area shape="rect" id="node15" href="$d6/d59/_chain_set_8h.html" title="Hash set implementation. " alt="" coords="362,453,467,480"/>
+<area shape="rect" id="node22" href="$d9/d37/_table_8h.html" title="stl/Table.h" alt="" coords="1073,379,1155,405"/>
 </map>

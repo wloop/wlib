@@ -16,7 +16,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="../../d3/def/classwlp_1_1_red_black_tree.html#a3306ac331fddba9c6984f738d56f6969" target="_top" xlink:title="wlp::RedBlackTree::\lempty">
+<g id="a_node2"><a xlink:href="../../d3/def/classwlp_1_1_red_black_tree.html#a665e671cc297d41473976371a9962fa3" target="_top" xlink:title="wlp::RedBlackTree::\lempty">
 <polygon fill="white" stroke="black" points="142,-0 142,-30 248,-30 248,-0 142,-0"/>
 <text text-anchor="start" x="150" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::RedBlackTree::</text>
 <text text-anchor="middle" x="195" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">empty</text>

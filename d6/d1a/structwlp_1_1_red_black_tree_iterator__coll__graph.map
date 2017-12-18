@@ -1,3 +1,3 @@
-<map id="wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;" name="wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;">
-<area shape="rect" id="node2" href="$d9/d53/structwlp_1_1_red_black_tree_node.html" title="wlp::RedBlackTreeNode\l\&lt; Key, Val \&gt;" alt="" coords="27,97,191,138"/>
+<map id="wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;" name="wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;">
+<area shape="rect" id="node2" href="$d9/d53/structwlp_1_1_red_black_tree_node.html" title="wlp::RedBlackTreeNode\l\&lt; Element \&gt;" alt="" coords="7,97,171,138"/>
 </map>

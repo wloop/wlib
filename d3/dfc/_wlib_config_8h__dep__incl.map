@@ -1,7 +1,8 @@
 <map id="WlibConfig.h" name="WlibConfig.h">
-<area shape="rect" id="node2" href="$d2/dad/_hash_8h.html" title="stl/Hash.h" alt="" coords="152,80,233,107"/>
+<area shape="rect" id="node2" href="$d2/dad/_hash_8h.html" title="stl/Hash.h" alt="" coords="159,80,240,107"/>
 <area shape="rect" id="node3" href="$d3/dbe/_chain_map_8h.html" title="Hasher map implementation. " alt="" coords="5,155,115,181"/>
-<area shape="rect" id="node5" href="$d5/d7a/_open_map_8h.html" title="Hash map implementation. " alt="" coords="140,155,247,181"/>
-<area shape="rect" id="node6" href="$d0/de6/_open_set_8h.html" title="Hash set implementation. " alt="" coords="187,229,289,256"/>
+<area shape="rect" id="node5" href="$d5/d7a/_open_map_8h.html" title="Hash map implementation. " alt="" coords="143,229,249,256"/>
+<area shape="rect" id="node6" href="$d8/d2e/_open_table_8h.html" title="stl/OpenTable.h" alt="" coords="191,155,305,181"/>
+<area shape="rect" id="node7" href="$d0/de6/_open_set_8h.html" title="Hash set implementation. " alt="" coords="285,229,387,256"/>
 <area shape="rect" id="node4" href="$d6/d59/_chain_set_8h.html" title="Hash set implementation. " alt="" coords="7,229,112,256"/>
 </map>

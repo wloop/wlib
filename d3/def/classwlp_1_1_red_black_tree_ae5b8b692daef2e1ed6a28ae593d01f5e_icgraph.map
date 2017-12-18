@@ -1,0 +1,5 @@
+<map id="wlp::RedBlackTree::erase" name="wlp::RedBlackTree::erase">
+<area shape="rect" id="node2" href="$d3/def/classwlp_1_1_red_black_tree.html#ac4663229427e65a9dd3b8fe416a91079" title="wlp::RedBlackTree\&lt;\l Tuple\&lt; Key, Val \&gt;,\l Key, Val, MapGetKey\l\&lt; Key, Val \&gt;, MapGetVal\l\&lt; Key, Val \&gt;, Cmp \&gt;::clear" alt="" coords="195,5,375,91"/>
+<area shape="rect" id="node3" href="$dd/d7e/classwlp_1_1_tree_set.html#a374f622affe028cb741aac9e2f3fb202" title="wlp::TreeSet::erase" alt="" coords="217,115,353,141"/>
+<area shape="rect" id="node4" href="$da/d4c/classwlp_1_1_tree_map.html#ae0c4c7ca8c0896f589e349d2da197415" title="wlp::TreeMap::erase" alt="" coords="215,165,356,192"/>
+</map>

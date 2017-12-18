@@ -11,9 +11,9 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-34 116,-34 116,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:href="df/d45/structwlp_1_1obtain__size__type.html" target="_top" xlink:title="wlp::obtain_size_type\l\&lt; C, typename \&gt;">
-<polygon fill="white" stroke="black" points="0.5,-0 0.5,-30 111.5,-30 111.5,-0 0.5,-0"/>
-<text text-anchor="start" x="8.5" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::obtain_size_type</text>
+<g id="a_node1"><a xlink:href="d0/d37/structwlp_1_1obtain__map__type.html" target="_top" xlink:title="wlp::obtain_map_type\l\&lt; C, typename \&gt;">
+<polygon fill="white" stroke="black" points="0,-0 0,-30 112,-30 112,-0 0,-0"/>
+<text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::obtain_map_type</text>
 <text text-anchor="middle" x="56" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; C, typename &gt;</text>
 </a>
 </g>

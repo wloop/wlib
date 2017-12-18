@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Waterloop Wlib: wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt; Struct Template Reference</title>
+<title>Waterloop Wlib: wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt; Struct Template Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -87,7 +87,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <a href="#pub-attribs">Data Fields</a> &#124;
 <a href="#pri-types">Private Types</a>  </div>
   <div class="headertitle">
-<div class="title">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt; Struct Template Reference</div>  </div>
+<div class="title">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -95,132 +95,102 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ac3b5ef124a1bd48e00b8702407d24cd3"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html">RedBlackTreeNode</a>&lt; Key, <br class="typebreak"/>
-Val &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ac3b5ef124a1bd48e00b8702407d24cd3">node_type</a></td></tr>
-<tr class="separator:ac3b5ef124a1bd48e00b8702407d24cd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a423456e2088c19dc3471004ad9e83f3d"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">RedBlackTreeIterator</a><br class="typebreak"/>
-&lt; Key, Val, Val &amp;, Val * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a423456e2088c19dc3471004ad9e83f3d">iterator</a></td></tr>
-<tr class="separator:a423456e2088c19dc3471004ad9e83f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76fde48c63be2db4f5a9a3a493406a3f"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">RedBlackTreeIterator</a><br class="typebreak"/>
-&lt; Key, Val, const Val &amp;, const <br class="typebreak"/>
-Val * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a76fde48c63be2db4f5a9a3a493406a3f">const_iterator</a></td></tr>
-<tr class="separator:a76fde48c63be2db4f5a9a3a493406a3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a443d19d30f788b9f63bdd1022655025c"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../df/d4f/structwlp_1_1_red_black_tree_color.html">RedBlackTreeColor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a443d19d30f788b9f63bdd1022655025c">color</a></td></tr>
-<tr class="separator:a443d19d30f788b9f63bdd1022655025c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9e607d2ab86db39fb89625c528fcdf6"><td class="memItemLeft" align="right" valign="top">typedef Ref&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ac9e607d2ab86db39fb89625c528fcdf6">reference</a></td></tr>
-<tr class="separator:ac9e607d2ab86db39fb89625c528fcdf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f2b8ded4dc3bdd561404ebdaefa9de0"><td class="memItemLeft" align="right" valign="top">typedef Ptr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a5f2b8ded4dc3bdd561404ebdaefa9de0">pointer</a></td></tr>
-<tr class="separator:a5f2b8ded4dc3bdd561404ebdaefa9de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb4abf15f3e935370c39260a321e1fe5"><td class="memItemLeft" align="right" valign="top">typedef Key&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afb4abf15f3e935370c39260a321e1fe5">key_type</a></td></tr>
-<tr class="separator:afb4abf15f3e935370c39260a321e1fe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b8800bbaf5957b678bd9fa07bb8fc2b"><td class="memItemLeft" align="right" valign="top">typedef Val&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a0b8800bbaf5957b678bd9fa07bb8fc2b">val_type</a></td></tr>
-<tr class="separator:a0b8800bbaf5957b678bd9fa07bb8fc2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58dd4f13c56630f5175ec5bc9e6cce82"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html">RedBlackTreeNode</a>&lt; Element &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a58dd4f13c56630f5175ec5bc9e6cce82">node_type</a></td></tr>
+<tr class="separator:a58dd4f13c56630f5175ec5bc9e6cce82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf8d2a87b260fb986925ef1bd67aa066"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">RedBlackTreeIterator</a><br class="typebreak"/>
+&lt; Element, Val, Val &amp;, Val <br class="typebreak"/>
+*, GetVal &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#abf8d2a87b260fb986925ef1bd67aa066">iterator</a></td></tr>
+<tr class="separator:abf8d2a87b260fb986925ef1bd67aa066"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25f7ba429412a5885f584f788536f70e"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">RedBlackTreeIterator</a><br class="typebreak"/>
+&lt; Element, Val, const Val <br class="typebreak"/>
+&amp;, const Val *, GetVal &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a25f7ba429412a5885f584f788536f70e">const_iterator</a></td></tr>
+<tr class="separator:a25f7ba429412a5885f584f788536f70e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae2471ec2b4eb1e5c6f495bf8ae2203d"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../df/d4f/structwlp_1_1_red_black_tree_color.html">RedBlackTreeColor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#aae2471ec2b4eb1e5c6f495bf8ae2203d">color</a></td></tr>
+<tr class="separator:aae2471ec2b4eb1e5c6f495bf8ae2203d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6563aacdbd3edefd40d5726204b5d2b"><td class="memItemLeft" align="right" valign="top">typedef Ref&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ab6563aacdbd3edefd40d5726204b5d2b">reference</a></td></tr>
+<tr class="separator:ab6563aacdbd3edefd40d5726204b5d2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13d381f85b6aa3cd5c2a42eeb737c231"><td class="memItemLeft" align="right" valign="top">typedef Ptr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a13d381f85b6aa3cd5c2a42eeb737c231">pointer</a></td></tr>
+<tr class="separator:a13d381f85b6aa3cd5c2a42eeb737c231"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2acff785038f21a9c70b70a84eed0689"><td class="memItemLeft" align="right" valign="top">typedef Element&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a2acff785038f21a9c70b70a84eed0689">element_type</a></td></tr>
+<tr class="separator:a2acff785038f21a9c70b70a84eed0689"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5081ae2bbbc6e73137fdc2503207325b"><td class="memItemLeft" align="right" valign="top">typedef GetVal&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a5081ae2bbbc6e73137fdc2503207325b">get_value</a></td></tr>
+<tr class="separator:a5081ae2bbbc6e73137fdc2503207325b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa20fc53952a7d7be2f2708cd5bd15440"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#aa20fc53952a7d7be2f2708cd5bd15440">RedBlackTreeIterator</a> (<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ac3b5ef124a1bd48e00b8702407d24cd3">node_type</a> *node)</td></tr>
-<tr class="separator:aa20fc53952a7d7be2f2708cd5bd15440"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3b9fddd961c8ec2830810355608e730"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ac3b9fddd961c8ec2830810355608e730">RedBlackTreeIterator</a> (const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a> &amp;it)</td></tr>
-<tr class="separator:ac3b9fddd961c8ec2830810355608e730"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f215023ae489da683bc009bc8ac474f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a2f215023ae489da683bc009bc8ac474f">increment</a> ()</td></tr>
-<tr class="separator:a2f215023ae489da683bc009bc8ac474f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bd91a5aeb57a7df8e47cbdac2bcc48d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a8bd91a5aeb57a7df8e47cbdac2bcc48d">decrement</a> ()</td></tr>
-<tr class="separator:a8bd91a5aeb57a7df8e47cbdac2bcc48d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaacd821be200e6b8d66752f68e51cb03"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#aaacd821be200e6b8d66752f68e51cb03">operator==</a> (const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a> &amp;it) const </td></tr>
-<tr class="separator:aaacd821be200e6b8d66752f68e51cb03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfb8fc056947dc408e4e05c840fdc631"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#adfb8fc056947dc408e4e05c840fdc631">operator!=</a> (const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a> &amp;it) const </td></tr>
-<tr class="separator:adfb8fc056947dc408e4e05c840fdc631"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe58d6df539ae3d3fd384b8f8fe4c3b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ac9e607d2ab86db39fb89625c528fcdf6">reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#abe58d6df539ae3d3fd384b8f8fe4c3b2">operator*</a> () const </td></tr>
-<tr class="separator:abe58d6df539ae3d3fd384b8f8fe4c3b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab514fb022f398db76eb07dc0778189c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a5f2b8ded4dc3bdd561404ebdaefa9de0">pointer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ab514fb022f398db76eb07dc0778189c0">operator-&gt;</a> () const </td></tr>
-<tr class="separator:ab514fb022f398db76eb07dc0778189c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67795d712cbefb8ceb33a9e91a707ccb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a67795d712cbefb8ceb33a9e91a707ccb">operator++</a> ()</td></tr>
-<tr class="separator:a67795d712cbefb8ceb33a9e91a707ccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af585bca8eb905f8f467818603b6d3bda"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#af585bca8eb905f8f467818603b6d3bda">operator++</a> (int)</td></tr>
-<tr class="separator:af585bca8eb905f8f467818603b6d3bda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83d7307305c04b3c1e45a32cce7ab5d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a83d7307305c04b3c1e45a32cce7ab5d5">operator--</a> ()</td></tr>
-<tr class="separator:a83d7307305c04b3c1e45a32cce7ab5d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52edd3302614a73e5efcb2829ba69808"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a52edd3302614a73e5efcb2829ba69808">operator--</a> (int)</td></tr>
-<tr class="separator:a52edd3302614a73e5efcb2829ba69808"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60c8178d07940bebd09c5517319d400c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afb4abf15f3e935370c39260a321e1fe5">key_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a60c8178d07940bebd09c5517319d400c">key</a> () const </td></tr>
-<tr class="separator:a60c8178d07940bebd09c5517319d400c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ed775054c4da9777954208779f430d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a4ed775054c4da9777954208779f430d5">operator=</a> (const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a> &amp;it)</td></tr>
-<tr class="separator:a4ed775054c4da9777954208779f430d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86c8e77fd78db6070baf866f5030904f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a86c8e77fd78db6070baf866f5030904f">RedBlackTreeIterator</a> (<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a58dd4f13c56630f5175ec5bc9e6cce82">node_type</a> *node)</td></tr>
+<tr class="separator:a86c8e77fd78db6070baf866f5030904f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c47b035f60ecbd6d30e5ab8ac55d4e2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a9c47b035f60ecbd6d30e5ab8ac55d4e2">RedBlackTreeIterator</a> (const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a> &amp;it)</td></tr>
+<tr class="separator:a9c47b035f60ecbd6d30e5ab8ac55d4e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad85eb65dc32473f83afb723d6d883956"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ad85eb65dc32473f83afb723d6d883956">increment</a> ()</td></tr>
+<tr class="separator:ad85eb65dc32473f83afb723d6d883956"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fdb7fe107d6cc3f12b164dd539a0eec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a4fdb7fe107d6cc3f12b164dd539a0eec">decrement</a> ()</td></tr>
+<tr class="separator:a4fdb7fe107d6cc3f12b164dd539a0eec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad54771d5bba01e52e8c109f0e6541937"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ad54771d5bba01e52e8c109f0e6541937">operator==</a> (const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a> &amp;it) const </td></tr>
+<tr class="separator:ad54771d5bba01e52e8c109f0e6541937"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a5836b53e3e14bd5b71a3294a459fc6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a6a5836b53e3e14bd5b71a3294a459fc6">operator!=</a> (const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a> &amp;it) const </td></tr>
+<tr class="separator:a6a5836b53e3e14bd5b71a3294a459fc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9260b10408b9d24e048d78a6d37ff4b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ab6563aacdbd3edefd40d5726204b5d2b">reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a9260b10408b9d24e048d78a6d37ff4b3">operator*</a> () const </td></tr>
+<tr class="separator:a9260b10408b9d24e048d78a6d37ff4b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a566c40d00e5a05b6cbbea83d3aa4f9ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a13d381f85b6aa3cd5c2a42eeb737c231">pointer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a566c40d00e5a05b6cbbea83d3aa4f9ce">operator-&gt;</a> () const </td></tr>
+<tr class="separator:a566c40d00e5a05b6cbbea83d3aa4f9ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2db5b3665a4eea4f9a3301cf84d3aeda"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a2db5b3665a4eea4f9a3301cf84d3aeda">operator++</a> ()</td></tr>
+<tr class="separator:a2db5b3665a4eea4f9a3301cf84d3aeda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37ad728361f6d2273c568f9ba66450ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a37ad728361f6d2273c568f9ba66450ff">operator++</a> (int)</td></tr>
+<tr class="separator:a37ad728361f6d2273c568f9ba66450ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f2acd70463f671ef51f091a336be3ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a3f2acd70463f671ef51f091a336be3ac">operator--</a> ()</td></tr>
+<tr class="separator:a3f2acd70463f671ef51f091a336be3ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0c64f9a57db6821b0ec9f4784bb0f2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ab0c64f9a57db6821b0ec9f4784bb0f2f">operator--</a> (int)</td></tr>
+<tr class="separator:ab0c64f9a57db6821b0ec9f4784bb0f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1726077dabda05b437d3eecb6b64307"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ad1726077dabda05b437d3eecb6b64307">operator=</a> (const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a> &amp;it)</td></tr>
+<tr class="separator:ad1726077dabda05b437d3eecb6b64307"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a738ce4429cc1b97767066dc9862e5b07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ac3b5ef124a1bd48e00b8702407d24cd3">node_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a></td></tr>
-<tr class="separator:a738ce4429cc1b97767066dc9862e5b07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a2d398210f03f99854b028ecf76be4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a58dd4f13c56630f5175ec5bc9e6cce82">node_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a></td></tr>
+<tr class="separator:a1a2d398210f03f99854b028ecf76be4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44f56dc8eda057409c631b3e7be72d91"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a5081ae2bbbc6e73137fdc2503207325b">get_value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a44f56dc8eda057409c631b3e7be72d91">m_get_value</a> {}</td></tr>
+<tr class="separator:a44f56dc8eda057409c631b3e7be72d91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
 Private Types</h2></td></tr>
-<tr class="memitem:afd4797de8453426e09fde7df2f725bf6"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">RedBlackTreeIterator</a><br class="typebreak"/>
-&lt; Key, Val, Ref, Ptr &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a></td></tr>
-<tr class="separator:afd4797de8453426e09fde7df2f725bf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7925ea450d33d096a765953e5a1118ea"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">RedBlackTreeIterator</a><br class="typebreak"/>
+&lt; Element, Val, Ref, Ptr, <br class="typebreak"/>
+GetVal &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a></td></tr>
+<tr class="separator:a7925ea450d33d096a765953e5a1118ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename Key, typename Val, typename Ref, typename Ptr&gt;<br/>
-struct wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;</h3>
+<div class="textblock"><h3>template&lt;typename Element, typename Val, typename Ref, typename Ptr, typename GetVal&gt;<br/>
+struct wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;</h3>
 
 <p>Tree iterator class, templated to enable constant and non-constant derived types. This class should not be used directly.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
+    <tr><td class="paramname">Element</td><td>element type which contains the key and value </td></tr>
     <tr><td class="paramname">Key</td><td>the node key type </td></tr>
-    <tr><td class="paramname">Val</td><td>the node value type </td></tr>
     <tr><td class="paramname">Ref</td><td>reference to value type, which may be a constant reference </td></tr>
     <tr><td class="paramname">Ptr</td><td>pointer to value type, which may be a constant pointer </td></tr>
+    <tr><td class="paramname">GetVal</td><td>struct which returns the value of an element </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00125">125</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00123">123</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
 </div><div class="dynheader">
-Collaboration diagram for wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;:</div>
+Collaboration diagram for wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d6/d1a/structwlp_1_1_red_black_tree_iterator__coll__graph.svg" width="275" height="251"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d6/d1a/structwlp_1_1_red_black_tree_iterator__coll__graph.svg" width="367" height="264"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a443d19d30f788b9f63bdd1022655025c"></a>
+<a class="anchor" id="aae2471ec2b4eb1e5c6f495bf8ae2203d"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="../../df/d4f/structwlp_1_1_red_black_tree_color.html">RedBlackTreeColor</a> <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a443d19d30f788b9f63bdd1022655025c">color</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00129">129</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a76fde48c63be2db4f5a9a3a493406a3f"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">RedBlackTreeIterator</a>&lt;Key, Val, const Val &amp;, const Val *&gt; <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a76fde48c63be2db4f5a9a3a493406a3f">const_iterator</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00128">128</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a423456e2088c19dc3471004ad9e83f3d"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">RedBlackTreeIterator</a>&lt;Key, Val, Val &amp;, Val *&gt; <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a423456e2088c19dc3471004ad9e83f3d">iterator</a></td>
+          <td class="memname">typedef <a class="el" href="../../df/d4f/structwlp_1_1_red_black_tree_color.html">RedBlackTreeColor</a> <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#aae2471ec2b4eb1e5c6f495bf8ae2203d">color</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -229,30 +199,14 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
 
 </div>
 </div>
-<a class="anchor" id="afb4abf15f3e935370c39260a321e1fe5"></a>
+<a class="anchor" id="a25f7ba429412a5885f584f788536f70e"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef Key <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afb4abf15f3e935370c39260a321e1fe5">key_type</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00132">132</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac3b5ef124a1bd48e00b8702407d24cd3"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html">RedBlackTreeNode</a>&lt;Key, Val&gt; <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ac3b5ef124a1bd48e00b8702407d24cd3">node_type</a></td>
+          <td class="memname">typedef <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">RedBlackTreeIterator</a>&lt;Element, Val, const Val &amp;, const Val *, GetVal&gt; <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a25f7ba429412a5885f584f788536f70e">const_iterator</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -261,30 +215,14 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
 
 </div>
 </div>
-<a class="anchor" id="a5f2b8ded4dc3bdd561404ebdaefa9de0"></a>
+<a class="anchor" id="a2acff785038f21a9c70b70a84eed0689"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef Ptr <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a5f2b8ded4dc3bdd561404ebdaefa9de0">pointer</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00131">131</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac9e607d2ab86db39fb89625c528fcdf6"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef Ref <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ac9e607d2ab86db39fb89625c528fcdf6">reference</a></td>
+          <td class="memname">typedef Element <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a2acff785038f21a9c70b70a84eed0689">element_type</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -293,17 +231,97 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
 
 </div>
 </div>
-<a class="anchor" id="afd4797de8453426e09fde7df2f725bf6"></a>
+<a class="anchor" id="a5081ae2bbbc6e73137fdc2503207325b"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef GetVal <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a5081ae2bbbc6e73137fdc2503207325b">get_value</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00131">131</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abf8d2a87b260fb986925ef1bd67aa066"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">RedBlackTreeIterator</a>&lt;Element, Val, Val &amp;, Val *, GetVal&gt; <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#abf8d2a87b260fb986925ef1bd67aa066">iterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00125">125</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a58dd4f13c56630f5175ec5bc9e6cce82"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html">RedBlackTreeNode</a>&lt;Element&gt; <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a58dd4f13c56630f5175ec5bc9e6cce82">node_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00124">124</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a13d381f85b6aa3cd5c2a42eeb737c231"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef Ptr <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a13d381f85b6aa3cd5c2a42eeb737c231">pointer</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00129">129</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab6563aacdbd3edefd40d5726204b5d2b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef Ref <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ab6563aacdbd3edefd40d5726204b5d2b">reference</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00128">128</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7925ea450d33d096a765953e5a1118ea"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">RedBlackTreeIterator</a>&lt;Key, Val, Ref, Ptr&gt; <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a></td>
+          <td class="memname">typedef <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">RedBlackTreeIterator</a>&lt;Element, Val, Ref, Ptr, GetVal&gt; <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a></td>
         </tr>
       </table>
   </td>
@@ -313,40 +331,24 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00136">136</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a0b8800bbaf5957b678bd9fa07bb8fc2b"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef Val <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a0b8800bbaf5957b678bd9fa07bb8fc2b">val_type</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00133">133</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00134">134</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aa20fc53952a7d7be2f2708cd5bd15440"></a>
+<a class="anchor" id="a86c8e77fd78db6070baf866f5030904f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">RedBlackTreeIterator</a> </td>
+          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">RedBlackTreeIterator</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ac3b5ef124a1bd48e00b8702407d24cd3">node_type</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a58dd4f13c56630f5175ec5bc9e6cce82">node_type</a> *&#160;</td>
           <td class="paramname"><em>node</em></td><td>)</td>
           <td></td>
         </tr>
@@ -365,26 +367,26 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00149">149</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                : <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>(node) {</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a738ce4429cc1b97767066dc9862e5b07"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00142">RedBlackTree.h:142</a></div></div>
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00152">152</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                : <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a>(node) {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a1a2d398210f03f99854b028ecf76be4c"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00140">RedBlackTree.h:140</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="ac3b9fddd961c8ec2830810355608e730"></a>
+<a class="anchor" id="a9c47b035f60ecbd6d30e5ab8ac55d4e2"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">RedBlackTreeIterator</a> </td>
+          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::<a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">RedBlackTreeIterator</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a> &amp;&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
           <td></td>
         </tr>
@@ -403,25 +405,25 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00158">158</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                : <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>(it.m_node) {</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a738ce4429cc1b97767066dc9862e5b07"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00142">RedBlackTree.h:142</a></div></div>
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00161">161</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                : <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a>(it.m_node) {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a1a2d398210f03f99854b028ecf76be4c"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00140">RedBlackTree.h:140</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a8bd91a5aeb57a7df8e47cbdac2bcc48d"></a>
+<a class="anchor" id="a4fdb7fe107d6cc3f12b164dd539a0eec"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::decrement </td>
+          <td class="memname">void <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::decrement </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -435,58 +437,58 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
 </div><div class="memdoc">
 <p>Move the iterator to the previous ordered node in the tree. </p>
 
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00186">186</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00189">189</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
 
-<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00064">wlp::RedBlackTreeNode&lt; Key, Val &gt;::m_color</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00073">wlp::RedBlackTreeNode&lt; Key, Val &gt;::m_left</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00142">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::m_node</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00069">wlp::RedBlackTreeNode&lt; Key, Val &gt;::m_parent</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00077">wlp::RedBlackTreeNode&lt; Key, Val &gt;::m_right</a>, and <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00037">wlp::RedBlackTreeColor::RED</a>.</p>
+<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00063">wlp::RedBlackTreeNode&lt; Element &gt;::m_color</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00072">wlp::RedBlackTreeNode&lt; Element &gt;::m_left</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00140">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::m_node</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00068">wlp::RedBlackTreeNode&lt; Element &gt;::m_parent</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00076">wlp::RedBlackTreeNode&lt; Element &gt;::m_right</a>, and <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00037">wlp::RedBlackTreeColor::RED</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00279">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::operator--()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                         {</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ab8cbee86f461ece0005ab8e18757ea12">m_color</a> == <a class="code" href="../../df/d4f/structwlp_1_1_red_black_tree_color.html#aea696901401bbf7ebb3f412835050e02">color::RED</a> &amp;&amp; <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ac9563f5abe4a957b5f96967141a4b6fd">m_parent</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ac9563f5abe4a957b5f96967141a4b6fd">m_parent</a> == <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>) {</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a> = <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a6e55eb6ee04e12c58f0a0b19f455c352">m_right</a>;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a344f3edf35572f4510e2ec1cc544bc27">m_left</a>) {</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ac3b5ef124a1bd48e00b8702407d24cd3">node_type</a> *child = <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a344f3edf35572f4510e2ec1cc544bc27">m_left</a>;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                <span class="keywordflow">while</span> (child-&gt;m_right) {</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                    child = child-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a6e55eb6ee04e12c58f0a0b19f455c352">m_right</a>;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                }</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a> = child;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ac3b5ef124a1bd48e00b8702407d24cd3">node_type</a> *parent = <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ac9563f5abe4a957b5f96967141a4b6fd">m_parent</a>;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                <span class="keywordflow">while</span> (<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a> == parent-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a344f3edf35572f4510e2ec1cc544bc27">m_left</a>) {</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                    <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a> = parent;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                    parent = parent-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ac9563f5abe4a957b5f96967141a4b6fd">m_parent</a>;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                }</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a> = parent;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            }</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_ab8cbee86f461ece0005ab8e18757ea12"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ab8cbee86f461ece0005ab8e18757ea12">wlp::RedBlackTreeNode::m_color</a></div><div class="ttdeci">color m_color</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00064">RedBlackTree.h:64</a></div></div>
+<p>Referenced by <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00285">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator--()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                         {</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a6e126ba9022f287da64d234a5034093c">m_color</a> == <a class="code" href="../../df/d4f/structwlp_1_1_red_black_tree_color.html#aea696901401bbf7ebb3f412835050e02">color::RED</a> &amp;&amp; <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ad98a0047e24b1311010128a19c28c0c7">m_parent</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ad98a0047e24b1311010128a19c28c0c7">m_parent</a> == <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a>) {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a> = <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a14f1e484f046bf7fd393083537eef0ca">m_right</a>;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a1fc18d156a0f09a72fdf6197a3d05fb1">m_left</a>) {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a58dd4f13c56630f5175ec5bc9e6cce82">node_type</a> *child = <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a1fc18d156a0f09a72fdf6197a3d05fb1">m_left</a>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                <span class="keywordflow">while</span> (child-&gt;m_right) {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                    child = child-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a14f1e484f046bf7fd393083537eef0ca">m_right</a>;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a> = child;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a58dd4f13c56630f5175ec5bc9e6cce82">node_type</a> *parent = <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ad98a0047e24b1311010128a19c28c0c7">m_parent</a>;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                <span class="keywordflow">while</span> (<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a> == parent-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a1fc18d156a0f09a72fdf6197a3d05fb1">m_left</a>) {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                    <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a> = parent;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                    parent = parent-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ad98a0047e24b1311010128a19c28c0c7">m_parent</a>;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a> = parent;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            }</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a1a2d398210f03f99854b028ecf76be4c"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00140">RedBlackTree.h:140</a></div></div>
 <div class="ttc" id="structwlp_1_1_red_black_tree_color_html_aea696901401bbf7ebb3f412835050e02"><div class="ttname"><a href="../../df/d4f/structwlp_1_1_red_black_tree_color.html#aea696901401bbf7ebb3f412835050e02">wlp::RedBlackTreeColor::RED</a></div><div class="ttdeci">static constexpr type RED</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00037">RedBlackTree.h:37</a></div></div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a738ce4429cc1b97767066dc9862e5b07"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00142">RedBlackTree.h:142</a></div></div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_ac3b5ef124a1bd48e00b8702407d24cd3"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ac3b5ef124a1bd48e00b8702407d24cd3">wlp::RedBlackTreeIterator::node_type</a></div><div class="ttdeci">RedBlackTreeNode&lt; Key, Val &gt; node_type</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00126">RedBlackTree.h:126</a></div></div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_a6e55eb6ee04e12c58f0a0b19f455c352"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a6e55eb6ee04e12c58f0a0b19f455c352">wlp::RedBlackTreeNode::m_right</a></div><div class="ttdeci">node_type * m_right</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00077">RedBlackTree.h:77</a></div></div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_ac9563f5abe4a957b5f96967141a4b6fd"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ac9563f5abe4a957b5f96967141a4b6fd">wlp::RedBlackTreeNode::m_parent</a></div><div class="ttdeci">node_type * m_parent</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00069">RedBlackTree.h:69</a></div></div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_a344f3edf35572f4510e2ec1cc544bc27"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a344f3edf35572f4510e2ec1cc544bc27">wlp::RedBlackTreeNode::m_left</a></div><div class="ttdeci">node_type * m_left</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00073">RedBlackTree.h:73</a></div></div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_a14f1e484f046bf7fd393083537eef0ca"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a14f1e484f046bf7fd393083537eef0ca">wlp::RedBlackTreeNode::m_right</a></div><div class="ttdeci">node_type * m_right</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00076">RedBlackTree.h:76</a></div></div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_ad98a0047e24b1311010128a19c28c0c7"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ad98a0047e24b1311010128a19c28c0c7">wlp::RedBlackTreeNode::m_parent</a></div><div class="ttdeci">node_type * m_parent</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00068">RedBlackTree.h:68</a></div></div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_a1fc18d156a0f09a72fdf6197a3d05fb1"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a1fc18d156a0f09a72fdf6197a3d05fb1">wlp::RedBlackTreeNode::m_left</a></div><div class="ttdeci">node_type * m_left</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00072">RedBlackTree.h:72</a></div></div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a58dd4f13c56630f5175ec5bc9e6cce82"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a58dd4f13c56630f5175ec5bc9e6cce82">wlp::RedBlackTreeIterator::node_type</a></div><div class="ttdeci">RedBlackTreeNode&lt; Element &gt; node_type</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00124">RedBlackTree.h:124</a></div></div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_a6e126ba9022f287da64d234a5034093c"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a6e126ba9022f287da64d234a5034093c">wlp::RedBlackTreeNode::m_color</a></div><div class="ttdeci">color m_color</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00063">RedBlackTree.h:63</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d48/structwlp_1_1_red_black_tree_iterator_a8bd91a5aeb57a7df8e47cbdac2bcc48d_icgraph.svg" width="411" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d48/structwlp_1_1_red_black_tree_iterator_a4fdb7fe107d6cc3f12b164dd539a0eec_icgraph.svg" width="411" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="a2f215023ae489da683bc009bc8ac474f"></a>
+<a class="anchor" id="ad85eb65dc32473f83afb723d6d883956"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::increment </td>
+          <td class="memname">void <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::increment </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -500,92 +502,57 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
 </div><div class="memdoc">
 <p>Move the iterator to the next ordered node in the tree. </p>
 
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00165">165</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00168">168</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
 
-<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00073">wlp::RedBlackTreeNode&lt; Key, Val &gt;::m_left</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00142">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::m_node</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00069">wlp::RedBlackTreeNode&lt; Key, Val &gt;::m_parent</a>, and <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00077">wlp::RedBlackTreeNode&lt; Key, Val &gt;::m_right</a>.</p>
+<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00072">wlp::RedBlackTreeNode&lt; Element &gt;::m_left</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00140">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::m_node</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00068">wlp::RedBlackTreeNode&lt; Element &gt;::m_parent</a>, and <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00076">wlp::RedBlackTreeNode&lt; Element &gt;::m_right</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00255">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::operator++()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                         {</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a6e55eb6ee04e12c58f0a0b19f455c352">m_right</a>) {</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a> = <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a6e55eb6ee04e12c58f0a0b19f455c352">m_right</a>;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                <span class="keywordflow">while</span> (<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a344f3edf35572f4510e2ec1cc544bc27">m_left</a>) {</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                    <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a> = <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a344f3edf35572f4510e2ec1cc544bc27">m_left</a>;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                }</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ac3b5ef124a1bd48e00b8702407d24cd3">node_type</a> *parent = <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ac9563f5abe4a957b5f96967141a4b6fd">m_parent</a>;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                <span class="keywordflow">while</span> (<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a> == parent-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a6e55eb6ee04e12c58f0a0b19f455c352">m_right</a>) {</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                    <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a> = parent;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                    parent = parent-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ac9563f5abe4a957b5f96967141a4b6fd">m_parent</a>;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                }</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a6e55eb6ee04e12c58f0a0b19f455c352">m_right</a> != parent) {</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                    <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a> = parent;</div>
+<p>Referenced by <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00261">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator++()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                         {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a14f1e484f046bf7fd393083537eef0ca">m_right</a>) {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a> = <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a14f1e484f046bf7fd393083537eef0ca">m_right</a>;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <span class="keywordflow">while</span> (<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a1fc18d156a0f09a72fdf6197a3d05fb1">m_left</a>) {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                    <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a> = <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a1fc18d156a0f09a72fdf6197a3d05fb1">m_left</a>;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a58dd4f13c56630f5175ec5bc9e6cce82">node_type</a> *parent = <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ad98a0047e24b1311010128a19c28c0c7">m_parent</a>;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                <span class="keywordflow">while</span> (<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a> == parent-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a14f1e484f046bf7fd393083537eef0ca">m_right</a>) {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                    <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a> = parent;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                    parent = parent-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ad98a0047e24b1311010128a19c28c0c7">m_parent</a>;</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                }</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            }</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a738ce4429cc1b97767066dc9862e5b07"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00142">RedBlackTree.h:142</a></div></div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_ac3b5ef124a1bd48e00b8702407d24cd3"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ac3b5ef124a1bd48e00b8702407d24cd3">wlp::RedBlackTreeIterator::node_type</a></div><div class="ttdeci">RedBlackTreeNode&lt; Key, Val &gt; node_type</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00126">RedBlackTree.h:126</a></div></div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_a6e55eb6ee04e12c58f0a0b19f455c352"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a6e55eb6ee04e12c58f0a0b19f455c352">wlp::RedBlackTreeNode::m_right</a></div><div class="ttdeci">node_type * m_right</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00077">RedBlackTree.h:77</a></div></div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_ac9563f5abe4a957b5f96967141a4b6fd"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ac9563f5abe4a957b5f96967141a4b6fd">wlp::RedBlackTreeNode::m_parent</a></div><div class="ttdeci">node_type * m_parent</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00069">RedBlackTree.h:69</a></div></div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_a344f3edf35572f4510e2ec1cc544bc27"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a344f3edf35572f4510e2ec1cc544bc27">wlp::RedBlackTreeNode::m_left</a></div><div class="ttdeci">node_type * m_left</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00073">RedBlackTree.h:73</a></div></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a14f1e484f046bf7fd393083537eef0ca">m_right</a> != parent) {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                    <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a> = parent;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a1a2d398210f03f99854b028ecf76be4c"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00140">RedBlackTree.h:140</a></div></div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_a14f1e484f046bf7fd393083537eef0ca"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a14f1e484f046bf7fd393083537eef0ca">wlp::RedBlackTreeNode::m_right</a></div><div class="ttdeci">node_type * m_right</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00076">RedBlackTree.h:76</a></div></div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_ad98a0047e24b1311010128a19c28c0c7"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#ad98a0047e24b1311010128a19c28c0c7">wlp::RedBlackTreeNode::m_parent</a></div><div class="ttdeci">node_type * m_parent</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00068">RedBlackTree.h:68</a></div></div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_a1fc18d156a0f09a72fdf6197a3d05fb1"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a1fc18d156a0f09a72fdf6197a3d05fb1">wlp::RedBlackTreeNode::m_left</a></div><div class="ttdeci">node_type * m_left</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00072">RedBlackTree.h:72</a></div></div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a58dd4f13c56630f5175ec5bc9e6cce82"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a58dd4f13c56630f5175ec5bc9e6cce82">wlp::RedBlackTreeIterator::node_type</a></div><div class="ttdeci">RedBlackTreeNode&lt; Element &gt; node_type</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00124">RedBlackTree.h:124</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d48/structwlp_1_1_red_black_tree_iterator_a2f215023ae489da683bc009bc8ac474f_icgraph.svg" width="411" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d48/structwlp_1_1_red_black_tree_iterator_ad85eb65dc32473f83afb723d6d883956_icgraph.svg" width="411" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="a60c8178d07940bebd09c5517319d400c"></a>
+<a class="anchor" id="a6a5836b53e3e14bd5b71a3294a459fc6"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afb4abf15f3e935370c39260a321e1fe5">key_type</a>&amp; <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::key </td>
+          <td class="memname">bool <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator!= </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>a reference to the key contained by the iterator node </dd></dl>
-
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00299">299</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
-
-<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00082">wlp::RedBlackTreeNode&lt; Key, Val &gt;::m_key</a>, and <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00142">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::m_node</a>.</p>
-<div class="fragment"><div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                                    {</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#aee1f882e147d2d9d9c7890313b2f85b7">m_key</a>;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a738ce4429cc1b97767066dc9862e5b07"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00142">RedBlackTree.h:142</a></div></div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_aee1f882e147d2d9d9c7890313b2f85b7"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#aee1f882e147d2d9d9c7890313b2f85b7">wlp::RedBlackTreeNode::m_key</a></div><div class="ttdeci">key_type m_key</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00082">RedBlackTree.h:82</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="adfb8fc056947dc408e4e05c840fdc631"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::operator!= </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a> &amp;&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -605,27 +572,27 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if they point to different nodes </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00221">221</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00224">224</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
 
-<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00142">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::m_node</a>.</p>
-<div class="fragment"><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                                                   {</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a> != it.m_node;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a738ce4429cc1b97767066dc9862e5b07"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00142">RedBlackTree.h:142</a></div></div>
+<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00140">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::m_node</a>.</p>
+<div class="fragment"><div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                                                   {</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a> != it.m_node;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a1a2d398210f03f99854b028ecf76be4c"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00140">RedBlackTree.h:140</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="abe58d6df539ae3d3fd384b8f8fe4c3b2"></a>
+<a class="anchor" id="a9260b10408b9d24e048d78a6d37ff4b3"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ac9e607d2ab86db39fb89625c528fcdf6">reference</a> <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::operator* </td>
+          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ab6563aacdbd3edefd40d5726204b5d2b">reference</a> <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator* </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -640,33 +607,34 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
 <p>Deference operator.</p>
 <dl class="section return"><dt>Returns</dt><dd>reference to the value of the node pointed to by the iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00231">231</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00234">234</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
 
-<p>References <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00165">KEY_EXCEPTION</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00142">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::m_node</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00086">wlp::RedBlackTreeNode&lt; Key, Val &gt;::m_val</a>, and <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00121">THROW</a>.</p>
-<div class="fragment"><div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                                    {</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a> == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                <a class="code" href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a>(<a class="code" href="../../d7/d2f/_exceptions_8h.html#aee8b4fdcf0b22e04cf54525b455eaa09">KEY_EXCEPTION</a>(<span class="stringliteral">&quot;Accessing invalid iterator&quot;</span>))</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            }</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a801ed3a1d75303092e02ab089ef43d19">m_val</a>;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_a801ed3a1d75303092e02ab089ef43d19"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a801ed3a1d75303092e02ab089ef43d19">wlp::RedBlackTreeNode::m_val</a></div><div class="ttdeci">val_type m_val</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00086">RedBlackTree.h:86</a></div></div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a738ce4429cc1b97767066dc9862e5b07"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00142">RedBlackTree.h:142</a></div></div>
+<p>References <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00165">KEY_EXCEPTION</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00083">wlp::RedBlackTreeNode&lt; Element &gt;::m_element</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00145">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::m_get_value</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00140">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::m_node</a>, and <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00121">THROW</a>.</p>
+<div class="fragment"><div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                                    {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a> == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                <a class="code" href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a>(<a class="code" href="../../d7/d2f/_exceptions_8h.html#aee8b4fdcf0b22e04cf54525b455eaa09">KEY_EXCEPTION</a>(<span class="stringliteral">&quot;Accessing invalid iterator&quot;</span>))</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a44f56dc8eda057409c631b3e7be72d91">m_get_value</a>(<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a58e712b87e07f4cb54db255876315c92">m_element</a>);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a1a2d398210f03f99854b028ecf76be4c"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00140">RedBlackTree.h:140</a></div></div>
 <div class="ttc" id="_exceptions_8h_html_a8d940770e78617d670d314ca0b8c35ef"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a></div><div class="ttdeci">#define THROW(e)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00121">Exceptions.h:121</a></div></div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a44f56dc8eda057409c631b3e7be72d91"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a44f56dc8eda057409c631b3e7be72d91">wlp::RedBlackTreeIterator::m_get_value</a></div><div class="ttdeci">get_value m_get_value</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00145">RedBlackTree.h:145</a></div></div>
 <div class="ttc" id="_exceptions_8h_html_aee8b4fdcf0b22e04cf54525b455eaa09"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#aee8b4fdcf0b22e04cf54525b455eaa09">KEY_EXCEPTION</a></div><div class="ttdeci">#define KEY_EXCEPTION(str)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00165">Exceptions.h:165</a></div></div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_a58e712b87e07f4cb54db255876315c92"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a58e712b87e07f4cb54db255876315c92">wlp::RedBlackTreeNode::m_element</a></div><div class="ttdeci">element_type m_element</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00083">RedBlackTree.h:83</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="a67795d712cbefb8ceb33a9e91a707ccb"></a>
+<a class="anchor" id="a2db5b3665a4eea4f9a3301cf84d3aeda"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a>&amp; <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::operator++ </td>
+          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a>&amp; <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator++ </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -681,36 +649,36 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
 <p>Prefix increment operator moves the iterator to the next ordered node in the tree, or pass-the-end if the iterator has reached the rightmost end of the tree.</p>
 <dl class="section return"><dt>Returns</dt><dd>reference to this iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00255">255</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00261">261</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
 
-<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00165">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::increment()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                                {</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a2f215023ae489da683bc009bc8ac474f">increment</a>();</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a2f215023ae489da683bc009bc8ac474f"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a2f215023ae489da683bc009bc8ac474f">wlp::RedBlackTreeIterator::increment</a></div><div class="ttdeci">void increment()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00165">RedBlackTree.h:165</a></div></div>
+<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00168">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::increment()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                                {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ad85eb65dc32473f83afb723d6d883956">increment</a>();</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_ad85eb65dc32473f83afb723d6d883956"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ad85eb65dc32473f83afb723d6d883956">wlp::RedBlackTreeIterator::increment</a></div><div class="ttdeci">void increment()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00168">RedBlackTree.h:168</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d48/structwlp_1_1_red_black_tree_iterator_a67795d712cbefb8ceb33a9e91a707ccb_cgraph.svg" width="411" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d48/structwlp_1_1_red_black_tree_iterator_a2db5b3665a4eea4f9a3301cf84d3aeda_cgraph.svg" width="411" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="af585bca8eb905f8f467818603b6d3bda"></a>
+<a class="anchor" id="a37ad728361f6d2273c568f9ba66450ff"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a> <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::operator++ </td>
+          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a> <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator++ </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -726,38 +694,38 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
 <p>Postfix increment operator moves the iterator to the next ordered node in the tree, or pass-the-end if the iterator has reached the rightmost end of the tree.</p>
 <dl class="section return"><dt>Returns</dt><dd>a copy of the iterator before the increment </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00267">267</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00273">273</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
 
-<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00165">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::increment()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                                  {</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a423456e2088c19dc3471004ad9e83f3d">iterator</a> tmp = *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a2f215023ae489da683bc009bc8ac474f">increment</a>();</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a423456e2088c19dc3471004ad9e83f3d"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a423456e2088c19dc3471004ad9e83f3d">wlp::RedBlackTreeIterator::iterator</a></div><div class="ttdeci">RedBlackTreeIterator&lt; Key, Val, Val &amp;, Val * &gt; iterator</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00127">RedBlackTree.h:127</a></div></div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a2f215023ae489da683bc009bc8ac474f"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a2f215023ae489da683bc009bc8ac474f">wlp::RedBlackTreeIterator::increment</a></div><div class="ttdeci">void increment()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00165">RedBlackTree.h:165</a></div></div>
+<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00168">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::increment()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                                  {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#abf8d2a87b260fb986925ef1bd67aa066">iterator</a> tmp = *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ad85eb65dc32473f83afb723d6d883956">increment</a>();</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="keywordflow">return</span> tmp;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_abf8d2a87b260fb986925ef1bd67aa066"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#abf8d2a87b260fb986925ef1bd67aa066">wlp::RedBlackTreeIterator::iterator</a></div><div class="ttdeci">RedBlackTreeIterator&lt; Element, Val, Val &amp;, Val *, GetVal &gt; iterator</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00125">RedBlackTree.h:125</a></div></div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_ad85eb65dc32473f83afb723d6d883956"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ad85eb65dc32473f83afb723d6d883956">wlp::RedBlackTreeIterator::increment</a></div><div class="ttdeci">void increment()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00168">RedBlackTree.h:168</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d48/structwlp_1_1_red_black_tree_iterator_af585bca8eb905f8f467818603b6d3bda_cgraph.svg" width="411" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d48/structwlp_1_1_red_black_tree_iterator_a37ad728361f6d2273c568f9ba66450ff_cgraph.svg" width="411" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="a83d7307305c04b3c1e45a32cce7ab5d5"></a>
+<a class="anchor" id="a3f2acd70463f671ef51f091a336be3ac"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a>&amp; <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::operator-- </td>
+          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a>&amp; <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator-- </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -772,36 +740,36 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
 <p>Prefix decrement operator moves the iterator to the previous ordered node in the tree. Iterator does not move past the begin.</p>
 <dl class="section return"><dt>Returns</dt><dd>reference to this iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00279">279</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00285">285</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
 
-<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00186">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::decrement()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                                {</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a8bd91a5aeb57a7df8e47cbdac2bcc48d">decrement</a>();</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a8bd91a5aeb57a7df8e47cbdac2bcc48d"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a8bd91a5aeb57a7df8e47cbdac2bcc48d">wlp::RedBlackTreeIterator::decrement</a></div><div class="ttdeci">void decrement()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00186">RedBlackTree.h:186</a></div></div>
+<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00189">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::decrement()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                                {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a4fdb7fe107d6cc3f12b164dd539a0eec">decrement</a>();</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a4fdb7fe107d6cc3f12b164dd539a0eec"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a4fdb7fe107d6cc3f12b164dd539a0eec">wlp::RedBlackTreeIterator::decrement</a></div><div class="ttdeci">void decrement()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00189">RedBlackTree.h:189</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d48/structwlp_1_1_red_black_tree_iterator_a83d7307305c04b3c1e45a32cce7ab5d5_cgraph.svg" width="411" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d48/structwlp_1_1_red_black_tree_iterator_a3f2acd70463f671ef51f091a336be3ac_cgraph.svg" width="411" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="a52edd3302614a73e5efcb2829ba69808"></a>
+<a class="anchor" id="ab0c64f9a57db6821b0ec9f4784bb0f2f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a> <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::operator-- </td>
+          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a> <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator-- </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -817,38 +785,38 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
 <p>Postfix decrement operator moves the iterator to the previous ordered node in the tree. Iterator does not move past the begin.</p>
 <dl class="section return"><dt>Returns</dt><dd>a copy of the iterator before the increment </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00290">290</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00296">296</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
 
-<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00186">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::decrement()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                                  {</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a423456e2088c19dc3471004ad9e83f3d">iterator</a> tmp = *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a8bd91a5aeb57a7df8e47cbdac2bcc48d">decrement</a>();</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a423456e2088c19dc3471004ad9e83f3d"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a423456e2088c19dc3471004ad9e83f3d">wlp::RedBlackTreeIterator::iterator</a></div><div class="ttdeci">RedBlackTreeIterator&lt; Key, Val, Val &amp;, Val * &gt; iterator</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00127">RedBlackTree.h:127</a></div></div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a8bd91a5aeb57a7df8e47cbdac2bcc48d"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a8bd91a5aeb57a7df8e47cbdac2bcc48d">wlp::RedBlackTreeIterator::decrement</a></div><div class="ttdeci">void decrement()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00186">RedBlackTree.h:186</a></div></div>
+<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00189">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::decrement()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                                  {</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#abf8d2a87b260fb986925ef1bd67aa066">iterator</a> tmp = *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a4fdb7fe107d6cc3f12b164dd539a0eec">decrement</a>();</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            <span class="keywordflow">return</span> tmp;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_abf8d2a87b260fb986925ef1bd67aa066"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#abf8d2a87b260fb986925ef1bd67aa066">wlp::RedBlackTreeIterator::iterator</a></div><div class="ttdeci">RedBlackTreeIterator&lt; Element, Val, Val &amp;, Val *, GetVal &gt; iterator</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00125">RedBlackTree.h:125</a></div></div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a4fdb7fe107d6cc3f12b164dd539a0eec"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a4fdb7fe107d6cc3f12b164dd539a0eec">wlp::RedBlackTreeIterator::decrement</a></div><div class="ttdeci">void decrement()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00189">RedBlackTree.h:189</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d48/structwlp_1_1_red_black_tree_iterator_a52edd3302614a73e5efcb2829ba69808_cgraph.svg" width="411" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dd/d48/structwlp_1_1_red_black_tree_iterator_ab0c64f9a57db6821b0ec9f4784bb0f2f_cgraph.svg" width="411" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="ab514fb022f398db76eb07dc0778189c0"></a>
+<a class="anchor" id="a566c40d00e5a05b6cbbea83d3aa4f9ce"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a5f2b8ded4dc3bdd561404ebdaefa9de0">pointer</a> <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::operator-&gt; </td>
+          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a13d381f85b6aa3cd5c2a42eeb737c231">pointer</a> <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator-&gt; </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -863,30 +831,34 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
 <p>Pointer operator.</p>
 <dl class="section return"><dt>Returns</dt><dd>pointer to the value of the node pointer to by the iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00244">244</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00247">247</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
 
-<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00142">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::m_node</a>, and <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00086">wlp::RedBlackTreeNode&lt; Key, Val &gt;::m_val</a>.</p>
-<div class="fragment"><div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                                   {</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <span class="keywordflow">return</span> &amp;<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a801ed3a1d75303092e02ab089ef43d19">m_val</a>;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_a801ed3a1d75303092e02ab089ef43d19"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a801ed3a1d75303092e02ab089ef43d19">wlp::RedBlackTreeNode::m_val</a></div><div class="ttdeci">val_type m_val</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00086">RedBlackTree.h:86</a></div></div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a738ce4429cc1b97767066dc9862e5b07"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00142">RedBlackTree.h:142</a></div></div>
+<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00083">wlp::RedBlackTreeNode&lt; Element &gt;::m_element</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00145">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::m_get_value</a>, and <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00140">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::m_node</a>.</p>
+<div class="fragment"><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                                   {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a> == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            <span class="keywordflow">return</span> &amp;<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a44f56dc8eda057409c631b3e7be72d91">m_get_value</a>(<a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a>-&gt;<a class="code" href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a58e712b87e07f4cb54db255876315c92">m_element</a>);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a1a2d398210f03f99854b028ecf76be4c"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00140">RedBlackTree.h:140</a></div></div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a44f56dc8eda057409c631b3e7be72d91"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a44f56dc8eda057409c631b3e7be72d91">wlp::RedBlackTreeIterator::m_get_value</a></div><div class="ttdeci">get_value m_get_value</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00145">RedBlackTree.h:145</a></div></div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_node_html_a58e712b87e07f4cb54db255876315c92"><div class="ttname"><a href="../../d9/d53/structwlp_1_1_red_black_tree_node.html#a58e712b87e07f4cb54db255876315c92">wlp::RedBlackTreeNode::m_element</a></div><div class="ttdeci">element_type m_element</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00083">RedBlackTree.h:83</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="a4ed775054c4da9777954208779f430d5"></a>
+<a class="anchor" id="ad1726077dabda05b437d3eecb6b64307"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a>&amp; <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::operator= </td>
+          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a>&amp; <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator= </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a> &amp;&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
           <td></td>
         </tr>
@@ -906,30 +878,30 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>reference to this iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00309">309</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00308">308</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
 
-<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00142">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::m_node</a>.</p>
-<div class="fragment"><div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                                                  {</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a> = it.m_node;</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a738ce4429cc1b97767066dc9862e5b07"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00142">RedBlackTree.h:142</a></div></div>
+<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00140">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::m_node</a>.</p>
+<div class="fragment"><div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                                                  {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a> = it.m_node;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a1a2d398210f03f99854b028ecf76be4c"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00140">RedBlackTree.h:140</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="aaacd821be200e6b8d66752f68e51cb03"></a>
+<a class="anchor" id="ad54771d5bba01e52e8c109f0e6541937"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::operator== </td>
+          <td class="memname">bool <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator== </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#afd4797de8453426e09fde7df2f725bf6">self_type</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a7925ea450d33d096a765953e5a1118ea">self_type</a> &amp;&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -949,33 +921,52 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if they point to the same node </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00211">211</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00214">214</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
 
-<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00142">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::m_node</a>.</p>
-<div class="fragment"><div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                                                   {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">m_node</a> == it.m_node;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a738ce4429cc1b97767066dc9862e5b07"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a738ce4429cc1b97767066dc9862e5b07">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00142">RedBlackTree.h:142</a></div></div>
+<p>References <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00140">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::m_node</a>.</p>
+<div class="fragment"><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                                                   {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">m_node</a> == it.m_node;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_red_black_tree_iterator_html_a1a2d398210f03f99854b028ecf76be4c"><div class="ttname"><a href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a1a2d398210f03f99854b028ecf76be4c">wlp::RedBlackTreeIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d08/_red_black_tree_8h_source.html#l00140">RedBlackTree.h:140</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Field Documentation</h2>
-<a class="anchor" id="a738ce4429cc1b97767066dc9862e5b07"></a>
+<a class="anchor" id="a44f56dc8eda057409c631b3e7be72d91"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div>
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#ac3b5ef124a1bd48e00b8702407d24cd3">node_type</a>* <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Key, Val, Ref, Ptr &gt;::m_node</td>
+          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a5081ae2bbbc6e73137fdc2503207325b">get_value</a> <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::m_get_value {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Functor used to obtain element value. </p>
+
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00145">145</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+
+<p>Referenced by <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00234">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator*()</a>, and <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00247">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator-&gt;()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1a2d398210f03f99854b028ecf76be4c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Element , typename Val , typename Ref , typename Ptr , typename GetVal &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a58dd4f13c56630f5175ec5bc9e6cce82">node_type</a>* <a class="el" href="../../dd/d48/structwlp_1_1_red_black_tree_iterator.html">wlp::RedBlackTreeIterator</a>&lt; Element, Val, Ref, Ptr, GetVal &gt;::m_node</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>The tree node pointed to by this iterator. </p>
 
-<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00142">142</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00140">140</a> of file <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html">RedBlackTree.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00186">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::decrement()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l01095">wlp::RedBlackTree&lt; Key, Val, Cmp &gt;::erase()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l01127">wlp::RedBlackTree&lt; Key, Val, Cmp &gt;::find()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00165">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::increment()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l01026">wlp::RedBlackTree&lt; Key, Val, Cmp &gt;::insert_unique()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00299">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::key()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00221">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::operator!=()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00231">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::operator*()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00244">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::operator-&gt;()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00309">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::operator=()</a>, and <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00211">wlp::RedBlackTreeIterator&lt; Key, Val, Ref, Ptr &gt;::operator==()</a>.</p>
+<p>Referenced by <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00189">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::decrement()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l01130">wlp::RedBlackTree&lt; Element, Key, Val, GetKey, GetVal, Cmp &gt;::erase()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l01169">wlp::RedBlackTree&lt; Element, Key, Val, GetKey, GetVal, Cmp &gt;::find()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00168">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::increment()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l01055">wlp::RedBlackTree&lt; Element, Key, Val, GetKey, GetVal, Cmp &gt;::insert_unique()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00224">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator!=()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00234">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator*()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00247">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator-&gt;()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00308">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator=()</a>, and <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00214">wlp::RedBlackTreeIterator&lt; Element, Val, Ref, Ptr, GetVal &gt;::operator==()</a>.</p>
 
 </div>
 </div>
@@ -985,7 +976,7 @@ template&lt;typename Key , typename Val , typename Ref , typename Ptr &gt; </div
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Dec 17 2017 04:07:53 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 18 2017 18:55:19 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

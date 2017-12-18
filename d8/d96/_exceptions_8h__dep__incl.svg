@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 948;
+var viewWidth = 954;
 var viewHeight = 140;
 var sectionId = 'dynsection-1';
 </script>
@@ -54,7 +54,7 @@ var sectionId = 'dynsection-1';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>exceptions/Exceptions.h</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-136 944,-136 944,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-136 950,-136 950,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
 <polygon fill="#bfbfbf" stroke="black" points="450,-112.5 450,-131.5 574,-131.5 574,-112.5 450,-112.5"/>
@@ -127,55 +127,55 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node9 -->
 <g id="node9" class="node"><title>Node9</title>
-<g id="a_node9"><a xlink:href="../../d5/d7a/_open_map_8h.html" target="_top" xlink:title="Hash map implementation. ">
-<polygon fill="white" stroke="black" points="572,-56.5 572,-75.5 652,-75.5 652,-56.5 572,-56.5"/>
-<text text-anchor="middle" x="612" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">stl/OpenMap.h</text>
+<g id="a_node9"><a xlink:href="../../d8/d2e/_open_table_8h.html" target="_top" xlink:title="stl/OpenTable.h">
+<polygon fill="white" stroke="black" points="572,-56.5 572,-75.5 658,-75.5 658,-56.5 572,-56.5"/>
+<text text-anchor="middle" x="615" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">stl/OpenTable.h</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node9 -->
 <g id="edge8" class="edge"><title>Node1&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M537.088,-107.453C555.549,-97.4835 580.097,-84.2279 595.973,-75.6545"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="535.203,-104.493 528.067,-112.324 538.529,-110.652 535.203,-104.493"/>
+<path fill="none" stroke="midnightblue" d="M537.579,-107.59C556.623,-97.6052 582.064,-84.2672 598.492,-75.6545"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="535.78,-104.581 528.549,-112.324 539.031,-110.78 535.78,-104.581"/>
 </g>
-<!-- Node11 -->
-<g id="node11" class="node"><title>Node11</title>
-<g id="a_node11"><a xlink:href="../../d5/d08/_red_black_tree_8h.html" target="_top" xlink:title="Red black tree implementation. ">
-<polygon fill="white" stroke="black" points="670.5,-56.5 670.5,-75.5 771.5,-75.5 771.5,-56.5 670.5,-56.5"/>
-<text text-anchor="middle" x="721" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">stl/RedBlackTree.h</text>
+<!-- Node12 -->
+<g id="node12" class="node"><title>Node12</title>
+<g id="a_node12"><a xlink:href="../../d5/d08/_red_black_tree_8h.html" target="_top" xlink:title="Red black tree implementation. ">
+<polygon fill="white" stroke="black" points="676.5,-56.5 676.5,-75.5 777.5,-75.5 777.5,-56.5 676.5,-56.5"/>
+<text text-anchor="middle" x="727" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">stl/RedBlackTree.h</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node11 -->
-<g id="edge10" class="edge"><title>Node1&#45;&gt;Node11</title>
-<path fill="none" stroke="midnightblue" d="M554.984,-109.894C594.452,-99.6966 652.1,-84.802 688.038,-75.5164"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="553.923,-106.553 545.117,-112.444 555.674,-113.331 553.923,-106.553"/>
-</g>
-<!-- Node14 -->
-<g id="node14" class="node"><title>Node14</title>
-<g id="a_node14"><a xlink:href="../../d8/df6/_unique_ptr_8h.html" target="_top" xlink:title="Unique pointer implementation. ">
-<polygon fill="white" stroke="black" points="790,-56.5 790,-75.5 872,-75.5 872,-56.5 790,-56.5"/>
-<text text-anchor="middle" x="831" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">stl/UniquePtr.h</text>
-</a>
-</g>
-</g>
-<!-- Node1&#45;&gt;Node14 -->
-<g id="edge13" class="edge"><title>Node1&#45;&gt;Node14</title>
-<path fill="none" stroke="midnightblue" d="M573.558,-110.813C627.894,-101.786 709.239,-88.1842 780,-76 783.19,-75.4508 786.491,-74.878 789.809,-74.2992"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="572.691,-107.409 563.399,-112.5 573.837,-114.315 572.691,-107.409"/>
+<!-- Node1&#45;&gt;Node12 -->
+<g id="edge11" class="edge"><title>Node1&#45;&gt;Node12</title>
+<path fill="none" stroke="midnightblue" d="M555.96,-109.959C596.567,-99.7598 656.043,-84.8217 693.092,-75.5164"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="554.914,-106.613 546.067,-112.444 556.619,-113.402 554.914,-106.613"/>
 </g>
 <!-- Node15 -->
 <g id="node15" class="node"><title>Node15</title>
-<g id="a_node15"><a xlink:href="../../d1/d13/_shared_ptr_8h.html" target="_top" xlink:title="Shared pointer implementation. ">
-<polygon fill="white" stroke="black" points="858,-0.5 858,-19.5 940,-19.5 940,-0.5 858,-0.5"/>
-<text text-anchor="middle" x="899" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">stl/SharedPtr.h</text>
+<g id="a_node15"><a xlink:href="../../d8/df6/_unique_ptr_8h.html" target="_top" xlink:title="Unique pointer implementation. ">
+<polygon fill="white" stroke="black" points="796,-56.5 796,-75.5 878,-75.5 878,-56.5 796,-56.5"/>
+<text text-anchor="middle" x="837" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">stl/UniquePtr.h</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node15 -->
-<g id="edge15" class="edge"><title>Node1&#45;&gt;Node15</title>
-<path fill="none" stroke="midnightblue" d="M584.452,-121.426C679.109,-120.461 837.888,-113.131 881,-76 897.503,-61.7869 899.527,-33.9142 899.4,-19.7339"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="584.34,-117.927 574.369,-121.508 584.397,-124.927 584.34,-117.927"/>
+<g id="edge14" class="edge"><title>Node1&#45;&gt;Node15</title>
+<path fill="none" stroke="midnightblue" d="M575.115,-110.853C630.674,-101.868 713.749,-88.3077 786,-76 789.191,-75.4565 792.493,-74.8878 795.811,-74.3119"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="574.384,-107.425 565.071,-112.476 575.501,-114.336 574.384,-107.425"/>
+</g>
+<!-- Node16 -->
+<g id="node16" class="node"><title>Node16</title>
+<g id="a_node16"><a xlink:href="../../d1/d13/_shared_ptr_8h.html" target="_top" xlink:title="Shared pointer implementation. ">
+<polygon fill="white" stroke="black" points="864,-0.5 864,-19.5 946,-19.5 946,-0.5 864,-0.5"/>
+<text text-anchor="middle" x="905" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">stl/SharedPtr.h</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node16 -->
+<g id="edge16" class="edge"><title>Node1&#45;&gt;Node16</title>
+<path fill="none" stroke="midnightblue" d="M584.442,-121.596C680.484,-120.863 842.981,-113.838 887,-76 903.516,-61.8028 905.534,-33.9228 905.403,-19.7375"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="584.197,-118.098 574.217,-121.653 584.236,-125.098 584.197,-118.098"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
@@ -205,47 +205,60 @@ var sectionId = 'dynsection-1';
 </g>
 <!-- Node10 -->
 <g id="node10" class="node"><title>Node10</title>
-<g id="a_node10"><a xlink:href="../../d0/de6/_open_set_8h.html" target="_top" xlink:title="Hash set implementation. ">
-<polygon fill="white" stroke="black" points="573.5,-0.5 573.5,-19.5 650.5,-19.5 650.5,-0.5 573.5,-0.5"/>
-<text text-anchor="middle" x="612" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">stl/OpenSet.h</text>
+<g id="a_node10"><a xlink:href="../../d5/d7a/_open_map_8h.html" target="_top" xlink:title="Hash map implementation. ">
+<polygon fill="white" stroke="black" points="479,-0.5 479,-19.5 559,-19.5 559,-0.5 479,-0.5"/>
+<text text-anchor="middle" x="519" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">stl/OpenMap.h</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node10 -->
 <g id="edge9" class="edge"><title>Node9&#45;&gt;Node10</title>
-<path fill="none" stroke="midnightblue" d="M612,-45.8045C612,-36.9102 612,-26.7798 612,-19.7511"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="608.5,-46.083 612,-56.083 615.5,-46.083 608.5,-46.083"/>
+<path fill="none" stroke="midnightblue" d="M590.426,-51.1774C572.761,-41.2407 549.487,-28.1492 534.386,-19.6545"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="589.144,-54.4718 599.576,-56.324 592.576,-48.3708 589.144,-54.4718"/>
 </g>
-<!-- Node12 -->
-<g id="node12" class="node"><title>Node12</title>
-<g id="a_node12"><a xlink:href="../../df/d87/_tree_map_8h.html" target="_top" xlink:title="Map implementation using red black tree. ">
-<polygon fill="white" stroke="black" points="669.5,-0.5 669.5,-19.5 746.5,-19.5 746.5,-0.5 669.5,-0.5"/>
-<text text-anchor="middle" x="708" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">stl/TreeMap.h</text>
+<!-- Node11 -->
+<g id="node11" class="node"><title>Node11</title>
+<g id="a_node11"><a xlink:href="../../d0/de6/_open_set_8h.html" target="_top" xlink:title="Hash set implementation. ">
+<polygon fill="white" stroke="black" points="577.5,-0.5 577.5,-19.5 654.5,-19.5 654.5,-0.5 577.5,-0.5"/>
+<text text-anchor="middle" x="616" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">stl/OpenSet.h</text>
 </a>
 </g>
 </g>
-<!-- Node11&#45;&gt;Node12 -->
-<g id="edge11" class="edge"><title>Node11&#45;&gt;Node12</title>
-<path fill="none" stroke="midnightblue" d="M716.45,-46.1005C714.292,-37.1357 711.818,-26.8579 710.107,-19.7511"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="713.11,-47.18 718.853,-56.083 719.915,-45.5415 713.11,-47.18"/>
+<!-- Node9&#45;&gt;Node11 -->
+<g id="edge10" class="edge"><title>Node9&#45;&gt;Node11</title>
+<path fill="none" stroke="midnightblue" d="M615.355,-45.8045C615.52,-36.9102 615.708,-26.7798 615.838,-19.7511"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="611.851,-46.0199 615.165,-56.083 618.85,-46.1495 611.851,-46.0199"/>
 </g>
 <!-- Node13 -->
 <g id="node13" class="node"><title>Node13</title>
-<g id="a_node13"><a xlink:href="../../dd/dba/_tree_set_8h.html" target="_top" xlink:title="Set implementation using red black tree. ">
-<polygon fill="white" stroke="black" points="764.5,-0.5 764.5,-19.5 837.5,-19.5 837.5,-0.5 764.5,-0.5"/>
-<text text-anchor="middle" x="801" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">stl/TreeSet.h</text>
+<g id="a_node13"><a xlink:href="../../df/d87/_tree_map_8h.html" target="_top" xlink:title="Map implementation using red black tree. ">
+<polygon fill="white" stroke="black" points="674.5,-0.5 674.5,-19.5 751.5,-19.5 751.5,-0.5 674.5,-0.5"/>
+<text text-anchor="middle" x="713" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">stl/TreeMap.h</text>
 </a>
 </g>
 </g>
-<!-- Node11&#45;&gt;Node13 -->
-<g id="edge12" class="edge"><title>Node11&#45;&gt;Node13</title>
-<path fill="none" stroke="midnightblue" d="M742.301,-50.6221C756.915,-40.7574 775.827,-27.9919 788.179,-19.6545"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="740.184,-47.8282 733.853,-56.324 744.1,-53.6302 740.184,-47.8282"/>
+<!-- Node12&#45;&gt;Node13 -->
+<g id="edge12" class="edge"><title>Node12&#45;&gt;Node13</title>
+<path fill="none" stroke="midnightblue" d="M722.177,-46.3956C719.835,-37.362 717.132,-26.936 715.269,-19.7511"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="718.79,-47.2814 724.688,-56.083 725.566,-45.5246 718.79,-47.2814"/>
 </g>
-<!-- Node14&#45;&gt;Node15 -->
-<g id="edge14" class="edge"><title>Node14&#45;&gt;Node15</title>
-<path fill="none" stroke="midnightblue" d="M849.762,-50.1008C862,-40.3824 877.559,-28.0269 887.876,-19.8339"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="847.58,-47.3642 841.925,-56.324 851.933,-52.846 847.58,-47.3642"/>
+<!-- Node14 -->
+<g id="node14" class="node"><title>Node14</title>
+<g id="a_node14"><a xlink:href="../../dd/dba/_tree_set_8h.html" target="_top" xlink:title="Set implementation using red black tree. ">
+<polygon fill="white" stroke="black" points="769.5,-0.5 769.5,-19.5 842.5,-19.5 842.5,-0.5 769.5,-0.5"/>
+<text text-anchor="middle" x="806" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">stl/TreeSet.h</text>
+</a>
+</g>
+</g>
+<!-- Node12&#45;&gt;Node14 -->
+<g id="edge13" class="edge"><title>Node12&#45;&gt;Node14</title>
+<path fill="none" stroke="midnightblue" d="M748.034,-50.6221C762.466,-40.7574 781.141,-27.9919 793.339,-19.6545"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="745.973,-47.7914 739.693,-56.324 749.923,-53.5703 745.973,-47.7914"/>
+</g>
+<!-- Node15&#45;&gt;Node16 -->
+<g id="edge15" class="edge"><title>Node15&#45;&gt;Node16</title>
+<path fill="none" stroke="midnightblue" d="M855.762,-50.1008C868,-40.3824 883.559,-28.0269 893.876,-19.8339"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="853.58,-47.3642 847.925,-56.324 857.933,-52.846 853.58,-47.3642"/>
 </g>
 </g>
 </svg>

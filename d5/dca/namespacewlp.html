@@ -195,6 +195,8 @@ Data Structures</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dea/structwlp_1_1_linked_list_iterator.html">LinkedListIterator</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d28/classwlp_1_1_open_hash_map.html">OpenHashMap</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d87/classwlp_1_1_open_hash_set.html">OpenHashSet</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dfd/structwlp_1_1_pair.html">Pair</a></td></tr>
@@ -216,6 +218,14 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classwlp_1_1_shared_count.html">SharedCount</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d8d/classwlp_1_1_weak_count.html">WeakCount</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d56/structwlp_1_1_map_get_key.html">MapGetKey</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d68/structwlp_1_1_map_get_val.html">MapGetVal</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d46/structwlp_1_1_set_get_key.html">SetGetKey</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d36/structwlp_1_1_set_get_val.html">SetGetVal</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d4c/classwlp_1_1_tree_map.html">TreeMap</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1968,7 +1978,7 @@ template&lt;typename &gt; </div>
 
 <p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00436">436</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00449">count()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l01161">wlp::RedBlackTree&lt; Key, Val, Cmp &gt;::count()</a>, and <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l01109">wlp::RedBlackTree&lt; Key, Val, Cmp &gt;::erase()</a>.</p>
+<p>Referenced by <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00449">count()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l01207">wlp::RedBlackTree&lt; Element, Key, Val, GetKey, GetVal, Cmp &gt;::count()</a>, and <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l01149">wlp::RedBlackTree&lt; Element, Key, Val, GetKey, GetVal, Cmp &gt;::erase()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                          {</div>
 <div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    }</div>
@@ -3610,7 +3620,7 @@ template&lt;typename... Types&gt; </div>
 
 <p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00646">646</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00665">tuple_cat_pair_sub()</a>.</p>
+<p>Referenced by <a class="el" href="../../df/d87/_tree_map_8h_source.html#l00098">wlp::TreeMap&lt; Key, Val, Cmp &gt;::insert()</a>, <a class="el" href="../../d5/d7a/_open_map_8h_source.html#l00115">wlp::OpenHashMap&lt; Key, Val, Hasher, Equals &gt;::insert()</a>, <a class="el" href="../../df/d87/_tree_map_8h_source.html#l00103">wlp::TreeMap&lt; Key, Val, Cmp &gt;::insert_or_assign()</a>, <a class="el" href="../../d5/d7a/_open_map_8h_source.html#l00120">wlp::OpenHashMap&lt; Key, Val, Hasher, Equals &gt;::insert_or_assign()</a>, <a class="el" href="../../df/d87/_tree_map_8h_source.html#l00143">wlp::TreeMap&lt; Key, Val, Cmp &gt;::operator[]()</a>, <a class="el" href="../../d5/d7a/_open_map_8h_source.html#l00160">wlp::OpenHashMap&lt; Key, Val, Hasher, Equals &gt;::operator[]()</a>, and <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00665">tuple_cat_pair_sub()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;                                                                 {</div>
 <div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;        <span class="keywordflow">return</span> Tuple&lt;decay_type&lt;Types&gt;...&gt;(forward&lt;Types&gt;(elements)...);</div>
 <div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;    }</div>
@@ -3618,7 +3628,7 @@ template&lt;typename... Types&gt; </div>
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d5/dca/namespacewlp_a94b93d689170305bf7c08b5a6545bb6f_icgraph.svg" width="667" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../d5/dca/namespacewlp_a94b93d689170305bf7c08b5a6545bb6f_icgraph.svg" width="100%" height="579"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 </p>
@@ -3688,7 +3698,7 @@ template&lt;typename T &gt; </div>
 
 <p>Definition at line <a class="el" href="../../db/d2a/_utility_8h_source.html#l00028">28</a> of file <a class="el" href="../../db/d2a/_utility_8h_source.html">Utility.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00070">wlp::TupleElement&lt; Indices, Types &gt;::operator=()</a>, <a class="el" href="../../dd/dba/_tree_set_8h_source.html#l00118">wlp::TreeSet&lt; Key, Cmp &gt;::operator=()</a>, <a class="el" href="../../df/d87/_tree_map_8h_source.html#l00145">wlp::TreeMap&lt; Key, Val, Cmp &gt;::operator=()</a>, <a class="el" href="../../d0/d55/_allocator_8cpp_source.html#l00095">wlp::__Allocator::operator=()</a>, <a class="el" href="../../d6/d59/_chain_set_8h_source.html#l00229">wlp::ChainHashSet&lt; Key, Hash, Equal &gt;::operator=()</a>, <a class="el" href="../../d0/de6/_open_set_8h_source.html#l00233">wlp::OpenHashSet&lt; Key, Hash, Equal &gt;::operator=()</a>, <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00239">wlp::TupleImpl&lt; IndexSequence&lt; Indices...&gt;, Types...&gt;::operator=()</a>, <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00301">wlp::Tuple&lt; Types &gt;::operator=()</a>, <a class="el" href="../../d3/dbe/_chain_map_8h_source.html#l00843">wlp::ChainHashMap&lt; Key, Val, Hasher, Equals &gt;::operator=()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00564">wlp::SharedPtr&lt; T &gt;::operator=()</a>, <a class="el" href="../../df/d03/_array_heap_8h_source.html#l00611">wlp::ArrayHeap&lt; T, Cmp &gt;::operator=()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00743">wlp::RedBlackTree&lt; Key, Key, Cmp &gt;::operator=()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00765">wlp::ArrayList&lt; T &gt;::operator=()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00533">wlp::SharedPtr&lt; T &gt;::SharedPtr()</a>, and <a class="el" href="../../db/d2a/_utility_8h_source.html#l00063">swap()</a>.</p>
+<p>Referenced by <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00070">wlp::TupleElement&lt; Indices, Types &gt;::operator=()</a>, <a class="el" href="../../dd/dba/_tree_set_8h_source.html#l00123">wlp::TreeSet&lt; Key, Cmp &gt;::operator=()</a>, <a class="el" href="../../d0/de6/_open_set_8h_source.html#l00139">wlp::OpenHashSet&lt; Key, Hasher, Equals &gt;::operator=()</a>, <a class="el" href="../../df/d87/_tree_map_8h_source.html#l00150">wlp::TreeMap&lt; Key, Val, Cmp &gt;::operator=()</a>, <a class="el" href="../../d5/d7a/_open_map_8h_source.html#l00167">wlp::OpenHashMap&lt; Key, Val, Hasher, Equals &gt;::operator=()</a>, <a class="el" href="../../d0/d55/_allocator_8cpp_source.html#l00095">wlp::__Allocator::operator=()</a>, <a class="el" href="../../d6/d59/_chain_set_8h_source.html#l00229">wlp::ChainHashSet&lt; Key, Hash, Equal &gt;::operator=()</a>, <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00239">wlp::TupleImpl&lt; IndexSequence&lt; Indices...&gt;, Types...&gt;::operator=()</a>, <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00301">wlp::Tuple&lt; Types &gt;::operator=()</a>, <a class="el" href="../../d3/dbe/_chain_map_8h_source.html#l00843">wlp::ChainHashMap&lt; Key, Val, Hasher, Equals &gt;::operator=()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00564">wlp::SharedPtr&lt; T &gt;::operator=()</a>, <a class="el" href="../../df/d03/_array_heap_8h_source.html#l00611">wlp::ArrayHeap&lt; T, Cmp &gt;::operator=()</a>, <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00761">wlp::RedBlackTree&lt; Tuple&lt; Key, Val &gt;, Key, Val, MapGetKey&lt; Key, Val &gt;, MapGetVal&lt; Key, Val &gt;, Cmp &gt;::operator=()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00765">wlp::ArrayList&lt; T &gt;::operator=()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00533">wlp::SharedPtr&lt; T &gt;::SharedPtr()</a>, and <a class="el" href="../../db/d2a/_utility_8h_source.html#l00063">swap()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                                                                      {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>typename remove_reference&lt;T&gt;::type &amp;&amp;<span class="keyword">&gt;</span>(t);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
@@ -6763,7 +6773,7 @@ template&lt;typename T &gt; </div>
 
 <p>References <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00611">wlp::SharedPtr&lt; T &gt;::swap()</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00836">wlp::RedBlackTree&lt; Key, Val, Cmp &gt;::eraseRebalance()</a>, <a class="el" href="../../d8/df6/_unique_ptr_8h_source.html#l00134">wlp::UniquePtr&lt; T &gt;::swap()</a>, <a class="el" href="../../d8/df6/_unique_ptr_8h_source.html#l00222">wlp::UniquePtr&lt; T[]&gt;::swap()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00289">wlp::SharedCount&lt; T * &gt;::swap()</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00410">wlp::WeakCount&lt; T * &gt;::swap()</a>.</p>
+<p>Referenced by <a class="el" href="../../d5/d08/_red_black_tree_8h_source.html#l00862">wlp::RedBlackTree&lt; Element, Key, Val, GetKey, GetVal, Cmp &gt;::erase_rebalance()</a>, <a class="el" href="../../d8/df6/_unique_ptr_8h_source.html#l00134">wlp::UniquePtr&lt; T &gt;::swap()</a>, <a class="el" href="../../d8/df6/_unique_ptr_8h_source.html#l00222">wlp::UniquePtr&lt; T[]&gt;::swap()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00289">wlp::SharedCount&lt; T * &gt;::swap()</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00410">wlp::WeakCount&lt; T * &gt;::swap()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;                                                           {</div>
 <div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;        sp1.swap(sp2);</div>
 <div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;    }</div>
@@ -7245,7 +7255,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Dec 17 2017 04:07:53 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 18 2017 18:55:19 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
