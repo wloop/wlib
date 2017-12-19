@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/teamwaterloop/waterloop-wlib.svg?branch=master)](https://travis-ci.org/teamwaterloop/waterloop-wlib)
-[![Coverage Status](https://coveralls.io/repos/github/teamwaterloop/embedded-cplusplus/badge.svg?branch=master)](https://coveralls.io/github/teamwaterloop/embedded-cplusplus?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/teamwaterloop/waterloop-wlib/badge.svg?branch=master)](https://coveralls.io/github/teamwaterloop/waterloop-wlib?branch=master)
 
 # WLib
 
