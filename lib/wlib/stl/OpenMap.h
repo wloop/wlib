@@ -59,9 +59,7 @@ namespace wlp {
         table_type m_table;
 
     public:
-        explicit OpenHashMap(
-                size_type n = 12,
-                percent_type max_load = 75)
+        explicit OpenHashMap(size_type n = 12, percent_type max_load = 75)
                 : m_table(n, max_load) {
         }
 

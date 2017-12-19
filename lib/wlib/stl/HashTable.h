@@ -156,6 +156,7 @@ namespace wlp {
             typename Hasher = Hash<Key, uint16_t>,
             typename Equals = Equal<Key>>
     class HashTable {
+    public:
         typedef HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals> table_type;
         typedef HashTableNode<Element> node_type;
         typedef HashTableIterator<
