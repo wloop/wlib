@@ -100,7 +100,7 @@ namespace wlp {
         }
 
         void clear() noexcept {
-            m_table.end();
+            m_table.clear();
         }
 
         template<typename K, typename V>

@@ -29,42 +29,6 @@ namespace wlp {
     struct Pair<HashMap<String16, String16>::iterator, bool>;
 
     template
-    struct HashMapIterator<
-            String16,
-            String16,
-            String16 &,
-            String16 *,
-            Hash<String16, uint16_t>,
-            Equal<String16>>;
-
-    template
-    struct HashMapIterator<
-            uint16_t,
-            uint16_t,
-            uint16_t &,
-            uint16_t *,
-            Hash<uint16_t, uint16_t>,
-            Equal<uint16_t>>;
-
-    template
-    struct HashMapIterator<
-            String16,
-            String16,
-            const String16 &,
-            const String16 *,
-            Hash<String16, uint16_t>,
-            Equal<String16>>;
-
-    template
-    struct HashMapIterator<
-            uint16_t,
-            uint16_t,
-            const uint16_t &,
-            const uint16_t *,
-            Hash<uint16_t, uint16_t>,
-            Equal<uint16_t>>;
-
-    template
     struct Equal<String8>;
 
     template
