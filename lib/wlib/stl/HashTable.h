@@ -248,7 +248,14 @@ namespace wlp {
             table.m_capacity = 0;
         }
 
-        ~HashTable();
+        ~HashTable() {
+            if (!m_buckets) {
+                return;
+            }
+            clear();
+            free<node_type *>(m_buckets);
+            m_buckets = nullptr;
+        }
 
     private:
         void init_buckets(size_type n);
@@ -312,8 +319,8 @@ namespace wlp {
         template<typename E>
         iterator insert_equal(E &&element);
 
-        template<typename K>
-        element_type &find_or_insert(K &&key);
+        template<typename E>
+        element_type &find_or_insert(E &&element);
 
         iterator find(const key_type &key) {
             size_type n = hash(key);
@@ -378,7 +385,7 @@ namespace wlp {
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
     HashTableIterator<Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals>::self_type
-            HashTableIterator<Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals>
+    HashTableIterator<Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals>
     ::operator++(int) {
         self_type tmp = *this;
         ++*this;
@@ -406,6 +413,231 @@ namespace wlp {
         m_buckets[n] = tmp;
         ++m_size;
         return Pair<iterator, bool>(iterator(tmp, this), true);
+    }
+
+    template<typename Element, typename Key, typename Val,
+            typename GetKey, typename GetVal,
+            typename Hasher, typename Equals>
+    template<typename E>
+    HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator
+    HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    ::insert_equal(E &&element) {
+        ensure_capacity();
+        const size_type n = hash(m_get_key(element));
+        node_type *first = m_buckets[n];
+        for (node_type *cur = first; cur; cur = cur->m_next) {
+            if (m_key_equals(m_get_key(cur->m_element), m_get_key(element))) {
+                node_type *tmp = malloc<node_type>();
+                tmp->m_element = forward<E>(element);
+                tmp->m_next = cur->m_next;
+                cur->m_next = tmp;
+                ++m_size;
+                return iterator(tmp, this);
+            }
+        }
+        node_type *tmp = malloc<node_type>();
+        tmp->m_element = forward<E>(element);
+        tmp->m_next = first;
+        m_buckets[n] = tmp;
+        ++m_size;
+        return iterator(tmp, this);
+    }
+
+    template<typename Element, typename Key, typename Val,
+            typename GetKey, typename GetVal,
+            typename Hasher, typename Equals>
+    template<typename E>
+    HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::element_type &
+    HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    ::find_or_insert(E &&element) {
+        size_type n = hash(m_get_key(element));
+        node_type *first = m_buckets[n];
+        for (node_type *cur = first; cur; cur = cur->m_next) {
+            if (m_key_equals(m_get_key(cur->m_element), m_get_key(element))) {
+                return cur->m_element;
+            }
+        }
+        ensure_capacity();
+        node_type *tmp = malloc<node_type>();
+        tmp->m_element = forward<E>(element);
+        tmp->m_next = first;
+        m_buckets[n] = tmp;
+        ++m_size;
+        return tmp->m_element;
+    }
+
+    template<typename Element, typename Key, typename Val,
+            typename GetKey, typename GetVal,
+            typename Hasher, typename Equals>
+    Pair<HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator,
+            HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator>
+    HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    ::equal_range(const key_type &key) {
+        typedef Pair<iterator, iterator> ret_type;
+        const size_type n = hash(key);
+        for (node_type *first = m_buckets[n]; first; first = first->m_next) {
+            if (m_key_equals(m_get_key(first->m_element), key)) {
+                for (node_type *cur = first->m_next; cur; cur = cur->m_next) {
+                    if (!m_key_equals(m_get_key(cur->m_element), key)) {
+                        return ret_type(iterator(first, this), iterator(cur, this));
+                    }
+                }
+                for (size_type m = static_cast<unsigned short>(n + 1); m < m_size; ++m) {
+                    if (m_buckets[m]) {
+                        return ret_type(iterator(first, this), iterator(m_buckets[m], this));
+                    }
+                }
+                return ret_type(iterator(first, this), end());
+            }
+        }
+        return ret_type(end(), end());
+    }
+
+    template<typename Element, typename Key, typename Val,
+            typename GetKey, typename GetVal,
+            typename Hasher, typename Equals>
+    Pair<HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::const_iterator,
+            HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::const_iterator>
+    HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    ::equal_range(const key_type &key) const {
+        typedef Pair<const_iterator, const_iterator> ret_type;
+        const size_type n = hash(key);
+        for (node_type *first = m_buckets[n]; first; first = first->m_next) {
+            if (m_key_equals(m_get_key(first->m_element), key)) {
+                for (node_type *cur = first->m_next; cur; cur = cur->m_next) {
+                    if (!m_key_equals(m_get_key(cur->m_element), key)) {
+                        return ret_type(const_iterator(first, this), const_iterator(cur, this));
+                    }
+                }
+                for (size_type m = static_cast<unsigned short>(n + 1); m < m_size; ++m) {
+                    if (m_buckets[m]) {
+                        return ret_type(const_iterator(first, this), const_iterator(m_buckets[m], this));
+                    }
+                }
+                return ret_type(const_iterator(first, this), end());
+            }
+        }
+        return ret_type(end(), end());
+    }
+
+    template<typename Element, typename Key, typename Val,
+            typename GetKey, typename GetVal,
+            typename Hasher, typename Equals>
+    void HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    ::erase(const iterator &it) {
+        node_type *node = it.m_node;
+        if (node) {
+            const size_type n = hash(m_get_key(node->m_element));
+            node_type *cur = m_buckets[n];
+            if (cur == node) {
+                m_buckets[n] = cur->m_next;
+                free<node_type>(cur);
+                --m_size;
+                return;
+            }
+            node_type *next = cur->m_next;
+            while (next) {
+                if (next == node) {
+                    cur->m_next = next->m_next;
+                    free<node_type>(next);
+                    --m_size;
+                    break;
+                }
+                cur = next;
+                next = cur->m_next;
+            }
+        }
+    }
+
+    template<typename Element, typename Key, typename Val,
+            typename GetKey, typename GetVal,
+            typename Hasher, typename Equals>
+    HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::size_type
+    HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    ::erase(const key_type &key) {
+        const size_type n = hash(key);
+        node_type *first = m_buckets[n];
+        size_type erased = 0;
+        if (first) {
+            node_type *cur = first;
+            node_type *next = cur->m_next;
+            while (next) {
+                if (m_key_equals(m_get_key(next->m_element), key)) {
+                    cur->m_next = next->m_next;
+                    free<node_type>(next);
+                    next = cur->m_next;
+                    ++erased;
+                    --m_size;
+                } else {
+                    cur = next;
+                    next = cur->m_next;
+                }
+            }
+            if (m_key_equals(m_get_key(first->m_element), key)) {
+                m_buckets[n] = first->m_next;
+                free<node_type>(first);
+                ++erased;
+                --m_size;
+            }
+        }
+        return erased;
+    }
+
+    template<typename Element, typename Key, typename Val,
+            typename GetKey, typename GetVal,
+            typename Hasher, typename Equals>
+    void HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    ::clear() noexcept {
+        for (size_type i = 0; i < m_capacity; ++i) {
+            node_type *cur = m_buckets[i];
+            node_type *next;
+            while (cur) {
+                next = cur->m_next;
+                free<node_type>(cur);
+                cur = next;
+            }
+            m_buckets[i] = nullptr;
+        }
+        m_size = 0;
+    }
+
+    template<typename Element, typename Key, typename Val,
+            typename GetKey, typename GetVal,
+            typename Hasher, typename Equals>
+    void HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    ::init_buckets(size_type n) {
+        m_buckets = malloc<node_type *[]>(n);
+        memset(m_buckets, nullptr, n * sizeof(node_type *));
+    }
+
+    template<typename Element, typename Key, typename Val,
+            typename GetKey, typename GetVal,
+            typename Hasher, typename Equals>
+    void HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    ::ensure_capacity() {
+        if (m_size * 100 < m_max_load * m_capacity) {
+            return;
+        }
+        size_type new_capacity = static_cast<size_type>(m_capacity * 2);
+        node_type **new_buckets = malloc<node_type *[]>(new_capacity);
+        memset(m_buckets, nullptr, new_capacity * sizeof(node_type *));
+        for (size_type i = 0; i < m_capacity; ++i) {
+            if (!m_buckets[i]) {
+                continue;
+            }
+            node_type *cur = m_buckets[i];
+            while (cur) {
+                size_type k = bucket_index(m_get_key(cur->m_element), new_capacity);
+                node_type *first = new_buckets[k];
+                node_type *next = cur->m_next;
+                cur->m_next = first;
+                new_buckets[k] = cur;
+                cur = next;
+            }
+        }
+        free<node_type *>(m_buckets);
+        m_buckets = new_buckets;
+        m_capacity = new_capacity;
     }
 
 }
