@@ -234,7 +234,7 @@ namespace wlp {
         Equals m_equal;
 
         /**
-         * Hasher map backing array.
+         * Hash map backing array.
          */
         node_type **m_buckets;
 

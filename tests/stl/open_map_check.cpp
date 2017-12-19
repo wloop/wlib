@@ -285,7 +285,7 @@ TEST(open_map_test, test_erase_iterator_invalid_node) {
     map[2] = 20;
     int_map::table_type::element_type invalid_node = make_tuple(10, 100);
     int_map::iterator it;
-    it.m_current = &invalid_node;
+    it.m_node = &invalid_node;
     it.m_table = map.get_backing_table();
     ASSERT_EQ(map.end(), map.erase(it));
 }
