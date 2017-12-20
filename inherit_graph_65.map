@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d4/da7/structwlp_1_1_equal_3_01_static_string_3_01t_size_01_4_01_4.html" title="wlp::Equal\&lt; StaticString\l\&lt; tSize \&gt; \&gt;" alt="" coords="5,5,168,46"/>
+<area shape="rect" id="node1" href="$d2/d06/classwlp_1_1_guard_base.html" title="wlp::GuardBase" alt="" coords="5,12,120,39"/>
+<area shape="rect" id="node2" href="$dd/db1/classwlp_1_1_guard_condition.html" title="wlp::GuardCondition\l\&lt; SM, Data, Func \&gt;" alt="" coords="169,5,309,46"/>
 </map>

@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$dc/dc1/structwlp_1_1conditional_3_01false_00_01_if_true_00_01_if_false_01_4.html" title="wlp::conditional\&lt; false,\l IfTrue, IfFalse \&gt;" alt="" coords="6,5,162,46"/>
+<area shape="rect" id="node1" href="$d9/d8c/classwlp_1_1_entry_base.html" title="wlp::EntryBase" alt="" coords="6,12,117,39"/>
+<area shape="rect" id="node2" href="$d9/d5b/classwlp_1_1_entry_action.html" title="wlp::EntryAction\&lt; SM,\l Data, Func \&gt;" alt="" coords="165,5,320,46"/>
 </map>
