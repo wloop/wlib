@@ -71,7 +71,7 @@ namespace wlp {
         /**
          * Pointer to the node referenced by this iterator.
          */
-        element_type *m_current;
+        element_type *m_node;
         /**
          * Pointer to the hash map to which this iterator belongs.
          */
@@ -89,7 +89,7 @@ namespace wlp {
          * Default constructor.
          */
         OpenHashTableIterator()
-                : m_current(nullptr),
+                : m_node(nullptr),
                   m_table(nullptr) {
         }
 
@@ -99,7 +99,7 @@ namespace wlp {
          * @param map  parent hash map
          */
         OpenHashTableIterator(element_type *node, const table_type *hash_map)
-                : m_current(node),
+                : m_node(node),
                   m_table(hash_map) {
         }
 
@@ -108,7 +108,7 @@ namespace wlp {
          * @param it iterator to copy
          */
         OpenHashTableIterator(const self_type &it)
-                : m_current(it.m_current),
+                : m_node(it.m_node),
                   m_table(it.m_table) {
         }
 
@@ -117,10 +117,10 @@ namespace wlp {
          * pointed to by the iterator
          */
         reference operator*() const {
-            if (m_current == nullptr) {
+            if (m_node == nullptr) {
                 THROW(KEY_EXCEPTION("Accessing invalid iterator"))
             }
-            return m_get_value(*m_current);
+            return m_get_value(*m_node);
         }
 
         /**
@@ -128,6 +128,9 @@ namespace wlp {
          * pointed to by the iterator
          */
         pointer operator->() const {
+            if (m_node == nullptr) {
+                THROW(KEY_EXCEPTION("Accessing invalid iterator"))
+            }
             return &(operator*());
         }
 
@@ -152,7 +155,7 @@ namespace wlp {
          * @return true if both point to the same node
          */
         bool operator==(const self_type &it) const {
-            return m_current == it.m_current;
+            return m_node == it.m_node;
         }
 
         /**
@@ -162,7 +165,7 @@ namespace wlp {
          * @return true if they point to different nodes
          */
         bool operator!=(const self_type &it) const {
-            return m_current != it.m_current;
+            return m_node != it.m_node;
         }
 
         /**
@@ -172,7 +175,7 @@ namespace wlp {
          * @return a reference to this iterator
          */
         self_type &operator=(const self_type &it) {
-            m_current = it.m_current;
+            m_node = it.m_node;
             m_table = it.m_table;
             return *this;
         }
@@ -200,15 +203,15 @@ namespace wlp {
             typename Equals = Equal <Key>>
     class OpenHashTable {
     public:
-        typedef OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals> map_type;
+        typedef OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals> table_type;
         typedef OpenHashTableIterator<
-                Element, Key, 
-                Val, Val &, Val *, 
-                GetKey, GetVal, 
+                Element, Key,
+                Val, Val &, Val *,
+                GetKey, GetVal,
                 Hasher, Equals
         > iterator;
         typedef OpenHashTableIterator<
-                Element, Key, Val, 
+                Element, Key, Val,
                 const Val &, const Val *,
                 GetKey, GetVal,
                 Hasher, Equals
@@ -242,12 +245,12 @@ namespace wlp {
          * Class hash function instance. Used to hash
          * element keys.
          */
-        hash_function m_hash;
+        hash_function m_hash_function{};
         /**
          * Class key equality function. Used to test
          * equality of element keys.
          */
-        key_equals m_equal;
+        key_equals m_key_equals{};
         /**
          * Functor to obtain key from element.
          */
@@ -290,9 +293,7 @@ namespace wlp {
         explicit OpenHashTable(
                 size_type n = 12,
                 percent_type max_load = 75)
-                : m_hash(),
-                  m_equal(),
-                  m_num_elements(0),
+                : m_num_elements(0),
                   m_capacity(n),
                   m_max_load(max_load) {
             init_buckets(n);
@@ -305,20 +306,18 @@ namespace wlp {
          * Copy constructor is deleted to prevent
          * copying of complex structures.
          */
-        OpenHashTable(const map_type &) = delete;
+        OpenHashTable(const table_type &) = delete;
 
         /**
          * Move constructor transfers resources from
          * rvalue hash map into this hash map.
          * @param map map from which to transfer
          */
-        OpenHashTable(map_type &&map) :
-                m_hash(move(map.m_hash)),
-                m_equal(move(map.m_equal)),
-                m_buckets(move(map.m_buckets)),
-                m_num_elements(move(map.m_num_elements)),
-                m_capacity(move(map.m_capacity)),
-                m_max_load(move(map.m_max_load)) {
+        OpenHashTable(table_type &&map)
+                : m_buckets(move(map.m_buckets)),
+                  m_num_elements(move(map.m_num_elements)),
+                  m_capacity(move(map.m_capacity)),
+                  m_max_load(move(map.m_max_load)) {
             map.m_num_elements = 0;
             map.m_capacity = 0;
             map.m_buckets = nullptr;
@@ -347,7 +346,7 @@ namespace wlp {
          * @return an index i such that 0 <= i < max_elements
          */
         size_type bucket_index(const key_type &key, size_type max_elements) const {
-            return m_hash(key) % max_elements;
+            return m_hash_function(key) % max_elements;
         }
 
         /**
@@ -356,7 +355,7 @@ namespace wlp {
          * @return an index i such that 0 <= i < m_max_elements
          */
         size_type hash(const key_type &key) const {
-            return m_hash(key) % m_capacity;
+            return m_hash_function(key) % m_capacity;
         }
 
         /**
@@ -518,7 +517,7 @@ namespace wlp {
          *
          * @return hash map reference
          */
-        map_type &operator=(const map_type &) = delete;
+        table_type &operator=(const table_type &) = delete;
 
         /**
          * Move assignment operator. Assigned hash map
@@ -528,10 +527,10 @@ namespace wlp {
          * @param map map to move
          * @return reference to this map
          */
-        map_type &operator=(map_type &&map);
+        table_type &operator=(table_type &&map);
     };
 
-    template<typename Element, typename Key, typename Val, 
+    template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
     void OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
@@ -542,8 +541,8 @@ namespace wlp {
         }
     }
 
-    template<typename Element, typename Key, typename Val, 
-            typename GetKey, typename GetVal, 
+    template<typename Element, typename Key, typename Val,
+            typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
     void OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::ensure_capacity() {
@@ -573,7 +572,7 @@ namespace wlp {
         m_capacity = new_capacity;
     }
 
-    template<typename Element, typename Key, typename Val, 
+    template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
     void OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
@@ -588,7 +587,7 @@ namespace wlp {
     }
 
     template<typename Element, typename Key, typename Val,
-            typename GetKey, typename GetVal, 
+            typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
     template<typename E>
     Pair<typename OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator, bool>
@@ -596,7 +595,7 @@ namespace wlp {
     ::insert_unique(E &&element) {
         ensure_capacity();
         size_type i = hash(m_get_key(element));
-        while (m_buckets[i] && !m_equal(m_get_key(element), m_get_key(*m_buckets[i]))) {
+        while (m_buckets[i] && !m_key_equals(m_get_key(element), m_get_key(*m_buckets[i]))) {
             if (++i >= m_capacity) {
                 i = 0;
             }
@@ -617,12 +616,12 @@ namespace wlp {
             typename Hasher, typename Equals>
     void OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::erase(const iterator &pos) {
-        const element_type *cur_node = pos.m_current;
+        const element_type *cur_node = pos.m_node;
         if (!cur_node) {
             return;
         }
         size_type i = hash(m_get_key(*cur_node));
-        while (m_buckets[i] && !m_equal(m_get_key(*cur_node), m_get_key(*m_buckets[i]))) {
+        while (m_buckets[i] && !m_key_equals(m_get_key(*cur_node), m_get_key(*m_buckets[i]))) {
             if (++i >= m_capacity) {
                 i = 0;
             }
@@ -660,7 +659,7 @@ namespace wlp {
     size_type OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::erase(const key_type &key) {
         size_type i = hash(key);
-        while (m_buckets[i] && !m_equal(key, m_get_key(*m_buckets[i]))) {
+        while (m_buckets[i] && !m_key_equals(key, m_get_key(*m_buckets[i]))) {
             if (++i >= m_capacity) {
                 i = 0;
             }
@@ -700,7 +699,7 @@ namespace wlp {
     OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::find(const key_type &key) {
         size_type i = hash(key);
-        while (m_buckets[i] && !m_equal(key, m_get_key(*m_buckets[i]))) {
+        while (m_buckets[i] && !m_key_equals(key, m_get_key(*m_buckets[i]))) {
             if (++i >= m_capacity) {
                 i = 0;
             }
@@ -719,7 +718,7 @@ namespace wlp {
     OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::find(const key_type &key) const {
         size_type i = hash(key);
-        while (m_buckets[i] && !m_equal(key, m_get_key(*m_buckets[i]))) {
+        while (m_buckets[i] && !m_key_equals(key, m_get_key(*m_buckets[i]))) {
             if (++i >= m_capacity) {
                 i = 0;
             }
@@ -767,27 +766,27 @@ namespace wlp {
         return *this;
     }
 
-    template<typename Element, typename Key, typename Val, 
-            typename Ref, typename Ptr, 
+    template<typename Element, typename Key, typename Val,
+            typename Ref, typename Ptr,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
     OpenHashTableIterator<Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals> &
     OpenHashTableIterator<Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals>
     ::operator++() {
-        if (!m_current) {
+        if (!m_node) {
             return *this;
         }
-        size_type i = m_table->hash(m_get_key(*m_current));
-        while (m_table->m_buckets[i] && !m_table->m_equal(m_get_key(*m_current), m_get_key(*m_table->m_buckets[i]))) {
+        size_type i = m_table->hash(m_get_key(*m_node));
+        while (m_table->m_buckets[i] && !m_table->m_key_equals(m_get_key(*m_node), m_get_key(*m_table->m_buckets[i]))) {
             if (++i >= m_table->m_capacity) {
                 i = 0;
             }
         }
         while (++i < m_table->m_capacity && !m_table->m_buckets[i]) {}
         if (i == m_table->m_capacity) {
-            m_current = nullptr;
+            m_node = nullptr;
         } else {
-            m_current = m_table->m_buckets[i];
+            m_node = m_table->m_buckets[i];
         }
         return *this;
     }

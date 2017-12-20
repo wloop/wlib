@@ -1,23 +1,21 @@
 /**
- * @file OpenMap.h
- * @brief Hash map implementation.
+ * @file ChainMap.h
+ * @brief Hasher map implementation.
  *
- * Hash map is implemented using open addressing and linear probing,
- * based on the assumption that it will be used with good knowledge
- * of the needed map size. The Hash Map provides the same basic
- * functionality as std::unordered_map or std::map_type.
+ * Hasher map is implemented using separate chaining
+ * because someone wanted remove operations.
  *
  * @author Jeff Niu
- * @date November 1, 2017
+ * @date November 3, 2017
  * @bug No known bugs
  */
 
-#ifndef CORE_STL_MAP_H
-#define CORE_STL_MAP_H
+#ifndef EMBEDDEDTESTS_CHAINMAP_H
+#define EMBEDDEDTESTS_CHAINMAP_H
 
 #include "Equal.h"
 #include "Hash.h"
-#include "OpenTable.h"
+#include "HashTable.h"
 #include "Pair.h"
 #include "Table.h"
 #include "Tuple.h"
@@ -27,7 +25,7 @@
 namespace wlp {
 
     /**
-     * Hash map implemented using open addressing and linear probing,
+     * Hash map implemented using separate chaining,
      * in the spirit of std::unordered_map.
      *
      * @tparam Key    key type
@@ -39,10 +37,10 @@ namespace wlp {
             typename Val,
             typename Hasher = Hash<Key, uint16_t>,
             typename Equals = Equal<Key>>
-    class OpenHashMap {
+    class HashMap {
     public:
-        typedef OpenHashMap<Key, Val, Hasher, Equals> map_type;
-        typedef OpenHashTable<Tuple<Key, Val>,
+        typedef HashMap<Key, Val, Hasher, Equals> map_type;
+        typedef HashTable<Tuple<Key, Val>,
                 Key, Val,
                 MapGetKey<Key, Val>, MapGetVal<Key, Val>,
                 Hasher, Equals
@@ -59,13 +57,13 @@ namespace wlp {
         table_type m_table;
 
     public:
-        explicit OpenHashMap(size_type n = 12, percent_type max_load = 75)
+        explicit HashMap(size_type n = 12, percent_type max_load = 75)
                 : m_table(n, max_load) {
         }
 
-        OpenHashMap(const map_type &) = delete;
+        HashMap(const map_type &) = delete;
 
-        OpenHashMap(map_type &&map)
+        HashMap(map_type &&map)
                 : m_table(move(map.m_table)) {
         }
 
@@ -83,10 +81,6 @@ namespace wlp {
 
         bool empty() const {
             return m_table.empty();
-        }
-
-        const table_type *get_backing_table() const {
-            return &m_table;
         }
 
         iterator begin() {
@@ -112,7 +106,7 @@ namespace wlp {
         template<typename K, typename V>
         Pair<iterator, bool> insert(K &&key, V &&val) {
             return m_table.insert_unique(make_tuple(forward<K>(key), forward<V>(val)));
-        };
+        }
 
         template<typename K, typename V>
         Pair<iterator, bool> insert_or_assign(K &&key, V &&val) {
@@ -121,7 +115,7 @@ namespace wlp {
                 *result.m_first = forward<V>(val);
             }
             return result;
-        };
+        }
 
         iterator erase(const iterator &pos) {
             iterator tmp = pos;
@@ -156,8 +150,7 @@ namespace wlp {
 
         template<typename K>
         val_type &operator[](K &&key) {
-            Pair<iterator, bool> result = m_table.insert_unique(make_tuple(forward<K>(key), val_type()));
-            return *result.m_first;
+            return get<1>(m_table.find_or_insert(make_tuple(forward<K>(key), val_type())));
         }
 
         map_type &operator=(const map_type &) = delete;
@@ -170,4 +163,4 @@ namespace wlp {
 
 }
 
-#endif //CORE_STL_MAP_H
+#endif //EMBEDDEDTESTS_CHAINMAP_H

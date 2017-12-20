@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "stl/ChainMap.h"
+#include "stl/HashMap.h"
 #include "strings/String.h"
 
 #include "../template_defs.h"
@@ -8,8 +8,8 @@
 using namespace wlp;
 
 typedef uint16_t ui16;
-typedef ChainHashMap<String16, String16> string_map;
-typedef ChainHashMap<int, int> int_map;
+typedef HashMap<String16, String16> string_map;
+typedef HashMap<int, int> int_map;
 typedef int_map::iterator imi;
 typedef int_map::const_iterator cimi;
 typedef Pair<imi, bool> P_imi_b;
@@ -17,16 +17,14 @@ typedef string_map::iterator smi;
 typedef Pair<smi, bool> P_smi_b;
 
 TEST(chain_map_test, test_chain_map_node) {
-    int_map::node_type node;
-    node.m_key = 6;
-    node.m_val = 1;
+    int_map::table_type::node_type node;
+    node.m_element = make_tuple(6, 1);
     imi it(&node, nullptr);
     ASSERT_EQ(1, *it);
-    ASSERT_EQ(node, *it.m_current);
-    ASSERT_EQ(nullptr, it.m_hash_map);
-    string_map::node_type snode;
-    snode.m_key = String16{"hello"};
-    snode.m_val = String16{"hello"};
+    ASSERT_EQ(&node, it.m_node);
+    ASSERT_EQ(nullptr, it.m_table);
+    string_map::table_type::node_type snode;
+    snode.m_element = make_tuple(String16{"hello"}, String16{"hello"});
     smi sit(&snode, nullptr);
     ASSERT_EQ(5, sit->length());
     ASSERT_EQ(16, sit->capacity());
@@ -37,6 +35,8 @@ TEST(chain_map_test, test_const_iterator) {
     map[5] = 5;
     map[6] = 6;
     map[7] = 7;
+    int_map::iterator mit = map.begin();
+    ASSERT_EQ(5, *mit);
     const int_map const_map(move(map));
     int_map::const_iterator it = const_map.begin();
     ASSERT_EQ(5, *it);
@@ -54,8 +54,8 @@ TEST(chain_map_test, test_const_node_equals) {
     map[10] = 9;
     map[9] = 19;
     imi it = map.begin();
-    int_map::node_type node = *it.m_current;
-    ASSERT_TRUE(*map.begin().m_current == node);
+    int_map::table_type::node_type *node = it.m_node;
+    ASSERT_TRUE(map.begin().m_node == node);
 }
 
 TEST(chain_map_test, test_iterator_constructors) {
@@ -85,9 +85,13 @@ TEST(chain_map_test, test_ensure_capacity_holes) {
     map[1] = 1;
     map[6] = 6;
     map[11] = 11;
+    ASSERT_EQ(5, map.capacity());
     map[16] = 16;
+    ASSERT_EQ(10, map.capacity());
     map[21] = 21;
+    ASSERT_EQ(10, map.capacity());
     map[26] = 26;
+    ASSERT_EQ(20, map.capacity());
     ASSERT_EQ(20, map.capacity());
     ui16 expected_values_traverse[] = {1, 21, 26, 6, 11, 16};
     imi it = map.begin();
@@ -174,12 +178,12 @@ TEST(chain_map_test, test_insert_at_iterator_no_collision) {
 
 TEST(chain_map_test, test_insert_at_iterator_collision_resolution) {
     int_map map(5, 255);
-    ui16 keys[] = {
+    int keys[] = {
             0, 1, 2, 3, 4,
             5, 6, 7, 8, 9,
             10, 12, 15, 17, 20
     };
-    ui16 values[] = {
+    int values[] = {
             0, 10, 20, 30, 40, 50, 60, 70, 80, 90,
             100, 120, 150, 170, 200
     };
@@ -197,12 +201,12 @@ TEST(chain_map_test, test_insert_at_iterator_collision_resolution) {
     ASSERT_EQ(15, map.size());
     imi it = r[14].first();
     ASSERT_EQ(it, map.begin());
-    ui16 expected_values_traverse[] = {
+    int expected_values_traverse[] = {
             200, 0, 100, 10, 20, 120,
             30, 40, 50, 150, 60, 170, 70,
             80, 90
     };
-    ui16 expected_r_traverse[] = {
+    int expected_r_traverse[] = {
             14, 0, 10, 1, 2, 11,
             3, 4, 5, 12, 6, 13,
             7, 8, 9
@@ -272,10 +276,11 @@ TEST(chain_map_test, test_erase_iterator) {
     ASSERT_EQ(5, map.size());
     ASSERT_EQ(33, *it);
     ASSERT_EQ(it, r33.first());
+    int_map::iterator prev_it = it;
     it = map.erase(it);
     ASSERT_EQ(4, map.size());
     ASSERT_EQ(3, *it);
-    ASSERT_NE(it, r3.first()); // iterator invalidated by erase
+    ASSERT_NE(prev_it, r3.first()); // iterator invalidated by erase
     ASSERT_EQ(*it, *r3.first());
     it = map.erase(it);
     ASSERT_EQ(3, map.size());
@@ -284,10 +289,11 @@ TEST(chain_map_test, test_erase_iterator) {
     ASSERT_EQ(20, map.at(20));
     ASSERT_EQ(0, map.at(0));
     it = r20.first();
+    prev_it = it;
     it = map.erase(it);
     ASSERT_EQ(2, map.size());
     ASSERT_EQ(0, *it);
-    ASSERT_NE(it, r0.first());
+    ASSERT_NE(prev_it, r0.first());
     ASSERT_EQ(0, *r0.first());
     it = map.erase(it);
     ASSERT_EQ(map.end(), it);
