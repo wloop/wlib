@@ -1,5 +1,5 @@
 #include <stl/OpenSet.h>
-#include <stl/ChainSet.h>
+#include <stl/HashSet.h>
 #include "gtest/gtest.h"
 
 #include "stl/ArrayList.h"
@@ -109,7 +109,7 @@ TEST(rb_tree_test, test_insert_unique_find) {
 TEST(rb_tree_test, test_insert_equal_and_range) {
     char keys[] = {'a', 'a', 'a', 'b', 'b', 'c', 'c', 'c', 'c', 'd'};
     int values[] = {5, 6, 7, 8, 9, 10, 10, 11, 12, 13};
-    ChainHashSet<int> val_set(20);
+    HashSet<int> val_set(20);
     size_type cnt = 10;
     rb_tree tree;
     for (int i = 0; i < cnt; i++) {
