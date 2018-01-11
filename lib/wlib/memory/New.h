@@ -7,6 +7,9 @@
  * @code <new> @endcode is included, and for all other cases, these operators fall
  * back on the C allocation functions.
  *
+ * COSA_H is defined when the project is built with Cosa instead of Arduino SDK. Since Cosa
+ * does not provide a @code new.h @endcode custom definitions are given in that case as well.
+ *
  * @author Deep Dhillon
  * @author Jeff Niu
  * @date December 4, 2017
@@ -15,13 +18,20 @@
 
 #ifndef EMBEDDEDCPLUSPLUS_NEW_H
 #define EMBEDDEDCPLUSPLUS_NEW_H
-#if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega1284__) || defined(__AVR_ATmega1284P__) || defined(__AVR_ATmega644__) || defined(__AVR_ATmega644A__) || defined(__AVR_ATmega644P__) || defined(__AVR_ATmega644PA__)
+#if (defined(__AVR_ATmega1280__)  || \
+     defined(__AVR_ATmega2560__)  || \
+     defined(__AVR_ATmega1284__)  || \
+     defined(__AVR_ATmega1284P__) || \
+     defined(__AVR_ATmega644__)   || \
+     defined(__AVR_ATmega644A__)  || \
+     defined(__AVR_ATmega644P__)  || \
+     defined(__AVR_ATmega644PA__)) && !defined(COSA_H)
 
 #include <new.h>
 
 void* operator new(decltype(sizeof(0)), void* ptr) noexcept;
 
-#elif defined(WLIB_DEBUG)
+#elif defined(WLIB_DEBUG) && !defined(COSA_H)
 
 #include <new>
 
