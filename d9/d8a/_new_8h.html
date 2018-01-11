@@ -119,6 +119,9 @@ Functions</h2></td></tr>
 </div><!-- fragment --><p> but these do not include a definition for placement new. In debug mode, for Wlib develop, the standard C++ </p>
 <div class="fragment"><div class="line">&lt;<span class="keyword">new</span>&gt; </div>
 </div><!-- fragment --><p> is included, and for all other cases, these operators fall back on the C allocation functions.</p>
+<p>COSA_H is defined when the project is built with Cosa instead of Arduino SDK. Since Cosa does not provide a</p>
+<div class="fragment"><div class="line"><span class="keyword">new</span>.h </div>
+</div><!-- fragment --><p> custom definitions are given in that case as well.</p>
 <dl class="section author"><dt>Author</dt><dd>Deep Dhillon </dd>
 <dd>
 Jeff Niu </dd></dl>
@@ -147,12 +150,12 @@ Jeff Niu </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00023">23</a> of file <a class="el" href="../../d5/d07/_new_8cpp_source.html">New.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00030">30</a> of file <a class="el" href="../../d5/d07/_new_8cpp_source.html">New.cpp</a>.</p>
 
 <p>References <a class="el" href="../../d3/de6/_memory_8h_source.html#l00237">free()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                        {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="../../d3/de6/_memory_8h.html#a137edc434b402c4f8ea23892006a38b6">free</a>(ptr);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                        {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="../../d3/de6/_memory_8h.html#a137edc434b402c4f8ea23892006a38b6">free</a>(ptr);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
 <div class="ttc" id="_memory_8h_html_a137edc434b402c4f8ea23892006a38b6"><div class="ttname"><a href="../../d3/de6/_memory_8h.html#a137edc434b402c4f8ea23892006a38b6">free</a></div><div class="ttdeci">void free(Type *&amp;ptr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/de6/_memory_8h_source.html#l00237">Memory.h:237</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -185,12 +188,12 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00031">31</a> of file <a class="el" href="../../d5/d07/_new_8cpp_source.html">New.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00038">38</a> of file <a class="el" href="../../d5/d07/_new_8cpp_source.html">New.cpp</a>.</p>
 
 <p>References <a class="el" href="../../d3/de6/_memory_8h_source.html#l00237">free()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                                          {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="../../d3/de6/_memory_8h.html#a137edc434b402c4f8ea23892006a38b6">free</a>(ptr);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                          {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="../../d3/de6/_memory_8h.html#a137edc434b402c4f8ea23892006a38b6">free</a>(ptr);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
 <div class="ttc" id="_memory_8h_html_a137edc434b402c4f8ea23892006a38b6"><div class="ttname"><a href="../../d3/de6/_memory_8h.html#a137edc434b402c4f8ea23892006a38b6">free</a></div><div class="ttdeci">void free(Type *&amp;ptr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/de6/_memory_8h_source.html#l00237">Memory.h:237</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -225,12 +228,12 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00015">15</a> of file <a class="el" href="../../d5/d07/_new_8cpp_source.html">New.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00022">22</a> of file <a class="el" href="../../d5/d07/_new_8cpp_source.html">New.cpp</a>.</p>
 
 <p>References <a class="el" href="../../d3/de6/_memory_8h_source.html#l00119">malloc()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                                                          {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8">malloc</a>(n);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                                                          {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8">malloc</a>(n);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
 <div class="ttc" id="_memory_8h_html_ac22d681988e173a07bb5f4b5375923f8"><div class="ttname"><a href="../../d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8">malloc</a></div><div class="ttdeci">NonArrayType * malloc(wlp::size_type num)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/de6/_memory_8h_source.html#l00119">Memory.h:119</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -275,10 +278,10 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00019">19</a> of file <a class="el" href="../../d5/d07/_new_8cpp_source.html">New.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                                                            {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00026">26</a> of file <a class="el" href="../../d5/d07/_new_8cpp_source.html">New.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                                            {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">return</span> ptr;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -304,12 +307,12 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00027">27</a> of file <a class="el" href="../../d5/d07/_new_8cpp_source.html">New.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00034">34</a> of file <a class="el" href="../../d5/d07/_new_8cpp_source.html">New.cpp</a>.</p>
 
 <p>References <a class="el" href="../../d3/de6/_memory_8h_source.html#l00119">malloc()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                                                            {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8">malloc</a>(n);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                                            {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8">malloc</a>(n);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
 <div class="ttc" id="_memory_8h_html_ac22d681988e173a07bb5f4b5375923f8"><div class="ttname"><a href="../../d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8">malloc</a></div><div class="ttdeci">NonArrayType * malloc(wlp::size_type num)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/de6/_memory_8h_source.html#l00119">Memory.h:119</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -325,7 +328,7 @@ Here is the call graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Dec 20 2017 05:48:56 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jan 11 2018 13:43:23 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

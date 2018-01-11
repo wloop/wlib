@@ -509,7 +509,7 @@ template&lt;typename Type &gt; </div>
 
 <p>References <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00343">__memory_free()</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00093">wlp::ReferenceCount&lt; T * &gt;::destroy()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00085">wlp::ReferenceCount&lt; T * &gt;::dispose()</a>, <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00023">operator delete()</a>, <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00031">operator delete[]()</a>, and <a class="el" href="../../d9/dae/_string_8cpp_source.html#l00051">wlp::DynamicString::set_value()</a>.</p>
+<p>Referenced by <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00093">wlp::ReferenceCount&lt; T * &gt;::destroy()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00085">wlp::ReferenceCount&lt; T * &gt;::dispose()</a>, <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00030">operator delete()</a>, <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00038">operator delete[]()</a>, and <a class="el" href="../../d9/dae/_string_8cpp_source.html#l00051">wlp::DynamicString::set_value()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                      {</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../d3/d80/structwlp_1_1is__fundamental.html">wlp::is_fundamental&lt;Type&gt;::value</a>) {</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        uint16_t *objInfo = <span class="keyword">reinterpret_cast&lt;</span>uint16_t *<span class="keyword">&gt;</span>(ptr);</div>
@@ -1074,7 +1074,7 @@ template&lt;typename T , typename NonArrayType  = typename wlp::remove_extent&lt
 
 <p>References <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00278">__memory_alloc()</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00015">operator new()</a>, and <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00027">operator new[]()</a>.</p>
+<p>Referenced by <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00022">operator new()</a>, and <a class="el" href="../../d5/d07/_new_8cpp_source.html#l00034">operator new[]()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                                       {</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d3/d80/structwlp_1_1is__fundamental.html">wlp::is_fundamental</a>&lt;<span class="keyword">typename</span> <a class="code" href="../../d3/dcf/structwlp_1_1remove__extent.html#aacf1efc422b53e5ddc513bb3d60e94f6">wlp::remove_extent&lt;T&gt;::type</a>&gt;::value) {</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordtype">void</span> *memory = <a class="code" href="../../d3/de6/_memory_8h.html#ae94046dbccfe12303d31bb8aaff3e523">__memory_alloc</a>(static_cast&lt;wlp::size32_type&gt;(<span class="keyword">sizeof</span>(NonArrayType)) * num, <span class="keyword">false</span>);</div>
@@ -1226,7 +1226,7 @@ Here is the call graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Dec 20 2017 05:48:56 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jan 11 2018 13:43:23 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
