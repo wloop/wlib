@@ -25,13 +25,13 @@
      defined(__AVR_ATmega644__)   || \
      defined(__AVR_ATmega644A__)  || \
      defined(__AVR_ATmega644P__)  || \
-     defined(__AVR_ATmega644PA__)) && !defined(COSA_H)
+     defined(__AVR_ATmega644PA__)) && !defined(__AVR_Cosa__)
 
 #include <new.h>
 
 void* operator new(decltype(sizeof(0)), void* ptr) noexcept;
 
-#elif defined(WLIB_DEBUG) && !defined(COSA_H)
+#elif defined(WLIB_DEBUG) && !defined(__AVR_Cosa__)
 
 #include <new>
 
