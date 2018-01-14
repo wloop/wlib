@@ -22,7 +22,3 @@ Deep Dhillon (dhillondeep [deep.dhill6@gmail.com](mailto:deep.dhill6@gmail.com))
 Bob Wei (bobqywei [bobqywei@gmail.com](mailto:bobqywei@gmail.com))
 
 Ambareesh Balaji (Ambyjkl [ambareeshbalaji@gmail.com](mailto:ambareeshbalaji@gmail.com))
-
-Aditya Arora (arora-aditya [http://arora-aditya.com](mailto:http://arora-aditya.com))
-
-Heather D'Souza (heathkd)
