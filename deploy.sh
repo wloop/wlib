@@ -89,23 +89,5 @@ git add .
 git commit -m "Deploying Wlib Library: ${SHA}"
 git push $SSH_REPO $WLIB_BRANCH
 
-echo "Deployed Wlib library (branch)"
-cd ..
+echo "Deployed Wlib library"
 
-# Clone the existing wlib repo for this repo
-git clone $WLIB_REPO wlib-repo
-
-# Clean out existing contents and copy new content
-rm -rf wlib-repo/*
-cp -r lib/wlib/. wlib-repo
-cp README.md wlib-repo
-cp .gitignore wlib-repo
-cp LICENSE wlib-repo
-
-cd wlib-repo
-git add .
-git commit -m "Deploying Wlib Library (repo): ${SHA}"
-git push $SSH_REPO $WLIB_BRANCH
-
-echo "Deployed Wlib library (repo)"
-echo "Deployed Wlib library on wlib repo and library branch"
