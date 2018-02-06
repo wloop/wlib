@@ -1,16 +1,16 @@
 #ifndef TEMPLATE_DEFS_H
 #define TEMPLATE_DEFS_H
 
-#include "Types.h"
+#include <wlib/Types.h>
 
-#include "strings/String.h"
-#include "utility/Utility.h"
-#include "stl/HashMap.h"
-#include "stl/OpenMap.h"
-#include "stl/ArrayHeap.h"
-#include "stl/LinkedList.h"
-#include "stl/UniquePtr.h"
-#include "stl/SharedPtr.h"
+#include <wlib/strings/String.h>
+#include <wlib/utility/Utility.h>
+#include <wlib/stl/HashMap.h>
+#include <wlib/stl/OpenMap.h>
+#include <wlib/stl/ArrayHeap.h>
+#include <wlib/stl/LinkedList.h>
+#include <wlib/stl/UniquePtr.h>
+#include <wlib/stl/SharedPtr.h>
 
 namespace wlp {
     template

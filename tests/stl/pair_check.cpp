@@ -1,8 +1,6 @@
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
+#include <wlib/stl/Pair.h>
 
-#include "stl/Pair.h"
-
-#include "../template_defs.h"
 
 using namespace wlp;
 

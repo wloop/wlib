@@ -7,9 +7,8 @@
  * @bug No known bugs
  */
 
-#include "gtest/gtest.h"
-
-#include "memory/Memory.h"
+#include <gtest/gtest.h>
+#include <wlib/memory/Memory.h>
 
 class Sample {
 public:

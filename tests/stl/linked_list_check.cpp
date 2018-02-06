@@ -1,5 +1,5 @@
-#include "gtest/gtest.h"
-#include "stl/LinkedList.h"
+#include <gtest/gtest.h>
+#include <wlib/stl/LinkedList.h>
 
 #include "../template_defs.h"
 

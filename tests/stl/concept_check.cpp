@@ -1,16 +1,14 @@
-#include "gtest/gtest.h"
-
-#include "strings/String.h"
-
-#include "stl/Comparator.h"
-#include "stl/HashMap.h"
-#include "stl/OpenMap.h"
-#include "stl/TreeMap.h"
-#include "stl/ArrayList.h"
-#include "stl/HashSet.h"
-#include "stl/OpenSet.h"
-#include "stl/TreeSet.h"
-#include "stl/LinkedList.h"
+#include <gtest/gtest.h>
+#include <wlib/strings/String.h>
+#include <wlib/stl/Comparator.h>
+#include <wlib/stl/HashMap.h>
+#include <wlib/stl/OpenMap.h>
+#include <wlib/stl/TreeMap.h>
+#include <wlib/stl/ArrayList.h>
+#include <wlib/stl/HashSet.h>
+#include <wlib/stl/OpenSet.h>
+#include <wlib/stl/TreeSet.h>
+#include <wlib/stl/LinkedList.h>
 
 using namespace wlp;
 

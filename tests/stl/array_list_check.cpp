@@ -1,6 +1,5 @@
-#include "gtest/gtest.h"
-
-#include "stl/ArrayList.h"
+#include <gtest/gtest.h>
+#include <wlib/stl/ArrayList.h>
 
 #include "../template_defs.h"
 

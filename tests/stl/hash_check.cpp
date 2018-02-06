@@ -1,9 +1,6 @@
-#include "gtest/gtest.h"
-
-#include "strings/String.h"
-#include "stl/Hash.h"
-
-#include "../template_defs.h"
+#include <gtest/gtest.h>
+#include <wlib/strings/String.h>
+#include <wlib/stl/Hash.h>
 
 using namespace wlp;
 

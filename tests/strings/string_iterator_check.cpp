@@ -1,8 +1,7 @@
-#include "gtest/gtest.h"
-
-#include "strings/StringIterator.h"
-#include "strings/String.h"
-#include "stl/ArrayHeap.h"
+#include <gtest/gtest.h>
+#include <wlib/strings/StringIterator.h>
+#include <wlib/strings/String.h>
+#include <wlib/stl/ArrayHeap.h>
 
 using namespace wlp;
 

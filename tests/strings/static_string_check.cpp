@@ -7,10 +7,9 @@
  * @bug No known bugs
  */
 
-#include "gtest/gtest.h"
-
-#include "Types.h"
-#include "strings/String.h"
+#include <gtest/gtest.h>
+#include <wlib/Types.h>
+#include <wlib/strings/String.h>
 
 using namespace wlp;
 

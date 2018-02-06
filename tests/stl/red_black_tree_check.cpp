@@ -1,13 +1,12 @@
-#include <stl/OpenSet.h>
-#include <stl/HashSet.h>
-#include "gtest/gtest.h"
-
-#include "stl/ArrayList.h"
-#include "stl/ArrayHeap.h"
-#include "stl/OpenMap.h"
-#include "stl/RedBlackTree.h"
-#include "stl/Tuple.h"
-#include "stl/TreeMap.h"
+#include <gtest/gtest.h>
+#include <wlib/stl/OpenSet.h>
+#include <wlib/stl/HashSet.h>
+#include <wlib/stl/ArrayList.h>
+#include <wlib/stl/ArrayHeap.h>
+#include <wlib/stl/OpenMap.h>
+#include <wlib/stl/RedBlackTree.h>
+#include <wlib/stl/Tuple.h>
+#include <wlib/stl/TreeMap.h>
 
 #include "../test_helper.h"
 
