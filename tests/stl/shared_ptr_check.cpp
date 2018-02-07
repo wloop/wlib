@@ -1,6 +1,5 @@
-#include "gtest/gtest.h"
-
-#include "stl/SharedPtr.h"
+#include <gtest/gtest.h>
+#include <wlib/stl/SharedPtr.h>
 
 using namespace wlp;
 

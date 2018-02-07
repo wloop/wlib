@@ -4,6 +4,7 @@ set -e # Exit with nonzero exit code if anything fails
 SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
 WLIB_BRANCH="library"
+WLIB_REPO="https://github.com/waterloop/wlib.git"
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
 if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
@@ -42,7 +43,7 @@ cp ../.nojekyll ../docs_out
 # Now let's go have some fun with the cloned repo
 cd ../docs_out
 git config user.name "Travis CI"
-git config user.email "deep.dhill6@gmail.com"
+git config user.email "deep@deepdhillon.ca"
 
 echo "Deploying to gh-pages"
 
@@ -69,8 +70,8 @@ cd ..
 
 echo "Deployed to gh-pages"
 
-# Clone the existing gh-pages for this repo into docs_out
-# Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
+# Clone the existing repo (library branch)
+# Create a new empty branch if library doesn't exist yet (should only happen on first deply)
 git clone $REPO library
 cd library
 git checkout $WLIB_BRANCH || git checkout --orphan $WLIB_BRANCH
@@ -86,7 +87,7 @@ cp LICENSE library
 cd library
 git add .
 git commit -m "Deploying Wlib Library: ${SHA}"
-
 git push $SSH_REPO $WLIB_BRANCH
 
 echo "Deployed Wlib library"
+

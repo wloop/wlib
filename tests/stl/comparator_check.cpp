@@ -1,7 +1,6 @@
-#include "gtest/gtest.h"
-
-#include "stl/Comparator.h"
-#include "strings/String.h"
+#include <gtest/gtest.h>
+#include <wlib/stl/Comparator.h>
+#include <wlib/strings/String.h>
 
 using namespace wlp;
 

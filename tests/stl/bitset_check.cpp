@@ -1,6 +1,5 @@
-#include "gtest/gtest.h"
-
-#include "stl/Bitset.h"
+#include <gtest/gtest.h>
+#include <wlib/stl/Bitset.h>
 
 namespace wlp {
 

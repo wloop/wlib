@@ -1,7 +1,6 @@
-#include "gtest/gtest.h"
-
-#include "strings/String.h"
-#include "stl/Equal.h"
+#include <gtest/gtest.h>
+#include <wlib/strings/String.h>
+#include <wlib/stl/Equal.h>
 
 #include "../template_defs.h"
 

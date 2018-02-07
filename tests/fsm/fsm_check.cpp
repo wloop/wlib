@@ -1,6 +1,6 @@
-#include "gtest/gtest.h"
-#include "fsm/StateMachine.h"
-#include "stl/ArrayList.h"
+#include <gtest/gtest.h>
+#include <wlib/fsm/StateMachine.h>
+#include <wlib/stl/ArrayList.h>
 
 using namespace wlp;
 

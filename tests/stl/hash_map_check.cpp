@@ -1,7 +1,6 @@
-#include "gtest/gtest.h"
-
-#include "stl/HashMap.h"
-#include "strings/String.h"
+#include <gtest/gtest.h>
+#include <wlib/stl/HashMap.h>
+#include <wlib/strings/String.h>
 
 #include "../template_defs.h"
 

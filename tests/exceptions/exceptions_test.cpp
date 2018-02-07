@@ -1,7 +1,6 @@
-#include "gtest/gtest.h"
-
-#include "memory/Memory.h"
-#include "exceptions/Exceptions.h"
+#include <gtest/gtest.h>
+#include <wlib/memory/Memory.h>
+#include <wlib/exceptions/Exceptions.h>
 
 TEST(exceptions_test, simple_try_catch) {
     int h = 0;

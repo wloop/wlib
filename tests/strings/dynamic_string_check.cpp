@@ -1,6 +1,5 @@
-#include "gtest/gtest.h"
-#include "strings/String.h"
-#include "utility/Utility.h"
+#include <gtest/gtest.h>
+#include <wlib/strings/String.h>
 
 using namespace wlp;
 
