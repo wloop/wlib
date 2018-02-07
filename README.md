@@ -1,9 +1,9 @@
-[![Build Status](https://travis-ci.org/teamwaterloop/waterloop-wlib.svg?branch=master)](https://travis-ci.org/teamwaterloop/waterloop-wlib)
-[![Coverage Status](https://coveralls.io/repos/github/teamwaterloop/waterloop-wlib/badge.svg?branch=master)](https://coveralls.io/github/teamwaterloop/waterloop-wlib?branch=master)
+[![Build Status](https://travis-ci.org/waterloop/waterloop-wlib.svg?branch=master)](https://travis-ci.org/waterloop/waterloop-wlib)
+[![Coverage Status](https://coveralls.io/repos/github/waterloop/waterloop-wlib/badge.svg?branch=master)](https://coveralls.io/github/waterloop/waterloop-wlib?branch=master)
 
 # WLib
 
-The standard C++ library used by Team Waterloop. 
+The standard C++ library used by Waterloop. 
 
 WLib is built in-house for our pod's embedded systems. The goal of WLib is to create a lighter and safer alternative to C++ STL. WLib is more memory efficient, has a smaller binary footprint, and has low power consumption. WLib uses controlled heap memory or a static memory pool, which prevents fragmentation.
 
@@ -15,7 +15,7 @@ For more details check out our [documentation](https://teamwaterloop.github.io/w
 
 Jeff Niu (Mogball [jeffniu22@gmail.com](mailto:jeffniu22@gmail.com))
 
-Deep Dhillon (dhillondeep [deep.dhill6@gmail.com](mailto:deep.dhill6@gmail.com))
+Deep Dhillon (dhillondeep [deep@deepdhillon.ca](mailto:deep@deepdhillon.ca))
 
 ## Contributors
 

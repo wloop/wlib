@@ -1,6 +1,5 @@
-#include "gtest/gtest.h"
-
-#include "stl/ArrayHeap.h"
+#include <gtest/gtest.h>
+#include <wlib/stl/ArrayHeap.h>
 
 #include "../template_defs.h"
 

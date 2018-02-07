@@ -1,5 +1,5 @@
-#include "gtest/gtest.h"
-#include "stl/OpenMap.h"
+#include <gtest/gtest.h>
+#include <wlib/stl/OpenMap.h>
 
 #include "../template_defs.h"
 

@@ -1,7 +1,6 @@
-#include "gtest/gtest.h"
-
-#include "stl/Tuple.h"
-#include "stl/OpenMap.h"
+#include <gtest/gtest.h>
+#include <wlib/stl/Tuple.h>
+#include <wlib/stl/OpenMap.h>
 
 using namespace wlp;
 
