@@ -3,6 +3,7 @@ project(wlib)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS_DISTRIBUTION "-fno-exceptions -fno-threadsafe-statics -fpermissive -std=gnu++11 -g -Os -Wall -ffunction-sections -fdata-sections -flto")
 set(CMAKE_C_FLAGS_DISTRIBUTION "-std=gnu11 -fno-fat-lto-objects -g -Os -Wall -ffunction-sections -fdata-sections -flto")
+add_definitions(-I/${CMAKE_CURRENT_SOURCE_DIR})
 
 #[[
     These definitions are used for how the memory is allocated
@@ -21,21 +22,9 @@ set(CMAKE_C_FLAGS_DISTRIBUTION "-std=gnu11 -fno-fat-lto-objects -g -Os -Wall -ff
 ]]
 add_definitions(-DWLIB_DEBUG -DMAX_ALLOCATORS=10u -DNUM_BLOCKS=100u -DDYNAMIC_POOL)
 
-file(GLOB header_files
-        "*.h"
-        "fsm/*.h"
-        "strings/*.h"
-        "stl/*.h"
-        "memory/*.h"
-        "comm/*.h"
-        "exceptions/*.h"
-        "utility/*.h")
+file(GLOB_RECURSE header_files "wlib/*.h")
 
-file(GLOB source_files
-        "memory/*.cpp"
-        "comm/*.cpp"
-        "exceptions/*.cpp"
-        "strings/*.cpp")
+file(GLOB_RECURSE source_files "wlib/*.cpp" "wlib/*.cc")
 
 set(HEADER_FILES ${header_files})
 set(SOURCE_FILES ${source_files})
