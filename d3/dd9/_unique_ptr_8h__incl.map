@@ -1,8 +1,8 @@
-<map id="stl/UniquePtr.h" name="stl/UniquePtr.h">
-<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="177,80,319,107"/>
-<area shape="rect" id="node9" href="$d7/d2f/_exceptions_8h.html" title="Implementation of Exceptions using C style. " alt="" coords="345,80,521,107"/>
-<area shape="rect" id="node4" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="95,155,209,181"/>
-<area shape="rect" id="node5" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="201,229,259,256"/>
-<area shape="rect" id="node6" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="257,304,337,331"/>
-<area shape="rect" id="node8" href="$d9/d8a/_new_8h.html" title="New operators defined for Arduino boards and for other boards use the normal new. ..." alt="" coords="335,155,395,181"/>
+<map id="wlib/stl/UniquePtr.h" name="wlib/stl/UniquePtr.h">
+<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="191,80,333,107"/>
+<area shape="rect" id="node9" href="$d7/d2f/_exceptions_8h.html" title="Implementation of Exceptions using C style. " alt="" coords="359,80,536,107"/>
+<area shape="rect" id="node4" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="94,155,223,181"/>
+<area shape="rect" id="node5" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="216,229,273,256"/>
+<area shape="rect" id="node6" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="264,304,360,331"/>
+<area shape="rect" id="node8" href="$d9/d8a/_new_8h.html" title="New operators defined for Arduino boards and for other boards use the normal new. ..." alt="" coords="350,155,409,181"/>
 </map>

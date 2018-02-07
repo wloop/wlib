@@ -1,7 +1,7 @@
-<map id="memory/Allocator.cpp" name="memory/Allocator.cpp">
-<area shape="rect" id="node3" href="$df/d4d/_allocator_8h.html" title="Allocator is a memory management library where allocations are always of fixed size. " alt="" coords="99,155,183,181"/>
-<area shape="rect" id="node6" href="$da/db8/_math_8h.html" title="../utility/Math.h" alt="" coords="145,80,255,107"/>
-<area shape="rect" id="node7" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="279,80,393,107"/>
-<area shape="rect" id="node4" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="181,229,261,256"/>
-<area shape="rect" id="node8" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="273,155,331,181"/>
+<map id="wlib/memory/Allocator.cpp" name="wlib/memory/Allocator.cpp">
+<area shape="rect" id="node3" href="$df/d4d/_allocator_8h.html" title="Allocator is a memory management library where allocations are always of fixed size. " alt="" coords="105,155,188,181"/>
+<area shape="rect" id="node6" href="$da/db8/_math_8h.html" title="wlib/utility/Math.h" alt="" coords="146,80,269,107"/>
+<area shape="rect" id="node7" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="294,80,423,107"/>
+<area shape="rect" id="node4" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="185,229,281,256"/>
+<area shape="rect" id="node8" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="291,155,348,181"/>
 </map>

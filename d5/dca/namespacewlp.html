@@ -3134,9 +3134,10 @@ template&lt;typename C , typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the class is a comparator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/dd7/_concept_8h_source.html#l00120">120</a> of file <a class="el" href="../../d8/dd7/_concept_8h_source.html">Concept.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/dd7/_concept_8h_source.html#l00121">121</a> of file <a class="el" href="../../d8/dd7/_concept_8h_source.html">Concept.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                          {</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">return</span> comparator_concept&lt;C, T&gt;::value;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3171,8 +3172,10 @@ template&lt;typename C &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the class is a forward iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/dd7/_concept_8h_source.html#l00179">179</a> of file <a class="el" href="../../d8/dd7/_concept_8h_source.html">Concept.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/dd7/_concept_8h_source.html#l00183">183</a> of file <a class="el" href="../../d8/dd7/_concept_8h_source.html">Concept.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                                        {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordflow">return</span> iterator_concept&lt;C&gt;::value;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3199,9 +3202,10 @@ template&lt;typename C &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d8/dd7/_concept_8h_source.html#l00446">446</a> of file <a class="el" href="../../d8/dd7/_concept_8h_source.html">Concept.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;          :</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        <span class="keyword">static</span> constexpr <span class="keywordtype">bool</span> value = type::value;</div>
+<p>Definition at line <a class="el" href="../../d8/dd7/_concept_8h_source.html#l00456">456</a> of file <a class="el" href="../../d8/dd7/_concept_8h_source.html">Concept.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;                                    {</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;        <span class="keywordflow">return</span> list_concept&lt;C&gt;::value;</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3236,8 +3240,10 @@ template&lt;typename C &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the class is a map </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/dd7/_concept_8h_source.html#l00329">329</a> of file <a class="el" href="../../d8/dd7/_concept_8h_source.html">Concept.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/dd7/_concept_8h_source.html#l00337">337</a> of file <a class="el" href="../../d8/dd7/_concept_8h_source.html">Concept.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                                   {</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        <span class="keywordflow">return</span> map_concept&lt;C&gt;::value;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3272,8 +3278,10 @@ template&lt;typename C &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the class is a random access iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/dd7/_concept_8h_source.html#l00251">251</a> of file <a class="el" href="../../d8/dd7/_concept_8h_source.html">Concept.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/dd7/_concept_8h_source.html#l00258">258</a> of file <a class="el" href="../../d8/dd7/_concept_8h_source.html">Concept.h</a>.</p>
 <div class="fragment"><div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                                                      {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <span class="keywordflow">return</span> random_access_iterator_concept&lt;C&gt;::value;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3300,9 +3308,10 @@ template&lt;typename C &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d8/dd7/_concept_8h_source.html#l00382">382</a> of file <a class="el" href="../../d8/dd7/_concept_8h_source.html">Concept.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;          :</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="keyword">static</span> constexpr <span class="keywordtype">bool</span> value = type::value;</div>
+<p>Definition at line <a class="el" href="../../d8/dd7/_concept_8h_source.html#l00391">391</a> of file <a class="el" href="../../d8/dd7/_concept_8h_source.html">Concept.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                                   {</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        <span class="keywordflow">return</span> set_concept&lt;C&gt;::value;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3329,9 +3338,10 @@ template&lt;typename C &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d8/dd7/_concept_8h_source.html#l00504">504</a> of file <a class="el" href="../../d8/dd7/_concept_8h_source.html">Concept.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;          :</div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;        <span class="keyword">static</span> constexpr <span class="keywordtype">bool</span> value = type::value;</div>
+<p>Definition at line <a class="el" href="../../d8/dd7/_concept_8h_source.html#l00515">515</a> of file <a class="el" href="../../d8/dd7/_concept_8h_source.html">Concept.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;                                      {</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;        <span class="keywordflow">return</span> string_concept&lt;C&gt;::value;</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7257,7 +7267,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 11 2018 14:26:10 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Feb 7 2018 03:20:54 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
