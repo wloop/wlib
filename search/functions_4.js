@@ -4,6 +4,7 @@ var searchData=
   ['deallocate',['deallocate',['../de/d5b/classwlp_1_1_____allocator.html#aed0aab73d3ff2598dbe833a32c17321a',1,'wlp::__Allocator']]],
   ['declval',['declval',['../d5/dca/namespacewlp.html#a5cb1a6248c0a9c434ffde0cb562c357c',1,'wlp']]],
   ['decrement',['decrement',['../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a4fdb7fe107d6cc3f12b164dd539a0eec',1,'wlp::RedBlackTreeIterator']]],
+  ['delete_5farray',['delete_array',['../d5/d7d/classwlp_1_1_array2_d.html#ad5b888b0567f9a393681aba7bc5b1214',1,'wlp::Array2D']]],
   ['destroy',['destroy',['../de/dc1/classwlp_1_1_reference_count.html#ad321394bfc7a1d215d3616c3721923ee',1,'wlp::ReferenceCount']]],
   ['destroy_5fnode',['destroy_node',['../d3/def/classwlp_1_1_red_black_tree.html#aac61ff33577cf871298bb142c9c017a0',1,'wlp::RedBlackTree']]],
   ['dispose',['dispose',['../de/dc1/classwlp_1_1_reference_count.html#a7fab13d2d8b36614b06fc53581ca6b17',1,'wlp::ReferenceCount::dispose()'],['../de/dc1/classwlp_1_1_reference_count.html#a68b8be576ec567e6b61c267397c80ffa',1,'wlp::ReferenceCount::dispose()']]],

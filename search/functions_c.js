@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['make_5farray',['make_array',['../d5/d7d/classwlp_1_1_array2_d.html#a0e004bca2dc60a10126379a0860dd9aa',1,'wlp::Array2D']]],
   ['make_5fheap',['make_heap',['../d5/dca/namespacewlp.html#ad8927f7af1e3363214a8d9b186531078',1,'wlp::make_heap(RandomAccessIterator first, RandomAccessIterator last, Cmp cmp)'],['../d5/dca/namespacewlp.html#a2772b953d87df26114e296ffaa850d09',1,'wlp::make_heap(RandomAccessIterator first, RandomAccessIterator last)']]],
   ['make_5fpacket64',['make_packet64',['../d5/dca/namespacewlp.html#aa1384f17c6fe7e60d71f1075a709df29',1,'wlp']]],
   ['make_5ftuple',['make_tuple',['../d5/dca/namespacewlp.html#a94b93d689170305bf7c08b5a6545bb6f',1,'wlp']]],

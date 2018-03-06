@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['weakcount',['WeakCount',['../d4/d8d/classwlp_1_1_weak_count.html',1,'wlp']]],
-  ['weakcount_3c_20t_20_2a_20_3e',['WeakCount&lt; T * &gt;',['../d4/d8d/classwlp_1_1_weak_count.html',1,'wlp']]],
-  ['weakptr',['WeakPtr',['../d8/d0b/classwlp_1_1_weak_ptr.html',1,'wlp']]]
+  ['vector2d',['Vector2D',['../d6/deb/classwlp_1_1_vector2_d.html',1,'wlp']]]
 ];

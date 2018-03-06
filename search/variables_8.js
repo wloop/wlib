@@ -1,6 +1,7 @@
 var searchData=
 [
   ['m_5fallocations',['m_allocations',['../de/d5b/classwlp_1_1_____allocator.html#a56a489811945e486012441269a734c7e',1,'wlp::__Allocator']]],
+  ['m_5farr',['m_arr',['../d5/d7d/classwlp_1_1_array2_d.html#a42f7ebc28faf2ee2bbc0398a0eaebd0a',1,'wlp::Array2D']]],
   ['m_5fblocksize',['m_blockSize',['../de/d5b/classwlp_1_1_____allocator.html#a8e4c6962c579fb4236a369ee69a3a7eb',1,'wlp::__Allocator']]],
   ['m_5fbuckets',['m_buckets',['../d8/de2/classwlp_1_1_hash_table.html#a9c72ef6e0deb785dbe2f744ab92d337c',1,'wlp::HashTable']]],
   ['m_5fbuffer',['m_buffer',['../d6/d6b/classwlp_1_1_static_string.html#a8711ec4486482ba527aa0bf350fa2e8d',1,'wlp::StaticString']]],
@@ -24,7 +25,7 @@ var searchData=
   ['m_5fi',['m_i',['../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c',1,'wlp::ArrayListIterator::m_i()'],['../dd/d71/classwlp_1_1_string_iterator.html#a8f0431c14ecab5b6bc653d262aafb099',1,'wlp::StringIterator::m_i()']]],
   ['m_5fkey_5fequals',['m_key_equals',['../d8/de2/classwlp_1_1_hash_table.html#aae002519f9c88b509efce5932bdf114c',1,'wlp::HashTable']]],
   ['m_5fleft',['m_left',['../d9/d53/structwlp_1_1_red_black_tree_node.html#a1fc18d156a0f09a72fdf6197a3d05fb1',1,'wlp::RedBlackTreeNode']]],
-  ['m_5flen',['m_len',['../d6/d6b/classwlp_1_1_static_string.html#a7d2a476884eb862fc799b39169fd71a6',1,'wlp::StaticString']]],
+  ['m_5flen',['m_len',['../d9/d6e/classwlp_1_1____array2d__access.html#a15a706f2dcd6140799ca13b938c7b349',1,'wlp::__array2d_access::m_len()'],['../d6/d6b/classwlp_1_1_static_string.html#a7d2a476884eb862fc799b39169fd71a6',1,'wlp::StaticString::m_len()']]],
   ['m_5flist',['m_list',['../dd/dd6/classwlp_1_1_array_heap.html#a7b56f9360046bea81869c8dc2382b667',1,'wlp::ArrayHeap::m_list()'],['../d0/d32/classwlp_1_1_array_list_iterator.html#aef2a3cdfba46f44aae7cba9930786210',1,'wlp::ArrayListIterator::m_list()'],['../d7/dea/structwlp_1_1_linked_list_iterator.html#a14be675dee6837590a375c8f086a89e9',1,'wlp::LinkedListIterator::m_list()']]],
   ['m_5fmax_5fload',['m_max_load',['../d8/de2/classwlp_1_1_hash_table.html#ad90a2227d3b3df3559545861105a0374',1,'wlp::HashTable']]],
   ['m_5fmax_5fstates',['m_max_states',['../d6/d67/classwlp_1_1_state_machine.html#ac263876a287d6a43b5f34b99c2ef19a8',1,'wlp::StateMachine']]],
@@ -48,11 +49,14 @@ var searchData=
   ['m_5fsize',['m_size',['../db/d49/classwlp_1_1_array_list.html#a6dce331f7c85b08af1cc4e903fb07ecd',1,'wlp::ArrayList::m_size()'],['../d8/de2/classwlp_1_1_hash_table.html#a60c02c690bd6c4691ac864b18c261b06',1,'wlp::HashTable::m_size()'],['../d6/d0e/classwlp_1_1_linked_list.html#ab1fd85a1395088c1e7a5006703742388',1,'wlp::LinkedList::m_size()'],['../d3/def/classwlp_1_1_red_black_tree.html#a56f5d35a474ee3d5f2bc0f2ea1bdbc6d',1,'wlp::RedBlackTree::m_size()']]],
   ['m_5fsrefcount',['m_srefCount',['../da/d14/class_memory_init_destroy.html#ab34c82972eebf72c4d2131f131547eda',1,'MemoryInitDestroy']]],
   ['m_5fstring',['m_string',['../dd/d71/classwlp_1_1_string_iterator.html#a3393c02e896f0d49b1e6ee76b181dca3',1,'wlp::StringIterator']]],
+  ['m_5fsub_5farr',['m_sub_arr',['../d9/d6e/classwlp_1_1____array2d__access.html#a6b2bfa141ca75e0f150d67beba268f52',1,'wlp::__array2d_access']]],
   ['m_5ftable',['m_table',['../d6/dfc/classwlp_1_1_hash_map.html#ae6a53d6b6215839ccb1e40924c9f3c6e',1,'wlp::HashMap::m_table()'],['../d0/de4/classwlp_1_1_hash_set.html#a4276a59cfd580bf44c19f5ad56ca7e5d',1,'wlp::HashSet::m_table()'],['../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa',1,'wlp::HashTableIterator::m_table()'],['../d3/d28/classwlp_1_1_open_hash_map.html#a0fee26d819805249f155ef18fcc0d23f',1,'wlp::OpenHashMap::m_table()'],['../d9/d87/classwlp_1_1_open_hash_set.html#aa8e890a7ecd62b44e6b09ac7ee87421e',1,'wlp::OpenHashSet::m_table()'],['../da/d4c/classwlp_1_1_tree_map.html#ae6bb347012cef813bbd16bb7abc33c18',1,'wlp::TreeMap::m_table()'],['../dd/d7e/classwlp_1_1_tree_set.html#a68b151373c8436145d8eb6f0cdd5d5a1',1,'wlp::TreeSet::m_table()']]],
   ['m_5ftail',['m_tail',['../d6/d0e/classwlp_1_1_linked_list.html#ab081ff9aac7ecfe9b8ccbd4d66a0f52a',1,'wlp::LinkedList']]],
   ['m_5ftotalblockcount',['m_totalBlockCount',['../de/d5b/classwlp_1_1_____allocator.html#ac9945806f348ed8000d99c18f2d2698e',1,'wlp::__Allocator']]],
   ['m_5fuse_5fcount',['m_use_count',['../de/dc1/classwlp_1_1_reference_count.html#a36bb57e5246e449e37a106336f22762c',1,'wlp::ReferenceCount']]],
   ['m_5fval',['m_val',['../d7/d74/structwlp_1_1_linked_list_node.html#a0336e0ba0c3f8e555107fba1d4e50095',1,'wlp::LinkedListNode']]],
   ['m_5fweak_5fcount',['m_weak_count',['../de/dc1/classwlp_1_1_reference_count.html#a82c77ab3bf63e3c8c224ffb3d48b8838',1,'wlp::ReferenceCount']]],
+  ['m_5fx',['m_x',['../d5/d7d/classwlp_1_1_array2_d.html#a8ca38e85f13faac5c373f423dd81e28a',1,'wlp::Array2D::m_x()'],['../d6/deb/classwlp_1_1_vector2_d.html#a4955ea42b0960d26c9fc7240d6b887be',1,'wlp::Vector2D::m_x()']]],
+  ['m_5fy',['m_y',['../d5/d7d/classwlp_1_1_array2_d.html#a18c127782b8a560dff7e3cad7359cbe9',1,'wlp::Array2D::m_y()'],['../d6/deb/classwlp_1_1_vector2_d.html#a41f40806c0ff0830be800b08869c01b5',1,'wlp::Vector2D::m_y()']]],
   ['message',['message',['../df/d70/class_exception.html#a40e3f625f4d9beb0f050182fccfcf15c',1,'Exception']]]
 ];

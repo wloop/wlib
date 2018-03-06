@@ -7,6 +7,7 @@ var searchData=
   ['declval',['declval',['../d5/dca/namespacewlp.html#a5cb1a6248c0a9c434ffde0cb562c357c',1,'wlp']]],
   ['decrement',['decrement',['../dd/d48/structwlp_1_1_red_black_tree_iterator.html#a4fdb7fe107d6cc3f12b164dd539a0eec',1,'wlp::RedBlackTreeIterator']]],
   ['define_5fexception',['DEFINE_EXCEPTION',['../d7/d9e/_exceptions_8cpp.html#a749942bee3a3dfef5f6392bf7aa91909',1,'Exceptions.cpp']]],
+  ['delete_5farray',['delete_array',['../d5/d7d/classwlp_1_1_array2_d.html#ad5b888b0567f9a393681aba7bc5b1214',1,'wlp::Array2D']]],
   ['destroy',['destroy',['../de/dc1/classwlp_1_1_reference_count.html#ad321394bfc7a1d215d3616c3721923ee',1,'wlp::ReferenceCount']]],
   ['destroy_5fnode',['destroy_node',['../d3/def/classwlp_1_1_red_black_tree.html#aac61ff33577cf871298bb142c9c017a0',1,'wlp::RedBlackTree']]],
   ['diff32_5ftype',['diff32_type',['../d5/dca/namespacewlp.html#a6922f69100dd084143e89baa92c4fcd2',1,'wlp']]],

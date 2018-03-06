@@ -11,10 +11,10 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-34 110,-34 110,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:href="d8/d15/unionwlp_1_1aligned__storage_1_1type.html" target="_top" xlink:title="wlp::aligned_storage\l\&lt; size, align \&gt;::type">
+<g id="a_node1"><a xlink:href="d4/de0/structwlp_1_1aligned__storage.html" target="_top" xlink:title="wlp::aligned_storage\l\&lt; size, align \&gt;">
 <polygon fill="white" stroke="black" points="0,-0 0,-30 106,-30 106,-0 0,-0"/>
 <text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::aligned_storage</text>
-<text text-anchor="middle" x="53" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; size, align &gt;::type</text>
+<text text-anchor="middle" x="53" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; size, align &gt;</text>
 </a>
 </g>
 </g>
