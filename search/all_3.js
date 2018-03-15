@@ -20,6 +20,7 @@ var searchData=
   ['comparator_3c_20staticstring_3c_20tsize_20_3e_20_3e',['Comparator&lt; StaticString&lt; tSize &gt; &gt;',['../d0/d65/structwlp_1_1_comparator_3_01_static_string_3_01t_size_01_4_01_4.html',1,'wlp']]],
   ['comparator_5fconcept',['comparator_concept',['../dd/d0d/structwlp_1_1comparator__concept.html',1,'wlp']]],
   ['compare',['compare',['../d6/d6b/classwlp_1_1_static_string.html#a06cda91640235c8e867e0403e4a9f16c',1,'wlp::StaticString::compare(const StaticString&lt; tSize &gt; &amp;str) const '],['../d6/d6b/classwlp_1_1_static_string.html#a78ac721ae9d51eec65ca8ece2fb0843c',1,'wlp::StaticString::compare(const DynamicString &amp;str) const '],['../d6/d6b/classwlp_1_1_static_string.html#a77425e5f610a48556228c5df8677923a',1,'wlp::StaticString::compare(const char *str) const '],['../d6/d6b/classwlp_1_1_static_string.html#abdd907dac4ee6e5ad54c848ccba227d8',1,'wlp::StaticString::compare(char c) const ']]],
+  ['compare_2eh',['Compare.h',['../da/d97/_compare_8h.html',1,'']]],
   ['concept_2eh',['Concept.h',['../d8/dd7/_concept_8h.html',1,'']]],
   ['conditional',['conditional',['../d6/dfe/structwlp_1_1conditional.html',1,'wlp']]],
   ['conditional_3c_20false_2c_20iftrue_2c_20iffalse_20_3e',['conditional&lt; false, IfTrue, IfFalse &gt;',['../dc/dc1/structwlp_1_1conditional_3_01false_00_01_if_true_00_01_if_false_01_4.html',1,'wlp']]],
