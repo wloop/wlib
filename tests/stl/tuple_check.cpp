@@ -139,3 +139,22 @@ TEST(tuple_test, test_tuple_tie) {
     ASSERT_EQ('g', c);
     ASSERT_DOUBLE_EQ(66.55, d);
 }
+
+TEST(tuple_test, test_repeat_tuple_size) {
+    RepeatTuple<int, 5> rt_1;
+    size_type value = tuple_size<decltype(rt_1)>::value;
+    ASSERT_EQ(value, 5);
+    ASSERT_NE(value, 6);
+    RepeatTuple<int, 6> rt_2;
+    value = tuple_size<decltype(rt_2)>::value;
+    ASSERT_EQ(value, 6);
+    ASSERT_NE(value, 5);
+}
+
+TEST(tuple_test, test_repeat_tuple_values) {
+    RepeatTuple<bool, 4> rt_1 = make_tuple(true, false, false, true);
+    ASSERT_TRUE(get<0>(rt_1));
+    ASSERT_FALSE(get<1>(rt_1));
+    ASSERT_FALSE(get<2>(rt_1));
+    ASSERT_TRUE(get<3>(rt_1));
+}
