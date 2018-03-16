@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Waterloop Wlib: wlp::isnt_any_of&lt; comp_t, target, head &gt; Struct Template Reference</title>
+<title>Waterloop Wlib: wlp::is_one_of_ct&lt; comp_t, target, head, tail &gt; Struct Template Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -77,14 +77,14 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="../../d5/dca/namespacewlp.html">wlp</a></li><li class="navelem"><a class="el" href="../../db/d99/structwlp_1_1isnt__any__of_3_01comp__t_00_01target_00_01head_01_4.html">isnt_any_of< comp_t, target, head ></a></li>  </ul>
+<li class="navelem"><a class="el" href="../../d5/dca/namespacewlp.html">wlp</a></li><li class="navelem"><a class="el" href="../../d3/d36/structwlp_1_1is__one__of__ct.html">is_one_of_ct</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-static-attribs">Static Public Attributes</a>  </div>
   <div class="headertitle">
-<div class="title">wlp::isnt_any_of&lt; comp_t, target, head &gt; Struct Template Reference</div>  </div>
+<div class="title">wlp::is_one_of_ct&lt; comp_t, target, head, tail &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -92,33 +92,33 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a482eea5fd7b52af941a1537427f5f219"><td class="memItemLeft" align="right" valign="top">static const bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d99/structwlp_1_1isnt__any__of_3_01comp__t_00_01target_00_01head_01_4.html#a482eea5fd7b52af941a1537427f5f219">value</a> = target != head</td></tr>
-<tr class="separator:a482eea5fd7b52af941a1537427f5f219"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a992a9dc7405deef6922279590f8057fe"><td class="memItemLeft" align="right" valign="top">static const bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d36/structwlp_1_1is__one__of__ct.html#a992a9dc7405deef6922279590f8057fe">value</a> = target == head || <a class="el" href="../../d3/d36/structwlp_1_1is__one__of__ct.html">is_one_of_ct</a>&lt;comp_t, target, tail...&gt;::value</td></tr>
+<tr class="separator:a992a9dc7405deef6922279590f8057fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename comp_t, comp_t target, comp_t head&gt;<br/>
-struct wlp::isnt_any_of&lt; comp_t, target, head &gt;</h3>
+<div class="textblock"><h3>template&lt;typename comp_t, comp_t target, comp_t head, comp_t... tail&gt;<br/>
+struct wlp::is_one_of_ct&lt; comp_t, target, head, tail &gt;</h3>
 
 
-<p>Definition at line <a class="el" href="../../da/d97/_compare_8h_source.html#l00022">22</a> of file <a class="el" href="../../da/d97/_compare_8h_source.html">Compare.h</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d97/_compare_8h_source.html#l00007">7</a> of file <a class="el" href="../../da/d97/_compare_8h_source.html">Compare.h</a>.</p>
 </div><div class="dynheader">
-Collaboration diagram for wlp::isnt_any_of&lt; comp_t, target, head &gt;:</div>
+Collaboration diagram for wlp::is_one_of_ct&lt; comp_t, target, head, tail &gt;:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d5/da2/structwlp_1_1isnt__any__of_3_01comp__t_00_01target_00_01head_01_4__coll__graph.svg" width="171" height="144"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d3/d94/structwlp_1_1is__one__of__ct__coll__graph.svg" width="160" height="158"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <h2 class="groupheader">Field Documentation</h2>
-<a class="anchor" id="a482eea5fd7b52af941a1537427f5f219"></a>
+<a class="anchor" id="a992a9dc7405deef6922279590f8057fe"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename comp_t , comp_t target, comp_t head&gt; </div>
+template&lt;typename comp_t , comp_t target, comp_t head, comp_t... tail&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const bool <a class="el" href="../../dc/d24/structwlp_1_1isnt__any__of.html">wlp::isnt_any_of</a>&lt; comp_t, target, head &gt;::value = target != head</td>
+          <td class="memname">const bool <a class="el" href="../../d3/d36/structwlp_1_1is__one__of__ct.html">wlp::is_one_of_ct</a>&lt; comp_t, target, head, tail &gt;::value = target == head || <a class="el" href="../../d3/d36/structwlp_1_1is__one__of__ct.html">is_one_of_ct</a>&lt;comp_t, target, tail...&gt;::value</td>
         </tr>
       </table>
   </td>
@@ -128,7 +128,7 @@ template&lt;typename comp_t , comp_t target, comp_t head&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../da/d97/_compare_8h_source.html#l00023">23</a> of file <a class="el" href="../../da/d97/_compare_8h_source.html">Compare.h</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d97/_compare_8h_source.html#l00008">8</a> of file <a class="el" href="../../da/d97/_compare_8h_source.html">Compare.h</a>.</p>
 
 </div>
 </div>
@@ -138,7 +138,7 @@ template&lt;typename comp_t , comp_t target, comp_t head&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 15 2018 02:14:27 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 16 2018 05:43:39 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

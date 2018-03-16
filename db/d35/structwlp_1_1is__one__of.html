@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Waterloop Wlib: wlp::is_one_of&lt; comp_t, target, head, tail &gt; Struct Template Reference</title>
+<title>Waterloop Wlib: wlp::is_one_of&lt; comp_t, head, tail &gt; Struct Template Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -82,54 +82,56 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-static-attribs">Static Public Attributes</a>  </div>
+<a href="#pub-static-methods">Static Public Member Functions</a>  </div>
   <div class="headertitle">
-<div class="title">wlp::is_one_of&lt; comp_t, target, head, tail &gt; Struct Template Reference</div>  </div>
+<div class="title">wlp::is_one_of&lt; comp_t, head, tail &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="../../da/d97/_compare_8h_source.html">Compare.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:a124e3ba75b4d505cdb624224afe04ba9"><td class="memItemLeft" align="right" valign="top">static const bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d35/structwlp_1_1is__one__of.html#a124e3ba75b4d505cdb624224afe04ba9">value</a> = target == head || <a class="el" href="../../db/d35/structwlp_1_1is__one__of.html">is_one_of</a>&lt;comp_t, target, tail...&gt;::value</td></tr>
-<tr class="separator:a124e3ba75b4d505cdb624224afe04ba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:ad0cb6ba3a42fbdc7c5038c42c3d760e7"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d35/structwlp_1_1is__one__of.html#ad0cb6ba3a42fbdc7c5038c42c3d760e7">apply</a> (comp_t target)</td></tr>
+<tr class="separator:ad0cb6ba3a42fbdc7c5038c42c3d760e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename comp_t, comp_t target, comp_t head, comp_t... tail&gt;<br/>
-struct wlp::is_one_of&lt; comp_t, target, head, tail &gt;</h3>
+<div class="textblock"><h3>template&lt;typename comp_t, comp_t head, comp_t... tail&gt;<br/>
+struct wlp::is_one_of&lt; comp_t, head, tail &gt;</h3>
 
 
-<p>Definition at line <a class="el" href="../../da/d97/_compare_8h_source.html#l00007">7</a> of file <a class="el" href="../../da/d97/_compare_8h_source.html">Compare.h</a>.</p>
-</div><div class="dynheader">
-Collaboration diagram for wlp::is_one_of&lt; comp_t, target, head, tail &gt;:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d9/dd8/structwlp_1_1is__one__of__coll__graph.svg" width="160" height="144"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-<center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
-<h2 class="groupheader">Field Documentation</h2>
-<a class="anchor" id="a124e3ba75b4d505cdb624224afe04ba9"></a>
+<p>Definition at line <a class="el" href="../../da/d97/_compare_8h_source.html#l00027">27</a> of file <a class="el" href="../../da/d97/_compare_8h_source.html">Compare.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ad0cb6ba3a42fbdc7c5038c42c3d760e7"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename comp_t , comp_t target, comp_t head, comp_t... tail&gt; </div>
+template&lt;typename comp_t , comp_t head, comp_t... tail&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const bool <a class="el" href="../../db/d35/structwlp_1_1is__one__of.html">wlp::is_one_of</a>&lt; comp_t, target, head, tail &gt;::value = target == head || <a class="el" href="../../db/d35/structwlp_1_1is__one__of.html">is_one_of</a>&lt;comp_t, target, tail...&gt;::value</td>
+          <td class="memname">static bool <a class="el" href="../../db/d35/structwlp_1_1is__one__of.html">wlp::is_one_of</a>&lt; comp_t, head, tail &gt;::apply </td>
+          <td>(</td>
+          <td class="paramtype">comp_t&#160;</td>
+          <td class="paramname"><em>target</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../da/d97/_compare_8h_source.html#l00008">8</a> of file <a class="el" href="../../da/d97/_compare_8h_source.html">Compare.h</a>.</p>
-
+<p>Definition at line <a class="el" href="../../da/d97/_compare_8h_source.html#l00028">28</a> of file <a class="el" href="../../da/d97/_compare_8h_source.html">Compare.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                                         {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">return</span> target == head || <a class="code" href="../../db/d35/structwlp_1_1is__one__of.html#ad0cb6ba3a42fbdc7c5038c42c3d760e7">is_one_of&lt;comp_t, tail...&gt;::apply</a>(target);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1is__one__of_html_ad0cb6ba3a42fbdc7c5038c42c3d760e7"><div class="ttname"><a href="../../db/d35/structwlp_1_1is__one__of.html#ad0cb6ba3a42fbdc7c5038c42c3d760e7">wlp::is_one_of::apply</a></div><div class="ttdeci">static bool apply(comp_t target)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d97/_compare_8h_source.html#l00028">Compare.h:28</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
@@ -138,7 +140,7 @@ template&lt;typename comp_t , comp_t target, comp_t head, comp_t... tail&gt; </d
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 15 2018 02:14:27 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 16 2018 05:43:39 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
