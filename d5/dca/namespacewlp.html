@@ -269,6 +269,14 @@ Data Structures</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d13/structwlp_1_1ignore__type.html">ignore_type</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9c/structwlp_1_1repeat__tuple__type__hopper.html">repeat_tuple_type_hopper</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/daf/structwlp_1_1repeat__tuple__type__sub.html">repeat_tuple_type_sub</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d5c/structwlp_1_1repeat__tuple__type__sub_3_01_type_00_01_index_sequence_3_01_indices_8_8_8_4_01_4.html">repeat_tuple_type_sub&lt; Type, IndexSequence&lt; Indices...&gt; &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d0e/structwlp_1_1repeat__tuple__type.html">repeat_tuple_type</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d93/structwlp_1_1_type_at_tuple.html">TypeAtTuple</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dc8/structwlp_1_1_type_at_tuple_3_01_i_00_01_tuple_3_01_types_8_8_8_4_01_4.html">TypeAtTuple&lt; I, Tuple&lt; Types...&gt; &gt;</a></td></tr>
@@ -591,6 +599,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a688e55a52ef59524a7cc9bdf2ab7b719"><td class="memTemplParams" colspan="2">template&lt;size_type I, typename... Types&gt; </td></tr>
 <tr class="memitem:a688e55a52ef59524a7cc9bdf2ab7b719"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a688e55a52ef59524a7cc9bdf2ab7b719">TypeAtIndexType</a> = typename <a class="el" href="../../dd/dec/structwlp_1_1_type_at_index.html">TypeAtIndex</a>&lt; I, Types...&gt;::type</td></tr>
 <tr class="separator:a688e55a52ef59524a7cc9bdf2ab7b719"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4b465c0fd93e498c8d1e746be752368"><td class="memTemplParams" colspan="2">template&lt;typename Type , size_type Repeat&gt; </td></tr>
+<tr class="memitem:ae4b465c0fd93e498c8d1e746be752368"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ae4b465c0fd93e498c8d1e746be752368">RepeatTuple</a> = typename <a class="el" href="../../d2/d0e/structwlp_1_1repeat__tuple__type.html">repeat_tuple_type</a>&lt; Type, Repeat &gt;::type</td></tr>
+<tr class="separator:ae4b465c0fd93e498c8d1e746be752368"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4244df8552b47af4757dbeb2e3eede1c"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d6/d6b/classwlp_1_1_static_string.html">StaticString</a>&lt; 8u &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a4244df8552b47af4757dbeb2e3eede1c">String8</a></td></tr>
 <tr class="separator:a4244df8552b47af4757dbeb2e3eede1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0e8e1df11452d4b0c4933ce3096db19"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d6/d6b/classwlp_1_1_static_string.html">StaticString</a>&lt; 16u &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#af0e8e1df11452d4b0c4933ce3096db19">String16</a></td></tr>
@@ -1183,6 +1194,22 @@ template&lt;typename T &gt; </div>
 <p>Shorthand for remove reference type. </p>
 
 <p>Definition at line <a class="el" href="../../d2/d37/_tmp_8h_source.html#l00344">344</a> of file <a class="el" href="../../d2/d37/_tmp_8h_source.html">Tmp.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae4b465c0fd93e498c8d1e746be752368"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type , size_type Repeat&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../d5/dca/namespacewlp.html#ae4b465c0fd93e498c8d1e746be752368">wlp::RepeatTuple</a> = typedef typename <a class="el" href="../../d2/d0e/structwlp_1_1repeat__tuple__type.html">repeat_tuple_type</a>&lt;Type, Repeat&gt;::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00599">599</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
 
 </div>
 </div>
@@ -3652,12 +3679,12 @@ template&lt;typename... Types&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a tuple sized to the number of elements </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00646">646</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00668">668</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../df/d87/_tree_map_8h_source.html#l00098">wlp::TreeMap&lt; Key, Val, Cmp &gt;::insert()</a>, <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00107">wlp::HashMap&lt; Key, Val, Hasher, Equals &gt;::insert()</a>, <a class="el" href="../../d5/d7a/_open_map_8h_source.html#l00113">wlp::OpenHashMap&lt; Key, Val, Hasher, Equals &gt;::insert()</a>, <a class="el" href="../../df/d87/_tree_map_8h_source.html#l00103">wlp::TreeMap&lt; Key, Val, Cmp &gt;::insert_or_assign()</a>, <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00112">wlp::HashMap&lt; Key, Val, Hasher, Equals &gt;::insert_or_assign()</a>, <a class="el" href="../../d5/d7a/_open_map_8h_source.html#l00118">wlp::OpenHashMap&lt; Key, Val, Hasher, Equals &gt;::insert_or_assign()</a>, <a class="el" href="../../df/d87/_tree_map_8h_source.html#l00143">wlp::TreeMap&lt; Key, Val, Cmp &gt;::operator[]()</a>, <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00152">wlp::HashMap&lt; Key, Val, Hasher, Equals &gt;::operator[]()</a>, <a class="el" href="../../d5/d7a/_open_map_8h_source.html#l00158">wlp::OpenHashMap&lt; Key, Val, Hasher, Equals &gt;::operator[]()</a>, and <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00665">tuple_cat_pair_sub()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;                                                                 {</div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;        <span class="keywordflow">return</span> Tuple&lt;decay_type&lt;Types&gt;...&gt;(forward&lt;Types&gt;(elements)...);</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;    }</div>
+<p>Referenced by <a class="el" href="../../df/d87/_tree_map_8h_source.html#l00098">wlp::TreeMap&lt; Key, Val, Cmp &gt;::insert()</a>, <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00107">wlp::HashMap&lt; Key, Val, Hasher, Equals &gt;::insert()</a>, <a class="el" href="../../d5/d7a/_open_map_8h_source.html#l00113">wlp::OpenHashMap&lt; Key, Val, Hasher, Equals &gt;::insert()</a>, <a class="el" href="../../df/d87/_tree_map_8h_source.html#l00103">wlp::TreeMap&lt; Key, Val, Cmp &gt;::insert_or_assign()</a>, <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00112">wlp::HashMap&lt; Key, Val, Hasher, Equals &gt;::insert_or_assign()</a>, <a class="el" href="../../d5/d7a/_open_map_8h_source.html#l00118">wlp::OpenHashMap&lt; Key, Val, Hasher, Equals &gt;::insert_or_assign()</a>, <a class="el" href="../../df/d87/_tree_map_8h_source.html#l00143">wlp::TreeMap&lt; Key, Val, Cmp &gt;::operator[]()</a>, <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00152">wlp::HashMap&lt; Key, Val, Hasher, Equals &gt;::operator[]()</a>, <a class="el" href="../../d5/d7a/_open_map_8h_source.html#l00158">wlp::OpenHashMap&lt; Key, Val, Hasher, Equals &gt;::operator[]()</a>, and <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00687">tuple_cat_pair_sub()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;                                                                 {</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;        <span class="keywordflow">return</span> Tuple&lt;decay_type&lt;Types&gt;...&gt;(forward&lt;Types&gt;(elements)...);</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;    }</div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -6939,12 +6966,12 @@ template&lt;typename HeadTuple &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>forwarded tuple </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00701">701</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00723">723</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00757">tuple_cat()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;                                             {</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;        <span class="keywordflow">return</span> forward&lt;HeadTuple&gt;(tuple);</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;    }</div>
+<p>Referenced by <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00779">tuple_cat()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                                             {</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;        <span class="keywordflow">return</span> forward&lt;HeadTuple&gt;(tuple);</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;    }</div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -6998,16 +7025,16 @@ template&lt;typename HeadTupleA , typename HeadTupleB &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the concatenated tuples </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00716">716</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00738">738</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
 
-<p>References <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00684">tuple_cat_pair()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;                                                        {</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d5/dca/namespacewlp.html#a447cceb8493717b7192963b2266d1553">tuple_cat_pair</a>(</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;                forward&lt;HeadTupleA&gt;(tupleA),</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;                forward&lt;HeadTupleB&gt;(tupleB)</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;        );</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;    };</div>
-<div class="ttc" id="namespacewlp_html_a447cceb8493717b7192963b2266d1553"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a447cceb8493717b7192963b2266d1553">wlp::tuple_cat_pair</a></div><div class="ttdeci">cat_pair_type&lt; TupleA, TupleB &gt;::type tuple_cat_pair(TupleA &amp;&amp;tupleA, TupleB &amp;&amp;tupleB)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2a/_tuple_8h_source.html#l00684">Tuple.h:684</a></div></div>
+<p>References <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00706">tuple_cat_pair()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;                                                        {</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d5/dca/namespacewlp.html#a447cceb8493717b7192963b2266d1553">tuple_cat_pair</a>(</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;                forward&lt;HeadTupleA&gt;(tupleA),</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;                forward&lt;HeadTupleB&gt;(tupleB)</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;        );</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;    };</div>
+<div class="ttc" id="namespacewlp_html_a447cceb8493717b7192963b2266d1553"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a447cceb8493717b7192963b2266d1553">wlp::tuple_cat_pair</a></div><div class="ttdeci">cat_pair_type&lt; TupleA, TupleB &gt;::type tuple_cat_pair(TupleA &amp;&amp;tupleA, TupleB &amp;&amp;tupleB)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2a/_tuple_8h_source.html#l00706">Tuple.h:706</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -7069,21 +7096,21 @@ template&lt;typename HeadTupleA , typename HeadTupleB , typename... TailTuples&g
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>concatenated tuples </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00757">757</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00779">779</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
 
-<p>References <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00701">tuple_cat()</a>, and <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00684">tuple_cat_pair()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;                                                                               {</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;        <span class="keyword">auto</span> tuple = <a class="code" href="../../d5/dca/namespacewlp.html#a447cceb8493717b7192963b2266d1553">tuple_cat_pair</a>(</div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;                forward&lt;HeadTupleA&gt;(tupleA),</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;                forward&lt;HeadTupleB&gt;(tupleB)</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;        );</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d5/dca/namespacewlp.html#a7fec1015f1e1cdfa1e8751ebdb24112e">tuple_cat</a>(</div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;                tuple,</div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;                forward&lt;TailTuples&gt;(tail)...</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;        );</div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;    };</div>
-<div class="ttc" id="namespacewlp_html_a7fec1015f1e1cdfa1e8751ebdb24112e"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a7fec1015f1e1cdfa1e8751ebdb24112e">wlp::tuple_cat</a></div><div class="ttdeci">tuple_cat_type&lt; HeadTupleA, HeadTupleB, TailTuples...&gt;::type tuple_cat(HeadTupleA &amp;&amp;tupleA, HeadTupleB &amp;&amp;tupleB, TailTuples &amp;&amp;...tail)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2a/_tuple_8h_source.html#l00757">Tuple.h:757</a></div></div>
-<div class="ttc" id="namespacewlp_html_a447cceb8493717b7192963b2266d1553"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a447cceb8493717b7192963b2266d1553">wlp::tuple_cat_pair</a></div><div class="ttdeci">cat_pair_type&lt; TupleA, TupleB &gt;::type tuple_cat_pair(TupleA &amp;&amp;tupleA, TupleB &amp;&amp;tupleB)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2a/_tuple_8h_source.html#l00684">Tuple.h:684</a></div></div>
+<p>References <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00723">tuple_cat()</a>, and <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00706">tuple_cat_pair()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;                                                                               {</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;        <span class="keyword">auto</span> tuple = <a class="code" href="../../d5/dca/namespacewlp.html#a447cceb8493717b7192963b2266d1553">tuple_cat_pair</a>(</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;                forward&lt;HeadTupleA&gt;(tupleA),</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;                forward&lt;HeadTupleB&gt;(tupleB)</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;        );</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d5/dca/namespacewlp.html#a7fec1015f1e1cdfa1e8751ebdb24112e">tuple_cat</a>(</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;                tuple,</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;                forward&lt;TailTuples&gt;(tail)...</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;        );</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;    };</div>
+<div class="ttc" id="namespacewlp_html_a7fec1015f1e1cdfa1e8751ebdb24112e"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a7fec1015f1e1cdfa1e8751ebdb24112e">wlp::tuple_cat</a></div><div class="ttdeci">tuple_cat_type&lt; HeadTupleA, HeadTupleB, TailTuples...&gt;::type tuple_cat(HeadTupleA &amp;&amp;tupleA, HeadTupleB &amp;&amp;tupleB, TailTuples &amp;&amp;...tail)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2a/_tuple_8h_source.html#l00779">Tuple.h:779</a></div></div>
+<div class="ttc" id="namespacewlp_html_a447cceb8493717b7192963b2266d1553"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a447cceb8493717b7192963b2266d1553">wlp::tuple_cat_pair</a></div><div class="ttdeci">cat_pair_type&lt; TupleA, TupleB &gt;::type tuple_cat_pair(TupleA &amp;&amp;tupleA, TupleB &amp;&amp;tupleB)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2a/_tuple_8h_source.html#l00706">Tuple.h:706</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -7137,20 +7164,20 @@ template&lt;typename TupleA , typename TupleB &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the tuples combined </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00684">684</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00706">706</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
 
-<p>References <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00665">tuple_cat_pair_sub()</a>.</p>
+<p>References <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00687">tuple_cat_pair_sub()</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00716">tuple_cat()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;                                                     {</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d5/dca/namespacewlp.html#ae41053c70e843746dca64067cf8c0569">tuple_cat_pair_sub</a>(</div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;                forward&lt;TupleA&gt;(tupleA),</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;                forward&lt;TupleB&gt;(tupleB),</div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;                MakeIndexSequence&lt;tuple_size&lt;decay_type&lt;TupleA&gt;&gt;::value&gt;{},</div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;                MakeIndexSequence&lt;tuple_size&lt;decay_type&lt;TupleB&gt;&gt;::value&gt;{}</div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;        );</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;    };</div>
-<div class="ttc" id="namespacewlp_html_ae41053c70e843746dca64067cf8c0569"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#ae41053c70e843746dca64067cf8c0569">wlp::tuple_cat_pair_sub</a></div><div class="ttdeci">Tuple&lt; typename TypeAtTuple&lt; IndicesA, decay_type&lt; TupleA &gt; &gt;::type..., typename TypeAtTuple&lt; IndicesB, decay_type&lt; TupleB &gt; &gt;::type... &gt; tuple_cat_pair_sub(TupleA &amp;&amp;tupleA, TupleB &amp;&amp;tupleB, IndexSequence&lt; IndicesA...&gt;, IndexSequence&lt; IndicesB...&gt;)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2a/_tuple_8h_source.html#l00665">Tuple.h:665</a></div></div>
+<p>Referenced by <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00738">tuple_cat()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;                                                     {</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d5/dca/namespacewlp.html#ae41053c70e843746dca64067cf8c0569">tuple_cat_pair_sub</a>(</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;                forward&lt;TupleA&gt;(tupleA),</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;                forward&lt;TupleB&gt;(tupleB),</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;                MakeIndexSequence&lt;tuple_size&lt;decay_type&lt;TupleA&gt;&gt;::value&gt;{},</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;                MakeIndexSequence&lt;tuple_size&lt;decay_type&lt;TupleB&gt;&gt;::value&gt;{}</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;        );</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;    };</div>
+<div class="ttc" id="namespacewlp_html_ae41053c70e843746dca64067cf8c0569"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#ae41053c70e843746dca64067cf8c0569">wlp::tuple_cat_pair_sub</a></div><div class="ttdeci">Tuple&lt; typename TypeAtTuple&lt; IndicesA, decay_type&lt; TupleA &gt; &gt;::type..., typename TypeAtTuple&lt; IndicesB, decay_type&lt; TupleB &gt; &gt;::type... &gt; tuple_cat_pair_sub(TupleA &amp;&amp;tupleA, TupleB &amp;&amp;tupleB, IndexSequence&lt; IndicesA...&gt;, IndexSequence&lt; IndicesB...&gt;)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2a/_tuple_8h_source.html#l00687">Tuple.h:687</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -7226,18 +7253,18 @@ template&lt;typename TupleA , size_type... IndicesA, typename TupleB , size_type
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>concatenation of the two tuples </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00665">665</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00687">687</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
 
-<p>References <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00646">make_tuple()</a>.</p>
+<p>References <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00668">make_tuple()</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00684">tuple_cat_pair()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;                                                                    {</div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d5/dca/namespacewlp.html#a94b93d689170305bf7c08b5a6545bb6f">make_tuple</a>(</div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;                get&lt;IndicesA&gt;(forward&lt;TupleA&gt;(tupleA))...,</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;                get&lt;IndicesB&gt;(forward&lt;TupleB&gt;(tupleB))...</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;        );</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;    }</div>
-<div class="ttc" id="namespacewlp_html_a94b93d689170305bf7c08b5a6545bb6f"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a94b93d689170305bf7c08b5a6545bb6f">wlp::make_tuple</a></div><div class="ttdeci">Tuple&lt; decay_type&lt; Types &gt;...&gt; make_tuple(Types &amp;&amp;...elements)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2a/_tuple_8h_source.html#l00646">Tuple.h:646</a></div></div>
+<p>Referenced by <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00706">tuple_cat_pair()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;                                                                    {</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d5/dca/namespacewlp.html#a94b93d689170305bf7c08b5a6545bb6f">make_tuple</a>(</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;                get&lt;IndicesA&gt;(forward&lt;TupleA&gt;(tupleA))...,</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;                get&lt;IndicesB&gt;(forward&lt;TupleB&gt;(tupleB))...</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;        );</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;    }</div>
+<div class="ttc" id="namespacewlp_html_a94b93d689170305bf7c08b5a6545bb6f"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a94b93d689170305bf7c08b5a6545bb6f">wlp::make_tuple</a></div><div class="ttdeci">Tuple&lt; decay_type&lt; Types &gt;...&gt; make_tuple(Types &amp;&amp;...elements)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2a/_tuple_8h_source.html#l00668">Tuple.h:668</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -7289,7 +7316,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 16 2018 05:43:38 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 16 2018 13:59:39 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
