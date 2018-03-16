@@ -576,6 +576,28 @@ namespace wlp {
         return Tuple<Types &...>(elements...);
     }
 
+    template<typename Type, size_type>
+    struct repeat_tuple_type_hopper {
+        typedef Type type;
+    };
+
+    template<typename, typename>
+    struct repeat_tuple_type_sub;
+
+    template<typename Type, size_type ...Indices>
+    struct repeat_tuple_type_sub<Type, IndexSequence<Indices...>> {
+        using type = Tuple<typename repeat_tuple_type_hopper<Type, Indices>::type...>;
+    };
+
+    template<typename Type, size_type Repeat>
+    struct repeat_tuple_type {
+        using Sequence = typename MakeIndexSequence<Repeat>::type;
+        typedef typename repeat_tuple_type_sub<Type, Sequence>::type type;
+    };
+
+    template<typename Type, size_type Repeat>
+    using RepeatTuple = typename repeat_tuple_type<Type, Repeat>::type;
+
     /**
      * Undefined base type for type at tuple.
      */
@@ -764,7 +786,6 @@ namespace wlp {
                 forward<TailTuples>(tail)...
         );
     };
-
 
 }
 
