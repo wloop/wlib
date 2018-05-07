@@ -205,14 +205,18 @@ template&lt;class SM , class Data , void(SM::*)(const Data *) Func&gt; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">             * there is a mismatch between the event type in STATE_DECLARE and</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">             * the event type passed to the function.</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">             */</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keyword">const</span> Data *derivedData = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>Data *<span class="keyword">&gt;</span>(data);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="comment">/* assert(derivedData != nullptr) */</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">if</span> (derivedData == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <a class="code" href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a>(<a class="code" href="../../d7/d2f/_exceptions_8h.html#ad69dbc5028434f70b3e7fd3875d33ce7">BAD_STATE_EXCEPTION</a>(<span class="stringliteral">&quot;Invalid EventData type passed to state&quot;</span>))</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="comment">// Call the state function</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            (derivedSM-&gt;*Func)(derivedData);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#ifndef __cpp_rtti</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor"></span>            <span class="keyword">const</span> Data *derivedData = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>Data *<span class="keyword">&gt;</span>(data);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor"></span>            <span class="keyword">const</span> Data *derivedData = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>Data *<span class="keyword">&gt;</span>(data);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor"></span>            <span class="comment">/* assert(derivedData != nullptr) */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">if</span> (derivedData == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <a class="code" href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a>(<a class="code" href="../../d7/d2f/_exceptions_8h.html#ad69dbc5028434f70b3e7fd3875d33ce7">BAD_STATE_EXCEPTION</a>(<span class="stringliteral">&quot;Invalid EventData type passed to state&quot;</span>))</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="comment">// Call the state function</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            (derivedSM-&gt;*Func)(derivedData);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
 <div class="ttc" id="_exceptions_8h_html_a8d940770e78617d670d314ca0b8c35ef"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a></div><div class="ttdeci">#define THROW(e)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00121">Exceptions.h:121</a></div></div>
 <div class="ttc" id="_exceptions_8h_html_ad69dbc5028434f70b3e7fd3875d33ce7"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#ad69dbc5028434f70b3e7fd3875d33ce7">BAD_STATE_EXCEPTION</a></div><div class="ttdeci">#define BAD_STATE_EXCEPTION(str)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00166">Exceptions.h:166</a></div></div>
 </div><!-- fragment -->
@@ -224,7 +228,7 @@ template&lt;class SM , class Data , void(SM::*)(const Data *) Func&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 16 2018 13:59:39 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 7 2018 03:25:06 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

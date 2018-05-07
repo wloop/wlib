@@ -114,7 +114,7 @@ class wlp::GuardCondition&lt; SM, Data, Func &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00111">111</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00115">115</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 </div><div class="dynheader">
 Inheritance diagram for wlp::GuardCondition&lt; SM, Data, Func &gt;:</div>
 <div class="dyncontent">
@@ -151,8 +151,8 @@ template&lt;class SM , class Data , bool(SM::*)(const Data *) Func&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00113">113</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;{}</div>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00117">117</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -202,19 +202,23 @@ template&lt;class SM , class Data , bool(SM::*)(const Data *) Func&gt; </div>
 
 <p>Implements <a class="el" href="../../d2/d06/classwlp_1_1_guard_base.html#ae04156c58d60bbcd06a11a0613e37861">wlp::GuardBase</a>.</p>
 
-<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00115">115</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/dcf/_state_machine_8h_source.html#l00119">119</a> of file <a class="el" href="../../df/dcf/_state_machine_8h_source.html">StateMachine.h</a>.</p>
 
 <p>References <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00166">BAD_STATE_EXCEPTION</a>, and <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00121">THROW</a>.</p>
-<div class="fragment"><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                                                                                      {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            SM *derivedSM = <span class="keyword">static_cast&lt;</span>SM *<span class="keyword">&gt;</span>(sm);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keyword">const</span> Data *derivedData = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>Data *<span class="keyword">&gt;</span>(data);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="comment">/* assert(derivedData != nullptr) */</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keywordflow">if</span> (derivedData == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <a class="code" href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a>(<a class="code" href="../../d7/d2f/_exceptions_8h.html#ad69dbc5028434f70b3e7fd3875d33ce7">BAD_STATE_EXCEPTION</a>(<span class="stringliteral">&quot;Invalid EventData type passed to guard&quot;</span>))</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            }</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="comment">// Call the guard function</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keywordflow">return</span> (derivedSM-&gt;*Func)(derivedData);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                                                                                      {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            SM *derivedSM = <span class="keyword">static_cast&lt;</span>SM *<span class="keyword">&gt;</span>(sm);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#ifndef __cpp_rtti</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor"></span>            <span class="keyword">const</span> Data *derivedData = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>Data *<span class="keyword">&gt;</span>(data);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor"></span>            <span class="keyword">const</span> Data *derivedData = <span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span>Data *<span class="keyword">&gt;</span>(data);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor"></span>            <span class="comment">/* assert(derivedData != nullptr) */</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordflow">if</span> (derivedData == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <a class="code" href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a>(<a class="code" href="../../d7/d2f/_exceptions_8h.html#ad69dbc5028434f70b3e7fd3875d33ce7">BAD_STATE_EXCEPTION</a>(<span class="stringliteral">&quot;Invalid EventData type passed to guard&quot;</span>))</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="comment">// Call the guard function</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordflow">return</span> (derivedSM-&gt;*Func)(derivedData);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        }</div>
 <div class="ttc" id="_exceptions_8h_html_a8d940770e78617d670d314ca0b8c35ef"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a></div><div class="ttdeci">#define THROW(e)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00121">Exceptions.h:121</a></div></div>
 <div class="ttc" id="_exceptions_8h_html_ad69dbc5028434f70b3e7fd3875d33ce7"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#ad69dbc5028434f70b3e7fd3875d33ce7">BAD_STATE_EXCEPTION</a></div><div class="ttdeci">#define BAD_STATE_EXCEPTION(str)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00166">Exceptions.h:166</a></div></div>
 </div><!-- fragment -->
@@ -226,7 +230,7 @@ template&lt;class SM , class Data , bool(SM::*)(const Data *) Func&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 16 2018 13:59:39 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 7 2018 03:25:06 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
