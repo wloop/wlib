@@ -67,7 +67,11 @@ namespace wlp {
              * there is a mismatch between the event type in STATE_DECLARE and
              * the event type passed to the function.
              */
+#ifndef __cpp_rtti
+            const Data *derivedData = reinterpret_cast<const Data *>(data);
+#else
             const Data *derivedData = dynamic_cast<const Data *>(data);
+#endif
             /* assert(derivedData != nullptr) */
             if (derivedData == nullptr) {
                 THROW(BAD_STATE_EXCEPTION("Invalid EventData type passed to state"))
@@ -114,7 +118,11 @@ namespace wlp {
 
         virtual bool invokeGuardAction(StateMachine *sm, const EventData *data) const {
             SM *derivedSM = static_cast<SM *>(sm);
+#ifndef __cpp_rtti
+            const Data *derivedData = reinterpret_cast<const Data *>(data);
+#else
             const Data *derivedData = dynamic_cast<const Data *>(data);
+#endif
             /* assert(derivedData != nullptr) */
             if (derivedData == nullptr) {
                 THROW(BAD_STATE_EXCEPTION("Invalid EventData type passed to guard"))
@@ -157,7 +165,11 @@ namespace wlp {
 
         virtual void invokeEntryAction(StateMachine *sm, const EventData *data) const {
             SM *derivedSM = static_cast<SM *>(sm);
+#ifndef __cpp_rtti
+            const Data *derivedData = reinterpret_cast<const Data *>(data);
+#else
             const Data *derivedData = dynamic_cast<const Data *>(data);
+#endif
             /* assert(derivedData != nullptr) */
             if (derivedData == nullptr) {
                 THROW(BAD_STATE_EXCEPTION("Invalid EventData type passed to entry"))
