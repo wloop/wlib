@@ -85,9 +85,5 @@ cp .gitignore library
 cp LICENSE library
 
 cd library
-git add .
-git commit -m "Deploying Wlib Library: ${SHA}"
-git push $SSH_REPO $WLIB_BRANCH
-
-echo "Deployed Wlib library"
-
+git add -A
+git diff-index --quiet HEAD && echo "Wlib library already Up to Date" || git commit -m "Deploying Wlib Library: ${SHA}" && git push $SSH_REPO $WLIB_BRANCH && echo "Deployed Wlib library" 
