@@ -18,7 +18,6 @@ file(GLOB files
         "strings/*.cpp"
         "stl/*.cpp"
         "fsm/*.cpp"
-        "comm/*.cpp"
         "memory/*.cpp"
         "exceptions/*.cpp"
         "utility/*.cpp")
