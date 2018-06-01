@@ -38,7 +38,7 @@ namespace wlp {
     class open_set {
     public:
         typedef open_set<Key, Hasher, Equals> set_type;
-        typedef OpenHashTable<Key,
+        typedef open_table<Key,
             Key, Key,
             SetGetKey<Key>, SetGetVal<Key>,
             Hasher, Equals

@@ -33,7 +33,7 @@ namespace wlp {
             typename GetVal,
             typename Hasher,
             typename Equals>
-    class OpenHashTable;
+    class open_table;
 
     /**
      * Iterator class over the elements of a OpenHashTable. Specifically,
@@ -57,7 +57,7 @@ namespace wlp {
             typename Equals>
     struct OpenHashTableIterator {
         typedef OpenHashTableIterator<Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals> self_type;
-        typedef OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals> table_type;
+        typedef open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals> table_type;
 
         typedef Element element_type;
         typedef Val val_type;
@@ -201,9 +201,9 @@ namespace wlp {
             typename GetVal,
             typename Hasher = hash <Key, uint16_t>,
             typename Equals = equals <Key>>
-    class OpenHashTable {
+    class open_table {
     public:
-        typedef OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals> table_type;
+        typedef open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals> table_type;
         typedef OpenHashTableIterator<
                 Element, Key,
                 Val, Val &, Val *,
@@ -290,7 +290,7 @@ namespace wlp {
          * @param hash     hash function for the key type, default is @code wlp::Hasher @endcode
          * @param equal    equality function for the key type, default is @code wlp::Equals @endcode
          */
-        explicit OpenHashTable(
+        explicit open_table(
                 size_type n = 12,
                 percent_type max_load = 75)
                 : m_num_elements(0),
@@ -306,14 +306,14 @@ namespace wlp {
          * Copy constructor is deleted to prevent
          * copying of complex structures.
          */
-        OpenHashTable(const table_type &) = delete;
+        open_table(const table_type &) = delete;
 
         /**
          * Move constructor transfers resources from
          * rvalue hash map into this hash map.
          * @param map map from which to transfer
          */
-        OpenHashTable(table_type &&map)
+        open_table(table_type &&map)
                 : m_buckets(move(map.m_buckets)),
                   m_num_elements(move(map.m_num_elements)),
                   m_capacity(move(map.m_capacity)),
@@ -327,7 +327,7 @@ namespace wlp {
          * Destroy the hash map, freeing allocated nodes and
          * memory allocated for the array.
          */
-        ~OpenHashTable();
+        ~open_table();
 
     private:
         /**
@@ -533,8 +533,8 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    void OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
-    ::init_buckets(OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::size_type n) {
+    void open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    ::init_buckets(open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::size_type n) {
         m_buckets = malloc<element_type *[]>(n);
         for (size_type i = 0; i < n; ++i) {
             m_buckets[i] = nullptr;
@@ -544,7 +544,7 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    void OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    void open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::ensure_capacity() {
         if (m_num_elements * 100 < m_max_load * m_capacity) {
             return;
@@ -575,7 +575,7 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    void OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    void open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::clear() noexcept {
         for (size_type i = 0; i < m_capacity; ++i) {
             if (m_buckets[i]) {
@@ -590,8 +590,8 @@ namespace wlp {
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
     template<typename E>
-    Pair<typename OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator, bool>
-    OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    Pair<typename open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator, bool>
+    open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::insert_unique(E &&element) {
         ensure_capacity();
         size_type i = hash(m_get_key(element));
@@ -614,7 +614,7 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    void OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    void open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::erase(const iterator &pos) {
         const element_type *cur_node = pos.m_node;
         if (!cur_node) {
@@ -656,7 +656,7 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    size_type OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    size_type open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::erase(const key_type &key) {
         size_type i = hash(key);
         while (m_buckets[i] && !m_key_equals(key, m_get_key(*m_buckets[i]))) {
@@ -695,8 +695,8 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    inline typename OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator
-    OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    inline typename open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator
+    open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::find(const key_type &key) {
         size_type i = hash(key);
         while (m_buckets[i] && !m_key_equals(key, m_get_key(*m_buckets[i]))) {
@@ -714,8 +714,8 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    inline typename OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::const_iterator
-    OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    inline typename open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::const_iterator
+    open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::find(const key_type &key) const {
         size_type i = hash(key);
         while (m_buckets[i] && !m_key_equals(key, m_get_key(*m_buckets[i]))) {
@@ -733,8 +733,8 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
-    ::~OpenHashTable() {
+    open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    ::~open_table() {
         if (!m_buckets) {
             return;
         }
@@ -751,9 +751,9 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals> &
-    OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
-    ::operator=(OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals> &&map) {
+    open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals> &
+    open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    ::operator=(open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals> &&map) {
         clear();
         free<element_type *>(m_buckets);
         m_capacity = move(map.m_capacity);

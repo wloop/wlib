@@ -42,7 +42,7 @@ namespace wlp {
     class open_map {
     public:
         typedef open_map<Key, Val, Hasher, Equals> map_type;
-        typedef OpenHashTable<Tuple<Key, Val>,
+        typedef open_table<Tuple<Key, Val>,
                 Key, Val,
                 MapGetKey<Key, Val>, MapGetVal<Key, Val>,
                 Hasher, Equals
