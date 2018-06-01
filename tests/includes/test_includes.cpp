@@ -11,7 +11,7 @@
 #include <wlib/hash_set>
 #include <wlib/hash_table>
 #include <wlib/initializer_list>
-#include <wlib/link_list>
+#include <wlib/linked_list>
 #include <wlib/math>
 #include <wlib/memory>
 #include <wlib/open_map>
@@ -34,7 +34,7 @@
 #include <wlib/wlib>
 
 void include_test() {
-    array_list<int> list;
+    wlp::array_list<int> list;
     list.push_back(1);
 }
 

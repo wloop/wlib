@@ -21,7 +21,8 @@ file(GLOB files
         "fsm/*.cpp"
         "memory/*.cpp"
         "exceptions/*.cpp"
-        "utility/*.cpp")
+        "utility/*.cpp"
+        "includes/*.cpp")
 
 add_executable(tests ${files})
 target_link_libraries(tests gtest)
