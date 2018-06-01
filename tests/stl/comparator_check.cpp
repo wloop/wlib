@@ -86,7 +86,7 @@ TEST(comparator_test, test_static_string_comparator) {
 }
 
 TEST(comparator_test, test_reverse_comparator) {
-    ReverseComparator<int> cmp;
+    reverse_comparator<int> cmp;
     ASSERT_TRUE(cmp.__eq__(5, 5));
     ASSERT_FALSE(cmp.__eq__(5, 6));
 

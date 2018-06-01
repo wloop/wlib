@@ -73,7 +73,7 @@ TEST(rb_tree_test, test_insert_unique_find) {
     for (OpenHashSet<char>::iterator it = key_set.begin(); it != key_set.end(); ++it) {
         key_list.push_back(*it);
     }
-    ReverseComparator<char> cmp;
+    reverse_comparator<char> cmp;
     heap_sort(key_list, cmp);
     for (int i = 0; i < 40; i++) {
         Pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));

@@ -59,7 +59,7 @@ namespace wlp {
      * @tparam T compared type
      */
     template<typename T>
-    struct ReverseComparator {
+    struct reverse_comparator {
         bool __lt__(const T &t1, const T &t2) const {
             return t1 > t2;
         }

@@ -50,7 +50,7 @@ TEST(heap_test, test_heap_sort_comparator) {
     int array[] = {-5, 6, -1, 10, 16, 32};
     array_list<int> list(array, 6, 12);
     list.push_back(0);
-    ReverseComparator<int> comparator;
+    reverse_comparator<int> comparator;
     heap_sort(list, comparator);
     int expected[] = {32, 16, 10, 6, 0, -1, -5};
     for (size_type i = 0; i < 6; i++) {
@@ -70,7 +70,7 @@ TEST(heap_test, test_push_heap) {
 }
 
 TEST(heap_test, test_make_heap) {
-    ReverseComparator<int> comparator;
+    reverse_comparator<int> comparator;
     array_list<int> heap(10);
     heap.push_back(5);
     heap.push_back(10);

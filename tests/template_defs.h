@@ -86,7 +86,7 @@ namespace wlp {
     struct comparator<int>;
 
     template
-    struct ReverseComparator<int>;
+    struct reverse_comparator<int>;
 
     template
     struct comparator<String8>;

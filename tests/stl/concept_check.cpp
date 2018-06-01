@@ -23,7 +23,7 @@ TEST(concept_checks, check_is_comparator) {
     ASSERT_TRUE((is_comparator<comparator<const char *>, const char *>()));
     ASSERT_FALSE((is_comparator<Equal<const char *>, const char *>()));
     ASSERT_FALSE((is_comparator<Hash<const char *, uint16_t>, const char *>()));
-    ASSERT_TRUE((is_comparator<ReverseComparator<char>, char>()));
+    ASSERT_TRUE((is_comparator<reverse_comparator<char>, char>()));
     ASSERT_FALSE((is_comparator<HashMap<uint16_t, uint16_t>, uint16_t>()));
 }
 
