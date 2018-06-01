@@ -1,0 +1,7 @@
+#ifndef __WLIB_TREE_MAP__
+#define __WLIB_TREE_MAP__
+
+#include <wlib/stl/TreeMap.h>
+
+#endif
+

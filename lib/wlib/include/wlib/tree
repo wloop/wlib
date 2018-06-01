@@ -1,0 +1,7 @@
+#ifndef __WLIB_TREE__
+#define __WLIB_TREE__
+
+#include <wlib/stl/RedBlackTree.h>
+
+#endif
+

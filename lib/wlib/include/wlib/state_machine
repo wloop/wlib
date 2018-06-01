@@ -1,0 +1,7 @@
+#ifndef __WLIB_STATEMACHINE__
+#define __WLIB_STATEMACHINE__
+
+#include <wlib/fsm/StateMachine.h>
+
+#endif
+

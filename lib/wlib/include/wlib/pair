@@ -1,0 +1,7 @@
+#ifndef __WLIB_PAIR__
+#define __WLIB_PAIR__
+
+#include <wlib/stl/Pair.h>
+
+#endif
+

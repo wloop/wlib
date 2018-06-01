@@ -1,0 +1,7 @@
+#ifndef __WLIB_TUPLE__
+#define __WLIB_TUPLE__
+
+#include <wlib/stl/Tuple.h>
+
+#endif
+

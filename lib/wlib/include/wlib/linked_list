@@ -1,0 +1,7 @@
+#ifndef __WLIB_LINKED_LIST__
+#define __WLIB_LINKED_LIST__
+
+#include <wlib/stl/LinkedList.h>
+
+#endif
+
