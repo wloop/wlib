@@ -92,7 +92,7 @@ namespace wlp {
     struct comparator<String8>;
 
     template
-    class LinkedList<int>;
+    class linked_list<int>;
 
     template
     struct LinkedListIterator<int, int &, int *>;

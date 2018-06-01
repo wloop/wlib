@@ -105,7 +105,7 @@ TEST(concept_checks, check_list_concept) {
     ASSERT_FALSE((is_list<comparator<int>>()));
 
     ASSERT_TRUE((is_list<array_list<int>>()));
-    ASSERT_TRUE((is_list<LinkedList<int>>()));
+    ASSERT_TRUE((is_list<linked_list<int>>()));
 }
 
 TEST(concept_checks, check_string_concept) {
