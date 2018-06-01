@@ -104,13 +104,13 @@ namespace wlp {
         }
 
         template<typename K, typename V>
-        Pair<iterator, bool> insert(K &&key, V &&val) {
+        pair<iterator, bool> insert(K &&key, V &&val) {
             return m_table.insert_unique(make_tuple(forward<K>(key), forward<V>(val)));
         }
 
         template<typename K, typename V>
-        Pair<iterator, bool> insert_or_assign(K &&key, V &&val) {
-            Pair<iterator, bool> result = m_table.insert_unique(make_tuple(forward<K>(key), forward<V>(val)));
+        pair<iterator, bool> insert_or_assign(K &&key, V &&val) {
+            pair<iterator, bool> result = m_table.insert_unique(make_tuple(forward<K>(key), forward<V>(val)));
             if (!result.m_second) {
                 *result.m_first = forward<V>(val);
             }

@@ -26,7 +26,7 @@ TEST(rb_tree_test, test_insert_iterator_order) {
     rb_tree tree;
     for (size_type i = 0; i < 9; i++) {
         val_map.insert(keys[i], vals[i]);
-        Pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));
+        pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));
         ASSERT_TRUE(res.second());
         ASSERT_EQ(vals[i], *res.first());
     }
@@ -59,7 +59,7 @@ TEST(rb_tree_test, test_insert_unique_find) {
     open_set<char> key_set(80);
     for (int i = 0; i < 40; i++) {
         vals[i] = random_int();
-        Pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));
+        pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));
         if (key_set.contains(keys[i])) {
             ASSERT_FALSE(res.second());
         } else {
@@ -76,7 +76,7 @@ TEST(rb_tree_test, test_insert_unique_find) {
     reverse_comparator<char> cmp;
     heap_sort(key_list, cmp);
     for (int i = 0; i < 40; i++) {
-        Pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));
+        pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));
         ASSERT_FALSE(res.second());
         ASSERT_EQ(val_map[keys[i]], *res.first());
         ASSERT_EQ(keys[i], get<0>(res.first().m_node->m_element));
@@ -125,7 +125,7 @@ TEST(rb_tree_test, test_insert_equal_and_range) {
     bool at_repeat = false;
     for (int i = 0; i < 4; i++) {
         char ukey = ukeys[i];
-        Pair<rbi, rbi> eq_range = tree.equal_range(ukey);
+        pair<rbi, rbi> eq_range = tree.equal_range(ukey);
         for (rbi it = eq_range.first(); it != eq_range.second(); ++it) {
             int val = *it;
             if (val == 10) {

@@ -95,7 +95,7 @@ TEST(tuple_test, test_assign_pair) {
     Tuple<int, int> tuple = make_tuple(12, 34);
     ASSERT_EQ(12, get<0>(tuple));
     ASSERT_EQ(34, get<1>(tuple));
-    Pair<int, int> pair(16, 19);
+    pair<int, int> pair(16, 19);
     tuple = pair;
     ASSERT_EQ(16, get<0>(tuple));
     ASSERT_EQ(19, get<1>(tuple));

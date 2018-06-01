@@ -293,7 +293,7 @@ namespace wlp {
         typedef typename C::const_iterator const_iterator;
         typedef C map_type;
 
-        typedef Pair<iterator, bool> insert_ret_type;
+        typedef pair<iterator, bool> insert_ret_type;
 
         template<typename T>
         static constexpr auto check(T *) -> typename and_<
@@ -357,7 +357,7 @@ namespace wlp {
         typedef typename C::const_iterator const_iterator;
         typedef C set_type;
 
-        typedef Pair<iterator, bool> insert_ret_type;
+        typedef pair<iterator, bool> insert_ret_type;
 
         template<typename T>
         static constexpr auto check(T *) -> typename and_<

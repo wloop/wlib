@@ -601,7 +601,7 @@ namespace wlp {
          * whether insertion occurred
          */
         template<typename E>
-        Pair<iterator, bool> insert_unique(E &&element);
+        pair<iterator, bool> insert_unique(E &&element);
 
         /**
          * Insert a value with a given key into the tree. This function
@@ -731,7 +731,7 @@ namespace wlp {
          * @param key the key whose range to get
          * @return a pair of iterators to the lower and upper bounds
          */
-        Pair <iterator, iterator> equal_range(const key_type &key);
+        pair <iterator, iterator> equal_range(const key_type &key);
 
         /**
          * Obtain the range of nodes whose keys are equal to the provided key
@@ -740,7 +740,7 @@ namespace wlp {
          * @param key the key whose range to get
          * @return a pair of const iterators to the lower and upper bounds
          */
-        Pair <const_iterator, const_iterator> equal_range(const key_type &val) const;
+        pair <const_iterator, const_iterator> equal_range(const key_type &val) const;
 
         /**
          * Disable copy assignemnt.
@@ -1050,7 +1050,7 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
     template<typename E>
-    Pair<typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator, bool>
+    pair<typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator, bool>
     RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::insert_unique(E &&element) {
         node_type *carry = m_header;
@@ -1064,15 +1064,15 @@ namespace wlp {
         iterator tmp = iterator(carry);
         if (compare) {
             if (tmp == begin()) {
-                return Pair<iterator, bool>(insert(cur, carry, forward<E>(element)), true);
+                return pair<iterator, bool>(insert(cur, carry, forward<E>(element)), true);
             } else {
                 --tmp;
             }
         }
         if (m_cmp.__lt__(m_get_key(tmp.m_node->m_element), m_get_key(element))) {
-            return Pair<iterator, bool>(insert(cur, carry, forward<E>(element)), true);
+            return pair<iterator, bool>(insert(cur, carry, forward<E>(element)), true);
         }
-        return Pair<iterator, bool>(tmp, false);
+        return pair<iterator, bool>(tmp, false);
     }
 
     template<typename Element, typename Key, typename Val, 
@@ -1138,7 +1138,7 @@ namespace wlp {
     inline typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::size_type
     RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::erase(const key_type &cur) {
-        Pair<iterator, iterator> res = equal_range(cur);
+        pair<iterator, iterator> res = equal_range(cur);
         return erase(res.m_first, res.m_second);
     }
 
@@ -1205,7 +1205,7 @@ namespace wlp {
     typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::size_type
     RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::count(const key_type &key) const {
-        Pair<const_iterator, const_iterator> res = equal_range(key);
+        pair<const_iterator, const_iterator> res = equal_range(key);
         size_type count = 0;
         while (res.m_first != res.m_second) {
             ++res.m_first;
@@ -1290,25 +1290,25 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    inline Pair<
+    inline pair<
             typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator,
             typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator
     >
     RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::equal_range(const key_type &key) {
-        return Pair<iterator, iterator>(lower_bound(key), upper_bound(key));
+        return pair<iterator, iterator>(lower_bound(key), upper_bound(key));
     }
 
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    inline Pair<
+    inline pair<
             typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::const_iterator,
             typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::const_iterator
     >
     RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::equal_range(const key_type &key) const {
-        return Pair<const_iterator, const_iterator>(lower_bound(key), upper_bound(key));
+        return pair<const_iterator, const_iterator>(lower_bound(key), upper_bound(key));
     }
 
 }

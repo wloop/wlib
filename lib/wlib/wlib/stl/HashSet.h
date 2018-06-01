@@ -105,7 +105,7 @@ namespace wlp {
         }
 
         template<typename K>
-        Pair<iterator, bool> insert(K &&key) {
+        pair<iterator, bool> insert(K &&key) {
             return m_table.insert_unique(key);
         };
 

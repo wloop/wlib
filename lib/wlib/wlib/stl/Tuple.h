@@ -314,7 +314,7 @@ namespace wlp {
          * @return a reference to this tuple
          */
         template<typename A, typename B>
-        Tuple<Types...> &operator=(Pair<A, B> const &pair) {
+        Tuple<Types...> &operator=(pair<A, B> const &pair) {
             static_cast<TupleElement<0, TypeAtIndexType<0, Types...>> &>(*this).value = pair.m_first;
             static_cast<TupleElement<1, TypeAtIndexType<1, Types...>> &>(*this).value = pair.m_second;
             return *this;
@@ -329,7 +329,7 @@ namespace wlp {
          * @return a reference to this tuple
          */
         template<typename A, typename B>
-        Tuple<Types...> &operator=(Pair<A, B> &&pair) {
+        Tuple<Types...> &operator=(pair<A, B> &&pair) {
             static_cast<TupleElement<0, TypeAtIndexType<0, Types...>> &>(*this).value = move(pair.m_first);
             static_cast<TupleElement<1, TypeAtIndexType<1, Types...>> &>(*this).value = move(pair.m_second);
             return *this;

@@ -9,7 +9,7 @@ typedef StaticString<16> string16;
 typedef open_map<string16, string16> string_map;
 typedef open_map<int, int> int_map;
 typedef int_map::iterator imi;
-typedef Pair<imi, bool> P_imi_b;
+typedef pair<imi, bool> P_imi_b;
 
 TEST(open_map_test, test_constructor_parameters) {
     int_map map(15, 61);

@@ -468,7 +468,7 @@ namespace wlp {
          * and a bool indicating whether insertion occurred
          */
         template<typename E>
-        Pair<iterator, bool> insert_unique(E &&element);
+        pair<iterator, bool> insert_unique(E &&element);
 
         /**
          * Erase the element from the map pointed to by the provided
@@ -590,7 +590,7 @@ namespace wlp {
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
     template<typename E>
-    Pair<typename open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator, bool>
+    pair<typename open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator, bool>
     open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::insert_unique(E &&element) {
         ensure_capacity();
@@ -601,13 +601,13 @@ namespace wlp {
             }
         }
         if (m_buckets[i]) {
-            return Pair<iterator, bool>(iterator(m_buckets[i], this), false);
+            return pair<iterator, bool>(iterator(m_buckets[i], this), false);
         } else {
             ++m_num_elements;
             element_type *node = malloc<element_type>();
             *node = forward<E>(element);
             m_buckets[i] = node;
-            return Pair<iterator, bool>(iterator(node, this), true);
+            return pair<iterator, bool>(iterator(node, this), true);
         }
     };
 

@@ -14,7 +14,7 @@
 
 namespace wlp {
     template
-    struct Pair<uint16_t, const char *>;
+    struct pair<uint16_t, const char *>;
 
     template
     class hash_map<String16, String16>;
@@ -23,10 +23,10 @@ namespace wlp {
     class hash_map<uint16_t, uint16_t>;
 
     template
-    struct Pair<hash_map<uint16_t, uint16_t>::iterator, bool>;
+    struct pair<hash_map<uint16_t, uint16_t>::iterator, bool>;
 
     template
-    struct Pair<hash_map<String16, String16>::iterator, bool>;
+    struct pair<hash_map<String16, String16>::iterator, bool>;
 
     template
     struct equals<String8>;
@@ -50,10 +50,10 @@ namespace wlp {
     class open_map<uint16_t, uint16_t>;
 
     template
-    struct Pair<open_map<uint16_t, uint16_t>::iterator, bool>;
+    struct pair<open_map<uint16_t, uint16_t>::iterator, bool>;
 
     template
-    struct Pair<open_map<String16, String16>::iterator, bool>;
+    struct pair<open_map<String16, String16>::iterator, bool>;
 
     template
     class array_heap<int>;

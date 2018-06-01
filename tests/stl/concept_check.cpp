@@ -31,11 +31,11 @@ TEST(concept_checks, check_has_size_val_type) {
     bool c;
     c = has_size_type<int>::value;
     ASSERT_FALSE(c);
-    c = has_size_type<Pair<int, int>>::value;
+    c = has_size_type<pair<int, int>>::value;
     ASSERT_FALSE(c);
     c = has_val_type<int>::value;
     ASSERT_FALSE(c);
-    c = has_val_type<Pair<int, int>>::value;
+    c = has_val_type<pair<int, int>>::value;
     ASSERT_FALSE(c);
     c = has_size_type<array_list<int>>::value;
     ASSERT_TRUE(c);

@@ -317,7 +317,7 @@ namespace wlp {
         }
 
         template<typename E>
-        Pair<iterator, bool> insert_unique(E &&element);
+        pair<iterator, bool> insert_unique(E &&element);
 
         template<typename E>
         iterator insert_equal(E &&element);
@@ -354,9 +354,9 @@ namespace wlp {
             return result;
         }
 
-        Pair <iterator, iterator> equal_range(const key_type &key);
+        pair <iterator, iterator> equal_range(const key_type &key);
 
-        Pair <const_iterator, const_iterator> equal_range(const key_type &key) const;
+        pair <const_iterator, const_iterator> equal_range(const key_type &key) const;
 
         void erase(const iterator &pos);
 
@@ -418,7 +418,7 @@ namespace wlp {
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
     template<typename E>
-    Pair<typename hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator, bool>
+    pair<typename hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator, bool>
     hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::insert_unique(E &&element) {
         ensure_capacity();
@@ -426,7 +426,7 @@ namespace wlp {
         node_type *first = m_buckets[n];
         for (node_type *cur = first; cur; cur = cur->m_next) {
             if (m_key_equals(m_get_key(cur->m_element), m_get_key(element))) {
-                return Pair<iterator, bool>(iterator(cur, this), false);
+                return pair<iterator, bool>(iterator(cur, this), false);
             }
         }
         node_type *tmp = malloc<node_type>();
@@ -434,7 +434,7 @@ namespace wlp {
         tmp->m_next = first;
         m_buckets[n] = tmp;
         ++m_size;
-        return Pair<iterator, bool>(iterator(tmp, this), true);
+        return pair<iterator, bool>(iterator(tmp, this), true);
     }
 
     template<typename Element, typename Key, typename Val,
@@ -491,11 +491,11 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    Pair<typename hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator,
+    pair<typename hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator,
             typename hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator>
     hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::equal_range(const key_type &key) {
-        typedef Pair<iterator, iterator> ret_type;
+        typedef pair<iterator, iterator> ret_type;
         const size_type n = hash(key);
         for (node_type *first = m_buckets[n]; first; first = first->m_next) {
             if (m_key_equals(m_get_key(first->m_element), key)) {
@@ -518,11 +518,11 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    Pair<typename hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::const_iterator,
+    pair<typename hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::const_iterator,
             typename hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::const_iterator>
     hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::equal_range(const key_type &key) const {
-        typedef Pair<const_iterator, const_iterator> ret_type;
+        typedef pair<const_iterator, const_iterator> ret_type;
         const size_type n = hash(key);
         for (node_type *first = m_buckets[n]; first; first = first->m_next) {
             if (m_key_equals(m_get_key(first->m_element), key)) {

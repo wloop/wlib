@@ -11,9 +11,9 @@ typedef hash_map<String16, String16> string_map;
 typedef hash_map<int, int> int_map;
 typedef int_map::iterator imi;
 typedef int_map::const_iterator cimi;
-typedef Pair<imi, bool> P_imi_b;
+typedef pair<imi, bool> P_imi_b;
 typedef string_map::iterator smi;
-typedef Pair<smi, bool> P_smi_b;
+typedef pair<smi, bool> P_smi_b;
 
 TEST(chain_map_test, test_chain_map_node) {
     int_map::table_type::node_type node;
