@@ -120,28 +120,28 @@ namespace wlp {
      * @tparam tSize static string size
      */
     template<uint16_t tSize>
-    struct comparator<StaticString <tSize>> {
-        bool __lt__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+    struct comparator<static_string <tSize>> {
+        bool __lt__(const static_string <tSize> &s1, const static_string <tSize> &s2) const {
             return strcmp(s1.c_str(), s2.c_str()) < 0;
         }
 
-        bool __le__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+        bool __le__(const static_string <tSize> &s1, const static_string <tSize> &s2) const {
             return strcmp(s1.c_str(), s2.c_str()) <= 0;
         }
 
-        bool __eq__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+        bool __eq__(const static_string <tSize> &s1, const static_string <tSize> &s2) const {
             return strcmp(s1.c_str(), s2.c_str()) == 0;
         }
 
-        bool __ne__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+        bool __ne__(const static_string <tSize> &s1, const static_string <tSize> &s2) const {
             return strcmp(s1.c_str(), s2.c_str()) != 0;
         }
 
-        bool __gt__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+        bool __gt__(const static_string <tSize> &s1, const static_string <tSize> &s2) const {
             return strcmp(s1.c_str(), s2.c_str()) > 0;
         }
 
-        bool __ge__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+        bool __ge__(const static_string <tSize> &s1, const static_string <tSize> &s2) const {
             return strcmp(s1.c_str(), s2.c_str()) >= 0;
         }
     };

@@ -5,7 +5,7 @@
 
 using namespace wlp;
 
-typedef StaticString<16> string16;
+typedef static_string<16> string16;
 typedef open_map<string16, string16> string_map;
 typedef open_map<int, int> int_map;
 typedef int_map::iterator imi;

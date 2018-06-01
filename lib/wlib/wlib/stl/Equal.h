@@ -35,8 +35,8 @@ namespace wlp {
      * @tparam tSize static string size
      */
     template<uint16_t tSize>
-    struct equals<StaticString<tSize>> {
-        bool operator()(const StaticString<tSize> &key1, const StaticString<tSize> &key2) const {
+    struct equals<static_string<tSize>> {
+        bool operator()(const static_string<tSize> &key1, const static_string<tSize> &key2) const {
             return strcmp(key1.c_str(), key2.c_str()) == 0;
         }
     };
@@ -47,8 +47,8 @@ namespace wlp {
      * @tparam tSize static string size
      */
     template<uint16_t tSize>
-    struct equals<const StaticString<tSize>> {
-        bool operator()(const StaticString<tSize> &key1, const StaticString<tSize> &key2) const {
+    struct equals<const static_string<tSize>> {
+        bool operator()(const static_string<tSize> &key1, const static_string<tSize> &key2) const {
             return strcmp(key1.c_str(), key2.c_str()) == 0;
         }
     };

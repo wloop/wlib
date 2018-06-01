@@ -113,7 +113,7 @@ TEST(concept_checks, check_string_concept) {
     ASSERT_FALSE((is_string<const char *>()));
     ASSERT_FALSE((is_string<hash_map<char, char>>()));
 
-    ASSERT_TRUE((is_string<StaticString<8>>()));
-    ASSERT_TRUE((is_string<StaticString<32>>()));
-    ASSERT_TRUE((is_string<DynamicString>()));
+    ASSERT_TRUE((is_string<static_string<8>>()));
+    ASSERT_TRUE((is_string<static_string<32>>()));
+    ASSERT_TRUE((is_string<dynamic_string>()));
 }

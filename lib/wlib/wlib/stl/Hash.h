@@ -49,7 +49,7 @@ namespace wlp {
      * @return a hash code of the string
      */
     template<class IntType, uint16_t tSize>
-    inline IntType hash_static_string(const StaticString<tSize> &static_string) {
+    inline IntType hash_static_string(const static_string<tSize> &static_string) {
         IntType h = 0;
         for (size_type pos = 0; pos < static_string.length(); ++pos) {
             h = (IntType) (MUL_127(h) + static_string[pos]);
@@ -81,8 +81,8 @@ namespace wlp {
      * @tparam tSize static string size
      */
     template<class IntType, uint16_t tSize>
-    struct hash<StaticString<tSize>, IntType> {
-        IntType operator()(const StaticString<tSize> &s) const {
+    struct hash<static_string<tSize>, IntType> {
+        IntType operator()(const static_string<tSize> &s) const {
             return hash_static_string<IntType, tSize>(s);
         }
     };

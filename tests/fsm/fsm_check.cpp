@@ -4,15 +4,15 @@
 
 using namespace wlp;
 
-class TestData : public EventData {
+class TestData : public sm_event_data {
 public:
     int value;
 };
 
-class TestMachine : public StateMachine {
+class TestMachine : public state_machine {
 public:
     TestMachine()
-            : StateMachine(States::ST_MAX_STATES, States::ST_IDLE),
+            : state_machine(States::ST_MAX_STATES, States::ST_IDLE),
               m_value(0) {
     }
 
@@ -33,7 +33,7 @@ public:
             TRANSITION_MAP_ENTRY(CANNOT_HAPPEN)
             TRANSITION_MAP_ENTRY(ST_STOP)
             TRANSITION_MAP_ENTRY(ST_STOP)
-        END_TRANSITION_MAP(nullptr, NoEventData)
+        END_TRANSITION_MAP(nullptr, sm_no_data)
     }
 
     int m_value;
@@ -72,7 +72,7 @@ STATE_DEFINE(TestMachine, Idle) {
 STATE_DEFINE(TestMachine, Stop) {
     state_trace.push_back((int) ST_STOP);
     m_value = 0;
-    internalEvent<NoEventData>(ST_IDLE);
+    internal_event<sm_no_data>(ST_IDLE);
 }
 
 STATE_DEFINE(TestMachine, Start, TestData) {
@@ -84,14 +84,14 @@ STATE_DEFINE(TestMachine, ChangeSpeed, TestData) {
     state_trace.push_back((int) ST_CHANGE_SPEED);
     m_value = data->value;
     if (m_value == 0) {
-        internalEvent<NoEventData>(ST_IDLE);
+        internal_event<sm_no_data>(ST_IDLE);
     }
 }
 
 TEST(fsm_test, test_machine_transitions) {
     TestMachine sm{};
     int expected = TestMachine::States::ST_IDLE;
-    int current = sm.getCurrentState();
+    int current = sm.current_state();
     ASSERT_EQ(expected, current);
     ASSERT_EQ(0, sm.state_trace.size());
     sm.zero();

@@ -7,7 +7,7 @@ using namespace wlp;
 
 TEST(string_iterator_test, test_static_string_iteration) {
     char str[] = "No Gods or Kings, only Man";
-    StaticString<64> ss(str);
+    static_string<64> ss(str);
     size_type i = 0;
     for (char &s : ss) {
         ASSERT_EQ(str[i], s);
@@ -17,7 +17,7 @@ TEST(string_iterator_test, test_static_string_iteration) {
 
 TEST(string_iterator_test, test_dynamic_string_iteration) {
     char str[] = "Is a man not entitled to the sweat of his brow?";
-    DynamicString ds(str);
+    dynamic_string ds(str);
     size_type i = 0;
     for (char  &s : ds) {
         ASSERT_EQ(str[i], s);
@@ -28,8 +28,8 @@ TEST(string_iterator_test, test_dynamic_string_iteration) {
 TEST(string_iterator_test, test_sort_strings) {
     char str[] = "edafebc";
     char expected[] = "abcdeef";
-    StaticString<8> ss(str);
-    DynamicString ds(str);
+    static_string<8> ss(str);
+    dynamic_string ds(str);
     make_heap(ss.begin(), ss.end());
     make_heap(ds.begin(), ds.end());
     sort_heap(ss.begin(), ss.end());

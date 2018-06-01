@@ -65,10 +65,10 @@ namespace wlp {
     class array_list<int>;
 
     template
-    class StaticString<8>;
+    class static_string<8>;
 
     template
-    class StaticString<16>;
+    class static_string<16>;
 
     template
     class ArrayListIterator<int, int &, int *>;

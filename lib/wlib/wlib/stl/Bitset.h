@@ -227,12 +227,12 @@ namespace wlp {
             return m_array;
         }
 
-        StaticString<next_byte<nBits>::value> to_static_string() const {
+        static_string<next_byte<nBits>::value> to_static_string() const {
             uint16_t num_bytes = static_cast<uint16_t>(ceil_bits<nBits>::value * INT32_SIZE / BYTE_SIZE);
             return {reinterpret_cast<const char *>(m_array), num_bytes};
         }
 
-        DynamicString to_dynamic_string() const {
+        dynamic_string to_dynamic_string() const {
             uint16_t num_bytes = static_cast<uint16_t>(ceil_bits<nBits>::value * INT32_SIZE / BYTE_SIZE);
             return {reinterpret_cast<const char *>(m_array), num_bytes};
         }

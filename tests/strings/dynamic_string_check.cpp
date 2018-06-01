@@ -5,9 +5,9 @@ using namespace wlp;
 
 
 TEST(dynamic_string_tests, constructor_tests) {
-    DynamicString string1;
-    DynamicString string2("HELLo WORld!");
-    DynamicString string3(string1);
+    dynamic_string string1;
+    dynamic_string string2("HELLo WORld!");
+    dynamic_string string3(string1);
     ASSERT_EQ(string2, "HELLo WORld!");
     ASSERT_TRUE(string1.empty());
     ASSERT_EQ(12, string2.length());
@@ -19,9 +19,9 @@ TEST(dynamic_string_tests, constructor_tests) {
 }
 
 TEST(dynamic_string_tests, assignment_tests) {
-    DynamicString string1;
-    DynamicString string2("Waterloop");
-    DynamicString string3("is awesome");
+    dynamic_string string1;
+    dynamic_string string2("Waterloop");
+    dynamic_string string3("is awesome");
 
     string3 = string2;
     string2 = string1;
@@ -35,7 +35,7 @@ TEST(dynamic_string_tests, assignment_tests) {
 }
 
 TEST(dynamic_string_tests, character_access_tests) {
-    DynamicString string1("Hello my name is BOB");
+    dynamic_string string1("Hello my name is BOB");
 
     EXPECT_TRUE(string1[4] == 'o');
     EXPECT_TRUE(string1.at(3) == 'l');
@@ -44,9 +44,9 @@ TEST(dynamic_string_tests, character_access_tests) {
 }
 
 TEST(dynamic_string_tests, append_operator_tests) {
-    DynamicString string1("Hey");
-    DynamicString string2("Water");
-    DynamicString string3("Loo");
+    dynamic_string string1("Hey");
+    dynamic_string string2("Water");
+    dynamic_string string3("Loo");
 
     char array1[] = {'y', 'o', 'o', 'o', '\0'};
 
@@ -57,9 +57,9 @@ TEST(dynamic_string_tests, append_operator_tests) {
 }
 
 TEST(dynamic_string_tests, append_tests) {
-    DynamicString string1("Hey");
-    DynamicString string2("Water");
-    DynamicString string3("Loo");
+    dynamic_string string1("Hey");
+    dynamic_string string2("Water");
+    dynamic_string string3("Loo");
 
     char array1[] = {'y', 'o', 'o', 'o', '\0'};
 
@@ -74,8 +74,8 @@ TEST(dynamic_string_tests, append_tests) {
 }
 
 TEST(dynamic_string_tests, substring_tests) {
-    DynamicString string1("Heeelllloooo");
-    DynamicString string2;
+    dynamic_string string1("Heeelllloooo");
+    dynamic_string string2;
 
     ASSERT_STREQ("Heee", (string1.substr(0, 4)).c_str());
     ASSERT_STREQ("el", (string1.substr(3, 2)).c_str());
@@ -83,8 +83,8 @@ TEST(dynamic_string_tests, substring_tests) {
 }
 
 TEST(dynamic_string_tests, addition_operator_tests) {
-    DynamicString string1("boiii");
-    DynamicString string2("mannns");
+    dynamic_string string1("boiii");
+    dynamic_string string2("mannns");
 
     ASSERT_STREQ("boiiimannns", (string1 + string2).c_str());
     ASSERT_STREQ("boiii!", (string1 + '!').c_str());
@@ -94,9 +94,9 @@ TEST(dynamic_string_tests, addition_operator_tests) {
 }
 
 TEST(dynamic_string_tests, equality_operator_tests) {
-    DynamicString string1("boiii");
-    DynamicString string2("mannns");
-    DynamicString string3("x");
+    dynamic_string string1("boiii");
+    dynamic_string string2("mannns");
+    dynamic_string string3("x");
 
     ASSERT_TRUE(string1 == string1);
     ASSERT_FALSE(string2 == string1);
@@ -107,7 +107,7 @@ TEST(dynamic_string_tests, equality_operator_tests) {
 }
 
 TEST(dynamic_string_tests, erase_popback_tests) {
-    DynamicString string1("lastone,soclosetofinished");
+    dynamic_string string1("lastone,soclosetofinished");
 
     string1.erase(0);
     ASSERT_STREQ("astone,soclosetofinished", string1.c_str());
@@ -121,13 +121,13 @@ TEST(dynamic_string_tests, erase_popback_tests) {
 
 TEST(dynamic_string_tests, move_tests) {
     char str[] = "Tis an unweeded garden that grows to seed; things rank and gross in Nature possess";
-    DynamicString s1(str);
-    DynamicString s2(move(s1));
+    dynamic_string s1(str);
+    dynamic_string s2(move(s1));
     ASSERT_EQ(0, s1.length());
     ASSERT_STREQ("", s1.c_str());
     ASSERT_EQ(strlen(str), s2.length());
     ASSERT_STREQ(str, s2.c_str());
-    DynamicString s3("To sleep; to die");
+    dynamic_string s3("To sleep; to die");
     s3 = move(s2);
     ASSERT_EQ(0, s2.length());
     ASSERT_STREQ("", s2.c_str());
