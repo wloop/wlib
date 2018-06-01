@@ -5,7 +5,7 @@
 TEST(exceptions_test, simple_try_catch) {
     int h = 0;
 
-    Exception *logicException = LOGIC_FAILURE_EXCEPTION("my bad");
+    exception *logicException = LOGIC_FAILURE_EXCEPTION("my bad");
 
     TRY
         h += 4;
@@ -21,10 +21,10 @@ TEST(exceptions_test, simple_try_catch) {
 TEST(exception_test, different_exceptions) {
     int counter = 0;
 
-    Exception *nullptrException = NULLPTR_EXCEPTION("my bad");
-    Exception *badallocException = BAD_ALLOC_EXCEPTION("my bad");
-    Exception *logicException = LOGIC_FAILURE_EXCEPTION("my bad");
-    Exception *runtimeException = RUNTIME_EXCEPTION("my bad");
+    exception *nullptrException = NULLPTR_EXCEPTION("my bad");
+    exception *badallocException = BAD_ALLOC_EXCEPTION("my bad");
+    exception *logicException = LOGIC_FAILURE_EXCEPTION("my bad");
+    exception *runtimeException = RUNTIME_EXCEPTION("my bad");
 
     TRY
         counter += 1;
