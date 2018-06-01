@@ -5,7 +5,7 @@
 using namespace wlp;
 
 TEST(tuple_test, test_tuple_create) {
-    Tuple<int, float, const char *> tuple(34, 2.1f, "hello");
+    tuple<int, float, const char *> tuple(34, 2.1f, "hello");
     int v1 = get<0>(tuple);
     float v2 = get<1>(tuple);
     const char *v3 = get<2>(tuple);
@@ -19,7 +19,7 @@ TEST(tuple_test, test_tuple_create) {
 }
 
 TEST(tuple_test, test_tuple_default) {
-    Tuple<int, float, int> tuple;
+    tuple<int, float, int> tuple;
     ASSERT_EQ(0, get<0>(tuple));
     ASSERT_FLOAT_EQ(0, get<1>(tuple));
     ASSERT_EQ(0, get<2>(tuple));
@@ -64,11 +64,11 @@ TEST(tuple_test, test_tuple_multi_cat) {
     ASSERT_DOUBLE_EQ(43.32, get<2>(tuple));
     ASSERT_STREQ("string", get<3>(tuple));
     ASSERT_STREQ("string", get<4>(tuple));
-    Tuple<int> i_tuple_1(1);
-    Tuple<int> i_tuple_2(2);
-    Tuple<int> i_tuple_3(3);
-    Tuple<int> i_tuple_4(4);
-    Tuple<int, int, int, int> i_tuple = tuple_cat(i_tuple_1, i_tuple_2, i_tuple_3, i_tuple_4);
+    tuple<int> i_tuple_1(1);
+    tuple<int> i_tuple_2(2);
+    tuple<int> i_tuple_3(3);
+    tuple<int> i_tuple_4(4);
+    tuple<int, int, int, int> i_tuple = tuple_cat(i_tuple_1, i_tuple_2, i_tuple_3, i_tuple_4);
     ASSERT_EQ(1, get<0>(i_tuple));
     ASSERT_EQ(2, get<1>(i_tuple));
     ASSERT_EQ(3, get<2>(i_tuple));
@@ -79,7 +79,7 @@ TEST(tuple_test, test_forward_as_tuple) {
     int a, d = 5;
     double b;
     char c;
-    Tuple<int &, double &, char &, int &&> tuple = forward_as_tuple(a, b, c, move(d));
+    tuple<int &, double &, char &, int &&> tuple = forward_as_tuple(a, b, c, move(d));
     get<0>(tuple) = 10;
     ASSERT_EQ(10, a);
     get<1>(tuple) = 12.3;
@@ -92,7 +92,7 @@ TEST(tuple_test, test_forward_as_tuple) {
 }
 
 TEST(tuple_test, test_assign_pair) {
-    Tuple<int, int> tuple = make_tuple(12, 34);
+    tuple<int, int> tuple = make_tuple(12, 34);
     ASSERT_EQ(12, get<0>(tuple));
     ASSERT_EQ(34, get<1>(tuple));
     pair<int, int> pair(16, 19);

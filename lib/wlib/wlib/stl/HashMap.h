@@ -40,7 +40,7 @@ namespace wlp {
     class hash_map {
     public:
         typedef hash_map<Key, Val, Hasher, Equals> map_type;
-        typedef hash_table<Tuple<Key, Val>,
+        typedef hash_table<tuple<Key, Val>,
                 Key, Val,
                 MapGetKey<Key, Val>, MapGetVal<Key, Val>,
                 Hasher, Equals

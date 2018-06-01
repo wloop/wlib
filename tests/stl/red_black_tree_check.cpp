@@ -12,7 +12,7 @@
 
 using namespace wlp;
 
-typedef Tuple<char, int> _rb_element;
+typedef tuple<char, int> _rb_element;
 typedef MapGetKey<char, int> _rb_key;
 typedef MapGetVal<char, int> _rb_val;
 

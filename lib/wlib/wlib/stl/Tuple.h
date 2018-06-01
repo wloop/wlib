@@ -266,7 +266,7 @@ namespace wlp {
      * @tparam Types the tuple types
      */
     template<typename... Types>
-    class Tuple
+    class tuple
             : public TupleImpl<typename MakeIndexSequence<sizeof...(Types)>::type, Types...> {
 
     public:
@@ -285,7 +285,7 @@ namespace wlp {
          * @return a reference to this tuple
          */
         template<typename... OtherTypes>
-        Tuple<Types...> &operator=(Tuple<OtherTypes...> const &tuple) {
+        tuple<Types...> &operator=(tuple<OtherTypes...> const &tuple) {
             static_cast<base_type &>(*this) = tuple;
             return *this;
         }
@@ -298,7 +298,7 @@ namespace wlp {
          * @return a reference to this tuple
          */
         template<typename... OtherTypes>
-        Tuple<Types...> &operator=(Tuple<OtherTypes...> &&tuple) {
+        tuple<Types...> &operator=(tuple<OtherTypes...> &&tuple) {
             static_cast<base_type &>(*this) = move(tuple);
             return *this;
         }
@@ -314,7 +314,7 @@ namespace wlp {
          * @return a reference to this tuple
          */
         template<typename A, typename B>
-        Tuple<Types...> &operator=(pair<A, B> const &pair) {
+        tuple<Types...> &operator=(pair<A, B> const &pair) {
             static_cast<TupleElement<0, TypeAtIndexType<0, Types...>> &>(*this).value = pair.m_first;
             static_cast<TupleElement<1, TypeAtIndexType<1, Types...>> &>(*this).value = pair.m_second;
             return *this;
@@ -329,7 +329,7 @@ namespace wlp {
          * @return a reference to this tuple
          */
         template<typename A, typename B>
-        Tuple<Types...> &operator=(pair<A, B> &&pair) {
+        tuple<Types...> &operator=(pair<A, B> &&pair) {
             static_cast<TupleElement<0, TypeAtIndexType<0, Types...>> &>(*this).value = move(pair.m_first);
             static_cast<TupleElement<1, TypeAtIndexType<1, Types...>> &>(*this).value = move(pair.m_second);
             return *this;
@@ -338,7 +338,7 @@ namespace wlp {
         /**
          * Default constructor initializes with empty values.
          */
-        explicit Tuple()
+        explicit tuple()
                 : base_type(forward<Types>(Types())...) {
         }
 
@@ -353,7 +353,7 @@ namespace wlp {
         template<typename... OtherTypes, typename = typename enable_if<
                 sizeof...(OtherTypes) == sizeof...(Types)
         >::type>
-        explicit Tuple(OtherTypes &&... elements)
+        explicit tuple(OtherTypes &&... elements)
                 : base_type(forward<OtherTypes>(elements)...) {
         }
 
@@ -367,7 +367,7 @@ namespace wlp {
         template<typename... OtherTypes, typename = typename enable_if<
                 sizeof...(OtherTypes) == sizeof...(Types)
         >::type>
-        explicit Tuple(Tuple<OtherTypes...> const &tuple)
+        explicit tuple(tuple<OtherTypes...> const &tuple)
                 : base_type(tuple) {
         }
 
@@ -381,7 +381,7 @@ namespace wlp {
         template<typename... OtherTypes, typename = typename enable_if<
                 sizeof...(OtherTypes) == sizeof...(Types)
         >::type>
-        explicit Tuple(Tuple<OtherTypes...> &&tuple)
+        explicit tuple(tuple<OtherTypes...> &&tuple)
                 : base_type(move(tuple)) {
         }
 
@@ -396,7 +396,7 @@ namespace wlp {
      * @return the element value at the index
      */
     template<size_type I, typename... Types>
-    TypeAtIndexType<I, Types...> const &get(Tuple<Types...> const &tuple) {
+    TypeAtIndexType<I, Types...> const &get(tuple<Types...> const &tuple) {
         TupleElement<I, TypeAtIndexType<I, Types...>> const &base = tuple;
         return base.value;
     };
@@ -409,7 +409,7 @@ namespace wlp {
      * @return the element value at the index
      */
     template<size_type I, typename... Types>
-    TypeAtIndexType<I, Types...> &get(Tuple<Types...> &tuple) {
+    TypeAtIndexType<I, Types...> &get(tuple<Types...> &tuple) {
         TupleElement<I, TypeAtIndexType<I, Types...>> &base = tuple;
         return base.value;
     };
@@ -423,7 +423,7 @@ namespace wlp {
      * @return the element value at the index
      */
     template<size_type I, typename... Types>
-    remove_reference_type<TypeAtIndexType<I, Types...>> &&get(Tuple<Types...> &&tuple) {
+    remove_reference_type<TypeAtIndexType<I, Types...>> &&get(tuple<Types...> &&tuple) {
         TupleElement<I, TypeAtIndexType<I, Types...>> base = tuple;
         return forward<TypeAtIndexType<I, Types...>>(base.value);
     };
@@ -481,7 +481,7 @@ namespace wlp {
      * @return the value of the type
      */
     template<typename T, typename... Types>
-    T &get(Tuple<Types...> const &tuple) {
+    T &get(tuple<Types...> const &tuple) {
         static_assert(count<T, Types...>() == 1, "Type must be unique in Tuple");
         return get<find<T, Types...>()>(tuple);
     }
@@ -494,7 +494,7 @@ namespace wlp {
      * @return the value of the type
      */
     template<typename T, typename... Types>
-    T &get(Tuple<Types...> &tuple) {
+    T &get(tuple<Types...> &tuple) {
         static_assert(count<T, Types...>() == 1, "Type must be unique in Tuple");
         return get<find<T, Types...>()>(tuple);
     }
@@ -507,7 +507,7 @@ namespace wlp {
      * @return the value of the type
      */
     template<typename T, typename... Types>
-    T &get(Tuple<Types...> &&tuple) {
+    T &get(tuple<Types...> &&tuple) {
         static_assert(count<T, Types...>() == 1, "Type must be unique in Tuple");
         return get<find<T, Types...>()>(tuple);
     }
@@ -524,7 +524,7 @@ namespace wlp {
      * @tparam Types the types of the tuple
      */
     template<typename... Types>
-    struct tuple_size<Tuple<Types...>> : integral_constant<size_type, sizeof...(Types)> {
+    struct tuple_size<tuple<Types...>> : integral_constant<size_type, sizeof...(Types)> {
     };
 
     /**
@@ -534,7 +534,7 @@ namespace wlp {
      * @return the number of types
      */
     template<typename... Types>
-    constexpr size_type get_tuple_size(Tuple<Types...>) {
+    constexpr size_type get_tuple_size(tuple<Types...>) {
         return sizeof...(Types);
     }
 
@@ -545,8 +545,8 @@ namespace wlp {
      * @return a tuple of lvalues or rvalues
      */
     template<typename... Types>
-    Tuple<Types &&...> forward_as_tuple(Types &&... elements) {
-        return Tuple<Types &&...>(forward<Types>(elements)...);
+    tuple<Types &&...> forward_as_tuple(Types &&... elements) {
+        return tuple<Types &&...>(forward<Types>(elements)...);
     }
 
     /**
@@ -572,8 +572,8 @@ namespace wlp {
      * @return
      */
     template<typename... Types>
-    Tuple<Types &...> tie(Types &... elements) {
-        return Tuple<Types &...>(elements...);
+    tuple<Types &...> tie(Types &... elements) {
+        return tuple<Types &...>(elements...);
     }
 
     template<typename Type, size_type>
@@ -586,7 +586,7 @@ namespace wlp {
 
     template<typename Type, size_type ...Indices>
     struct repeat_tuple_type_sub<Type, IndexSequence<Indices...>> {
-        using type = Tuple<typename repeat_tuple_type_hopper<Type, Indices>::type...>;
+        using type = tuple<typename repeat_tuple_type_hopper<Type, Indices>::type...>;
     };
 
     template<typename Type, size_type Repeat>
@@ -610,7 +610,7 @@ namespace wlp {
      * @tparam Types the type pack
      */
     template<size_type I, typename... Types>
-    struct TypeAtTuple<I, Tuple<Types...>>
+    struct TypeAtTuple<I, tuple<Types...>>
             : TypeAtIndex<I, Types...> {
     };
 
@@ -633,7 +633,7 @@ namespace wlp {
             TupleA, IndexSequence<IndicesA...>,
             TupleB, IndexSequence<IndicesB...>
     > {
-        using type = Tuple<
+        using type = tuple<
                 typename TypeAtTuple<IndicesA, TupleA>::type...,
                 typename TypeAtTuple<IndicesB, TupleB>::type...
         >;
@@ -665,8 +665,8 @@ namespace wlp {
      * @return a tuple sized to the number of elements
      */
     template<typename... Types>
-    Tuple<decay_type<Types>...> make_tuple(Types &&... elements) {
-        return Tuple<decay_type<Types>...>(forward<Types>(elements)...);
+    tuple<decay_type<Types>...> make_tuple(Types &&... elements) {
+        return tuple<decay_type<Types>...>(forward<Types>(elements)...);
     }
 
     /**
@@ -680,7 +680,7 @@ namespace wlp {
      * @return concatenation of the two tuples
      */
     template<typename TupleA, size_type... IndicesA, typename TupleB, size_type... IndicesB>
-    Tuple<
+    tuple<
             typename TypeAtTuple<IndicesA, decay_type<TupleA>>::type...,
             typename TypeAtTuple<IndicesB, decay_type<TupleB>>::type...
     >
