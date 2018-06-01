@@ -1,0 +1,7 @@
+#ifndef __WLIB_SHARED_PTR__
+#define __WLIB_SHARED_PTR__
+
+#include <wlib/stl/SharedPtr.h>
+
+#endif
+

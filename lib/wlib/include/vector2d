@@ -1,0 +1,7 @@
+#ifndef __WLIB_VECTOR2D__
+#define __WLIB_VECTOR2D__
+
+#include <wlib/stl/Vector2D.h>
+
+#endif
+

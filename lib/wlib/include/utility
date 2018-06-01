@@ -1,0 +1,9 @@
+#ifndef __WLIB_UTILITY__
+#define __WLIB_UTILITY__
+
+#include <wlib/utility/Compare.h>
+#include <wlib/utility/Tmp.h>
+#include <wlib/utility/Utility.h>
+
+#endif
+

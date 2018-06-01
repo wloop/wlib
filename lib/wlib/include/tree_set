@@ -1,0 +1,7 @@
+#ifndef __WLIB_TREE_SET__
+#define __WLIB_TREE_SET__
+
+#include <wlib/stl/TreeSet.h>
+
+#endif
+

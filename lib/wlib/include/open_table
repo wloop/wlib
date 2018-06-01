@@ -1,0 +1,7 @@
+#ifndef __WLIB_OPEN_TABLE__
+#define __WLIB_OPEN_TABLE__
+
+#include <wlib/stl/OpenTable.h>
+
+#endif
+

@@ -1,0 +1,9 @@
+#ifndef __WLIB_DYNAMIC_STRING__
+#define __WLIB_DYNAMIC_STRING__
+
+// TODO Separate String.h into StaticString.h and DynamicString.h
+// #include <wlib/strings/DynamicString.h>
+#include <wlib/strings/String.h>
+
+#endif
+

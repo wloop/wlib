@@ -1,0 +1,8 @@
+#ifndef __WLIB_MEMORY__
+#define __WLIB_MEMORY__
+
+#include <unique_ptr>
+#include <shared_ptr>
+
+#endif
+

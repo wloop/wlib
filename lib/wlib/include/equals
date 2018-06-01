@@ -1,0 +1,7 @@
+#ifndef __WLIB_EQUALS__
+#define __WLIB_EQUALS__
+
+#include <wlib/stl/Equal.h>
+
+#endif
+
