@@ -39,9 +39,9 @@ namespace wlp {
             typename Val,
             typename Hasher = hash<Key, uint16_t>,
             typename Equals = equals<Key>>
-    class OpenHashMap {
+    class open_map {
     public:
-        typedef OpenHashMap<Key, Val, Hasher, Equals> map_type;
+        typedef open_map<Key, Val, Hasher, Equals> map_type;
         typedef OpenHashTable<Tuple<Key, Val>,
                 Key, Val,
                 MapGetKey<Key, Val>, MapGetVal<Key, Val>,
@@ -59,13 +59,13 @@ namespace wlp {
         table_type m_table;
 
     public:
-        explicit OpenHashMap(size_type n = 12, percent_type max_load = 75)
+        explicit open_map(size_type n = 12, percent_type max_load = 75)
                 : m_table(n, max_load) {
         }
 
-        OpenHashMap(const map_type &) = delete;
+        open_map(const map_type &) = delete;
 
-        OpenHashMap(map_type &&map)
+        open_map(map_type &&map)
                 : m_table(move(map.m_table)) {
         }
 

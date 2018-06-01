@@ -99,8 +99,8 @@ TEST(tuple_test, test_assign_pair) {
     tuple = pair;
     ASSERT_EQ(16, get<0>(tuple));
     ASSERT_EQ(19, get<1>(tuple));
-    OpenHashMap<int, int> int_map(10, 61);
-    OpenHashMap<int, int>::iterator it;
+    open_map<int, int> int_map(10, 61);
+    open_map<int, int>::iterator it;
     bool b;
     tie(it, b) = int_map.insert(5, 1);
     ASSERT_EQ(1, *it);

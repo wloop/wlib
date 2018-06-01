@@ -65,15 +65,15 @@ TEST(concept_checks, check_random_access_iterator_concept) {
 
     ASSERT_FALSE((is_random_access_iterator<hash_map<int, int>::iterator>()));
     ASSERT_FALSE((is_random_access_iterator<hash_map<int, int>::const_iterator>()));
-    ASSERT_FALSE((is_random_access_iterator<OpenHashMap<int, int>::iterator>()));
-    ASSERT_FALSE((is_random_access_iterator<OpenHashMap<int, int>::const_iterator>()));
+    ASSERT_FALSE((is_random_access_iterator<open_map<int, int>::iterator>()));
+    ASSERT_FALSE((is_random_access_iterator<open_map<int, int>::const_iterator>()));
 }
 
 TEST(concept_checks, check_forward_iterator_concept) {
     ASSERT_TRUE((is_iterator<hash_map<int, int>::iterator>()));
     ASSERT_TRUE((is_iterator<hash_map<int, int>::const_iterator>()));
-    ASSERT_TRUE((is_iterator<OpenHashMap<int, int>::iterator>()));
-    ASSERT_TRUE((is_iterator<OpenHashMap<int, int>::const_iterator>()));
+    ASSERT_TRUE((is_iterator<open_map<int, int>::iterator>()));
+    ASSERT_TRUE((is_iterator<open_map<int, int>::const_iterator>()));
     ASSERT_TRUE((is_iterator<array_list<int>::iterator>()));
     ASSERT_TRUE((is_iterator<array_list<int>::const_iterator>()));
 
@@ -83,7 +83,7 @@ TEST(concept_checks, check_forward_iterator_concept) {
 
 TEST(concept_checks, check_map_concept) {
     ASSERT_TRUE((is_map<hash_map<int, int>>()));
-    ASSERT_TRUE((is_map<OpenHashMap<int, int>>()));
+    ASSERT_TRUE((is_map<open_map<int, int>>()));
     ASSERT_TRUE((is_map<TreeMap<int, int>>()));
 
     ASSERT_FALSE((is_map<int>()));
@@ -94,7 +94,7 @@ TEST(concept_checks, check_set_concept) {
     ASSERT_FALSE((is_set<array_list<int>>()));
     ASSERT_FALSE((is_set<int>()));
 
-    ASSERT_TRUE((is_set<OpenHashSet<int>>()));
+    ASSERT_TRUE((is_set<open_set<int>>()));
     ASSERT_TRUE((is_set<hash_set<int>>()));
     ASSERT_TRUE((is_set<TreeSet<int>>()));
 }

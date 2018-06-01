@@ -22,7 +22,7 @@ typedef RedBlackTree<_rb_element, char, int, _rb_key, _rb_val> rb_tree;
 TEST(rb_tree_test, test_insert_iterator_order) {
     char keys[] = {'g', 'h', 'j', 'k', 'y', 'c', 'd', 'q', 'w'};
     int vals[] = {5, 1, 0, 9, -1, -4, 12, 10, -66};
-    OpenHashMap<char, int> val_map(20);
+    open_map<char, int> val_map(20);
     rb_tree tree;
     for (size_type i = 0; i < 9; i++) {
         val_map.insert(keys[i], vals[i]);
@@ -55,8 +55,8 @@ TEST(rb_tree_test, test_insert_unique_find) {
             'I', '3', '6', '6', 'L', 'o', '3', 'd', 's', 'G'
     };
     int vals[40];
-    OpenHashMap<char, int> val_map(80);
-    OpenHashSet<char> key_set(80);
+    open_map<char, int> val_map(80);
+    open_set<char> key_set(80);
     for (int i = 0; i < 40; i++) {
         vals[i] = random_int();
         Pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));
@@ -70,7 +70,7 @@ TEST(rb_tree_test, test_insert_unique_find) {
         ASSERT_EQ(val_map[keys[i]], *res.first());
     }
     array_list<char> key_list(key_set.size());
-    for (OpenHashSet<char>::iterator it = key_set.begin(); it != key_set.end(); ++it) {
+    for (open_set<char>::iterator it = key_set.begin(); it != key_set.end(); ++it) {
         key_list.push_back(*it);
     }
     reverse_comparator<char> cmp;
@@ -99,7 +99,7 @@ TEST(rb_tree_test, test_insert_unique_find) {
     for (int i = 0; i < 40; i++) {
         ASSERT_EQ(val_map[keys[i]], *tree.find(keys[i]));
     }
-    for (OpenHashSet<char>::iterator it = key_set.begin(); it != key_set.end(); ++it) {
+    for (open_set<char>::iterator it = key_set.begin(); it != key_set.end(); ++it) {
         ASSERT_EQ(1, tree.erase(*it));
     }
     ASSERT_EQ(0, tree.size());

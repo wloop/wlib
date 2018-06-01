@@ -35,9 +35,9 @@ namespace wlp {
     template<class Key,
             class Hasher = hash <Key, uint16_t>,
             class Equals = equals <Key>>
-    class OpenHashSet {
+    class open_set {
     public:
-        typedef OpenHashSet<Key, Hasher, Equals> set_type;
+        typedef open_set<Key, Hasher, Equals> set_type;
         typedef OpenHashTable<Key,
             Key, Key,
             SetGetKey<Key>, SetGetVal<Key>,
@@ -54,15 +54,15 @@ namespace wlp {
         table_type m_table;
 
     public:
-        explicit OpenHashSet(
+        explicit open_set(
                 size_type n = 12,
                 percent_type max_load = 75)
                 : m_table(n, max_load) {
         }
 
-        OpenHashSet(const set_type &) = delete;
+        open_set(const set_type &) = delete;
 
-        OpenHashSet(set_type &&set)
+        open_set(set_type &&set)
                 : m_table(move(set.m_table)) {
         }
 

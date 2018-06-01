@@ -44,16 +44,16 @@ namespace wlp {
     struct hash<uint16_t, uint16_t>;
 
     template
-    class OpenHashMap<String16, String16>;
+    class open_map<String16, String16>;
 
     template
-    class OpenHashMap<uint16_t, uint16_t>;
+    class open_map<uint16_t, uint16_t>;
 
     template
-    struct Pair<OpenHashMap<uint16_t, uint16_t>::iterator, bool>;
+    struct Pair<open_map<uint16_t, uint16_t>::iterator, bool>;
 
     template
-    struct Pair<OpenHashMap<String16, String16>::iterator, bool>;
+    struct Pair<open_map<String16, String16>::iterator, bool>;
 
     template
     class array_heap<int>;
