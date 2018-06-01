@@ -14,10 +14,9 @@
 #ifndef CORE_STL_LIST_H
 #define CORE_STL_LIST_H
 
-#include "wlib/memory/Memory.h"
-
-#include "wlib/utility/Utility.h"
-#include "wlib/exceptions/Exceptions.h"
+#include <wlib/memory/Memory.h>
+#include <wlib/utility/Utility.h>
+#include <wlib/exceptions/Exceptions.h>
 
 namespace wlp {
 
@@ -33,7 +32,7 @@ namespace wlp {
 
     // Forward Declaration of List class
     template<typename T>
-    class LinkedList;
+    class linked_list;
 
     /**
      * Iterator class over the elements of a @code LinkedList @endcode.
@@ -47,7 +46,7 @@ namespace wlp {
         typedef Ptr pointer;
         typedef wlp::size_type size_type;
         typedef LinkedListNode<T> node_type;
-        typedef LinkedList<T> list_type;
+        typedef linked_list<T> list_type;
         typedef LinkedListIterator<T, Ref, Ptr> self_type;
 
         /**
@@ -196,11 +195,11 @@ namespace wlp {
      * @tparam T value type
      */
     template<typename T>
-    class LinkedList {
+    class linked_list {
     public:
         typedef T val_type;
         typedef wlp::size_type size_type;
-        typedef LinkedList<T> list_type;
+        typedef linked_list<T> list_type;
         typedef LinkedListNode<T> node_type;
         typedef LinkedListIterator<T, T &, T *> iterator;
         typedef LinkedListIterator<T, const T &, const T *> const_iterator;
@@ -226,7 +225,7 @@ namespace wlp {
         /**
          * Default Constructor creates an empty List.
          */
-        LinkedList()
+        linked_list()
                 : m_size(0),
                   m_head(nullptr),
                   m_tail(nullptr) {}
@@ -234,7 +233,7 @@ namespace wlp {
         /**
          * Disable copy construction.
          */
-        LinkedList(const list_type &) = delete;
+        linked_list(const list_type &) = delete;
 
         /**
          * Move constructor takes the pointers to the head and tail
@@ -243,7 +242,7 @@ namespace wlp {
          *
          * @param list the list to move
          */
-        LinkedList(list_type &&list) :
+        linked_list(list_type &&list) :
                 m_size(move(list.m_size)),
                 m_head(move(list.m_head)),
                 m_tail(move(list.m_tail)) {
@@ -255,7 +254,7 @@ namespace wlp {
         /**
          * Default Destructor deallocates all the nodes.
          */
-        ~LinkedList() {
+        ~linked_list() {
             clear();
         }
 
@@ -641,7 +640,7 @@ namespace wlp {
     };
 
     template<typename T>
-    inline void LinkedList<T>::clear() noexcept {
+    inline void linked_list<T>::clear() noexcept {
         node_type *pTmp;
         while (m_head != nullptr) {
             pTmp = m_head;
@@ -654,8 +653,8 @@ namespace wlp {
     }
 
     template<typename T>
-    typename LinkedList<T>::iterator
-    LinkedList<T>::erase(size_type i) {
+    typename linked_list<T>::iterator
+    linked_list<T>::erase(size_type i) {
         if (!m_size) {
             return end();
         }
@@ -683,8 +682,8 @@ namespace wlp {
     }
 
     template<typename T>
-    inline typename LinkedList<T>::val_type &
-    LinkedList<T>::at(size_type i) {
+    inline typename linked_list<T>::val_type &
+    linked_list<T>::at(size_type i) {
         if (i >= m_size) {
             if (m_size) { i %= m_size; }
             else { THROW(INDEX_EXCEPTION("Accessing empty list")) }
@@ -697,8 +696,8 @@ namespace wlp {
     }
 
     template<typename T>
-    inline const typename LinkedList<T>::val_type &
-    LinkedList<T>::at(size_type i) const {
+    inline const typename linked_list<T>::val_type &
+    linked_list<T>::at(size_type i) const {
         if (i >= m_size) {
             if (m_size) { i %= m_size; }
             else { THROW(INDEX_EXCEPTION("Accessing empty list")) }
@@ -711,8 +710,8 @@ namespace wlp {
     }
 
     template<typename T>
-    inline typename LinkedList<T>::size_type
-    LinkedList<T>::index_of(const val_type &val) const {
+    inline typename linked_list<T>::size_type
+    linked_list<T>::index_of(const val_type &val) const {
         node_type *pTmp = m_head;
         for (size_type i = 0; i < m_size; i++) {
             if (pTmp->m_val == val) {
