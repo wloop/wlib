@@ -29,9 +29,9 @@ namespace wlp {
      * @tparam Cmp key comparator type, which uses the default comparator
      */
     template<typename Key, typename Val, typename Cmp = comparator<Key>>
-    class TreeMap {
+    class tree_map {
     public:
-        typedef TreeMap<Key, Val, Cmp> map_type;
+        typedef tree_map<Key, Val, Cmp> map_type;
         typedef tree<Tuple<Key, Val>,
                 Key, Val,
                 MapGetKey<Key, Val>, MapGetVal<Key, Val>,
@@ -48,13 +48,13 @@ namespace wlp {
         table_type m_table;
 
     public:
-        explicit TreeMap()
+        explicit tree_map()
                 : m_table() {
         }
 
-        TreeMap(const map_type &) = delete;
+        tree_map(const map_type &) = delete;
 
-        TreeMap(map_type &&map)
+        tree_map(map_type &&map)
                 : m_table(move(map.m_table)) {
         }
 

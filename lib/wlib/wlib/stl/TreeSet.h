@@ -26,9 +26,9 @@ namespace wlp {
      * @tparam Cmp comparator for stored value, which uses the default comparator
      */
     template<typename Key, typename Cmp = comparator<Key>>
-    class TreeSet {
+    class tree_set {
     public:
-        typedef TreeSet<Key, Cmp> set_type;
+        typedef tree_set<Key, Cmp> set_type;
         typedef tree<Key,
             Key, Key,
             SetGetKey<Key>, SetGetVal<Key>,
@@ -44,13 +44,13 @@ namespace wlp {
         table_type m_table;
 
     public:
-        explicit TreeSet()
+        explicit tree_set()
                 : m_table() {
         }
 
-        TreeSet(const set_type &) = delete;
+        tree_set(const set_type &) = delete;
 
-        TreeSet(set_type &&set)
+        tree_set(set_type &&set)
                 : m_table(move(set.m_table)) {
         }
 

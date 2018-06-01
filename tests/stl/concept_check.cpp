@@ -84,7 +84,7 @@ TEST(concept_checks, check_forward_iterator_concept) {
 TEST(concept_checks, check_map_concept) {
     ASSERT_TRUE((is_map<hash_map<int, int>>()));
     ASSERT_TRUE((is_map<open_map<int, int>>()));
-    ASSERT_TRUE((is_map<TreeMap<int, int>>()));
+    ASSERT_TRUE((is_map<tree_map<int, int>>()));
 
     ASSERT_FALSE((is_map<int>()));
     ASSERT_FALSE((is_map<array_list<int>>()));
@@ -96,7 +96,7 @@ TEST(concept_checks, check_set_concept) {
 
     ASSERT_TRUE((is_set<open_set<int>>()));
     ASSERT_TRUE((is_set<hash_set<int>>()));
-    ASSERT_TRUE((is_set<TreeSet<int>>()));
+    ASSERT_TRUE((is_set<tree_set<int>>()));
 }
 
 TEST(concept_checks, check_list_concept) {
