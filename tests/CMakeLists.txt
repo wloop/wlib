@@ -4,8 +4,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Waddress -Warray-bounds -
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Winit-self -Wnon-virtual-dtor -Woverloaded-virtual")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wswitch -Wunreachable-code")
 
-set(GTEST_INCLUDE_DIR ${gtest_SOURCE_DIR}/include)
-set(WLIB_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/lib/wlib)
+set(GTEST_INCLUDE_DIR    ${gtest_SOURCE_DIR}/include)
+set(WLIB_INCLUDE_DIR     ${CMAKE_SOURCE_DIR}/lib/wlib)
+set(WLIB_INCLUDE_GENERIC ${CMAKE_SOURCE_DIR}/lib/wlib/include)
 
 include_directories(${GTEST_INCLUDE_DIR})
 include_directories(${WLIB_INCLUDE_DIR})
@@ -25,5 +26,7 @@ file(GLOB files
 add_executable(tests ${files})
 target_link_libraries(tests gtest)
 target_link_libraries(tests wlib)
+target_include_directories(tests PUBLIC ${WLIB_INCLUDE_GENERIC})
 add_dependencies(tests wlib)
 add_dependencies(tests gtest)
+
