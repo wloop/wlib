@@ -18,18 +18,18 @@
 
 /**
  * This is used to define the behaviour when there is no catch block and error is thrown
- * To access the Exception ptr use: @code __exception_ptr @endcode. Make sure to check if
+ * To access the exception ptr use: @code __exception_ptr @endcode. Make sure to check if
  * this is null or not
  */
 #define UNEXPECTED \
 
 /**
- * Exception base class
+ * exception base class
  */
-class Exception {
+class exception {
 public:
     /**
-     * Constructor for Exception takes exception type, the name of the file from where
+     * Constructor for exception takes exception type, the name of the file from where
      * the exception is thrown, line number and custom message
      *
      * @param type exception type
@@ -37,9 +37,9 @@ public:
      * @param lineNum line number of throw statement
      * @param message custom message
      */
-    Exception(uint8_t type, const char *fileName, uint16_t lineNum, const char *message);
+    exception(uint8_t type, const char *fileName, uint16_t lineNum, const char *message);
 
-    virtual ~Exception() = 0;
+    virtual ~exception() = 0;
 
     /**
      * Returns the type of exception. It is a numerical number between 0 and 255
@@ -99,7 +99,7 @@ private:
 };
 
 extern jmp_buf *__exc_context;
-extern Exception *__exception_ptr;
+extern exception *__exception_ptr;
 
 void __exc_clear();
 void __exc_default_handler();
@@ -113,7 +113,7 @@ void __exc_default_handler();
 #define CATCH(e) \
     __exc_context = __prev_context; \
     } else { \
-    Exception *e = __exception_ptr; \
+    exception *e = __exception_ptr; \
     __exc_context = __prev_context;
 
 #define TRY_END \
@@ -121,7 +121,7 @@ void __exc_default_handler();
 
 #define THROW(e) { \
     uint16_t lineNum = __LINE__; \
-    Exception *__e = (e); \
+    exception *__e = (e); \
     __e->__setFileName(__FILE__); \
     __e->__setLineNum(lineNum); \
     if (__e && __e != __exception_ptr) { \
@@ -136,25 +136,25 @@ void __exc_default_handler();
 /**
  * Exceptions to use and their macros. More can be added as we go
  */
-Exception *__new_nullptr_exception(const char *message = "");
+exception *__new_nullptr_exception(const char *message = "");
 
-Exception *__new_bad_alloc_exception(const char *message = "");
+exception *__new_bad_alloc_exception(const char *message = "");
 
-Exception *__new_logic_failure_exception(const char *message = "");
+exception *__new_logic_failure_exception(const char *message = "");
 
-Exception *__new_runtime_exception(const char *message = "");
+exception *__new_runtime_exception(const char *message = "");
 
-Exception *__new_illegal_transition_exception(const char *message = "");
+exception *__new_illegal_transition_exception(const char *message = "");
 
-Exception *__new_unexpected_state_exception(const char *message = "");
+exception *__new_unexpected_state_exception(const char *message = "");
 
-Exception *__new_index_exception(const char *message = "");
+exception *__new_index_exception(const char *message = "");
 
-Exception *__new_key_exception(const char *message = "");
+exception *__new_key_exception(const char *message = "");
 
-Exception *__new_bad_state_exception(const char *message = "");
+exception *__new_bad_state_exception(const char *message = "");
 
-Exception *__new_bad_weak_ptr_exception(const char *message = "");
+exception *__new_bad_weak_ptr_exception(const char *message = "");
 
 #define NULLPTR_EXCEPTION(str) __new_nullptr_exception(str)
 #define BAD_ALLOC_EXCEPTION(str) __new_bad_alloc_exception(str)

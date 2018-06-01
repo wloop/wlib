@@ -23,32 +23,32 @@ const char *except[4] = {
         "Runtime Exception"
 };
 
-Exception::Exception(uint8_t type, const char *fileName, uint16_t lineNum, const char *message)
+exception::exception(uint8_t type, const char *fileName, uint16_t lineNum, const char *message)
         : type{type}, fileName{fileName}, lineNum{lineNum}, message{message} {}
 
-Exception::~Exception() = default;
+exception::~exception() = default;
 
-uint16_t Exception::getType() { return type; }
+uint16_t exception::getType() { return type; }
 
-const char *Exception::getName() { return except[type]; }
+const char *exception::getName() { return except[type]; }
 
-const char *Exception::getFileName() { return fileName; }
+const char *exception::getFileName() { return fileName; }
 
-uint16_t Exception::getLineNum() { return lineNum; }
+uint16_t exception::getLineNum() { return lineNum; }
 
-void Exception::__setLineNum(uint16_t lineNum) { this->lineNum = lineNum; }
+void exception::__setLineNum(uint16_t lineNum) { this->lineNum = lineNum; }
 
-void Exception::__setFileName(const char *fileName) { this->fileName = fileName; }
+void exception::__setFileName(const char *fileName) { this->fileName = fileName; }
 
-const char *Exception::getMessage() { return message; }
+const char *exception::getMessage() { return message; }
 
 jmp_buf *__exc_context = nullptr;
-Exception *__exception_ptr = nullptr;
+exception *__exception_ptr = nullptr;
 
 void __exc_clear() {
     if (__exception_ptr == nullptr) { return; }
 
-    free<Exception>(__exception_ptr);
+    free<exception>(__exception_ptr);
     __exception_ptr = nullptr;
 }
 
@@ -60,10 +60,10 @@ void __exc_default_handler() {
 }
 
 #define DEFINE_EXCEPTION(Index, ExceptionName) \
-class ExceptionName : public Exception { \
+class ExceptionName : public exception { \
 public: \
     ExceptionName(const char *fileName, const uint16_t lineNum, const char *message) \
-            : Exception(Index, fileName, lineNum, message) {} \
+            : exception(Index, fileName, lineNum, message) {} \
 };
 
 DEFINE_EXCEPTION(0, NullPtrException)
@@ -77,61 +77,61 @@ DEFINE_EXCEPTION(7, KeyException)
 DEFINE_EXCEPTION(8, BadStateException)
 DEFINE_EXCEPTION(9, BadWeakPtrException)
 
-Exception *__new_nullptr_exception(const char *message) {
+exception *__new_nullptr_exception(const char *message) {
     auto *exception = malloc<NullPtrException>(__FILE__, __LINE__, message);
 
     return exception;
 }
 
-Exception *__new_bad_alloc_exception(const char *message) {
+exception *__new_bad_alloc_exception(const char *message) {
     auto *exception = malloc<BadAllocException>(__FILE__, __LINE__, message);
 
     return exception;
 }
 
-Exception *__new_logic_failure_exception(const char *message) {
+exception *__new_logic_failure_exception(const char *message) {
     auto *exception = malloc<LogicFailureException>(__FILE__, __LINE__, message);
 
     return exception;
 }
 
-Exception *__new_runtime_exception(const char *message) {
+exception *__new_runtime_exception(const char *message) {
     auto *exception = malloc<RuntimeException>(__FILE__, __LINE__, message);
 
     return exception;
 }
 
-Exception *__new_illegal_transition_exception(const char *message) {
+exception *__new_illegal_transition_exception(const char *message) {
     auto *exception = malloc<IllegalTransitionException>(__FILE__, __LINE__, message);
 
     return exception;
 }
 
-Exception *__new_unexpected_state_exception(const char *message) {
+exception *__new_unexpected_state_exception(const char *message) {
     auto *exception = malloc<UnexpectedStateException>(__FILE__, __LINE__, message);
 
     return exception;
 }
 
-Exception *__new_index_exception(const char *message) {
+exception *__new_index_exception(const char *message) {
     auto *exception = malloc<IndexException>(__FILE__, __LINE__, message);
 
     return exception;
 }
 
-Exception *__new_key_exception(const char *message) {
+exception *__new_key_exception(const char *message) {
     auto *exception = malloc<KeyException>(__FILE__, __LINE__, message);
 
     return exception;
 }
 
-Exception *__new_bad_state_exception(const char *message) {
+exception *__new_bad_state_exception(const char *message) {
     auto *exception = malloc<BadStateException>(__FILE__, __LINE__, message);
 
     return exception;
 }
 
-Exception *__new_bad_weak_ptr_exception(const char *message) {
+exception *__new_bad_weak_ptr_exception(const char *message) {
     auto *exception = malloc<BadWeakPtrException>(__FILE__, __LINE__, message);
 
     return exception;
