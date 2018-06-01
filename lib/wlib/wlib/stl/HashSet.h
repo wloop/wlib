@@ -31,10 +31,10 @@ namespace wlp {
     template<class Key,
             class Hasher = hash <Key, uint16_t>,
             class Equals = equals <Key>>
-    class HashSet {
+    class hash_set {
     public:
-        typedef HashSet<Key, Hasher, Equals> set_type;
-        typedef HashTable<Key, Key, Key, SetGetKey<Key>, SetGetVal<Key>, Hasher, Equals> table_type;
+        typedef hash_set<Key, Hasher, Equals> set_type;
+        typedef hash_table<Key, Key, Key, SetGetKey<Key>, SetGetVal<Key>, Hasher, Equals> table_type;
 
         typedef typename table_type::iterator iterator;
         typedef typename table_type::const_iterator const_iterator;
@@ -54,13 +54,13 @@ namespace wlp {
          * @param n        the initial size of the backing array
          * @param max_load the maximum load factor before rehash
          */
-        explicit HashSet(size_type n = 12, percent_type max_load = 75)
+        explicit hash_set(size_type n = 12, percent_type max_load = 75)
                 : m_table(n, max_load) {
         }
 
-        HashSet(const set_type &) = delete;
+        hash_set(const set_type &) = delete;
 
-        HashSet(set_type &&set)
+        hash_set(set_type &&set)
                 : m_table(move(set.m_table)) {
         }
 

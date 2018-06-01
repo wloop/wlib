@@ -95,7 +95,7 @@ TEST(concept_checks, check_set_concept) {
     ASSERT_FALSE((is_set<int>()));
 
     ASSERT_TRUE((is_set<OpenHashSet<int>>()));
-    ASSERT_TRUE((is_set<HashSet<int>>()));
+    ASSERT_TRUE((is_set<hash_set<int>>()));
     ASSERT_TRUE((is_set<TreeSet<int>>()));
 }
 

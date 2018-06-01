@@ -16,7 +16,7 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    class HashTable;
+    class hash_table;
 
     template<typename Element>
     struct HashTableNode {
@@ -39,7 +39,7 @@ namespace wlp {
             typename Hasher, typename Equals>
     struct HashTableIterator {
         typedef HashTableIterator<Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals> self_type;
-        typedef HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals> table_type;
+        typedef hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals> table_type;
         typedef HashTableNode<Element> node_type;
 
         typedef Element element_type;
@@ -157,9 +157,9 @@ namespace wlp {
             typename GetKey, typename GetVal,
             typename Hasher = hash <Key, uint16_t>,
             typename Equals = equals <Key>>
-    class HashTable {
+    class hash_table {
     public:
-        typedef HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals> table_type;
+        typedef hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals> table_type;
         typedef HashTableNode<Element> node_type;
         typedef HashTableIterator<
                 Element, Key, Val,
@@ -232,16 +232,16 @@ namespace wlp {
         percent_type m_max_load;
 
     public:
-        explicit HashTable(size_type n = 12, percent_type max_load = 75)
+        explicit hash_table(size_type n = 12, percent_type max_load = 75)
                 : m_size(0),
                   m_capacity(n),
                   m_max_load(max_load) {
             init_buckets(n);
         }
 
-        HashTable(const table_type &) = delete;
+        hash_table(const table_type &) = delete;
 
-        HashTable(table_type &&table)
+        hash_table(table_type &&table)
                 : m_buckets(table.m_buckets),
                   m_size(table.m_size),
                   m_capacity(table.m_capacity),
@@ -251,7 +251,7 @@ namespace wlp {
             table.m_capacity = 0;
         }
 
-        ~HashTable() {
+        ~hash_table() {
             if (!m_buckets) {
                 return;
             }
@@ -418,8 +418,8 @@ namespace wlp {
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
     template<typename E>
-    Pair<typename HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator, bool>
-    HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    Pair<typename hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator, bool>
+    hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::insert_unique(E &&element) {
         ensure_capacity();
         const size_type n = hash(m_get_key(element));
@@ -441,8 +441,8 @@ namespace wlp {
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
     template<typename E>
-    typename HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator
-    HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    typename hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator
+    hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::insert_equal(E &&element) {
         ensure_capacity();
         const size_type n = hash(m_get_key(element));
@@ -469,8 +469,8 @@ namespace wlp {
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
     template<typename E>
-    typename HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::element_type &
-    HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    typename hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::element_type &
+    hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::find_or_insert(E &&element) {
         ensure_capacity();
         size_type n = hash(m_get_key(element));
@@ -491,9 +491,9 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    Pair<typename HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator,
-            typename HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator>
-    HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    Pair<typename hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator,
+            typename hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::iterator>
+    hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::equal_range(const key_type &key) {
         typedef Pair<iterator, iterator> ret_type;
         const size_type n = hash(key);
@@ -518,9 +518,9 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    Pair<typename HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::const_iterator,
-            typename HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::const_iterator>
-    HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    Pair<typename hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::const_iterator,
+            typename hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::const_iterator>
+    hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::equal_range(const key_type &key) const {
         typedef Pair<const_iterator, const_iterator> ret_type;
         const size_type n = hash(key);
@@ -545,7 +545,7 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    void HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    void hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::erase(const iterator &it) {
         node_type *node = it.m_node;
         if (node) {
@@ -574,8 +574,8 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    typename HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::size_type
-    HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    typename hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::size_type
+    hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::erase(const key_type &key) {
         const size_type n = hash(key);
         node_type *first = m_buckets[n];
@@ -608,7 +608,7 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    void HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    void hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::clear() noexcept {
         for (size_type i = 0; i < m_capacity; ++i) {
             node_type *cur = m_buckets[i];
@@ -626,7 +626,7 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    void HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    void hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::init_buckets(size_type n) {
         m_buckets = malloc<node_type *[]>(n);
         memset(m_buckets, 0, n * sizeof(node_type *));
@@ -635,7 +635,7 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    void HashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    void hash_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::ensure_capacity() {
         if (m_size * 100 < m_max_load * m_capacity) {
             return;
