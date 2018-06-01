@@ -1,0 +1,7 @@
+#ifndef __WLIB_WLIB__
+#define __WLIB_WLIB__
+
+#include <wlib/Wlib.h>
+
+#endif
+

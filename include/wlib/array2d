@@ -1,0 +1,7 @@
+#ifndef __WLIB_ARRAY2D__
+#define __WLIB_ARRAY2D__
+
+#include <wlib/stl/Array2D.h>
+
+#endif
+

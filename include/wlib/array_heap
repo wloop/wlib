@@ -1,0 +1,7 @@
+#ifndef __WLIB_ARRAY_HEAP__
+#define __WLIB_ARRAY_HEAP__
+
+#include <wlib/stl/ArrayHeap.h>
+
+#endif
+

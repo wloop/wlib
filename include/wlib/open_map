@@ -1,0 +1,7 @@
+#ifndef __WLIB_OPEN_MAP__
+#define __WLIB_OPEN_MAP__
+
+#include <wlib/stl/OpenMap.h>
+
+#endif
+
