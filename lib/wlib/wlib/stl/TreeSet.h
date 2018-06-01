@@ -10,8 +10,8 @@
 #ifndef EMBEDDEDCPLUSPLUS_TREESET_H
 #define EMBEDDEDCPLUSPLUS_TREESET_H
 
-#include "Table.h"
-#include "RedBlackTree.h"
+#include <wlib/stl/Table.h>
+#include <wlib/stl/RedBlackTree.h>
 
 namespace wlp {
 
@@ -25,11 +25,11 @@ namespace wlp {
      * @tparam Key stored value type
      * @tparam Cmp comparator for stored value, which uses the default comparator
      */
-    template<typename Key, typename Cmp = Comparator<Key>>
-    class TreeSet {
+    template<typename Key, typename Cmp = comparator<Key>>
+    class tree_set {
     public:
-        typedef TreeSet<Key, Cmp> set_type;
-        typedef RedBlackTree<Key,
+        typedef tree_set<Key, Cmp> set_type;
+        typedef tree<Key,
             Key, Key,
             SetGetKey<Key>, SetGetVal<Key>,
             Cmp
@@ -44,13 +44,13 @@ namespace wlp {
         table_type m_table;
 
     public:
-        explicit TreeSet()
+        explicit tree_set()
                 : m_table() {
         }
 
-        TreeSet(const set_type &) = delete;
+        tree_set(const set_type &) = delete;
 
-        TreeSet(set_type &&set)
+        tree_set(set_type &&set)
                 : m_table(move(set.m_table)) {
         }
 
@@ -91,7 +91,7 @@ namespace wlp {
         }
 
         template<typename K>
-        Pair<iterator, bool> insert(K &&key) {
+        pair<iterator, bool> insert(K &&key) {
             return m_table.insert_unique(key);
         };
 

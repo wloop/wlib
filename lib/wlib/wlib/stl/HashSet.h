@@ -13,10 +13,10 @@
 #ifndef EMBEDDEDCPLUSPLUS_CHAINSET_H
 #define EMBEDDEDCPLUSPLUS_CHAINSET_H
 
-#include "Equal.h"
-#include "Hash.h"
-#include "HashTable.h"
-#include "Table.h"
+#include <wlib/stl/Equal.h>
+#include <wlib/stl/Hash.h>
+#include <wlib/stl/HashTable.h>
+#include <wlib/stl/Table.h>
 
 namespace wlp {
 
@@ -29,12 +29,12 @@ namespace wlp {
      * @tparam Equal the equality function
      */
     template<class Key,
-            class Hasher = Hash <Key, uint16_t>,
-            class Equals = Equal <Key>>
-    class HashSet {
+            class Hasher = hash <Key, uint16_t>,
+            class Equals = equals <Key>>
+    class hash_set {
     public:
-        typedef HashSet<Key, Hasher, Equals> set_type;
-        typedef HashTable<Key, Key, Key, SetGetKey<Key>, SetGetVal<Key>, Hasher, Equals> table_type;
+        typedef hash_set<Key, Hasher, Equals> set_type;
+        typedef hash_table<Key, Key, Key, SetGetKey<Key>, SetGetVal<Key>, Hasher, Equals> table_type;
 
         typedef typename table_type::iterator iterator;
         typedef typename table_type::const_iterator const_iterator;
@@ -54,13 +54,13 @@ namespace wlp {
          * @param n        the initial size of the backing array
          * @param max_load the maximum load factor before rehash
          */
-        explicit HashSet(size_type n = 12, percent_type max_load = 75)
+        explicit hash_set(size_type n = 12, percent_type max_load = 75)
                 : m_table(n, max_load) {
         }
 
-        HashSet(const set_type &) = delete;
+        hash_set(const set_type &) = delete;
 
-        HashSet(set_type &&set)
+        hash_set(set_type &&set)
                 : m_table(move(set.m_table)) {
         }
 
@@ -105,7 +105,7 @@ namespace wlp {
         }
 
         template<typename K>
-        Pair<iterator, bool> insert(K &&key) {
+        pair<iterator, bool> insert(K &&key) {
             return m_table.insert_unique(key);
         };
 

@@ -13,14 +13,13 @@
 #ifndef EMBEDDEDTESTS_CHAINMAP_H
 #define EMBEDDEDTESTS_CHAINMAP_H
 
-#include "Equal.h"
-#include "Hash.h"
-#include "HashTable.h"
-#include "Pair.h"
-#include "Table.h"
-#include "Tuple.h"
-
-#include "wlib/utility/Utility.h"
+#include <wlib/stl/Equal.h>
+#include <wlib/stl/Hash.h>
+#include <wlib/stl/HashTable.h>
+#include <wlib/stl/Pair.h>
+#include <wlib/stl/Table.h>
+#include <wlib/stl/Tuple.h>
+#include <wlib/utility/Utility.h>
 
 namespace wlp {
 
@@ -35,12 +34,12 @@ namespace wlp {
      */
     template<typename Key,
             typename Val,
-            typename Hasher = Hash<Key, uint16_t>,
-            typename Equals = Equal<Key>>
-    class HashMap {
+            typename Hasher = hash<Key, uint16_t>,
+            typename Equals = equals<Key>>
+    class hash_map {
     public:
-        typedef HashMap<Key, Val, Hasher, Equals> map_type;
-        typedef HashTable<Tuple<Key, Val>,
+        typedef hash_map<Key, Val, Hasher, Equals> map_type;
+        typedef hash_table<tuple<Key, Val>,
                 Key, Val,
                 MapGetKey<Key, Val>, MapGetVal<Key, Val>,
                 Hasher, Equals
@@ -57,13 +56,13 @@ namespace wlp {
         table_type m_table;
 
     public:
-        explicit HashMap(size_type n = 12, percent_type max_load = 75)
+        explicit hash_map(size_type n = 12, percent_type max_load = 75)
                 : m_table(n, max_load) {
         }
 
-        HashMap(const map_type &) = delete;
+        hash_map(const map_type &) = delete;
 
-        HashMap(map_type &&map)
+        hash_map(map_type &&map)
                 : m_table(move(map.m_table)) {
         }
 
@@ -104,13 +103,13 @@ namespace wlp {
         }
 
         template<typename K, typename V>
-        Pair<iterator, bool> insert(K &&key, V &&val) {
+        pair<iterator, bool> insert(K &&key, V &&val) {
             return m_table.insert_unique(make_tuple(forward<K>(key), forward<V>(val)));
         }
 
         template<typename K, typename V>
-        Pair<iterator, bool> insert_or_assign(K &&key, V &&val) {
-            Pair<iterator, bool> result = m_table.insert_unique(make_tuple(forward<K>(key), forward<V>(val)));
+        pair<iterator, bool> insert_or_assign(K &&key, V &&val) {
+            pair<iterator, bool> result = m_table.insert_unique(make_tuple(forward<K>(key), forward<V>(val)));
             if (!result.m_second) {
                 *result.m_first = forward<V>(val);
             }

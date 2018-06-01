@@ -12,26 +12,26 @@
 
 using namespace wlp;
 
-typedef Tuple<char, int> _rb_element;
+typedef tuple<char, int> _rb_element;
 typedef MapGetKey<char, int> _rb_key;
 typedef MapGetVal<char, int> _rb_val;
 
-typedef typename RedBlackTree<_rb_element, char, int, _rb_key, _rb_val>::iterator rbi;
-typedef RedBlackTree<_rb_element, char, int, _rb_key, _rb_val> rb_tree;
+typedef typename tree<_rb_element, char, int, _rb_key, _rb_val>::iterator rbi;
+typedef tree<_rb_element, char, int, _rb_key, _rb_val> rb_tree;
 
 TEST(rb_tree_test, test_insert_iterator_order) {
     char keys[] = {'g', 'h', 'j', 'k', 'y', 'c', 'd', 'q', 'w'};
     int vals[] = {5, 1, 0, 9, -1, -4, 12, 10, -66};
-    OpenHashMap<char, int> val_map(20);
+    open_map<char, int> val_map(20);
     rb_tree tree;
     for (size_type i = 0; i < 9; i++) {
         val_map.insert(keys[i], vals[i]);
-        Pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));
+        pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));
         ASSERT_TRUE(res.second());
         ASSERT_EQ(vals[i], *res.first());
     }
     ASSERT_EQ(9, tree.size());
-    ArrayList<char> key_list(keys, 9);
+    array_list<char> key_list(keys, 9);
     heap_sort(key_list);
     rbi it = tree.begin();
     for (size_type i = 0; i < key_list.size(); i++) {
@@ -55,11 +55,11 @@ TEST(rb_tree_test, test_insert_unique_find) {
             'I', '3', '6', '6', 'L', 'o', '3', 'd', 's', 'G'
     };
     int vals[40];
-    OpenHashMap<char, int> val_map(80);
-    OpenHashSet<char> key_set(80);
+    open_map<char, int> val_map(80);
+    open_set<char> key_set(80);
     for (int i = 0; i < 40; i++) {
         vals[i] = random_int();
-        Pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));
+        pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));
         if (key_set.contains(keys[i])) {
             ASSERT_FALSE(res.second());
         } else {
@@ -69,21 +69,21 @@ TEST(rb_tree_test, test_insert_unique_find) {
         val_map.insert(keys[i], vals[i]);
         ASSERT_EQ(val_map[keys[i]], *res.first());
     }
-    ArrayList<char> key_list(key_set.size());
-    for (OpenHashSet<char>::iterator it = key_set.begin(); it != key_set.end(); ++it) {
+    array_list<char> key_list(key_set.size());
+    for (open_set<char>::iterator it = key_set.begin(); it != key_set.end(); ++it) {
         key_list.push_back(*it);
     }
-    ReverseComparator<char> cmp;
+    reverse_comparator<char> cmp;
     heap_sort(key_list, cmp);
     for (int i = 0; i < 40; i++) {
-        Pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));
+        pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));
         ASSERT_FALSE(res.second());
         ASSERT_EQ(val_map[keys[i]], *res.first());
         ASSERT_EQ(keys[i], get<0>(res.first().m_node->m_element));
     }
     ASSERT_EQ(key_set.size(), tree.size());
     int count = 0;
-    ArrayList<char>::iterator kit = key_list.begin();
+    array_list<char>::iterator kit = key_list.begin();
     for (rbi it = --tree.end();; --it) {
         ASSERT_EQ(*kit, get<0>(it.m_node->m_element));
         ASSERT_EQ(val_map[*kit], *it);
@@ -99,7 +99,7 @@ TEST(rb_tree_test, test_insert_unique_find) {
     for (int i = 0; i < 40; i++) {
         ASSERT_EQ(val_map[keys[i]], *tree.find(keys[i]));
     }
-    for (OpenHashSet<char>::iterator it = key_set.begin(); it != key_set.end(); ++it) {
+    for (open_set<char>::iterator it = key_set.begin(); it != key_set.end(); ++it) {
         ASSERT_EQ(1, tree.erase(*it));
     }
     ASSERT_EQ(0, tree.size());
@@ -108,7 +108,7 @@ TEST(rb_tree_test, test_insert_unique_find) {
 TEST(rb_tree_test, test_insert_equal_and_range) {
     char keys[] = {'a', 'a', 'a', 'b', 'b', 'c', 'c', 'c', 'c', 'd'};
     int values[] = {5, 6, 7, 8, 9, 10, 10, 11, 12, 13};
-    HashSet<int> val_set(20);
+    hash_set<int> val_set(20);
     size_type cnt = 10;
     rb_tree tree;
     for (int i = 0; i < cnt; i++) {
@@ -125,7 +125,7 @@ TEST(rb_tree_test, test_insert_equal_and_range) {
     bool at_repeat = false;
     for (int i = 0; i < 4; i++) {
         char ukey = ukeys[i];
-        Pair<rbi, rbi> eq_range = tree.equal_range(ukey);
+        pair<rbi, rbi> eq_range = tree.equal_range(ukey);
         for (rbi it = eq_range.first(); it != eq_range.second(); ++it) {
             int val = *it;
             if (val == 10) {

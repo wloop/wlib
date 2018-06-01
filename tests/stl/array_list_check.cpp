@@ -5,14 +5,14 @@
 
 using namespace wlp;
 
-typedef ArrayList<int>::const_iterator cit;
+typedef array_list<int>::const_iterator cit;
 
 TEST(array_list_test, test_constructors) {
     int values[] = {1, 2, 3, 4, 5};
-    ArrayList<int> list(values, 5, 2);
+    array_list<int> list(values, 5, 2);
     ASSERT_EQ(5, list.capacity());
     ASSERT_EQ(5, list.size());
-    ArrayList<int> list0(values, 5);
+    array_list<int> list0(values, 5);
     ASSERT_EQ(5, list0.capacity());
     ASSERT_EQ(5, list.size());
     for (size_type i = 0; i < 5; i++) {
@@ -23,7 +23,7 @@ TEST(array_list_test, test_constructors) {
 
 TEST(array_list_test, test_at) {
     int values[] = {2, 3, 5, 7, 11, 13};
-    ArrayList<int> list(values, 6);
+    array_list<int> list(values, 6);
     ASSERT_EQ(2, list.at(0));
     ASSERT_EQ(11, list.at(4));
     list.at(0) = 111;
@@ -31,7 +31,7 @@ TEST(array_list_test, test_at) {
     ASSERT_EQ(111, list.front());
     list.at(1) = 222;
     ASSERT_EQ(222, list.at(7));
-    const ArrayList<int> const_list(move(list));
+    const array_list<int> const_list(move(list));
     ASSERT_EQ(111, const_list.at(0));
     ASSERT_EQ(222, const_list.at(7));
     ASSERT_EQ(111, const_list.front());
@@ -42,9 +42,9 @@ TEST(array_list_test, test_at) {
 
 TEST(array_list_test, test_const_list_back_front_when_empty) {
     int values[] = {1, 2, 3};
-    ArrayList<int> list(values, 3);
+    array_list<int> list(values, 3);
     list.clear();
-    const ArrayList<int> const_list(move(list));
+    const array_list<int> const_list(move(list));
     ASSERT_EQ(0, const_list.size());
     ASSERT_EQ(1, const_list.back());
     ASSERT_EQ(1, const_list.front());
@@ -52,7 +52,7 @@ TEST(array_list_test, test_const_list_back_front_when_empty) {
 
 TEST(array_list_test, test_clear) {
     int values[] = {2, 3, 5, 7};
-    ArrayList<int> list(values, 4);
+    array_list<int> list(values, 4);
     list.clear();
     ASSERT_EQ(0, list.size());
     ASSERT_EQ(4, list.capacity());
@@ -63,11 +63,11 @@ TEST(array_list_test, test_clear) {
 }
 
 TEST(array_list_test, test_list_begin_end) {
-    ArrayList<int> list(5);
+    array_list<int> list(5);
     ASSERT_EQ(list.begin(), list.end());
     list.push_back(1);
     ASSERT_EQ(1, *list.begin());
-    ArrayList<int>::iterator it = list.begin();
+    array_list<int>::iterator it = list.begin();
     ASSERT_EQ(1, *it);
     ++it;
     ASSERT_EQ(list.end(), it);
@@ -75,10 +75,10 @@ TEST(array_list_test, test_list_begin_end) {
 
 TEST(array_list_test, test_const_list_begin_end) {
     int values[] = {1, 2, 3, 4};
-    const ArrayList<int> const_list(values, 4);
-    const ArrayList<int> empty_const_list(5);
+    const array_list<int> const_list(values, 4);
+    const array_list<int> empty_const_list(5);
     ASSERT_EQ(empty_const_list.begin(), empty_const_list.end());
-    ArrayList<int>::const_iterator it = const_list.begin();
+    array_list<int>::const_iterator it = const_list.begin();
     ASSERT_EQ(1, *it);
     ++it;
     ASSERT_EQ(2, *it);
@@ -92,10 +92,10 @@ TEST(array_list_test, test_const_list_begin_end) {
 
 TEST(array_list_test, test_insert_index_lvalue) {
     int values[] = {1, 2, 3, 4};
-    ArrayList<int> list(values, 4, 5);
+    array_list<int> list(values, 4, 5);
     ASSERT_EQ(4, list.size());
     const int v = 100;
-    ArrayList<int>::iterator it = list.insert(2, v);
+    array_list<int>::iterator it = list.insert(2, v);
     ASSERT_EQ(100, *it);
     int expected[] = {1, 2, 100, 3, 4};
     ASSERT_EQ(5, list.size());
@@ -106,9 +106,9 @@ TEST(array_list_test, test_insert_index_lvalue) {
 
 TEST(array_list_test, test_insert_index_rvalue) {
     int values[] = {1, 10};
-    ArrayList<int> list(values, 2, 3);
+    array_list<int> list(values, 2, 3);
     ASSERT_EQ(2, list.size());
-    ArrayList<int>::iterator it = list.insert(1, 100);
+    array_list<int>::iterator it = list.insert(1, 100);
     ASSERT_EQ(100, *it);
     int expected[] = {1, 100, 10};
     ASSERT_EQ(3, list.size());
@@ -119,8 +119,8 @@ TEST(array_list_test, test_insert_index_rvalue) {
 
 TEST(array_list_test, test_insert_iterator_lvalue) {
     int values[] = {1, 10};
-    ArrayList<int> list(values, 2, 3);
-    ArrayList<int>::iterator it = list.end();
+    array_list<int> list(values, 2, 3);
+    array_list<int>::iterator it = list.end();
     const int v = 100;
     it = list.insert(it, v);
     ASSERT_EQ(3, list.size());
@@ -131,8 +131,8 @@ TEST(array_list_test, test_insert_iterator_lvalue) {
 
 TEST(array_list_test, test_insert_iterator_rvalue) {
     int values[] = {1, 10};
-    ArrayList<int> list(values, 2, 2);
-    ArrayList<int>::iterator it = list.begin();
+    array_list<int> list(values, 2, 2);
+    array_list<int>::iterator it = list.begin();
     it = list.insert(it, 100);
     ASSERT_EQ(3, list.size());
     ASSERT_EQ(100, *it);
@@ -146,7 +146,7 @@ TEST(array_list_test, test_insert_iterator_rvalue) {
 
 TEST(array_list_test, test_insert_when_full) {
     int values[] = {1, 10};
-    ArrayList<int> list(values, 2);
+    array_list<int> list(values, 2);
     list.insert(1, 15);
     ASSERT_EQ(3, list.size());
     ASSERT_EQ(4, list.capacity());
@@ -156,7 +156,7 @@ TEST(array_list_test, test_insert_when_full) {
 }
 
 TEST(array_list_test, test_insert_when_empty) {
-    ArrayList<int> list(5);
+    array_list<int> list(5);
     list.insert(0, 10);
     ASSERT_EQ(1, list.size());
     ASSERT_EQ(5, list.capacity());
@@ -164,14 +164,14 @@ TEST(array_list_test, test_insert_when_empty) {
 }
 
 TEST(array_list_test, test_insert_iterator_when_empty) {
-    ArrayList<int> list1(5);
-    ArrayList<int>::iterator it1 = list1.begin();
+    array_list<int> list1(5);
+    array_list<int>::iterator it1 = list1.begin();
     it1 = list1.insert(it1, 10);
     ASSERT_EQ(1, list1.size());
     ASSERT_EQ(10, list1[0]);
     ASSERT_EQ(10, *it1);
-    ArrayList<int> list2(5);
-    ArrayList<int>::iterator it2 = list2.end();
+    array_list<int> list2(5);
+    array_list<int>::iterator it2 = list2.end();
     it2 = list2.insert(it2, 10);
     ASSERT_EQ(1, list2.size());
     ASSERT_EQ(10, list2[0]);
@@ -180,9 +180,9 @@ TEST(array_list_test, test_insert_iterator_when_empty) {
 
 TEST(array_list_test, test_insert_iterator) {
     int values[] = {1, 2, 3, 4, 5};
-    ArrayList<int> list(values, 5, 5);
+    array_list<int> list(values, 5, 5);
     int traverse1[] = {1, 2, 10, 3, 4, 5};
-    ArrayList<int>::iterator it = list.insert(2, 10);
+    array_list<int>::iterator it = list.insert(2, 10);
     for (size_type i = 0; i < list.size(); i++) {
         ASSERT_EQ(list[i], traverse1[i]);
     }
@@ -198,7 +198,7 @@ TEST(array_list_test, test_insert_iterator) {
 
 TEST(array_list_test, test_insert_iterator_begin_end) {
     int values[] = {1, 2, 3, 4, 5};
-    ArrayList<int> list(values, 5, 5);
+    array_list<int> list(values, 5, 5);
     list.insert(list.begin(), 15);
     list.insert(list.end(), 20);
     int traverse[] = {15, 1, 2, 3, 4, 5, 20};
@@ -208,7 +208,7 @@ TEST(array_list_test, test_insert_iterator_begin_end) {
 }
 
 TEST(array_list_test, test_push_pop_back) {
-    ArrayList<int> list;
+    array_list<int> list;
     list.push_back(10);
     list.push_back(15);
     list.push_back(20);
@@ -223,7 +223,7 @@ TEST(array_list_test, test_push_pop_back) {
 }
 
 TEST(array_list_test, test_push_pop_front) {
-    ArrayList<int> list;
+    array_list<int> list;
     list.push_front(0);
     list.push_front(10);
     list.push_front(15);
@@ -238,13 +238,13 @@ TEST(array_list_test, test_push_pop_front) {
 }
 
 TEST(array_list_test, test_index_of_empty_list) {
-    ArrayList<int> empty_list;
+    array_list<int> empty_list;
     ASSERT_EQ(0, empty_list.index_of(1234));
 }
 
 TEST(array_list_test, test_index_of) {
     int values[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    ArrayList<int> list(values, 10);
+    array_list<int> list(values, 10);
     for (size_type i = 0; i < 9; i++) {
         ASSERT_EQ(i, list.index_of(i + 1));
     }
@@ -252,13 +252,13 @@ TEST(array_list_test, test_index_of) {
 
 TEST(array_list_test, test_index_of_repeats) {
     int values[] = {1, 2, 3, 4, 5, 6, 5, 7, 5, 3};
-    ArrayList<int> list(values, 10);
+    array_list<int> list(values, 10);
     ASSERT_EQ(4, list.index_of(5));
 }
 
 TEST(array_list_test, test_index_of_not_found) {
     int values[] = {1, 2, 3, 4, 5, 6, 7, 10};
-    ArrayList<int> list(values, 8);
+    array_list<int> list(values, 8);
     ASSERT_EQ(8, list.size());
     ASSERT_EQ(8, list.index_of(22));
     ASSERT_EQ(8, list.index_of(8));
@@ -267,7 +267,7 @@ TEST(array_list_test, test_index_of_not_found) {
 TEST(array_list_test, test_find) {
     int values[] = {1, 2, 3, 4, 5, 6, 7, 8, 10};
     size_type size = 9;
-    ArrayList<int> list(values, size);
+    array_list<int> list(values, size);
     ASSERT_EQ(list.begin(), list.find(1));
     ASSERT_EQ(list.end(), list.find(1000));
     ASSERT_EQ(5, *list.find(5));
@@ -275,7 +275,7 @@ TEST(array_list_test, test_find) {
 
 TEST(array_list_test, test_push_back_when_full) {
     int values[] = {1, 2};
-    ArrayList<int> list(values, 2);
+    array_list<int> list(values, 2);
     ASSERT_EQ(2, list.size());
     ASSERT_EQ(2, list.capacity());
     list.push_back(3);
@@ -286,10 +286,10 @@ TEST(array_list_test, test_push_back_when_full) {
 
 TEST(array_list_test, test_erase_index) {
     int values[] = {1, 2, 3};
-    ArrayList<int> list(values, 3);
+    array_list<int> list(values, 3);
     ASSERT_EQ(3, list.size());
     ASSERT_EQ(3, list.capacity());
-    ArrayList<int>::iterator it = list.erase(1);
+    array_list<int>::iterator it = list.erase(1);
     ASSERT_EQ(3, *it);
     ++it;
     ASSERT_EQ(list.end(), it);
@@ -301,8 +301,8 @@ TEST(array_list_test, test_erase_index) {
 
 TEST(array_list_test, test_erase_iterator) {
     int values[] = {1, 2, 3};
-    ArrayList<int> list(values, 3);
-    ArrayList<int>::iterator it = list.end();
+    array_list<int> list(values, 3);
+    array_list<int>::iterator it = list.end();
     ASSERT_EQ(list.end(), list.erase(it));
     it = list.begin();
     it = list.erase(it);
@@ -318,7 +318,7 @@ TEST(array_list_test, test_erase_iterator) {
 }
 
 TEST(array_list_test, test_reserve) {
-    ArrayList<int> list(10);
+    array_list<int> list(10);
     ASSERT_EQ(10, list.capacity());
     list.reserve(5);
     ASSERT_EQ(10, list.capacity());
@@ -332,7 +332,7 @@ TEST(array_list_test, test_reserve) {
 
 TEST(array_list_test, test_shrink) {
     int values[] = {1, 2, 3};
-    ArrayList<int> list(values, 3);
+    array_list<int> list(values, 3);
     list.shrink();
     ASSERT_EQ(3, list.size());
     ASSERT_EQ(3, list.capacity());
@@ -346,30 +346,30 @@ TEST(array_list_test, test_shrink) {
 }
 
 TEST(list_iterator_test, test_default_ctor) {
-    ArrayList<int>::iterator it;
+    array_list<int>::iterator it;
 }
 
 TEST(list_iterator_test, test_move_ctor) {
     int values[] = {1, 2, 3};
-    ArrayList<int> list(values, 3);
-    ArrayList<int>::iterator it = list.begin();
+    array_list<int> list(values, 3);
+    array_list<int>::iterator it = list.begin();
     ASSERT_EQ(1, *it);
-    ArrayList<int>::iterator it1(move(it));
+    array_list<int>::iterator it1(move(it));
     ASSERT_EQ(1, *it1);
 }
 
 TEST(list_iterator_test, test_overflow_ctor) {
     int values[] = {1, 2, 3};
-    ArrayList<int> list(values, 3);
-    ArrayList<int>::iterator it(100, &list);
+    array_list<int> list(values, 3);
+    array_list<int>::iterator it(100, &list);
     ASSERT_EQ(list.end(), it);
 }
 
 TEST(list_iterator_test, test_arrow_op) {
-    ArrayList<String8> string_list(2);
+    array_list<String8> string_list(2);
     string_list.push_back(String8("hello"));
     string_list.push_back(String8("woah"));
-    ArrayList<String8>::iterator it = string_list.begin();
+    array_list<String8>::iterator it = string_list.begin();
     ASSERT_EQ(5, it->length());
     ++it;
     ASSERT_EQ(4, it->length());
@@ -406,24 +406,24 @@ TEST(list_iterator_test, test_arrow_op) {
 }
 
 TEST(list_iterator_test, test_equality_operators) {
-    ArrayList<int> list(5);
-    ArrayList<int>::iterator it1 = list.begin();
-    ArrayList<int>::iterator it2 = list.end();
+    array_list<int> list(5);
+    array_list<int>::iterator it1 = list.begin();
+    array_list<int>::iterator it2 = list.end();
     ASSERT_TRUE(it1 == it2);
     it1 = list.insert(0, 100);
     it2 = list.end();
     ASSERT_TRUE(it1 != it2);
-    const ArrayList<int>::iterator it3 = list.begin();
-    const ArrayList<int>::iterator it4 = list.end();
+    const array_list<int>::iterator it3 = list.begin();
+    const array_list<int>::iterator it4 = list.end();
     ASSERT_TRUE(it3 != it4);
     ASSERT_FALSE(it3 == it4);
 }
 
 TEST(list_iterator_test, test_add_subtract) {
     int values[] = {1, 2, 3, 4, 5, 6, 7};
-    ArrayList<int> list(values, 7);
-    ArrayList<int>::iterator it1 = list.begin();
-    ArrayList<int>::iterator it2 = it1 + 4;
+    array_list<int> list(values, 7);
+    array_list<int>::iterator it1 = list.begin();
+    array_list<int>::iterator it2 = it1 + 4;
     ASSERT_EQ(5, *it2);
     size_type v = 2;
     it1 = it2 - v;
@@ -435,16 +435,16 @@ TEST(list_iterator_test, test_add_subtract) {
 }
 
 TEST(list_const_iterator_test, test_arrow_op) {
-    ArrayList<String8> list(5);
+    array_list<String8> list(5);
     list.push_back(String8("hello"));
-    const ArrayList<String8> const_list(move(list));
+    const array_list<String8> const_list(move(list));
     ASSERT_EQ(5, const_list.begin()->length());
 }
 
 TEST(list_const_iterator_test, test_bulk_functions) {
     cit it0;
     int values[] = {1, 2, 3, 4, 5, 6, 7, 8};
-    const ArrayList<int> list(values, 8);
+    const array_list<int> list(values, 8);
     cit it1 = list.begin();
     cit it2 = it1;
     ASSERT_EQ(1, *it1);

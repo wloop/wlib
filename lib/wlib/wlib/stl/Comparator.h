@@ -12,10 +12,9 @@
 
 #include <string.h> // strcmp
 
-#include "wlib/Types.h"
-
-#include "Equal.h"
-#include "wlib/strings/String.h"
+#include <wlib/Types.h>
+#include <wlib/stl/Equal.h>
+#include <wlib/strings/String.h>
 
 namespace wlp {
 
@@ -26,7 +25,7 @@ namespace wlp {
      * @tparam T compared type
      */
     template<typename T>
-    struct Comparator {
+    struct comparator {
         bool __lt__(const T &t1, const T &t2) const {
             return t1 < t2;
         }
@@ -59,7 +58,7 @@ namespace wlp {
      * @tparam T compared type
      */
     template<typename T>
-    struct ReverseComparator {
+    struct reverse_comparator {
         bool __lt__(const T &t1, const T &t2) const {
             return t1 > t2;
         }
@@ -89,7 +88,7 @@ namespace wlp {
      * Template specialization for C strings.
      */
     template<>
-    struct Comparator<const char *> {
+    struct comparator<const char *> {
         bool __lt__(const char *s1, const char *s2) const {
             return strcmp(s1, s2) < 0;
         }
@@ -121,28 +120,28 @@ namespace wlp {
      * @tparam tSize static string size
      */
     template<uint16_t tSize>
-    struct Comparator<StaticString <tSize>> {
-        bool __lt__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+    struct comparator<static_string <tSize>> {
+        bool __lt__(const static_string <tSize> &s1, const static_string <tSize> &s2) const {
             return strcmp(s1.c_str(), s2.c_str()) < 0;
         }
 
-        bool __le__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+        bool __le__(const static_string <tSize> &s1, const static_string <tSize> &s2) const {
             return strcmp(s1.c_str(), s2.c_str()) <= 0;
         }
 
-        bool __eq__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+        bool __eq__(const static_string <tSize> &s1, const static_string <tSize> &s2) const {
             return strcmp(s1.c_str(), s2.c_str()) == 0;
         }
 
-        bool __ne__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+        bool __ne__(const static_string <tSize> &s1, const static_string <tSize> &s2) const {
             return strcmp(s1.c_str(), s2.c_str()) != 0;
         }
 
-        bool __gt__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+        bool __gt__(const static_string <tSize> &s1, const static_string <tSize> &s2) const {
             return strcmp(s1.c_str(), s2.c_str()) > 0;
         }
 
-        bool __ge__(const StaticString <tSize> &s1, const StaticString <tSize> &s2) const {
+        bool __ge__(const static_string <tSize> &s1, const static_string <tSize> &s2) const {
             return strcmp(s1.c_str(), s2.c_str()) >= 0;
         }
     };

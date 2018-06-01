@@ -14,61 +14,61 @@
 
 namespace wlp {
     template
-    struct Pair<uint16_t, const char *>;
+    struct pair<uint16_t, const char *>;
 
     template
-    class HashMap<String16, String16>;
+    class hash_map<String16, String16>;
 
     template
-    class HashMap<uint16_t, uint16_t>;
+    class hash_map<uint16_t, uint16_t>;
 
     template
-    struct Pair<HashMap<uint16_t, uint16_t>::iterator, bool>;
+    struct pair<hash_map<uint16_t, uint16_t>::iterator, bool>;
 
     template
-    struct Pair<HashMap<String16, String16>::iterator, bool>;
+    struct pair<hash_map<String16, String16>::iterator, bool>;
 
     template
-    struct Equal<String8>;
+    struct equals<String8>;
 
     template
-    struct Equal<uint16_t>;
+    struct equals<uint16_t>;
 
     template
-    struct Hash<String8, uint16_t>;
+    struct hash<String8, uint16_t>;
 
     template
-    struct Hash<char *, uint16_t>;
+    struct hash<char *, uint16_t>;
 
     template
-    struct Hash<uint16_t, uint16_t>;
+    struct hash<uint16_t, uint16_t>;
 
     template
-    class OpenHashMap<String16, String16>;
+    class open_map<String16, String16>;
 
     template
-    class OpenHashMap<uint16_t, uint16_t>;
+    class open_map<uint16_t, uint16_t>;
 
     template
-    struct Pair<OpenHashMap<uint16_t, uint16_t>::iterator, bool>;
+    struct pair<open_map<uint16_t, uint16_t>::iterator, bool>;
 
     template
-    struct Pair<OpenHashMap<String16, String16>::iterator, bool>;
+    struct pair<open_map<String16, String16>::iterator, bool>;
 
     template
-    class ArrayHeap<int>;
+    class array_heap<int>;
 
     template
-    class ArrayHeap<const char *>;
+    class array_heap<const char *>;
 
     template
-    class ArrayList<int>;
+    class array_list<int>;
 
     template
-    class StaticString<8>;
+    class static_string<8>;
 
     template
-    class StaticString<16>;
+    class static_string<16>;
 
     template
     class ArrayListIterator<int, int &, int *>;
@@ -83,16 +83,16 @@ namespace wlp {
     class ArrayListIterator<const char *, const char *const &, const char *const *>;
 
     template
-    struct Comparator<int>;
+    struct comparator<int>;
 
     template
-    struct ReverseComparator<int>;
+    struct reverse_comparator<int>;
 
     template
-    struct Comparator<String8>;
+    struct comparator<String8>;
 
     template
-    class LinkedList<int>;
+    class linked_list<int>;
 
     template
     struct LinkedListIterator<int, int &, int *>;
@@ -101,12 +101,12 @@ namespace wlp {
     struct LinkedListIterator<int, const int &, const int *>;
 
     template
-    class UniquePtr<int>;
+    class unique_ptr<int>;
 
 
-    template class SharedPtr<int>;
+    template class shared_ptr<int>;
 
-    template class WeakPtr<int>;
+    template class weak_ptr<int>;
 
 }
 

@@ -10,10 +10,10 @@
 #ifndef EMBEDDEDCPLUSPLUS_TREEMAP_H
 #define EMBEDDEDCPLUSPLUS_TREEMAP_H
 
-#include "RedBlackTree.h"
-#include "Table.h"
-#include "Tuple.h"
-#include "wlib/Types.h"
+#include <wlib/stl/RedBlackTree.h>
+#include <wlib/stl/Table.h>
+#include <wlib/stl/Tuple.h>
+#include <wlib/Types.h>
 
 namespace wlp {
 
@@ -28,11 +28,11 @@ namespace wlp {
      * @tparam Val value type
      * @tparam Cmp key comparator type, which uses the default comparator
      */
-    template<typename Key, typename Val, typename Cmp = Comparator<Key>>
-    class TreeMap {
+    template<typename Key, typename Val, typename Cmp = comparator<Key>>
+    class tree_map {
     public:
-        typedef TreeMap<Key, Val, Cmp> map_type;
-        typedef RedBlackTree<Tuple<Key, Val>,
+        typedef tree_map<Key, Val, Cmp> map_type;
+        typedef tree<tuple<Key, Val>,
                 Key, Val,
                 MapGetKey<Key, Val>, MapGetVal<Key, Val>,
                 Cmp
@@ -48,13 +48,13 @@ namespace wlp {
         table_type m_table;
 
     public:
-        explicit TreeMap()
+        explicit tree_map()
                 : m_table() {
         }
 
-        TreeMap(const map_type &) = delete;
+        tree_map(const map_type &) = delete;
 
-        TreeMap(map_type &&map)
+        tree_map(map_type &&map)
                 : m_table(move(map.m_table)) {
         }
 
@@ -95,13 +95,13 @@ namespace wlp {
         }
 
         template<typename K, typename V>
-        Pair<iterator, bool> insert(K &&key, V &&val) {
+        pair<iterator, bool> insert(K &&key, V &&val) {
             return m_table.insert_unique(make_tuple(forward<K>(key), forward<V>(val)));
         };
 
         template<typename K, typename V>
-        Pair<iterator, bool> insert_or_assign(K &&key, V &&val) {
-            Pair<iterator, bool> result = m_table.insert_unique(make_tuple(forward<K>(key), forward<V>(val)));
+        pair<iterator, bool> insert_or_assign(K &&key, V &&val) {
+            pair<iterator, bool> result = m_table.insert_unique(make_tuple(forward<K>(key), forward<V>(val)));
             if (!result.m_second) {
                 *result.m_first = forward<V>(val);
             }
@@ -141,7 +141,7 @@ namespace wlp {
 
         template<typename K>
         val_type &operator[](K &&key) {
-            Pair<iterator, bool> result = m_table.insert_unique(make_tuple(forward<K>(key), val_type()));
+            pair<iterator, bool> result = m_table.insert_unique(make_tuple(forward<K>(key), val_type()));
             return *result.m_first;
         }
 

@@ -15,12 +15,11 @@
 #ifndef EMBEDDEDCPLUSPLUS_ARRAYHEAP_H
 #define EMBEDDEDCPLUSPLUS_ARRAYHEAP_H
 
-#include "ArrayList.h"
-#include "Comparator.h"
-#include "Concept.h"
-#include "TypeTraits.h"
-
-#include "wlib/utility/Utility.h"
+#include <wlib/stl/ArrayList.h>
+#include <wlib/stl/Comparator.h>
+#include <wlib/stl/Concept.h>
+#include <wlib/stl/TypeTraits.h>
+#include <wlib/utility/Utility.h>
 
 namespace wlp {
 
@@ -480,22 +479,22 @@ namespace wlp {
      * @tparam T data type
      * @tparam Cmp comparator type, which uses the default
      */
-    template<typename T, class Cmp = Comparator<T>>
-    class ArrayHeap {
+    template<typename T, class Cmp = comparator<T>>
+    class array_heap {
     public:
         typedef Cmp comparator;
-        typedef ArrayHeap<T> array_heap;
-        typedef typename ArrayList<T>::val_type val_type;
-        typedef typename ArrayList<T>::size_type size_type;
-        typedef typename ArrayList<T>::list_type array_list;
-        typedef typename ArrayList<T>::iterator iterator;
-        typedef typename ArrayList<T>::const_iterator const_iterator;
+        typedef array_heap<T> heap_t;
+        typedef typename array_list<T>::val_type val_type;
+        typedef typename array_list<T>::size_type size_type;
+        typedef typename array_list<T>::list_type array_list_t;
+        typedef typename array_list<T>::iterator iterator;
+        typedef typename array_list<T>::const_iterator const_iterator;
 
     private:
         /**
          * The backing array list.
          */
-        array_list m_list;
+        array_list_t m_list;
         /**
          * The comparator instance.
          */
@@ -508,7 +507,7 @@ namespace wlp {
          *
          * @param initial_capacity initial capacity of the backing array
          */
-        explicit ArrayHeap(size_type initial_capacity = 12)
+        explicit array_heap(size_type initial_capacity = 12)
                 : m_list(initial_capacity),
                   m_cmp(Cmp()) {
         }
@@ -516,14 +515,14 @@ namespace wlp {
         /**
          * Disable copy construction.
          */
-        ArrayHeap(const array_heap &) = delete;
+        array_heap(const heap_t &) = delete;
 
         /**
          * Move copy constructor.
          *
          * @param heap array heap whose resources to transfer
          */
-        ArrayHeap(array_heap &&heap)
+        array_heap(heap_t &&heap)
                 : m_list(move(heap.m_list)),
                   m_cmp(move(heap.m_cmp)) {
         }
@@ -591,7 +590,7 @@ namespace wlp {
         /**
          * @return a pointer to the backing array list
          */
-        array_list *get_array_list() {
+        array_list_t *get_array_list() {
             return &m_list;
         }
 
@@ -600,7 +599,7 @@ namespace wlp {
          *
          * @return reference to this heap
          */
-        array_heap &operator=(const array_heap &) = delete;
+        heap_t &operator=(const heap_t &) = delete;
 
         /**
          * Move assignment operator.
@@ -608,7 +607,7 @@ namespace wlp {
          * @param heap array heap whose resources to transfer
          * @return reference to this heap
          */
-        array_heap &operator=(array_heap &&heap) {
+        heap_t &operator=(heap_t &&heap) {
             m_list = move(heap.m_list);
             return *this;
         }
@@ -624,7 +623,7 @@ namespace wlp {
      * @param list array list to sort
      */
     template<typename T>
-    void heap_sort(ArrayList<T> &list) {
+    void heap_sort(array_list<T> &list) {
         make_heap(list.begin(), list.end());
         sort_heap(list.begin(), list.end());
     }
@@ -640,7 +639,7 @@ namespace wlp {
      * @param cmp comparator to use
      */
     template<typename T, typename Cmp>
-    void heap_sort(ArrayList<T> &list, Cmp cmp) {
+    void heap_sort(array_list<T> &list, Cmp cmp) {
         make_heap(list.begin(), list.end(), cmp);
         sort_heap(list.begin(), list.end(), cmp);
     };
