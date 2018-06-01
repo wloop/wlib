@@ -3,8 +3,8 @@
 
 #include <math.h>
 
-#include "InitializerList.h"
-#include "../utility/Tmp.h"
+#include <wlib/stl/InitializerList.h>
+#include <wlib/utility/Tmp.h>
 
 namespace wlp {
 

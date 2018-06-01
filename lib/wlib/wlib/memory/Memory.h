@@ -19,11 +19,10 @@
 
 #include <string.h>
 
-#include "wlib/utility/Utility.h"
-#include "wlib/Types.h"
-
-#include "wlib/utility/Tmp.h"
-#include "New.h"
+#include <wlib/Types.h>
+#include <wlib/utility/Utility.h>
+#include <wlib/utility/Tmp.h>
+#include <wlib/memory/New.h>
 
 /**
  * @brief Helper for initializing and destroying memory management

@@ -15,12 +15,11 @@
 #ifndef EMBEDDEDCPLUSPLUS_ARRAYHEAP_H
 #define EMBEDDEDCPLUSPLUS_ARRAYHEAP_H
 
-#include "ArrayList.h"
-#include "Comparator.h"
-#include "Concept.h"
-#include "TypeTraits.h"
-
-#include "wlib/utility/Utility.h"
+#include <wlib/stl/ArrayList.h>
+#include <wlib/stl/Comparator.h>
+#include <wlib/stl/Concept.h>
+#include <wlib/stl/TypeTraits.h>
+#include <wlib/utility/Utility.h>
 
 namespace wlp {
 

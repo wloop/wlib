@@ -13,11 +13,10 @@
 #ifndef EMBEDDEDCPLUSPLUS_ARRAYLIST_H
 #define EMBEDDEDCPLUSPLUS_ARRAYLIST_H
 
-#include "wlib/Types.h"
-
-#include "wlib/memory/Memory.h"
-#include "wlib/utility/Utility.h"
-#include "wlib/exceptions/Exceptions.h"
+#include <wlib/Types.h>
+#include <wlib/memory/Memory.h>
+#include <wlib/utility/Utility.h>
+#include <wlib/exceptions/Exceptions.h>
 
 namespace wlp {
 

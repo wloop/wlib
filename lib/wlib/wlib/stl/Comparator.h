@@ -12,10 +12,9 @@
 
 #include <string.h> // strcmp
 
-#include "wlib/Types.h"
-
-#include "Equal.h"
-#include "wlib/strings/String.h"
+#include <wlib/Types.h>
+#include <wlib/stl/Equal.h>
+#include <wlib/strings/String.h>
 
 namespace wlp {
 

@@ -15,13 +15,12 @@
 #ifndef CORE_STL_HASH_TABLE_H
 #define CORE_STL_HASH_TABLE_H
 
-#include "Equal.h"
-#include "Hash.h"
-#include "Pair.h"
-
-#include "wlib/memory/Memory.h"
-#include "wlib/utility/Utility.h"
-#include "wlib/exceptions/Exceptions.h"
+#include <wlib/stl/Equal.h>
+#include <wlib/stl/Hash.h>
+#include <wlib/stl/Pair.h>
+#include <wlib/memory/Memory.h>
+#include <wlib/utility/Utility.h>
+#include <wlib/exceptions/Exceptions.h>
 
 namespace wlp {
 
@@ -601,13 +600,13 @@ namespace wlp {
             }
         }
         if (m_buckets[i]) {
-            return pair<iterator, bool>(iterator(m_buckets[i], this), false);
+            return pair_t<iterator, bool>(iterator(m_buckets[i], this), false);
         } else {
             ++m_num_elements;
             element_type *node = malloc<element_type>();
             *node = forward<E>(element);
             m_buckets[i] = node;
-            return pair<iterator, bool>(iterator(node, this), true);
+            return pair_t<iterator, bool>(iterator(node, this), true);
         }
     };
 

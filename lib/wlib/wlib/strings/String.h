@@ -14,11 +14,10 @@
 
 #include <string.h> // strlen, strncpy, strcmp
 
-#include "StringIterator.h"
-
-#include "wlib/Types.h"
-#include "wlib/utility/Math.h"
-#include "wlib/memory/Memory.h"
+#include <wlib/strings/StringIterator.h>
+#include <wlib/Types.h>
+#include <wlib/utility/Math.h>
+#include <wlib/memory/Memory.h>
 
 namespace wlp {
 

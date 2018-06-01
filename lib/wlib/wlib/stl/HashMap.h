@@ -13,14 +13,13 @@
 #ifndef EMBEDDEDTESTS_CHAINMAP_H
 #define EMBEDDEDTESTS_CHAINMAP_H
 
-#include "Equal.h"
-#include "Hash.h"
-#include "HashTable.h"
-#include "Pair.h"
-#include "Table.h"
-#include "Tuple.h"
-
-#include "wlib/utility/Utility.h"
+#include <wlib/stl/Equal.h>
+#include <wlib/stl/Hash.h>
+#include <wlib/stl/HashTable.h>
+#include <wlib/stl/Pair.h>
+#include <wlib/stl/Table.h>
+#include <wlib/stl/Tuple.h>
+#include <wlib/utility/Utility.h>
 
 namespace wlp {
 

@@ -10,8 +10,8 @@
 #ifndef EMBEDDEDCPLUSPLUS_TREESET_H
 #define EMBEDDEDCPLUSPLUS_TREESET_H
 
-#include "Table.h"
-#include "RedBlackTree.h"
+#include <wlib/stl/Table.h>
+#include <wlib/stl/RedBlackTree.h>
 
 namespace wlp {
 

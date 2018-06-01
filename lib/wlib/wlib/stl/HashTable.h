@@ -3,13 +3,12 @@
 
 #include <string.h> // memset
 
-#include "Equal.h"
-#include "Hash.h"
-#include "Pair.h"
-
-#include "wlib/Types.h"
-#include "wlib/exceptions/Exceptions.h"
-#include "wlib/utility/Utility.h"
+#include <wlib/stl/Equal.h>
+#include <wlib/stl/Hash.h>
+#include <wlib/stl/Pair.h>
+#include <wlib/Types.h>
+#include <wlib/exceptions/Exceptions.h>
+#include <wlib/utility/Utility.h>
 
 namespace wlp {
 
@@ -426,7 +425,7 @@ namespace wlp {
         node_type *first = m_buckets[n];
         for (node_type *cur = first; cur; cur = cur->m_next) {
             if (m_key_equals(m_get_key(cur->m_element), m_get_key(element))) {
-                return pair<iterator, bool>(iterator(cur, this), false);
+                return pair_t<iterator, bool>(iterator(cur, this), false);
             }
         }
         node_type *tmp = malloc<node_type>();
@@ -434,7 +433,7 @@ namespace wlp {
         tmp->m_next = first;
         m_buckets[n] = tmp;
         ++m_size;
-        return pair<iterator, bool>(iterator(tmp, this), true);
+        return pair_t<iterator, bool>(iterator(tmp, this), true);
     }
 
     template<typename Element, typename Key, typename Val,

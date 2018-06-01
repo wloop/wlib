@@ -11,8 +11,8 @@
 #ifndef EMBEDDEDCPLUSPLUS_PACKETCONSTRUCTOR_H
 #define EMBEDDEDCPLUSPLUS_PACKETCONSTRUCTOR_H
 
-#include "wlib/Types.h"
-#include "wlib/stl/Bitset.h"
+#include <wlib/Types.h>
+#include <wlib/stl/Bitset.h>
 
 namespace wlp {
 

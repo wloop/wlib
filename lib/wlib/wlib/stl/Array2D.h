@@ -3,9 +3,9 @@
 
 #include <string.h>
 
-#include "InitializerList.h"
-#include "../Types.h"
-#include "../utility/Utility.h"
+#include <wlib/Types.h>
+#include <wlib/stl/InitializerList.h>
+#include <wlib/utility/Utility.h>
 
 namespace wlp {
 

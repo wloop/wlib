@@ -11,8 +11,8 @@
 
 #include "Allocator.h"
 
-#include "wlib/utility/Math.h"
-#include "wlib/utility/Utility.h"
+#include "../utility/Math.h"
+#include "../utility/Utility.h"
 
 using namespace wlp;
 

@@ -12,7 +12,7 @@
 #ifndef EMBEDDEDTESTS_PAIR_H
 #define EMBEDDEDTESTS_PAIR_H
 
-#include "wlib/utility/Utility.h"
+#include <wlib/utility/Utility.h>
 
 namespace wlp {
 
@@ -20,7 +20,7 @@ namespace wlp {
     struct pair {
         typedef First first_type;
         typedef Second second_type;
-        typedef pair<First, Second> pair;
+        typedef pair<First, Second> pair_t;
 
         /**
          * First element in the pair.

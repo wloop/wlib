@@ -13,8 +13,8 @@
 #ifndef EMBEDDEDCPLUSPLUS_UNIQUEPTR_H
 #define EMBEDDEDCPLUSPLUS_UNIQUEPTR_H
 
-#include "../memory/Memory.h"
-#include "../exceptions/Exceptions.h"
+#include <wlib/memory/Memory.h>
+#include <wlib/exceptions/Exceptions.h>
 
 namespace wlp {
 

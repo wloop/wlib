@@ -17,12 +17,11 @@
 #ifndef EMBEDDEDCPLUSPLUS_SHAREDPTR_H
 #define EMBEDDEDCPLUSPLUS_SHAREDPTR_H
 
-#include "UniquePtr.h"
-
-#include "wlib/Types.h"
-#include "wlib/utility/Tmp.h"
-#include "wlib/utility/Utility.h"
-#include "wlib/exceptions/Exceptions.h"
+#include <wlib/stl/UniquePtr.h>
+#include <wlib/Types.h>
+#include <wlib/utility/Tmp.h>
+#include <wlib/utility/Utility.h>
+#include <wlib/exceptions/Exceptions.h>
 
 namespace wlp {
 

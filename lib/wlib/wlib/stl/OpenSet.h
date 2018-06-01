@@ -13,13 +13,12 @@
 #ifndef EMBEDDEDCPLUSPLUS_OPENSET_H
 #define EMBEDDEDCPLUSPLUS_OPENSET_H
 
-#include "Equal.h"
-#include "Hash.h"
-#include "OpenTable.h"
-#include "Pair.h"
-#include "Table.h"
-
-#include "wlib/utility/Utility.h"
+#include <wlib/stl/Equal.h>
+#include <wlib/stl/Hash.h>
+#include <wlib/stl/OpenTable.h>
+#include <wlib/stl/Pair.h>
+#include <wlib/stl/Table.h>
+#include <wlib/utility/Utility.h>
 
 namespace wlp {
 

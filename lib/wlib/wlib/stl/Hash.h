@@ -14,10 +14,10 @@
 #ifndef CORE_STL_HASH_H
 #define CORE_STL_HASH_H
 
-#include "wlib/Types.h"
-#include "wlib/WlibConfig.h"
-#include "wlib/utility/Math.h"
-#include "wlib/strings/String.h"
+#include <wlib/Types.h>
+#include <wlib/WlibConfig.h>
+#include <wlib/utility/Math.h>
+#include <wlib/strings/String.h>
 
 namespace wlp {
 

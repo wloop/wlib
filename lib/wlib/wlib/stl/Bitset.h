@@ -17,9 +17,9 @@
 #include <math.h>
 #include <string.h>
 
-#include "wlib/Types.h"
-#include "wlib/Wlib.h"
-#include "wlib/strings/String.h"
+#include <wlib/Types.h>
+#include <wlib/Wlib.h>
+#include <wlib/strings/String.h>
 
 namespace wlp {
 

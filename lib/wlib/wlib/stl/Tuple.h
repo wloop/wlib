@@ -18,8 +18,8 @@
 #ifndef EMBEDDEDCPLUSPLUS_TUPLE_H
 #define EMBEDDEDCPLUSPLUS_TUPLE_H
 
-#include "Pair.h"
-#include "../utility/Tmp.h"
+#include <wlib/stl/Pair.h>
+#include <wlib/utility/Tmp.h>
 
 namespace wlp {
 

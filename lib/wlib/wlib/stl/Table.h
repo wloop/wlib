@@ -1,8 +1,8 @@
 #ifndef EMBEDDEDCPLUSPLUS_TABLECOMMON_H
 #define EMBEDDEDCPLUSPLUS_TABLECOMMON_H
 
-#include "Tuple.h"
-#include "wlib/utility/Tmp.h"
+#include <wlib/stl/Tuple.h>
+#include <wlib/utility/Tmp.h>
 
 namespace wlp {
 

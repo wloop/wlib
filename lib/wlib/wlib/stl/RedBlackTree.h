@@ -13,13 +13,12 @@
 #ifndef EMBEDDEDCPLUSPLUS_REDBLACKTREE_H
 #define EMBEDDEDCPLUSPLUS_REDBLACKTREE_H
 
-#include "Comparator.h"
-#include "Pair.h"
-
-#include "wlib/Types.h"
-#include "wlib/memory/Memory.h"
-#include "wlib/utility/Utility.h"
-#include "wlib/exceptions/Exceptions.h"
+#include <wlib/stl/Comparator.h>
+#include <wlib/stl/Pair.h>
+#include <wlib/Types.h>
+#include <wlib/memory/Memory.h>
+#include <wlib/utility/Utility.h>
+#include <wlib/exceptions/Exceptions.h>
 
 namespace wlp {
 
@@ -1064,15 +1063,15 @@ namespace wlp {
         iterator tmp = iterator(carry);
         if (compare) {
             if (tmp == begin()) {
-                return pair<iterator, bool>(insert(cur, carry, forward<E>(element)), true);
+                return pair_t<iterator, bool>(insert(cur, carry, forward<E>(element)), true);
             } else {
                 --tmp;
             }
         }
         if (m_cmp.__lt__(m_get_key(tmp.m_node->m_element), m_get_key(element))) {
-            return pair<iterator, bool>(insert(cur, carry, forward<E>(element)), true);
+            return pair_t<iterator, bool>(insert(cur, carry, forward<E>(element)), true);
         }
-        return pair<iterator, bool>(tmp, false);
+        return pair_t<iterator, bool>(tmp, false);
     }
 
     template<typename Element, typename Key, typename Val, 
@@ -1296,7 +1295,7 @@ namespace wlp {
     >
     tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::equal_range(const key_type &key) {
-        return pair<iterator, iterator>(lower_bound(key), upper_bound(key));
+        return pair_t<iterator, iterator>(lower_bound(key), upper_bound(key));
     }
 
 
@@ -1308,7 +1307,7 @@ namespace wlp {
     >
     tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::equal_range(const key_type &key) const {
-        return pair<const_iterator, const_iterator>(lower_bound(key), upper_bound(key));
+        return pair_t<const_iterator, const_iterator>(lower_bound(key), upper_bound(key));
     }
 
 }

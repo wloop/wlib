@@ -14,10 +14,9 @@
 #ifndef CORE_STL_LIST_H
 #define CORE_STL_LIST_H
 
-#include "wlib/memory/Memory.h"
-
-#include "wlib/utility/Utility.h"
-#include "wlib/exceptions/Exceptions.h"
+#include <wlib/memory/Memory.h>
+#include <wlib/utility/Utility.h>
+#include <wlib/exceptions/Exceptions.h>
 
 namespace wlp {
 

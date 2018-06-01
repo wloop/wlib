@@ -13,10 +13,10 @@
 #ifndef EMBEDDEDCPLUSPLUS_CHAINSET_H
 #define EMBEDDEDCPLUSPLUS_CHAINSET_H
 
-#include "Equal.h"
-#include "Hash.h"
-#include "HashTable.h"
-#include "Table.h"
+#include <wlib/stl/Equal.h>
+#include <wlib/stl/Hash.h>
+#include <wlib/stl/HashTable.h>
+#include <wlib/stl/Table.h>
 
 namespace wlp {
 

@@ -10,10 +10,10 @@
 #ifndef EMBEDDEDCPLUSPLUS_TREEMAP_H
 #define EMBEDDEDCPLUSPLUS_TREEMAP_H
 
-#include "RedBlackTree.h"
-#include "Table.h"
-#include "Tuple.h"
-#include "wlib/Types.h"
+#include <wlib/stl/RedBlackTree.h>
+#include <wlib/stl/Table.h>
+#include <wlib/stl/Tuple.h>
+#include <wlib/Types.h>
 
 namespace wlp {
 
