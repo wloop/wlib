@@ -6,7 +6,7 @@
 using namespace wlp;
 
 TEST(heap_test, test_heap_push_pop) {
-    ArrayHeap<int> heap;
+    array_heap<int> heap;
     heap.push(5);
     heap.push(10);
     heap.push(1);
@@ -99,7 +99,7 @@ TEST(heap_test, test_make_heap_single) {
 }
 
 TEST(heap_test, test_heap_push) {
-    ArrayHeap<int> heap(5);
+    array_heap<int> heap(5);
     heap.push(5);
     const int v = 7;
     heap.push(v);
@@ -112,12 +112,12 @@ TEST(heap_test, test_heap_push) {
 }
 
 TEST(heap_test, test_move_constructor) {
-    ArrayHeap<int> heap(5);
+    array_heap<int> heap(5);
     heap.push(1);
     heap.push(-1);
     heap.push(5);
     heap.push(-5);
-    ArrayHeap<int> heap0(move(heap));
+    array_heap<int> heap0(move(heap));
     ASSERT_EQ(4, heap0.size());
     ASSERT_EQ(0, heap.size());
     ASSERT_EQ(5, heap0.capacity());
@@ -137,11 +137,11 @@ TEST(heap_test, test_move_constructor) {
 }
 
 TEST(heap_test, test_move_assignment_operator) {
-    ArrayHeap<int> heap(5);
+    array_heap<int> heap(5);
     heap.push(5);
     heap.push(2);
     heap.push(11);
-    ArrayHeap<int> heap0(10);
+    array_heap<int> heap0(10);
     heap0.push(1);
     heap0.push(10);
     heap0 = move(heap);

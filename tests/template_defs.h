@@ -56,10 +56,10 @@ namespace wlp {
     struct Pair<OpenHashMap<String16, String16>::iterator, bool>;
 
     template
-    class ArrayHeap<int>;
+    class array_heap<int>;
 
     template
-    class ArrayHeap<const char *>;
+    class array_heap<const char *>;
 
     template
     class ArrayList<int>;

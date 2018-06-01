@@ -481,10 +481,10 @@ namespace wlp {
      * @tparam Cmp comparator type, which uses the default
      */
     template<typename T, class Cmp = Comparator<T>>
-    class ArrayHeap {
+    class array_heap {
     public:
         typedef Cmp comparator;
-        typedef ArrayHeap<T> array_heap;
+        typedef array_heap<T> heap_t;
         typedef typename ArrayList<T>::val_type val_type;
         typedef typename ArrayList<T>::size_type size_type;
         typedef typename ArrayList<T>::list_type array_list;
@@ -508,7 +508,7 @@ namespace wlp {
          *
          * @param initial_capacity initial capacity of the backing array
          */
-        explicit ArrayHeap(size_type initial_capacity = 12)
+        explicit array_heap(size_type initial_capacity = 12)
                 : m_list(initial_capacity),
                   m_cmp(Cmp()) {
         }
@@ -516,14 +516,14 @@ namespace wlp {
         /**
          * Disable copy construction.
          */
-        ArrayHeap(const array_heap &) = delete;
+        array_heap(const heap_t &) = delete;
 
         /**
          * Move copy constructor.
          *
          * @param heap array heap whose resources to transfer
          */
-        ArrayHeap(array_heap &&heap)
+        array_heap(heap_t &&heap)
                 : m_list(move(heap.m_list)),
                   m_cmp(move(heap.m_cmp)) {
         }
@@ -600,7 +600,7 @@ namespace wlp {
          *
          * @return reference to this heap
          */
-        array_heap &operator=(const array_heap &) = delete;
+        heap_t &operator=(const heap_t &) = delete;
 
         /**
          * Move assignment operator.
@@ -608,7 +608,7 @@ namespace wlp {
          * @param heap array heap whose resources to transfer
          * @return reference to this heap
          */
-        array_heap &operator=(array_heap &&heap) {
+        heap_t &operator=(heap_t &&heap) {
             m_list = move(heap.m_list);
             return *this;
         }
