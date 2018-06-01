@@ -67,12 +67,12 @@ namespace wlp {
     };
 
     template<uint8_t nBits>
-    class Bitset {
+    class bit_set {
     public:
         /**
          * Default Constructor creates an empty bitset.
          */
-        Bitset() {
+        bit_set() {
             memset(m_array, 0, sizeof(m_array));
         }
 
@@ -82,7 +82,7 @@ namespace wlp {
          *
          * @param n the number to create bitset from
          */
-        explicit Bitset(uint64_t n) {
+        explicit bit_set(uint64_t n) {
             setFromNumber(n);
         }
 
@@ -90,7 +90,7 @@ namespace wlp {
          * Copy constructor for const.
          * @param b Bitset to copy
          */
-        Bitset(const Bitset<nBits> &b) {
+        bit_set(const bit_set<nBits> &b) {
             uint32_t end = ceil_bits<nBits>::value;
             for (size_type i = 0; i < end; i++) {
                 m_array[i] = (m_array[i] & 0) | b.m_array[i];
@@ -205,7 +205,7 @@ namespace wlp {
          * Assignment operator copies the contents of the bitset.
          * @param b Bitset to assign
          */
-        Bitset<nBits> &operator=(const Bitset<nBits> &b) {
+        bit_set<nBits> &operator=(const bit_set<nBits> &b) {
             uint32_t end = ceil_bits<nBits>::value;
             for (size_type i = 0; i < end; i++) {
                 m_array[i] = (m_array[i] & 0) | b.m_array[i];

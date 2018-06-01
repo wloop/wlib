@@ -16,9 +16,9 @@
 
 namespace wlp {
 
-    typedef Bitset<64> packet64;
-    typedef Bitset<3> packet_type;
-    typedef Bitset<7> packet_name;
+    typedef bit_set<64> packet64;
+    typedef bit_set<3> packet_type;
+    typedef bit_set<7> packet_name;
 
     struct __packet_maker {
         static packet64 build(const float data[3], const packet_type &type, const packet_name &name);
