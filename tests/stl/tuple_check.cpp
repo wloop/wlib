@@ -64,11 +64,11 @@ TEST(tuple_test, test_tuple_multi_cat) {
     ASSERT_DOUBLE_EQ(43.32, get<2>(tuple));
     ASSERT_STREQ("string", get<3>(tuple));
     ASSERT_STREQ("string", get<4>(tuple));
-    tuple<int> i_tuple_1(1);
-    tuple<int> i_tuple_2(2);
-    tuple<int> i_tuple_3(3);
-    tuple<int> i_tuple_4(4);
-    tuple<int, int, int, int> i_tuple = tuple_cat(i_tuple_1, i_tuple_2, i_tuple_3, i_tuple_4);
+    wlp::tuple<int> i_tuple_1(1);
+    wlp::tuple<int> i_tuple_2(2);
+    wlp::tuple<int> i_tuple_3(3);
+    wlp::tuple<int> i_tuple_4(4);
+    wlp::tuple<int, int, int, int> i_tuple = tuple_cat(i_tuple_1, i_tuple_2, i_tuple_3, i_tuple_4);
     ASSERT_EQ(1, get<0>(i_tuple));
     ASSERT_EQ(2, get<1>(i_tuple));
     ASSERT_EQ(3, get<2>(i_tuple));

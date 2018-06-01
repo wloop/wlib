@@ -600,13 +600,13 @@ namespace wlp {
             }
         }
         if (m_buckets[i]) {
-            return pair_t<iterator, bool>(iterator(m_buckets[i], this), false);
+            return pair<iterator, bool>(iterator(m_buckets[i], this), false);
         } else {
             ++m_num_elements;
             element_type *node = malloc<element_type>();
             *node = forward<E>(element);
             m_buckets[i] = node;
-            return pair_t<iterator, bool>(iterator(node, this), true);
+            return pair<iterator, bool>(iterator(node, this), true);
         }
     };
 
