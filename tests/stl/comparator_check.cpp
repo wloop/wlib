@@ -5,7 +5,7 @@
 using namespace wlp;
 
 TEST(comparator_test, test_int_comparison) {
-    Comparator<int> cmp;
+    comparator<int> cmp;
     ASSERT_TRUE(cmp.__eq__(5, 5));
     ASSERT_FALSE(cmp.__eq__(5, 6));
 
@@ -32,7 +32,7 @@ TEST(comparator_test, test_int_comparison) {
 TEST(comparator_test, test_c_string_comparison) {
     char str1[] = "hello";
     char str2[] = "hellsalem";
-    Comparator<const char *> cmp;
+    comparator<const char *> cmp;
 
     ASSERT_TRUE(cmp.__eq__(str1, str1));
     ASSERT_FALSE(cmp.__eq__(str1, str2));
@@ -60,7 +60,7 @@ TEST(comparator_test, test_c_string_comparison) {
 TEST(comparator_test, test_static_string_comparator) {
     String8 str1("hello");
     String8 str2("hellsalem");
-    Comparator<String8> cmp;
+    comparator<String8> cmp;
 
     ASSERT_TRUE(cmp.__eq__(str1, str1));
     ASSERT_FALSE(cmp.__eq__(str1, str2));

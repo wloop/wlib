@@ -83,13 +83,13 @@ namespace wlp {
     class ArrayListIterator<const char *, const char *const &, const char *const *>;
 
     template
-    struct Comparator<int>;
+    struct comparator<int>;
 
     template
     struct ReverseComparator<int>;
 
     template
-    struct Comparator<String8>;
+    struct comparator<String8>;
 
     template
     class LinkedList<int>;

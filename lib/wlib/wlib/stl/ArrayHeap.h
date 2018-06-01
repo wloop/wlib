@@ -480,7 +480,7 @@ namespace wlp {
      * @tparam T data type
      * @tparam Cmp comparator type, which uses the default
      */
-    template<typename T, class Cmp = Comparator<T>>
+    template<typename T, class Cmp = comparator<T>>
     class array_heap {
     public:
         typedef Cmp comparator;

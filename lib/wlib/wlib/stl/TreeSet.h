@@ -25,7 +25,7 @@ namespace wlp {
      * @tparam Key stored value type
      * @tparam Cmp comparator for stored value, which uses the default comparator
      */
-    template<typename Key, typename Cmp = Comparator<Key>>
+    template<typename Key, typename Cmp = comparator<Key>>
     class TreeSet {
     public:
         typedef TreeSet<Key, Cmp> set_type;

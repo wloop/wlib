@@ -335,7 +335,7 @@ namespace wlp {
             typename Val,
             typename GetKey,
             typename GetVal,
-            typename Cmp = Comparator <Key>>
+            typename Cmp = comparator <Key>>
     class RedBlackTree {
     public:
         typedef Key key_type;

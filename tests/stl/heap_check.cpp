@@ -92,7 +92,7 @@ TEST(heap_test, test_make_heap_single) {
     heap.clear();
     ASSERT_EQ(0, heap.size());
     heap.push_back(10);
-    Comparator<int> comparator;
+    comparator<int> comparator;
     make_heap(heap.begin(), heap.end(), comparator);
     ASSERT_EQ(10, heap.back());
     ASSERT_EQ(10, heap.front());

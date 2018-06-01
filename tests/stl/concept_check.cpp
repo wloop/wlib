@@ -13,14 +13,14 @@
 using namespace wlp;
 
 TEST(concept_checks, check_comparator_concept) {
-    bool c = comparator_concept<Comparator<int>, int>::value;
+    bool c = comparator_concept<comparator<int>, int>::value;
     ASSERT_TRUE(c);
     c = comparator_concept<Hash<int, int>, int>::value;
     ASSERT_FALSE(c);
 }
 
 TEST(concept_checks, check_is_comparator) {
-    ASSERT_TRUE((is_comparator<Comparator<const char *>, const char *>()));
+    ASSERT_TRUE((is_comparator<comparator<const char *>, const char *>()));
     ASSERT_FALSE((is_comparator<Equal<const char *>, const char *>()));
     ASSERT_FALSE((is_comparator<Hash<const char *, uint16_t>, const char *>()));
     ASSERT_TRUE((is_comparator<ReverseComparator<char>, char>()));
@@ -78,7 +78,7 @@ TEST(concept_checks, check_forward_iterator_concept) {
     ASSERT_TRUE((is_iterator<array_list<int>::const_iterator>()));
 
     ASSERT_FALSE((is_iterator<array_list<int>>()));
-    ASSERT_FALSE((is_iterator<Comparator<int>>()));
+    ASSERT_FALSE((is_iterator<comparator<int>>()));
 }
 
 TEST(concept_checks, check_map_concept) {
@@ -102,7 +102,7 @@ TEST(concept_checks, check_set_concept) {
 TEST(concept_checks, check_list_concept) {
     ASSERT_FALSE((is_list<HashMap<int, int>>()));
     ASSERT_FALSE((is_list<int>()));
-    ASSERT_FALSE((is_list<Comparator<int>>()));
+    ASSERT_FALSE((is_list<comparator<int>>()));
 
     ASSERT_TRUE((is_list<array_list<int>>()));
     ASSERT_TRUE((is_list<LinkedList<int>>()));

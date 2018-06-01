@@ -28,7 +28,7 @@ namespace wlp {
      * @tparam Val value type
      * @tparam Cmp key comparator type, which uses the default comparator
      */
-    template<typename Key, typename Val, typename Cmp = Comparator<Key>>
+    template<typename Key, typename Val, typename Cmp = comparator<Key>>
     class TreeMap {
     public:
         typedef TreeMap<Key, Val, Cmp> map_type;
