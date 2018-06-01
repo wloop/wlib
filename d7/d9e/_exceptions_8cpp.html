@@ -94,12 +94,12 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <p>Implementation of Exceptions using C style.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br/>
-<code>#include &quot;<a class="el" href="../../d3/de6/_memory_8h_source.html">wlib/memory/Memory.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../d7/d2f/_exceptions_8h_source.html">Exceptions.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d3/de6/_memory_8h_source.html">../memory/Memory.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Exceptions.cpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dc/d70/_exceptions_8cpp__incl.svg" width="563" height="411"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../dc/d70/_exceptions_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 </div>
@@ -206,10 +206,10 @@ Variables</h2></td></tr>
 <div class="line">    ExceptionName(<span class="keyword">const</span> <span class="keywordtype">char</span> *fileName, <span class="keyword">const</span> uint16_t lineNum, <span class="keyword">const</span> <span class="keywordtype">char</span> *message) \</div>
 <div class="line">            : <a class="code" href="../../df/d70/class_exception.html#a5c2cfcbfe07b0147bdaa1160f116760f">Exception</a>(Index, fileName, lineNum, message) {} \</div>
 <div class="line">};</div>
-<div class="ttc" id="class_exception_html"><div class="ttname"><a href="../../df/d70/class_exception.html">Exception</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00028">Exceptions.h:28</a></div></div>
-<div class="ttc" id="class_exception_html_a5c2cfcbfe07b0147bdaa1160f116760f"><div class="ttname"><a href="../../df/d70/class_exception.html#a5c2cfcbfe07b0147bdaa1160f116760f">Exception::Exception</a></div><div class="ttdeci">Exception(uint8_t type, const char *fileName, uint16_t lineNum, const char *message)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d9e/_exceptions_8cpp_source.html#l00025">Exceptions.cpp:25</a></div></div>
+<div class="ttc" id="class_exception_html"><div class="ttname"><a href="../../df/d70/class_exception.html">Exception</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00029">Exceptions.h:29</a></div></div>
+<div class="ttc" id="class_exception_html_a5c2cfcbfe07b0147bdaa1160f116760f"><div class="ttname"><a href="../../df/d70/class_exception.html#a5c2cfcbfe07b0147bdaa1160f116760f">Exception::Exception</a></div><div class="ttdeci">Exception(uint8_t type, const char *fileName, uint16_t lineNum, const char *message)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d9e/_exceptions_8cpp_source.html#l00026">Exceptions.cpp:26</a></div></div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00061">61</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00062">62</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
 
 </div>
 </div>
@@ -227,18 +227,18 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00047">47</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00048">48</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
 
-<p>References <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00045">__exception_ptr</a>.</p>
+<p>References <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00046">__exception_ptr</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00054">__exc_default_handler()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                   {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d7/d9e/_exceptions_8cpp.html#aa873b3e9342deb4329eac849d5a8cd49">__exception_ptr</a> == <span class="keyword">nullptr</span>) { <span class="keywordflow">return</span>; }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    free&lt;Exception&gt;(<a class="code" href="../../d7/d9e/_exceptions_8cpp.html#aa873b3e9342deb4329eac849d5a8cd49">__exception_ptr</a>);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="../../d7/d9e/_exceptions_8cpp.html#aa873b3e9342deb4329eac849d5a8cd49">__exception_ptr</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
-<div class="ttc" id="_exceptions_8cpp_html_aa873b3e9342deb4329eac849d5a8cd49"><div class="ttname"><a href="../../d7/d9e/_exceptions_8cpp.html#aa873b3e9342deb4329eac849d5a8cd49">__exception_ptr</a></div><div class="ttdeci">Exception * __exception_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d9e/_exceptions_8cpp_source.html#l00045">Exceptions.cpp:45</a></div></div>
+<p>Referenced by <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00055">__exc_default_handler()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                   {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d7/d9e/_exceptions_8cpp.html#aa873b3e9342deb4329eac849d5a8cd49">__exception_ptr</a> == <span class="keyword">nullptr</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    free&lt;Exception&gt;(<a class="code" href="../../d7/d9e/_exceptions_8cpp.html#aa873b3e9342deb4329eac849d5a8cd49">__exception_ptr</a>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="../../d7/d9e/_exceptions_8cpp.html#aa873b3e9342deb4329eac849d5a8cd49">__exception_ptr</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<div class="ttc" id="_exceptions_8cpp_html_aa873b3e9342deb4329eac849d5a8cd49"><div class="ttname"><a href="../../d7/d9e/_exceptions_8cpp.html#aa873b3e9342deb4329eac849d5a8cd49">__exception_ptr</a></div><div class="ttdeci">Exception * __exception_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d9e/_exceptions_8cpp_source.html#l00046">Exceptions.cpp:46</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -263,17 +263,17 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00054">54</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00055">55</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
 
-<p>References <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00047">__exc_clear()</a>, and <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00023">UNEXPECTED</a>.</p>
-<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                             {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#ifdef UNEXPECTED</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor"></span>    <a class="code" href="../../d7/d2f/_exceptions_8h.html#a33ed6c61d07247de6740d898a9935984">UNEXPECTED</a>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor"></span>    <a class="code" href="../../d7/d9e/_exceptions_8cpp.html#a5d29c7b452a93e09086b8ea1caeb7ad8">__exc_clear</a>();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
-<div class="ttc" id="_exceptions_8cpp_html_a5d29c7b452a93e09086b8ea1caeb7ad8"><div class="ttname"><a href="../../d7/d9e/_exceptions_8cpp.html#a5d29c7b452a93e09086b8ea1caeb7ad8">__exc_clear</a></div><div class="ttdeci">void __exc_clear()</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d9e/_exceptions_8cpp_source.html#l00047">Exceptions.cpp:47</a></div></div>
-<div class="ttc" id="_exceptions_8h_html_a33ed6c61d07247de6740d898a9935984"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#a33ed6c61d07247de6740d898a9935984">UNEXPECTED</a></div><div class="ttdeci">#define UNEXPECTED</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00023">Exceptions.h:23</a></div></div>
+<p>References <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00048">__exc_clear()</a>, and <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00024">UNEXPECTED</a>.</p>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                             {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#ifdef UNEXPECTED</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor"></span>    <a class="code" href="../../d7/d2f/_exceptions_8h.html#a33ed6c61d07247de6740d898a9935984">UNEXPECTED</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor"></span>    <a class="code" href="../../d7/d9e/_exceptions_8cpp.html#a5d29c7b452a93e09086b8ea1caeb7ad8">__exc_clear</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="ttc" id="_exceptions_8cpp_html_a5d29c7b452a93e09086b8ea1caeb7ad8"><div class="ttname"><a href="../../d7/d9e/_exceptions_8cpp.html#a5d29c7b452a93e09086b8ea1caeb7ad8">__exc_clear</a></div><div class="ttdeci">void __exc_clear()</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d9e/_exceptions_8cpp_source.html#l00048">Exceptions.cpp:48</a></div></div>
+<div class="ttc" id="_exceptions_8h_html_a33ed6c61d07247de6740d898a9935984"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#a33ed6c61d07247de6740d898a9935984">UNEXPECTED</a></div><div class="ttdeci">#define UNEXPECTED</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00024">Exceptions.h:24</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -299,12 +299,12 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00085">85</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                                          {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;BadAllocException&gt;(__FILE__, __LINE__, message);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> exception;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00086">86</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                                          {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;BadAllocException&gt;(__FILE__, __LINE__, message);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">return</span> exception;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -322,12 +322,12 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00127">127</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                                                          {</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;BadStateException&gt;(__FILE__, __LINE__, message);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">return</span> exception;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00128">128</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                                                          {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;BadStateException&gt;(__FILE__, __LINE__, message);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">return</span> exception;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -345,12 +345,12 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00133">133</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                                                             {</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;BadWeakPtrException&gt;(__FILE__, __LINE__, message);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordflow">return</span> exception;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00134">134</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                                                             {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;BadWeakPtrException&gt;(__FILE__, __LINE__, message);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordflow">return</span> exception;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -368,12 +368,12 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00103">103</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                                                                   {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;IllegalTransitionException&gt;(__FILE__, __LINE__, message);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">return</span> exception;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00104">104</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                                                                   {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;IllegalTransitionException&gt;(__FILE__, __LINE__, message);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">return</span> exception;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -391,12 +391,12 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00115">115</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                                                      {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;IndexException&gt;(__FILE__, __LINE__, message);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">return</span> exception;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00116">116</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                                                      {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;IndexException&gt;(__FILE__, __LINE__, message);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">return</span> exception;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -414,12 +414,12 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00121">121</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                                    {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;KeyException&gt;(__FILE__, __LINE__, message);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">return</span> exception;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00122">122</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                                                    {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;KeyException&gt;(__FILE__, __LINE__, message);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">return</span> exception;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -437,12 +437,12 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00091">91</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                                              {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;LogicFailureException&gt;(__FILE__, __LINE__, message);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">return</span> exception;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00092">92</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                                              {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;LogicFailureException&gt;(__FILE__, __LINE__, message);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">return</span> exception;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -461,12 +461,12 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 <p>Exceptions to use and their macros. More can be added as we go </p>
 
-<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00079">79</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                                        {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;NullPtrException&gt;(__FILE__, __LINE__, message);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">return</span> exception;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00080">80</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                                        {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;NullPtrException&gt;(__FILE__, __LINE__, message);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> exception;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -484,12 +484,12 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00097">97</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                                                        {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;RuntimeException&gt;(__FILE__, __LINE__, message);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">return</span> exception;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00098">98</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                                                        {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;RuntimeException&gt;(__FILE__, __LINE__, message);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> exception;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -507,12 +507,12 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00109">109</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                                                                 {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;UnexpectedStateException&gt;(__FILE__, __LINE__, message);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">return</span> exception;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00110">110</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                                                 {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keyword">auto</span> *exception = malloc&lt;UnexpectedStateException&gt;(__FILE__, __LINE__, message);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">return</span> exception;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -527,7 +527,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00044">44</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00045">45</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
 
 </div>
 </div>
@@ -541,9 +541,9 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00045">45</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00046">46</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00047">__exc_clear()</a>.</p>
+<p>Referenced by <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00048">__exc_clear()</a>.</p>
 
 </div>
 </div>
@@ -563,16 +563,16 @@ Here is the call graph for this function:</div>
 <div class="line">        <span class="stringliteral">&quot;Runtime Exception&quot;</span></div>
 <div class="line">}</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00018">18</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00019">19</a> of file <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html">Exceptions.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00032">Exception::getName()</a>.</p>
+<p>Referenced by <a class="el" href="../../d7/d9e/_exceptions_8cpp_source.html#l00033">Exception::getName()</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 15 2018 21:42:53 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 1 2018 19:34:25 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

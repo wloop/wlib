@@ -1,6 +1,6 @@
 <map id="wlp::__pop_heap" name="wlp::__pop_heap">
 <area shape="rect" id="node2" href="$d5/dca/namespacewlp.html#aedb76bc9547f573d794889862528d16e" title="wlp::pop_heap" alt="" coords="173,31,280,57"/>
-<area shape="rect" id="node3" href="$d5/dca/namespacewlp.html#a664313ed82edafa1cf6c2e9c1c75378a" title="wlp::sort_heap" alt="" coords="345,5,452,32"/>
-<area shape="rect" id="node5" href="$dd/dd6/classwlp_1_1_array_heap.html#a98362b142533a56d1b2e0a35acd944d7" title="wlp::ArrayHeap::pop" alt="" coords="328,56,469,83"/>
-<area shape="rect" id="node4" href="$d5/dca/namespacewlp.html#a2329b0c52ca1a59525aea1d75476ef10" title="wlp::heap_sort" alt="" coords="517,5,624,32"/>
+<area shape="rect" id="node3" href="$d5/dca/namespacewlp.html#a664313ed82edafa1cf6c2e9c1c75378a" title="wlp::sort_heap" alt="" coords="347,5,453,32"/>
+<area shape="rect" id="node5" href="$d5/d92/classwlp_1_1array__heap.html#acdb595ade20c63a48846e5ffedb85276" title="wlp::array_heap::pop" alt="" coords="329,56,471,83"/>
+<area shape="rect" id="node4" href="$d5/dca/namespacewlp.html#ac5b878c0fe198ce97804014fc7021641" title="wlp::heap_sort" alt="" coords="520,5,627,32"/>
 </map>

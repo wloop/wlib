@@ -1,0 +1,5 @@
+<map id="wlp::tree::erase" name="wlp::tree::erase">
+<area shape="rect" id="node2" href="$d9/d40/classwlp_1_1tree.html#adbc749d35fcba6ba99a8713b5d615d5e" title="wlp::tree\&lt; tuple\&lt; Key,\l Val \&gt;, Key, Val, MapGetKey\l\&lt; Key, Val \&gt;, MapGetVal\&lt;\l Key, Val \&gt;, Cmp \&gt;::clear" alt="" coords="165,5,357,75"/>
+<area shape="rect" id="node3" href="$d9/ded/classwlp_1_1tree__set.html#aca717f8b541bcc07240a37ada6947f2b" title="wlp::tree_set::erase" alt="" coords="193,100,330,127"/>
+<area shape="rect" id="node4" href="$d8/de4/classwlp_1_1tree__map.html#aa64ddf0909c919c5478424491b6de1c9" title="wlp::tree_map::erase" alt="" coords="189,151,333,177"/>
+</map>

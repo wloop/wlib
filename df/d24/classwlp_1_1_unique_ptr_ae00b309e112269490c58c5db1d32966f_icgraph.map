@@ -1,6 +1,0 @@
-<map id="wlp::UniquePtr::reset" name="wlp::UniquePtr::reset">
-<area shape="rect" id="node2" href="$df/d24/classwlp_1_1_unique_ptr.html#a3bc3cd6a7d5253b54a72d7f11f65950c" title="wlp::UniquePtr::operator=" alt="" coords="207,5,377,32"/>
-<area shape="rect" id="node3" href="$dd/d28/classwlp_1_1_unique_ptr_3_01_t[]_4.html#a0e66c7b26c8fcbd14aba96bd91d00112" title="wlp::UniquePtr\&lt; T[]\l\&gt;::operator=" alt="" coords="224,57,360,98"/>
-<area shape="rect" id="node4" href="$df/d24/classwlp_1_1_unique_ptr.html#ac972f5f7ae3e17a58140cfe3a694667d" title="wlp::UniquePtr::~UniquePtr" alt="" coords="201,123,383,149"/>
-<area shape="rect" id="node5" href="$dd/d28/classwlp_1_1_unique_ptr_3_01_t[]_4.html#a9e589243e6070266b6b4a9ac5e0e0ac0" title="wlp::UniquePtr\&lt; T[]\l\&gt;::~UniquePtr" alt="" coords="224,174,360,215"/>
-</map>

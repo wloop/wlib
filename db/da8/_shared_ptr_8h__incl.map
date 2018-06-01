@@ -1,9 +1,9 @@
 <map id="wlib/stl/SharedPtr.h" name="wlib/stl/SharedPtr.h">
-<area shape="rect" id="node2" href="$d8/df6/_unique_ptr_8h.html" title="Unique pointer implementation. " alt="" coords="412,80,503,107"/>
-<area shape="rect" id="node5" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="370,229,499,256"/>
-<area shape="rect" id="node6" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="224,304,281,331"/>
-<area shape="rect" id="node7" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="132,379,228,405"/>
-<area shape="rect" id="node10" href="$d7/d2f/_exceptions_8h.html" title="Implementation of Exceptions using C style. " alt="" coords="469,155,645,181"/>
-<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="191,155,333,181"/>
-<area shape="rect" id="node9" href="$d9/d8a/_new_8h.html" title="New operators defined for Arduino boards and for other boards use the normal new. ..." alt="" coords="145,229,204,256"/>
+<area shape="rect" id="node2" href="$d8/df6/_unique_ptr_8h.html" title="Unique pointer implementation. " alt="" coords="297,80,432,107"/>
+<area shape="rect" id="node5" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="261,379,357,405"/>
+<area shape="rect" id="node7" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="474,229,602,256"/>
+<area shape="rect" id="node8" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="426,304,546,331"/>
+<area shape="rect" id="node10" href="$d7/d2f/_exceptions_8h.html" title="Implementation of Exceptions using C style. " alt="" coords="13,155,205,181"/>
+<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="286,155,444,181"/>
+<area shape="rect" id="node9" href="$d9/d8a/_new_8h.html" title="New operators defined for Arduino boards and for other boards use the normal new. ..." alt="" coords="169,229,308,256"/>
 </map>

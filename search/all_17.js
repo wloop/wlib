@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['x',['x',['../d6/deb/classwlp_1_1_vector2_d.html#aecc91ee926edd3f730bcc264080cd808',1,'wlp::Vector2D::x()'],['../d6/deb/classwlp_1_1_vector2_d.html#a6021b77bdec8b9dc75d46cd632af9f48',1,'wlp::Vector2D::x() const ']]]
+  ['x',['x',['../d9/d22/classwlp_1_1array2d.html#abd91b733345379599070fe1ed9f49316',1,'wlp::array2d::x()'],['../d7/ddb/classwlp_1_1vector2d.html#a54440d4633e367f709079de630d056c9',1,'wlp::vector2d::x()'],['../d7/ddb/classwlp_1_1vector2d.html#a3ffa1ae5532380bff906a3e9e0dc039f',1,'wlp::vector2d::x() const ']]],
+  ['xy',['xy',['../d9/d22/classwlp_1_1array2d.html#a4e2fe5ea53832ed1ef86fb55bb5ac417',1,'wlp::array2d']]]
 ];

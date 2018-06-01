@@ -92,7 +92,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ac92621e6244b3cdd4fdb8ee6ad81d3f8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d5/dca/namespacewlp.html#a4b1327c0806af2cfe7553b3d7f5169d6">packet64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dff/structwlp_1_1____packet__maker.html#ac92621e6244b3cdd4fdb8ee6ad81d3f8">build</a> (const float data[3], const <a class="el" href="../../d5/dca/namespacewlp.html#a5a65cb1c94b3088254ca1efff6678d71">packet_type</a> &amp;type, const <a class="el" href="../../d5/dca/namespacewlp.html#a8b5573ff502ece14b2e96c9b6b0745f6">packet_name</a> &amp;name)</td></tr>
+<tr class="memitem:ac92621e6244b3cdd4fdb8ee6ad81d3f8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d5/dca/namespacewlp.html#a51e1867ed73e96bff06527ba51779df0">packet64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dff/structwlp_1_1____packet__maker.html#ac92621e6244b3cdd4fdb8ee6ad81d3f8">build</a> (const float data[3], const <a class="el" href="../../d5/dca/namespacewlp.html#a05ffca0abdf6e4028391bd1e5c212ce6">packet_type</a> &amp;type, const <a class="el" href="../../d5/dca/namespacewlp.html#a672ea4fa601c3051f86362fd385b0068">packet_name</a> &amp;name)</td></tr>
 <tr class="separator:ac92621e6244b3cdd4fdb8ee6ad81d3f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -107,7 +107,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d5/dca/namespacewlp.html#a4b1327c0806af2cfe7553b3d7f5169d6">packet64</a> __packet_maker::build </td>
+          <td class="memname"><a class="el" href="../../d5/dca/namespacewlp.html#a51e1867ed73e96bff06527ba51779df0">packet64</a> __packet_maker::build </td>
           <td>(</td>
           <td class="paramtype">const float&#160;</td>
           <td class="paramname"><em>data</em>[3], </td>
@@ -115,13 +115,13 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="../../d5/dca/namespacewlp.html#a5a65cb1c94b3088254ca1efff6678d71">packet_type</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../d5/dca/namespacewlp.html#a05ffca0abdf6e4028391bd1e5c212ce6">packet_type</a> &amp;&#160;</td>
           <td class="paramname"><em>type</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="../../d5/dca/namespacewlp.html#a8b5573ff502ece14b2e96c9b6b0745f6">packet_name</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../d5/dca/namespacewlp.html#a672ea4fa601c3051f86362fd385b0068">packet_name</a> &amp;&#160;</td>
           <td class="paramname"><em>name</em>&#160;</td>
         </tr>
         <tr>
@@ -143,7 +143,7 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Referenced by <a class="el" href="../../de/d66/_packet_constructor_8h_source.html#l00053">wlp::make_packet64()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                                                                                    {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="../../d5/dca/namespacewlp.html#a4b1327c0806af2cfe7553b3d7f5169d6">packet64</a> packet;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="../../d5/dca/namespacewlp.html#a51e1867ed73e96bff06527ba51779df0">packet64</a> packet;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">// type and name are less than or equal to a byte</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// so byte order does not matter</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="../../d9/dde/_packet_constructor_8cpp.html#a0468b3bb6449253081adf2146313a72b">__set_packet_type</a>(packet, type);</div>
@@ -155,8 +155,8 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    ));</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> packet;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
-<div class="ttc" id="namespacewlp_html_a4b1327c0806af2cfe7553b3d7f5169d6"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a4b1327c0806af2cfe7553b3d7f5169d6">wlp::packet64</a></div><div class="ttdeci">Bitset&lt; 64 &gt; packet64</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d66/_packet_constructor_8h_source.html#l00019">PacketConstructor.h:19</a></div></div>
 <div class="ttc" id="_packet_constructor_8cpp_html_aac44b71f14784aec68658e5835499a48"><div class="ttname"><a href="../../d9/dde/_packet_constructor_8cpp.html#aac44b71f14784aec68658e5835499a48">__encode_float18</a></div><div class="ttdeci">uint32_t __encode_float18(float val)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dde/_packet_constructor_8cpp_source.html#l00023">PacketConstructor.cpp:23</a></div></div>
+<div class="ttc" id="namespacewlp_html_a51e1867ed73e96bff06527ba51779df0"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a51e1867ed73e96bff06527ba51779df0">wlp::packet64</a></div><div class="ttdeci">bit_set&lt; 64 &gt; packet64</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d66/_packet_constructor_8h_source.html#l00019">PacketConstructor.h:19</a></div></div>
 <div class="ttc" id="_packet_constructor_8cpp_html_a56bb6b421b1132856b6851ce78263fc2"><div class="ttname"><a href="../../d9/dde/_packet_constructor_8cpp.html#a56bb6b421b1132856b6851ce78263fc2">__set_bulk_data</a></div><div class="ttdeci">void __set_bulk_data(packet64 &amp;packet, uint64_t joined_bits)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dde/_packet_constructor_8cpp_source.html#l00048">PacketConstructor.cpp:48</a></div></div>
 <div class="ttc" id="_packet_constructor_8cpp_html_ade9d3fa70b9b41958d7159768715e060"><div class="ttname"><a href="../../d9/dde/_packet_constructor_8cpp.html#ade9d3fa70b9b41958d7159768715e060">__set_packet_name</a></div><div class="ttdeci">void __set_packet_name(packet64 &amp;packet, packet_name name)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dde/_packet_constructor_8cpp_source.html#l00044">PacketConstructor.cpp:44</a></div></div>
 <div class="ttc" id="_packet_constructor_8cpp_html_a0468b3bb6449253081adf2146313a72b"><div class="ttname"><a href="../../d9/dde/_packet_constructor_8cpp.html#a0468b3bb6449253081adf2146313a72b">__set_packet_type</a></div><div class="ttdeci">void __set_packet_type(packet64 &amp;packet, const packet_type &amp;type)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dde/_packet_constructor_8cpp_source.html#l00040">PacketConstructor.cpp:40</a></div></div>
@@ -187,7 +187,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 15 2018 21:42:54 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 1 2018 19:34:25 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

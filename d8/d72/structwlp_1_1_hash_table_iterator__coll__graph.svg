@@ -76,9 +76,9 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node6 -->
 <g id="node6" class="node"><title>Node6</title>
-<g id="a_node6"><a xlink:href="../../d8/de2/classwlp_1_1_hash_table.html" target="_top" xlink:title="wlp::HashTable\&lt; Element,\l Key, Val, GetKey, GetVal,\l Hasher, Equals \&gt;">
+<g id="a_node6"><a xlink:href="../../dc/d42/classwlp_1_1hash__table.html" target="_top" xlink:title="wlp::hash_table\&lt; Element,\l Key, Val, GetKey, GetVal,\l Hasher, Equals \&gt;">
 <polygon fill="white" stroke="black" points="364.5,-99.5 364.5,-140.5 499.5,-140.5 499.5,-99.5 364.5,-99.5"/>
-<text text-anchor="start" x="372.5" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::HashTable&lt; Element,</text>
+<text text-anchor="start" x="372.5" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::hash_table&lt; Element,</text>
 <text text-anchor="start" x="372.5" y="-117.5" font-family="Helvetica,sans-Serif" font-size="10.00"> Key, Val, GetKey, GetVal,</text>
 <text text-anchor="middle" x="432" y="-106.5" font-family="Helvetica,sans-Serif" font-size="10.00"> Hasher, Equals &gt;</text>
 </a>

@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 618;
+var viewWidth = 620;
 var viewHeight = 104;
 var sectionId = 'dynsection-1';
 </script>
@@ -54,7 +54,7 @@ var sectionId = 'dynsection-1';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>wlp::__adjust_heap</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-100 614,-100 614,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-100 616,-100 616,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
 <polygon fill="#bfbfbf" stroke="black" points="0.5,-19.5 0.5,-38.5 101.5,-38.5 101.5,-19.5 0.5,-19.5"/>
@@ -102,46 +102,46 @@ var sectionId = 'dynsection-1';
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
 <g id="a_node4"><a xlink:href="../../d5/dca/namespacewlp.html#a664313ed82edafa1cf6c2e9c1c75378a" target="_top" xlink:title="wlp::sort_heap">
-<polygon fill="white" stroke="black" points="401,-76.5 401,-95.5 481,-95.5 481,-76.5 401,-76.5"/>
-<text text-anchor="middle" x="441" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::sort_heap</text>
+<polygon fill="white" stroke="black" points="402,-76.5 402,-95.5 482,-95.5 482,-76.5 402,-76.5"/>
+<text text-anchor="middle" x="442" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::sort_heap</text>
 </a>
 </g>
 </g>
 <!-- Node3&#45;&gt;Node4 -->
 <g id="edge3" class="edge"><title>Node3&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M351.715,-60.3906C369.655,-65.5945 390.2,-71.5541 406.954,-76.4141"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="352.636,-57.0136 342.057,-57.589 350.686,-63.7364 352.636,-57.0136"/>
+<path fill="none" stroke="midnightblue" d="M352.041,-60.3906C370.118,-65.5945 390.819,-71.5541 407.701,-76.4141"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="352.887,-56.9921 342.309,-57.589 350.951,-63.7189 352.887,-56.9921"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node"><title>Node6</title>
-<g id="a_node6"><a xlink:href="../../dd/dd6/classwlp_1_1_array_heap.html#a98362b142533a56d1b2e0a35acd944d7" target="_top" xlink:title="wlp::ArrayHeap::pop">
-<polygon fill="white" stroke="black" points="388,-38.5 388,-57.5 494,-57.5 494,-38.5 388,-38.5"/>
-<text text-anchor="middle" x="441" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::ArrayHeap::pop</text>
+<g id="a_node6"><a xlink:href="../../d5/d92/classwlp_1_1array__heap.html#acdb595ade20c63a48846e5ffedb85276" target="_top" xlink:title="wlp::array_heap::pop">
+<polygon fill="white" stroke="black" points="388.5,-38.5 388.5,-57.5 495.5,-57.5 495.5,-38.5 388.5,-38.5"/>
+<text text-anchor="middle" x="442" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::array_heap::pop</text>
 </a>
 </g>
 </g>
 <!-- Node3&#45;&gt;Node6 -->
 <g id="edge5" class="edge"><title>Node3&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M358.427,-48C367.97,-48 377.998,-48 387.631,-48"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="358.304,-44.5001 348.304,-48 358.304,-51.5001 358.304,-44.5001"/>
+<path fill="none" stroke="midnightblue" d="M358.277,-48C368.125,-48 378.505,-48 388.458,-48"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="358.247,-44.5001 348.247,-48 358.247,-51.5001 358.247,-44.5001"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
-<g id="a_node5"><a xlink:href="../../d5/dca/namespacewlp.html#a2329b0c52ca1a59525aea1d75476ef10" target="_top" xlink:title="wlp::heap_sort">
-<polygon fill="white" stroke="black" points="530,-38.5 530,-57.5 610,-57.5 610,-38.5 530,-38.5"/>
-<text text-anchor="middle" x="570" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::heap_sort</text>
+<g id="a_node5"><a xlink:href="../../d5/dca/namespacewlp.html#ac5b878c0fe198ce97804014fc7021641" target="_top" xlink:title="wlp::heap_sort">
+<polygon fill="white" stroke="black" points="532,-38.5 532,-57.5 612,-57.5 612,-38.5 532,-38.5"/>
+<text text-anchor="middle" x="572" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::heap_sort</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node5 -->
 <g id="edge4" class="edge"><title>Node4&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M483.894,-73.4647C501.171,-68.2952 520.871,-62.4009 536.963,-57.5859"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="482.624,-70.1912 474.047,-76.411 484.631,-76.8975 482.624,-70.1912"/>
+<path fill="none" stroke="midnightblue" d="M485.224,-73.4647C502.637,-68.2952 522.492,-62.4009 538.711,-57.5859"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="483.89,-70.2097 475.3,-76.411 485.882,-76.9202 483.89,-70.2097"/>
 </g>
 <!-- Node7&#45;&gt;Node5 -->
 <g id="edge7" class="edge"><title>Node7&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M362.331,-13.408C399.444,-16.2839 449.973,-21.2054 494,-29 507.756,-31.4353 522.713,-35.0277 535.625,-38.4351"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="362.469,-9.9086 352.235,-12.6504 361.945,-16.889 362.469,-9.9086"/>
+<path fill="none" stroke="midnightblue" d="M362.537,-13.3423C400.086,-16.1971 451.351,-21.1202 496,-29 509.757,-31.4279 524.714,-35.0188 537.626,-38.4272"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="362.556,-9.8344 352.327,-12.5912 362.043,-16.8155 362.556,-9.8344"/>
 </g>
 </g>
 </svg>

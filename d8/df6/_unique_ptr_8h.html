@@ -92,12 +92,12 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 
 <p>Unique pointer implementation.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d3/de6/_memory_8h_source.html">../memory/Memory.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../d7/d2f/_exceptions_8h_source.html">../exceptions/Exceptions.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="../../d3/de6/_memory_8h_source.html">wlib/memory/Memory.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="../../d7/d2f/_exceptions_8h_source.html">wlib/exceptions/Exceptions.h</a>&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for UniquePtr.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d3/dd9/_unique_ptr_8h__incl.svg" width="563" height="411"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d3/dd9/_unique_ptr_8h__incl.svg" width="642" height="411"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -111,9 +111,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d24/classwlp_1_1_unique_ptr.html">wlp::UniquePtr&lt; T &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d75/classwlp_1_1unique__ptr.html">wlp::unique_ptr&lt; T &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d28/classwlp_1_1_unique_ptr_3_01_t[]_4.html">wlp::UniquePtr&lt; T[]&gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de7/classwlp_1_1unique__ptr_3_01_t[]_4.html">wlp::unique_ptr&lt; T[]&gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -123,36 +123,36 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0ced7f385d1e9c4e0cb5e429ba21e8ee"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a0ced7f385d1e9c4e0cb5e429ba21e8ee"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a0ced7f385d1e9c4e0cb5e429ba21e8ee">wlp::swap</a> (UniquePtr&lt; T &gt; &amp;x, UniquePtr&lt; T &gt; &amp;y)</td></tr>
-<tr class="separator:a0ced7f385d1e9c4e0cb5e429ba21e8ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64fbe3ff43504d4b0ed092862a1ca9d5"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a64fbe3ff43504d4b0ed092862a1ca9d5"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a64fbe3ff43504d4b0ed092862a1ca9d5">wlp::swap</a> (UniquePtr&lt; T &gt; &amp;&amp;x, UniquePtr&lt; T &gt; &amp;y)</td></tr>
-<tr class="separator:a64fbe3ff43504d4b0ed092862a1ca9d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8f6eb670f43de8697e4785995e12f17"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ae8f6eb670f43de8697e4785995e12f17"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ae8f6eb670f43de8697e4785995e12f17">wlp::swap</a> (UniquePtr&lt; T &gt; &amp;x, UniquePtr&lt; T &gt; &amp;&amp;y)</td></tr>
-<tr class="separator:ae8f6eb670f43de8697e4785995e12f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab37f878e1fc5a2d458cbb4139f66d290"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
-<tr class="memitem:ab37f878e1fc5a2d458cbb4139f66d290"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ab37f878e1fc5a2d458cbb4139f66d290">wlp::operator==</a> (const UniquePtr&lt; T &gt; &amp;x, const UniquePtr&lt; U &gt; &amp;y)</td></tr>
-<tr class="separator:ab37f878e1fc5a2d458cbb4139f66d290"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ef19ef879404ede3824dd03e5063040"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
-<tr class="memitem:a6ef19ef879404ede3824dd03e5063040"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a6ef19ef879404ede3824dd03e5063040">wlp::operator!=</a> (const UniquePtr&lt; T &gt; &amp;x, const UniquePtr&lt; U &gt; &amp;y)</td></tr>
-<tr class="separator:a6ef19ef879404ede3824dd03e5063040"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ab1e68b205edf75e2cc5c2c4b0b19fb"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
-<tr class="memitem:a4ab1e68b205edf75e2cc5c2c4b0b19fb"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a4ab1e68b205edf75e2cc5c2c4b0b19fb">wlp::operator&lt;</a> (const UniquePtr&lt; T &gt; &amp;x, const UniquePtr&lt; U &gt; &amp;y)</td></tr>
-<tr class="separator:a4ab1e68b205edf75e2cc5c2c4b0b19fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cc4934b7cb92eda412ad2fa88c4f502"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
-<tr class="memitem:a2cc4934b7cb92eda412ad2fa88c4f502"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a2cc4934b7cb92eda412ad2fa88c4f502">wlp::operator&lt;=</a> (const UniquePtr&lt; T &gt; &amp;x, const UniquePtr&lt; U &gt; &amp;y)</td></tr>
-<tr class="separator:a2cc4934b7cb92eda412ad2fa88c4f502"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69c51dbde0afdd8120e358ce45b7a12f"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
-<tr class="memitem:a69c51dbde0afdd8120e358ce45b7a12f"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a69c51dbde0afdd8120e358ce45b7a12f">wlp::operator&gt;</a> (const UniquePtr&lt; T &gt; &amp;x, const UniquePtr&lt; U &gt; &amp;y)</td></tr>
-<tr class="separator:a69c51dbde0afdd8120e358ce45b7a12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a000d6257ac9fb0a560b22e539c9f6dc5"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
-<tr class="memitem:a000d6257ac9fb0a560b22e539c9f6dc5"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a000d6257ac9fb0a560b22e539c9f6dc5">wlp::operator&gt;=</a> (const UniquePtr&lt; T &gt; &amp;x, const UniquePtr&lt; U &gt; &amp;y)</td></tr>
-<tr class="separator:a000d6257ac9fb0a560b22e539c9f6dc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3a7a31da681482fdfbc3f7372bb5a15"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
-<tr class="memitem:af3a7a31da681482fdfbc3f7372bb5a15"><td class="memTemplItemLeft" align="right" valign="top">UniquePtr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#af3a7a31da681482fdfbc3f7372bb5a15">wlp::make_unique</a> (Args &amp;&amp;...args)</td></tr>
-<tr class="separator:af3a7a31da681482fdfbc3f7372bb5a15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a072d393c887ef08869f4ae7cdc351220"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a072d393c887ef08869f4ae7cdc351220"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a072d393c887ef08869f4ae7cdc351220">wlp::swap</a> (unique_ptr&lt; T &gt; &amp;x, unique_ptr&lt; T &gt; &amp;y)</td></tr>
+<tr class="separator:a072d393c887ef08869f4ae7cdc351220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3c8f3632b3ea0801a357aef59a6655b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ab3c8f3632b3ea0801a357aef59a6655b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ab3c8f3632b3ea0801a357aef59a6655b">wlp::swap</a> (unique_ptr&lt; T &gt; &amp;&amp;x, unique_ptr&lt; T &gt; &amp;y)</td></tr>
+<tr class="separator:ab3c8f3632b3ea0801a357aef59a6655b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30949623708a4397c77a068a5a949ac3"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a30949623708a4397c77a068a5a949ac3"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a30949623708a4397c77a068a5a949ac3">wlp::swap</a> (unique_ptr&lt; T &gt; &amp;x, unique_ptr&lt; T &gt; &amp;&amp;y)</td></tr>
+<tr class="separator:a30949623708a4397c77a068a5a949ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab7612302f418c44e8b111dc681131ff"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
+<tr class="memitem:aab7612302f418c44e8b111dc681131ff"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#aab7612302f418c44e8b111dc681131ff">wlp::operator==</a> (const unique_ptr&lt; T &gt; &amp;x, const unique_ptr&lt; U &gt; &amp;y)</td></tr>
+<tr class="separator:aab7612302f418c44e8b111dc681131ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a648fa376bb2e09de12338060719c00f8"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
+<tr class="memitem:a648fa376bb2e09de12338060719c00f8"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a648fa376bb2e09de12338060719c00f8">wlp::operator!=</a> (const unique_ptr&lt; T &gt; &amp;x, const unique_ptr&lt; U &gt; &amp;y)</td></tr>
+<tr class="separator:a648fa376bb2e09de12338060719c00f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60b8d5d6c188d1a6c91597193de1de5e"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
+<tr class="memitem:a60b8d5d6c188d1a6c91597193de1de5e"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a60b8d5d6c188d1a6c91597193de1de5e">wlp::operator&lt;</a> (const unique_ptr&lt; T &gt; &amp;x, const unique_ptr&lt; U &gt; &amp;y)</td></tr>
+<tr class="separator:a60b8d5d6c188d1a6c91597193de1de5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af079116b209fa0c4f385edddb4c1c272"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
+<tr class="memitem:af079116b209fa0c4f385edddb4c1c272"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#af079116b209fa0c4f385edddb4c1c272">wlp::operator&lt;=</a> (const unique_ptr&lt; T &gt; &amp;x, const unique_ptr&lt; U &gt; &amp;y)</td></tr>
+<tr class="separator:af079116b209fa0c4f385edddb4c1c272"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8a72d8ffc612881099bf7a81247067a"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
+<tr class="memitem:ad8a72d8ffc612881099bf7a81247067a"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ad8a72d8ffc612881099bf7a81247067a">wlp::operator&gt;</a> (const unique_ptr&lt; T &gt; &amp;x, const unique_ptr&lt; U &gt; &amp;y)</td></tr>
+<tr class="separator:ad8a72d8ffc612881099bf7a81247067a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cc2988747edfcd98f9acc08ba4271b6"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
+<tr class="memitem:a5cc2988747edfcd98f9acc08ba4271b6"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a5cc2988747edfcd98f9acc08ba4271b6">wlp::operator&gt;=</a> (const unique_ptr&lt; T &gt; &amp;x, const unique_ptr&lt; U &gt; &amp;y)</td></tr>
+<tr class="separator:a5cc2988747edfcd98f9acc08ba4271b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab7c78c433b6d0e445c6920d3358c2f2"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
+<tr class="memitem:aab7c78c433b6d0e445c6920d3358c2f2"><td class="memTemplItemLeft" align="right" valign="top">unique_ptr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#aab7c78c433b6d0e445c6920d3358c2f2">wlp::make_unique</a> (Args &amp;&amp;...args)</td></tr>
+<tr class="separator:aab7c78c433b6d0e445c6920d3358c2f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Unique pointer implementation. </p>
@@ -165,7 +165,7 @@ Functions</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 15 2018 21:42:54 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 1 2018 19:34:25 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

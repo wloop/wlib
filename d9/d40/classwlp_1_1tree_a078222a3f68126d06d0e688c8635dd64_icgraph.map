@@ -1,0 +1,4 @@
+<map id="wlp::tree::create_node" name="wlp::tree::create_node">
+<area shape="rect" id="node2" href="$d9/d40/classwlp_1_1tree.html#aea5717d60158d5c01518b40c0a05965c" title="wlp::tree\&lt; tuple\&lt; Key,\l Val \&gt;, Key, Val, MapGetKey\l\&lt; Key, Val \&gt;, MapGetVal\&lt;\l Key, Val \&gt;, Cmp \&gt;::copy_node" alt="" coords="206,5,413,75"/>
+<area shape="rect" id="node3" href="$d9/d40/classwlp_1_1tree.html#a42d5e7d0ff8db953a4c3e91caf5d81ca" title="wlp::tree\&lt; tuple\&lt; Key,\l Val \&gt;, Key, Val, MapGetKey\l\&lt; Key, Val \&gt;, MapGetVal\&lt;\l Key, Val \&gt;, Cmp \&gt;::tree" alt="" coords="213,99,405,170"/>
+</map>

@@ -92,15 +92,15 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 
 <p>Shared pointer implementation.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d8/df6/_unique_ptr_8h_source.html">UniquePtr.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../d0/db6/_types_8h_source.html">wlib/Types.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../d2/d37/_tmp_8h_source.html">wlib/utility/Tmp.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../db/d2a/_utility_8h_source.html">wlib/utility/Utility.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../d7/d2f/_exceptions_8h_source.html">wlib/exceptions/Exceptions.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="../../d8/df6/_unique_ptr_8h_source.html">wlib/stl/UniquePtr.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="../../d0/db6/_types_8h_source.html">wlib/Types.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="../../d2/d37/_tmp_8h_source.html">wlib/utility/Tmp.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="../../db/d2a/_utility_8h_source.html">wlib/utility/Utility.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="../../d7/d2f/_exceptions_8h_source.html">wlib/exceptions/Exceptions.h</a>&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for SharedPtr.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../db/da8/_shared_ptr_8h__incl.svg" width="652" height="486"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="../../db/da8/_shared_ptr_8h__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 </div>
@@ -110,21 +110,21 @@ Include dependency graph for SharedPtr.h:</div>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dc1/classwlp_1_1_reference_count.html">wlp::ReferenceCount&lt; Ptr &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d52/classwlp_1_1_shared_ptr.html">wlp::SharedPtr&lt; T &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classwlp_1_1shared__ptr.html">wlp::shared_ptr&lt; T &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d0b/classwlp_1_1_weak_ptr.html">wlp::WeakPtr&lt; T &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classwlp_1_1_shared_count.html">wlp::SharedCount&lt; Ptr &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d8d/classwlp_1_1_weak_count.html">wlp::WeakCount&lt; Ptr &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dd9/classwlp_1_1weak__ptr.html">wlp::weak_ptr&lt; T &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classwlp_1_1_shared_count.html">wlp::SharedCount&lt; Ptr &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d8d/classwlp_1_1_weak_count.html">wlp::WeakCount&lt; Ptr &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d52/classwlp_1_1_shared_ptr.html">wlp::SharedPtr&lt; T &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classwlp_1_1_shared_count.html">wlp::SharedCount&lt; Ptr &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d0b/classwlp_1_1_weak_ptr.html">wlp::WeakPtr&lt; T &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d8d/classwlp_1_1_weak_count.html">wlp::WeakCount&lt; Ptr &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classwlp_1_1shared__ptr.html">wlp::shared_ptr&lt; T &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dd9/classwlp_1_1weak__ptr.html">wlp::weak_ptr&lt; T &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -134,24 +134,24 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a14fbfebbc21b2593185c686b26a9d8fb"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a14fbfebbc21b2593185c686b26a9d8fb"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a14fbfebbc21b2593185c686b26a9d8fb">wlp::swap</a> (SharedPtr&lt; T &gt; &amp;sp1, SharedPtr&lt; T &gt; &amp;sp2)</td></tr>
-<tr class="separator:a14fbfebbc21b2593185c686b26a9d8fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9c5165e6eaf9a600cf094c5f131b249"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
-<tr class="memitem:ac9c5165e6eaf9a600cf094c5f131b249"><td class="memTemplItemLeft" align="right" valign="top">SharedPtr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ac9c5165e6eaf9a600cf094c5f131b249">wlp::static_pointer_cast</a> (const SharedPtr&lt; U &gt; &amp;sp)</td></tr>
-<tr class="separator:ac9c5165e6eaf9a600cf094c5f131b249"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c881c67717271a9381fa3983effb7a8"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
-<tr class="memitem:a4c881c67717271a9381fa3983effb7a8"><td class="memTemplItemLeft" align="right" valign="top">SharedPtr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a4c881c67717271a9381fa3983effb7a8">wlp::const_pointer_cast</a> (const SharedPtr&lt; U &gt; &amp;sp)</td></tr>
-<tr class="separator:a4c881c67717271a9381fa3983effb7a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace303ef51ee04dec12d07ef0940710a4"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
-<tr class="memitem:ace303ef51ee04dec12d07ef0940710a4"><td class="memTemplItemLeft" align="right" valign="top">SharedPtr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ace303ef51ee04dec12d07ef0940710a4">wlp::dynamic_pointer_cast</a> (const SharedPtr&lt; U &gt; &amp;sp)</td></tr>
-<tr class="separator:ace303ef51ee04dec12d07ef0940710a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff63b603fd67f7c33f0bebaf6c713d34"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
-<tr class="memitem:aff63b603fd67f7c33f0bebaf6c713d34"><td class="memTemplItemLeft" align="right" valign="top">SharedPtr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#aff63b603fd67f7c33f0bebaf6c713d34">wlp::reinterpret_pointer_cast</a> (const SharedPtr&lt; U &gt; &amp;sp)</td></tr>
-<tr class="separator:aff63b603fd67f7c33f0bebaf6c713d34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41cdf5b039fd0263a885c84835a569bb"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a41cdf5b039fd0263a885c84835a569bb"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a41cdf5b039fd0263a885c84835a569bb">wlp::swap</a> (WeakPtr&lt; T &gt; &amp;wp1, WeakPtr&lt; T &gt; &amp;wp2)</td></tr>
-<tr class="separator:a41cdf5b039fd0263a885c84835a569bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affc570df80dc7fb7037885105bf78c64"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:affc570df80dc7fb7037885105bf78c64"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#affc570df80dc7fb7037885105bf78c64">wlp::swap</a> (shared_ptr&lt; T &gt; &amp;sp1, shared_ptr&lt; T &gt; &amp;sp2)</td></tr>
+<tr class="separator:affc570df80dc7fb7037885105bf78c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3c7c9a7fe1477494ed3f797cd32a817"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
+<tr class="memitem:ac3c7c9a7fe1477494ed3f797cd32a817"><td class="memTemplItemLeft" align="right" valign="top">shared_ptr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ac3c7c9a7fe1477494ed3f797cd32a817">wlp::static_pointer_cast</a> (const shared_ptr&lt; U &gt; &amp;sp)</td></tr>
+<tr class="separator:ac3c7c9a7fe1477494ed3f797cd32a817"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaf91810b53ee54a66804ee6dafe9573"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
+<tr class="memitem:abaf91810b53ee54a66804ee6dafe9573"><td class="memTemplItemLeft" align="right" valign="top">shared_ptr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#abaf91810b53ee54a66804ee6dafe9573">wlp::const_pointer_cast</a> (const shared_ptr&lt; U &gt; &amp;sp)</td></tr>
+<tr class="separator:abaf91810b53ee54a66804ee6dafe9573"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe35692857d3005bb3e9b8c3c2e82835"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
+<tr class="memitem:abe35692857d3005bb3e9b8c3c2e82835"><td class="memTemplItemLeft" align="right" valign="top">shared_ptr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#abe35692857d3005bb3e9b8c3c2e82835">wlp::dynamic_pointer_cast</a> (const shared_ptr&lt; U &gt; &amp;sp)</td></tr>
+<tr class="separator:abe35692857d3005bb3e9b8c3c2e82835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee37cd0e270ddc366cc6c48852e735d6"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U &gt; </td></tr>
+<tr class="memitem:aee37cd0e270ddc366cc6c48852e735d6"><td class="memTemplItemLeft" align="right" valign="top">shared_ptr&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#aee37cd0e270ddc366cc6c48852e735d6">wlp::reinterpret_pointer_cast</a> (const shared_ptr&lt; U &gt; &amp;sp)</td></tr>
+<tr class="separator:aee37cd0e270ddc366cc6c48852e735d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e32039ae078ac5c9796ec950b1cf5e9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a2e32039ae078ac5c9796ec950b1cf5e9"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a2e32039ae078ac5c9796ec950b1cf5e9">wlp::swap</a> (weak_ptr&lt; T &gt; &amp;wp1, weak_ptr&lt; T &gt; &amp;wp2)</td></tr>
+<tr class="separator:a2e32039ae078ac5c9796ec950b1cf5e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Shared pointer implementation. </p>
@@ -165,7 +165,7 @@ Functions</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 15 2018 21:42:54 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 1 2018 19:34:25 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

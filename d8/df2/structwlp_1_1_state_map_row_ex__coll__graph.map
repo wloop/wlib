@@ -1,6 +1,0 @@
-<map id="wlp::StateMapRowEx" name="wlp::StateMapRowEx">
-<area shape="rect" id="node2" href="$d9/d8c/classwlp_1_1_entry_base.html" title="wlp::EntryBase" alt="" coords="5,5,115,32"/>
-<area shape="rect" id="node3" href="$d2/d06/classwlp_1_1_guard_base.html" title="wlp::GuardBase" alt="" coords="140,5,255,32"/>
-<area shape="rect" id="node4" href="$dd/dd5/classwlp_1_1_exit_base.html" title="wlp::ExitBase" alt="" coords="279,5,381,32"/>
-<area shape="rect" id="node5" href="$d3/d54/classwlp_1_1_state_base.html" title="wlp::StateBase" alt="" coords="406,5,516,32"/>
-</map>

@@ -107,29 +107,29 @@
 </g>
 <!-- Node16 -->
 <g id="node16" class="node"><title>Node16</title>
-<g id="a_node16"><a xlink:href="../../d8/df6/_unique_ptr_8h.html" target="_top" xlink:title="Unique pointer implementation. ">
-<polygon fill="white" stroke="black" points="943,-56.5 943,-75.5 1045,-75.5 1045,-56.5 943,-56.5"/>
-<text text-anchor="middle" x="994" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">wlib/stl/UniquePtr.h</text>
-</a>
-</g>
-</g>
-<!-- Node1&#45;&gt;Node16 -->
-<g id="edge15" class="edge"><title>Node1&#45;&gt;Node16</title>
-<path fill="none" stroke="midnightblue" d="M680.372,-111.078C746.045,-102.043 845.54,-88.2794 932,-76 935.554,-75.4953 939.221,-74.9712 942.915,-74.441"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="679.559,-107.657 670.129,-112.486 680.512,-114.592 679.559,-107.657"/>
-</g>
-<!-- Node17 -->
-<g id="node17" class="node"><title>Node17</title>
-<g id="a_node17"><a xlink:href="../../d1/d13/_shared_ptr_8h.html" target="_top" xlink:title="Shared pointer implementation. ">
+<g id="a_node16"><a xlink:href="../../d1/d13/_shared_ptr_8h.html" target="_top" xlink:title="Shared pointer implementation. ">
 <polygon fill="white" stroke="black" points="1023,-0.5 1023,-19.5 1125,-19.5 1125,-0.5 1023,-0.5"/>
 <text text-anchor="middle" x="1074" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">wlib/stl/SharedPtr.h</text>
 </a>
 </g>
 </g>
+<!-- Node1&#45;&gt;Node16 -->
+<g id="edge15" class="edge"><title>Node1&#45;&gt;Node16</title>
+<path fill="none" stroke="midnightblue" d="M690.023,-116.227C756.362,-110.799 851.619,-99.4311 932,-76 980.675,-61.8112 1034.01,-33.6683 1059.22,-19.5284"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="689.733,-112.739 680.041,-117.017 690.285,-119.717 689.733,-112.739"/>
+</g>
+<!-- Node17 -->
+<g id="node17" class="node"><title>Node17</title>
+<g id="a_node17"><a xlink:href="../../d8/df6/_unique_ptr_8h.html" target="_top" xlink:title="Unique pointer implementation. ">
+<polygon fill="white" stroke="black" points="1012,-56.5 1012,-75.5 1114,-75.5 1114,-56.5 1012,-56.5"/>
+<text text-anchor="middle" x="1063" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">wlib/stl/UniquePtr.h</text>
+</a>
+</g>
+</g>
 <!-- Node1&#45;&gt;Node17 -->
-<g id="edge17" class="edge"><title>Node1&#45;&gt;Node17</title>
-<path fill="none" stroke="midnightblue" d="M690.785,-117.478C811.749,-111.609 1025.49,-98.2266 1053,-76 1070.16,-62.138 1073.47,-34.1062 1074,-19.8127"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="690.273,-113.998 680.451,-117.972 690.607,-120.99 690.273,-113.998"/>
+<g id="edge16" class="edge"><title>Node1&#45;&gt;Node17</title>
+<path fill="none" stroke="midnightblue" d="M689.843,-111.287C783.427,-100.18 933.757,-82.3387 1011.98,-73.0546"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="689.363,-107.819 679.845,-112.473 690.188,-114.77 689.363,-107.819"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
@@ -222,10 +222,10 @@
 <path fill="none" stroke="midnightblue" d="M887.574,-51.1774C905.239,-41.2407 928.513,-28.1492 943.614,-19.6545"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="885.424,-48.3708 878.424,-56.324 888.856,-54.4718 885.424,-48.3708"/>
 </g>
-<!-- Node16&#45;&gt;Node17 -->
-<g id="edge16" class="edge"><title>Node16&#45;&gt;Node17</title>
-<path fill="none" stroke="midnightblue" d="M1015.3,-50.6221C1029.92,-40.7574 1048.83,-27.9919 1061.18,-19.6545"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1013.18,-47.8282 1006.85,-56.324 1017.1,-53.6302 1013.18,-47.8282"/>
+<!-- Node17&#45;&gt;Node16 -->
+<g id="edge17" class="edge"><title>Node17&#45;&gt;Node16</title>
+<path fill="none" stroke="midnightblue" d="M1066.85,-46.1005C1068.68,-37.1357 1070.77,-26.8579 1072.22,-19.7511"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1063.38,-45.5856 1064.82,-56.083 1070.24,-46.9829 1063.38,-45.5856"/>
 </g>
 </g>
 </svg>

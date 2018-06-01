@@ -6,7 +6,7 @@
 <area shape="rect" id="node5" href="$d9/d8a/_new_8h.html#a1d8b2d6f17242ae0d182b0f7a98ba54f" title="operator delete[]" alt="" coords="509,56,625,83"/>
 <area shape="rect" id="node6" href="$de/dc1/classwlp_1_1_reference_count.html#a7fab13d2d8b36614b06fc53581ca6b17" title="wlp::ReferenceCount\l\&lt; T * \&gt;::dispose" alt="" coords="494,107,639,149"/>
 <area shape="rect" id="node7" href="$de/dc1/classwlp_1_1_reference_count.html#ad321394bfc7a1d215d3616c3721923ee" title="wlp::ReferenceCount\l\&lt; T * \&gt;::destroy" alt="" coords="494,173,639,214"/>
-<area shape="rect" id="node8" href="$d8/db4/classwlp_1_1_dynamic_string.html#a7decbdc48439b5582da46d18e6b51041" title="wlp::DynamicString\l::set_value" alt="" coords="499,238,635,279"/>
-<area shape="rect" id="node9" href="$d8/db4/classwlp_1_1_dynamic_string.html#a7e2df6a940f04fa17d203c9e2c84703a" title="wlp::DynamicString\l::operator=" alt="" coords="688,238,824,279"/>
+<area shape="rect" id="node8" href="$da/db5/classwlp_1_1dynamic__string.html#af1590fdacff0b21ee4826e4669ac25e1" title="wlp::dynamic_string\l::set_value" alt="" coords="497,238,636,279"/>
+<area shape="rect" id="node9" href="$da/db5/classwlp_1_1dynamic__string.html#a9c33a82873f3d332caca0f14db726da8" title="wlp::dynamic_string\l::operator=" alt="" coords="688,238,827,279"/>
 <area shape="rect" id="node11" href="$d3/de6/_memory_8h.html#a50569d96c5b87927563caa7281eb9a8a" title="realloc" alt="" coords="385,165,445,192"/>
 </map>

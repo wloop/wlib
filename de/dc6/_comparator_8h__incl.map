@@ -1,15 +1,15 @@
 <map id="wlib/stl/Comparator.h" name="wlib/stl/Comparator.h">
-<area shape="rect" id="node3" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="240,603,336,629"/>
-<area shape="rect" id="node5" href="$d2/dc2/_equal_8h.html" title="Equal.h" alt="" coords="53,80,120,107"/>
-<area shape="rect" id="node6" href="$db/db5/_string_8h.html" title="wlib/strings/String.h" alt="" coords="239,155,376,181"/>
-<area shape="rect" id="node7" href="$de/d0b/_string_iterator_8h.html" title="StringIterator.h" alt="" coords="394,229,501,256"/>
-<area shape="rect" id="node14" href="$da/db8/_math_8h.html" title="wlib/utility/Math.h" alt="" coords="246,229,369,256"/>
-<area shape="rect" id="node15" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="526,229,684,256"/>
-<area shape="rect" id="node8" href="$d8/dd7/_concept_8h.html" title="Concept definitions. " alt="" coords="361,304,487,331"/>
-<area shape="rect" id="node9" href="$d4/dda/_pair_8h.html" title="Implementation of a 2&#45;element tuple. " alt="" coords="461,379,516,405"/>
-<area shape="rect" id="node11" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="337,528,395,555"/>
-<area shape="rect" id="node12" href="$d4/dd5/_type_traits_8h.html" title="Metafunctions for types. " alt="" coords="319,453,413,480"/>
-<area shape="rect" id="node13" href="$d2/db4/_wlib_8h.html" title="wlib/Wlib.h" alt="" coords="249,379,335,405"/>
-<area shape="rect" id="node10" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="438,453,567,480"/>
-<area shape="rect" id="node16" href="$d9/d8a/_new_8h.html" title="New operators defined for Arduino boards and for other boards use the normal new. ..." alt="" coords="694,304,753,331"/>
+<area shape="rect" id="node3" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="345,603,441,629"/>
+<area shape="rect" id="node5" href="$d2/dc2/_equal_8h.html" title="wlib/stl/Equal.h" alt="" coords="98,80,208,107"/>
+<area shape="rect" id="node6" href="$db/db5/_string_8h.html" title="wlib/strings/String.h" alt="" coords="289,155,425,181"/>
+<area shape="rect" id="node7" href="$de/d0b/_string_iterator_8h.html" title="wlib/strings/StringIterator.h" alt="" coords="848,229,1027,256"/>
+<area shape="rect" id="node14" href="$da/db8/_math_8h.html" title="wlib/utility/Math.h" alt="" coords="195,229,319,256"/>
+<area shape="rect" id="node15" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="446,229,604,256"/>
+<area shape="rect" id="node8" href="$d8/dd7/_concept_8h.html" title="Concept definitions. " alt="" coords="874,304,1000,331"/>
+<area shape="rect" id="node9" href="$d2/db4/_wlib_8h.html" title="wlib/Wlib.h" alt="" coords="853,379,939,405"/>
+<area shape="rect" id="node10" href="$d4/dda/_pair_8h.html" title="Implementation of a 2&#45;element tuple. " alt="" coords="727,379,828,405"/>
+<area shape="rect" id="node12" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="717,528,837,555"/>
+<area shape="rect" id="node13" href="$d4/dd5/_type_traits_8h.html" title="Metafunctions for types. " alt="" coords="866,453,1005,480"/>
+<area shape="rect" id="node11" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="713,453,841,480"/>
+<area shape="rect" id="node16" href="$d9/d8a/_new_8h.html" title="New operators defined for Arduino boards and for other boards use the normal new. ..." alt="" coords="456,304,595,331"/>
 </map>

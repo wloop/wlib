@@ -1,15 +1,15 @@
 <map id="wlib/comm/PacketConstructor.h" name="wlib/comm/PacketConstructor.h">
-<area shape="rect" id="node2" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="168,603,264,629"/>
-<area shape="rect" id="node4" href="$de/d6d/_bitset_8h.html" title="Bitset is a class that provides bits manipulation methods. " alt="" coords="151,80,261,107"/>
-<area shape="rect" id="node7" href="$d2/db4/_wlib_8h.html" title="wlib/Wlib.h" alt="" coords="153,379,239,405"/>
-<area shape="rect" id="node8" href="$db/db5/_string_8h.html" title="wlib/strings/String.h" alt="" coords="337,155,473,181"/>
-<area shape="rect" id="node9" href="$de/d0b/_string_iterator_8h.html" title="StringIterator.h" alt="" coords="153,229,260,256"/>
-<area shape="rect" id="node15" href="$da/db8/_math_8h.html" title="wlib/utility/Math.h" alt="" coords="570,229,693,256"/>
-<area shape="rect" id="node16" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="387,229,545,256"/>
+<area shape="rect" id="node2" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="167,603,263,629"/>
+<area shape="rect" id="node4" href="$de/d6d/_bitset_8h.html" title="Bitset is a class that provides bits manipulation methods. " alt="" coords="180,80,291,107"/>
+<area shape="rect" id="node7" href="$d2/db4/_wlib_8h.html" title="wlib/Wlib.h" alt="" coords="145,379,231,405"/>
+<area shape="rect" id="node8" href="$db/db5/_string_8h.html" title="wlib/strings/String.h" alt="" coords="405,155,541,181"/>
+<area shape="rect" id="node9" href="$de/d0b/_string_iterator_8h.html" title="wlib/strings/StringIterator.h" alt="" coords="151,229,329,256"/>
+<area shape="rect" id="node15" href="$da/db8/_math_8h.html" title="wlib/utility/Math.h" alt="" coords="642,229,765,256"/>
+<area shape="rect" id="node16" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="459,229,617,256"/>
 <area shape="rect" id="node10" href="$d8/dd7/_concept_8h.html" title="Concept definitions. " alt="" coords="206,304,332,331"/>
-<area shape="rect" id="node11" href="$d4/dda/_pair_8h.html" title="Implementation of a 2&#45;element tuple. " alt="" coords="368,379,423,405"/>
-<area shape="rect" id="node13" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="289,528,347,555"/>
-<area shape="rect" id="node14" href="$d4/dd5/_type_traits_8h.html" title="Metafunctions for types. " alt="" coords="186,453,280,480"/>
-<area shape="rect" id="node12" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="357,453,485,480"/>
-<area shape="rect" id="node17" href="$d9/d8a/_new_8h.html" title="New operators defined for Arduino boards and for other boards use the normal new. ..." alt="" coords="613,304,672,331"/>
+<area shape="rect" id="node11" href="$d4/dda/_pair_8h.html" title="Implementation of a 2&#45;element tuple. " alt="" coords="357,379,459,405"/>
+<area shape="rect" id="node13" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="262,528,383,555"/>
+<area shape="rect" id="node14" href="$d4/dd5/_type_traits_8h.html" title="Metafunctions for types. " alt="" coords="145,453,284,480"/>
+<area shape="rect" id="node12" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="361,453,489,480"/>
+<area shape="rect" id="node17" href="$d9/d8a/_new_8h.html" title="New operators defined for Arduino boards and for other boards use the normal new. ..." alt="" coords="635,304,773,331"/>
 </map>

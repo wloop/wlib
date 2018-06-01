@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 620;
+var viewWidth = 622;
 var viewHeight = 213;
 var sectionId = 'dynsection-5';
 </script>
@@ -54,7 +54,7 @@ var sectionId = 'dynsection-5';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>wlp::__Allocator::deallocate</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-209 616,-209 616,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-209 618,-209 618,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
 <polygon fill="#bfbfbf" stroke="black" points="0.5,-87.5 0.5,-106.5 137.5,-106.5 137.5,-87.5 0.5,-87.5"/>
@@ -142,9 +142,9 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node8 -->
 <g id="node8" class="node"><title>Node8</title>
-<g id="a_node8"><a xlink:href="../../d8/db4/classwlp_1_1_dynamic_string.html#a7decbdc48439b5582da46d18e6b51041" target="_top" xlink:title="wlp::DynamicString\l::set_value">
-<polygon fill="white" stroke="black" points="368,-0 368,-30 470,-30 470,-0 368,-0"/>
-<text text-anchor="start" x="376" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::DynamicString</text>
+<g id="a_node8"><a xlink:href="../../da/db5/classwlp_1_1dynamic__string.html#af1590fdacff0b21ee4826e4669ac25e1" target="_top" xlink:title="wlp::dynamic_string\l::set_value">
+<polygon fill="white" stroke="black" points="367,-0 367,-30 471,-30 471,-0 367,-0"/>
+<text text-anchor="start" x="375" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::dynamic_string</text>
 <text text-anchor="middle" x="419" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">::set_value</text>
 </a>
 </g>
@@ -156,17 +156,17 @@ var sectionId = 'dynsection-5';
 </g>
 <!-- Node9 -->
 <g id="node9" class="node"><title>Node9</title>
-<g id="a_node9"><a xlink:href="../../d8/db4/classwlp_1_1_dynamic_string.html#a7e2df6a940f04fa17d203c9e2c84703a" target="_top" xlink:title="wlp::DynamicString\l::operator=">
-<polygon fill="white" stroke="black" points="510,-0 510,-30 612,-30 612,-0 510,-0"/>
-<text text-anchor="start" x="518" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::DynamicString</text>
-<text text-anchor="middle" x="561" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">::operator=</text>
+<g id="a_node9"><a xlink:href="../../da/db5/classwlp_1_1dynamic__string.html#a9c33a82873f3d332caca0f14db726da8" target="_top" xlink:title="wlp::dynamic_string\l::operator=">
+<polygon fill="white" stroke="black" points="510,-0 510,-30 614,-30 614,-0 510,-0"/>
+<text text-anchor="start" x="518" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::dynamic_string</text>
+<text text-anchor="middle" x="562" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">::operator=</text>
 </a>
 </g>
 </g>
 <!-- Node8&#45;&gt;Node9 -->
 <g id="edge8" class="edge"><title>Node8&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M480.261,-15C490.089,-15 500.177,-15 509.732,-15"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="480.148,-11.5001 470.148,-15 480.148,-18.5001 480.148,-11.5001"/>
+<path fill="none" stroke="midnightblue" d="M481.497,-15C491.002,-15 500.729,-15 509.971,-15"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="481.303,-11.5001 471.303,-15 481.303,-18.5001 481.303,-11.5001"/>
 </g>
 </g>
 </svg>

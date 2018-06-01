@@ -1,5 +1,5 @@
 <map id="wlp::count" name="wlp::count">
-<area shape="rect" id="node2" href="$d5/dca/namespacewlp.html#a800c1b1a4f7c0eb3fe043e65e7213170" title="wlp::count" alt="" coords="165,5,248,32"/>
-<area shape="rect" id="node3" href="$d3/def/classwlp_1_1_red_black_tree.html#a3c6af183331e3b59c7d837bc7583a144" title="wlp::RedBlackTree::\lcount" alt="" coords="136,57,277,98"/>
-<area shape="rect" id="node4" href="$d3/def/classwlp_1_1_red_black_tree.html#ae0e0aaf57a20560db204af2707adfdb7" title="wlp::RedBlackTree::\lerase" alt="" coords="136,122,277,163"/>
+<area shape="rect" id="node2" href="$d5/dca/namespacewlp.html#a800c1b1a4f7c0eb3fe043e65e7213170" title="wlp::count" alt="" coords="151,5,233,32"/>
+<area shape="rect" id="node3" href="$d9/d40/classwlp_1_1tree.html#a5d5192d8555b05f936367d5771795699" title="wlp::tree::count" alt="" coords="136,56,248,83"/>
+<area shape="rect" id="node4" href="$d9/d40/classwlp_1_1tree.html#a77736505c8590345fe3ade2961877845" title="wlp::tree::erase" alt="" coords="136,107,248,133"/>
 </map>

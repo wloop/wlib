@@ -1,6 +1,0 @@
-<map id="wlp::HashTable::clear" name="wlp::HashTable::clear">
-<area shape="rect" id="node2" href="$d6/dfc/classwlp_1_1_hash_map.html#afb020fde3a36f4a7d79984bc5d32c8ab" title="wlp::HashMap::clear" alt="" coords="235,5,378,32"/>
-<area shape="rect" id="node3" href="$d0/de4/classwlp_1_1_hash_set.html#a99e937f5436f733721b1938648bd9894" title="wlp::HashSet::clear" alt="" coords="238,56,375,83"/>
-<area shape="rect" id="node4" href="$d8/de2/classwlp_1_1_hash_table.html#af007c15bfe5faa2e425a319987207d11" title="wlp::HashTable\&lt; Key,\l Key, Key, SetGetKey\l\&lt; Key \&gt;, SetGetVal\&lt; Key\l \&gt;, Hasher, Equals \&gt;::operator=" alt="" coords="203,107,410,178"/>
-<area shape="rect" id="node5" href="$d8/de2/classwlp_1_1_hash_table.html#a6ba32af56c158fe612377d89ca211ffd" title="wlp::HashTable\&lt; Key,\l Key, Key, SetGetKey\l\&lt; Key \&gt;, SetGetVal\&lt; Key\l \&gt;, Hasher, Equals \&gt;::\l~HashTable" alt="" coords="221,203,393,288"/>
-</map>

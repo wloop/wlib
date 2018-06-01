@@ -107,7 +107,7 @@ Static Private Attributes</h2></td></tr>
 <p>If there is a C++ translation unit, create a static instance of <a class="el" href="../../da/d14/class_memory_init_destroy.html" title="Helper for initializing and destroying memory management. ">MemoryInitDestroy</a>. Any C++ file including <a class="el" href="../../d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. ">Memory.h</a> will have the memoryInitDestroy instance declared first within the translation unit and thus will be constructed first. Destruction will occur in the reverse order so memoryInitDestroy is called last. This way any static user object relying on Memory will be destroyed first before destroy function is called.</p>
 <p>This code should never be called and/or touched. It is used internally </p>
 
-<p>Definition at line <a class="el" href="../../d3/de6/_memory_8h_source.html#l00039">39</a> of file <a class="el" href="../../d3/de6/_memory_8h_source.html">Memory.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d3/de6/_memory_8h_source.html#l00038">38</a> of file <a class="el" href="../../d3/de6/_memory_8h_source.html">Memory.h</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for MemoryInitDestroy:</div>
 <div class="dyncontent">
@@ -134,7 +134,7 @@ Collaboration diagram for MemoryInitDestroy:</div>
 <div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                     {</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../da/d14/class_memory_init_destroy.html#ab34c82972eebf72c4d2131f131547eda">m_srefCount</a>++ == 0) { <a class="code" href="../../df/d64/_memory_8cpp.html#a10193827ed980198f6a4ed8a92a5a27f">memory_init</a>(); }</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
-<div class="ttc" id="class_memory_init_destroy_html_ab34c82972eebf72c4d2131f131547eda"><div class="ttname"><a href="../../da/d14/class_memory_init_destroy.html#ab34c82972eebf72c4d2131f131547eda">MemoryInitDestroy::m_srefCount</a></div><div class="ttdeci">static int m_srefCount</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/de6/_memory_8h_source.html#l00046">Memory.h:46</a></div></div>
+<div class="ttc" id="class_memory_init_destroy_html_ab34c82972eebf72c4d2131f131547eda"><div class="ttname"><a href="../../da/d14/class_memory_init_destroy.html#ab34c82972eebf72c4d2131f131547eda">MemoryInitDestroy::m_srefCount</a></div><div class="ttdeci">static int m_srefCount</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/de6/_memory_8h_source.html#l00045">Memory.h:45</a></div></div>
 <div class="ttc" id="_memory_8cpp_html_a10193827ed980198f6a4ed8a92a5a27f"><div class="ttname"><a href="../../df/d64/_memory_8cpp.html#a10193827ed980198f6a4ed8a92a5a27f">memory_init</a></div><div class="ttdeci">void memory_init()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_memory_8cpp_source.html#l00127">Memory.cpp:127</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -166,7 +166,7 @@ Here is the call graph for this function:</div>
 <div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                      {</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">if</span> (--<a class="code" href="../../da/d14/class_memory_init_destroy.html#ab34c82972eebf72c4d2131f131547eda">m_srefCount</a> == 0) { <a class="code" href="../../df/d64/_memory_8cpp.html#a7489b7cfac3294cff72aa4fa5211bb44">memory_destroy</a>(); }</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
-<div class="ttc" id="class_memory_init_destroy_html_ab34c82972eebf72c4d2131f131547eda"><div class="ttname"><a href="../../da/d14/class_memory_init_destroy.html#ab34c82972eebf72c4d2131f131547eda">MemoryInitDestroy::m_srefCount</a></div><div class="ttdeci">static int m_srefCount</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/de6/_memory_8h_source.html#l00046">Memory.h:46</a></div></div>
+<div class="ttc" id="class_memory_init_destroy_html_ab34c82972eebf72c4d2131f131547eda"><div class="ttname"><a href="../../da/d14/class_memory_init_destroy.html#ab34c82972eebf72c4d2131f131547eda">MemoryInitDestroy::m_srefCount</a></div><div class="ttdeci">static int m_srefCount</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/de6/_memory_8h_source.html#l00045">Memory.h:45</a></div></div>
 <div class="ttc" id="_memory_8cpp_html_a7489b7cfac3294cff72aa4fa5211bb44"><div class="ttname"><a href="../../df/d64/_memory_8cpp.html#a7489b7cfac3294cff72aa4fa5211bb44">memory_destroy</a></div><div class="ttdeci">void memory_destroy()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_memory_8cpp_source.html#l00133">Memory.cpp:133</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -198,7 +198,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d3/de6/_memory_8h_source.html#l00046">46</a> of file <a class="el" href="../../d3/de6/_memory_8h_source.html">Memory.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d3/de6/_memory_8h_source.html#l00045">45</a> of file <a class="el" href="../../d3/de6/_memory_8h_source.html">Memory.h</a>.</p>
 
 </div>
 </div>
@@ -209,7 +209,7 @@ Here is the call graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 15 2018 21:42:54 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 1 2018 19:34:25 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

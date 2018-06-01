@@ -1,7 +1,0 @@
-<map id="wlp::StateMachine::stateEngine" name="wlp::StateMachine::stateEngine">
-<area shape="rect" id="node2" href="$d9/d8c/classwlp_1_1_entry_base.html#a61cd43e7aa28d48c26bff7a924be4a9d" title="wlp::EntryBase::invokeEntry\lAction" alt="" coords="197,5,385,46"/>
-<area shape="rect" id="node3" href="$dd/dd5/classwlp_1_1_exit_base.html#a573998901e03da76fc579375ab3a417d" title="wlp::ExitBase::invokeExit\lAction" alt="" coords="205,70,377,111"/>
-<area shape="rect" id="node4" href="$d2/d06/classwlp_1_1_guard_base.html#ae04156c58d60bbcd06a11a0613e37861" title="wlp::GuardBase::invokeGuard\lAction" alt="" coords="193,135,389,177"/>
-<area shape="rect" id="node5" href="$d3/d54/classwlp_1_1_state_base.html#a4919d560418c0e59f5423df9361223a3" title="wlp::StateBase::invokeState\lAction" alt="" coords="197,201,385,242"/>
-<area shape="rect" id="node6" href="$d6/d67/classwlp_1_1_state_machine.html#a3810df25cace79edc1f46058449c9654" title="wlp::StateMachine::\lsetCurrentState" alt="" coords="221,266,360,307"/>
-</map>

@@ -96,8 +96,8 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <code>#include &quot;<a class="el" href="../../d3/de6/_memory_8h_source.html">Memory.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../de/d41/_static_allocator_pool_8h_source.html">StaticAllocatorPool.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="../../de/dbd/_dynamic_allocator_pool_8h_source.html">DynamicAllocatorPool.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../d2/db4/_wlib_8h_source.html">wlib/Wlib.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../da/db8/_math_8h_source.html">wlib/utility/Math.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../d2/db4/_wlib_8h_source.html">../Wlib.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="../../da/db8/_math_8h_source.html">../utility/Math.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Memory.cpp:</div>
 <div class="dyncontent">
@@ -216,7 +216,7 @@ Variables</h2></td></tr>
 
 <p>References <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00052">__allocators</a>, <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00278">__memory_alloc()</a>, <a class="el" href="../../d0/d55/_allocator_8cpp_source.html#l00163">wlp::__Allocator::allocate()</a>, <a class="el" href="../../df/d4d/_allocator_8h_source.html#l00135">wlp::__Allocator::getBlockSize()</a>, <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00229">memory_get_allocator()</a>, and <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00192">set_block_allocator()</a>.</p>
 
-<p>Referenced by <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00278">__memory_alloc()</a>, and <a class="el" href="../../d3/de6/_memory_8h_source.html#l00119">malloc()</a>.</p>
+<p>Referenced by <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00278">__memory_alloc()</a>, and <a class="el" href="../../d3/de6/_memory_8h_source.html#l00118">malloc()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                                                      {</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <span class="comment">// Allocate a raw memory block</span></div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <a class="code" href="../../de/d5b/classwlp_1_1_____allocator.html">__Allocator</a> *allocator = <a class="code" href="../../df/d64/_memory_8cpp.html#ae2e1e5eb229847e60461811e59883e94">memory_get_allocator</a>(size, anObject);</div>
@@ -298,7 +298,7 @@ Here is the caller graph for this function:</div>
 
 <p>References <a class="el" href="../../d0/d55/_allocator_8cpp_source.html#l00186">wlp::__Allocator::deallocate()</a>, <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00312">get_block_allocator()</a>, and <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00329">get_block_ptr()</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d3/de6/_memory_8h_source.html#l00237">free()</a>.</p>
+<p>Referenced by <a class="el" href="../../d3/de6/_memory_8h_source.html#l00236">free()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                              {</div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keywordflow">if</span> (ptr == <span class="keyword">nullptr</span>) {</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <span class="keywordflow">return</span>;</div>
@@ -329,7 +329,7 @@ Here is the call graph for this function:</div>
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../df/d64/_memory_8cpp_aa359f6271adac5034612761142de9195_icgraph.svg" width="595" height="284"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../df/d64/_memory_8cpp_aa359f6271adac5034612761142de9195_icgraph.svg" width="598" height="284"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </p>
@@ -534,7 +534,7 @@ Here is the caller graph for this function:</div>
 
 <p>References <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00312">get_block_allocator()</a>, and <a class="el" href="../../df/d4d/_allocator_8h_source.html#l00135">wlp::__Allocator::getBlockSize()</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d3/de6/_memory_8h_source.html#l00312">realloc()</a>.</p>
+<p>Referenced by <a class="el" href="../../d3/de6/_memory_8h_source.html#l00311">realloc()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                                          {</div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="keywordflow">if</span> (ptr == <span class="keyword">nullptr</span>)</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        <span class="keywordflow">return</span> 0;</div>
@@ -669,7 +669,7 @@ Here is the caller graph for this function:</div>
 
 <p>References <a class="el" href="../../da/db8/_math_8h_source.html#l00021">wlp::pow_const()</a>, and <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00022">REQUIRED_EXTRA_BUFFER</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d3/de6/_memory_8h_source.html#l00312">realloc()</a>.</p>
+<p>Referenced by <a class="el" href="../../d3/de6/_memory_8h_source.html#l00311">realloc()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                                 {</div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="../../d5/dca/namespacewlp.html#aa769294e00f256f59aa1235b8385989f">size_type</a><span class="keyword">&gt;</span>(<a class="code" href="../../d5/dca/namespacewlp.html#abcf07b4864595e780577d83d294c4676">pow_const</a>(</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            static_cast&lt;size_type&gt;(2),</div>
@@ -1331,7 +1331,7 @@ Here is the caller graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 15 2018 21:42:54 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 1 2018 19:34:25 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

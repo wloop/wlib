@@ -92,11 +92,11 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 
 <p>Heap manipulation and implementation.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../d7/d0c/_comparator_8h_source.html">Comparator.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../d8/dd7/_concept_8h_source.html">Concept.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../d4/dd5/_type_traits_8h_source.html">TypeTraits.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="../../db/d2a/_utility_8h_source.html">wlib/utility/Utility.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="../../d2/db9/_array_list_8h_source.html">wlib/stl/ArrayList.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="../../d7/d0c/_comparator_8h_source.html">wlib/stl/Comparator.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="../../d8/dd7/_concept_8h_source.html">wlib/stl/Concept.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="../../d4/dd5/_type_traits_8h_source.html">wlib/stl/TypeTraits.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="../../db/d2a/_utility_8h_source.html">wlib/utility/Utility.h</a>&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ArrayHeap.h:</div>
 <div class="dyncontent">
@@ -108,7 +108,7 @@ Include dependency graph for ArrayHeap.h:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dd6/classwlp_1_1_array_heap.html">wlp::ArrayHeap&lt; T, Cmp &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d92/classwlp_1_1array__heap.html">wlp::array_heap&lt; T, Cmp &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -160,12 +160,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ab48761c0a096d101692280b65e8f4873"><td class="memTemplParams" colspan="2">template&lt;typename RandomAccessIterator , typename  = typename enable_if&lt;                    is_random_access_iterator&lt;RandomAccessIterator&gt;()            &gt;::type&gt; </td></tr>
 <tr class="memitem:ab48761c0a096d101692280b65e8f4873"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ab48761c0a096d101692280b65e8f4873">wlp::sort_heap</a> (RandomAccessIterator first, RandomAccessIterator last)</td></tr>
 <tr class="separator:ab48761c0a096d101692280b65e8f4873"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2329b0c52ca1a59525aea1d75476ef10"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a2329b0c52ca1a59525aea1d75476ef10"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a2329b0c52ca1a59525aea1d75476ef10">wlp::heap_sort</a> (ArrayList&lt; T &gt; &amp;list)</td></tr>
-<tr class="separator:a2329b0c52ca1a59525aea1d75476ef10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac510f05cfce2db2b63244742d385102f"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Cmp &gt; </td></tr>
-<tr class="memitem:ac510f05cfce2db2b63244742d385102f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ac510f05cfce2db2b63244742d385102f">wlp::heap_sort</a> (ArrayList&lt; T &gt; &amp;list, Cmp cmp)</td></tr>
-<tr class="separator:ac510f05cfce2db2b63244742d385102f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5b878c0fe198ce97804014fc7021641"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac5b878c0fe198ce97804014fc7021641"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ac5b878c0fe198ce97804014fc7021641">wlp::heap_sort</a> (array_list&lt; T &gt; &amp;list)</td></tr>
+<tr class="separator:ac5b878c0fe198ce97804014fc7021641"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6196482f6224fb81653c1b685c84a56"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Cmp &gt; </td></tr>
+<tr class="memitem:ae6196482f6224fb81653c1b685c84a56"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ae6196482f6224fb81653c1b685c84a56">wlp::heap_sort</a> (array_list&lt; T &gt; &amp;list, Cmp cmp)</td></tr>
+<tr class="separator:ae6196482f6224fb81653c1b685c84a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Heap manipulation and implementation. </p>
@@ -184,7 +184,7 @@ Functions</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 15 2018 21:42:54 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 1 2018 19:34:25 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -89,7 +89,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifndef EMBEDDEDCPLUSPLUS_UTILITY_H</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define EMBEDDEDCPLUSPLUS_UTILITY_H</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d37/_tmp_8h.html">Tmp.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d2/d37/_tmp_8h.html">wlib/utility/Tmp.h</a>&gt;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span>wlp {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
@@ -109,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../d5/dca/namespacewlp.html#aa4ecab9f1c93c13dab3663c7c9e2aa24">   63</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d5/dca/namespacewlp.html#a14fbfebbc21b2593185c686b26a9d8fb">swap</a>(T &amp;v1, T &amp;v2) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../d5/dca/namespacewlp.html#aa4ecab9f1c93c13dab3663c7c9e2aa24">   63</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d5/dca/namespacewlp.html#affc570df80dc7fb7037885105bf78c64">swap</a>(T &amp;v1, T &amp;v2) {</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        T tmp(<a class="code" href="../../d5/dca/namespacewlp.html#aa09e615d02daee5123e80ddaee3d2323">move</a>(v1));</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        v1 = <a class="code" href="../../d5/dca/namespacewlp.html#aa09e615d02daee5123e80ddaee3d2323">move</a>(v2);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        v2 = <a class="code" href="../../d5/dca/namespacewlp.html#aa09e615d02daee5123e80ddaee3d2323">move</a>(tmp);</div>
@@ -135,14 +135,14 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="ttc" id="namespacewlp_html_a7111f3f34cc1b6cee5f9acd84fb59a9c"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a7111f3f34cc1b6cee5f9acd84fb59a9c">wlp::exchange_and_sub</a></div><div class="ttdeci">static IntType exchange_and_sub(IntType *mem, IntType val)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d2a/_utility_8h_source.html#l00077">Utility.h:77</a></div></div>
 <div class="ttc" id="namespacewlp_html_a0b082996cc07b782c92190cbbfb9da6a"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a0b082996cc07b782c92190cbbfb9da6a">wlp::exchange_and_add</a></div><div class="ttdeci">static IntType exchange_and_add(IntType *mem, IntType val)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d2a/_utility_8h_source.html#l00070">Utility.h:70</a></div></div>
 <div class="ttc" id="_tmp_8h_html"><div class="ttname"><a href="../../d2/d37/_tmp_8h.html">Tmp.h</a></div><div class="ttdoc">Template helper types, structs, and metafunctions. </div></div>
-<div class="ttc" id="namespacewlp_html_a14fbfebbc21b2593185c686b26a9d8fb"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a14fbfebbc21b2593185c686b26a9d8fb">wlp::swap</a></div><div class="ttdeci">void swap(SharedPtr&lt; T &gt; &amp;sp1, SharedPtr&lt; T &gt; &amp;sp2)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00635">SharedPtr.h:635</a></div></div>
 <div class="ttc" id="namespacewlp_html_a40621c46d9185f0cc426f41d083f8a5e"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#a40621c46d9185f0cc426f41d083f8a5e">wlp::forward</a></div><div class="ttdeci">constexpr T &amp;&amp; forward(typename remove_reference&lt; T &gt;::type &amp;t) noexcept</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d2a/_utility_8h_source.html#l00040">Utility.h:40</a></div></div>
+<div class="ttc" id="namespacewlp_html_affc570df80dc7fb7037885105bf78c64"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#affc570df80dc7fb7037885105bf78c64">wlp::swap</a></div><div class="ttdeci">void swap(shared_ptr&lt; T &gt; &amp;sp1, shared_ptr&lt; T &gt; &amp;sp2)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00634">SharedPtr.h:634</a></div></div>
 <div class="ttc" id="namespacewlp_html_aa09e615d02daee5123e80ddaee3d2323"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#aa09e615d02daee5123e80ddaee3d2323">wlp::move</a></div><div class="ttdeci">constexpr remove_reference&lt; T &gt;::type &amp;&amp; move(T &amp;&amp;t) noexcept</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d2a/_utility_8h_source.html#l00028">Utility.h:28</a></div></div>
 <div class="ttc" id="structwlp_1_1remove__reference_html_ab13688f30e531a6f9febcf704a75a2f8"><div class="ttname"><a href="../../d9/d47/structwlp_1_1remove__reference.html#ab13688f30e531a6f9febcf704a75a2f8">wlp::remove_reference::type</a></div><div class="ttdeci">T type</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d37/_tmp_8h_source.html#l00319">Tmp.h:319</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 15 2018 21:42:53 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 1 2018 19:34:25 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -18,8 +18,8 @@
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
 <g id="a_node2"><a xlink:href="../../df/d4d/_allocator_8h.html" target="_top" xlink:title="Allocator is a memory management library where allocations are always of fixed size. ">
-<polygon fill="white" stroke="black" points="37.5,-112.5 37.5,-131.5 100.5,-131.5 100.5,-112.5 37.5,-112.5"/>
-<text text-anchor="middle" x="69" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">Allocator.h</text>
+<polygon fill="white" stroke="black" points="8,-112.5 8,-131.5 130,-131.5 130,-112.5 8,-112.5"/>
+<text text-anchor="middle" x="69" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">wlib/memory/Allocator.h</text>
 </a>
 </g>
 </g>

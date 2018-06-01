@@ -1,9 +1,9 @@
 <map id="wlib/strings/StringIterator.h" name="wlib/strings/StringIterator.h">
-<area shape="rect" id="node2" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="8,379,104,405"/>
-<area shape="rect" id="node4" href="$d8/dd7/_concept_8h.html" title="Concept definitions. " alt="" coords="147,80,273,107"/>
-<area shape="rect" id="node5" href="$d4/dda/_pair_8h.html" title="Implementation of a 2&#45;element tuple. " alt="" coords="99,155,153,181"/>
-<area shape="rect" id="node7" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="129,304,187,331"/>
-<area shape="rect" id="node8" href="$d4/dd5/_type_traits_8h.html" title="Metafunctions for types. " alt="" coords="249,229,343,256"/>
-<area shape="rect" id="node9" href="$d2/db4/_wlib_8h.html" title="wlib/Wlib.h" alt="" coords="299,155,385,181"/>
-<area shape="rect" id="node6" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="43,229,172,256"/>
+<area shape="rect" id="node2" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="49,379,145,405"/>
+<area shape="rect" id="node4" href="$d8/dd7/_concept_8h.html" title="Concept definitions. " alt="" coords="142,80,268,107"/>
+<area shape="rect" id="node5" href="$d2/db4/_wlib_8h.html" title="wlib/Wlib.h" alt="" coords="43,155,129,181"/>
+<area shape="rect" id="node6" href="$d4/dda/_pair_8h.html" title="Implementation of a 2&#45;element tuple. " alt="" coords="155,155,256,181"/>
+<area shape="rect" id="node8" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="181,304,301,331"/>
+<area shape="rect" id="node9" href="$d4/dd5/_type_traits_8h.html" title="Metafunctions for types. " alt="" coords="331,229,471,256"/>
+<area shape="rect" id="node7" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="126,229,255,256"/>
 </map>

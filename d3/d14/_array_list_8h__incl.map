@@ -1,8 +1,8 @@
 <map id="wlib/stl/ArrayList.h" name="wlib/stl/ArrayList.h">
 <area shape="rect" id="node2" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="22,304,118,331"/>
-<area shape="rect" id="node4" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="70,80,228,107"/>
-<area shape="rect" id="node6" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="262,155,391,181"/>
-<area shape="rect" id="node9" href="$d7/d2f/_exceptions_8h.html" title="Implementation of Exceptions using C style. " alt="" coords="334,80,526,107"/>
-<area shape="rect" id="node7" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="111,229,168,256"/>
-<area shape="rect" id="node8" href="$d9/d8a/_new_8h.html" title="New operators defined for Arduino boards and for other boards use the normal new. ..." alt="" coords="178,155,238,181"/>
+<area shape="rect" id="node4" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="91,80,249,107"/>
+<area shape="rect" id="node6" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="342,155,470,181"/>
+<area shape="rect" id="node9" href="$d7/d2f/_exceptions_8h.html" title="Implementation of Exceptions using C style. " alt="" coords="413,80,605,107"/>
+<area shape="rect" id="node7" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="80,229,201,256"/>
+<area shape="rect" id="node8" href="$d9/d8a/_new_8h.html" title="New operators defined for Arduino boards and for other boards use the normal new. ..." alt="" coords="178,155,317,181"/>
 </map>
