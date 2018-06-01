@@ -9,27 +9,27 @@
 namespace wlp {
 
     template<typename val_t>
-    class vector {
+    class vector2d {
     public:
-        vector() :
+        vector2d() :
             m_x(0),
             m_y(0) {}
 
-        vector(val_t x, val_t y) :
+        vector2d(val_t x, val_t y) :
             m_x(x),
             m_y(y) {}
 
-        vector(wlp::initializer_list<val_t> l) :
+        vector2d(wlp::initializer_list<val_t> l) :
             m_x(l.begin()[0]),
             m_y(l.begin()[1]) {}
 
         template<typename u_val_t>
-        vector(wlp::initializer_list<u_val_t> l) :
+        vector2d(wlp::initializer_list<u_val_t> l) :
             m_x(static_cast<val_t>(l.begin()[0])),
             m_y(static_cast<val_t>(l.begin()[1])) {}
 
         template<typename u_val_t>
-        vector(const vector<u_val_t> &p) :
+        vector2d(const vector2d<u_val_t> &p) :
             m_x(static_cast<val_t>(p.x())),
             m_y(static_cast<val_t>(p.y())) {}
 
@@ -57,53 +57,53 @@ namespace wlp {
             return m_y;
         }
 
-        vector<val_t> n() const {
+        vector2d<val_t> n() const {
             return *this / norm();
         }
 
-        vector<val_t> n_inv() const {
+        vector2d<val_t> n_inv() const {
             val_t n = norm();
             return {n / m_x, n / m_y};
         }
 
-        vector<val_t> &operator=(wlp::initializer_list<val_t> l) {
+        vector2d<val_t> &operator=(wlp::initializer_list<val_t> l) {
             m_x = l.begin()[0];
             m_y = l.begin()[1];
             return *this;
         }
 
         template<typename u_val_t>
-        vector<val_t> &operator=(wlp::initializer_list<u_val_t> l) {
+        vector2d<val_t> &operator=(wlp::initializer_list<u_val_t> l) {
             m_x = static_cast<val_t>(l.begin()[0]);
             m_y = static_cast<val_t>(l.begin()[1]);
             return *this;
         }
 
-        vector<val_t> operator+(const vector<val_t> &o) const {
+        vector2d<val_t> operator+(const vector2d<val_t> &o) const {
             return {m_x + o.m_x, m_y + o.m_y};
         }
 
-        vector<val_t> operator-(const vector<val_t> &o) const {
+        vector2d<val_t> operator-(const vector2d<val_t> &o) const {
             return {m_x - o.m_x, m_y - o.m_y};
         }
 
-        vector<val_t> &operator+=(const vector<val_t> &o) {
+        vector2d<val_t> &operator+=(const vector2d<val_t> &o) {
             m_x += o.m_x;
             m_y += o.m_y;
             return *this;
         }
 
-        vector<val_t> &operator-=(const vector<val_t> &o) {
+        vector2d<val_t> &operator-=(const vector2d<val_t> &o) {
             m_x -= o.m_x;
             m_y -= o.m_y;
             return *this;
         }
 
-        bool operator==(const vector<val_t> &o) const {
+        bool operator==(const vector2d<val_t> &o) const {
             return (m_x == o.m_x) && (m_y == o.m_y);
         }
 
-        bool operator!=(const vector<val_t> &o) const {
+        bool operator!=(const vector2d<val_t> &o) const {
             return (m_x != o.m_x) || (m_y != o.m_y);
         }
 
@@ -113,7 +113,7 @@ namespace wlp {
                 is_arithmetic<scalar_t>::value
             >::type
         >
-        vector<val_t> operator*(scalar_t b) const {
+        vector2d<val_t> operator*(scalar_t b) const {
             return {
                 static_cast<val_t>(m_x * b),
                 static_cast<val_t>(m_y * b)
@@ -126,18 +126,18 @@ namespace wlp {
                 is_arithmetic<scalar_t>::value
             >::type
         >
-        vector<val_t> operator/(scalar_t b) const {
+        vector2d<val_t> operator/(scalar_t b) const {
             return {
                 static_cast<val_t>(m_x / b),
                 static_cast<val_t>(m_y / b)
             };
         };
 
-        val_t dot(const vector<val_t> &v) const {
+        val_t dot(const vector2d<val_t> &v) const {
             return m_x * v.m_x + m_y * v.m_y;
         }
 
-        val_t cross(const vector<val_t> &w) const {
+        val_t cross(const vector2d<val_t> &w) const {
             return m_x * w.m_y - m_y * w.m_x;
         }
 
