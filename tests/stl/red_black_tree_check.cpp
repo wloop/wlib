@@ -16,8 +16,8 @@ typedef Tuple<char, int> _rb_element;
 typedef MapGetKey<char, int> _rb_key;
 typedef MapGetVal<char, int> _rb_val;
 
-typedef typename RedBlackTree<_rb_element, char, int, _rb_key, _rb_val>::iterator rbi;
-typedef RedBlackTree<_rb_element, char, int, _rb_key, _rb_val> rb_tree;
+typedef typename tree<_rb_element, char, int, _rb_key, _rb_val>::iterator rbi;
+typedef tree<_rb_element, char, int, _rb_key, _rb_val> rb_tree;
 
 TEST(rb_tree_test, test_insert_iterator_order) {
     char keys[] = {'g', 'h', 'j', 'k', 'y', 'c', 'd', 'q', 'w'};

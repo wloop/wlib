@@ -32,7 +32,7 @@ namespace wlp {
     class TreeMap {
     public:
         typedef TreeMap<Key, Val, Cmp> map_type;
-        typedef RedBlackTree<Tuple<Key, Val>,
+        typedef tree<Tuple<Key, Val>,
                 Key, Val,
                 MapGetKey<Key, Val>, MapGetVal<Key, Val>,
                 Cmp

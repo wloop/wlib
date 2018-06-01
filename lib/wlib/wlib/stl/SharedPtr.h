@@ -178,10 +178,10 @@ namespace wlp {
     inline void ReferenceCount<nullptr_t>::dispose() {}
 
     template<typename T>
-    class SharedPtr;
+    class shared_ptr;
 
     template<typename T>
-    class WeakPtr;
+    class weak_ptr;
 
     template<typename Ptr>
     class SharedCount;
@@ -236,7 +236,7 @@ namespace wlp {
          * @param up the unique pointer to take
          */
         template<typename U>
-        SharedCount(UniquePtr <U> &&up)
+        SharedCount(unique_ptr <U> &&up)
                 : m_pi(nullptr) {
             m_pi = malloc<ReferenceCount<U *>>(up.get());
             up.release();
@@ -455,23 +455,23 @@ namespace wlp {
     }
 
     template<typename T>
-    class SharedPtr {
+    class shared_ptr {
     public:
         typedef T val_type;
         typedef typename ReferenceCount<T *>::ptr_use_count ptr_use_count;
 
     private:
         template<typename U> friend
-        class SharedPtr;
+        class shared_ptr;
 
         template<typename U> friend
-        class WeakPtr;
+        class weak_ptr;
 
         val_type *m_ptr;
         SharedCount<T *> m_refcount;
 
     public:
-        constexpr SharedPtr()
+        constexpr shared_ptr()
                 : m_ptr(nullptr),
                   m_refcount() {
         }
@@ -479,14 +479,14 @@ namespace wlp {
         template<typename U, typename = typename enable_if<
                 is_convertible<U *, T *>::value
         >::type>
-        explicit SharedPtr(U *ptr)
+        explicit shared_ptr(U *ptr)
                 : m_ptr(ptr),
                   m_refcount(ptr) {
             static_assert(sizeof(U) > 0, "Pointer to incomplete type");
         }
 
         template<typename U>
-        SharedPtr(const SharedPtr<U> &sp, T *ptr)
+        shared_ptr(const shared_ptr<U> &sp, T *ptr)
                 : m_ptr(ptr),
                   m_refcount(sp.m_refcount) {
         }
@@ -494,17 +494,17 @@ namespace wlp {
         template<typename U, typename = typename enable_if<
                 is_convertible<U *, T *>::value
         >::type>
-        SharedPtr(const SharedPtr<U> &sp)
+        shared_ptr(const shared_ptr<U> &sp)
                 : m_ptr(sp.m_ptr),
                   m_refcount(sp.m_refcount) {
         }
 
-        SharedPtr(const SharedPtr<T> &sp)
+        shared_ptr(const shared_ptr<T> &sp)
                 : m_ptr(sp.m_ptr),
                   m_refcount(sp.m_refcount) {
         }
 
-        SharedPtr(SharedPtr<T> &&sp)
+        shared_ptr(shared_ptr<T> &&sp)
                 : m_ptr(sp.m_ptr),
                   m_refcount() {
             m_refcount.swap(sp.m_refcount);
@@ -514,7 +514,7 @@ namespace wlp {
         template<typename U, typename = typename enable_if<
                 is_convertible<U *, T *>::value
         >::type>
-        SharedPtr(SharedPtr<U> &&sp)
+        shared_ptr(shared_ptr<U> &&sp)
                 : m_ptr(sp.m_ptr),
                   m_refcount() {
             m_refcount.swap(sp.m_refcount);
@@ -524,7 +524,7 @@ namespace wlp {
         template<typename U, typename = typename enable_if<
                 is_convertible<U *, T *>::value
         >::type>
-        explicit SharedPtr(const WeakPtr<U> &wp)
+        explicit shared_ptr(const weak_ptr<U> &wp)
                 : m_ptr(wp.m_ptr),
                   m_refcount(wp.m_refcount) {
         }
@@ -532,55 +532,55 @@ namespace wlp {
         template<typename U, typename = typename enable_if<
                 is_convertible<U *, T *>::value
         >::type>
-        SharedPtr(UniquePtr <U> &&up)
+        shared_ptr(unique_ptr <U> &&up)
                 : m_ptr(up.get()),
                   m_refcount() {
             U *tmp = up.get();
             m_refcount = SharedCount<T *>(move(up));
         }
 
-        constexpr SharedPtr(nullptr_t)
+        constexpr shared_ptr(nullptr_t)
                 : m_ptr(nullptr),
                   m_refcount() {
         }
 
-        SharedPtr<T> &operator=(const SharedPtr<T> &sp) {
+        shared_ptr<T> &operator=(const shared_ptr<T> &sp) {
             m_ptr = sp.m_ptr;
             m_refcount = sp.m_refcount;
             return *this;
         }
 
         template<typename U>
-        SharedPtr<T> &operator=(const SharedPtr<U> &sp) {
+        shared_ptr<T> &operator=(const shared_ptr<U> &sp) {
             m_ptr = sp.m_ptr;
             m_refcount = sp.m_refcount;
             return *this;
         }
 
-        SharedPtr<T> &operator=(SharedPtr<T> &&sp) {
-            SharedPtr(move(sp)).swap(*this);
+        shared_ptr<T> &operator=(shared_ptr<T> &&sp) {
+            shared_ptr(move(sp)).swap(*this);
             return *this;
         }
 
         template<typename U>
-        SharedPtr<T> &operator=(SharedPtr<U> &&sp) {
-            SharedPtr(move(sp)).swap(*this);
+        shared_ptr<T> &operator=(shared_ptr<U> &&sp) {
+            shared_ptr(move(sp)).swap(*this);
             return *this;
         }
 
         template<typename U>
-        SharedPtr<T> &operator=(UniquePtr <U> &&up) {
-            SharedPtr(move(up)).swap(*this);
+        shared_ptr<T> &operator=(unique_ptr <U> &&up) {
+            shared_ptr(move(up)).swap(*this);
             return *this;
         }
 
         void reset() {
-            SharedPtr().swap(*this);
+            shared_ptr().swap(*this);
         }
 
         template<typename U>
         void reset(U *ptr) {
-            SharedPtr(ptr).swap(*this);
+            shared_ptr(ptr).swap(*this);
         }
 
         typename add_lvalue_reference<T>::type operator*() const {
@@ -610,57 +610,57 @@ namespace wlp {
             return m_refcount.use_count();
         }
 
-        void swap(SharedPtr<T> &sp) {
+        void swap(shared_ptr<T> &sp) {
             wlp::swap(m_ptr, sp.m_ptr);
             m_refcount.swap(sp.m_refcount);
         }
 
         template<typename U>
-        bool owner_before(const SharedPtr<U> &sp) const {
+        bool owner_before(const shared_ptr<U> &sp) const {
             return m_refcount.less(sp.m_refcount);
         }
 
         template<typename U>
-        bool owner_before(const WeakPtr<U> &wp) const {
+        bool owner_before(const weak_ptr<U> &wp) const {
             return m_refcount.less(wp.m_refcount);
         }
 
-        WeakPtr<T> weak() const {
-            return WeakPtr<T>(*this);
+        weak_ptr<T> weak() const {
+            return weak_ptr<T>(*this);
         }
 
     };
 
     template<typename T>
-    inline void swap(SharedPtr<T> &sp1, SharedPtr<T> &sp2) {
+    inline void swap(shared_ptr<T> &sp1, shared_ptr<T> &sp2) {
         sp1.swap(sp2);
     }
 
     template<typename T, typename U>
-    inline SharedPtr<T> static_pointer_cast(const SharedPtr<U> &sp) {
-        return SharedPtr<T>(sp, static_cast<T *>(sp.get()));
+    inline shared_ptr<T> static_pointer_cast(const shared_ptr<U> &sp) {
+        return shared_ptr<T>(sp, static_cast<T *>(sp.get()));
     }
 
     template<typename T, typename U>
-    inline SharedPtr<T> const_pointer_cast(const SharedPtr<U> &sp) {
-        return SharedPtr<T>(sp, const_cast<T *>(sp.get()));
+    inline shared_ptr<T> const_pointer_cast(const shared_ptr<U> &sp) {
+        return shared_ptr<T>(sp, const_cast<T *>(sp.get()));
     };
 
     template<typename T, typename U>
-    inline SharedPtr<T> dynamic_pointer_cast(const SharedPtr<U> &sp) {
+    inline shared_ptr<T> dynamic_pointer_cast(const shared_ptr<U> &sp) {
         if (T *ptr = dynamic_cast<T *>(sp.get())) {
-            return SharedPtr<T>(sp, ptr);
+            return shared_ptr<T>(sp, ptr);
         }
-        return SharedPtr<T>();
+        return shared_ptr<T>();
     };
 
     template<typename T, typename U>
-    inline SharedPtr<T> reinterpret_pointer_cast(const SharedPtr<U> &sp) {
-        return SharedPtr<T>(sp, reinterpret_cast<T *>(sp.get()));
+    inline shared_ptr<T> reinterpret_pointer_cast(const shared_ptr<U> &sp) {
+        return shared_ptr<T>(sp, reinterpret_cast<T *>(sp.get()));
     };
 
     template<typename T>
-    class WeakPtr {
+    class weak_ptr {
     public:
         typedef T val_type;
         typedef typename ReferenceCount<T *>::ptr_use_count ptr_use_count;
@@ -668,16 +668,16 @@ namespace wlp {
     private:
 
         template<typename U> friend
-        class SharedPtr;
+        class shared_ptr;
 
         template<typename U> friend
-        class WeakPtr;
+        class weak_ptr;
 
         val_type *m_ptr;
         WeakCount<T *> m_refcount;
 
     public:
-        constexpr WeakPtr()
+        constexpr weak_ptr()
                 : m_ptr(nullptr),
                   m_refcount() {
         }
@@ -685,7 +685,7 @@ namespace wlp {
         template<typename U, typename = typename enable_if<
                 is_convertible<U *, T *>::value
         >::type>
-        WeakPtr(const WeakPtr<U> &wp)
+        weak_ptr(const weak_ptr<U> &wp)
                 : m_refcount(wp.m_refcount) {
             m_ptr = wp.lock().get();
         };
@@ -693,27 +693,27 @@ namespace wlp {
         template<typename U, typename = typename enable_if<
                 is_convertible<U *, T *>::value
         >::type>
-        WeakPtr(const SharedPtr<U> &sp)
+        weak_ptr(const shared_ptr<U> &sp)
                 : m_ptr(sp.m_ptr),
                   m_refcount(sp.m_refcount) {
         };
 
         template<typename U>
-        WeakPtr &operator=(const WeakPtr<U> &wp) {
+        weak_ptr &operator=(const weak_ptr<U> &wp) {
             m_ptr = wp.lock().get();
             m_refcount = wp.m_refcount;
             return *this;
         }
 
         template<typename U>
-        WeakPtr &operator=(const SharedPtr<U> &sp) {
+        weak_ptr &operator=(const shared_ptr<U> &sp) {
             m_ptr = sp.m_ptr;
             m_refcount = sp.m_refcount;
             return *this;
         }
 
-        SharedPtr<T> lock() const {
-            return expired() ? SharedPtr<T>() : SharedPtr<T>(*this);
+        shared_ptr<T> lock() const {
+            return expired() ? shared_ptr<T>() : shared_ptr<T>(*this);
         }
 
         ptr_use_count use_count() const {
@@ -725,27 +725,27 @@ namespace wlp {
         }
 
         template<typename U>
-        bool owner_before(const SharedPtr<U> &sp) {
+        bool owner_before(const shared_ptr<U> &sp) {
             return m_refcount.less(sp.m_refcount);
         }
 
         template<typename U>
-        bool owner_before(const WeakPtr<U> &wp) {
+        bool owner_before(const weak_ptr<U> &wp) {
             return m_refcount.less(wp.m_refcount);
         }
 
         void reset() {
-            WeakPtr().swap(*this);
+            weak_ptr().swap(*this);
         }
 
-        void swap(WeakPtr<T> &wp) {
+        void swap(weak_ptr<T> &wp) {
             wlp::swap(m_ptr, wp.m_ptr);
             m_refcount.swap(wp.m_refcount);
         }
     };
 
     template<typename T>
-    inline void swap(WeakPtr<T> &wp1, WeakPtr<T> &wp2) {
+    inline void swap(weak_ptr<T> &wp1, weak_ptr<T> &wp2) {
         wp1.swap(wp2);
     }
 

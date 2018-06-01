@@ -101,12 +101,12 @@ namespace wlp {
     struct LinkedListIterator<int, const int &, const int *>;
 
     template
-    class UniquePtr<int>;
+    class unique_ptr<int>;
 
 
-    template class SharedPtr<int>;
+    template class shared_ptr<int>;
 
-    template class WeakPtr<int>;
+    template class weak_ptr<int>;
 
 }
 

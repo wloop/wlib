@@ -29,7 +29,7 @@ namespace wlp {
     class TreeSet {
     public:
         typedef TreeSet<Key, Cmp> set_type;
-        typedef RedBlackTree<Key,
+        typedef tree<Key,
             Key, Key,
             SetGetKey<Key>, SetGetVal<Key>,
             Cmp

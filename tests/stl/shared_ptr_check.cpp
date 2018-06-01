@@ -15,8 +15,8 @@ struct Integer {
     ~Integer() { ++__destructs; }
 };
 
-typedef SharedPtr<Integer> shared_ptr;
-typedef WeakPtr<Integer> weak_ptr;
+typedef shared_ptr<Integer> shared_ptr;
+typedef weak_ptr<Integer> weak_ptr;
 
 TEST(shared_ptr_test, test_multiple_shared_delete) {
     __destructs = 0;
