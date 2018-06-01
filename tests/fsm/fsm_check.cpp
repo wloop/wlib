@@ -41,7 +41,7 @@ public:
      * Used to trace the order of state transitions to
      * verify validity.
      */
-    ArrayList<int> state_trace{25};
+    array_list<int> state_trace{25};
 
     enum States {
         ST_IDLE,

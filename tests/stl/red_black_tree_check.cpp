@@ -31,7 +31,7 @@ TEST(rb_tree_test, test_insert_iterator_order) {
         ASSERT_EQ(vals[i], *res.first());
     }
     ASSERT_EQ(9, tree.size());
-    ArrayList<char> key_list(keys, 9);
+    array_list<char> key_list(keys, 9);
     heap_sort(key_list);
     rbi it = tree.begin();
     for (size_type i = 0; i < key_list.size(); i++) {
@@ -69,7 +69,7 @@ TEST(rb_tree_test, test_insert_unique_find) {
         val_map.insert(keys[i], vals[i]);
         ASSERT_EQ(val_map[keys[i]], *res.first());
     }
-    ArrayList<char> key_list(key_set.size());
+    array_list<char> key_list(key_set.size());
     for (OpenHashSet<char>::iterator it = key_set.begin(); it != key_set.end(); ++it) {
         key_list.push_back(*it);
     }
@@ -83,7 +83,7 @@ TEST(rb_tree_test, test_insert_unique_find) {
     }
     ASSERT_EQ(key_set.size(), tree.size());
     int count = 0;
-    ArrayList<char>::iterator kit = key_list.begin();
+    array_list<char>::iterator kit = key_list.begin();
     for (rbi it = --tree.end();; --it) {
         ASSERT_EQ(*kit, get<0>(it.m_node->m_element));
         ASSERT_EQ(val_map[*kit], *it);

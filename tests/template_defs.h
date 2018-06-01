@@ -62,7 +62,7 @@ namespace wlp {
     class array_heap<const char *>;
 
     template
-    class ArrayList<int>;
+    class array_list<int>;
 
     template
     class StaticString<8>;

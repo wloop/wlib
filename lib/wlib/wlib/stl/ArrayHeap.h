@@ -485,11 +485,11 @@ namespace wlp {
     public:
         typedef Cmp comparator;
         typedef array_heap<T> heap_t;
-        typedef typename ArrayList<T>::val_type val_type;
-        typedef typename ArrayList<T>::size_type size_type;
-        typedef typename ArrayList<T>::list_type array_list;
-        typedef typename ArrayList<T>::iterator iterator;
-        typedef typename ArrayList<T>::const_iterator const_iterator;
+        typedef typename array_list<T>::val_type val_type;
+        typedef typename array_list<T>::size_type size_type;
+        typedef typename array_list<T>::list_type array_list;
+        typedef typename array_list<T>::iterator iterator;
+        typedef typename array_list<T>::const_iterator const_iterator;
 
     private:
         /**
@@ -624,7 +624,7 @@ namespace wlp {
      * @param list array list to sort
      */
     template<typename T>
-    void heap_sort(ArrayList<T> &list) {
+    void heap_sort(array_list<T> &list) {
         make_heap(list.begin(), list.end());
         sort_heap(list.begin(), list.end());
     }
@@ -640,7 +640,7 @@ namespace wlp {
      * @param cmp comparator to use
      */
     template<typename T, typename Cmp>
-    void heap_sort(ArrayList<T> &list, Cmp cmp) {
+    void heap_sort(array_list<T> &list, Cmp cmp) {
         make_heap(list.begin(), list.end(), cmp);
         sort_heap(list.begin(), list.end(), cmp);
     };

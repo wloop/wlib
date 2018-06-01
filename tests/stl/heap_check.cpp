@@ -31,7 +31,7 @@ TEST(heap_test, test_heap_push_pop) {
 }
 
 TEST(heap_test, test_heap_sort) {
-    ArrayList<int> list;
+    array_list<int> list;
     list.push_back(5);
     list.push_back(10);
     list.push_back(-1);
@@ -41,14 +41,14 @@ TEST(heap_test, test_heap_sort) {
     list.push_back(7);
     heap_sort(list);
     int expected[] = {-1, 2, 4, 5, 7, 9, 10};
-    for (ArrayList<int>::size_type i = 0; i < list.size(); ++i) {
+    for (array_list<int>::size_type i = 0; i < list.size(); ++i) {
         ASSERT_EQ(expected[i], list[i]);
     }
 }
 
 TEST(heap_test, test_heap_sort_comparator) {
     int array[] = {-5, 6, -1, 10, 16, 32};
-    ArrayList<int> list(array, 6, 12);
+    array_list<int> list(array, 6, 12);
     list.push_back(0);
     ReverseComparator<int> comparator;
     heap_sort(list, comparator);
@@ -59,7 +59,7 @@ TEST(heap_test, test_heap_sort_comparator) {
 }
 
 TEST(heap_test, test_push_heap) {
-    ArrayList<int> heap(20);
+    array_list<int> heap(20);
     heap.push_back(5);
     heap.push_back(10);
     heap.push_back(1);
@@ -71,7 +71,7 @@ TEST(heap_test, test_push_heap) {
 
 TEST(heap_test, test_make_heap) {
     ReverseComparator<int> comparator;
-    ArrayList<int> heap(10);
+    array_list<int> heap(10);
     heap.push_back(5);
     heap.push_back(10);
     heap.push_back(1);
@@ -84,7 +84,7 @@ TEST(heap_test, test_make_heap) {
 }
 
 TEST(heap_test, test_make_heap_single) {
-    ArrayList<int> heap(1);
+    array_list<int> heap(1);
     heap.push_back(5);
     make_heap(heap.begin(), heap.end());
     ASSERT_EQ(5, heap.back());
