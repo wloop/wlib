@@ -42,6 +42,10 @@ cp -r lib/wlib/include/wlib wlib-wio/include
 printf "#include <wlib/array_list>\n\nint main(int argc, char *argv[]) {\n    wlp::array_list<int> int_list(12);\n    int_list.push_back(12);\n}\n" > wlib-wio/tests/main.cpp
 
 # Move all `src` headers to `include`
-headers=$()
+headers=$(find wlib-wio/src/ -type f -name "*.h")
+relative=$(realpath --relative-to="wlib-wio/src" $headers)
 
-mv `find wlib-wio/src/ -type f -name "*.h" -exec realpath --relative-to="." {} \;` wlib-wio/include
+
+IFS=$'\n' read -rd '' -a y <<<"$headers"
+
+echo "${y[2]}"
