@@ -1,14 +1,14 @@
 #ifndef EMBEDDEDCPLUSPLUS_TABLECOMMON_H
 #define EMBEDDEDCPLUSPLUS_TABLECOMMON_H
 
-#include "Tuple.h"
-#include "wlib/utility/Tmp.h"
+#include <wlib/stl/Tuple.h>
+#include <wlib/utility/Tmp.h>
 
 namespace wlp {
 
     template<typename Key, typename Val>
     struct MapGetKey {
-        typedef Tuple<Key, Val> element_type;
+        typedef tuple<Key, Val> element_type;
         typedef Key key_type;
 
         template<typename E>
@@ -19,7 +19,7 @@ namespace wlp {
 
     template<typename Key, typename Val>
     struct MapGetVal {
-        typedef Tuple<Key, Val> element_type;
+        typedef tuple<Key, Val> element_type;
         typedef Val val_type;
 
         template<typename E>

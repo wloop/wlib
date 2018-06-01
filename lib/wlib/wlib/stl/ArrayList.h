@@ -13,17 +13,16 @@
 #ifndef EMBEDDEDCPLUSPLUS_ARRAYLIST_H
 #define EMBEDDEDCPLUSPLUS_ARRAYLIST_H
 
-#include "wlib/Types.h"
-
-#include "wlib/memory/Memory.h"
-#include "wlib/utility/Utility.h"
-#include "wlib/exceptions/Exceptions.h"
+#include <wlib/Types.h>
+#include <wlib/memory/Memory.h>
+#include <wlib/utility/Utility.h>
+#include <wlib/exceptions/Exceptions.h>
 
 namespace wlp {
 
     // ArrayList forward declaration.
     template<typename T>
-    class ArrayList;
+    class array_list;
 
     /**
      * Array list forward iterator type.
@@ -40,7 +39,7 @@ namespace wlp {
         typedef T val_type;
         typedef Ref reference;
         typedef Ptr pointer;
-        typedef ArrayList<T> array_list;
+        typedef array_list<T> array_list_t;
         typedef ArrayListIterator<T, Ref, Ptr> self_type;
 
     private:
@@ -51,9 +50,9 @@ namespace wlp {
         /**
          * Pointer to the backing array list.
          */
-        const array_list *m_list;
+        const array_list_t *m_list;
 
-        friend class ArrayList<T>;
+        friend class array_list<T>;
 
     public:
         /**
@@ -82,7 +81,7 @@ namespace wlp {
          * @param i array index
          * @param list backing array list
          */
-        explicit ArrayListIterator(const size_type &i, const array_list *list)
+        explicit ArrayListIterator(const size_type &i, const array_list_t *list)
                 : m_i(i),
                   m_list(list) {
             check_bounds();
@@ -275,11 +274,11 @@ namespace wlp {
      * @tparam T value type
      */
     template<typename T>
-    class ArrayList {
+    class array_list {
     public:
         typedef T val_type;
         typedef wlp::size_type size_type;
-        typedef ArrayList<T> list_type;
+        typedef array_list<T> list_type;
         typedef ArrayListIterator<T, T &, T *> iterator;
         typedef ArrayListIterator<T, const T &, const T *> const_iterator;
 
@@ -308,7 +307,7 @@ namespace wlp {
          *
          * @param initial_capacity the initial size of the backing array
          */
-        explicit ArrayList(size_type initial_capacity = 12)
+        explicit array_list(size_type initial_capacity = 12)
                 : m_size(0),
                   m_capacity(initial_capacity) {
             init_array(initial_capacity);
@@ -317,14 +316,14 @@ namespace wlp {
         /**
          * Disable copy constructor.
          */
-        ArrayList(const list_type &) = delete;
+        array_list(const list_type &) = delete;
 
         /**
          * Move constructor.
          *
          * @param list array list whose resources to transfer
          */
-        ArrayList(list_type &&list)
+        array_list(list_type &&list)
                 : m_data(move(list.m_data)),
                   m_size(move(list.m_size)),
                   m_capacity(move(list.m_capacity)) {
@@ -342,7 +341,7 @@ namespace wlp {
          * @param values array of values
          * @param length length of the array
          */
-        ArrayList(const val_type *values, size_type length, size_type initial_capacity)
+        array_list(const val_type *values, size_type length, size_type initial_capacity)
                 : m_size(length),
                   m_capacity(initial_capacity) {
             if (m_capacity < length) {
@@ -362,15 +361,15 @@ namespace wlp {
          * @param values array of values
          * @param length length of the array
          */
-        ArrayList(const val_type *values, size_type length)
-                : ArrayList(values, length, length) {
+        array_list(const val_type *values, size_type length)
+                : array_list(values, length, length) {
         }
 
         /**
          * Free the memory for the array unless
          * it has already been deallocated elsewhere.
          */
-        ~ArrayList() {
+        ~array_list() {
             if (!m_data) {
                 return;
             }
@@ -776,7 +775,7 @@ namespace wlp {
     };
 
     template<typename T>
-    void ArrayList<T>::ensure_capacity() {
+    void array_list<T>::ensure_capacity() {
         if (m_size < m_capacity) {
             return;
         }
@@ -791,7 +790,7 @@ namespace wlp {
     }
 
     template<typename T>
-    void ArrayList<T>::reserve(size_type new_capacity) {
+    void array_list<T>::reserve(size_type new_capacity) {
         if (new_capacity <= m_capacity) {
             return;
         }
@@ -805,7 +804,7 @@ namespace wlp {
     }
 
     template<typename T>
-    void ArrayList<T>::shrink() {
+    void array_list<T>::shrink() {
         if (m_size == m_capacity) {
             return;
         }
@@ -819,14 +818,14 @@ namespace wlp {
     }
 
     template<typename T>
-    inline void ArrayList<T>::shift_right(size_type i) {
+    inline void array_list<T>::shift_right(size_type i) {
         for (size_type j = m_size; j > i; j--) {
             m_data[j] = m_data[j - 1];
         }
     }
 
     template<typename T>
-    inline void ArrayList<T>::shift_left(size_type i) {
+    inline void array_list<T>::shift_left(size_type i) {
         for (size_type j = i; j < m_size - 1; j++) {
             m_data[j] = m_data[j + 1];
         }

@@ -33,7 +33,7 @@ struct __TestObject {
 };
 
 TEST(unique_ptr_test, test_constructor_access) {
-    UniquePtr<int> int_ptr = UniquePtr<int>(malloc<int>());
+    unique_ptr<int> int_ptr = unique_ptr<int>(malloc<int>());
     *int_ptr = 5;
     ASSERT_EQ(*int_ptr, 5);
     bool bool_val = !!int_ptr;
@@ -43,7 +43,7 @@ TEST(unique_ptr_test, test_constructor_access) {
     ASSERT_FALSE(bool_val);
     ASSERT_EQ(nullptr, int_ptr.get());
     ASSERT_EQ(5, *ptr);
-    int_ptr = UniquePtr<int>(ptr);
+    int_ptr = unique_ptr<int>(ptr);
     ASSERT_EQ(5, *int_ptr);
     bool_val = !!int_ptr;
     ASSERT_TRUE(bool_val);
@@ -53,14 +53,14 @@ TEST(unique_ptr_test, test_constructor_access) {
 }
 
 TEST(unique_ptr_test, test_default_ctor) {
-    UniquePtr<const char *> string_ptr = UniquePtr<const char *>();
+    unique_ptr<const char *> string_ptr = unique_ptr<const char *>();
     ASSERT_FALSE(!!string_ptr);
     ASSERT_EQ(nullptr, string_ptr.get());
 }
 
 TEST(unique_ptr_test, test_custom_deleter_move_ctor) {
     __reset_test();
-    UniquePtr<__TestObject> ptr = UniquePtr<__TestObject>(malloc<__TestObject>());
+    unique_ptr<__TestObject> ptr = unique_ptr<__TestObject>(malloc<__TestObject>());
     ASSERT_EQ(1, __constructs);
     ptr->value = 10;
     ASSERT_EQ(10, ptr->value);
@@ -70,19 +70,19 @@ TEST(unique_ptr_test, test_custom_deleter_move_ctor) {
 
 TEST(unique_ptr_test, test_deleter_ctor) {
     __reset_test();
-    UniquePtr<const char *> cstr_ptr = UniquePtr<const char *>(malloc<const char *>());
+    unique_ptr<const char *> cstr_ptr = unique_ptr<const char *>(malloc<const char *>());
     const char *string = "Stars, hide your fires; Let not "
             "light see my black and deep desires";
     *cstr_ptr = string;
     ASSERT_STREQ(string, *cstr_ptr);
     cstr_ptr.reset(malloc<const char *>());
-    cstr_ptr = UniquePtr<const char *>(malloc<const char *>());
+    cstr_ptr = unique_ptr<const char *>(malloc<const char *>());
 }
 
 TEST(unique_ptr_test, test_array_ptr) {
     __reset_test();
     using obj = __TestObject;
-    UniquePtr<obj[]> arr = UniquePtr<obj[]>(malloc<obj[]>(5));
+    unique_ptr<obj[]> arr = unique_ptr<obj[]>(malloc<obj[]>(5));
     // malloc should call constructor
     ASSERT_EQ(5, __constructs);
     int values[] = {1, 2, 3, 4, 5};
@@ -113,7 +113,7 @@ TEST(unique_ptr_test, test_comparison_operators) {
     ASSERT_LT(first, second); // first < second
     uint16_t *l_first = first; // first == l_first
     // careful not to let unique ptr free these
-    using intptr = UniquePtr<uint16_t>;
+    using intptr = unique_ptr<uint16_t>;
     intptr first_ptr = intptr(first);
     intptr second_ptr = intptr(second);
     intptr l_first_ptr = intptr(l_first);

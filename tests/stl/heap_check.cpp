@@ -6,7 +6,7 @@
 using namespace wlp;
 
 TEST(heap_test, test_heap_push_pop) {
-    ArrayHeap<int> heap;
+    array_heap<int> heap;
     heap.push(5);
     heap.push(10);
     heap.push(1);
@@ -31,7 +31,7 @@ TEST(heap_test, test_heap_push_pop) {
 }
 
 TEST(heap_test, test_heap_sort) {
-    ArrayList<int> list;
+    array_list<int> list;
     list.push_back(5);
     list.push_back(10);
     list.push_back(-1);
@@ -41,16 +41,16 @@ TEST(heap_test, test_heap_sort) {
     list.push_back(7);
     heap_sort(list);
     int expected[] = {-1, 2, 4, 5, 7, 9, 10};
-    for (ArrayList<int>::size_type i = 0; i < list.size(); ++i) {
+    for (array_list<int>::size_type i = 0; i < list.size(); ++i) {
         ASSERT_EQ(expected[i], list[i]);
     }
 }
 
 TEST(heap_test, test_heap_sort_comparator) {
     int array[] = {-5, 6, -1, 10, 16, 32};
-    ArrayList<int> list(array, 6, 12);
+    array_list<int> list(array, 6, 12);
     list.push_back(0);
-    ReverseComparator<int> comparator;
+    reverse_comparator<int> comparator;
     heap_sort(list, comparator);
     int expected[] = {32, 16, 10, 6, 0, -1, -5};
     for (size_type i = 0; i < 6; i++) {
@@ -59,7 +59,7 @@ TEST(heap_test, test_heap_sort_comparator) {
 }
 
 TEST(heap_test, test_push_heap) {
-    ArrayList<int> heap(20);
+    array_list<int> heap(20);
     heap.push_back(5);
     heap.push_back(10);
     heap.push_back(1);
@@ -70,8 +70,8 @@ TEST(heap_test, test_push_heap) {
 }
 
 TEST(heap_test, test_make_heap) {
-    ReverseComparator<int> comparator;
-    ArrayList<int> heap(10);
+    reverse_comparator<int> comparator;
+    array_list<int> heap(10);
     heap.push_back(5);
     heap.push_back(10);
     heap.push_back(1);
@@ -84,7 +84,7 @@ TEST(heap_test, test_make_heap) {
 }
 
 TEST(heap_test, test_make_heap_single) {
-    ArrayList<int> heap(1);
+    array_list<int> heap(1);
     heap.push_back(5);
     make_heap(heap.begin(), heap.end());
     ASSERT_EQ(5, heap.back());
@@ -92,14 +92,14 @@ TEST(heap_test, test_make_heap_single) {
     heap.clear();
     ASSERT_EQ(0, heap.size());
     heap.push_back(10);
-    Comparator<int> comparator;
+    comparator<int> comparator;
     make_heap(heap.begin(), heap.end(), comparator);
     ASSERT_EQ(10, heap.back());
     ASSERT_EQ(10, heap.front());
 }
 
 TEST(heap_test, test_heap_push) {
-    ArrayHeap<int> heap(5);
+    array_heap<int> heap(5);
     heap.push(5);
     const int v = 7;
     heap.push(v);
@@ -112,12 +112,12 @@ TEST(heap_test, test_heap_push) {
 }
 
 TEST(heap_test, test_move_constructor) {
-    ArrayHeap<int> heap(5);
+    array_heap<int> heap(5);
     heap.push(1);
     heap.push(-1);
     heap.push(5);
     heap.push(-5);
-    ArrayHeap<int> heap0(move(heap));
+    array_heap<int> heap0(move(heap));
     ASSERT_EQ(4, heap0.size());
     ASSERT_EQ(0, heap.size());
     ASSERT_EQ(5, heap0.capacity());
@@ -137,11 +137,11 @@ TEST(heap_test, test_move_constructor) {
 }
 
 TEST(heap_test, test_move_assignment_operator) {
-    ArrayHeap<int> heap(5);
+    array_heap<int> heap(5);
     heap.push(5);
     heap.push(2);
     heap.push(11);
-    ArrayHeap<int> heap0(10);
+    array_heap<int> heap0(10);
     heap0.push(1);
     heap0.push(10);
     heap0 = move(heap);

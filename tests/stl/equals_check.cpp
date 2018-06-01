@@ -7,7 +7,7 @@
 using namespace wlp;
 
 TEST(equals_test, test_string_equals) {
-    Equal<char *> comparator = Equal<char *>();
+    equals<char *> comparator = equals<char *>();
     char str1[] = "somestring";
     char str2[] = "somestring";
     char str3[] = "shoestring";
@@ -20,7 +20,7 @@ TEST(equals_test, test_string_equals) {
 }
 
 TEST(equals_test, test_static_string_equals) {
-    Equal<String8> comparator = Equal<String8>();
+    equals<String8> comparator = equals<String8>();
     String8 str1{"darwin"};
     String8 str2{"darwin"};
     String8 str3{"money__\""};
@@ -30,7 +30,7 @@ TEST(equals_test, test_static_string_equals) {
 }
 
 TEST(equals_test, test_static_string_unequal) {
-    Equal<String8> comparator = Equal<String8>();
+    equals<String8> comparator = equals<String8>();
     String8 str1{"darwin"};
     String8 str2{"money__\""};
     String8 str3{"houses"};
@@ -39,7 +39,7 @@ TEST(equals_test, test_static_string_unequal) {
 }
 
 TEST(equals_test, test_integer_equal) {
-    Equal<uint16_t> comparator = Equal<uint16_t>();
+    equals<uint16_t> comparator = equals<uint16_t>();
     ASSERT_TRUE(comparator(1, 1));
     ASSERT_TRUE(comparator(15, 15));
     ASSERT_FALSE(comparator(1, 14));

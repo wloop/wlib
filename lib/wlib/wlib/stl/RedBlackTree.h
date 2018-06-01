@@ -13,13 +13,12 @@
 #ifndef EMBEDDEDCPLUSPLUS_REDBLACKTREE_H
 #define EMBEDDEDCPLUSPLUS_REDBLACKTREE_H
 
-#include "Comparator.h"
-#include "Pair.h"
-
-#include "wlib/Types.h"
-#include "wlib/memory/Memory.h"
-#include "wlib/utility/Utility.h"
-#include "wlib/exceptions/Exceptions.h"
+#include <wlib/stl/Comparator.h>
+#include <wlib/stl/Pair.h>
+#include <wlib/Types.h>
+#include <wlib/memory/Memory.h>
+#include <wlib/utility/Utility.h>
+#include <wlib/exceptions/Exceptions.h>
 
 namespace wlp {
 
@@ -335,15 +334,15 @@ namespace wlp {
             typename Val,
             typename GetKey,
             typename GetVal,
-            typename Cmp = Comparator <Key>>
-    class RedBlackTree {
+            typename Cmp = comparator <Key>>
+    class tree {
     public:
         typedef Key key_type;
         typedef Val val_type;
         typedef Cmp comparator;
         typedef wlp::size_type size_type;
         typedef RedBlackTreeNode<Element> node_type;
-        typedef RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp> tree_type;
+        typedef tree<Element, Key, Val, GetKey, GetVal, Cmp> tree_type;
         typedef RedBlackTreeIterator<Element, Val, Val &, Val *, GetVal> iterator;
         typedef RedBlackTreeIterator<Element, Val, const Val &, const Val *, GetVal> const_iterator;
         typedef GetKey get_key;
@@ -485,7 +484,7 @@ namespace wlp {
          *
          * @param n reserved space for nodes
          */
-        explicit RedBlackTree()
+        explicit tree()
                 : m_header(nullptr),
                   m_size(0),
                   m_cmp() {
@@ -496,14 +495,14 @@ namespace wlp {
         /**
          * Disable copy construction.
          */
-        RedBlackTree(const tree_type &) = delete;
+        tree(const tree_type &) = delete;
 
         /**
          * Move constructor.
          *
          * @param tree tree to move
          */
-        RedBlackTree(tree_type &&tree)
+        tree(tree_type &&tree)
                 : m_header(move(tree.m_header)),
                   m_size(move(tree.m_size)),
                   m_cmp() {
@@ -514,7 +513,7 @@ namespace wlp {
         /**
          * Destructor.
          */
-        ~RedBlackTree() {
+        ~tree() {
             clear();
             if (m_header) {
                 destroy_node(m_header);
@@ -601,7 +600,7 @@ namespace wlp {
          * whether insertion occurred
          */
         template<typename E>
-        Pair<iterator, bool> insert_unique(E &&element);
+        pair<iterator, bool> insert_unique(E &&element);
 
         /**
          * Insert a value with a given key into the tree. This function
@@ -731,7 +730,7 @@ namespace wlp {
          * @param key the key whose range to get
          * @return a pair of iterators to the lower and upper bounds
          */
-        Pair <iterator, iterator> equal_range(const key_type &key);
+        pair <iterator, iterator> equal_range(const key_type &key);
 
         /**
          * Obtain the range of nodes whose keys are equal to the provided key
@@ -740,7 +739,7 @@ namespace wlp {
          * @param key the key whose range to get
          * @return a pair of const iterators to the lower and upper bounds
          */
-        Pair <const_iterator, const_iterator> equal_range(const key_type &val) const;
+        pair <const_iterator, const_iterator> equal_range(const key_type &val) const;
 
         /**
          * Disable copy assignemnt.
@@ -772,7 +771,7 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    inline void RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    inline void tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::rotateLeft(node_type *node, node_type *&root) {
         node_type *carry = node->m_right;
         node->m_right = carry->m_left;
@@ -793,7 +792,7 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    inline void RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    inline void tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::rotateRight(node_type *node, node_type *&root) {
         node_type *carry = node->m_left;
         node->m_left = carry->m_right;
@@ -814,7 +813,7 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    inline void RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    inline void tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::rebalance(node_type *node, node_type *&root) {
         node->m_color = color::RED;
         while (node != root && node->m_parent->m_color == color::RED) {
@@ -857,8 +856,8 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    inline typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::node_type *
-    RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    inline typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::node_type *
+    tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::erase_rebalance(
             node_type *node,
             node_type *&root,
@@ -1020,8 +1019,8 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
     template<typename E>
-    typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator
-    RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator
+    tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::insert(node_type *cur, node_type *carry, E &&element) {
         node_type *node = create_node();
         node->m_element = forward<E>(element);
@@ -1050,8 +1049,8 @@ namespace wlp {
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
     template<typename E>
-    Pair<typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator, bool>
-    RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    pair<typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator, bool>
+    tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::insert_unique(E &&element) {
         node_type *carry = m_header;
         node_type *cur = m_header->m_parent;
@@ -1064,22 +1063,22 @@ namespace wlp {
         iterator tmp = iterator(carry);
         if (compare) {
             if (tmp == begin()) {
-                return Pair<iterator, bool>(insert(cur, carry, forward<E>(element)), true);
+                return pair<iterator, bool>(insert(cur, carry, forward<E>(element)), true);
             } else {
                 --tmp;
             }
         }
         if (m_cmp.__lt__(m_get_key(tmp.m_node->m_element), m_get_key(element))) {
-            return Pair<iterator, bool>(insert(cur, carry, forward<E>(element)), true);
+            return pair<iterator, bool>(insert(cur, carry, forward<E>(element)), true);
         }
-        return Pair<iterator, bool>(tmp, false);
+        return pair<iterator, bool>(tmp, false);
     }
 
     template<typename Element, typename Key, typename Val, 
             typename GetKey, typename GetVal, typename Cmp>
     template<typename E>
-    typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator
-    RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator
+    tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::insert_equal(E &&element) {
         node_type *carry = m_header;
         node_type *cur = m_header->m_parent;
@@ -1092,7 +1091,7 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    inline void RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    inline void tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::erase(node_type *root) {
         node_type *current;
         node_type *pre;
@@ -1126,7 +1125,7 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    inline void RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    inline void tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::erase(const iterator &pos) {
         node_type *carry = erase_rebalance(pos.m_node, m_header->m_parent, m_header->m_left, m_header->m_right);
         destroy_node(carry);
@@ -1135,17 +1134,17 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    inline typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::size_type
-    RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    inline typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::size_type
+    tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::erase(const key_type &cur) {
-        Pair<iterator, iterator> res = equal_range(cur);
+        pair<iterator, iterator> res = equal_range(cur);
         return erase(res.m_first, res.m_second);
     }
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
     inline size_type
-    RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::erase(const iterator &first, const iterator &last) {
         size_type count;
         if (first == begin() && last == end()) {
@@ -1164,8 +1163,8 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator
-    RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator
+    tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::find(const key_type &key) {
         node_type *carry = m_header;
         node_type *cur = m_header->m_parent;
@@ -1183,8 +1182,8 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::const_iterator
-    RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::const_iterator
+    tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::find(const key_type &key) const {
         node_type *carry = m_header;
         node_type *cur = m_header->m_parent;
@@ -1202,10 +1201,10 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::size_type
-    RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::size_type
+    tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::count(const key_type &key) const {
-        Pair<const_iterator, const_iterator> res = equal_range(key);
+        pair<const_iterator, const_iterator> res = equal_range(key);
         size_type count = 0;
         while (res.m_first != res.m_second) {
             ++res.m_first;
@@ -1216,8 +1215,8 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator
-    RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator
+    tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::lower_bound(const key_type &key) {
         node_type *carry = m_header;
         node_type *cur = m_header->m_parent;
@@ -1234,8 +1233,8 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator
-    RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator
+    tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::upper_bound(const key_type &key) {
         node_type *carry = m_header;
         node_type *cur = m_header->m_parent;
@@ -1253,8 +1252,8 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::const_iterator
-    RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::const_iterator
+    tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::lower_bound(const key_type &key) const {
         node_type *carry = m_header;
         node_type *cur = m_header->m_parent;
@@ -1271,8 +1270,8 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::const_iterator
-    RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::const_iterator
+    tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::upper_bound(const key_type &key) const {
         node_type *carry = m_header;
         node_type *cur = m_header->m_parent;
@@ -1290,25 +1289,25 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    inline Pair<
-            typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator,
-            typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator
+    inline pair<
+            typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator,
+            typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator
     >
-    RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::equal_range(const key_type &key) {
-        return Pair<iterator, iterator>(lower_bound(key), upper_bound(key));
+        return pair<iterator, iterator>(lower_bound(key), upper_bound(key));
     }
 
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    inline Pair<
-            typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::const_iterator,
-            typename RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>::const_iterator
+    inline pair<
+            typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::const_iterator,
+            typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::const_iterator
     >
-    RedBlackTree<Element, Key, Val, GetKey, GetVal, Cmp>
+    tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::equal_range(const key_type &key) const {
-        return Pair<const_iterator, const_iterator>(lower_bound(key), upper_bound(key));
+        return pair<const_iterator, const_iterator>(lower_bound(key), upper_bound(key));
     }
 
 }

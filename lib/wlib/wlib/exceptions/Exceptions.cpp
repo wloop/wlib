@@ -10,8 +10,9 @@
  */
 
 #include <stdlib.h>
-#include "wlib/memory/Memory.h"
+
 #include "Exceptions.h"
+#include "../memory/Memory.h"
 
 using namespace wlp;
 

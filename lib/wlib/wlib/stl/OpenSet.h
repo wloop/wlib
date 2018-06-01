@@ -13,13 +13,12 @@
 #ifndef EMBEDDEDCPLUSPLUS_OPENSET_H
 #define EMBEDDEDCPLUSPLUS_OPENSET_H
 
-#include "Equal.h"
-#include "Hash.h"
-#include "OpenTable.h"
-#include "Pair.h"
-#include "Table.h"
-
-#include "wlib/utility/Utility.h"
+#include <wlib/stl/Equal.h>
+#include <wlib/stl/Hash.h>
+#include <wlib/stl/OpenTable.h>
+#include <wlib/stl/Pair.h>
+#include <wlib/stl/Table.h>
+#include <wlib/utility/Utility.h>
 
 namespace wlp {
 
@@ -33,12 +32,12 @@ namespace wlp {
      * @tparam Equal test for equality function of the stored elements
      */
     template<class Key,
-            class Hasher = Hash <Key, uint16_t>,
-            class Equals = Equal <Key>>
-    class OpenHashSet {
+            class Hasher = hash <Key, uint16_t>,
+            class Equals = equals <Key>>
+    class open_set {
     public:
-        typedef OpenHashSet<Key, Hasher, Equals> set_type;
-        typedef OpenHashTable<Key,
+        typedef open_set<Key, Hasher, Equals> set_type;
+        typedef open_table<Key,
             Key, Key,
             SetGetKey<Key>, SetGetVal<Key>,
             Hasher, Equals
@@ -54,15 +53,15 @@ namespace wlp {
         table_type m_table;
 
     public:
-        explicit OpenHashSet(
+        explicit open_set(
                 size_type n = 12,
                 percent_type max_load = 75)
                 : m_table(n, max_load) {
         }
 
-        OpenHashSet(const set_type &) = delete;
+        open_set(const set_type &) = delete;
 
-        OpenHashSet(set_type &&set)
+        open_set(set_type &&set)
                 : m_table(move(set.m_table)) {
         }
 
@@ -107,7 +106,7 @@ namespace wlp {
         }
 
         template<typename K>
-        Pair<iterator, bool> insert(K &&key) {
+        pair<iterator, bool> insert(K &&key) {
             return m_table.insert_unique(key);
         };
 

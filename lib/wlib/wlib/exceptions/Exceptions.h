@@ -13,7 +13,8 @@
 #define EMBEDDEDCPLUSPLUS_EXCEPTIONS_H
 
 #include <setjmp.h>
-#include "wlib/Types.h"
+
+#include <wlib/Types.h>
 
 /**
  * This is used to define the behaviour when there is no catch block and error is thrown

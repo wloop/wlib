@@ -12,15 +12,15 @@
 #ifndef EMBEDDEDTESTS_PAIR_H
 #define EMBEDDEDTESTS_PAIR_H
 
-#include "wlib/utility/Utility.h"
+#include <wlib/utility/Utility.h>
 
 namespace wlp {
 
     template<class First, class Second>
-    struct Pair {
+    struct pair {
         typedef First first_type;
         typedef Second second_type;
-        typedef Pair<First, Second> pair;
+        typedef pair<First, Second> pair_t;
 
         /**
          * First element in the pair.
@@ -34,14 +34,14 @@ namespace wlp {
         /**
          * Default constructor creates an empty pair.
          */
-        Pair() {};
+        pair() {};
 
         /**
          * Copy constructor for const reference.
          *
          * @param pair pair to copy
          */
-        Pair(pair const &pair)
+        pair(pair const &pair)
                 : m_first(pair.m_first),
                   m_second(pair.m_second) {
         }
@@ -51,7 +51,7 @@ namespace wlp {
          *
          * @param pair temporary pair to copy
          */
-        Pair(pair &&pair)
+        pair(pair &&pair)
                 : m_first(move(pair.m_first)),
                   m_second(move(pair.m_second)) {
         }
@@ -63,7 +63,7 @@ namespace wlp {
          * @param second second type value
          */
         template<typename FirstType, typename SecondType>
-        Pair(FirstType &&first, SecondType &&second)
+        pair(FirstType &&first, SecondType &&second)
                 : m_first(forward<FirstType>(first)),
                   m_second(forward<SecondType>(second)) {
         }

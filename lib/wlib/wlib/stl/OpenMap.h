@@ -15,14 +15,13 @@
 #ifndef CORE_STL_MAP_H
 #define CORE_STL_MAP_H
 
-#include "Equal.h"
-#include "Hash.h"
-#include "OpenTable.h"
-#include "Pair.h"
-#include "Table.h"
-#include "Tuple.h"
-
-#include "wlib/utility/Utility.h"
+#include <wlib/stl/Equal.h>
+#include <wlib/stl/Hash.h>
+#include <wlib/stl/OpenTable.h>
+#include <wlib/stl/Pair.h>
+#include <wlib/stl/Table.h>
+#include <wlib/stl/Tuple.h>
+#include <wlib/utility/Utility.h>
 
 namespace wlp {
 
@@ -37,12 +36,12 @@ namespace wlp {
      */
     template<typename Key,
             typename Val,
-            typename Hasher = Hash<Key, uint16_t>,
-            typename Equals = Equal<Key>>
-    class OpenHashMap {
+            typename Hasher = hash<Key, uint16_t>,
+            typename Equals = equals<Key>>
+    class open_map {
     public:
-        typedef OpenHashMap<Key, Val, Hasher, Equals> map_type;
-        typedef OpenHashTable<Tuple<Key, Val>,
+        typedef open_map<Key, Val, Hasher, Equals> map_type;
+        typedef open_table<tuple<Key, Val>,
                 Key, Val,
                 MapGetKey<Key, Val>, MapGetVal<Key, Val>,
                 Hasher, Equals
@@ -59,13 +58,13 @@ namespace wlp {
         table_type m_table;
 
     public:
-        explicit OpenHashMap(size_type n = 12, percent_type max_load = 75)
+        explicit open_map(size_type n = 12, percent_type max_load = 75)
                 : m_table(n, max_load) {
         }
 
-        OpenHashMap(const map_type &) = delete;
+        open_map(const map_type &) = delete;
 
-        OpenHashMap(map_type &&map)
+        open_map(map_type &&map)
                 : m_table(move(map.m_table)) {
         }
 
@@ -110,13 +109,13 @@ namespace wlp {
         }
 
         template<typename K, typename V>
-        Pair<iterator, bool> insert(K &&key, V &&val) {
+        pair<iterator, bool> insert(K &&key, V &&val) {
             return m_table.insert_unique(make_tuple(forward<K>(key), forward<V>(val)));
         };
 
         template<typename K, typename V>
-        Pair<iterator, bool> insert_or_assign(K &&key, V &&val) {
-            Pair<iterator, bool> result = m_table.insert_unique(make_tuple(forward<K>(key), forward<V>(val)));
+        pair<iterator, bool> insert_or_assign(K &&key, V &&val) {
+            pair<iterator, bool> result = m_table.insert_unique(make_tuple(forward<K>(key), forward<V>(val)));
             if (!result.m_second) {
                 *result.m_first = forward<V>(val);
             }
@@ -156,7 +155,7 @@ namespace wlp {
 
         template<typename K>
         val_type &operator[](K &&key) {
-            Pair<iterator, bool> result = m_table.insert_unique(make_tuple(forward<K>(key), val_type()));
+            pair<iterator, bool> result = m_table.insert_unique(make_tuple(forward<K>(key), val_type()));
             return *result.m_first;
         }
 

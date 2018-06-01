@@ -13,8 +13,8 @@
 #include "StaticAllocatorPool.h"
 #include "DynamicAllocatorPool.h"
 
-#include "wlib/Wlib.h"
-#include "wlib/utility/Math.h"
+#include "../Wlib.h"
+#include "../utility/Math.h"
 
 using namespace wlp;
 

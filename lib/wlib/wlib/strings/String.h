@@ -14,25 +14,24 @@
 
 #include <string.h> // strlen, strncpy, strcmp
 
-#include "StringIterator.h"
-
-#include "wlib/Types.h"
-#include "wlib/utility/Math.h"
-#include "wlib/memory/Memory.h"
+#include <wlib/strings/StringIterator.h>
+#include <wlib/Types.h>
+#include <wlib/utility/Math.h>
+#include <wlib/memory/Memory.h>
 
 namespace wlp {
 
     template<size_type tSize>
-    class StaticString;
+    class static_string;
 
-    class DynamicString;
+    class dynamic_string;
 
     template<size_type tSize>
-    class StaticString {
+    class static_string {
     public:
         // Iterator types
-        typedef StringIterator<StaticString<tSize>, char &, char *> iterator;
-        typedef StringIterator<const StaticString<tSize>, const char &, const char *> const_iterator;
+        typedef StringIterator<static_string<tSize>, char &, char *> iterator;
+        typedef StringIterator<const static_string<tSize>, const char &, const char *> const_iterator;
 
         // Required types for concept check
         typedef wlp::size_type size_type;
@@ -41,7 +40,7 @@ namespace wlp {
         /**
          * Default constructor creates string with no character
          */
-        StaticString<tSize>() {
+        static_string<tSize>() {
             clear();
         }
 
@@ -50,23 +49,23 @@ namespace wlp {
          *
          * @param str @code StaticString @endcode object
          */
-        StaticString<tSize>(const StaticString<tSize> &str)
-                : StaticString{str.c_str()} {}
+        static_string<tSize>(const static_string<tSize> &str)
+                : static_string{str.c_str()} {}
 
         /**
          * Constructor creates string using character array
          *
          * @param str char string
          */
-        explicit StaticString<tSize>(const char *str)
-                : StaticString(str, static_cast<size_type>(strlen(str))) {}
+        explicit static_string<tSize>(const char *str)
+                : static_string(str, static_cast<size_type>(strlen(str))) {}
 
         /**
          * Construct a Static String from a Dynamic String.
          *
          * @param str dynamic string
          */
-        explicit StaticString<tSize>(const DynamicString &str);
+        explicit static_string<tSize>(const dynamic_string &str);
 
         /**
          * Construct a Static String from a character array and a known length.
@@ -74,7 +73,7 @@ namespace wlp {
          * @param str character array
          * @param len length of the array
          */
-        StaticString<tSize>(const char *str, size_type len) {
+        static_string<tSize>(const char *str, size_type len) {
             m_len = MIN(len, tSize);
             memcpy(m_buffer, str, m_len);
             m_buffer[m_len] = '\0';
@@ -86,7 +85,7 @@ namespace wlp {
          * @param str @code StaticString @endcode object
          * @return current object
          */
-        StaticString<tSize> &operator=(const StaticString<tSize> &str) {
+        static_string<tSize> &operator=(const static_string<tSize> &str) {
             m_len = str.m_len;
             memcpy(m_buffer, str.m_buffer, m_len + 1);
             return *this;
@@ -98,7 +97,7 @@ namespace wlp {
          * @param str dynamic string to copy
          * @return reference to this string
          */
-        StaticString<tSize> &operator=(const DynamicString &str);
+        static_string<tSize> &operator=(const dynamic_string &str);
 
         /**
          * The move assignment operator for a StaticString
@@ -108,7 +107,7 @@ namespace wlp {
          * @param str string to move
          * @return reference to this string
          */
-        StaticString<tSize> &operator=(StaticString<tSize> &&str) noexcept {
+        static_string<tSize> &operator=(static_string<tSize> &&str) noexcept {
             m_len = str.m_len;
             memcpy(m_buffer, str.m_buffer, m_len + 1);
             return *this;
@@ -120,7 +119,7 @@ namespace wlp {
          * @param str character string
          * @return current object
          */
-        StaticString<tSize> &operator=(const char *str) {
+        static_string<tSize> &operator=(const char *str) {
             m_len = MIN(static_cast<size_type>(strlen(str)), tSize);
             memcpy(m_buffer, str, m_len + 1);
             return *this;
@@ -132,7 +131,7 @@ namespace wlp {
          * @param c given character
          * @return current object
          */
-        StaticString<tSize> &operator=(const char c) {
+        static_string<tSize> &operator=(const char c) {
             if (tSize == 0) {
                 return *this;
             }
@@ -269,7 +268,7 @@ namespace wlp {
          * @param other @code StaticString @endcode string to add
          * @return the current string
          */
-        StaticString<tSize> &operator+=(const StaticString<tSize> &other) {
+        static_string<tSize> &operator+=(const static_string<tSize> &other) {
             return append(other);
         }
 
@@ -280,7 +279,7 @@ namespace wlp {
          * @param str dynamic string to append
          * @return reference to this string
          */
-        StaticString<tSize> &operator+=(const DynamicString &str) {
+        static_string<tSize> &operator+=(const dynamic_string &str) {
             return append(str);
         }
 
@@ -291,7 +290,7 @@ namespace wlp {
          * @param val char string to add
          * @return the current string
          */
-        StaticString<tSize> &operator+=(const char *val) {
+        static_string<tSize> &operator+=(const char *val) {
             return append(val, static_cast<size_type>(strlen(val)));
         }
 
@@ -302,7 +301,7 @@ namespace wlp {
          * @param c character to add
          * @return the current string
          */
-        StaticString<tSize> &operator+=(char c) {
+        static_string<tSize> &operator+=(char c) {
             push_back(c);
             return *this;
         }
@@ -313,9 +312,9 @@ namespace wlp {
          * @param str dynamic string to add
          * @return a new static string containing the most contents of both strings
          */
-        StaticString<tSize> operator+(const DynamicString &str) const;
+        static_string<tSize> operator+(const dynamic_string &str) const;
 
-        StaticString<tSize> operator+(const StaticString<tSize> &str) const {
+        static_string<tSize> operator+(const static_string<tSize> &str) const {
             return {m_buffer, str.m_buffer, m_len, str.m_len};
         }
 
@@ -325,7 +324,7 @@ namespace wlp {
          * @param str static string to add
          * @return a new static string containing the most contents of both strings
          */
-        StaticString<tSize> operator=(const StaticString<tSize> &str) const {
+        static_string<tSize> operator=(const static_string<tSize> &str) const {
             return {m_buffer, str.m_buffer, m_len, str.m_len};
         }
 
@@ -336,7 +335,7 @@ namespace wlp {
          * @param str @code StaticString @endcode string to add
          * @return the current string
          */
-        StaticString<tSize> &append(const StaticString<tSize> &str) {
+        static_string<tSize> &append(const static_string<tSize> &str) {
             return append(str.c_str(), str.length());
         }
 
@@ -347,7 +346,7 @@ namespace wlp {
          * @param str dynamic string to append
          * @return reference to this string
          */
-        StaticString<tSize> &append(const DynamicString &str);
+        static_string<tSize> &append(const dynamic_string &str);
 
         /**
          * Append a character array with unknown length.
@@ -355,7 +354,7 @@ namespace wlp {
          * @param str character array
          * @return reference to this string
          */
-        StaticString<tSize> &append(const char *str) {
+        static_string<tSize> &append(const char *str) {
             return append(str, static_cast<size_type>(strlen(str)));
         }
 
@@ -366,7 +365,7 @@ namespace wlp {
          * @param str character string to add
          * @return the current string
          */
-        StaticString<tSize> &append(const char *str, size_type len) {
+        static_string<tSize> &append(const char *str, size_type len) {
             char *start = m_buffer + m_len;
             size_type new_len = MIN(tSize, static_cast<size_type>(m_len + len));
             memcpy(start, str, new_len - m_len);
@@ -430,14 +429,14 @@ namespace wlp {
          * @param length length of the new string
          * @return new string which is a substring of current string
          */
-        StaticString<tSize> substr(size_type pos, size_type length) const {
+        static_string<tSize> substr(size_type pos, size_type length) const {
             if (pos >= m_len) {
                 return *this;
             }
             if (pos + length >= m_len) {
                 length = static_cast<size_type>(m_len - pos);
             }
-            StaticString<tSize> sub;
+            static_string<tSize> sub;
             memcpy(sub.m_buffer, m_buffer + pos, length);
             sub.m_buffer[length] = '\0';
             return sub;
@@ -451,7 +450,7 @@ namespace wlp {
          * @param str @code StaticString @endcode string to compare against current string
          * @return a signed number based on how strings compare
          */
-        diff_type compare(const StaticString<tSize> &str) const {
+        diff_type compare(const static_string<tSize> &str) const {
             return compare(str.c_str());
         }
 
@@ -462,7 +461,7 @@ namespace wlp {
          * @param str dynamic string with which to compare
          * @return signed difference number
          */
-        diff_type compare(const DynamicString &str) const;
+        diff_type compare(const dynamic_string &str) const;
 
         /**
          * Compares two strings and return 0 if they are equal, less than 0 if
@@ -524,56 +523,56 @@ namespace wlp {
         }
 
         // Comparison operators with static string and dynamic string
-        bool operator==(const StaticString<tSize> &str) const {
+        bool operator==(const static_string<tSize> &str) const {
             return compare(str) == 0;
         }
 
-        bool operator!=(const StaticString<tSize> &str) const {
+        bool operator!=(const static_string<tSize> &str) const {
             return compare(str) != 0;
         }
 
-        bool operator>(const StaticString<tSize> &str) const {
+        bool operator>(const static_string<tSize> &str) const {
             return compare(str) > 0;
         }
 
-        bool operator>=(const StaticString<tSize> &str) const {
+        bool operator>=(const static_string<tSize> &str) const {
             return compare(str) >= 0;
         }
 
-        bool operator<(const StaticString<tSize> &str) const {
+        bool operator<(const static_string<tSize> &str) const {
             return compare(str) < 0;
         }
 
-        bool operator<=(const StaticString<tSize> &str) const {
+        bool operator<=(const static_string<tSize> &str) const {
             return compare(str) <= 0;
         }
 
-        bool operator==(const DynamicString &str) const {
+        bool operator==(const dynamic_string &str) const {
             return compare(str) == 0;
         }
 
-        bool operator!=(const DynamicString &str) const {
+        bool operator!=(const dynamic_string &str) const {
             return compare(str) != 0;
         }
 
-        bool operator>(const DynamicString &str) const {
+        bool operator>(const dynamic_string &str) const {
             return compare(str) > 0;
         }
 
-        bool operator>=(const DynamicString &str) const {
+        bool operator>=(const dynamic_string &str) const {
             return compare(str) >= 0;
         }
 
-        bool operator<(const DynamicString &str) const {
+        bool operator<(const dynamic_string &str) const {
             return compare(str) < 0;
         }
 
-        bool operator<=(const DynamicString &str) const {
+        bool operator<=(const dynamic_string &str) const {
             return compare(str) <= 0;
         }
 
     private:
-        StaticString(const char *str1, const char *str2, size_type len1, size_type len2) {
+        static_string(const char *str1, const char *str2, size_type len1, size_type len2) {
             m_len = MIN(static_cast<size_type>(len1 + len2), tSize);
             size_type min_len = MIN(m_len, len1);
             memcpy(m_buffer, str1, min_len);
@@ -586,183 +585,183 @@ namespace wlp {
 
         // Asymmetrical addition operators
         template<size_type size>
-        friend StaticString<size> operator+(const StaticString<size> &, const char *);
+        friend static_string<size> operator+(const static_string<size> &, const char *);
 
         template<size_type size>
-        friend StaticString<size> operator+(const char *, const StaticString<size> &);
+        friend static_string<size> operator+(const char *, const static_string<size> &);
 
         template<size_type size>
-        friend StaticString<size> operator+(const StaticString<size> &, char);
+        friend static_string<size> operator+(const static_string<size> &, char);
 
         template<size_type size>
-        friend StaticString<size> operator+(char, const StaticString<size> &);
+        friend static_string<size> operator+(char, const static_string<size> &);
     };
 
     // Comparison with LHS character array
     template<size_type tSize>
-    bool operator==(const char *lhs, const StaticString<tSize> &rhs) {
+    bool operator==(const char *lhs, const static_string<tSize> &rhs) {
         return rhs.compare(lhs) == 0;
     }
 
     template<size_type tSize>
-    bool operator!=(const char *lhs, const StaticString<tSize> &rhs) {
+    bool operator!=(const char *lhs, const static_string<tSize> &rhs) {
         return rhs.compare(lhs) != 0;
     }
 
     template<size_type tSize>
-    bool operator>(const char *lhs, const StaticString<tSize> &rhs) {
+    bool operator>(const char *lhs, const static_string<tSize> &rhs) {
         return rhs.compare(lhs) <= 0;
     }
 
     template<size_type tSize>
-    bool operator>=(const char *lhs, const StaticString<tSize> &rhs) {
+    bool operator>=(const char *lhs, const static_string<tSize> &rhs) {
         return rhs.compare(lhs) < 0;
     }
 
     template<size_type tSize>
-    bool operator<(const char *lhs, const StaticString<tSize> &rhs) {
+    bool operator<(const char *lhs, const static_string<tSize> &rhs) {
         return rhs.compare(lhs) >= 0;
     }
 
     template<size_type tSize>
-    bool operator<=(const char *lhs, const StaticString<tSize> &rhs) {
+    bool operator<=(const char *lhs, const static_string<tSize> &rhs) {
         return rhs.compare(lhs) > 0;
     }
 
     // Comparison with RHS character array
     template<size_type tSize>
-    bool operator==(const StaticString<tSize> &lhs, const char *rhs) {
+    bool operator==(const static_string<tSize> &lhs, const char *rhs) {
         return lhs.compare(rhs) == 0;
     }
 
     template<size_type tSize>
-    bool operator!=(const StaticString<tSize> &lhs, const char *rhs) {
+    bool operator!=(const static_string<tSize> &lhs, const char *rhs) {
         return lhs.compare(rhs) != 0;
     }
 
     template<size_type tSize>
-    bool operator>(const StaticString<tSize> &lhs, const char *rhs) {
+    bool operator>(const static_string<tSize> &lhs, const char *rhs) {
         return lhs.compare(rhs) > 0;
     }
 
     template<size_type tSize>
-    bool operator>=(const StaticString<tSize> &lhs, const char *rhs) {
+    bool operator>=(const static_string<tSize> &lhs, const char *rhs) {
         return lhs.compare(rhs) >= 0;
     }
 
     template<size_type tSize>
-    bool operator<(const StaticString<tSize> &lhs, const char *rhs) {
+    bool operator<(const static_string<tSize> &lhs, const char *rhs) {
         return lhs.compare(rhs) < 0;
     }
 
     template<size_type tSize>
-    bool operator<=(const StaticString<tSize> &lhs, const char *rhs) {
+    bool operator<=(const static_string<tSize> &lhs, const char *rhs) {
         return lhs.compare(rhs) <= 0;
     }
 
     // Comparison with RHS character
     template<size_type tSize>
-    bool operator==(const StaticString<tSize> &lhs, const char rhs) {
+    bool operator==(const static_string<tSize> &lhs, const char rhs) {
         return lhs.length() == 1 && lhs.at(0) == rhs;
     }
 
     template<size_type tSize>
-    bool operator!=(const StaticString<tSize> &lhs, const char rhs) {
+    bool operator!=(const static_string<tSize> &lhs, const char rhs) {
         return lhs.length() != 1 || lhs.at(0) != rhs;
     }
 
     template<size_type tSize>
-    bool operator>(const StaticString<tSize> &lhs, const char rhs) {
+    bool operator>(const static_string<tSize> &lhs, const char rhs) {
         return lhs.compare(rhs) > 0;
     }
 
     template<size_type tSize>
-    bool operator>=(const StaticString<tSize> &lhs, const char rhs) {
+    bool operator>=(const static_string<tSize> &lhs, const char rhs) {
         return lhs.compare(rhs) >= 0;
     }
 
     template<size_type tSize>
-    bool operator<(const StaticString<tSize> &lhs, const char rhs) {
+    bool operator<(const static_string<tSize> &lhs, const char rhs) {
         return lhs.compare(rhs) < 0;
     }
 
     template<size_type tSize>
-    bool operator<=(const StaticString<tSize> &lhs, const char rhs) {
+    bool operator<=(const static_string<tSize> &lhs, const char rhs) {
         return lhs.compare(rhs) <= 0;
     }
 
     // Comparison with LHS character
     template<size_type tSize>
-    bool operator==(const char lhs, const StaticString<tSize> &rhs) {
+    bool operator==(const char lhs, const static_string<tSize> &rhs) {
         return rhs == lhs;
     }
 
     template<size_type tSize>
-    bool operator!=(const char lhs, const StaticString<tSize> &rhs) {
+    bool operator!=(const char lhs, const static_string<tSize> &rhs) {
         return rhs != lhs;
     }
 
     template<size_type tSize>
-    bool operator>(const char lhs, const StaticString<tSize> &rhs) {
+    bool operator>(const char lhs, const static_string<tSize> &rhs) {
         return rhs <= lhs;
     }
 
     template<size_type tSize>
-    bool operator>=(const char lhs, const StaticString<tSize> &rhs) {
+    bool operator>=(const char lhs, const static_string<tSize> &rhs) {
         return rhs < lhs;
     }
 
     template<size_type tSize>
-    bool operator<(const char lhs, const StaticString<tSize> &rhs) {
+    bool operator<(const char lhs, const static_string<tSize> &rhs) {
         return rhs >= lhs;
     }
 
     template<size_type tSize>
-    bool operator<=(const char lhs, const StaticString<tSize> &rhs) {
+    bool operator<=(const char lhs, const static_string<tSize> &rhs) {
         return rhs > lhs;
     }
 
     template<size_type tSize>
-    StaticString<tSize> operator+(const char *lhs, const StaticString<tSize> &rhs) {
+    static_string<tSize> operator+(const char *lhs, const static_string<tSize> &rhs) {
         return {lhs, rhs.c_str(), static_cast<size_type>(strlen(lhs)), rhs.length()};
     }
 
     template<size_type tSize>
-    StaticString<tSize> operator+(const StaticString<tSize> &lhs, const char *rhs) {
+    static_string<tSize> operator+(const static_string<tSize> &lhs, const char *rhs) {
         return {lhs.c_str(), rhs, lhs.length(), static_cast<size_type>(strlen(rhs))};
     }
 
     template<size_type tSize>
-    StaticString<tSize> operator+(const StaticString<tSize> &lhs, const char rhs) {
+    static_string<tSize> operator+(const static_string<tSize> &lhs, const char rhs) {
         return {lhs.c_str(), &rhs, lhs.length(), 1};
     }
 
     template<size_type tSize>
-    StaticString<tSize> operator+(const char lhs, const StaticString<tSize> &rhs) {
+    static_string<tSize> operator+(const char lhs, const static_string<tSize> &rhs) {
         return {&lhs, rhs.c_str(), 1, rhs.length()};
     }
 
-    class DynamicString {
+    class dynamic_string {
     public:
         // Required types for concept check
         typedef wlp::size_type size_type;
         typedef wlp::diff_type diff_type;
 
         // Iterator types
-        typedef StringIterator<DynamicString, char &, char *> iterator;
-        typedef StringIterator<const DynamicString, const char &, const char *> const_iterator;
+        typedef StringIterator<dynamic_string, char &, char *> iterator;
+        typedef StringIterator<const dynamic_string, const char &, const char *> const_iterator;
 
         /**
          * Default constructor creates string with no characters.
          */
-        DynamicString();
+        dynamic_string();
 
         /**
          * Constructor creates string using character array.
          *
          * @param str char string
          */
-        explicit DynamicString(const char *str);
+        explicit dynamic_string(const char *str);
 
         /**
          * Construct a dynamic string from a static string.
@@ -770,8 +769,8 @@ namespace wlp {
          * @param str static string to copy
          */
         template<size_type tSize>
-        explicit DynamicString(const StaticString<tSize> &str)
-                : DynamicString(str.c_str(), str.length()) {}
+        explicit dynamic_string(const static_string<tSize> &str)
+                : dynamic_string(str.c_str(), str.length()) {}
 
         /**
          * Construct a dynamic string from a character array and
@@ -780,26 +779,26 @@ namespace wlp {
          * @param str character array
          * @param len length of the array
          */
-        DynamicString(const char *str, size_type len);
+        dynamic_string(const char *str, size_type len);
 
         /**
          * Constructor creates string using DynamicString object.
          *
          * @param str @code DynamicString @endcode object
          */
-        DynamicString(const DynamicString &str);
+        dynamic_string(const dynamic_string &str);
 
         /**
          * Move constructor will transfer the underlying string.
          *
          * @param str the @code DynamicString @endcode to move
          */
-        DynamicString(DynamicString &&str) noexcept;
+        dynamic_string(dynamic_string &&str) noexcept;
 
         /**
           * Destructor for DynamicString object.
           */
-        ~DynamicString();
+        ~dynamic_string();
 
         void set_value(const char *str, size_type len);
 
@@ -809,10 +808,10 @@ namespace wlp {
          * @param str @code DynamicString @endcode object
          * @return current object
          */
-        DynamicString &operator=(const DynamicString &str);
+        dynamic_string &operator=(const dynamic_string &str);
 
         template<size_type tSize>
-        DynamicString &operator=(const StaticString<tSize> &str) {
+        dynamic_string &operator=(const static_string<tSize> &str) {
             set_value(str.c_str(), str.length());
             return *this;
         }
@@ -823,7 +822,7 @@ namespace wlp {
          * @param str
          * @return current object
          */
-        DynamicString &operator=(const char *str);
+        dynamic_string &operator=(const char *str);
 
         /**
          * Move assignment operator transfers the underlying
@@ -831,7 +830,7 @@ namespace wlp {
          *
          * @param str the @code DynamicString @endcode to move
          */
-        DynamicString &operator=(DynamicString &&str) noexcept;
+        dynamic_string &operator=(dynamic_string &&str) noexcept;
 
         /**
          * Assignment operator for a single character.
@@ -839,7 +838,7 @@ namespace wlp {
          * @param c character to assign
          * @return reference to this string
          */
-        DynamicString &operator=(char c);
+        dynamic_string &operator=(char c);
 
         /**
          * Provides current length of string.
@@ -936,7 +935,7 @@ namespace wlp {
          * @param c character to add
          * @return the current string
          */
-        DynamicString &operator+=(char c);
+        dynamic_string &operator+=(char c);
 
         /**
          * Modifier operator adds char string to the current string.
@@ -944,18 +943,18 @@ namespace wlp {
          * @param val char string to add
          * @return the current string
          */
-        DynamicString &operator+=(const char *val);
+        dynamic_string &operator+=(const char *val);
 
         /**
-         * Modifier operator adds @code DynamicString @endcode object to the current string.
+         * Modifier operator adds @code dynamic_string @endcode object to the current string.
          *
          * @param other @code DynamicString @endcode string to add
          * @return the current string
          */
-        DynamicString &operator+=(const DynamicString &other);
+        dynamic_string &operator+=(const dynamic_string &other);
 
         template<size_type tSize>
-        DynamicString &operator+=(const StaticString<tSize> &str) {
+        dynamic_string &operator+=(const static_string<tSize> &str) {
             return append(str.c_str(), str.length());
         }
 
@@ -965,7 +964,7 @@ namespace wlp {
          * @param str character string to add
          * @return the current string
          */
-        DynamicString &append(const char *str);
+        dynamic_string &append(const char *str);
 
         /**
          * Appends a DynamicString string to the current string.
@@ -973,7 +972,7 @@ namespace wlp {
          * @param str DynamicString string to add
          * @return the current string
          */
-        DynamicString &append(const DynamicString &str);
+        dynamic_string &append(const dynamic_string &str);
 
         /**
          * Appends a character to the current string.
@@ -1010,7 +1009,7 @@ namespace wlp {
          * @param length length of the new string
          * @return new string which is a substring of current string
          */
-        DynamicString substr(size_type pos, size_type length) const;
+        dynamic_string substr(size_type pos, size_type length) const;
 
         /**
          * Compares two strings and return 0 if they are equal, less than 0 if
@@ -1020,10 +1019,10 @@ namespace wlp {
          * @param str @code DynamicString string to compare against current string
          * @return a signed number based on how strings compare
          */
-        diff_type compare(const DynamicString &str) const;
+        diff_type compare(const dynamic_string &str) const;
 
         template<size_type tSize>
-        diff_type compare(const StaticString<tSize> &str) const {
+        diff_type compare(const static_string<tSize> &str) const {
             return compare(str.c_str());
         }
 
@@ -1064,7 +1063,7 @@ namespace wlp {
         }
 
         template<size_type tSize>
-        DynamicString operator+(const StaticString<tSize> &str) {
+        dynamic_string operator+(const static_string<tSize> &str) {
             return {m_buffer, str.c_str(), m_len, str.length()};
         }
 
@@ -1073,23 +1072,23 @@ namespace wlp {
         size_type m_len;
 
         /**
-         * Constructor used by other String constructors to create @code DynamicString @endcode.
+         * Constructor used by other String constructors to create @code dynamic_string @endcode.
          *
          * @param str1 first string to use in making
          * @param str2 second string to use in making
          * @param len1 length of first string
          * @param len2 length of second string
          */
-        DynamicString(const char *str1, const char *str2, size_type len1, size_type len2);
+        dynamic_string(const char *str1, const char *str2, size_type len1, size_type len2);
 
         /**
-         * Constructor for populating a DynamicString with a dynamically allocated
+         * Constructor for populating a dynamic_string with a dynamically allocated
          * character array which the string takes ownership of and its length.
          *
          * @param str dynamically allocated character array filled with characters
          * @param len length of the string
          */
-        DynamicString(size_type len, char *str);
+        dynamic_string(size_type len, char *str);
 
         /**
          * Append method used by other public append methods.
@@ -1098,66 +1097,66 @@ namespace wlp {
          * @param len length of @p c_str
          * @return the @code DynamicString @endcode with @p c_str append to it
          */
-        DynamicString &append(const char *c_str, size_type len);
+        dynamic_string &append(const char *c_str, size_type len);
 
-        friend DynamicString operator+(const DynamicString &lhs, const DynamicString &rhs);
+        friend dynamic_string operator+(const dynamic_string &lhs, const dynamic_string &rhs);
 
-        friend DynamicString operator+(const char *lhs, const DynamicString &rhs);
+        friend dynamic_string operator+(const char *lhs, const dynamic_string &rhs);
 
-        friend DynamicString operator+(const DynamicString &lhs, const char *rhs);
+        friend dynamic_string operator+(const dynamic_string &lhs, const char *rhs);
 
-        friend DynamicString operator+(char lhs, const DynamicString &rhs);
+        friend dynamic_string operator+(char lhs, const dynamic_string &rhs);
 
-        friend DynamicString operator+(const DynamicString &lhs, char rhs);
+        friend dynamic_string operator+(const dynamic_string &lhs, char rhs);
     };
 
-    bool operator==(const DynamicString &lhs, const DynamicString &rhs);
+    bool operator==(const dynamic_string &lhs, const dynamic_string &rhs);
 
-    bool operator!=(const DynamicString &lhs, const DynamicString &rhs);
+    bool operator!=(const dynamic_string &lhs, const dynamic_string &rhs);
 
-    bool operator>(const DynamicString &lhs, const DynamicString &rhs);
+    bool operator>(const dynamic_string &lhs, const dynamic_string &rhs);
 
-    bool operator>=(const DynamicString &lhs, const DynamicString &rhs);
+    bool operator>=(const dynamic_string &lhs, const dynamic_string &rhs);
 
-    bool operator<(const DynamicString &lhs, const DynamicString &rhs);
+    bool operator<(const dynamic_string &lhs, const dynamic_string &rhs);
 
-    bool operator<=(const DynamicString &lhs, const DynamicString &rhs);
+    bool operator<=(const dynamic_string &lhs, const dynamic_string &rhs);
 
-    bool operator==(const char *lhs, const DynamicString &rhs);
+    bool operator==(const char *lhs, const dynamic_string &rhs);
 
-    bool operator!=(const char *lhs, const DynamicString &rhs);
+    bool operator!=(const char *lhs, const dynamic_string &rhs);
 
-    bool operator>(const char *lhs, const DynamicString &rhs);
+    bool operator>(const char *lhs, const dynamic_string &rhs);
 
-    bool operator>=(const char *lhs, const DynamicString &rhs);
+    bool operator>=(const char *lhs, const dynamic_string &rhs);
 
-    bool operator<(const char *lhs, const DynamicString &rhs);
+    bool operator<(const char *lhs, const dynamic_string &rhs);
 
-    bool operator<=(const char *lhs, const DynamicString &rhs);
+    bool operator<=(const char *lhs, const dynamic_string &rhs);
 
-    bool operator==(const DynamicString &lhs, const char *rhs);
+    bool operator==(const dynamic_string &lhs, const char *rhs);
 
-    bool operator!=(const DynamicString &lhs, const char *rhs);
+    bool operator!=(const dynamic_string &lhs, const char *rhs);
 
-    bool operator>(const DynamicString &lhs, const char *rhs);
+    bool operator>(const dynamic_string &lhs, const char *rhs);
 
-    bool operator>=(const DynamicString &lhs, const char *rhs);
+    bool operator>=(const dynamic_string &lhs, const char *rhs);
 
-    bool operator<(const DynamicString &lhs, const char *rhs);
+    bool operator<(const dynamic_string &lhs, const char *rhs);
 
-    bool operator<=(const DynamicString &lhs, const char *rhs);
+    bool operator<=(const dynamic_string &lhs, const char *rhs);
 
-    bool operator==(char lhs, const DynamicString &rhs);
+    bool operator==(char lhs, const dynamic_string &rhs);
 
-    bool operator==(const DynamicString &lhs, char rhs);
+    bool operator==(const dynamic_string &lhs, char rhs);
 
     template<size_type tSize>
-    StaticString<tSize>::StaticString(const DynamicString &str)
-            : StaticString(str.c_str(), str.length()) {
+    static_string<tSize>::static_string(const dynamic_string &str)
+            : static_string(str.c_str(), str.length()) {
     }
 
     template<size_type tSize>
-    StaticString<tSize> &StaticString<tSize>::operator=(const DynamicString &str) {
+    static_string<tSize> &static_string<tSize>::operator=(const dynamic_string &str) {
         m_len = MIN(str.length(), tSize);
         memcpy(m_buffer, str.c_str(), m_len);
         m_buffer[m_len] = '\0';
@@ -1165,30 +1164,30 @@ namespace wlp {
     }
 
     template<size_type tSize>
-    StaticString<tSize> StaticString<tSize>::operator+(const DynamicString &str) const {
+    static_string<tSize> static_string<tSize>::operator+(const dynamic_string &str) const {
         return {m_buffer, str.c_str(), m_len, str.length()};
     }
 
     template<size_type tSize>
-    StaticString<tSize> &StaticString<tSize>::append(const DynamicString &str) {
+    static_string<tSize> &static_string<tSize>::append(const dynamic_string &str) {
         return append(str.c_str(), str.length());
     }
 
     template<size_type tSize>
-    diff_type StaticString<tSize>::compare(const DynamicString &str) const {
+    diff_type static_string<tSize>::compare(const dynamic_string &str) const {
         return compare(str.c_str());
     }
 
     // Static Strings
-    typedef StaticString<8u> String8;
-    typedef StaticString<16u> String16;
-    typedef StaticString<32u> String32;
-    typedef StaticString<64u> String64;
-    typedef StaticString<128u> String128;
-    typedef StaticString<256u> String256;
+    typedef static_string<8u> String8;
+    typedef static_string<16u> String16;
+    typedef static_string<32u> String32;
+    typedef static_string<64u> String64;
+    typedef static_string<128u> String128;
+    typedef static_string<256u> String256;
 
     // Dynamic String
-    typedef wlp::DynamicString String;
+    typedef wlp::dynamic_string String;
 
 }
 
