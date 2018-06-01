@@ -1,29 +1,27 @@
 <map id="wlib/memory/New.h" name="wlib/memory/New.h">
-<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="607,80,765,107"/>
-<area shape="rect" id="node28" href="$d5/d07/_new_8cpp.html" title="wlib/memory/New.cpp" alt="" coords="791,80,943,107"/>
+<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html" title="Memory is a class that provides dynamic fixed size memory. " alt="" coords="663,80,821,107"/>
+<area shape="rect" id="node26" href="$d5/d07/_new_8cpp.html" title="wlib/memory/New.cpp" alt="" coords="847,80,999,107"/>
 <area shape="rect" id="node3" href="$d7/d9e/_exceptions_8cpp.html" title="Implementation of Exceptions using C style. " alt="" coords="5,155,211,181"/>
 <area shape="rect" id="node4" href="$df/dcf/_state_machine_8h.html" title="wlib/fsm/StateMachine.h" alt="" coords="235,155,401,181"/>
 <area shape="rect" id="node5" href="$df/d64/_memory_8cpp.html" title="Implementation of Memory functions. " alt="" coords="426,155,597,181"/>
-<area shape="rect" id="node6" href="$d2/db9/_array_list_8h.html" title="List implementation using an array. " alt="" coords="519,304,648,331"/>
-<area shape="rect" id="node8" href="$de/dc6/_linked_list_8h.html" title="wlib/stl/LinkedList.h" alt="" coords="1586,155,1723,181"/>
-<area shape="rect" id="node9" href="$d8/d2e/_open_table_8h.html" title="wlib/stl/OpenTable.h" alt="" coords="1649,304,1789,331"/>
-<area shape="rect" id="node12" href="$d5/d08/_red_black_tree_8h.html" title="Red black tree implementation. " alt="" coords="697,379,857,405"/>
-<area shape="rect" id="node15" href="$d8/df6/_unique_ptr_8h.html" title="Unique pointer implementation. " alt="" coords="1748,155,1883,181"/>
-<area shape="rect" id="node17" href="$db/db5/_string_8h.html" title="wlib/strings/String.h" alt="" coords="1003,155,1140,181"/>
-<area shape="rect" id="node7" href="$df/d03/_array_heap_8h.html" title="Heap manipulation and implementation. " alt="" coords="521,379,660,405"/>
-<area shape="rect" id="node10" href="$d5/d7a/_open_map_8h.html" title="Hash map implementation. " alt="" coords="1521,379,1655,405"/>
-<area shape="rect" id="node11" href="$d0/de6/_open_set_8h.html" title="Hash set implementation. " alt="" coords="1679,379,1808,405"/>
-<area shape="rect" id="node13" href="$df/d87/_tree_map_8h.html" title="Map implementation using red black tree. " alt="" coords="637,453,765,480"/>
-<area shape="rect" id="node14" href="$dd/dba/_tree_set_8h.html" title="Set implementation using red black tree. " alt="" coords="790,453,913,480"/>
-<area shape="rect" id="node16" href="$d1/d13/_shared_ptr_8h.html" title="Shared pointer implementation. " alt="" coords="1748,229,1883,256"/>
-<area shape="rect" id="node18" href="$de/d6d/_bitset_8h.html" title="Bitset is a class that provides bits manipulation methods. " alt="" coords="947,229,1057,256"/>
-<area shape="rect" id="node21" href="$d7/d0c/_comparator_8h.html" title="Comparator implementation for basic types. " alt="" coords="724,304,871,331"/>
-<area shape="rect" id="node22" href="$d2/dc2/_equal_8h.html" title="wlib/stl/Equal.h" alt="" coords="1091,229,1201,256"/>
-<area shape="rect" id="node26" href="$d2/dad/_hash_8h.html" title="wlib/stl/Hash.h" alt="" coords="1401,229,1511,256"/>
-<area shape="rect" id="node27" href="$d9/dae/_string_8cpp.html" title="wlib/strings/String.cpp" alt="" coords="1226,229,1376,256"/>
-<area shape="rect" id="node19" href="$de/d66/_packet_constructor_8h.html" title="wlib/comm/PacketConstructor.h" alt="" coords="895,304,1104,331"/>
-<area shape="rect" id="node20" href="$d9/dde/_packet_constructor_8cpp.html" title="Creates a packet for sending data from the slave systems to the main computer. " alt="" coords="889,379,1111,405"/>
-<area shape="rect" id="node23" href="$dd/d0b/_hash_map_8h.html" title="wlib/stl/HashMap.h" alt="" coords="1157,379,1291,405"/>
-<area shape="rect" id="node24" href="$d2/dfc/_hash_set_8h.html" title="wlib/stl/HashSet.h" alt="" coords="1315,379,1444,405"/>
-<area shape="rect" id="node25" href="$de/def/_hash_table_8h.html" title="wlib/stl/HashTable.h" alt="" coords="1281,304,1421,331"/>
+<area shape="rect" id="node6" href="$d2/db9/_array_list_8h.html" title="List implementation using an array. " alt="" coords="707,304,836,331"/>
+<area shape="rect" id="node8" href="$de/dc6/_linked_list_8h.html" title="wlib/stl/LinkedList.h" alt="" coords="674,155,811,181"/>
+<area shape="rect" id="node9" href="$d8/d2e/_open_table_8h.html" title="wlib/stl/OpenTable.h" alt="" coords="1737,304,1877,331"/>
+<area shape="rect" id="node12" href="$d5/d08/_red_black_tree_8h.html" title="Red black tree implementation. " alt="" coords="1014,379,1175,405"/>
+<area shape="rect" id="node15" href="$d8/df6/_unique_ptr_8h.html" title="Unique pointer implementation. " alt="" coords="836,155,971,181"/>
+<area shape="rect" id="node17" href="$db/db5/_string_8h.html" title="wlib/strings/String.h" alt="" coords="1305,155,1441,181"/>
+<area shape="rect" id="node7" href="$df/d03/_array_heap_8h.html" title="Heap manipulation and implementation. " alt="" coords="767,379,907,405"/>
+<area shape="rect" id="node10" href="$d5/d7a/_open_map_8h.html" title="Hash map implementation. " alt="" coords="1609,379,1743,405"/>
+<area shape="rect" id="node11" href="$d0/de6/_open_set_8h.html" title="Hash set implementation. " alt="" coords="1767,379,1896,405"/>
+<area shape="rect" id="node13" href="$df/d87/_tree_map_8h.html" title="Map implementation using red black tree. " alt="" coords="954,453,1083,480"/>
+<area shape="rect" id="node14" href="$dd/dba/_tree_set_8h.html" title="Set implementation using red black tree. " alt="" coords="1107,453,1231,480"/>
+<area shape="rect" id="node16" href="$d1/d13/_shared_ptr_8h.html" title="Shared pointer implementation. " alt="" coords="836,229,971,256"/>
+<area shape="rect" id="node18" href="$de/d6d/_bitset_8h.html" title="Bitset is a class that provides bits manipulation methods. " alt="" coords="1695,229,1805,256"/>
+<area shape="rect" id="node19" href="$d7/d0c/_comparator_8h.html" title="Comparator implementation for basic types. " alt="" coords="1047,304,1193,331"/>
+<area shape="rect" id="node20" href="$d2/dc2/_equal_8h.html" title="wlib/stl/Equal.h" alt="" coords="1250,229,1360,256"/>
+<area shape="rect" id="node24" href="$d2/dad/_hash_8h.html" title="wlib/stl/Hash.h" alt="" coords="1385,229,1495,256"/>
+<area shape="rect" id="node25" href="$d9/dae/_string_8cpp.html" title="wlib/strings/String.cpp" alt="" coords="1519,229,1669,256"/>
+<area shape="rect" id="node21" href="$dd/d0b/_hash_map_8h.html" title="wlib/stl/HashMap.h" alt="" coords="1241,379,1375,405"/>
+<area shape="rect" id="node22" href="$d2/dfc/_hash_set_8h.html" title="wlib/stl/HashSet.h" alt="" coords="1399,379,1528,405"/>
+<area shape="rect" id="node23" href="$de/def/_hash_table_8h.html" title="wlib/stl/HashTable.h" alt="" coords="1369,304,1509,331"/>
 </map>

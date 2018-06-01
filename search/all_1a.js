@@ -6,7 +6,7 @@ var searchData=
   ['_7edynamic_5fstring',['~dynamic_string',['../da/db5/classwlp_1_1dynamic__string.html#a5f68e439f414fdb5c36f934f46da7a26',1,'wlp::dynamic_string']]],
   ['_7eentry_5faction',['~entry_action',['../d4/dd5/classwlp_1_1entry__action.html#a464e599289fd2344e79eaac5c0f09f7b',1,'wlp::entry_action']]],
   ['_7eentry_5fbase',['~entry_base',['../d5/dd4/classwlp_1_1entry__base.html#a4d98e8caacb7c8b0ce23a34bb6435d9f',1,'wlp::entry_base']]],
-  ['_7eexception',['~Exception',['../df/d70/class_exception.html#a33518b66e6d09a8eee2e7c51d96d991d',1,'Exception']]],
+  ['_7eexception',['~exception',['../d6/d7d/classexception.html#ae7bff7982b4eca6dd3ec65f94e80e36c',1,'exception']]],
   ['_7eexit_5faction',['~exit_action',['../d7/d2a/classwlp_1_1exit__action.html#afc8d9d07fc68133cd45e6353a9ec1634',1,'wlp::exit_action']]],
   ['_7eexit_5fbase',['~exit_base',['../d3/d7b/classwlp_1_1exit__base.html#ac6e46382351f7d604b4cb6282549da64',1,'wlp::exit_base']]],
   ['_7eguard_5fbase',['~guard_base',['../d8/da2/classwlp_1_1guard__base.html#ae6ce5edfe0b4d5c8b9140bf37a6d5597',1,'wlp::guard_base']]],

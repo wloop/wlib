@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['r',['r',['../d3/df0/union____float__encoder.html#ad0384159703da4b2a41258f850f1caf9',1,'__float_encoder']]],
   ['random_5faccess_5fiterator_5fconcept',['random_access_iterator_concept',['../d1/d5c/structwlp_1_1random__access__iterator__concept.html',1,'wlp']]],
   ['random_5faccess_5fiterator_5fconcept_3c_20c_2c_20true_20_3e',['random_access_iterator_concept&lt; C, true &gt;',['../d5/d86/structwlp_1_1random__access__iterator__concept_3_01_c_00_01true_01_4.html',1,'wlp']]],
   ['realloc',['realloc',['../d3/de6/_memory_8h.html#a50569d96c5b87927563caa7281eb9a8a',1,'Memory.h']]],

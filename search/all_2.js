@@ -18,6 +18,5 @@ var searchData=
   ['boolean_5fconstant',['boolean_constant',['../d5/dca/namespacewlp.html#a57c953dde9b3541ad7005e236f726db0',1,'wlp']]],
   ['bucket_5findex',['bucket_index',['../dc/d42/classwlp_1_1hash__table.html#a5945269c59eb36bc30a30ee42ad2cf73',1,'wlp::hash_table']]],
   ['bug_20list',['Bug List',['../de/da5/bug.html',1,'']]],
-  ['build',['build',['../d3/dff/structwlp_1_1____packet__maker.html#ac92621e6244b3cdd4fdb8ee6ad81d3f8',1,'wlp::__packet_maker']]],
   ['byte_5fsize',['BYTE_SIZE',['../d2/db4/_wlib_8h.html#a86fd4404b140711fdb77326609c0f393',1,'Wlib.h']]]
 ];

@@ -1,11 +1,5 @@
 var searchData=
 [
-  ['packet64',['packet64',['../d5/dca/namespacewlp.html#a51e1867ed73e96bff06527ba51779df0',1,'wlp']]],
-  ['packet_5fname',['packet_name',['../d5/dca/namespacewlp.html#a672ea4fa601c3051f86362fd385b0068',1,'wlp']]],
-  ['packet_5ftype',['packet_type',['../d5/dca/namespacewlp.html#a05ffca0abdf6e4028391bd1e5c212ce6',1,'wlp']]],
-  ['packetconstructor_2ecpp',['PacketConstructor.cpp',['../d9/dde/_packet_constructor_8cpp.html',1,'']]],
-  ['packetconstructor_2eh',['PacketConstructor.h',['../de/d66/_packet_constructor_8h.html',1,'']]],
-  ['packettype',['PacketType',['../dd/daf/structwlp_1_1_packet_type.html',1,'wlp']]],
   ['pair',['pair',['../dd/d90/structwlp_1_1pair.html',1,'wlp']]],
   ['pair',['pair',['../dd/d90/structwlp_1_1pair.html#a3c2a67ef03524a29862c4af73aa7cd4c',1,'wlp::pair::pair()'],['../dd/d90/structwlp_1_1pair.html#a1481a798888adaa1f0a834201c230c6f',1,'wlp::pair::pair(pair const &amp;pair)'],['../dd/d90/structwlp_1_1pair.html#abe32cd1626c40f5335cd61cf697b50ed',1,'wlp::pair::pair(pair &amp;&amp;pair)'],['../dd/d90/structwlp_1_1pair.html#acf01b64dd220b49f30fb42b178b5a6af',1,'wlp::pair::pair(FirstType &amp;&amp;first, SecondType &amp;&amp;second)']]],
   ['pair_2eh',['Pair.h',['../d4/dda/_pair_8h.html',1,'']]],

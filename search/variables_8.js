@@ -58,5 +58,5 @@ var searchData=
   ['m_5fweak_5fcount',['m_weak_count',['../de/dc1/classwlp_1_1_reference_count.html#a82c77ab3bf63e3c8c224ffb3d48b8838',1,'wlp::ReferenceCount']]],
   ['m_5fx',['m_x',['../d9/d22/classwlp_1_1array2d.html#a0082022ab9bd37b696c9b7237fded8cb',1,'wlp::array2d::m_x()'],['../d7/ddb/classwlp_1_1vector2d.html#a6e8f2492c40d54e75bcf5d1172e1675d',1,'wlp::vector2d::m_x()']]],
   ['m_5fy',['m_y',['../d9/d22/classwlp_1_1array2d.html#a6b6dce739785bd4a322f6bf8567907d4',1,'wlp::array2d::m_y()'],['../d7/ddb/classwlp_1_1vector2d.html#a3609d699fd6eb1c5ad72031b6b708cfb',1,'wlp::vector2d::m_y()']]],
-  ['message',['message',['../df/d70/class_exception.html#a40e3f625f4d9beb0f050182fccfcf15c',1,'Exception']]]
+  ['message',['message',['../d6/d7d/classexception.html#a3a49aa9931d52d17f2cc59fc38824c7e',1,'exception']]]
 ];

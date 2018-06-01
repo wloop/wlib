@@ -1,7 +1,0 @@
-<map id="wlp::__packet_maker::build" name="wlp::__packet_maker::build">
-<area shape="rect" id="node2" href="$d9/dde/_packet_constructor_8cpp.html#aac44b71f14784aec68658e5835499a48" title="__encode_float18" alt="" coords="207,5,331,32"/>
-<area shape="rect" id="node3" href="$d9/dde/_packet_constructor_8cpp.html#a3be76d25d7377ecb287f9d4079dccaa4" title="__join_data" alt="" coords="225,56,313,83"/>
-<area shape="rect" id="node4" href="$d9/dde/_packet_constructor_8cpp.html#a56bb6b421b1132856b6851ce78263fc2" title="__set_bulk_data" alt="" coords="211,107,328,133"/>
-<area shape="rect" id="node5" href="$d9/dde/_packet_constructor_8cpp.html#ade9d3fa70b9b41958d7159768715e060" title="__set_packet_name" alt="" coords="200,157,339,184"/>
-<area shape="rect" id="node6" href="$d9/dde/_packet_constructor_8cpp.html#a0468b3bb6449253081adf2146313a72b" title="__set_packet_type" alt="" coords="203,208,335,235"/>
-</map>

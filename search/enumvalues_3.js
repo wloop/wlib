@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['log',['LOG',['../dd/daf/structwlp_1_1_packet_type.html#a8a8e8bc7862ff0cac7d3583ce0e99ab3a81d236643dbc7435231281557001238f',1,'wlp::PacketType']]]
+  ['static',['STATIC',['../de/d5b/classwlp_1_1_____allocator.html#a3ddefcc9062116a53942818994117ec5aa22a24a3948346e0f39b1959f528d046',1,'wlp::__Allocator']]]
 ];

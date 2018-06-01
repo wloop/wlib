@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['n',['n',['../d3/df0/union____float__encoder.html#a25f1e117b4a8a7ddcd08e41b160b95a2',1,'__float_encoder::n()'],['../d7/ddb/classwlp_1_1vector2d.html#a4951af8cea48ebeb10f396fb6894615c',1,'wlp::vector2d::n()']]],
+  ['n',['n',['../d7/ddb/classwlp_1_1vector2d.html#a4951af8cea48ebeb10f396fb6894615c',1,'wlp::vector2d']]],
   ['n_5finv',['n_inv',['../d7/ddb/classwlp_1_1vector2d.html#a6b39bbbcd54ab8576ae16d7673a9ee09',1,'wlp::vector2d']]],
   ['namespace_5fend',['NAMESPACE_END',['../d2/ddf/_wlib_config_8h.html#a552036593282adfb00999ab4152fc0ac',1,'WlibConfig.h']]],
   ['namespace_5fstart',['NAMESPACE_START',['../d2/ddf/_wlib_config_8h.html#a843bc4b6c51d8d183eac18b32bb4ce3c',1,'WlibConfig.h']]],
@@ -15,6 +15,5 @@ var searchData=
   ['nullptr_5fexception',['NULLPTR_EXCEPTION',['../d7/d2f/_exceptions_8h.html#aa3ed44b91d03de8a2a428e2d959fb3b3',1,'Exceptions.h']]],
   ['nullptr_5ft',['nullptr_t',['../d5/dca/namespacewlp.html#aefad5e6cfd26514c355ff6e925b9f502',1,'wlp']]],
   ['nullptrexception',['NullPtrException',['../dc/d56/class_null_ptr_exception.html',1,'NullPtrException'],['../dc/d56/class_null_ptr_exception.html#a75d3f9c8fbe3ea6d0f7da945a6371967',1,'NullPtrException::NullPtrException()']]],
-  ['num_5ftypes',['NUM_TYPES',['../dd/daf/structwlp_1_1_packet_type.html#a8a8e8bc7862ff0cac7d3583ce0e99ab3af883fc6a2a732a9d5423f88f7385cc03',1,'wlp::PacketType']]],
   ['numrestrictions',['numRestrictions',['../de/d7b/class_restrict_size.html#a7082ff46ecf016989a7cc63fb209e9a7',1,'RestrictSize']]]
 ];
