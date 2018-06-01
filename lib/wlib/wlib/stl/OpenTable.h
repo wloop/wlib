@@ -200,7 +200,7 @@ namespace wlp {
             typename GetKey,
             typename GetVal,
             typename Hasher = Hash <Key, uint16_t>,
-            typename Equals = Equal <Key>>
+            typename Equals = equals <Key>>
     class OpenHashTable {
     public:
         typedef OpenHashTable<Element, Key, Val, GetKey, GetVal, Hasher, Equals> table_type;

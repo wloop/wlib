@@ -34,7 +34,7 @@ namespace wlp {
      */
     template<class Key,
             class Hasher = Hash <Key, uint16_t>,
-            class Equals = Equal <Key>>
+            class Equals = equals <Key>>
     class OpenHashSet {
     public:
         typedef OpenHashSet<Key, Hasher, Equals> set_type;

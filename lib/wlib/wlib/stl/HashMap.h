@@ -36,7 +36,7 @@ namespace wlp {
     template<typename Key,
             typename Val,
             typename Hasher = Hash<Key, uint16_t>,
-            typename Equals = Equal<Key>>
+            typename Equals = equals<Key>>
     class HashMap {
     public:
         typedef HashMap<Key, Val, Hasher, Equals> map_type;

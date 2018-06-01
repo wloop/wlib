@@ -30,7 +30,7 @@ namespace wlp {
      */
     template<class Key,
             class Hasher = Hash <Key, uint16_t>,
-            class Equals = Equal <Key>>
+            class Equals = equals <Key>>
     class HashSet {
     public:
         typedef HashSet<Key, Hasher, Equals> set_type;

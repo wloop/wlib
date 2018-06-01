@@ -29,10 +29,10 @@ namespace wlp {
     struct Pair<HashMap<String16, String16>::iterator, bool>;
 
     template
-    struct Equal<String8>;
+    struct equals<String8>;
 
     template
-    struct Equal<uint16_t>;
+    struct equals<uint16_t>;
 
     template
     struct Hash<String8, uint16_t>;
