@@ -486,7 +486,7 @@ namespace wlp {
         typedef array_heap<T> heap_t;
         typedef typename array_list<T>::val_type val_type;
         typedef typename array_list<T>::size_type size_type;
-        typedef typename array_list<T>::list_type array_list;
+        typedef typename array_list<T>::list_type array_list_t;
         typedef typename array_list<T>::iterator iterator;
         typedef typename array_list<T>::const_iterator const_iterator;
 
@@ -494,7 +494,7 @@ namespace wlp {
         /**
          * The backing array list.
          */
-        array_list m_list;
+        array_list_t m_list;
         /**
          * The comparator instance.
          */
@@ -590,7 +590,7 @@ namespace wlp {
         /**
          * @return a pointer to the backing array list
          */
-        array_list *get_array_list() {
+        array_list_t *get_array_list() {
             return &m_list;
         }
 

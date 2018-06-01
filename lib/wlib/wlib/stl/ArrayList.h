@@ -39,7 +39,7 @@ namespace wlp {
         typedef T val_type;
         typedef Ref reference;
         typedef Ptr pointer;
-        typedef array_list<T> array_list;
+        typedef array_list<T> array_list_t;
         typedef ArrayListIterator<T, Ref, Ptr> self_type;
 
     private:
@@ -50,7 +50,7 @@ namespace wlp {
         /**
          * Pointer to the backing array list.
          */
-        const array_list *m_list;
+        const array_list_t *m_list;
 
         friend class array_list<T>;
 
@@ -81,7 +81,7 @@ namespace wlp {
          * @param i array index
          * @param list backing array list
          */
-        explicit ArrayListIterator(const size_type &i, const array_list *list)
+        explicit ArrayListIterator(const size_type &i, const array_list_t *list)
                 : m_i(i),
                   m_list(list) {
             check_bounds();
