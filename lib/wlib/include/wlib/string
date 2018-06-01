@@ -1,0 +1,8 @@
+#ifndef __WLIB_STRING__
+#define __WLIB_STRING__
+
+#include <wlib/static_string>
+#include <wlib/dynamic_string>
+
+#endif
+

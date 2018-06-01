@@ -1,0 +1,7 @@
+#ifndef __WLIB_UNIQUE_PTR__
+#define __WLIB_UNIQUE_PTR__
+
+#include <wlib/stl/UniquePtr.h>
+
+#endif
+

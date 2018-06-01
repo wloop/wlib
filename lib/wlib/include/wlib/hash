@@ -1,0 +1,7 @@
+#ifndef __WLIB_HASH__
+#define __WLIB_HASH__
+
+#include <wlib/stl/Hash.h>
+
+#endif
+

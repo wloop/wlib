@@ -1,0 +1,7 @@
+#ifndef __WLIB_COMPARATOR__
+#define __WLIB_COMPARATOR__
+
+#include <wlib/stl/Comparator.h>
+
+#endif
+
