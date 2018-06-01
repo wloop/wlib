@@ -35,13 +35,13 @@ namespace wlp {
     struct equals<uint16_t>;
 
     template
-    struct Hash<String8, uint16_t>;
+    struct hash<String8, uint16_t>;
 
     template
-    struct Hash<char *, uint16_t>;
+    struct hash<char *, uint16_t>;
 
     template
-    struct Hash<uint16_t, uint16_t>;
+    struct hash<uint16_t, uint16_t>;
 
     template
     class OpenHashMap<String16, String16>;

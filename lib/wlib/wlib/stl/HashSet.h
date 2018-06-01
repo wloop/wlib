@@ -29,7 +29,7 @@ namespace wlp {
      * @tparam Equal the equality function
      */
     template<class Key,
-            class Hasher = Hash <Key, uint16_t>,
+            class Hasher = hash <Key, uint16_t>,
             class Equals = equals <Key>>
     class HashSet {
     public:

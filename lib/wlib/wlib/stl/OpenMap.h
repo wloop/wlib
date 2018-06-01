@@ -37,7 +37,7 @@ namespace wlp {
      */
     template<typename Key,
             typename Val,
-            typename Hasher = Hash<Key, uint16_t>,
+            typename Hasher = hash<Key, uint16_t>,
             typename Equals = equals<Key>>
     class OpenHashMap {
     public:

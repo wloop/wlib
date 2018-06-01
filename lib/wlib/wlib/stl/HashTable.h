@@ -155,7 +155,7 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
-            typename Hasher = Hash <Key, uint16_t>,
+            typename Hasher = hash <Key, uint16_t>,
             typename Equals = equals <Key>>
     class HashTable {
     public:

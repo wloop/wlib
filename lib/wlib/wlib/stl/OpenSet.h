@@ -33,7 +33,7 @@ namespace wlp {
      * @tparam Equal test for equality function of the stored elements
      */
     template<class Key,
-            class Hasher = Hash <Key, uint16_t>,
+            class Hasher = hash <Key, uint16_t>,
             class Equals = equals <Key>>
     class OpenHashSet {
     public:

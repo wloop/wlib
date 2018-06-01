@@ -15,14 +15,14 @@ using namespace wlp;
 TEST(concept_checks, check_comparator_concept) {
     bool c = comparator_concept<comparator<int>, int>::value;
     ASSERT_TRUE(c);
-    c = comparator_concept<Hash<int, int>, int>::value;
+    c = comparator_concept<hash<int, int>, int>::value;
     ASSERT_FALSE(c);
 }
 
 TEST(concept_checks, check_is_comparator) {
     ASSERT_TRUE((is_comparator<comparator<const char *>, const char *>()));
     ASSERT_FALSE((is_comparator<equals<const char *>, const char *>()));
-    ASSERT_FALSE((is_comparator<Hash<const char *, uint16_t>, const char *>()));
+    ASSERT_FALSE((is_comparator<hash<const char *, uint16_t>, const char *>()));
     ASSERT_TRUE((is_comparator<reverse_comparator<char>, char>()));
     ASSERT_FALSE((is_comparator<HashMap<uint16_t, uint16_t>, uint16_t>()));
 }

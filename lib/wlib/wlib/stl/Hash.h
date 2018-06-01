@@ -33,7 +33,7 @@ namespace wlp {
      * @tparam IntType the unsigned integer type to return
      */
     template<class Key, class IntType>
-    struct Hash {
+    struct hash {
         IntType operator()(const Key &key) const {
             return (IntType) key;
         }
@@ -81,7 +81,7 @@ namespace wlp {
      * @tparam tSize static string size
      */
     template<class IntType, uint16_t tSize>
-    struct Hash<StaticString<tSize>, IntType> {
+    struct hash<StaticString<tSize>, IntType> {
         IntType operator()(const StaticString<tSize> &s) const {
             return hash_static_string<IntType, tSize>(s);
         }
@@ -93,7 +93,7 @@ namespace wlp {
      * @tparam IntType hash code integer type
      */
     template<class IntType>
-    struct Hash<char *, IntType> {
+    struct hash<char *, IntType> {
         IntType operator()(const char *s) const {
             return hash_string<IntType>(s);
         }
@@ -105,7 +105,7 @@ namespace wlp {
      * @tparam IntType hash code integer type
      */
     template<class IntType>
-    struct Hash<const char *, IntType> {
+    struct hash<const char *, IntType> {
         IntType operator()(const char *s) const {
             return hash_string<IntType>(s);
         }
