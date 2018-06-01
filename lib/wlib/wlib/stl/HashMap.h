@@ -37,9 +37,9 @@ namespace wlp {
             typename Val,
             typename Hasher = hash<Key, uint16_t>,
             typename Equals = equals<Key>>
-    class HashMap {
+    class hash_map {
     public:
-        typedef HashMap<Key, Val, Hasher, Equals> map_type;
+        typedef hash_map<Key, Val, Hasher, Equals> map_type;
         typedef HashTable<Tuple<Key, Val>,
                 Key, Val,
                 MapGetKey<Key, Val>, MapGetVal<Key, Val>,
@@ -57,13 +57,13 @@ namespace wlp {
         table_type m_table;
 
     public:
-        explicit HashMap(size_type n = 12, percent_type max_load = 75)
+        explicit hash_map(size_type n = 12, percent_type max_load = 75)
                 : m_table(n, max_load) {
         }
 
-        HashMap(const map_type &) = delete;
+        hash_map(const map_type &) = delete;
 
-        HashMap(map_type &&map)
+        hash_map(map_type &&map)
                 : m_table(move(map.m_table)) {
         }
 

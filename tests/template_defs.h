@@ -17,16 +17,16 @@ namespace wlp {
     struct Pair<uint16_t, const char *>;
 
     template
-    class HashMap<String16, String16>;
+    class hash_map<String16, String16>;
 
     template
-    class HashMap<uint16_t, uint16_t>;
+    class hash_map<uint16_t, uint16_t>;
 
     template
-    struct Pair<HashMap<uint16_t, uint16_t>::iterator, bool>;
+    struct Pair<hash_map<uint16_t, uint16_t>::iterator, bool>;
 
     template
-    struct Pair<HashMap<String16, String16>::iterator, bool>;
+    struct Pair<hash_map<String16, String16>::iterator, bool>;
 
     template
     struct equals<String8>;
