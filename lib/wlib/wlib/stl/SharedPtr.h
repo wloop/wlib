@@ -19,8 +19,8 @@
 
 #include <wlib/stl/UniquePtr.h>
 #include <wlib/Types.h>
-#include <wlib/utility/Tmp.h>
-#include <wlib/utility/Utility.h>
+#include <wlib/util/Tmp.h>
+#include <wlib/util/Utility.h>
 #include <wlib/exceptions/Exceptions.h>
 
 namespace wlp {

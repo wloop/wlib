@@ -10,7 +10,7 @@
  */
 
 #include <gtest/gtest.h>
-#include <wlib/memory/Memory.h>
+#include <wlib/mem/Memory.h>
 
 int main(int argc, char *argv[]) {
     wlp::size32_type startingFreeMemory = getTotalMemoryFree();

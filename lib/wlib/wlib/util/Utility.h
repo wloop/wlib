@@ -13,7 +13,7 @@
 #ifndef EMBEDDEDCPLUSPLUS_UTILITY_H
 #define EMBEDDEDCPLUSPLUS_UTILITY_H
 
-#include <wlib/utility/Tmp.h>
+#include <wlib/util/Tmp.h>
 
 namespace wlp {
 

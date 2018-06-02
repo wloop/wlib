@@ -3,8 +3,8 @@
 
 #include <wlib/Wlib.h>
 #include <wlib/Types.h>
-#include <wlib/memory/Memory.h>
-#include <wlib/utility/Tmp.h>
+#include <wlib/mem/Memory.h>
+#include <wlib/util/Tmp.h>
 #include <wlib/exceptions/Exceptions.h>
 
 namespace wlp {

@@ -2,7 +2,7 @@
 #define EMBEDDEDCPLUSPLUS_TABLECOMMON_H
 
 #include <wlib/stl/Tuple.h>
-#include <wlib/utility/Tmp.h>
+#include <wlib/util/Tmp.h>
 
 namespace wlp {
 

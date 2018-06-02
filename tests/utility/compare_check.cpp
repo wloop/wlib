@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <wlib/utility/Compare.h>
+#include <wlib/util/Compare.h>
 
 using namespace wlp;
 
