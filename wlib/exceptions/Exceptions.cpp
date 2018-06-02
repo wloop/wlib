@@ -11,8 +11,8 @@
 
 #include <stdlib.h>
 
-#include "Exceptions.h"
-#include "../memory/Memory.h"
+#include <wlib/exceptions/Exceptions.h>
+#include <wlib/mem/Memory.h>
 
 using namespace wlp;
 

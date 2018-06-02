@@ -12,7 +12,7 @@
 #ifndef EMBEDDEDTESTS_PAIR_H
 #define EMBEDDEDTESTS_PAIR_H
 
-#include <wlib/utility/Utility.h>
+#include <wlib/util/Utility.h>
 
 namespace wlp {
 

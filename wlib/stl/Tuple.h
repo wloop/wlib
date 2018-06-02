@@ -19,7 +19,7 @@
 #define EMBEDDEDCPLUSPLUS_TUPLE_H
 
 #include <wlib/stl/Pair.h>
-#include <wlib/utility/Tmp.h>
+#include <wlib/util/Tmp.h>
 
 namespace wlp {
 

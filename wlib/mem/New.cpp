@@ -7,7 +7,7 @@
      defined(__AVR_ATmega644P__)  || \
      defined(__AVR_ATmega644PA__)) && !defined(__AVR_Cosa__)
 
-#include "New.h"
+#include <wlib/mem/New.h>
 
 void *operator new(decltype(sizeof(0)), void *ptr) noexcept {
     return ptr;
@@ -17,7 +17,7 @@ void *operator new(decltype(sizeof(0)), void *ptr) noexcept {
 #else
 
 #include <stdlib.h>
-#include "New.h"
+#include <wlib/mem/New.h>
 
 void *operator new(decltype(sizeof(0)) n) noexcept(false) {
     return malloc(n);
