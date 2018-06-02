@@ -23,7 +23,8 @@ wio create pkg wlib-wio ALL --platform ALL
 
 # Replace with template wio.yml
 rm wlib-wio/wio.yml
-cp wio.yml wlib-wio/
+cp wio-test.yml wlib-wio/
+mv wlib-wio/wio-test.yml wlib-wio/wio.yml
 
 rm -rf wlib-wio/src
 rm -rf wlib-wio/include
@@ -53,7 +54,21 @@ len_headers=${#arr_headers[@]}
 len_relative=${#arr_relative[@]}
 
 for (( i = 0; i < ${len_headers}; i++ )); do
-    mkdir --parents "wlib-wio/include/"${arr_relative[$i]}
+    mkdir --parents "wlib-wio/include/"$(dirname "${arr_relative[$i]}")
     mv ${arr_headers[$i]} "wlib-wio/include/"${arr_relative[$i]}
 done
+
+# Do a build test
+cd wlib-wio
+wio build
+wio clean
+cd ..
+
+# Copy the deploy config
+rm -rf wlib-wio/wio.yml
+cp wio.yml wlib-wio/
+
+# Do a deploy
+cd wlib-wio
+wio pac publish
 
