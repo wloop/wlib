@@ -5,7 +5,7 @@
 
 #include <wlib/Types.h>
 #include <wlib/stl/InitializerList.h>
-#include <wlib/utility/Utility.h>
+#include <wlib/util/Utility.h>
 
 namespace wlp {
 

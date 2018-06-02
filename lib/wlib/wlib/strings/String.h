@@ -16,8 +16,8 @@
 
 #include <wlib/strings/StringIterator.h>
 #include <wlib/Types.h>
-#include <wlib/utility/Math.h>
-#include <wlib/memory/Memory.h>
+#include <wlib/util/Math.h>
+#include <wlib/mem/Memory.h>
 
 namespace wlp {
 

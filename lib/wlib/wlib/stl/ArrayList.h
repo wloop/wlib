@@ -14,8 +14,8 @@
 #define EMBEDDEDCPLUSPLUS_ARRAYLIST_H
 
 #include <wlib/Types.h>
-#include <wlib/memory/Memory.h>
-#include <wlib/utility/Utility.h>
+#include <wlib/mem/Memory.h>
+#include <wlib/util/Utility.h>
 #include <wlib/exceptions/Exceptions.h>
 
 namespace wlp {

@@ -8,7 +8,7 @@
  * @bug No known bugs
  */
 
-#include "String.h"
+#include <wlib/strings/String.h>
 
 namespace wlp {
 

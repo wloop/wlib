@@ -13,7 +13,7 @@
 #ifndef FIXED_MEMORY_DYNAMIC_ALLOCATORPOOL_H
 #define FIXED_MEMORY_DYNAMIC_ALLOCATORPOOL_H
 
-#include <wlib/memory/Allocator.h>
+#include <wlib/mem/Allocator.h>
 
 namespace wlp {
     template<size32_type tblockSize, size32_type tnumBlocks>

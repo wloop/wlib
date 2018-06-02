@@ -17,7 +17,7 @@
 #include <wlib/Wlib.h>
 #include <wlib/stl/Pair.h>
 #include <wlib/stl/TypeTraits.h>
-#include <wlib/utility/Tmp.h>
+#include <wlib/util/Tmp.h>
 
 /**
  * Definitions for a variadic macro that generates
