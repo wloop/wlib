@@ -8,7 +8,7 @@
  */
 
 #include <gtest/gtest.h>
-#include <wlib/memory/Memory.h>
+#include <wlib/mem/Memory.h>
 
 class Sample {
 public:

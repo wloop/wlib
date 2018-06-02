@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <wlib/memory/Memory.h>
+#include <wlib/mem/Memory.h>
 #include <wlib/exceptions/Exceptions.h>
 
 TEST(exceptions_test, simple_try_catch) {

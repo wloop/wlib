@@ -9,10 +9,9 @@
 
 #include <string.h> // memset
 
-#include "Allocator.h"
-
-#include "../utility/Math.h"
-#include "../utility/Utility.h"
+#include <wlib/mem/Allocator.h>
+#include <wlib/util/Math.h>
+#include <wlib/util/Utility.h>
 
 using namespace wlp;
 

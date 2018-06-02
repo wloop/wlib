@@ -8,7 +8,7 @@
 #include <wlib/stl/Pair.h>
 #include <wlib/Types.h>
 #include <wlib/exceptions/Exceptions.h>
-#include <wlib/utility/Utility.h>
+#include <wlib/util/Utility.h>
 
 namespace wlp {
 

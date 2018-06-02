@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if ! type "npm" > /dev/null; then
     echo "wio-deploy FAILED: npm not installed"
@@ -46,6 +46,14 @@ headers=$(find wlib-wio/src/ -type f -name "*.h")
 relative=$(realpath --relative-to="wlib-wio/src" $headers)
 
 
-IFS=$'\n' read -rd '' -a y <<<"$headers"
+IFS=$'\n' read -rd '' -a arr_headers <<<"$headers"
+IFS=$'\n' read -rd '' -a arr_relative <<<"$relative"
 
-echo "${y[2]}"
+len_headers=${#arr_headers[@]}
+len_relative=${#arr_relative[@]}
+
+for (( i = 0; i < ${len_headers}; i++ )); do
+    mkdir --parents "wlib-wio/include/"${arr_relative[$i]}
+    mv ${arr_headers[$i]} "wlib-wio/include/"${arr_relative[$i]}
+done
+

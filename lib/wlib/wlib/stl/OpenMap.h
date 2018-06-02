@@ -21,7 +21,7 @@
 #include <wlib/stl/Pair.h>
 #include <wlib/stl/Table.h>
 #include <wlib/stl/Tuple.h>
-#include <wlib/utility/Utility.h>
+#include <wlib/util/Utility.h>
 
 namespace wlp {
 

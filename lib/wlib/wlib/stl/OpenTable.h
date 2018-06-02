@@ -18,8 +18,8 @@
 #include <wlib/stl/Equal.h>
 #include <wlib/stl/Hash.h>
 #include <wlib/stl/Pair.h>
-#include <wlib/memory/Memory.h>
-#include <wlib/utility/Utility.h>
+#include <wlib/mem/Memory.h>
+#include <wlib/util/Utility.h>
 #include <wlib/exceptions/Exceptions.h>
 
 namespace wlp {

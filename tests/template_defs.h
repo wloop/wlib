@@ -4,7 +4,7 @@
 #include <wlib/Types.h>
 
 #include <wlib/strings/String.h>
-#include <wlib/utility/Utility.h>
+#include <wlib/util/Utility.h>
 #include <wlib/stl/HashMap.h>
 #include <wlib/stl/OpenMap.h>
 #include <wlib/stl/ArrayHeap.h>

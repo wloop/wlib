@@ -1,8 +1,7 @@
 #ifndef __WLIB_MEMORY__
 #define __WLIB_MEMORY__
 
-#include <wlib/unique_ptr>
-#include <wlib/shared_ptr>
+#include <wlib/mem/New.h>
+#include <wlib/mem/Memory.h>
 
 #endif
-

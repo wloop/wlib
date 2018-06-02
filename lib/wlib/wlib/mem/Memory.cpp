@@ -9,12 +9,11 @@
 
 #include <string.h>
 
-#include "Memory.h"
-#include "StaticAllocatorPool.h"
-#include "DynamicAllocatorPool.h"
-
-#include "../Wlib.h"
-#include "../utility/Math.h"
+#include <wlib/Wlib.h>
+#include <wlib/util/Math.h>
+#include <wlib/mem/Memory.h>
+#include <wlib/mem/StaticAllocatorPool.h>
+#include <wlib/mem/DynamicAllocatorPool.h>
 
 using namespace wlp;
 
