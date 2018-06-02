@@ -103,7 +103,7 @@ struct insert&lt; powStart, from, from &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00111">111</a> of file <a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00110">110</a> of file <a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a18daf88057dd4b11b3640ffe2b0a8781"></a>
 <div class="memitem">
@@ -129,21 +129,21 @@ template&lt;uint16_t powStart, uint16_t from&gt; </div>
 </div><div class="memdoc">
 <p>Insert either static or dynamic memory blocks </p>
 
-<p>Definition at line <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00115">115</a> of file <a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00114">114</a> of file <a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a>.</p>
 
-<p>References <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00052">__allocators</a>.</p>
-<div class="fragment"><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                        {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        constexpr <a class="code" href="../../d5/dca/namespacewlp.html#aa769294e00f256f59aa1235b8385989f">size_type</a> curr_pow = from + powStart;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        constexpr <a class="code" href="../../d5/dca/namespacewlp.html#adb997846b89cf8d4b485be5f3c80e762">size32_type</a> blockSize = RestrictSize::apply&lt;curr_pow, pow_const&lt;size32_type&gt;(2, curr_pow)&gt;();</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#if defined(DYNAMIC_POOL)</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor"></span>        <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>[from] = <span class="keyword">new</span> <a class="code" href="../../d6/dda/classwlp_1_1_dynamic_allocator_pool.html">DynamicAllocatorPool&lt;blockSize, NUM_BLOCKS&gt;</a>();</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#elif defined(STATIC_POOL)</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor"></span>        <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>[from] = <span class="keyword">new</span> <a class="code" href="../../d1/dba/classwlp_1_1_static_allocator_pool.html">StaticAllocatorPool&lt;blockSize, NUM_BLOCKS&gt;</a>();</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor"></span>    }</div>
+<p>References <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00051">__allocators</a>.</p>
+<div class="fragment"><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                        {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        constexpr <a class="code" href="../../d5/dca/namespacewlp.html#aa769294e00f256f59aa1235b8385989f">size_type</a> curr_pow = from + powStart;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        constexpr <a class="code" href="../../d5/dca/namespacewlp.html#adb997846b89cf8d4b485be5f3c80e762">size32_type</a> blockSize = RestrictSize::apply&lt;curr_pow, pow_const&lt;size32_type&gt;(2, curr_pow)&gt;();</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#if defined(DYNAMIC_POOL)</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor"></span>        <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>[from] = <span class="keyword">new</span> <a class="code" href="../../d6/dda/classwlp_1_1_dynamic_allocator_pool.html">DynamicAllocatorPool&lt;blockSize, NUM_BLOCKS&gt;</a>();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#elif defined(STATIC_POOL)</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor"></span>        <a class="code" href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a>[from] = <span class="keyword">new</span> <a class="code" href="../../d1/dba/classwlp_1_1_static_allocator_pool.html">StaticAllocatorPool&lt;blockSize, NUM_BLOCKS&gt;</a>();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor"></span>    }</div>
 <div class="ttc" id="namespacewlp_html_adb997846b89cf8d4b485be5f3c80e762"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#adb997846b89cf8d4b485be5f3c80e762">wlp::size32_type</a></div><div class="ttdeci">uint32_t size32_type</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db6/_types_8h_source.html#l00022">Types.h:22</a></div></div>
-<div class="ttc" id="_memory_8cpp_html_a4eaa7ac32a25e4e635447b57979aee4d"><div class="ttname"><a href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a></div><div class="ttdeci">static __Allocator * __allocators[MAX_ALLOCATORS]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_memory_8cpp_source.html#l00052">Memory.cpp:52</a></div></div>
+<div class="ttc" id="_memory_8cpp_html_a4eaa7ac32a25e4e635447b57979aee4d"><div class="ttname"><a href="../../df/d64/_memory_8cpp.html#a4eaa7ac32a25e4e635447b57979aee4d">__allocators</a></div><div class="ttdeci">static __Allocator * __allocators[MAX_ALLOCATORS]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_memory_8cpp_source.html#l00051">Memory.cpp:51</a></div></div>
 <div class="ttc" id="classwlp_1_1_dynamic_allocator_pool_html"><div class="ttname"><a href="../../d6/dda/classwlp_1_1_dynamic_allocator_pool.html">wlp::DynamicAllocatorPool</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbd/_dynamic_allocator_pool_8h_source.html#l00020">DynamicAllocatorPool.h:20</a></div></div>
 <div class="ttc" id="namespacewlp_html_aa769294e00f256f59aa1235b8385989f"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#aa769294e00f256f59aa1235b8385989f">wlp::size_type</a></div><div class="ttdeci">uint16_t size_type</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db6/_types_8h_source.html#l00018">Types.h:18</a></div></div>
 <div class="ttc" id="classwlp_1_1_static_allocator_pool_html"><div class="ttname"><a href="../../d1/dba/classwlp_1_1_static_allocator_pool.html">wlp::StaticAllocatorPool</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d41/_static_allocator_pool_8h_source.html#l00020">StaticAllocatorPool.h:20</a></div></div>
@@ -151,12 +151,12 @@ template&lt;uint16_t powStart, uint16_t from&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>wlib/memory/<a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a></li>
+<li>wlib/mem/<a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jun 1 2018 20:46:49 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 2 2018 23:28:44 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Waterloop Wlib: wlib/memory/New.cpp Source File</title>
+<title>Waterloop Wlib: wlib/mem/New.cpp Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -77,7 +77,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="../../dir_22fc7acad71c9021e217a1a2f7fbab65.html">wlib</a></li><li class="navelem"><a class="el" href="../../dir_1363f2cf5a4e816a1c4a90bf1a8cd04f.html">memory</a></li>  </ul>
+<li class="navelem"><a class="el" href="../../dir_22fc7acad71c9021e217a1a2f7fbab65.html">wlib</a></li><li class="navelem"><a class="el" href="../../dir_f055c5e7b7c2bff98a6152d8d6f01b06.html">mem</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -94,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">     defined(__AVR_ATmega644P__)  || \</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">     defined(__AVR_ATmega644PA__)) &amp;&amp; !defined(__AVR_Cosa__)</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d9/d8a/_new_8h.html">New.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/d8a/_new_8h.html">wlib/mem/New.h</a>&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> *<span class="keyword">operator</span> <span class="keyword">new</span>(decltype(<span class="keyword">sizeof</span>(0)), <span class="keywordtype">void</span> *ptr) noexcept {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">return</span> ptr;</div>
@@ -104,7 +104,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d9/d8a/_new_8h.html">New.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/d8a/_new_8h.html">wlib/mem/New.h</a>&gt;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
 <div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../d9/d8a/_new_8h.html#a2be7f3b9f5f2189e467551f094f6dc67">   22</a></span>&#160;<span class="keywordtype">void</span> *<span class="keyword">operator</span> <span class="keyword">new</span>(decltype(<span class="keyword">sizeof</span>(0)) n) noexcept(false) {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8">malloc</a>(n);</div>
@@ -133,7 +133,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jun 1 2018 20:46:49 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 2 2018 23:28:44 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

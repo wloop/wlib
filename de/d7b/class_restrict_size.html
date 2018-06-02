@@ -103,7 +103,7 @@ Static Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class restricts the size of blocks as the power of 2 gets bigger </p>
 
-<p>Definition at line <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00027">27</a> of file <a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00026">26</a> of file <a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a>.</p>
 </div><div class="dynheader">
 Collaboration diagram for RestrictSize:</div>
 <div class="dyncontent">
@@ -143,15 +143,15 @@ template&lt;size_type pow, size32_type blockSize&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a memory block that is restricted </dd></dl>
 
-<p>Definition at line <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00045">45</a> of file <a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                                {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">return</span> (pow &gt;= <a class="code" href="../../de/d7b/class_restrict_size.html#a701bf5e7d8556a244aa5920033993179">powOffsetFromZero</a> &amp;&amp;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                pow &lt; (<a class="code" href="../../de/d7b/class_restrict_size.html#a701bf5e7d8556a244aa5920033993179">powOffsetFromZero</a> + <a class="code" href="../../de/d7b/class_restrict_size.html#a7082ff46ecf016989a7cc63fb209e9a7">numRestrictions</a>)) ? <a class="code" href="../../de/d7b/class_restrict_size.html#a10aef9e7c01ea02404d49f1e717efc80">restrictions</a>[pow - <a class="code" href="../../de/d7b/class_restrict_size.html#a701bf5e7d8556a244aa5920033993179">powOffsetFromZero</a>]</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                                             : blockSize;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
-<div class="ttc" id="class_restrict_size_html_a701bf5e7d8556a244aa5920033993179"><div class="ttname"><a href="../../de/d7b/class_restrict_size.html#a701bf5e7d8556a244aa5920033993179">RestrictSize::powOffsetFromZero</a></div><div class="ttdeci">static constexpr uint16_t powOffsetFromZero</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_memory_8cpp_source.html#l00029">Memory.cpp:29</a></div></div>
-<div class="ttc" id="class_restrict_size_html_a7082ff46ecf016989a7cc63fb209e9a7"><div class="ttname"><a href="../../de/d7b/class_restrict_size.html#a7082ff46ecf016989a7cc63fb209e9a7">RestrictSize::numRestrictions</a></div><div class="ttdeci">static constexpr uint16_t numRestrictions</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_memory_8cpp_source.html#l00028">Memory.cpp:28</a></div></div>
-<div class="ttc" id="class_restrict_size_html_a10aef9e7c01ea02404d49f1e717efc80"><div class="ttname"><a href="../../de/d7b/class_restrict_size.html#a10aef9e7c01ea02404d49f1e717efc80">RestrictSize::restrictions</a></div><div class="ttdeci">static constexpr uint16_t restrictions[numRestrictions]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_memory_8cpp_source.html#l00031">Memory.cpp:31</a></div></div>
+<p>Definition at line <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00044">44</a> of file <a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                                {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">return</span> (pow &gt;= <a class="code" href="../../de/d7b/class_restrict_size.html#a701bf5e7d8556a244aa5920033993179">powOffsetFromZero</a> &amp;&amp;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                pow &lt; (<a class="code" href="../../de/d7b/class_restrict_size.html#a701bf5e7d8556a244aa5920033993179">powOffsetFromZero</a> + <a class="code" href="../../de/d7b/class_restrict_size.html#a7082ff46ecf016989a7cc63fb209e9a7">numRestrictions</a>)) ? <a class="code" href="../../de/d7b/class_restrict_size.html#a10aef9e7c01ea02404d49f1e717efc80">restrictions</a>[pow - <a class="code" href="../../de/d7b/class_restrict_size.html#a701bf5e7d8556a244aa5920033993179">powOffsetFromZero</a>]</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                                             : blockSize;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="ttc" id="class_restrict_size_html_a701bf5e7d8556a244aa5920033993179"><div class="ttname"><a href="../../de/d7b/class_restrict_size.html#a701bf5e7d8556a244aa5920033993179">RestrictSize::powOffsetFromZero</a></div><div class="ttdeci">static constexpr uint16_t powOffsetFromZero</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_memory_8cpp_source.html#l00028">Memory.cpp:28</a></div></div>
+<div class="ttc" id="class_restrict_size_html_a7082ff46ecf016989a7cc63fb209e9a7"><div class="ttname"><a href="../../de/d7b/class_restrict_size.html#a7082ff46ecf016989a7cc63fb209e9a7">RestrictSize::numRestrictions</a></div><div class="ttdeci">static constexpr uint16_t numRestrictions</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_memory_8cpp_source.html#l00027">Memory.cpp:27</a></div></div>
+<div class="ttc" id="class_restrict_size_html_a10aef9e7c01ea02404d49f1e717efc80"><div class="ttname"><a href="../../de/d7b/class_restrict_size.html#a10aef9e7c01ea02404d49f1e717efc80">RestrictSize::restrictions</a></div><div class="ttdeci">static constexpr uint16_t restrictions[numRestrictions]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_memory_8cpp_source.html#l00030">Memory.cpp:30</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -174,7 +174,7 @@ template&lt;size_type pow, size32_type blockSize&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00028">28</a> of file <a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00027">27</a> of file <a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a>.</p>
 
 </div>
 </div>
@@ -196,7 +196,7 @@ template&lt;size_type pow, size32_type blockSize&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00029">29</a> of file <a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00028">28</a> of file <a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a>.</p>
 
 </div>
 </div>
@@ -221,17 +221,17 @@ template&lt;size_type pow, size32_type blockSize&gt; </div>
 <div class="line">            300, 400, 500</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00031">31</a> of file <a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../df/d64/_memory_8cpp_source.html#l00030">30</a> of file <a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>wlib/memory/<a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a></li>
+<li>wlib/mem/<a class="el" href="../../df/d64/_memory_8cpp_source.html">Memory.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jun 1 2018 20:46:49 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 2 2018 23:28:44 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
