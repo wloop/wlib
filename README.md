@@ -9,7 +9,7 @@ WLib is built in-house for our pod's embedded systems. The goal of WLib is to cr
 
 This library depends only on a few C standard libraries and is optimized for embedded systems that have less memory and low processing power.
 
-For more details check out our [documentation](https://teamwaterloop.github.io/waterloop-wlib/).
+For more details check out our [documentation](https://waterloop.github.io/waterloop-wlib/).
 
 ## Committers
 
