@@ -13,7 +13,7 @@ pkg:
   - ALL
   board:
   - ALL
-  compile_flags: ["-DMAX_ALLOCATORS=10u", "-DNUM_BLOCKS=400u"]
+  compile_flags: []
   ide: none
 
 targets:
@@ -21,7 +21,8 @@ targets:
   create:
     tests:
       board: uno
-      compile_flags: []
+      target_compile_flags: []
+      pkg_compile_flags: ["-DMAX_ALLOCATORS=10u", "-DNUM_BLOCKS=400u"]
 
 dependencies: {}
 
