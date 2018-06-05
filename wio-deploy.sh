@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 if ! type "npm" > /dev/null; then
     echo "wio-deploy FAILED: npm not installed"
     exit 1;
