@@ -200,13 +200,15 @@ namespace wlp {
     }
 
     void dynamic_string::replace(size_type len, char fill) {
-        m_buffer = realloc<char>(m_buffer, len + 1);
+        if (m_buffer) { free<char>(m_buffer); }
+        m_buffer = malloc<char[]>(static_cast<size_type>(len + 1));
         memset(m_buffer, fill, len);
         m_buffer[len] = '\0';
     }
 
     void dynamic_string::replace(size_type len) {
-        m_buffer = realloc<char>(m_buffer, len + 1);
+        if (m_buffer) { free<char>(m_buffer); }
+        m_buffer = malloc<char[]>(static_cast<size_type>(len + 1));
     }
 
     dynamic_string dynamic_string::substr(size_type pos, size_type length) const {
