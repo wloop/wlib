@@ -2,7 +2,7 @@ pkg:
   name: wlib-wio
   description: "Standard Library for embedded C++ development"
   url: "https://github.com/waterloop/waterloop-wlib.git"
-  version: 2.0.1
+  version: 2.0.2
   author: "Jeff Niu"
   contributors: ["Deep Dhillon"]
   organization: "Waterloop"
