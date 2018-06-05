@@ -64,3 +64,6 @@ fabric.properties
 .vscode
 
 .DS_Store
+
+*.swp
+
