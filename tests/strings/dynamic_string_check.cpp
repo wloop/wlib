@@ -135,3 +135,21 @@ TEST(dynamic_string_tests, move_tests) {
     ASSERT_STREQ(str, s3.c_str());
 }
 
+TEST(dynamic_string_tests, resize_length_set) {
+    char teststr[] = "Your empire needs you!";
+    size_type length = static_cast<size_type>(strlen(teststr));
+
+    dynamic_string str("hello");
+    ASSERT_STREQ("hello", str.c_str());
+    ASSERT_EQ(strlen("hello"), str.length());
+
+    str.resize(length);
+    ASSERT_EQ(0, str.length());
+    ASSERT_STREQ("", str.c_str());
+
+    strcpy(str.c_str(), "Your empire needs you!");
+    str.length_set(length);
+    ASSERT_STREQ(teststr, str.c_str());
+    ASSERT_EQ(length, str.length());
+}
+
