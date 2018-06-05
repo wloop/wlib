@@ -412,7 +412,16 @@ namespace wlp {
         }
 
         /**
-         * Provides access to character array that string uses behind the screen
+         * Provides access to the backing character array.
+         *
+         * @return character array
+         */
+        char *c_str() {
+            return m_buffer;
+        }
+
+        /**
+         * Provides access to the backing character array.
          *
          * @return character array
          */
@@ -996,7 +1005,14 @@ namespace wlp {
         void pop_back();
 
         /**
-         * Provides access to character array that string uses behind the screen.
+         * Provides access to the backing character array.
+         *
+         * @return character array
+         */
+        char *c_str();
+
+        /**
+         * Provides access to the backing character array.
          *
          * @return character array
          */

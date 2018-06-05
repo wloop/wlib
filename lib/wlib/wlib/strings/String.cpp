@@ -186,6 +186,10 @@ namespace wlp {
         }
     }
 
+    char *dynamic_string::c_str() {
+        return m_buffer;
+    }
+
     const char *dynamic_string::c_str() const {
         return m_buffer;
     }
