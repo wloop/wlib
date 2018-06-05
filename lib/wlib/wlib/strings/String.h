@@ -1019,6 +1019,34 @@ namespace wlp {
         const char *c_str() const;
 
         /**
+         * If @code len > length() @endcode the string is resized
+         * to fit @code len @endcode characters, not including the
+         * null terminating. The new backing array size is
+         * @code len + 1 @endcode. The current content is copied.
+         *
+         * @param len the number of characters to fit
+         */
+        void resize(size_type len);
+
+        /**
+         * Discards the current string contents and replaces it
+         * with a string with @code len @endcode characters @code fill @endcode.
+         *
+         * @param len  the new string length
+         * @param fill the character with which to fill the string
+         */
+        void replace(size_type len, char fill);
+
+        /**
+         * Discards the current backing array and replaces it with
+         * one of size @code len + 1 @endcode. The contents are not
+         * initialized.
+         *
+         * @param len the number of characters to hold
+         */
+        void replace(size_type len);
+
+        /**
          * Makes substring of the current string.
          *
          * @param pos starting position
