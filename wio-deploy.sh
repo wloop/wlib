@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if ! type "npm" > /dev/null; then
     echo "wio-deploy FAILED: npm not installed"
     exit 1;
@@ -69,6 +71,6 @@ rm -rf wlib-wio/wio.yml
 cp wio.yml wlib-wio/
 
 # Do a deploy
-cd wlib-wio
-wio pac publish
+#cd wlib-wio
+#wio pac publish
 
