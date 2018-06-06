@@ -40,8 +40,8 @@ namespace wlp {
     template<typename Ptr>
     class ReferenceCount {
     public:
-        typedef uint16_t ptr_use_count;
         typedef Ptr pointer;
+        typedef uint16_t ptr_use_count;
 
     private:
         /**
@@ -466,8 +466,8 @@ namespace wlp {
         template<typename U> friend
         class weak_ptr;
 
-        val_type *m_ptr;
         SharedCount<T *> m_refcount;
+        val_type *m_ptr;
 
     public:
         constexpr shared_ptr()
@@ -672,8 +672,8 @@ namespace wlp {
         template<typename U> friend
         class weak_ptr;
 
-        val_type *m_ptr;
         WeakCount<T *> m_refcount;
+        val_type *m_ptr;
 
     public:
         constexpr weak_ptr()
