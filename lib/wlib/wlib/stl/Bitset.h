@@ -162,7 +162,7 @@ namespace wlp {
             if (nBits <= 32) {
                 return to_uint32();
             }
-            return (((uint64_t) m_array[1]) << INT32_SIZE) | ((uint32_t) m_array[0]);
+            return ((static_cast<uint64_t>(m_array[1])) << INT32_SIZE) | (static_cast<uint32_t>(m_array[0]));
         }
 
         /**
@@ -171,7 +171,7 @@ namespace wlp {
          * @return unsigned 32 bit integer
          */
         uint32_t to_uint32() const {
-            return (uint32_t) m_array[0];
+            return static_cast<uint32_t>(m_array[0]);
         }
 
         /**
@@ -180,7 +180,7 @@ namespace wlp {
          * @return unsigned 16 bit integer
          */
         uint16_t to_uint16() const {
-            return (uint16_t) (m_array[0] & pow_mask<16>::value);
+            return static_cast<uint16_t>(m_array[0] & pow_mask<16>::value);
         }
 
         /**
@@ -189,7 +189,7 @@ namespace wlp {
          * @return unsigned 8 bit integer
          */
         uint8_t to_uint8() const {
-            return (uint8_t) (m_array[0] & pow_mask<8>::value);
+            return static_cast<uint8_t>(m_array[0] & pow_mask<8>::value);
         }
 
         /**
