@@ -254,12 +254,13 @@ namespace wlp {
          * @param maxStates machine number of states
          * @param initialState initial machine state
          */
-        state_machine(state_type maxStates, state_type initialState = 0)
-                : m_max_states(maxStates),
-                  m_current_state(initialState),
-                  m_new_state(0),
-                  m_event_generated(false),
-                  m_event_data(nullptr) {
+        state_machine(state_type maxStates, state_type initialState = 0) :
+            m_event_data(nullptr),
+            m_dataless(),
+            m_event_generated(false),
+            m_max_states(maxStates),
+            m_current_state(initialState),
+            m_new_state(0) {
             /* assert(m_max_states < EVENT_IGNORED) */
             if (m_max_states >= EVENT_IGNORED) {
                 THROW(BAD_STATE_EXCEPTION("Max states cannot equal or exceed EVENT_IGNORED"))
