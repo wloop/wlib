@@ -172,10 +172,10 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a591257cc16b43bbc13aa81bf31ae910c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/dbb/classwlp_1_1shared__ptr.html#a9922906a955171753aa2c7735d80a4f1">val_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a></td></tr>
-<tr class="separator:a591257cc16b43bbc13aa81bf31ae910c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e48897cf4a9bad84761dd09f73b3b90"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/dbb/classwlp_1_1_shared_count.html">SharedCount</a>&lt; T * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a></td></tr>
 <tr class="separator:a6e48897cf4a9bad84761dd09f73b3b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a591257cc16b43bbc13aa81bf31ae910c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/dbb/classwlp_1_1shared__ptr.html#a9922906a955171753aa2c7735d80a4f1">val_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a></td></tr>
+<tr class="separator:a591257cc16b43bbc13aa81bf31ae910c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -257,11 +257,11 @@ template&lt;typename T&gt; </div>
 
 <p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00471">471</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00563">wlp::shared_ptr&lt; T &gt;::operator=()</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00579">wlp::shared_ptr&lt; T &gt;::reset()</a>.</p>
+<p>Referenced by <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00557">wlp::shared_ptr&lt; T &gt;::operator=()</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00573">wlp::shared_ptr&lt; T &gt;::reset()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;          :</div>
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        constexpr <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#afa0ab4333a5a88f7a7fc2043f53dcaac">shared_ptr</a>()</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a>(nullptr),</div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a>(),</div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a6e48897cf4a9bad84761dd09f73b3b90"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">wlp::shared_ptr::m_refcount</a></div><div class="ttdeci">SharedCount&lt; T * &gt; m_refcount</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
 <div class="ttc" id="classwlp_1_1shared__ptr_html_afa0ab4333a5a88f7a7fc2043f53dcaac"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#afa0ab4333a5a88f7a7fc2043f53dcaac">wlp::shared_ptr::shared_ptr</a></div><div class="ttdeci">constexpr shared_ptr()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00471">SharedPtr.h:471</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -301,10 +301,8 @@ template&lt;typename U , typename  = typename enable_if&lt;                is_co
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00479">479</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a>(ptr),</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;                  <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a>(ptr) {</div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a6e48897cf4a9bad84761dd09f73b3b90"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">wlp::shared_ptr::m_refcount</a></div><div class="ttdeci">SharedCount&lt; T * &gt; m_refcount</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00468">SharedPtr.h:468</a></div></div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<div class="fragment"><div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a>(ptr),</div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a6e48897cf4a9bad84761dd09f73b3b90"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">wlp::shared_ptr::m_refcount</a></div><div class="ttdeci">SharedCount&lt; T * &gt; m_refcount</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -344,9 +342,9 @@ template&lt;typename U &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00486">486</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a>(ptr),</div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00485">485</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a>(sp.m_refcount),</div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a6e48897cf4a9bad84761dd09f73b3b90"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">wlp::shared_ptr::m_refcount</a></div><div class="ttdeci">SharedCount&lt; T * &gt; m_refcount</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -376,9 +374,9 @@ template&lt;typename U , typename  = typename enable_if&lt;                is_co
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00494">494</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a>(sp.m_ptr),</div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00492">492</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a>(sp.m_refcount),</div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a6e48897cf4a9bad84761dd09f73b3b90"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">wlp::shared_ptr::m_refcount</a></div><div class="ttdeci">SharedCount&lt; T * &gt; m_refcount</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -406,9 +404,11 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00499">499</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a>(sp.m_ptr),</div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00496">496</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;                                  {}</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#afa0ab4333a5a88f7a7fc2043f53dcaac">shared_ptr</a>(<span class="keyword">const</span> shared_ptr&lt;T&gt; &amp;sp)</div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_afa0ab4333a5a88f7a7fc2043f53dcaac"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#afa0ab4333a5a88f7a7fc2043f53dcaac">wlp::shared_ptr::shared_ptr</a></div><div class="ttdeci">constexpr shared_ptr()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00471">SharedPtr.h:471</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -436,12 +436,16 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00504">504</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a>(sp.m_ptr),</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;                  <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a>() {</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a>.<a class="code" href="../../da/dbb/classwlp_1_1_shared_count.html#ad9de7cb486018b547abbf4416fb31029">swap</a>(sp.m_refcount);</div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a6e48897cf4a9bad84761dd09f73b3b90"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">wlp::shared_ptr::m_refcount</a></div><div class="ttdeci">SharedCount&lt; T * &gt; m_refcount</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00468">SharedPtr.h:468</a></div></div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00500">500</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;                                  {}</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;        <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#afa0ab4333a5a88f7a7fc2043f53dcaac">shared_ptr</a>(shared_ptr&lt;T&gt; &amp;&amp;sp)</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a>(),</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;                  <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a>(sp.<a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a>) {</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a>.<a class="code" href="../../da/dbb/classwlp_1_1_shared_count.html#ad9de7cb486018b547abbf4416fb31029">swap</a>(sp.m_refcount);</div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a6e48897cf4a9bad84761dd09f73b3b90"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">wlp::shared_ptr::m_refcount</a></div><div class="ttdeci">SharedCount&lt; T * &gt; m_refcount</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00468">SharedPtr.h:468</a></div></div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_afa0ab4333a5a88f7a7fc2043f53dcaac"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#afa0ab4333a5a88f7a7fc2043f53dcaac">wlp::shared_ptr::shared_ptr</a></div><div class="ttdeci">constexpr shared_ptr()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00471">SharedPtr.h:471</a></div></div>
 <div class="ttc" id="classwlp_1_1_shared_count_html_ad9de7cb486018b547abbf4416fb31029"><div class="ttname"><a href="../../da/dbb/classwlp_1_1_shared_count.html#ad9de7cb486018b547abbf4416fb31029">wlp::SharedCount::swap</a></div><div class="ttdeci">void swap(SharedCount&lt; Ptr &gt; &amp;sc)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00288">SharedPtr.h:288</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -472,14 +476,14 @@ template&lt;typename U , typename  = typename enable_if&lt;                is_co
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00514">514</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00510">510</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
 
-<p>References <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00468">wlp::shared_ptr&lt; T &gt;::m_refcount</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00288">wlp::SharedCount&lt; Ptr &gt;::swap()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a>(sp.m_ptr),</div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;                  <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a>() {</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a>.<a class="code" href="../../da/dbb/classwlp_1_1_shared_count.html#ad9de7cb486018b547abbf4416fb31029">swap</a>(sp.m_refcount);</div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a6e48897cf4a9bad84761dd09f73b3b90"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">wlp::shared_ptr::m_refcount</a></div><div class="ttdeci">SharedCount&lt; T * &gt; m_refcount</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00468">SharedPtr.h:468</a></div></div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<p>References <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00467">wlp::shared_ptr&lt; T &gt;::m_refcount</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00288">wlp::SharedCount&lt; Ptr &gt;::swap()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a>(),</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;                  <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a>(sp.m_ptr) {</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a>.<a class="code" href="../../da/dbb/classwlp_1_1_shared_count.html#ad9de7cb486018b547abbf4416fb31029">swap</a>(sp.m_refcount);</div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a6e48897cf4a9bad84761dd09f73b3b90"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">wlp::shared_ptr::m_refcount</a></div><div class="ttdeci">SharedCount&lt; T * &gt; m_refcount</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00468">SharedPtr.h:468</a></div></div>
 <div class="ttc" id="classwlp_1_1_shared_count_html_ad9de7cb486018b547abbf4416fb31029"><div class="ttname"><a href="../../da/dbb/classwlp_1_1_shared_count.html#ad9de7cb486018b547abbf4416fb31029">wlp::SharedCount::swap</a></div><div class="ttdeci">void swap(SharedCount&lt; Ptr &gt; &amp;sc)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00288">SharedPtr.h:288</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -518,9 +522,9 @@ template&lt;typename U , typename  = typename enable_if&lt;                is_co
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00524">524</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a>(wp.m_ptr),</div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00520">520</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a>(wp.m_refcount),</div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a6e48897cf4a9bad84761dd09f73b3b90"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">wlp::shared_ptr::m_refcount</a></div><div class="ttdeci">SharedCount&lt; T * &gt; m_refcount</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -550,14 +554,14 @@ template&lt;typename U , typename  = typename enable_if&lt;                is_co
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00532">532</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00527">527</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
 
-<p>References <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00468">wlp::shared_ptr&lt; T &gt;::m_refcount</a>, and <a class="el" href="../../db/d2a/_utility_8h_source.html#l00028">wlp::move()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a>(up.get()),</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;                  <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a>() {</div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;            U *tmp = up.get();</div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a6e48897cf4a9bad84761dd09f73b3b90"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">wlp::shared_ptr::m_refcount</a></div><div class="ttdeci">SharedCount&lt; T * &gt; m_refcount</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00468">SharedPtr.h:468</a></div></div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<p>References <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00467">wlp::shared_ptr&lt; T &gt;::m_refcount</a>, and <a class="el" href="../../db/d2a/_utility_8h_source.html#l00028">wlp::move()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a>(),</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;                  <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a>(up.get()) {</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;            U *tmp = up.get();</div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a6e48897cf4a9bad84761dd09f73b3b90"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">wlp::shared_ptr::m_refcount</a></div><div class="ttdeci">SharedCount&lt; T * &gt; m_refcount</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00468">SharedPtr.h:468</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -593,9 +597,9 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00539">539</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a>(<span class="keyword">nullptr</span>),</div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00534">534</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;                : <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a>(),</div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a6e48897cf4a9bad84761dd09f73b3b90"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">wlp::shared_ptr::m_refcount</a></div><div class="ttdeci">SharedCount&lt; T * &gt; m_refcount</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -623,10 +627,10 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00594">594</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00588">588</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00644">wlp::const_pointer_cast()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00649">wlp::dynamic_pointer_cast()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00657">wlp::reinterpret_pointer_cast()</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00639">wlp::static_pointer_cast()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;                              {</div>
+<p>Referenced by <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00638">wlp::const_pointer_cast()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00643">wlp::dynamic_pointer_cast()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00651">wlp::reinterpret_pointer_cast()</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00633">wlp::static_pointer_cast()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;                              {</div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -661,8 +665,8 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00598">598</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;                                       {</div>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00592">592</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;                                       {</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -689,13 +693,13 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00583">583</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;                                                               {</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a> == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;                <a class="code" href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a>(<a class="code" href="../../d7/d2f/_exceptions_8h.html#aa3ed44b91d03de8a2a428e2d959fb3b3">NULLPTR_EXCEPTION</a>(<span class="stringliteral">&quot;Shared pointer is null&quot;</span>))</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;            }</div>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00577">577</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;                                                               {</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a> == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;                <a class="code" href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a>(<a class="code" href="../../d7/d2f/_exceptions_8h.html#aa3ed44b91d03de8a2a428e2d959fb3b3">NULLPTR_EXCEPTION</a>(<span class="stringliteral">&quot;Shared pointer is null&quot;</span>))</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;            }</div>
 <div class="ttc" id="_exceptions_8h_html_aa3ed44b91d03de8a2a428e2d959fb3b3"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#aa3ed44b91d03de8a2a428e2d959fb3b3">NULLPTR_EXCEPTION</a></div><div class="ttdeci">#define NULLPTR_EXCEPTION(str)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00159">Exceptions.h:159</a></div></div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00468">SharedPtr.h:468</a></div></div>
 <div class="ttc" id="_exceptions_8h_html_a8d940770e78617d670d314ca0b8c35ef"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a></div><div class="ttdeci">#define THROW(e)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00122">Exceptions.h:122</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -723,8 +727,8 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00590">590</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;                                     {</div>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00584">584</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;                                     {</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -752,12 +756,15 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00544">544</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;                                                          {</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a> = sp.m_ptr;</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a> = sp.m_refcount;</div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a6e48897cf4a9bad84761dd09f73b3b90"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">wlp::shared_ptr::m_refcount</a></div><div class="ttdeci">SharedCount&lt; T * &gt; m_refcount</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00468">SharedPtr.h:468</a></div></div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00538">538</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;                                 {}</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;        shared_ptr&lt;T&gt; &amp;<a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#ac0f6a523f5a5e2772ab7c0169a15bde4">operator=</a>(<span class="keyword">const</span> shared_ptr&lt;T&gt; &amp;sp) {</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a> = sp.m_ptr;</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a> = sp.m_refcount;</div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_ac0f6a523f5a5e2772ab7c0169a15bde4"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#ac0f6a523f5a5e2772ab7c0169a15bde4">wlp::shared_ptr::operator=</a></div><div class="ttdeci">shared_ptr&lt; T &gt; &amp; operator=(const shared_ptr&lt; T &gt; &amp;sp)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00538">SharedPtr.h:538</a></div></div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a6e48897cf4a9bad84761dd09f73b3b90"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">wlp::shared_ptr::m_refcount</a></div><div class="ttdeci">SharedCount&lt; T * &gt; m_refcount</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00468">SharedPtr.h:468</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -787,14 +794,14 @@ template&lt;typename U &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00551">551</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00545">545</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
 
-<p>References <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00467">wlp::shared_ptr&lt; T &gt;::m_ptr</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00468">wlp::shared_ptr&lt; T &gt;::m_refcount</a>.</p>
-<div class="fragment"><div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;                                                          {</div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a> = sp.m_ptr;</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a> = sp.m_refcount;</div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a6e48897cf4a9bad84761dd09f73b3b90"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">wlp::shared_ptr::m_refcount</a></div><div class="ttdeci">SharedCount&lt; T * &gt; m_refcount</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00468">SharedPtr.h:468</a></div></div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<p>References <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00468">wlp::shared_ptr&lt; T &gt;::m_ptr</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00467">wlp::shared_ptr&lt; T &gt;::m_refcount</a>.</p>
+<div class="fragment"><div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;                                                          {</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a> = sp.m_ptr;</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">m_refcount</a> = sp.m_refcount;</div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a6e48897cf4a9bad84761dd09f73b3b90"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a6e48897cf4a9bad84761dd09f73b3b90">wlp::shared_ptr::m_refcount</a></div><div class="ttdeci">SharedCount&lt; T * &gt; m_refcount</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00468">SharedPtr.h:468</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -822,9 +829,9 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00557">557</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;                                                     {</div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#afa0ab4333a5a88f7a7fc2043f53dcaac">shared_ptr</a>(<a class="code" href="../../d5/dca/namespacewlp.html#aa09e615d02daee5123e80ddaee3d2323">move</a>(sp)).swap(*<span class="keyword">this</span>);</div>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00551">551</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;                                                     {</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#afa0ab4333a5a88f7a7fc2043f53dcaac">shared_ptr</a>(<a class="code" href="../../d5/dca/namespacewlp.html#aa09e615d02daee5123e80ddaee3d2323">move</a>(sp)).swap(*<span class="keyword">this</span>);</div>
 <div class="ttc" id="classwlp_1_1shared__ptr_html_afa0ab4333a5a88f7a7fc2043f53dcaac"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#afa0ab4333a5a88f7a7fc2043f53dcaac">wlp::shared_ptr::shared_ptr</a></div><div class="ttdeci">constexpr shared_ptr()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00471">SharedPtr.h:471</a></div></div>
 <div class="ttc" id="namespacewlp_html_aa09e615d02daee5123e80ddaee3d2323"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#aa09e615d02daee5123e80ddaee3d2323">wlp::move</a></div><div class="ttdeci">constexpr remove_reference&lt; T &gt;::type &amp;&amp; move(T &amp;&amp;t) noexcept</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d2a/_utility_8h_source.html#l00028">Utility.h:28</a></div></div>
 </div><!-- fragment -->
@@ -856,11 +863,11 @@ template&lt;typename U &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00563">563</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00557">557</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
 
 <p>References <a class="el" href="../../db/d2a/_utility_8h_source.html#l00028">wlp::move()</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00471">wlp::shared_ptr&lt; T &gt;::shared_ptr()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;                                                     {</div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#afa0ab4333a5a88f7a7fc2043f53dcaac">shared_ptr</a>(<a class="code" href="../../d5/dca/namespacewlp.html#aa09e615d02daee5123e80ddaee3d2323">move</a>(sp)).swap(*<span class="keyword">this</span>);</div>
+<div class="fragment"><div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;                                                     {</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#afa0ab4333a5a88f7a7fc2043f53dcaac">shared_ptr</a>(<a class="code" href="../../d5/dca/namespacewlp.html#aa09e615d02daee5123e80ddaee3d2323">move</a>(sp)).swap(*<span class="keyword">this</span>);</div>
 <div class="ttc" id="classwlp_1_1shared__ptr_html_afa0ab4333a5a88f7a7fc2043f53dcaac"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#afa0ab4333a5a88f7a7fc2043f53dcaac">wlp::shared_ptr::shared_ptr</a></div><div class="ttdeci">constexpr shared_ptr()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00471">SharedPtr.h:471</a></div></div>
 <div class="ttc" id="namespacewlp_html_aa09e615d02daee5123e80ddaee3d2323"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#aa09e615d02daee5123e80ddaee3d2323">wlp::move</a></div><div class="ttdeci">constexpr remove_reference&lt; T &gt;::type &amp;&amp; move(T &amp;&amp;t) noexcept</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d2a/_utility_8h_source.html#l00028">Utility.h:28</a></div></div>
 </div><!-- fragment -->
@@ -900,11 +907,11 @@ template&lt;typename U &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00569">569</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00563">563</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
 
 <p>References <a class="el" href="../../db/d2a/_utility_8h_source.html#l00028">wlp::move()</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00471">wlp::shared_ptr&lt; T &gt;::shared_ptr()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;                                                      {</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#afa0ab4333a5a88f7a7fc2043f53dcaac">shared_ptr</a>(<a class="code" href="../../d5/dca/namespacewlp.html#aa09e615d02daee5123e80ddaee3d2323">move</a>(up)).swap(*<span class="keyword">this</span>);</div>
+<div class="fragment"><div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;                                                      {</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;            <a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#afa0ab4333a5a88f7a7fc2043f53dcaac">shared_ptr</a>(<a class="code" href="../../d5/dca/namespacewlp.html#aa09e615d02daee5123e80ddaee3d2323">move</a>(up)).swap(*<span class="keyword">this</span>);</div>
 <div class="ttc" id="classwlp_1_1shared__ptr_html_afa0ab4333a5a88f7a7fc2043f53dcaac"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#afa0ab4333a5a88f7a7fc2043f53dcaac">wlp::shared_ptr::shared_ptr</a></div><div class="ttdeci">constexpr shared_ptr()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00471">SharedPtr.h:471</a></div></div>
 <div class="ttc" id="namespacewlp_html_aa09e615d02daee5123e80ddaee3d2323"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#aa09e615d02daee5123e80ddaee3d2323">wlp::move</a></div><div class="ttdeci">constexpr remove_reference&lt; T &gt;::type &amp;&amp; move(T &amp;&amp;t) noexcept</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d2a/_utility_8h_source.html#l00028">Utility.h:28</a></div></div>
 </div><!-- fragment -->
@@ -944,10 +951,10 @@ template&lt;typename U &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00616">616</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00610">610</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
 
-<p>References <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00428">wlp::SharedCount&lt; Ptr &gt;::less()</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00468">wlp::shared_ptr&lt; T &gt;::m_refcount</a>.</p>
-<div class="fragment"><div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;                                                         {</div>
+<p>References <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00428">wlp::SharedCount&lt; Ptr &gt;::less()</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00467">wlp::shared_ptr&lt; T &gt;::m_refcount</a>.</p>
+<div class="fragment"><div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;                                                         {</div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -985,10 +992,10 @@ template&lt;typename U &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00621">621</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00615">615</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
 
-<p>References <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00428">wlp::SharedCount&lt; Ptr &gt;::less()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00468">wlp::shared_ptr&lt; T &gt;::m_refcount</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00674">wlp::weak_ptr&lt; T &gt;::m_refcount</a>.</p>
-<div class="fragment"><div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;                                                       {</div>
+<p>References <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00428">wlp::SharedCount&lt; Ptr &gt;::less()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00467">wlp::shared_ptr&lt; T &gt;::m_refcount</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00667">wlp::weak_ptr&lt; T &gt;::m_refcount</a>.</p>
+<div class="fragment"><div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;                                                       {</div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1023,8 +1030,8 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00574">574</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;                     {</div>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00568">568</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;                     {</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1054,10 +1061,10 @@ template&lt;typename U &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00579">579</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00573">573</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
 
 <p>References <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00471">wlp::shared_ptr&lt; T &gt;::shared_ptr()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;                           {</div>
+<div class="fragment"><div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;                           {</div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1093,13 +1100,13 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00610">610</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00604">604</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00634">wlp::swap()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;                                     {</div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;            <a class="code" href="../../d5/dca/namespacewlp.html#affc570df80dc7fb7037885105bf78c64">wlp::swap</a>(<a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a>, sp.m_ptr);</div>
-<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00467">SharedPtr.h:467</a></div></div>
-<div class="ttc" id="namespacewlp_html_affc570df80dc7fb7037885105bf78c64"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#affc570df80dc7fb7037885105bf78c64">wlp::swap</a></div><div class="ttdeci">void swap(shared_ptr&lt; T &gt; &amp;sp1, shared_ptr&lt; T &gt; &amp;sp2)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00634">SharedPtr.h:634</a></div></div>
+<p>Referenced by <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00628">wlp::swap()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;                                     {</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;            <a class="code" href="../../d5/dca/namespacewlp.html#affc570df80dc7fb7037885105bf78c64">wlp::swap</a>(<a class="code" href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">m_ptr</a>, sp.m_ptr);</div>
+<div class="ttc" id="classwlp_1_1shared__ptr_html_a591257cc16b43bbc13aa81bf31ae910c"><div class="ttname"><a href="../../da/dbb/classwlp_1_1shared__ptr.html#a591257cc16b43bbc13aa81bf31ae910c">wlp::shared_ptr::m_ptr</a></div><div class="ttdeci">val_type * m_ptr</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00468">SharedPtr.h:468</a></div></div>
+<div class="ttc" id="namespacewlp_html_affc570df80dc7fb7037885105bf78c64"><div class="ttname"><a href="../../d5/dca/namespacewlp.html#affc570df80dc7fb7037885105bf78c64">wlp::swap</a></div><div class="ttdeci">void swap(shared_ptr&lt; T &gt; &amp;sp1, shared_ptr&lt; T &gt; &amp;sp2)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_shared_ptr_8h_source.html#l00628">SharedPtr.h:628</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -1134,8 +1141,8 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00602">602</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;                            {</div>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00596">596</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;                            {</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1162,8 +1169,8 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00606">606</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;                                        {</div>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00600">600</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;                                        {</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1190,8 +1197,8 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00625">625</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;                                 {</div>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00619">619</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;                                 {</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1269,9 +1276,9 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00467">467</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00468">468</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00551">wlp::shared_ptr&lt; T &gt;::operator=()</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00706">wlp::weak_ptr&lt; T &gt;::operator=()</a>.</p>
+<p>Referenced by <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00545">wlp::shared_ptr&lt; T &gt;::operator=()</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00699">wlp::weak_ptr&lt; T &gt;::operator=()</a>.</p>
 
 </div>
 </div>
@@ -1295,9 +1302,9 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00468">468</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00467">467</a> of file <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html">SharedPtr.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00551">wlp::shared_ptr&lt; T &gt;::operator=()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00706">wlp::weak_ptr&lt; T &gt;::operator=()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00616">wlp::shared_ptr&lt; T &gt;::owner_before()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00725">wlp::weak_ptr&lt; T &gt;::owner_before()</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00514">wlp::shared_ptr&lt; T &gt;::shared_ptr()</a>.</p>
+<p>Referenced by <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00545">wlp::shared_ptr&lt; T &gt;::operator=()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00699">wlp::weak_ptr&lt; T &gt;::operator=()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00610">wlp::shared_ptr&lt; T &gt;::owner_before()</a>, <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00718">wlp::weak_ptr&lt; T &gt;::owner_before()</a>, and <a class="el" href="../../d1/d13/_shared_ptr_8h_source.html#l00510">wlp::shared_ptr&lt; T &gt;::shared_ptr()</a>.</p>
 
 </div>
 </div>
@@ -1307,7 +1314,7 @@ template&lt;typename T&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 7 2018 20:57:43 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 7 2018 21:04:32 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
