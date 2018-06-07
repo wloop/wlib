@@ -53,6 +53,20 @@ namespace wlp {
         }
     };
 
+    template<>
+    struct equals<dynamic_string> {
+        bool operator()(const dynamic_string &str1, const dynamic_string &str2) const {
+            return strcmp(str1.c_str(), str2.c_str()) == 0;
+        }
+    };
+
+    template<>
+    struct equals<const dynamic_string> {
+        bool operator()(const dynamic_string &str1, const dynamic_string &str2) const {
+            return strcmp(str1.c_str(), str2.c_str()) == 0;
+        }
+    };
+
     /**
      * Template specialization for character arrays.
      */
