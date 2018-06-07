@@ -87,6 +87,13 @@ namespace wlp {
         }
     };
 
+    template<class IntType>
+    struct hash<dynamic_string, IntType> {
+        IntType operator()(const dynamic_string &str) const {
+            return hash_string<IntType>(str.c_str());
+        }
+    };
+
     /**
      * Template specialization for C strings.
      *

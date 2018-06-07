@@ -419,3 +419,55 @@ TEST(chain_map_test, test_move_assignment_op) {
     ASSERT_EQ(10, map1[2]);
     ASSERT_EQ(15, map1[3]);
 }
+
+TEST(chain_map_test, insert_rvalue) {
+    typedef dynamic_string string;
+    typedef hash_map<string, string> dstringmap;
+    dstringmap map;
+
+    string key1("key1");
+    string val1("val1");
+
+    map.insert(move(key1), move(val1));
+    ASSERT_EQ(0, key1.length());
+    ASSERT_EQ(0, val1.length());
+    ASSERT_STREQ("", key1.c_str());
+    ASSERT_STREQ("", val1.c_str());
+
+    string key2("key1");
+    ASSERT_NE(map.end(), map.find(key2));
+    ASSERT_STREQ("val1", map[key2].c_str());
+}
+
+TEST(chain_map_test, insert_or_assign_rvalue) {
+    typedef dynamic_string string;
+    typedef hash_map<string, string> dstringmap;
+    dstringmap map;
+
+    string key1("key1");
+    string key2("key2");
+    string val1("val1");
+    string val2("val2");
+
+    ASSERT_EQ(0, map.size());
+    auto ret1 = map.insert(key1, val1);
+    ASSERT_EQ(1, map.size());
+    ASSERT_TRUE(ret1.second());
+    ASSERT_STREQ("val1", ret1.first()->c_str());
+
+    auto ret2 = map.insert(key2, val2);
+    ASSERT_EQ(2, map.size());
+    ASSERT_TRUE(ret2.second());
+    ASSERT_STREQ("val2", ret2.first()->c_str());
+
+    map.insert(key1, val1);
+    map.insert(key2, val1);
+    map.insert(key1, val1);
+    ASSERT_EQ(2, map.size());
+
+    ASSERT_NE(map.end(), map.find(key1));
+    auto ret3 = map.insert_or_assign(move(key1), move(val2));
+    ASSERT_EQ(2, map.size());
+    ASSERT_FALSE(ret3.second());
+    ASSERT_STREQ("val2", ret3.first()->c_str());
+}
