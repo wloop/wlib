@@ -333,8 +333,8 @@ template&lt;typename String , typename Ref , typename Ptr &gt; </div>
 <p>Definition at line <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00032">32</a> of file <a class="el" href="../../de/d0b/_string_iterator_8h_source.html">StringIterator.h</a>.</p>
 
 <p>References <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00025">wlp::StringIterator&lt; String, Ref, Ptr &gt;::check_bounds()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                : <a class="code" href="../../dd/d71/classwlp_1_1_string_iterator.html#a8f0431c14ecab5b6bc653d262aafb099">m_i</a>(i),</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                  <a class="code" href="../../dd/d71/classwlp_1_1_string_iterator.html#a3393c02e896f0d49b1e6ee76b181dca3">m_string</a>(<span class="keywordtype">string</span>) {</div>
+<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                : <a class="code" href="../../dd/d71/classwlp_1_1_string_iterator.html#a3393c02e896f0d49b1e6ee76b181dca3">m_string</a>(<span class="keywordtype">string</span>),</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                  <a class="code" href="../../dd/d71/classwlp_1_1_string_iterator.html#a8f0431c14ecab5b6bc653d262aafb099">m_i</a>(i) {</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <a class="code" href="../../dd/d71/classwlp_1_1_string_iterator.html#a4ef1073339677088a8f92a5227d0efeb">check_bounds</a>();</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
 <div class="ttc" id="classwlp_1_1_string_iterator_html_a4ef1073339677088a8f92a5227d0efeb"><div class="ttname"><a href="../../dd/d71/classwlp_1_1_string_iterator.html#a4ef1073339677088a8f92a5227d0efeb">wlp::StringIterator::check_bounds</a></div><div class="ttdeci">void check_bounds()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0b/_string_iterator_8h_source.html#l00025">StringIterator.h:25</a></div></div>
@@ -378,8 +378,8 @@ template&lt;typename String , typename Ref , typename Ptr &gt; </div>
 <p>Definition at line <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00038">38</a> of file <a class="el" href="../../de/d0b/_string_iterator_8h_source.html">StringIterator.h</a>.</p>
 
 <p>References <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00025">wlp::StringIterator&lt; String, Ref, Ptr &gt;::check_bounds()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                : <a class="code" href="../../dd/d71/classwlp_1_1_string_iterator.html#a8f0431c14ecab5b6bc653d262aafb099">m_i</a>(it.m_i),</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                  <a class="code" href="../../dd/d71/classwlp_1_1_string_iterator.html#a3393c02e896f0d49b1e6ee76b181dca3">m_string</a>(it.m_string) {</div>
+<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                : <a class="code" href="../../dd/d71/classwlp_1_1_string_iterator.html#a3393c02e896f0d49b1e6ee76b181dca3">m_string</a>(it.m_string),</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                  <a class="code" href="../../dd/d71/classwlp_1_1_string_iterator.html#a8f0431c14ecab5b6bc653d262aafb099">m_i</a>(it.m_i) {</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <a class="code" href="../../dd/d71/classwlp_1_1_string_iterator.html#a4ef1073339677088a8f92a5227d0efeb">check_bounds</a>();</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        }</div>
 <div class="ttc" id="classwlp_1_1_string_iterator_html_a4ef1073339677088a8f92a5227d0efeb"><div class="ttname"><a href="../../dd/d71/classwlp_1_1_string_iterator.html#a4ef1073339677088a8f92a5227d0efeb">wlp::StringIterator::check_bounds</a></div><div class="ttdeci">void check_bounds()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0b/_string_iterator_8h_source.html#l00025">StringIterator.h:25</a></div></div>
@@ -422,7 +422,7 @@ template&lt;typename String , typename Ref , typename Ptr &gt; </div>
 
 <p>Definition at line <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00025">25</a> of file <a class="el" href="../../de/d0b/_string_iterator_8h_source.html">StringIterator.h</a>.</p>
 
-<p>References <a class="el" href="../../d9/dae/_string_8cpp_source.html#l00088">wlp::dynamic_string::length()</a>, <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00023">wlp::StringIterator&lt; String, Ref, Ptr &gt;::m_i</a>, and <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00022">wlp::StringIterator&lt; String, Ref, Ptr &gt;::m_string</a>.</p>
+<p>References <a class="el" href="../../d9/dae/_string_8cpp_source.html#l00092">wlp::dynamic_string::length()</a>, <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00023">wlp::StringIterator&lt; String, Ref, Ptr &gt;::m_i</a>, and <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00022">wlp::StringIterator&lt; String, Ref, Ptr &gt;::m_string</a>.</p>
 
 <p>Referenced by <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00103">wlp::StringIterator&lt; String, Ref, Ptr &gt;::operator+=()</a>, and <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00032">wlp::StringIterator&lt; String, Ref, Ptr &gt;::StringIterator()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                            {</div>
@@ -431,7 +431,7 @@ template&lt;typename String , typename Ref , typename Ptr &gt; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            }</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
 <div class="ttc" id="classwlp_1_1_string_iterator_html_a8f0431c14ecab5b6bc653d262aafb099"><div class="ttname"><a href="../../dd/d71/classwlp_1_1_string_iterator.html#a8f0431c14ecab5b6bc653d262aafb099">wlp::StringIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0b/_string_iterator_8h_source.html#l00023">StringIterator.h:23</a></div></div>
-<div class="ttc" id="classwlp_1_1dynamic__string_html_af10bd26879fe1464a9b7515b4c073835"><div class="ttname"><a href="../../da/db5/classwlp_1_1dynamic__string.html#af10bd26879fe1464a9b7515b4c073835">wlp::dynamic_string::length</a></div><div class="ttdeci">size_type length() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dae/_string_8cpp_source.html#l00088">String.cpp:88</a></div></div>
+<div class="ttc" id="classwlp_1_1dynamic__string_html_af10bd26879fe1464a9b7515b4c073835"><div class="ttname"><a href="../../da/db5/classwlp_1_1dynamic__string.html#af10bd26879fe1464a9b7515b4c073835">wlp::dynamic_string::length</a></div><div class="ttdeci">size_type length() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dae/_string_8cpp_source.html#l00092">String.cpp:92</a></div></div>
 <div class="ttc" id="classwlp_1_1_string_iterator_html_a3393c02e896f0d49b1e6ee76b181dca3"><div class="ttname"><a href="../../dd/d71/classwlp_1_1_string_iterator.html#a3393c02e896f0d49b1e6ee76b181dca3">wlp::StringIterator::m_string</a></div><div class="ttdeci">string_type * m_string</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0b/_string_iterator_8h_source.html#l00022">StringIterator.h:22</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -511,11 +511,11 @@ template&lt;typename String , typename Ref , typename Ptr &gt; </div>
 
 <p>Definition at line <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00044">44</a> of file <a class="el" href="../../de/d0b/_string_iterator_8h_source.html">StringIterator.h</a>.</p>
 
-<p>References <a class="el" href="../../d9/dae/_string_8cpp_source.html#l00109">wlp::dynamic_string::at()</a>, <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00023">wlp::StringIterator&lt; String, Ref, Ptr &gt;::m_i</a>, and <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00022">wlp::StringIterator&lt; String, Ref, Ptr &gt;::m_string</a>.</p>
+<p>References <a class="el" href="../../d9/dae/_string_8cpp_source.html#l00113">wlp::dynamic_string::at()</a>, <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00023">wlp::StringIterator&lt; String, Ref, Ptr &gt;::m_i</a>, and <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00022">wlp::StringIterator&lt; String, Ref, Ptr &gt;::m_string</a>.</p>
 <div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                    {</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../dd/d71/classwlp_1_1_string_iterator.html#a3393c02e896f0d49b1e6ee76b181dca3">m_string</a>-&gt;<a class="code" href="../../da/db5/classwlp_1_1dynamic__string.html#a2c9f830b00a2b3d52f53136ac09989df">at</a>(<a class="code" href="../../dd/d71/classwlp_1_1_string_iterator.html#a8f0431c14ecab5b6bc653d262aafb099">m_i</a>);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
-<div class="ttc" id="classwlp_1_1dynamic__string_html_a2c9f830b00a2b3d52f53136ac09989df"><div class="ttname"><a href="../../da/db5/classwlp_1_1dynamic__string.html#a2c9f830b00a2b3d52f53136ac09989df">wlp::dynamic_string::at</a></div><div class="ttdeci">char &amp; at(size_type pos)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dae/_string_8cpp_source.html#l00109">String.cpp:109</a></div></div>
+<div class="ttc" id="classwlp_1_1dynamic__string_html_a2c9f830b00a2b3d52f53136ac09989df"><div class="ttname"><a href="../../da/db5/classwlp_1_1dynamic__string.html#a2c9f830b00a2b3d52f53136ac09989df">wlp::dynamic_string::at</a></div><div class="ttdeci">char &amp; at(size_type pos)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dae/_string_8cpp_source.html#l00113">String.cpp:113</a></div></div>
 <div class="ttc" id="classwlp_1_1_string_iterator_html_a8f0431c14ecab5b6bc653d262aafb099"><div class="ttname"><a href="../../dd/d71/classwlp_1_1_string_iterator.html#a8f0431c14ecab5b6bc653d262aafb099">wlp::StringIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0b/_string_iterator_8h_source.html#l00023">StringIterator.h:23</a></div></div>
 <div class="ttc" id="classwlp_1_1_string_iterator_html_a3393c02e896f0d49b1e6ee76b181dca3"><div class="ttname"><a href="../../dd/d71/classwlp_1_1_string_iterator.html#a3393c02e896f0d49b1e6ee76b181dca3">wlp::StringIterator::m_string</a></div><div class="ttdeci">string_type * m_string</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0b/_string_iterator_8h_source.html#l00022">StringIterator.h:22</a></div></div>
 </div><!-- fragment -->
@@ -887,13 +887,13 @@ template&lt;typename String , typename Ref , typename Ptr &gt; </div>
 
 <p>Definition at line <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00048">48</a> of file <a class="el" href="../../de/d0b/_string_iterator_8h_source.html">StringIterator.h</a>.</p>
 
-<p>References <a class="el" href="../../d9/dae/_string_8cpp_source.html#l00189">wlp::dynamic_string::c_str()</a>, <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00023">wlp::StringIterator&lt; String, Ref, Ptr &gt;::m_i</a>, and <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00022">wlp::StringIterator&lt; String, Ref, Ptr &gt;::m_string</a>.</p>
+<p>References <a class="el" href="../../d9/dae/_string_8cpp_source.html#l00193">wlp::dynamic_string::c_str()</a>, <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00023">wlp::StringIterator&lt; String, Ref, Ptr &gt;::m_i</a>, and <a class="el" href="../../de/d0b/_string_iterator_8h_source.html#l00022">wlp::StringIterator&lt; String, Ref, Ptr &gt;::m_string</a>.</p>
 <div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                   {</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../dd/d71/classwlp_1_1_string_iterator.html#a3393c02e896f0d49b1e6ee76b181dca3">m_string</a>-&gt;<a class="code" href="../../da/db5/classwlp_1_1dynamic__string.html#a0503fcb5fe9203c7a47e309ee4168a69">c_str</a>() + <a class="code" href="../../dd/d71/classwlp_1_1_string_iterator.html#a8f0431c14ecab5b6bc653d262aafb099">m_i</a>;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
 <div class="ttc" id="classwlp_1_1_string_iterator_html_a8f0431c14ecab5b6bc653d262aafb099"><div class="ttname"><a href="../../dd/d71/classwlp_1_1_string_iterator.html#a8f0431c14ecab5b6bc653d262aafb099">wlp::StringIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0b/_string_iterator_8h_source.html#l00023">StringIterator.h:23</a></div></div>
 <div class="ttc" id="classwlp_1_1_string_iterator_html_a3393c02e896f0d49b1e6ee76b181dca3"><div class="ttname"><a href="../../dd/d71/classwlp_1_1_string_iterator.html#a3393c02e896f0d49b1e6ee76b181dca3">wlp::StringIterator::m_string</a></div><div class="ttdeci">string_type * m_string</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0b/_string_iterator_8h_source.html#l00022">StringIterator.h:22</a></div></div>
-<div class="ttc" id="classwlp_1_1dynamic__string_html_a0503fcb5fe9203c7a47e309ee4168a69"><div class="ttname"><a href="../../da/db5/classwlp_1_1dynamic__string.html#a0503fcb5fe9203c7a47e309ee4168a69">wlp::dynamic_string::c_str</a></div><div class="ttdeci">char * c_str()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dae/_string_8cpp_source.html#l00189">String.cpp:189</a></div></div>
+<div class="ttc" id="classwlp_1_1dynamic__string_html_a0503fcb5fe9203c7a47e309ee4168a69"><div class="ttname"><a href="../../da/db5/classwlp_1_1dynamic__string.html#a0503fcb5fe9203c7a47e309ee4168a69">wlp::dynamic_string::c_str</a></div><div class="ttdeci">char * c_str()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dae/_string_8cpp_source.html#l00193">String.cpp:193</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1033,7 +1033,7 @@ template&lt;typename String , typename Ref , typename Ptr &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 7 2018 03:21:57 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 7 2018 06:05:44 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
