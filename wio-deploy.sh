@@ -60,7 +60,7 @@ done
 
 # Do a build test
 cd wlib-wio
-wio build
+wio build --verbose
 wio clean
 cd ..
 
