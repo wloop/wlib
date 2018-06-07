@@ -156,10 +156,10 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a31b34f8db86cd8620b30ed99f460b6bf"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a2c5ca264246d95948c36c577f2838ed5">array_list_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a></td></tr>
-<tr class="separator:a31b34f8db86cd8620b30ed99f460b6bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70ce2447d83c7c0d0b5207a5b1d9769c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#aaff74284677af9bc4fbab641135b0d61">size_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a></td></tr>
 <tr class="separator:a70ce2447d83c7c0d0b5207a5b1d9769c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31b34f8db86cd8620b30ed99f460b6bf"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a2c5ca264246d95948c36c577f2838ed5">array_list_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a></td></tr>
+<tr class="separator:a31b34f8db86cd8620b30ed99f460b6bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -326,10 +326,11 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 <p>An empty array list iterator is invalid. </p>
 
 <p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00061">61</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                : <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>(<span class="keyword">nullptr</span>),</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                  <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a>(static_cast&lt;size_type&gt;(-1)) {}</div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                : <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a>(static_cast&lt;size_type&gt;(-1)),</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                  <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>(<span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -364,16 +365,16 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00070">70</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00071">71</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
 
-<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00094">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::check_bounds()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                : <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>(it.m_list),</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                  <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a>(it.m_i) {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a759d4ad8066e25307408e45d90e1a120">check_bounds</a>();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a759d4ad8066e25307408e45d90e1a120"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a759d4ad8066e25307408e45d90e1a120">wlp::ArrayListIterator::check_bounds</a></div><div class="ttdeci">void check_bounds()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00094">ArrayList.h:94</a></div></div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00095">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::check_bounds()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                : <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a>(it.m_i),</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                  <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>(it.m_list) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a759d4ad8066e25307408e45d90e1a120">check_bounds</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a759d4ad8066e25307408e45d90e1a120"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a759d4ad8066e25307408e45d90e1a120">wlp::ArrayListIterator::check_bounds</a></div><div class="ttdeci">void check_bounds()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00095">ArrayList.h:95</a></div></div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -427,16 +428,16 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00083">83</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00084">84</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
 
-<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00094">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::check_bounds()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                : <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>(list),</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                  <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a>(i) {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a759d4ad8066e25307408e45d90e1a120">check_bounds</a>();</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a759d4ad8066e25307408e45d90e1a120"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a759d4ad8066e25307408e45d90e1a120">wlp::ArrayListIterator::check_bounds</a></div><div class="ttdeci">void check_bounds()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00094">ArrayList.h:94</a></div></div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00095">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::check_bounds()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                : <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a>(i),</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                  <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>(list) {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a759d4ad8066e25307408e45d90e1a120">check_bounds</a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a759d4ad8066e25307408e45d90e1a120"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a759d4ad8066e25307408e45d90e1a120">wlp::ArrayListIterator::check_bounds</a></div><div class="ttdeci">void check_bounds()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00095">ArrayList.h:95</a></div></div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -473,19 +474,19 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 </div><div class="memdoc">
 <p>Ensure the iterator is either exactly pass-the-end of at the beginning. </p>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00094">94</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00095">95</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
 
-<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_list</a>, and <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00292">wlp::array_list&lt; T &gt;::m_size</a>.</p>
+<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_list</a>, and <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00293">wlp::array_list&lt; T &gt;::m_size</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00070">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::ArrayListIterator()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                            {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> &gt; <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>-&gt;<a class="code" href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">m_size</a>) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> = <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>-&gt;<a class="code" href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">m_size</a>;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
-<div class="ttc" id="classwlp_1_1array__list_html_a53d17b8acb727e8db51aa0ea7af92b23"><div class="ttname"><a href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">wlp::array_list::m_size</a></div><div class="ttdeci">size_type m_size</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00292">ArrayList.h:292</a></div></div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<p>Referenced by <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00071">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::ArrayListIterator()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                            {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> &gt; <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>-&gt;<a class="code" href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">m_size</a>) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> = <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>-&gt;<a class="code" href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">m_size</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<div class="ttc" id="classwlp_1_1array__list_html_a53d17b8acb727e8db51aa0ea7af92b23"><div class="ttname"><a href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">wlp::array_list::m_size</a></div><div class="ttdeci">size_type m_size</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00293">ArrayList.h:293</a></div></div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -528,13 +529,13 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if they point to different elements </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00218">218</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00219">219</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
 
-<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>.</p>
-<div class="fragment"><div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                                                   {</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> != it.m_i;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        }</div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
+<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>.</p>
+<div class="fragment"><div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                                                   {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> != it.m_i;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        }</div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -562,22 +563,22 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>a reference to the value pointed to by this iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00105">105</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00106">106</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
 
-<p>References <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00165">INDEX_EXCEPTION</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00288">wlp::array_list&lt; T &gt;::m_data</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_list</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00292">wlp::array_list&lt; T &gt;::m_size</a>, and <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00122">THROW</a>.</p>
+<p>References <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00165">INDEX_EXCEPTION</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00289">wlp::array_list&lt; T &gt;::m_data</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_list</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00293">wlp::array_list&lt; T &gt;::m_size</a>, and <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00122">THROW</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00116">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator-&gt;()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                                    {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> &gt;= <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>-&gt;<a class="code" href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">m_size</a>) {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <a class="code" href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a>(<a class="code" href="../../d7/d2f/_exceptions_8h.html#a05a84855618793cfb007f8e7dd4915f7">INDEX_EXCEPTION</a>(<span class="stringliteral">&quot;Accessing invalid iterator&quot;</span>))</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>-&gt;<a class="code" href="../../d3/dc1/classwlp_1_1array__list.html#ad42f6ced17370385ae4687c613be3595">m_data</a>[<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a>];</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        }</div>
-<div class="ttc" id="classwlp_1_1array__list_html_ad42f6ced17370385ae4687c613be3595"><div class="ttname"><a href="../../d3/dc1/classwlp_1_1array__list.html#ad42f6ced17370385ae4687c613be3595">wlp::array_list::m_data</a></div><div class="ttdeci">val_type * m_data</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00288">ArrayList.h:288</a></div></div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
-<div class="ttc" id="classwlp_1_1array__list_html_a53d17b8acb727e8db51aa0ea7af92b23"><div class="ttname"><a href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">wlp::array_list::m_size</a></div><div class="ttdeci">size_type m_size</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00292">ArrayList.h:292</a></div></div>
+<p>Referenced by <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00117">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator-&gt;()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                                    {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> &gt;= <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>-&gt;<a class="code" href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">m_size</a>) {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <a class="code" href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a>(<a class="code" href="../../d7/d2f/_exceptions_8h.html#a05a84855618793cfb007f8e7dd4915f7">INDEX_EXCEPTION</a>(<span class="stringliteral">&quot;Accessing invalid iterator&quot;</span>))</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>-&gt;<a class="code" href="../../d3/dc1/classwlp_1_1array__list.html#ad42f6ced17370385ae4687c613be3595">m_data</a>[<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a>];</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
+<div class="ttc" id="classwlp_1_1array__list_html_ad42f6ced17370385ae4687c613be3595"><div class="ttname"><a href="../../d3/dc1/classwlp_1_1array__list.html#ad42f6ced17370385ae4687c613be3595">wlp::array_list::m_data</a></div><div class="ttdeci">val_type * m_data</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00289">ArrayList.h:289</a></div></div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<div class="ttc" id="classwlp_1_1array__list_html_a53d17b8acb727e8db51aa0ea7af92b23"><div class="ttname"><a href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">wlp::array_list::m_size</a></div><div class="ttdeci">size_type m_size</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00293">ArrayList.h:293</a></div></div>
 <div class="ttc" id="_exceptions_8h_html_a8d940770e78617d670d314ca0b8c35ef"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a></div><div class="ttdeci">#define THROW(e)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00122">Exceptions.h:122</a></div></div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
 <div class="ttc" id="_exceptions_8h_html_a05a84855618793cfb007f8e7dd4915f7"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#a05a84855618793cfb007f8e7dd4915f7">INDEX_EXCEPTION</a></div><div class="ttdeci">#define INDEX_EXCEPTION(str)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00165">Exceptions.h:165</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
@@ -622,15 +623,15 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00241">241</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00242">242</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
 
-<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>, and <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_list</a>.</p>
-<div class="fragment"><div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                                                      {</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a2d0ca8b865cbe0643fd98a83dbf0baae">self_type</a>(static_cast&lt;size_type&gt;(<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> + d), <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>);</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        }</div>
+<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>, and <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_list</a>.</p>
+<div class="fragment"><div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                                                      {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a2d0ca8b865cbe0643fd98a83dbf0baae">self_type</a>(static_cast&lt;size_type&gt;(<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> + d), <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        }</div>
 <div class="ttc" id="classwlp_1_1_array_list_iterator_html_a2d0ca8b865cbe0643fd98a83dbf0baae"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a2d0ca8b865cbe0643fd98a83dbf0baae">wlp::ArrayListIterator::self_type</a></div><div class="ttdeci">ArrayListIterator&lt; T, Ref, Ptr &gt; self_type</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00043">ArrayList.h:43</a></div></div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -659,19 +660,19 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 <p>Move this iterator to the next element in the backing array list. Becomes a pass-the-end iterator if attempting to move past the end of the array list.</p>
 <dl class="section return"><dt>Returns</dt><dd>reference to this iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00128">128</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00129">129</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
 
-<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_list</a>, and <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00292">wlp::array_list&lt; T &gt;::m_size</a>.</p>
-<div class="fragment"><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                                {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> == <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>-&gt;<a class="code" href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">m_size</a>) {</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            }</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            ++<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a>;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        }</div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
-<div class="ttc" id="classwlp_1_1array__list_html_a53d17b8acb727e8db51aa0ea7af92b23"><div class="ttname"><a href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">wlp::array_list::m_size</a></div><div class="ttdeci">size_type m_size</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00292">ArrayList.h:292</a></div></div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_list</a>, and <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00293">wlp::array_list&lt; T &gt;::m_size</a>.</p>
+<div class="fragment"><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                                {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> == <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>-&gt;<a class="code" href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">m_size</a>) {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            ++<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        }</div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<div class="ttc" id="classwlp_1_1array__list_html_a53d17b8acb727e8db51aa0ea7af92b23"><div class="ttname"><a href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">wlp::array_list::m_size</a></div><div class="ttdeci">size_type m_size</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00293">ArrayList.h:293</a></div></div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -701,12 +702,12 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 <p>Postfix operator to move this iterator to the next element in the array.</p>
 <dl class="section return"><dt>Returns</dt><dd>copy of this iterator before increment </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00142">142</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                                  {</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a2d0ca8b865cbe0643fd98a83dbf0baae">self_type</a> tmp = *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            ++*<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00143">143</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                                  {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a2d0ca8b865cbe0643fd98a83dbf0baae">self_type</a> tmp = *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            ++*<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">return</span> tmp;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        }</div>
 <div class="ttc" id="classwlp_1_1_array_list_iterator_html_a2d0ca8b865cbe0643fd98a83dbf0baae"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a2d0ca8b865cbe0643fd98a83dbf0baae">wlp::ArrayListIterator::self_type</a></div><div class="ttdeci">ArrayListIterator&lt; T, Ref, Ptr &gt; self_type</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00043">ArrayList.h:43</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -743,19 +744,19 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>reference to this iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00182">182</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00183">183</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
 
-<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_list</a>, and <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00292">wlp::array_list&lt; T &gt;::m_size</a>.</p>
-<div class="fragment"><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                                                  {</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> = <span class="keyword">static_cast&lt;</span><a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#aaff74284677af9bc4fbab641135b0d61">size_type</a><span class="keyword">&gt;</span>(<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> + d);</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> &gt; <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>-&gt;<a class="code" href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">m_size</a>) {</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> = <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>-&gt;<a class="code" href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">m_size</a>;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            }</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        }</div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
-<div class="ttc" id="classwlp_1_1array__list_html_a53d17b8acb727e8db51aa0ea7af92b23"><div class="ttname"><a href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">wlp::array_list::m_size</a></div><div class="ttdeci">size_type m_size</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00292">ArrayList.h:292</a></div></div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_list</a>, and <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00293">wlp::array_list&lt; T &gt;::m_size</a>.</p>
+<div class="fragment"><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                                                  {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> = <span class="keyword">static_cast&lt;</span><a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#aaff74284677af9bc4fbab641135b0d61">size_type</a><span class="keyword">&gt;</span>(<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> + d);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> &gt; <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>-&gt;<a class="code" href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">m_size</a>) {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> = <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>-&gt;<a class="code" href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">m_size</a>;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        }</div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<div class="ttc" id="classwlp_1_1array__list_html_a53d17b8acb727e8db51aa0ea7af92b23"><div class="ttname"><a href="../../d3/dc1/classwlp_1_1array__list.html#a53d17b8acb727e8db51aa0ea7af92b23">wlp::array_list::m_size</a></div><div class="ttdeci">size_type m_size</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00293">ArrayList.h:293</a></div></div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
 <div class="ttc" id="classwlp_1_1_array_list_iterator_html_aaff74284677af9bc4fbab641135b0d61"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#aaff74284677af9bc4fbab641135b0d61">wlp::ArrayListIterator::size_type</a></div><div class="ttdeci">wlp::size_type size_type</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00037">ArrayList.h:37</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -792,15 +793,15 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a new iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00252">252</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00253">253</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
 
-<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>, and <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_list</a>.</p>
-<div class="fragment"><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                                                      {</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a2d0ca8b865cbe0643fd98a83dbf0baae">self_type</a>(static_cast&lt;size_type&gt;(<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> - d), <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>);</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        }</div>
+<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>, and <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_list</a>.</p>
+<div class="fragment"><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                                                      {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a2d0ca8b865cbe0643fd98a83dbf0baae">self_type</a>(static_cast&lt;size_type&gt;(<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> - d), <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a>);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        }</div>
 <div class="ttc" id="classwlp_1_1_array_list_iterator_html_a2d0ca8b865cbe0643fd98a83dbf0baae"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a2d0ca8b865cbe0643fd98a83dbf0baae">wlp::ArrayListIterator::self_type</a></div><div class="ttdeci">ArrayListIterator&lt; T, Ref, Ptr &gt; self_type</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00043">ArrayList.h:43</a></div></div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -836,13 +837,13 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the integer distance </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00263">263</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00264">264</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
 
-<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>.</p>
-<div class="fragment"><div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                                                       {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a29271ad6d9e2af1c5c02c230b1d4d443">diff_type</a><span class="keyword">&gt;</span>(<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> - it.m_i);</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        }</div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
+<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>.</p>
+<div class="fragment"><div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                                                       {</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a29271ad6d9e2af1c5c02c230b1d4d443">diff_type</a><span class="keyword">&gt;</span>(<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> - it.m_i);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        }</div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
 <div class="ttc" id="classwlp_1_1_array_list_iterator_html_a29271ad6d9e2af1c5c02c230b1d4d443"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a29271ad6d9e2af1c5c02c230b1d4d443">wlp::ArrayListIterator::diff_type</a></div><div class="ttdeci">wlp::diff_type diff_type</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00038">ArrayList.h:38</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -872,17 +873,17 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 <p>Decrement operator moves the iterator backwards one element. If the iterator points to the first element, does nothing.</p>
 <dl class="section return"><dt>Returns</dt><dd>reference to this iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00155">155</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00156">156</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
 
-<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>.</p>
-<div class="fragment"><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                                {</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> == 0) {</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            }</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            --<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a>;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        }</div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
+<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>.</p>
+<div class="fragment"><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                                {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> == 0) {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            --<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        }</div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -912,12 +913,12 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 <p>Postfix decrement operator.</p>
 <dl class="section return"><dt>Returns</dt><dd>a copy of the iterator before moving </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00168">168</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                                  {</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a2d0ca8b865cbe0643fd98a83dbf0baae">self_type</a> tmp = *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            --*<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        }</div>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00169">169</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                                  {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a2d0ca8b865cbe0643fd98a83dbf0baae">self_type</a> tmp = *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            --*<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <span class="keywordflow">return</span> tmp;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        }</div>
 <div class="ttc" id="classwlp_1_1_array_list_iterator_html_a2d0ca8b865cbe0643fd98a83dbf0baae"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a2d0ca8b865cbe0643fd98a83dbf0baae">wlp::ArrayListIterator::self_type</a></div><div class="ttdeci">ArrayListIterator&lt; T, Ref, Ptr &gt; self_type</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00043">ArrayList.h:43</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -954,18 +955,18 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>reference to this iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00197">197</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00198">198</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
 
-<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>.</p>
-<div class="fragment"><div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                                                  {</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <span class="keywordflow">if</span> (d &gt;= <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a>) {</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> = 0;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> = <span class="keyword">static_cast&lt;</span><a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#aaff74284677af9bc4fbab641135b0d61">size_type</a><span class="keyword">&gt;</span>(<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> - d);</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            }</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        }</div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
+<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>.</p>
+<div class="fragment"><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                                                  {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="keywordflow">if</span> (d &gt;= <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a>) {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> = 0;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> = <span class="keyword">static_cast&lt;</span><a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#aaff74284677af9bc4fbab641135b0d61">size_type</a><span class="keyword">&gt;</span>(<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> - d);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        }</div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
 <div class="ttc" id="classwlp_1_1_array_list_iterator_html_aaff74284677af9bc4fbab641135b0d61"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#aaff74284677af9bc4fbab641135b0d61">wlp::ArrayListIterator::size_type</a></div><div class="ttdeci">wlp::size_type size_type</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00037">ArrayList.h:37</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -994,13 +995,13 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>a pointer to the value pointed to by this iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00116">116</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00117">117</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
 
-<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00105">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator*()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                                   {</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keywordflow">return</span> &amp;(<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a91acad5f7a354feadb49e57217ca56e4">operator*</a>());</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }</div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a91acad5f7a354feadb49e57217ca56e4"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a91acad5f7a354feadb49e57217ca56e4">wlp::ArrayListIterator::operator*</a></div><div class="ttdeci">reference operator*() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00105">ArrayList.h:105</a></div></div>
+<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00106">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator*()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                   {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordflow">return</span> &amp;(<a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a91acad5f7a354feadb49e57217ca56e4">operator*</a>());</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        }</div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a91acad5f7a354feadb49e57217ca56e4"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a91acad5f7a354feadb49e57217ca56e4">wlp::ArrayListIterator::operator*</a></div><div class="ttdeci">reference operator*() const </div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00106">ArrayList.h:106</a></div></div>
 </div><!-- fragment -->
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1044,16 +1045,16 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>reference to this iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00228">228</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00229">229</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
 
-<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>, and <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_list</a>.</p>
-<div class="fragment"><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                                                  {</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> = it.m_i;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a> = it.m_list;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        }</div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>, and <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_list</a>.</p>
+<div class="fragment"><div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                                                  {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> = it.m_i;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">m_list</a> = it.m_list;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        }</div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a31b34f8db86cd8620b30ed99f460b6bf"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a31b34f8db86cd8620b30ed99f460b6bf">wlp::ArrayListIterator::m_list</a></div><div class="ttdeci">const array_list_t * m_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1088,13 +1089,13 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if they point to the same element </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00210">210</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00211">211</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
 
-<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>.</p>
-<div class="fragment"><div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                                                   {</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> == it.m_i;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        }</div>
-<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00053">ArrayList.h:53</a></div></div>
+<p>References <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::m_i</a>.</p>
+<div class="fragment"><div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                                                   {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">m_i</a> == it.m_i;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        }</div>
+<div class="ttc" id="classwlp_1_1_array_list_iterator_html_a70ce2447d83c7c0d0b5207a5b1d9769c"><div class="ttname"><a href="../../d0/d32/classwlp_1_1_array_list_iterator.html#a70ce2447d83c7c0d0b5207a5b1d9769c">wlp::ArrayListIterator::m_i</a></div><div class="ttdeci">size_type m_i</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/db9/_array_list_8h_source.html#l00049">ArrayList.h:49</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1145,9 +1146,9 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 </div><div class="memdoc">
 <p>The array index pointed to by this iterator. </p>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">53</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">49</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00094">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::check_bounds()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00668">wlp::array_list&lt; T &gt;::erase()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00635">wlp::array_list&lt; T &gt;::insert()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00218">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator!=()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00105">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator*()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00241">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator+()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00128">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator++()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00182">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator+=()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00252">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator-()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00155">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator--()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00197">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator-=()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00228">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator=()</a>, and <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00210">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator==()</a>.</p>
+<p>Referenced by <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00095">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::check_bounds()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00669">wlp::array_list&lt; T &gt;::erase()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00636">wlp::array_list&lt; T &gt;::insert()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00219">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator!=()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00106">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator*()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00242">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator+()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00129">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator++()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00183">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator+=()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00253">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator-()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00156">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator--()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00198">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator-=()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00229">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator=()</a>, and <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00211">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator==()</a>.</p>
 
 </div>
 </div>
@@ -1172,9 +1173,9 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 </div><div class="memdoc">
 <p>Pointer to the backing array list. </p>
 
-<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00049">49</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00053">53</a> of file <a class="el" href="../../d2/db9/_array_list_8h_source.html">ArrayList.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00094">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::check_bounds()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00105">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator*()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00241">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator+()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00128">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator++()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00182">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator+=()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00252">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator-()</a>, and <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00228">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator=()</a>.</p>
+<p>Referenced by <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00095">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::check_bounds()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00106">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator*()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00242">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator+()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00129">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator++()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00183">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator+=()</a>, <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00253">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator-()</a>, and <a class="el" href="../../d2/db9/_array_list_8h_source.html#l00229">wlp::ArrayListIterator&lt; T, Ref, Ptr &gt;::operator=()</a>.</p>
 
 </div>
 </div>
@@ -1184,7 +1185,7 @@ template&lt;typename T , typename Ref , typename Ptr &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 7 2018 20:52:37 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 7 2018 20:57:43 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

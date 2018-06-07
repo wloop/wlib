@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$da/dbb/classwlp_1_1_shared_count.html" title="wlp::SharedCount\&lt; Ptr \&gt;" alt="" coords="6,5,173,32"/>
+<area shape="rect" id="node1" href="$d3/d86/classwlp_1_1state__base.html" title="wlp::state_base" alt="" coords="5,12,120,39"/>
+<area shape="rect" id="node2" href="$df/d13/classwlp_1_1state__action.html" title="wlp::state_action\&lt;\l SM, Data, Func \&gt;" alt="" coords="168,5,299,46"/>
 </map>

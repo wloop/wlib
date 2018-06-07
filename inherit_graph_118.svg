@@ -11,10 +11,10 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-34 120,-34 120,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:href="d7/d36/structwlp_1_1map__concept.html" target="_top" xlink:title="wlp::map_concept\&lt; C,\l bool \&gt;">
+<g id="a_node1"><a xlink:href="df/d68/structwlp_1_1_map_get_val.html" target="_top" xlink:title="wlp::MapGetVal\&lt; Key,\l Val \&gt;">
 <polygon fill="white" stroke="black" points="0,-0 0,-30 116,-30 116,-0 0,-0"/>
-<text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::map_concept&lt; C,</text>
-<text text-anchor="middle" x="58" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00"> bool &gt;</text>
+<text text-anchor="start" x="8" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::MapGetVal&lt; Key,</text>
+<text text-anchor="middle" x="58" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00"> Val &gt;</text>
 </a>
 </g>
 </g>

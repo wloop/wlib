@@ -113,25 +113,25 @@
 </g>
 <!-- Node8 -->
 <g id="node8" class="node"><title>Node8</title>
-<polygon fill="white" stroke="#bfbfbf" points="172,-76.5 172,-95.5 220,-95.5 220,-76.5 172,-76.5"/>
-<text text-anchor="middle" x="196" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">Hasher</text>
+<polygon fill="white" stroke="#bfbfbf" points="173,-76.5 173,-95.5 219,-95.5 219,-76.5 173,-76.5"/>
+<text text-anchor="middle" x="196" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">uint8_t</text>
 </g>
 <!-- Node8&#45;&gt;Node6 -->
 <g id="edge9" class="edge"><title>Node8&#45;&gt;Node6</title>
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M230.023,-89.7517C260.259,-93.2957 306.217,-98.9568 346,-105 351.926,-105.9 358.075,-106.885 364.234,-107.907"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="230.357,-86.2671 220.02,-88.5893 229.549,-93.2203 230.357,-86.2671"/>
-<text text-anchor="middle" x="307" y="-108" font-family="Helvetica,sans-Serif" font-size="10.00"> m_hash_function</text>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M228.978,-89.6293C259.192,-93.1645 305.756,-98.8867 346,-105 351.926,-105.9 358.075,-106.885 364.234,-107.907"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="229.347,-86.1487 219.01,-88.473 228.54,-93.1021 229.347,-86.1487"/>
+<text text-anchor="middle" x="307" y="-108" font-family="Helvetica,sans-Serif" font-size="10.00"> m_max_load</text>
 </g>
 <!-- Node9 -->
 <g id="node9" class="node"><title>Node9</title>
-<polygon fill="white" stroke="#bfbfbf" points="173,-38.5 173,-57.5 219,-57.5 219,-38.5 173,-38.5"/>
-<text text-anchor="middle" x="196" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">uint8_t</text>
+<polygon fill="white" stroke="#bfbfbf" points="172,-38.5 172,-57.5 220,-57.5 220,-38.5 172,-38.5"/>
+<text text-anchor="middle" x="196" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">Hasher</text>
 </g>
 <!-- Node9&#45;&gt;Node6 -->
 <g id="edge10" class="edge"><title>Node9&#45;&gt;Node6</title>
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M229.225,-52.7361C259.795,-57.737 306.759,-66.7475 346,-80 361.452,-85.2185 377.802,-92.4635 391.991,-99.3556"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="229.561,-49.2456 219.136,-51.134 228.463,-56.159 229.561,-49.2456"/>
-<text text-anchor="middle" x="307" y="-83" font-family="Helvetica,sans-Serif" font-size="10.00"> m_max_load</text>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M230.28,-52.9091C260.867,-57.9435 307.208,-66.899 346,-80 361.452,-85.2185 377.802,-92.4635 391.991,-99.3556"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="230.583,-49.4132 220.156,-51.2915 229.478,-56.3256 230.583,-49.4132"/>
+<text text-anchor="middle" x="307" y="-83" font-family="Helvetica,sans-Serif" font-size="10.00"> m_hash_function</text>
 </g>
 <!-- Node10 -->
 <g id="node10" class="node"><title>Node10</title>
