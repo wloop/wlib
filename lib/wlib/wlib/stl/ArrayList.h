@@ -59,9 +59,8 @@ namespace wlp {
          * An empty array list iterator is invalid.
          */
         ArrayListIterator()
-                : m_i(static_cast<size_type>(-1)),
-                  m_list(nullptr) {
-        }
+                : m_list(nullptr),
+                  m_i(static_cast<size_type>(-1)) {}
 
         /**
          * Copy constructor.
@@ -69,8 +68,8 @@ namespace wlp {
          * @param it iterator to copy
          */
         ArrayListIterator(const self_type &it)
-                : m_i(it.m_i),
-                  m_list(it.m_list) {
+                : m_list(it.m_list),
+                  m_i(it.m_i) {
             check_bounds();
         }
 
@@ -82,8 +81,8 @@ namespace wlp {
          * @param list backing array list
          */
         explicit ArrayListIterator(const size_type &i, const array_list_t *list)
-                : m_i(i),
-                  m_list(list) {
+                : m_list(list),
+                  m_i(i) {
             check_bounds();
         }
 

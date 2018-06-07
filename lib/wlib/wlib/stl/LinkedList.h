@@ -50,13 +50,13 @@ namespace wlp {
         typedef LinkedListIterator<T, Ref, Ptr> self_type;
 
         /**
-         * Pointer to the iterated List.
-         */
-        const list_type *m_list;
-        /**
          * Pointer to the node referenced by this iterator.
          */
         node_type *m_current;
+        /**
+         * Pointer to the iterated List.
+         */
+        const list_type *m_list;
 
         /**
          * Default constructor.
@@ -226,9 +226,9 @@ namespace wlp {
          * Default Constructor creates an empty List.
          */
         linked_list()
-                : m_size(0),
-                  m_head(nullptr),
-                  m_tail(nullptr) {}
+                : m_head(nullptr),
+                  m_tail(nullptr),
+                  m_size(0) {}
 
         /**
          * Disable copy construction.
@@ -243,9 +243,9 @@ namespace wlp {
          * @param list the list to move
          */
         linked_list(list_type &&list) :
-                m_size(move(list.m_size)),
-                m_head(move(list.m_head)),
-                m_tail(move(list.m_tail)) {
+            m_head(move(list.m_head)),
+            m_tail(move(list.m_tail)),
+            m_size(move(list.m_size)) {
             list.m_size = 0;
             list.m_head = nullptr;
             list.m_tail = nullptr;
