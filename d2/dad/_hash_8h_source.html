@@ -103,7 +103,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> Key, <span class="keyword">class</span> IntType&gt;</div>
 <div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../da/d60/structwlp_1_1hash.html">   36</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="../../da/d60/structwlp_1_1hash.html">hash</a> {</div>
 <div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../da/d60/structwlp_1_1hash.html#a1012dba402c3e645f61c7d3708a33220">   37</a></span>&#160;        IntType <a class="code" href="../../da/d60/structwlp_1_1hash.html#a1012dba402c3e645f61c7d3708a33220">operator()</a>(<span class="keyword">const</span> Key &amp;key)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">return</span> (IntType) key;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>IntType<span class="keyword">&gt;</span>(key);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    };</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
@@ -111,7 +111,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="../../d5/dca/namespacewlp.html#a802753869a0f3cdcd08c0857d34ac157">   52</a></span>&#160;    <span class="keyword">inline</span> IntType <a class="code" href="../../d5/dca/namespacewlp.html#a802753869a0f3cdcd08c0857d34ac157">hash_static_string</a>(<span class="keyword">const</span> <a class="code" href="../../d7/d08/classwlp_1_1static__string.html">static_string&lt;tSize&gt;</a> &amp;<a class="code" href="../../d7/d08/classwlp_1_1static__string.html">static_string</a>) {</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        IntType h = 0;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="../../d5/dca/namespacewlp.html#aa769294e00f256f59aa1235b8385989f">size_type</a> pos = 0; pos &lt; static_string.<a class="code" href="../../d7/d08/classwlp_1_1static__string.html#a56507a4939d6663a947a227503c40214">length</a>(); ++pos) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            h = (IntType) (<a class="code" href="../../da/db8/_math_8h.html#a28639dd0298e8a48ed254a79cdf3f127">MUL_127</a>(h) + static_string[pos]);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            h = <span class="keyword">static_cast&lt;</span>IntType<span class="keyword">&gt;</span>(<a class="code" href="../../da/db8/_math_8h.html#a28639dd0298e8a48ed254a79cdf3f127">MUL_127</a>(h) + static_string[pos]);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> h;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    };</div>
@@ -120,7 +120,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="../../d5/dca/namespacewlp.html#a487b52ade5f231324503710da3e01d4e">   69</a></span>&#160;    <span class="keyword">inline</span> IntType <a class="code" href="../../d5/dca/namespacewlp.html#a487b52ade5f231324503710da3e01d4e">hash_string</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *s) {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        IntType h = 0;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">for</span> (; *s; ++s) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            h = (IntType) (<a class="code" href="../../da/db8/_math_8h.html#a28639dd0298e8a48ed254a79cdf3f127">MUL_127</a>(h) + *s);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            h = <span class="keyword">static_cast&lt;</span>IntType<span class="keyword">&gt;</span>(<a class="code" href="../../da/db8/_math_8h.html#a28639dd0298e8a48ed254a79cdf3f127">MUL_127</a>(h) + *s);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">return</span> h;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
@@ -167,7 +167,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 6 2018 05:02:31 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 7 2018 03:21:55 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

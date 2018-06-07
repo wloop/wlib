@@ -93,25 +93,25 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<polygon fill="white" stroke="#bfbfbf" points="181,-193.5 181,-212.5 227,-212.5 227,-193.5 181,-193.5"/>
-<text text-anchor="middle" x="204" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00">uint8_t</text>
+<polygon fill="white" stroke="#bfbfbf" points="180,-193.5 180,-212.5 228,-212.5 228,-193.5 180,-193.5"/>
+<text text-anchor="middle" x="204" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00">Hasher</text>
 </g>
 <!-- Node4&#45;&gt;Node2 -->
 <g id="edge3" class="edge"><title>Node4&#45;&gt;Node2</title>
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M237.281,-198.182C269.321,-192.99 319.634,-183.727 362,-171 367.879,-169.234 373.922,-167.214 379.936,-165.063"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="236.484,-194.765 227.154,-199.786 237.578,-201.679 236.484,-194.765"/>
-<text text-anchor="middle" x="323" y="-192" font-family="Helvetica,sans-Serif" font-size="10.00"> m_max_load</text>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M238.374,-198.005C270.457,-192.781 320.113,-183.583 362,-171 367.879,-169.234 373.922,-167.214 379.936,-165.063"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="237.53,-194.595 228.204,-199.623 238.63,-201.508 237.53,-194.595"/>
+<text text-anchor="middle" x="323" y="-192" font-family="Helvetica,sans-Serif" font-size="10.00"> m_hash_function</text>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node"><title>Node5</title>
-<polygon fill="white" stroke="#bfbfbf" points="180,-155.5 180,-174.5 228,-174.5 228,-155.5 180,-155.5"/>
-<text text-anchor="middle" x="204" y="-162.5" font-family="Helvetica,sans-Serif" font-size="10.00">Hasher</text>
+<polygon fill="white" stroke="#bfbfbf" points="181,-155.5 181,-174.5 227,-174.5 227,-155.5 181,-155.5"/>
+<text text-anchor="middle" x="204" y="-162.5" font-family="Helvetica,sans-Serif" font-size="10.00">uint8_t</text>
 </g>
 <!-- Node5&#45;&gt;Node2 -->
 <g id="edge4" class="edge"><title>Node5&#45;&gt;Node2</title>
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M238.459,-161.22C274.96,-157.097 334.259,-150.398 379.805,-145.252"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="237.895,-157.761 228.351,-162.362 238.681,-164.717 237.895,-157.761"/>
-<text text-anchor="middle" x="323" y="-159" font-family="Helvetica,sans-Serif" font-size="10.00"> m_hash_function</text>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M237.092,-161.375C273.458,-157.266 333.66,-150.465 379.776,-145.255"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="236.6,-157.908 227.056,-162.508 237.386,-164.864 236.6,-157.908"/>
+<text text-anchor="middle" x="323" y="-159" font-family="Helvetica,sans-Serif" font-size="10.00"> m_max_load</text>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node"><title>Node6</title>
