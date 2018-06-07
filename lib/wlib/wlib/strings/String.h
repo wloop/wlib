@@ -47,7 +47,7 @@ namespace wlp {
         /**
          * Constructor to nullptr_t is empty string.
          */
-        nullptr_t static_string<tSize>(nullptr_t) {
+        explicit static_string<tSize>(nullptr_t) {
             clear();
         }
 
