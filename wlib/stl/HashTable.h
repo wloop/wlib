@@ -51,29 +51,28 @@ namespace wlp {
         typedef wlp::size_type size_type;
 
         /**
+         * Pointer to the iterated HashMap.
+         */
+        const table_type *m_table;
+        /**
          * Pointer to the node referenced by this iterator.
          */
         node_type *m_node;
         /**
          * Functor instance used to get keys.
          */
-        get_key m_get_key;
+        get_key m_get_key{};
         /**
          * Functor instance used to get values.
          */
         get_value m_get_value{};
-        /**
-         * Pointer to the iterated HashMap.
-         */
-        const table_type *m_table;
 
         /**
          * Default constructor.
          */
         HashTableIterator()
                 : m_node(nullptr),
-                  m_table(nullptr) {
-        }
+                  m_table(nullptr) {}
 
         /**
          * Create an iterator to a HashMap node.
@@ -83,8 +82,7 @@ namespace wlp {
          */
         HashTableIterator(node_type *node, const table_type *table)
                 : m_node(node),
-                  m_table(table) {
-        }
+                  m_table(table) {}
 
         reference operator*() const {
             if (m_node == nullptr) {
@@ -200,22 +198,10 @@ namespace wlp {
 
     private:
         /**
-         * Hash function functor instance.
-         */
-        hash_function m_hash_function{};
-        /**
-         * Key equals functor instance.
-         */
-        key_equals m_key_equals{};
-        /**
-         * Functor instance to obtain key;
-         */
-        get_key m_get_key{};
-
-        /**
          * Hash map backing array.
          */
         node_type **m_buckets;
+
         /**
          * Number of elements currently in the map.
          */
@@ -229,6 +215,19 @@ namespace wlp {
          * The max load factor of the hash table before rehashing.
          */
         percent_type m_max_load;
+
+        /**
+         * Hash function functor instance.
+         */
+        hash_function m_hash_function{};
+        /**
+         * Key equals functor instance.
+         */
+        key_equals m_key_equals{};
+        /**
+         * Functor instance to obtain key;
+         */
+        get_key m_get_key{};
 
     public:
         explicit hash_table(size_type n = 12, percent_type max_load = 75)

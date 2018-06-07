@@ -19,8 +19,8 @@ namespace wlp {
     private:
         typedef StringIterator<String, Ref, Ptr> self_type;
 
-        size_type m_i;
         string_type *m_string;
+        size_type m_i;
 
         void check_bounds() {
             if (m_i > m_string->length()) {

@@ -92,10 +92,10 @@ public:
 
 
 private:
-    const uint8_t type;
     const char *fileName;
-    uint16_t lineNum;
     const char *message;
+    uint16_t lineNum;
+    const uint8_t type;
 };
 
 extern jmp_buf *__exc_context;

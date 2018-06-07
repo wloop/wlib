@@ -44,13 +44,13 @@ namespace wlp {
 
     private:
         /**
-         * The array index pointed to by this iterator.
-         */
-        size_type m_i;
-        /**
          * Pointer to the backing array list.
          */
         const array_list_t *m_list;
+        /**
+         * The array index pointed to by this iterator.
+         */
+        size_type m_i;
 
         friend class array_list<T>;
 
