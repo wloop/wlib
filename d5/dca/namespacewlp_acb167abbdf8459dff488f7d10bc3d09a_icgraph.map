@@ -3,9 +3,10 @@
 <area shape="rect" id="node3" href="$d8/de4/classwlp_1_1linked__list.html#a2d44591dec9d56e27c7436761cdbf95f" title="wlp::linked_list::erase" alt="" coords="127,71,275,97"/>
 <area shape="rect" id="node4" href="$d9/d40/classwlp_1_1tree.html#a77736505c8590345fe3ade2961877845" title="wlp::tree::erase" alt="" coords="145,121,257,148"/>
 <area shape="rect" id="node5" href="$d9/d40/classwlp_1_1tree.html#a7c1cb0fd5cf754ff4365bc22f3ed88e2" title="wlp::tree::find" alt="" coords="151,172,252,199"/>
-<area shape="rect" id="node6" href="$d8/de4/classwlp_1_1tree__map.html#ad9006dda98e0f49fb070ae4138e37e9b" title="wlp::tree_map::at" alt="" coords="345,71,468,97"/>
-<area shape="rect" id="node7" href="$d8/de4/classwlp_1_1tree__map.html#aad5f5a834d323e4b2fbf6a8eaa927e22" title="wlp::tree_map::contains" alt="" coords="326,121,487,148"/>
-<area shape="rect" id="node8" href="$d8/de4/classwlp_1_1tree__map.html#a3ec315db29f5e24de3c7977c3b3648cb" title="wlp::tree_map::find" alt="" coords="340,172,473,199"/>
-<area shape="rect" id="node9" href="$d9/ded/classwlp_1_1tree__set.html#a0306f605cafee578587f196b565a4790" title="wlp::tree_set::contains" alt="" coords="329,223,484,249"/>
-<area shape="rect" id="node10" href="$d9/ded/classwlp_1_1tree__set.html#a9fb262c140e257e6b70e2ca0a49b44c1" title="wlp::tree_set::find" alt="" coords="343,273,470,300"/>
+<area shape="rect" id="node6" href="$d8/de4/classwlp_1_1tree__map.html#a878fde8730d94d884d2cfaa8a97e816c" title="wlp::tree_map::insert\l_or_assign" alt="" coords="335,30,479,71"/>
+<area shape="rect" id="node7" href="$d8/de4/classwlp_1_1tree__map.html#ad9006dda98e0f49fb070ae4138e37e9b" title="wlp::tree_map::at" alt="" coords="345,96,468,123"/>
+<area shape="rect" id="node8" href="$d8/de4/classwlp_1_1tree__map.html#aad5f5a834d323e4b2fbf6a8eaa927e22" title="wlp::tree_map::contains" alt="" coords="326,147,487,173"/>
+<area shape="rect" id="node9" href="$d8/de4/classwlp_1_1tree__map.html#a3ec315db29f5e24de3c7977c3b3648cb" title="wlp::tree_map::find" alt="" coords="340,197,473,224"/>
+<area shape="rect" id="node10" href="$d9/ded/classwlp_1_1tree__set.html#a0306f605cafee578587f196b565a4790" title="wlp::tree_set::contains" alt="" coords="329,248,484,275"/>
+<area shape="rect" id="node11" href="$d9/ded/classwlp_1_1tree__set.html#a9fb262c140e257e6b70e2ca0a49b44c1" title="wlp::tree_set::find" alt="" coords="343,299,470,325"/>
 </map>

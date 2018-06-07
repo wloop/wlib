@@ -955,7 +955,7 @@ template&lt;typename Element, typename Key, typename Val, typename GetKey, typen
 
 <p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00309">309</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../de/def/_hash_table_8h_source.html#l00291">wlp::hash_table&lt; Key, Key, Key, SetGetKey&lt; Key &gt;, SetGetVal&lt; Key &gt;, Hasher, Equals &gt;::begin()</a>, <a class="el" href="../../d2/dfc/_hash_set_8h_source.html#l00112">wlp::hash_set&lt; Key, Hasher, Equals &gt;::contains()</a>, <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00138">wlp::hash_map&lt; Key, Val, Hasher, Equals &gt;::contains()</a>, <a class="el" href="../../d2/dfc/_hash_set_8h_source.html#l00091">wlp::hash_set&lt; Key, Hasher, Equals &gt;::end()</a>, and <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00093">wlp::hash_map&lt; Key, Val, Hasher, Equals &gt;::end()</a>.</p>
+<p>Referenced by <a class="el" href="../../de/def/_hash_table_8h_source.html#l00291">wlp::hash_table&lt; Key, Key, Key, SetGetKey&lt; Key &gt;, SetGetVal&lt; Key &gt;, Hasher, Equals &gt;::begin()</a>, <a class="el" href="../../d2/dfc/_hash_set_8h_source.html#l00112">wlp::hash_set&lt; Key, Hasher, Equals &gt;::contains()</a>, <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00140">wlp::hash_map&lt; Key, Val, Hasher, Equals &gt;::contains()</a>, <a class="el" href="../../d2/dfc/_hash_set_8h_source.html#l00091">wlp::hash_set&lt; Key, Hasher, Equals &gt;::end()</a>, <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00093">wlp::hash_map&lt; Key, Val, Hasher, Equals &gt;::end()</a>, and <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00111">wlp::hash_map&lt; Key, Val, Hasher, Equals &gt;::insert_or_assign()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                       {</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../dc/d42/classwlp_1_1hash__table.html#a7cb35438f7fcb359bc6da9f69057f982">iterator</a>(<span class="keyword">nullptr</span>, <span class="keyword">this</span>);</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        }</div>
@@ -964,7 +964,7 @@ template&lt;typename Element, typename Key, typename Val, typename GetKey, typen
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dc/d42/classwlp_1_1hash__table_ab26b4eb82e432f79028d5192b108fa59_icgraph.svg" width="387" height="284"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dc/d42/classwlp_1_1hash__table_ab26b4eb82e432f79028d5192b108fa59_icgraph.svg" width="387" height="350"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </p>
@@ -1204,7 +1204,7 @@ template&lt;typename Element , typename Key , typename Val , typename GetKey , t
 
 <p>References <a class="el" href="../../de/def/_hash_table_8h_source.html#l00032">wlp::HashTableNode&lt; Element &gt;::m_element</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00028">wlp::HashTableNode&lt; Element &gt;::m_next</a>, and <a class="el" href="../../de/def/_hash_table_8h_source.html#l00056">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::m_node</a>.</p>
 
-<p>Referenced by <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00119">wlp::hash_map&lt; Key, Val, Hasher, Equals &gt;::erase()</a>, and <a class="el" href="../../d2/dfc/_hash_set_8h_source.html#l00124">wlp::hash_set&lt; Key, Hasher, Equals &gt;::erase()</a>.</p>
+<p>Referenced by <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00121">wlp::hash_map&lt; Key, Val, Hasher, Equals &gt;::erase()</a>, and <a class="el" href="../../d2/dfc/_hash_set_8h_source.html#l00124">wlp::hash_set&lt; Key, Hasher, Equals &gt;::erase()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;                              {</div>
 <div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;        <a class="code" href="../../dc/d42/classwlp_1_1hash__table.html#adc2e02b56ce298057e3fb0f7086e63cb">node_type</a> *node = it.m_node;</div>
 <div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;        <span class="keywordflow">if</span> (node) {</div>
@@ -1331,7 +1331,7 @@ template&lt;typename Element, typename Key, typename Val, typename GetKey, typen
 
 <p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00326">326</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00130">wlp::hash_map&lt; Key, Val, Hasher, Equals &gt;::at()</a>, <a class="el" href="../../d2/dfc/_hash_set_8h_source.html#l00112">wlp::hash_set&lt; Key, Hasher, Equals &gt;::contains()</a>, <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00138">wlp::hash_map&lt; Key, Val, Hasher, Equals &gt;::contains()</a>, <a class="el" href="../../d2/dfc/_hash_set_8h_source.html#l00116">wlp::hash_set&lt; Key, Hasher, Equals &gt;::find()</a>, and <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00142">wlp::hash_map&lt; Key, Val, Hasher, Equals &gt;::find()</a>.</p>
+<p>Referenced by <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00132">wlp::hash_map&lt; Key, Val, Hasher, Equals &gt;::at()</a>, <a class="el" href="../../d2/dfc/_hash_set_8h_source.html#l00112">wlp::hash_set&lt; Key, Hasher, Equals &gt;::contains()</a>, <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00140">wlp::hash_map&lt; Key, Val, Hasher, Equals &gt;::contains()</a>, <a class="el" href="../../d2/dfc/_hash_set_8h_source.html#l00116">wlp::hash_set&lt; Key, Hasher, Equals &gt;::find()</a>, <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00144">wlp::hash_map&lt; Key, Val, Hasher, Equals &gt;::find()</a>, and <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00111">wlp::hash_map&lt; Key, Val, Hasher, Equals &gt;::insert_or_assign()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                                           {</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            <a class="code" href="../../dc/d42/classwlp_1_1hash__table.html#a923416cf744074abf5a061a0b9d09215">size_type</a> n = <a class="code" href="../../dc/d42/classwlp_1_1hash__table.html#ab8c95c54f92ca4222ad7df9e0a506bb9">hash</a>(key);</div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            <a class="code" href="../../dc/d42/classwlp_1_1hash__table.html#adc2e02b56ce298057e3fb0f7086e63cb">node_type</a> *first;</div>
@@ -1351,7 +1351,7 @@ template&lt;typename Element, typename Key, typename Val, typename GetKey, typen
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../dc/d42/classwlp_1_1hash__table_a46165065f33b12879cdccdf7a0dd473d_icgraph.svg" width="371" height="240"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../dc/d42/classwlp_1_1hash__table_a46165065f33b12879cdccdf7a0dd473d_icgraph.svg" width="371" height="306"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </p>
@@ -1419,7 +1419,7 @@ template&lt;typename E &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Referenced by <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00151">wlp::hash_map&lt; Key, Val, Hasher, Equals &gt;::operator[]()</a>.</p>
+<p>Referenced by <a class="el" href="../../dd/d0b/_hash_map_8h_source.html#l00153">wlp::hash_map&lt; Key, Val, Hasher, Equals &gt;::operator[]()</a>.</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -2118,7 +2118,7 @@ template&lt;typename Element, typename Key, typename Val, typename GetKey, typen
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 7 2018 06:07:03 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 7 2018 20:52:37 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
