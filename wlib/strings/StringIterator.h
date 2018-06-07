@@ -19,8 +19,8 @@ namespace wlp {
     private:
         typedef StringIterator<String, Ref, Ptr> self_type;
 
-        string_type *m_string;
         size_type m_i;
+        string_type *m_string;
 
         void check_bounds() {
             if (m_i > m_string->length()) {
@@ -30,14 +30,14 @@ namespace wlp {
 
     public:
         StringIterator(size_type i, string_type *string)
-                : m_string(string),
-                  m_i(i) {
+                : m_i(i),
+                  m_string(string) {
             check_bounds();
         }
 
         StringIterator(const self_type &it)
-                : m_string(it.m_string),
-                  m_i(it.m_i) {
+                : m_i(it.m_i),
+                  m_string(it.m_string) {
             check_bounds();
         }
 

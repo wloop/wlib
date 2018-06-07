@@ -241,6 +241,21 @@ namespace wlp {
 
     private:
         /**
+         * Class hash function instance. Used to hash
+         * element keys.
+         */
+        hash_function m_hash_function{};
+        /**
+         * Class key equality function. Used to test
+         * equality of element keys.
+         */
+        key_equals m_key_equals{};
+        /**
+         * Functor to obtain key from element.
+         */
+        get_key m_get_key{};
+
+        /**
          * Hash map backing array.
          */
         element_type **m_buckets;
@@ -260,21 +275,6 @@ namespace wlp {
          * cannot be larger than 100.
          */
         percent_type m_max_load;
-
-        /**
-         * Class hash function instance. Used to hash
-         * element keys.
-         */
-        hash_function m_hash_function{};
-        /**
-         * Class key equality function. Used to test
-         * equality of element keys.
-         */
-        key_equals m_key_equals{};
-        /**
-         * Functor to obtain key from element.
-         */
-        get_key m_get_key{};
 
     public:
         /**

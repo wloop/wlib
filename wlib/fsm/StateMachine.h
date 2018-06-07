@@ -254,13 +254,12 @@ namespace wlp {
          * @param maxStates machine number of states
          * @param initialState initial machine state
          */
-        state_machine(state_type maxStates, state_type initialState = 0) :
-            m_event_data(nullptr),
-            m_dataless(),
-            m_event_generated(false),
-            m_max_states(maxStates),
-            m_current_state(initialState),
-            m_new_state(0) {
+        state_machine(state_type maxStates, state_type initialState = 0)
+                : m_max_states(maxStates),
+                  m_current_state(initialState),
+                  m_new_state(0),
+                  m_event_generated(false),
+                  m_event_data(nullptr) {
             /* assert(m_max_states < EVENT_IGNORED) */
             if (m_max_states >= EVENT_IGNORED) {
                 THROW(BAD_STATE_EXCEPTION("Max states cannot equal or exceed EVENT_IGNORED"))
@@ -323,23 +322,6 @@ namespace wlp {
 
     private:
         /**
-         * The state event data pointer.
-         */
-        sm_event_data *m_event_data;
-
-        /**
-         * Class-level event data instance used to
-         * represent an event with no data.
-         */
-        sm_event_data m_dataless;
-
-        /**
-         * This value is set to true when an event
-         * is generated.
-         */
-        bool m_event_generated;
-
-        /**
          * The maximum number of state machine states,
          * which also corresponds to the strict upper
          * bound on the machine state ordinal value.
@@ -357,6 +339,23 @@ namespace wlp {
          * machine has yet to make the transition.
          */
         state_type m_new_state;
+
+        /**
+         * This value is set to true when an event
+         * is generated.
+         */
+        bool m_event_generated;
+
+        /**
+         * The state event data pointer.
+         */
+        sm_event_data *m_event_data;
+
+        /**
+         * Class-level event data instance used to
+         * represent an event with no data.
+         */
+        sm_event_data m_dataless;
 
         /**
          * Get the state map as defined in a derived class of State Machine.

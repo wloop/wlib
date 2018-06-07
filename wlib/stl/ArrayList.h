@@ -44,13 +44,13 @@ namespace wlp {
 
     private:
         /**
-         * Pointer to the backing array list.
-         */
-        const array_list_t *m_list;
-        /**
          * The array index pointed to by this iterator.
          */
         size_type m_i;
+        /**
+         * Pointer to the backing array list.
+         */
+        const array_list_t *m_list;
 
         friend class array_list<T>;
 
@@ -59,8 +59,9 @@ namespace wlp {
          * An empty array list iterator is invalid.
          */
         ArrayListIterator()
-                : m_list(nullptr),
-                  m_i(static_cast<size_type>(-1)) {}
+                : m_i(static_cast<size_type>(-1)),
+                  m_list(nullptr) {
+        }
 
         /**
          * Copy constructor.
@@ -68,8 +69,8 @@ namespace wlp {
          * @param it iterator to copy
          */
         ArrayListIterator(const self_type &it)
-                : m_list(it.m_list),
-                  m_i(it.m_i) {
+                : m_i(it.m_i),
+                  m_list(it.m_list) {
             check_bounds();
         }
 
@@ -81,8 +82,8 @@ namespace wlp {
          * @param list backing array list
          */
         explicit ArrayListIterator(const size_type &i, const array_list_t *list)
-                : m_list(list),
-                  m_i(i) {
+                : m_i(i),
+                  m_list(list) {
             check_bounds();
         }
 

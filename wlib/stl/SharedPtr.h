@@ -40,16 +40,10 @@ namespace wlp {
     template<typename Ptr>
     class ReferenceCount {
     public:
-        typedef Ptr pointer;
         typedef uint16_t ptr_use_count;
+        typedef Ptr pointer;
 
     private:
-        /**
-         * The managed underlying pointer. This class cannot
-         * be used to access the pointe directly; it only
-         * has a copy to manage its deletion.
-         */
-        pointer m_ptr;
         /**
          * The number of shared pointers which claim ownership
          * of the underlying pointer.
@@ -60,6 +54,12 @@ namespace wlp {
          * of the underlying pointer.
          */
         ptr_use_count m_weak_count;
+        /**
+         * The managed underlying pointer. This class cannot
+         * be used to access the pointe directly; it only
+         * has a copy to manage its deletion.
+         */
+        pointer m_ptr;
 
     public:
         /**
@@ -72,9 +72,9 @@ namespace wlp {
          * @param ptr the underlying pointer
          */
         ReferenceCount(pointer ptr)
-                : m_ptr(ptr),
-                  m_use_count(1),
-                  m_weak_count(1) {}
+                : m_use_count(1),
+                  m_weak_count(1),
+                  m_ptr(ptr) {}
 
         ~ReferenceCount() {}
 
@@ -466,42 +466,46 @@ namespace wlp {
         template<typename U> friend
         class weak_ptr;
 
-        SharedCount<T *> m_refcount;
         val_type *m_ptr;
+        SharedCount<T *> m_refcount;
 
     public:
         constexpr shared_ptr()
-                : m_refcount(),
-                  m_ptr(nullptr) {
+                : m_ptr(nullptr),
+                  m_refcount() {
         }
 
         template<typename U, typename = typename enable_if<
                 is_convertible<U *, T *>::value
         >::type>
         explicit shared_ptr(U *ptr)
-                : m_refcount(ptr),
-                  m_ptr(ptr)
-        { static_assert(sizeof(U) > 0, "Pointer to incomplete type"); }
+                : m_ptr(ptr),
+                  m_refcount(ptr) {
+            static_assert(sizeof(U) > 0, "Pointer to incomplete type");
+        }
 
         template<typename U>
         shared_ptr(const shared_ptr<U> &sp, T *ptr)
-                : m_refcount(sp.m_refcount),
-                  m_ptr(ptr) {}
+                : m_ptr(ptr),
+                  m_refcount(sp.m_refcount) {
+        }
 
         template<typename U, typename = typename enable_if<
                 is_convertible<U *, T *>::value
         >::type>
         shared_ptr(const shared_ptr<U> &sp)
-                : m_refcount(sp.m_refcount),
-                  m_ptr(sp.m_ptr) {}
+                : m_ptr(sp.m_ptr),
+                  m_refcount(sp.m_refcount) {
+        }
 
         shared_ptr(const shared_ptr<T> &sp)
-                : m_refcount(sp.m_refcount),
-                  m_ptr(sp.m_ptr) {}
+                : m_ptr(sp.m_ptr),
+                  m_refcount(sp.m_refcount) {
+        }
 
         shared_ptr(shared_ptr<T> &&sp)
-                : m_refcount(),
-                  m_ptr(sp.m_ptr) {
+                : m_ptr(sp.m_ptr),
+                  m_refcount() {
             m_refcount.swap(sp.m_refcount);
             sp.m_ptr = nullptr;
         }
@@ -510,8 +514,8 @@ namespace wlp {
                 is_convertible<U *, T *>::value
         >::type>
         shared_ptr(shared_ptr<U> &&sp)
-                : m_refcount(),
-                  m_ptr(sp.m_ptr) {
+                : m_ptr(sp.m_ptr),
+                  m_refcount() {
             m_refcount.swap(sp.m_refcount);
             sp.m_ptr = nullptr;
         }
@@ -520,22 +524,24 @@ namespace wlp {
                 is_convertible<U *, T *>::value
         >::type>
         explicit shared_ptr(const weak_ptr<U> &wp)
-                : m_refcount(wp.m_refcount),
-                  m_ptr(wp.m_ptr) {}
+                : m_ptr(wp.m_ptr),
+                  m_refcount(wp.m_refcount) {
+        }
 
         template<typename U, typename = typename enable_if<
                 is_convertible<U *, T *>::value
         >::type>
         shared_ptr(unique_ptr <U> &&up)
-                : m_refcount(),
-                  m_ptr(up.get()) {
+                : m_ptr(up.get()),
+                  m_refcount() {
             U *tmp = up.get();
             m_refcount = SharedCount<T *>(move(up));
         }
 
         constexpr shared_ptr(nullptr_t)
-                : m_refcount(),
-                  m_ptr(nullptr) {}
+                : m_ptr(nullptr),
+                  m_refcount() {
+        }
 
         shared_ptr<T> &operator=(const shared_ptr<T> &sp) {
             m_ptr = sp.m_ptr;
@@ -666,13 +672,13 @@ namespace wlp {
         template<typename U> friend
         class weak_ptr;
 
-        WeakCount<T *> m_refcount;
         val_type *m_ptr;
+        WeakCount<T *> m_refcount;
 
     public:
         constexpr weak_ptr()
-                : m_refcount(),
-                  m_ptr(nullptr) {
+                : m_ptr(nullptr),
+                  m_refcount() {
         }
 
         template<typename U, typename = typename enable_if<
@@ -687,8 +693,9 @@ namespace wlp {
                 is_convertible<U *, T *>::value
         >::type>
         weak_ptr(const shared_ptr<U> &sp)
-                : m_refcount(sp.m_refcount),
-                  m_ptr(sp.m_ptr) {}
+                : m_ptr(sp.m_ptr),
+                  m_refcount(sp.m_refcount) {
+        };
 
         template<typename U>
         weak_ptr &operator=(const weak_ptr<U> &wp) {

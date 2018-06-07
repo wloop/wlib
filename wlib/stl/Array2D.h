@@ -131,9 +131,9 @@ namespace wlp {
             delete[] m_arr;
         }
 
-        val_t **m_arr = nullptr;
         size_t m_x = 0;
         size_t m_y = 0;
+        val_t **m_arr = nullptr;
     };
 
 }

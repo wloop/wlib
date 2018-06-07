@@ -25,9 +25,9 @@ namespace wlp {
         typedef T val_type;
         typedef LinkedListNode<T> node_type;
 
+        val_type m_val;
         node_type *m_next;
         node_type *m_prev;
-        val_type m_val;
     };
 
     // Forward Declaration of List class
@@ -206,6 +206,10 @@ namespace wlp {
 
     private:
         /**
+         * The number of elements in the list.
+         */
+        size_type m_size;
+        /**
          * Pointer to first node in the list.
          */
         node_type *m_head;
@@ -213,10 +217,6 @@ namespace wlp {
          * Pointer to last node in the list.
          */
         node_type *m_tail;
-        /**
-         * The number of elements in the list.
-         */
-        size_type m_size;
 
         friend struct LinkedListIterator<T, T &, T *>;
         friend struct LinkedListIterator<T, const T &, const T *>;
@@ -226,9 +226,9 @@ namespace wlp {
          * Default Constructor creates an empty List.
          */
         linked_list()
-                : m_head(nullptr),
-                  m_tail(nullptr),
-                  m_size(0) {}
+                : m_size(0),
+                  m_head(nullptr),
+                  m_tail(nullptr) {}
 
         /**
          * Disable copy construction.
@@ -243,9 +243,9 @@ namespace wlp {
          * @param list the list to move
          */
         linked_list(list_type &&list) :
-            m_head(move(list.m_head)),
-            m_tail(move(list.m_tail)),
-            m_size(move(list.m_size)) {
+                m_size(move(list.m_size)),
+                m_head(move(list.m_head)),
+                m_tail(move(list.m_tail)) {
             list.m_size = 0;
             list.m_head = nullptr;
             list.m_tail = nullptr;

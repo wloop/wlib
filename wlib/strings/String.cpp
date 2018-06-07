@@ -12,11 +12,7 @@
 
 namespace wlp {
 
-    dynamic_string::dynamic_string() :
-        dynamic_string(nullptr, nullptr, 0, 0) {}
-
-    dynamic_string::dynamic_string(nullptr_t) :
-        dynamic_string(nullptr, nullptr, 0, 0) {}
+    dynamic_string::dynamic_string() : dynamic_string(nullptr, nullptr, 0, 0) {}
 
     dynamic_string::dynamic_string(const char *str)
             : dynamic_string(str, nullptr, static_cast<size_type>(strlen(str)), 0) {}
