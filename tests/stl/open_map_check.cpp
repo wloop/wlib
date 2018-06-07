@@ -351,3 +351,40 @@ TEST(open_map_test, test_move_assignment) {
     }
     ASSERT_EQ(map1.end(), it);
 }
+
+TEST(open_map_test, insert_rvalue) {
+    typedef dynamic_string string;
+    typedef open_map<string, string> dstringmap;
+
+    dstringmap map;
+
+    string key("key");
+    string val("val");
+
+    map.insert(move(key), move(val));
+    ASSERT_EQ(0, key.length());
+    ASSERT_EQ(0, val.length());
+    ASSERT_STREQ("", key.c_str());
+    ASSERT_STREQ("", val.c_str());
+
+    string akey("key");
+    auto ret = map.find(akey);
+    ASSERT_NE(map.end(), ret);
+    ASSERT_STREQ("val", map[akey].c_str());
+}
+
+TEST(open_map_test, insert_or_assign_rvalue) {
+    typedef dynamic_string string;
+    typedef open_map<string, string> dstringmap;
+
+    dstringmap map;
+
+    string key1("key1");
+    string val1("val1");
+    string val2("val2");
+
+    map.insert(key1, val1);
+    auto ret = map.insert_or_assign(move(key1), move(val2));
+    ASSERT_FALSE(ret.second());
+    ASSERT_STREQ("val2", ret.first()->c_str());
+}
