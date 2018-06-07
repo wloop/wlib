@@ -45,6 +45,13 @@ namespace wlp {
         }
 
         /**
+         * Constructor to nullptr_t is empty string.
+         */
+        explicit static_string<tSize>(nullptr_t) {
+            clear();
+        }
+
+        /**
          * Constructor creates string using static string object
          *
          * @param str @code StaticString @endcode object
@@ -764,6 +771,11 @@ namespace wlp {
          * Default constructor creates string with no characters.
          */
         dynamic_string();
+
+        /**
+         * Constructor of nullptr_t makes empty string.
+         */
+        explicit dynamic_string(nullptr_t);
 
         /**
          * Constructor creates string using character array.
