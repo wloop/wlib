@@ -57,11 +57,6 @@ namespace wlp {
 
     public:
         /**
-         * The node color.
-         */
-        color m_color;
-
-        /**
          * Node parent.
          */
         node_type *m_parent;
@@ -80,6 +75,11 @@ namespace wlp {
          * is mapped to by the key.
          */
         element_type m_element;
+
+        /**
+         * The node color.
+         */
+        color m_color;
 
         /**
          * Obtain the minimum key node starting from the given node.
@@ -363,7 +363,7 @@ namespace wlp {
         /**
          * Class comparator instance.
          */
-        comparator m_cmp;
+        comparator m_cmp{};
         /**
          * Functor used to obtain element key.
          */
@@ -486,8 +486,7 @@ namespace wlp {
          */
         explicit tree()
                 : m_header(nullptr),
-                  m_size(0),
-                  m_cmp() {
+                  m_size(0) {
             m_header = create_node();
             empty_initialize();
         }
@@ -504,8 +503,7 @@ namespace wlp {
          */
         tree(tree_type &&tree)
                 : m_header(move(tree.m_header)),
-                  m_size(move(tree.m_size)),
-                  m_cmp() {
+                  m_size(move(tree.m_size)) {
             tree.m_header = nullptr;
             tree.m_size = 0;
         }
@@ -1074,7 +1072,7 @@ namespace wlp {
         return pair<iterator, bool>(tmp, false);
     }
 
-    template<typename Element, typename Key, typename Val, 
+    template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
     template<typename E>
     typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::iterator

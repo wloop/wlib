@@ -29,7 +29,7 @@
 
 #include <new.h>
 
-void* operator new(decltype(sizeof(0)), void* ptr) noexcept;
+void *operator new(decltype(sizeof(0)), void* ptr) noexcept;
 
 #elif defined(WLIB_DEBUG) && !defined(__AVR_Cosa__)
 

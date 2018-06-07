@@ -322,6 +322,23 @@ namespace wlp {
 
     private:
         /**
+         * The state event data pointer.
+         */
+        sm_event_data *m_event_data;
+
+        /**
+         * Class-level event data instance used to
+         * represent an event with no data.
+         */
+        sm_event_data m_dataless;
+
+        /**
+         * This value is set to true when an event
+         * is generated.
+         */
+        bool m_event_generated;
+
+        /**
          * The maximum number of state machine states,
          * which also corresponds to the strict upper
          * bound on the machine state ordinal value.
@@ -339,23 +356,6 @@ namespace wlp {
          * machine has yet to make the transition.
          */
         state_type m_new_state;
-
-        /**
-         * This value is set to true when an event
-         * is generated.
-         */
-        bool m_event_generated;
-
-        /**
-         * The state event data pointer.
-         */
-        sm_event_data *m_event_data;
-
-        /**
-         * Class-level event data instance used to
-         * represent an event with no data.
-         */
-        sm_event_data m_dataless;
 
         /**
          * Get the state map as defined in a derived class of State Machine.
