@@ -68,13 +68,13 @@ namespace wlp {
         typedef wlp::size_type size_type;
 
         /**
-         * Pointer to the hash map to which this iterator belongs.
-         */
-        const table_type *m_table;
-        /**
          * Pointer to the node referenced by this iterator.
          */
         element_type *m_node;
+        /**
+         * Pointer to the hash map to which this iterator belongs.
+         */
+        const table_type *m_table;
         /**
          * Functor used to obtain element key.
          */
