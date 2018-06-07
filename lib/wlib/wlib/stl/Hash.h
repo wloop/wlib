@@ -35,7 +35,7 @@ namespace wlp {
     template<class Key, class IntType>
     struct hash {
         IntType operator()(const Key &key) const {
-            return (IntType) key;
+            return static_cast<IntType>(key);
         }
     };
 
@@ -52,7 +52,7 @@ namespace wlp {
     inline IntType hash_static_string(const static_string<tSize> &static_string) {
         IntType h = 0;
         for (size_type pos = 0; pos < static_string.length(); ++pos) {
-            h = (IntType) (MUL_127(h) + static_string[pos]);
+            h = static_cast<IntType>(MUL_127(h) + static_string[pos]);
         }
         return h;
     };
@@ -69,7 +69,7 @@ namespace wlp {
     inline IntType hash_string(const char *s) {
         IntType h = 0;
         for (; *s; ++s) {
-            h = (IntType) (MUL_127(h) + *s);
+            h = static_cast<IntType>(MUL_127(h) + *s);
         }
         return h;
     }

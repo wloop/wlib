@@ -68,13 +68,13 @@ namespace wlp {
         typedef wlp::size_type size_type;
 
         /**
-         * Pointer to the node referenced by this iterator.
-         */
-        element_type *m_node;
-        /**
          * Pointer to the hash map to which this iterator belongs.
          */
         const table_type *m_table;
+        /**
+         * Pointer to the node referenced by this iterator.
+         */
+        element_type *m_node;
         /**
          * Functor used to obtain element key.
          */
@@ -241,21 +241,6 @@ namespace wlp {
 
     private:
         /**
-         * Class hash function instance. Used to hash
-         * element keys.
-         */
-        hash_function m_hash_function{};
-        /**
-         * Class key equality function. Used to test
-         * equality of element keys.
-         */
-        key_equals m_key_equals{};
-        /**
-         * Functor to obtain key from element.
-         */
-        get_key m_get_key{};
-
-        /**
          * Hash map backing array.
          */
         element_type **m_buckets;
@@ -275,6 +260,21 @@ namespace wlp {
          * cannot be larger than 100.
          */
         percent_type m_max_load;
+
+        /**
+         * Class hash function instance. Used to hash
+         * element keys.
+         */
+        hash_function m_hash_function{};
+        /**
+         * Class key equality function. Used to test
+         * equality of element keys.
+         */
+        key_equals m_key_equals{};
+        /**
+         * Functor to obtain key from element.
+         */
+        get_key m_get_key{};
 
     public:
         /**

@@ -25,9 +25,9 @@ namespace wlp {
         typedef T val_type;
         typedef LinkedListNode<T> node_type;
 
-        val_type m_val;
         node_type *m_next;
         node_type *m_prev;
+        val_type m_val;
     };
 
     // Forward Declaration of List class
@@ -50,13 +50,13 @@ namespace wlp {
         typedef LinkedListIterator<T, Ref, Ptr> self_type;
 
         /**
-         * Pointer to the node referenced by this iterator.
-         */
-        node_type *m_current;
-        /**
          * Pointer to the iterated List.
          */
         const list_type *m_list;
+        /**
+         * Pointer to the node referenced by this iterator.
+         */
+        node_type *m_current;
 
         /**
          * Default constructor.
@@ -206,10 +206,6 @@ namespace wlp {
 
     private:
         /**
-         * The number of elements in the list.
-         */
-        size_type m_size;
-        /**
          * Pointer to first node in the list.
          */
         node_type *m_head;
@@ -217,6 +213,10 @@ namespace wlp {
          * Pointer to last node in the list.
          */
         node_type *m_tail;
+        /**
+         * The number of elements in the list.
+         */
+        size_type m_size;
 
         friend struct LinkedListIterator<T, T &, T *>;
         friend struct LinkedListIterator<T, const T &, const T *>;
