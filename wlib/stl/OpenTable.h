@@ -59,6 +59,7 @@ namespace wlp {
         typedef open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals> table_type;
 
         typedef Element element_type;
+        typedef Key key_type;
         typedef Val val_type;
         typedef Ref reference;
         typedef Ptr pointer;
@@ -131,6 +132,10 @@ namespace wlp {
                 THROW(KEY_EXCEPTION("Accessing invalid iterator"))
             }
             return &(operator*());
+        }
+
+        const key_type &key() const {
+            return m_get_key(*m_node);
         }
 
         /**

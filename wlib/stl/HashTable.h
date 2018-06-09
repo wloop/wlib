@@ -42,6 +42,7 @@ namespace wlp {
         typedef HashTableNode<Element> node_type;
 
         typedef Element element_type;
+        typedef Key key_type;
         typedef Val val_type;
         typedef Ref reference;
         typedef Ptr pointer;
@@ -96,6 +97,10 @@ namespace wlp {
                 THROW(KEY_EXCEPTION("Accessing invalid operator"));
             }
             return &(operator*());
+        }
+
+        const key_type &key() const {
+            return m_get_key(m_node->m_element);
         }
 
         /**
