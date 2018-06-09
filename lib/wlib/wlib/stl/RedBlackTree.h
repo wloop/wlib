@@ -118,11 +118,11 @@ namespace wlp {
      * @tparam Ptr     pointer to value type, which may be a constant pointer
      * @tparam GetVal  struct which returns the value of an element
      */
-    template<typename Element, 
-        typename Key, 
-        typename Val, 
-        typename Ref, 
-        typename Ptr, 
+    template<typename Element,
+        typename Key,
+        typename Val,
+        typename Ref,
+        typename Ptr,
         typename GetKey,
         typename GetVal>
     struct RedBlackTreeIterator {
@@ -153,13 +153,20 @@ namespace wlp {
          * Functor used to obtain element value.
          */
         get_value m_get_value{};
-        
+
+
+        /**
+         * Default constructor
+         */
+        RedBlackTreeIterator()
+                : m_node(nullptr) {}
+
         /**
          * Constructor from node.
          *
          * @param node to point to
          */
-        RedBlackTreeIterator(node_type *node)
+        explicit RedBlackTreeIterator(node_type *node)
                 : m_node(node) {
         }
 
