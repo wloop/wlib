@@ -127,12 +127,6 @@ namespace wlp {
         typename GetVal>
     struct RedBlackTreeIterator {
         typedef RedBlackTreeNode<Element> node_type;
-        typedef RedBlackTreeIterator<Element, Key, 
-            Val, Val &, Val *, 
-            GetKey, GetVal> iterator;
-        typedef RedBlackTreeIterator<Element, Key, 
-            Val, const Val &, const Val *, 
-            GetKey, GetVal> const_iterator;
         typedef RedBlackTreeColor color;
         typedef Key key_type;
         typedef Ref reference;
@@ -291,7 +285,7 @@ namespace wlp {
          * @return a copy of the iterator before the increment
          */
         self_type operator++(int) {
-            iterator tmp = *this;
+            self_type tmp = *this;
             increment();
             return tmp;
         }
@@ -314,7 +308,7 @@ namespace wlp {
          * @return a copy of the iterator before the increment
          */
         self_type operator--(int) {
-            iterator tmp = *this;
+            self_type tmp = *this;
             decrement();
             return tmp;
         }
