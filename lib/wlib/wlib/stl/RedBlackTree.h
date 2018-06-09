@@ -118,19 +118,31 @@ namespace wlp {
      * @tparam Ptr     pointer to value type, which may be a constant pointer
      * @tparam GetVal  struct which returns the value of an element
      */
-    template<typename Element, typename Val, typename Ref, typename Ptr, typename GetVal>
+    template<typename Element, 
+        typename Key, 
+        typename Val, 
+        typename Ref, 
+        typename Ptr, 
+        typename GetKey,
+        typename GetVal>
     struct RedBlackTreeIterator {
         typedef RedBlackTreeNode<Element> node_type;
-        typedef RedBlackTreeIterator<Element, Val, Val &, Val *, GetVal> iterator;
-        typedef RedBlackTreeIterator<Element, Val, const Val &, const Val *, GetVal> const_iterator;
+        typedef RedBlackTreeIterator<Element, Key, 
+            Val, Val &, Val *, 
+            GetKey, GetVal> iterator;
+        typedef RedBlackTreeIterator<Element, Key, 
+            Val, const Val &, const Val *, 
+            GetKey, GetVal> const_iterator;
         typedef RedBlackTreeColor color;
+        typedef Key key_type;
         typedef Ref reference;
         typedef Ptr pointer;
         typedef Element element_type;
+        typedef GetKey get_key;
         typedef GetVal get_value;
 
     private:
-        typedef RedBlackTreeIterator<Element, Val, Ref, Ptr, GetVal> self_type;
+        typedef RedBlackTreeIterator<Element, Key, Val, Ref, Ptr, GetKey, GetVal> self_type;
 
     public:
         /**
@@ -139,10 +151,15 @@ namespace wlp {
         node_type *m_node;
 
         /**
+         * Functor used to obtain key value.
+         */
+        get_key m_get_key{};
+
+        /**
          * Functor used to obtain element value.
          */
         get_value m_get_value{};
-
+        
         /**
          * Constructor from node.
          *
@@ -235,6 +252,10 @@ namespace wlp {
                 THROW(KEY_EXCEPTION("Accessing invalid iterator"))
             }
             return m_get_value(m_node->m_element);
+        }
+
+        const key_type &key() const {
+            return m_get_key(m_node->m_element);
         }
 
         /**
@@ -343,8 +364,8 @@ namespace wlp {
         typedef wlp::size_type size_type;
         typedef RedBlackTreeNode<Element> node_type;
         typedef tree<Element, Key, Val, GetKey, GetVal, Cmp> tree_type;
-        typedef RedBlackTreeIterator<Element, Val, Val &, Val *, GetVal> iterator;
-        typedef RedBlackTreeIterator<Element, Val, const Val &, const Val *, GetVal> const_iterator;
+        typedef RedBlackTreeIterator<Element, Key, Val, Val &, Val *, GetKey, GetVal> iterator;
+        typedef RedBlackTreeIterator<Element, Key, Val, const Val &, const Val *, GetKey, GetVal> const_iterator;
         typedef GetKey get_key;
         typedef GetVal get_val;
 
