@@ -106,6 +106,8 @@ Hasher, Equals &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class=
 <tr class="separator:a5ab137b47fab92e8697be84ca1c15be8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0397eb3a397e1d8c5a690da89e3d51a1"><td class="memItemLeft" align="right" valign="top">typedef Element&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0397eb3a397e1d8c5a690da89e3d51a1">element_type</a></td></tr>
 <tr class="separator:a0397eb3a397e1d8c5a690da89e3d51a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66bbf149e3518ab4cbaa77335c5f9f25"><td class="memItemLeft" align="right" valign="top">typedef Key&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a66bbf149e3518ab4cbaa77335c5f9f25">key_type</a></td></tr>
+<tr class="separator:a66bbf149e3518ab4cbaa77335c5f9f25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5775ad003d04573a3a67dd60bb14e981"><td class="memItemLeft" align="right" valign="top">typedef Val&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a5775ad003d04573a3a67dd60bb14e981">val_type</a></td></tr>
 <tr class="separator:a5775ad003d04573a3a67dd60bb14e981"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f427cb2159be88d03172b9e7525c255"><td class="memItemLeft" align="right" valign="top">typedef Ref&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a6f427cb2159be88d03172b9e7525c255">reference</a></td></tr>
@@ -129,6 +131,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8991dade115956ae4ab85cbef4eac53a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1525fb3fd4ddd9e0b4327cc0217cacc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#afd7862e24140a3220bb94fb6e108910d">pointer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#ae1525fb3fd4ddd9e0b4327cc0217cacc">operator-&gt;</a> () const </td></tr>
 <tr class="separator:ae1525fb3fd4ddd9e0b4327cc0217cacc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae603a4812a23b151110c9bd3404217e6"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a66bbf149e3518ab4cbaa77335c5f9f25">key_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#ae603a4812a23b151110c9bd3404217e6">key</a> () const </td></tr>
+<tr class="separator:ae603a4812a23b151110c9bd3404217e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa7e5dbaebb9acb0fdaff5de4b62314f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a875eebd2a9604181d4c09a820f7fb43a">self_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#aaa7e5dbaebb9acb0fdaff5de4b62314f">operator++</a> ()</td></tr>
 <tr class="separator:aaa7e5dbaebb9acb0fdaff5de4b62314f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3c6a8d5ae1da8800fac18be684210e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a875eebd2a9604181d4c09a820f7fb43a">self_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#ad3c6a8d5ae1da8800fac18be684210e0">operator++</a> (int)</td></tr>
@@ -192,7 +196,7 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00048">48</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00049">49</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
 
 </div>
 </div>
@@ -208,7 +212,23 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00049">49</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00050">50</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a66bbf149e3518ab4cbaa77335c5f9f25"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Element , typename Key , typename Val , typename Ref , typename Ptr , typename GetKey , typename GetVal , typename Hasher , typename Equals &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef Key <a class="el" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html">wlp::HashTableIterator</a>&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::<a class="el" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a66bbf149e3518ab4cbaa77335c5f9f25">key_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00045">45</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
 
 </div>
 </div>
@@ -240,7 +260,7 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00047">47</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00048">48</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
 
 </div>
 </div>
@@ -256,7 +276,7 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00046">46</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00047">47</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
 
 </div>
 </div>
@@ -288,7 +308,7 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00051">51</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00052">52</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
 
 </div>
 </div>
@@ -320,7 +340,7 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00045">45</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00046">46</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
 
 </div>
 </div>
@@ -349,11 +369,11 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
 </div><div class="memdoc">
 <p>Default constructor. </p>
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00073">73</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                : <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a>(<span class="keyword">nullptr</span>),</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                  <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">m_table</a>(<span class="keyword">nullptr</span>) {}</div>
-<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a0b33a4f0402ad9f30159c516a5c1a968"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">wlp::HashTableIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00056">HashTable.h:56</a></div></div>
-<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a25fb6db82bc786a52d520ba25c6511aa"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">wlp::HashTableIterator::m_table</a></div><div class="ttdeci">const table_type * m_table</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00060">HashTable.h:60</a></div></div>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00074">74</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                : <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a>(<span class="keyword">nullptr</span>),</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                  <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">m_table</a>(<span class="keyword">nullptr</span>) {}</div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a0b33a4f0402ad9f30159c516a5c1a968"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">wlp::HashTableIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00057">HashTable.h:57</a></div></div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a25fb6db82bc786a52d520ba25c6511aa"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">wlp::HashTableIterator::m_table</a></div><div class="ttdeci">const table_type * m_table</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00061">HashTable.h:61</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -399,15 +419,50 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00083">83</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                : <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a>(node),</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                  <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">m_table</a>(table) {}</div>
-<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a0b33a4f0402ad9f30159c516a5c1a968"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">wlp::HashTableIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00056">HashTable.h:56</a></div></div>
-<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a25fb6db82bc786a52d520ba25c6511aa"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">wlp::HashTableIterator::m_table</a></div><div class="ttdeci">const table_type * m_table</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00060">HashTable.h:60</a></div></div>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00084">84</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                : <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a>(node),</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                  <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">m_table</a>(table) {}</div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a0b33a4f0402ad9f30159c516a5c1a968"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">wlp::HashTableIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00057">HashTable.h:57</a></div></div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a25fb6db82bc786a52d520ba25c6511aa"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">wlp::HashTableIterator::m_table</a></div><div class="ttdeci">const table_type * m_table</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00061">HashTable.h:61</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ae603a4812a23b151110c9bd3404217e6"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Element , typename Key , typename Val , typename Ref , typename Ptr , typename GetKey , typename GetVal , typename Hasher , typename Equals &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a66bbf149e3518ab4cbaa77335c5f9f25">key_type</a>&amp; <a class="el" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html">wlp::HashTableIterator</a>&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::key </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00102">102</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+
+<p>References <a class="el" href="../../de/def/_hash_table_8h_source.html#l00032">wlp::HashTableNode&lt; Element &gt;::m_element</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00065">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::m_get_key</a>, and <a class="el" href="../../de/def/_hash_table_8h_source.html#l00057">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::m_node</a>.</p>
+<div class="fragment"><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                                    {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a57062e4c59972438c14e1190e782b80c">m_get_key</a>(<a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a>-&gt;<a class="code" href="../../dd/d94/structwlp_1_1_hash_table_node.html#ad42af8ecd5c6e64c9b8851906c6d679e">m_element</a>);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a57062e4c59972438c14e1190e782b80c"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a57062e4c59972438c14e1190e782b80c">wlp::HashTableIterator::m_get_key</a></div><div class="ttdeci">get_key m_get_key</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00065">HashTable.h:65</a></div></div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a0b33a4f0402ad9f30159c516a5c1a968"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">wlp::HashTableIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00057">HashTable.h:57</a></div></div>
+<div class="ttc" id="structwlp_1_1_hash_table_node_html_ad42af8ecd5c6e64c9b8851906c6d679e"><div class="ttname"><a href="../../dd/d94/structwlp_1_1_hash_table_node.html#ad42af8ecd5c6e64c9b8851906c6d679e">wlp::HashTableNode::m_element</a></div><div class="ttdeci">element_type m_element</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00032">HashTable.h:32</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a class="anchor" id="a9149d76bd6b1681932a5dd3fbf9468de"></a>
 <div class="memitem">
 <div class="memproto">
@@ -440,13 +495,13 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if iteratores are not equal </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00135">135</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00140">140</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
 
-<p>References <a class="el" href="../../de/def/_hash_table_8h_source.html#l00056">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::m_node</a>.</p>
-<div class="fragment"><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                                                   {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a> != it.m_node;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a0b33a4f0402ad9f30159c516a5c1a968"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">wlp::HashTableIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00056">HashTable.h:56</a></div></div>
+<p>References <a class="el" href="../../de/def/_hash_table_8h_source.html#l00057">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::m_node</a>.</p>
+<div class="fragment"><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                                                   {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a> != it.m_node;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a0b33a4f0402ad9f30159c516a5c1a968"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">wlp::HashTableIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00057">HashTable.h:57</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -473,19 +528,19 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00087">87</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00088">88</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
 
-<p>References <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00166">KEY_EXCEPTION</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00032">wlp::HashTableNode&lt; Element &gt;::m_element</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00068">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::m_get_value</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00056">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::m_node</a>, and <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00122">THROW</a>.</p>
+<p>References <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00166">KEY_EXCEPTION</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00032">wlp::HashTableNode&lt; Element &gt;::m_element</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00069">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::m_get_value</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00057">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::m_node</a>, and <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00122">THROW</a>.</p>
 
-<p>Referenced by <a class="el" href="../../de/def/_hash_table_8h_source.html#l00094">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator-&gt;()</a>.</p>
-<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                    {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a> == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <a class="code" href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a>(<a class="code" href="../../d7/d2f/_exceptions_8h.html#aee8b4fdcf0b22e04cf54525b455eaa09">KEY_EXCEPTION</a>(<span class="stringliteral">&quot;Accessing invalid iterator&quot;</span>));</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a46ae49a4fd3851a5362aa7bdcd489810">m_get_value</a>(<a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a>-&gt;<a class="code" href="../../dd/d94/structwlp_1_1_hash_table_node.html#ad42af8ecd5c6e64c9b8851906c6d679e">m_element</a>);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a0b33a4f0402ad9f30159c516a5c1a968"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">wlp::HashTableIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00056">HashTable.h:56</a></div></div>
-<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a46ae49a4fd3851a5362aa7bdcd489810"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a46ae49a4fd3851a5362aa7bdcd489810">wlp::HashTableIterator::m_get_value</a></div><div class="ttdeci">get_value m_get_value</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00068">HashTable.h:68</a></div></div>
+<p>Referenced by <a class="el" href="../../de/def/_hash_table_8h_source.html#l00095">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator-&gt;()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                    {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a> == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                <a class="code" href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a>(<a class="code" href="../../d7/d2f/_exceptions_8h.html#aee8b4fdcf0b22e04cf54525b455eaa09">KEY_EXCEPTION</a>(<span class="stringliteral">&quot;Accessing invalid iterator&quot;</span>));</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a46ae49a4fd3851a5362aa7bdcd489810">m_get_value</a>(<a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a>-&gt;<a class="code" href="../../dd/d94/structwlp_1_1_hash_table_node.html#ad42af8ecd5c6e64c9b8851906c6d679e">m_element</a>);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a0b33a4f0402ad9f30159c516a5c1a968"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">wlp::HashTableIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00057">HashTable.h:57</a></div></div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a46ae49a4fd3851a5362aa7bdcd489810"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a46ae49a4fd3851a5362aa7bdcd489810">wlp::HashTableIterator::m_get_value</a></div><div class="ttdeci">get_value m_get_value</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00069">HashTable.h:69</a></div></div>
 <div class="ttc" id="_exceptions_8h_html_a8d940770e78617d670d314ca0b8c35ef"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a></div><div class="ttdeci">#define THROW(e)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00122">Exceptions.h:122</a></div></div>
 <div class="ttc" id="_exceptions_8h_html_aee8b4fdcf0b22e04cf54525b455eaa09"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#aee8b4fdcf0b22e04cf54525b455eaa09">KEY_EXCEPTION</a></div><div class="ttdeci">#define KEY_EXCEPTION(str)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00166">Exceptions.h:166</a></div></div>
 <div class="ttc" id="structwlp_1_1_hash_table_node_html_ad42af8ecd5c6e64c9b8851906c6d679e"><div class="ttname"><a href="../../dd/d94/structwlp_1_1_hash_table_node.html#ad42af8ecd5c6e64c9b8851906c6d679e">wlp::HashTableNode::m_element</a></div><div class="ttdeci">element_type m_element</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00032">HashTable.h:32</a></div></div>
@@ -517,31 +572,31 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
 <p>Increment iterator to the next element in the table. If no element exists, returns pass-the-end iterator.</p>
 <dl class="section return"><dt>Returns</dt><dd>reference to this iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00388">388</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00393">393</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
 
 <p>References <a class="el" href="../../de/def/_hash_table_8h_source.html#l00032">wlp::HashTableNode&lt; Element &gt;::m_element</a>, and <a class="el" href="../../de/def/_hash_table_8h_source.html#l00028">wlp::HashTableNode&lt; Element &gt;::m_next</a>.</p>
-<div class="fragment"><div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                 {</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a>) {</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        }</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a5ab137b47fab92e8697be84ca1c15be8">node_type</a> *old = <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a>;</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a> = <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a>-&gt;<a class="code" href="../../dd/d94/structwlp_1_1_hash_table_node.html#a57ea3c80738ad8d0ddf92ade009bcd0b">m_next</a>;</div>
+<div class="fragment"><div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                 {</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a>) {</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#aff2b0a3e87ca3b67b1cfd3394262f3ed">size_type</a> n = <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">m_table</a>-&gt;<a class="code" href="../../dc/d42/classwlp_1_1hash__table.html#ab8c95c54f92ca4222ad7df9e0a506bb9">hash</a>(<a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a57062e4c59972438c14e1190e782b80c">m_get_key</a>(old-&gt;m_element));</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            <span class="keywordflow">while</span> (!<a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a> &amp;&amp; ++n &lt; m_table-&gt;m_capacity) {</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a> = <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">m_table</a>-&gt;<a class="code" href="../../dc/d42/classwlp_1_1hash__table.html#a357e7ac7d3cc88c40753038d489dbaf7">m_buckets</a>[n];</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            }</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        }</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    }</div>
-<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a57062e4c59972438c14e1190e782b80c"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a57062e4c59972438c14e1190e782b80c">wlp::HashTableIterator::m_get_key</a></div><div class="ttdeci">get_key m_get_key</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00064">HashTable.h:64</a></div></div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        }</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a5ab137b47fab92e8697be84ca1c15be8">node_type</a> *old = <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a>;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a> = <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a>-&gt;<a class="code" href="../../dd/d94/structwlp_1_1_hash_table_node.html#a57ea3c80738ad8d0ddf92ade009bcd0b">m_next</a>;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a>) {</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#aff2b0a3e87ca3b67b1cfd3394262f3ed">size_type</a> n = <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">m_table</a>-&gt;<a class="code" href="../../dc/d42/classwlp_1_1hash__table.html#ab8c95c54f92ca4222ad7df9e0a506bb9">hash</a>(<a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a57062e4c59972438c14e1190e782b80c">m_get_key</a>(old-&gt;m_element));</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;            <span class="keywordflow">while</span> (!<a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a> &amp;&amp; ++n &lt; m_table-&gt;m_capacity) {</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a> = <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">m_table</a>-&gt;<a class="code" href="../../dc/d42/classwlp_1_1hash__table.html#a357e7ac7d3cc88c40753038d489dbaf7">m_buckets</a>[n];</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            }</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        }</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    }</div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a57062e4c59972438c14e1190e782b80c"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a57062e4c59972438c14e1190e782b80c">wlp::HashTableIterator::m_get_key</a></div><div class="ttdeci">get_key m_get_key</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00065">HashTable.h:65</a></div></div>
 <div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a5ab137b47fab92e8697be84ca1c15be8"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a5ab137b47fab92e8697be84ca1c15be8">wlp::HashTableIterator::node_type</a></div><div class="ttdeci">HashTableNode&lt; Element &gt; node_type</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00042">HashTable.h:42</a></div></div>
 <div class="ttc" id="structwlp_1_1_hash_table_node_html_a57ea3c80738ad8d0ddf92ade009bcd0b"><div class="ttname"><a href="../../dd/d94/structwlp_1_1_hash_table_node.html#a57ea3c80738ad8d0ddf92ade009bcd0b">wlp::HashTableNode::m_next</a></div><div class="ttdeci">node_type * m_next</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00028">HashTable.h:28</a></div></div>
-<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a0b33a4f0402ad9f30159c516a5c1a968"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">wlp::HashTableIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00056">HashTable.h:56</a></div></div>
-<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a25fb6db82bc786a52d520ba25c6511aa"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">wlp::HashTableIterator::m_table</a></div><div class="ttdeci">const table_type * m_table</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00060">HashTable.h:60</a></div></div>
-<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_aff2b0a3e87ca3b67b1cfd3394262f3ed"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#aff2b0a3e87ca3b67b1cfd3394262f3ed">wlp::HashTableIterator::size_type</a></div><div class="ttdeci">wlp::size_type size_type</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00051">HashTable.h:51</a></div></div>
-<div class="ttc" id="classwlp_1_1hash__table_html_ab8c95c54f92ca4222ad7df9e0a506bb9"><div class="ttname"><a href="../../dc/d42/classwlp_1_1hash__table.html#ab8c95c54f92ca4222ad7df9e0a506bb9">wlp::hash_table::hash</a></div><div class="ttdeci">size_type hash(const key_type &amp;key) const </div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00268">HashTable.h:268</a></div></div>
-<div class="ttc" id="classwlp_1_1hash__table_html_a357e7ac7d3cc88c40753038d489dbaf7"><div class="ttname"><a href="../../dc/d42/classwlp_1_1hash__table.html#a357e7ac7d3cc88c40753038d489dbaf7">wlp::hash_table::m_buckets</a></div><div class="ttdeci">node_type ** m_buckets</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00203">HashTable.h:203</a></div></div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a0b33a4f0402ad9f30159c516a5c1a968"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">wlp::HashTableIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00057">HashTable.h:57</a></div></div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a25fb6db82bc786a52d520ba25c6511aa"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">wlp::HashTableIterator::m_table</a></div><div class="ttdeci">const table_type * m_table</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00061">HashTable.h:61</a></div></div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_aff2b0a3e87ca3b67b1cfd3394262f3ed"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#aff2b0a3e87ca3b67b1cfd3394262f3ed">wlp::HashTableIterator::size_type</a></div><div class="ttdeci">wlp::size_type size_type</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00052">HashTable.h:52</a></div></div>
+<div class="ttc" id="classwlp_1_1hash__table_html_ab8c95c54f92ca4222ad7df9e0a506bb9"><div class="ttname"><a href="../../dc/d42/classwlp_1_1hash__table.html#ab8c95c54f92ca4222ad7df9e0a506bb9">wlp::hash_table::hash</a></div><div class="ttdeci">size_type hash(const key_type &amp;key) const </div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00273">HashTable.h:273</a></div></div>
+<div class="ttc" id="classwlp_1_1hash__table_html_a357e7ac7d3cc88c40753038d489dbaf7"><div class="ttname"><a href="../../dc/d42/classwlp_1_1hash__table.html#a357e7ac7d3cc88c40753038d489dbaf7">wlp::hash_table::m_buckets</a></div><div class="ttdeci">node_type ** m_buckets</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00208">HashTable.h:208</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -563,12 +618,12 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
 <p>Postfix increment operator returns iterator to next element in the table, or pass-the-end.</p>
 <dl class="section return"><dt>Returns</dt><dd>next iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00409">409</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                    {</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a875eebd2a9604181d4c09a820f7fb43a">self_type</a> tmp = *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        ++*<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    }</div>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00414">414</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                    {</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a875eebd2a9604181d4c09a820f7fb43a">self_type</a> tmp = *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;        ++*<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        <span class="keywordflow">return</span> tmp;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    }</div>
 <div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a875eebd2a9604181d4c09a820f7fb43a"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a875eebd2a9604181d4c09a820f7fb43a">wlp::HashTableIterator::self_type</a></div><div class="ttdeci">HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt; self_type</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00040">HashTable.h:40</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -596,17 +651,17 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00094">94</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00095">95</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
 
-<p>References <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00166">KEY_EXCEPTION</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00056">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::m_node</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00087">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator*()</a>, and <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00122">THROW</a>.</p>
-<div class="fragment"><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                                   {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a> == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <a class="code" href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a>(<a class="code" href="../../d7/d2f/_exceptions_8h.html#aee8b4fdcf0b22e04cf54525b455eaa09">KEY_EXCEPTION</a>(<span class="stringliteral">&quot;Accessing invalid operator&quot;</span>));</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">return</span> &amp;(<a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a8991dade115956ae4ab85cbef4eac53a">operator*</a>());</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a0b33a4f0402ad9f30159c516a5c1a968"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">wlp::HashTableIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00056">HashTable.h:56</a></div></div>
-<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a8991dade115956ae4ab85cbef4eac53a"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a8991dade115956ae4ab85cbef4eac53a">wlp::HashTableIterator::operator*</a></div><div class="ttdeci">reference operator*() const </div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00087">HashTable.h:87</a></div></div>
+<p>References <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00166">KEY_EXCEPTION</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00057">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::m_node</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00088">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator*()</a>, and <a class="el" href="../../d7/d2f/_exceptions_8h_source.html#l00122">THROW</a>.</p>
+<div class="fragment"><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                                   {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a> == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <a class="code" href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a>(<a class="code" href="../../d7/d2f/_exceptions_8h.html#aee8b4fdcf0b22e04cf54525b455eaa09">KEY_EXCEPTION</a>(<span class="stringliteral">&quot;Accessing invalid operator&quot;</span>));</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">return</span> &amp;(<a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a8991dade115956ae4ab85cbef4eac53a">operator*</a>());</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a0b33a4f0402ad9f30159c516a5c1a968"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">wlp::HashTableIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00057">HashTable.h:57</a></div></div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a8991dade115956ae4ab85cbef4eac53a"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a8991dade115956ae4ab85cbef4eac53a">wlp::HashTableIterator::operator*</a></div><div class="ttdeci">reference operator*() const </div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00088">HashTable.h:88</a></div></div>
 <div class="ttc" id="_exceptions_8h_html_a8d940770e78617d670d314ca0b8c35ef"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#a8d940770e78617d670d314ca0b8c35ef">THROW</a></div><div class="ttdeci">#define THROW(e)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00122">Exceptions.h:122</a></div></div>
 <div class="ttc" id="_exceptions_8h_html_aee8b4fdcf0b22e04cf54525b455eaa09"><div class="ttname"><a href="../../d7/d2f/_exceptions_8h.html#aee8b4fdcf0b22e04cf54525b455eaa09">KEY_EXCEPTION</a></div><div class="ttdeci">#define KEY_EXCEPTION(str)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2f/_exceptions_8h_source.html#l00166">Exceptions.h:166</a></div></div>
 </div><!-- fragment -->
@@ -652,16 +707,16 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>reference to this node. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00145">145</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00150">150</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
 
-<p>References <a class="el" href="../../de/def/_hash_table_8h_source.html#l00056">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::m_node</a>, and <a class="el" href="../../de/def/_hash_table_8h_source.html#l00060">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::m_table</a>.</p>
-<div class="fragment"><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                                  {</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a> = it.m_node;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">m_table</a> = it.m_table;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a0b33a4f0402ad9f30159c516a5c1a968"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">wlp::HashTableIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00056">HashTable.h:56</a></div></div>
-<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a25fb6db82bc786a52d520ba25c6511aa"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">wlp::HashTableIterator::m_table</a></div><div class="ttdeci">const table_type * m_table</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00060">HashTable.h:60</a></div></div>
+<p>References <a class="el" href="../../de/def/_hash_table_8h_source.html#l00057">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::m_node</a>, and <a class="el" href="../../de/def/_hash_table_8h_source.html#l00061">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::m_table</a>.</p>
+<div class="fragment"><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                                                  {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a> = it.m_node;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">m_table</a> = it.m_table;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a0b33a4f0402ad9f30159c516a5c1a968"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">wlp::HashTableIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00057">HashTable.h:57</a></div></div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a25fb6db82bc786a52d520ba25c6511aa"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a25fb6db82bc786a52d520ba25c6511aa">wlp::HashTableIterator::m_table</a></div><div class="ttdeci">const table_type * m_table</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00061">HashTable.h:61</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -697,13 +752,13 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if iterators are equal </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00124">124</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00129">129</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
 
-<p>References <a class="el" href="../../de/def/_hash_table_8h_source.html#l00056">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::m_node</a>.</p>
-<div class="fragment"><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                                                   {</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a> == it.m_node;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        }</div>
-<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a0b33a4f0402ad9f30159c516a5c1a968"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">wlp::HashTableIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00056">HashTable.h:56</a></div></div>
+<p>References <a class="el" href="../../de/def/_hash_table_8h_source.html#l00057">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::m_node</a>.</p>
+<div class="fragment"><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                                                   {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">m_node</a> == it.m_node;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
+<div class="ttc" id="structwlp_1_1_hash_table_iterator_html_a0b33a4f0402ad9f30159c516a5c1a968"><div class="ttname"><a href="../../d7/dc9/structwlp_1_1_hash_table_iterator.html#a0b33a4f0402ad9f30159c516a5c1a968">wlp::HashTableIterator::m_node</a></div><div class="ttdeci">node_type * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00057">HashTable.h:57</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -721,7 +776,9 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
 </div><div class="memdoc">
 <p>Functor instance used to get keys. </p>
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00064">64</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00065">65</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+
+<p>Referenced by <a class="el" href="../../de/def/_hash_table_8h_source.html#l00102">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::key()</a>.</p>
 
 </div>
 </div>
@@ -738,9 +795,9 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
 </div><div class="memdoc">
 <p>Functor instance used to get values. </p>
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00068">68</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00069">69</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../de/def/_hash_table_8h_source.html#l00087">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator*()</a>.</p>
+<p>Referenced by <a class="el" href="../../de/def/_hash_table_8h_source.html#l00088">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator*()</a>.</p>
 
 </div>
 </div>
@@ -757,9 +814,9 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
 </div><div class="memdoc">
 <p>Pointer to the node referenced by this iterator. </p>
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00056">56</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00057">57</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../de/def/_hash_table_8h_source.html#l00547">wlp::hash_table&lt; Element, Key, Val, GetKey, GetVal, Hasher, Equals &gt;::erase()</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00135">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator!=()</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00087">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator*()</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00094">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator-&gt;()</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00145">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator=()</a>, and <a class="el" href="../../de/def/_hash_table_8h_source.html#l00124">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator==()</a>.</p>
+<p>Referenced by <a class="el" href="../../de/def/_hash_table_8h_source.html#l00552">wlp::hash_table&lt; Element, Key, Val, GetKey, GetVal, Hasher, Equals &gt;::erase()</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00102">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::key()</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00140">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator!=()</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00088">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator*()</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00095">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator-&gt;()</a>, <a class="el" href="../../de/def/_hash_table_8h_source.html#l00150">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator=()</a>, and <a class="el" href="../../de/def/_hash_table_8h_source.html#l00129">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator==()</a>.</p>
 
 </div>
 </div>
@@ -776,9 +833,9 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
 </div><div class="memdoc">
 <p>Pointer to the iterated HashMap. </p>
 
-<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00060">60</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/def/_hash_table_8h_source.html#l00061">61</a> of file <a class="el" href="../../de/def/_hash_table_8h_source.html">HashTable.h</a>.</p>
 
-<p>Referenced by <a class="el" href="../../de/def/_hash_table_8h_source.html#l00145">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator=()</a>.</p>
+<p>Referenced by <a class="el" href="../../de/def/_hash_table_8h_source.html#l00150">wlp::HashTableIterator&lt; Element, Key, Val, Ref, Ptr, GetKey, GetVal, Hasher, Equals &gt;::operator=()</a>.</p>
 
 </div>
 </div>
@@ -788,7 +845,7 @@ template&lt;typename Element , typename Key , typename Val , typename Ref , type
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 7 2018 21:04:32 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 9 2018 15:09:28 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

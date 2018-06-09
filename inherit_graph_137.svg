@@ -11,11 +11,11 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-44 136,-44 136,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:href="dd/d48/structwlp_1_1_red_black_tree_iterator.html" target="_top" xlink:title="wlp::RedBlackTreeIterator\l\&lt; Element, Val, Ref, Ptr,\l GetVal \&gt;">
+<g id="a_node1"><a xlink:href="dd/d48/structwlp_1_1_red_black_tree_iterator.html" target="_top" xlink:title="wlp::RedBlackTreeIterator\l\&lt; Element, Key, Val, Ref,\l Ptr, GetKey, GetVal \&gt;">
 <polygon fill="white" stroke="black" points="0.5,0.5 0.5,-40.5 131.5,-40.5 131.5,0.5 0.5,0.5"/>
 <text text-anchor="start" x="8.5" y="-28.5" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::RedBlackTreeIterator</text>
-<text text-anchor="start" x="8.5" y="-17.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; Element, Val, Ref, Ptr,</text>
-<text text-anchor="middle" x="66" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00"> GetVal &gt;</text>
+<text text-anchor="start" x="8.5" y="-17.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; Element, Key, Val, Ref,</text>
+<text text-anchor="middle" x="66" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00"> Ptr, GetKey, GetVal &gt;</text>
 </a>
 </g>
 </g>

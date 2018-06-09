@@ -234,32 +234,32 @@ var sectionId = 'dynsection-30';
 </g>
 <!-- Node15 -->
 <g id="node15" class="node"><title>Node15</title>
-<g id="a_node15"><a xlink:href="../../d9/d40/classwlp_1_1tree.html#ac8092e07ff5b9a6cbeb5364b31519fff" target="_top" xlink:title="wlp::tree\&lt; tuple\&lt; Key,\l Val \&gt;, Key, Val, MapGetKey\l\&lt; Key, Val \&gt;, MapGetVal\&lt;\l Key, Val \&gt;, Cmp \&gt;::operator=">
-<polygon fill="white" stroke="black" points="102.5,-115 102.5,-167 251.5,-167 251.5,-115 102.5,-115"/>
-<text text-anchor="start" x="110.5" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::tree&lt; tuple&lt; Key,</text>
-<text text-anchor="start" x="110.5" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00"> Val &gt;, Key, Val, MapGetKey</text>
-<text text-anchor="start" x="110.5" y="-133" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; Key, Val &gt;, MapGetVal&lt;</text>
-<text text-anchor="middle" x="177" y="-122" font-family="Helvetica,sans-Serif" font-size="10.00"> Key, Val &gt;, Cmp &gt;::operator=</text>
+<g id="a_node15"><a xlink:href="../../d3/dc1/classwlp_1_1array__list.html#adf73d35242abd11dc3b27b3134af0f1f" target="_top" xlink:title="wlp::array_list::operator=">
+<polygon fill="white" stroke="black" points="114.5,-148.5 114.5,-167.5 239.5,-167.5 239.5,-148.5 114.5,-148.5"/>
+<text text-anchor="middle" x="177" y="-155.5" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::array_list::operator=</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node15 -->
 <g id="edge14" class="edge"><title>Node1&#45;&gt;Node15</title>
-<path fill="none" stroke="midnightblue" d="M33.7047,-349.926C37.9514,-311.701 52.2147,-227.757 98,-177 101.297,-173.345 105.039,-170.035 109.059,-167.04"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="30.1865,-349.938 32.6845,-360.234 37.1525,-350.628 30.1865,-349.938"/>
+<path fill="none" stroke="midnightblue" d="M32.7804,-350.143C35.4337,-310.97 47.0709,-223.514 98,-177 102.734,-172.676 108.285,-169.293 114.207,-166.652"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="29.2792,-350.07 32.2281,-360.247 36.2688,-350.453 29.2792,-350.07"/>
 </g>
 <!-- Node16 -->
 <g id="node16" class="node"><title>Node16</title>
-<g id="a_node16"><a xlink:href="../../d3/dc1/classwlp_1_1array__list.html#adf73d35242abd11dc3b27b3134af0f1f" target="_top" xlink:title="wlp::array_list::operator=">
-<polygon fill="white" stroke="black" points="114.5,-76.5 114.5,-95.5 239.5,-95.5 239.5,-76.5 114.5,-76.5"/>
-<text text-anchor="middle" x="177" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::array_list::operator=</text>
+<g id="a_node16"><a xlink:href="../../d9/d40/classwlp_1_1tree.html#ac8092e07ff5b9a6cbeb5364b31519fff" target="_top" xlink:title="wlp::tree\&lt; tuple\&lt; Key,\l Val \&gt;, Key, Val, MapGetKey\l\&lt; Key, Val \&gt;, MapGetVal\&lt;\l Key, Val \&gt;, Cmp \&gt;::operator=">
+<polygon fill="white" stroke="black" points="102.5,-77 102.5,-129 251.5,-129 251.5,-77 102.5,-77"/>
+<text text-anchor="start" x="110.5" y="-117" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::tree&lt; tuple&lt; Key,</text>
+<text text-anchor="start" x="110.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00"> Val &gt;, Key, Val, MapGetKey</text>
+<text text-anchor="start" x="110.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; Key, Val &gt;, MapGetVal&lt;</text>
+<text text-anchor="middle" x="177" y="-84" font-family="Helvetica,sans-Serif" font-size="10.00"> Key, Val &gt;, Cmp &gt;::operator=</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node16 -->
 <g id="edge15" class="edge"><title>Node1&#45;&gt;Node16</title>
-<path fill="none" stroke="midnightblue" d="M34.3253,-350.212C41.2037,-295.002 63.1747,-141.036 98,-106 102.632,-101.34 108.192,-97.717 114.184,-94.9072"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="30.8173,-350.067 33.0874,-360.415 37.7663,-350.91 30.8173,-350.067"/>
+<path fill="none" stroke="midnightblue" d="M32.3227,-350.249C34.0526,-306.864 43.9475,-202.097 98,-139 101.105,-135.375 104.652,-132.095 108.483,-129.128"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="28.8216,-350.238 32.0288,-360.336 35.8186,-350.442 28.8216,-350.238"/>
 </g>
 <!-- Node17 -->
 <g id="node17" class="node"><title>Node17</title>
@@ -271,8 +271,8 @@ var sectionId = 'dynsection-30';
 </g>
 <!-- Node1&#45;&gt;Node17 -->
 <g id="edge16" class="edge"><title>Node1&#45;&gt;Node17</title>
-<path fill="none" stroke="midnightblue" d="M33.6227,-350.116C38.9801,-289.375 58.084,-107.905 98,-67 101.699,-63.2094 106.018,-60.1255 110.693,-57.622"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="30.1179,-350.025 32.7562,-360.286 37.0926,-350.619 30.1179,-350.025"/>
+<path fill="none" stroke="midnightblue" d="M33.654,-350.202C39.1024,-289.72 58.4424,-109.001 98,-68 102.174,-63.6739 107.146,-60.2368 112.531,-57.5122"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="30.153,-350.062 32.7719,-360.328 37.1266,-350.67 30.153,-350.062"/>
 </g>
 <!-- Node18 -->
 <g id="node18" class="node"><title>Node18</title>
