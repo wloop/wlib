@@ -9,6 +9,7 @@
  */
 
 #include <wlib/strings/String.h>
+#include <wlib/memory>
 
 namespace wlp {
 
@@ -34,13 +35,13 @@ namespace wlp {
             : m_buffer(str.m_buffer),
               m_len(str.m_len) {
         str.m_len = 0;
-        str.m_buffer = malloc<char[]>(1);
+        str.m_buffer = create<char[]>(1);
         str.m_buffer[0] = '\0';
     }
 
     dynamic_string::dynamic_string(const char *str1, const char *str2, size_type len1, size_type len2) {
         m_len = len1 + len2;
-        m_buffer = malloc<char[]>(static_cast<size_type>(m_len + 1));
+        m_buffer = create<char[]>(static_cast<size_type>(m_len + 1));
         memcpy(m_buffer, str1, len1);
         memcpy(m_buffer + len1, str2, len2);
         m_buffer[m_len] = '\0';
@@ -48,14 +49,14 @@ namespace wlp {
 
     dynamic_string::~dynamic_string() {
         if (m_buffer) {
-            free<char>(m_buffer);
+            destroy<char[]>(m_buffer);
         }
     }
 
     void dynamic_string::set_value(const char *str, size_type len) {
         if (len > m_len) {
-            free(m_buffer);
-            m_buffer = malloc<char[]>(static_cast<size_type>(len + 1));
+            destroy<char[]>(m_buffer);
+            m_buffer = create<char[]>(static_cast<size_type>(len + 1));
         }
         m_len = len;
         memcpy(m_buffer, str, len);
@@ -73,27 +74,27 @@ namespace wlp {
     }
 
     dynamic_string &dynamic_string::operator=(dynamic_string &&str) noexcept {
-        free<char>(m_buffer);
+        destroy<char[]>(m_buffer);
         m_buffer = str.m_buffer;
         m_len = str.m_len;
         str.m_len = 0;
-        str.m_buffer = malloc<char[]>(1);
+        str.m_buffer = create<char[]>(1);
         str.m_buffer[0] = '\0';
         return *this;
     }
 
     dynamic_string &dynamic_string::operator=(const char c) {
-        free<char>(m_buffer);
-        m_buffer = malloc<char[]>(2);
+        destroy<char[]>(m_buffer);
+        m_buffer = create<char[]>(2);
         reinterpret_cast<uint16_t *>(m_buffer)[0] = static_cast<uint16_t>(c);
         return *this;
     }
 
-    size_type dynamic_string::length() const {
+    dynamic_string::size_type dynamic_string::length() const {
         return m_len;
     }
 
-    size_type dynamic_string::capacity() const {
+    dynamic_string::size_type dynamic_string::capacity() const {
         return static_cast<size_type>(-1);
     }
 
@@ -153,7 +154,7 @@ namespace wlp {
 
     dynamic_string &dynamic_string::append(const char *c_str, size_type len) {
         auto newLength = static_cast<size_type>(m_len + len);
-        m_buffer = realloc<char>(m_buffer, static_cast<size_type>(newLength + 1));
+        m_buffer = static_cast<char *>(mem::realloc(m_buffer, static_cast<size_type>(newLength + 1)));
 
         memcpy(m_buffer + m_len, c_str, newLength);
 
@@ -199,8 +200,8 @@ namespace wlp {
     }
 
     void dynamic_string::resize(size_type len) {
-        if (m_buffer) { free<char>(m_buffer); }
-        m_buffer = malloc<char[]>(static_cast<size_type>(len + 1));
+        if (m_buffer) { destroy<char[]>(m_buffer); }
+        m_buffer = create<char[]>(static_cast<size_type>(len + 1));
         m_buffer[0] = '\0';
         m_len = 0;
     }
@@ -210,21 +211,21 @@ namespace wlp {
     }
 
     dynamic_string dynamic_string::substr(size_type pos, size_type length) const {
-        char *newBuffer = malloc<char[]>(static_cast<size_type>(length + 1));
+        char *newBuffer = create<char[]>(static_cast<size_type>(length + 1));
         memcpy(newBuffer, m_buffer + pos, length);
         newBuffer[length] = '\0';
         return {length, newBuffer};
     }
 
-    diff_type dynamic_string::compare(const dynamic_string &str) const {
+    dynamic_string::diff_type dynamic_string::compare(const dynamic_string &str) const {
         return compare(str.c_str());
     }
 
-    diff_type dynamic_string::compare(const char *str) const {
+    dynamic_string::diff_type dynamic_string::compare(const char *str) const {
         return static_cast<diff_type>(strcmp(c_str(), str));
     }
 
-    diff_type dynamic_string::compare(char c) const {
+    dynamic_string::diff_type dynamic_string::compare(char c) const {
         const char array[2] = {c, '\0'};
         return static_cast<diff_type>(strcmp(c_str(), array));
     }
@@ -314,11 +315,11 @@ namespace wlp {
     }
 
     dynamic_string operator+(const char *lhs, const dynamic_string &rhs) {
-        return {lhs, rhs.c_str(), static_cast<size_type>(strlen(lhs)), rhs.length()};
+        return {lhs, rhs.c_str(), static_cast<dynamic_string::size_type>(strlen(lhs)), rhs.length()};
     }
 
     dynamic_string operator+(const dynamic_string &lhs, const char *rhs) {
-        return {lhs.c_str(), rhs, lhs.length(), static_cast<size_type>(strlen(rhs))};
+        return {lhs.c_str(), rhs, lhs.length(), static_cast<dynamic_string::size_type>(strlen(rhs))};
     }
 
     dynamic_string operator+(char lhs, const dynamic_string &rhs) {

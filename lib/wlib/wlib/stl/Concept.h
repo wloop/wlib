@@ -14,10 +14,10 @@
 #ifndef EMBEDDEDCPLUSPLUS_CONCEPTCHECKS_H
 #define EMBEDDEDCPLUSPLUS_CONCEPTCHECKS_H
 
-#include <wlib/Wlib.h>
 #include <wlib/stl/Pair.h>
 #include <wlib/stl/TypeTraits.h>
-#include <wlib/util/Tmp.h>
+#include <wlib/tmp/Declval.h>
+#include <wlib/type_traits>
 
 /**
  * Definitions for a variadic macro that generates

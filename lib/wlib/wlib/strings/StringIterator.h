@@ -1,17 +1,16 @@
 #ifndef EMBEDDEDCPLUSPLUS_STRINGITERATOR_H
 #define EMBEDDEDCPLUSPLUS_STRINGITERATOR_H
 
-#include <wlib/Types.h>
-#include <wlib/stl/Concept.h>
+#include <stddef.h>
 
 namespace wlp {
 
-    template<typename String, typename Ref, typename Ptr/*, typename = typename enable_if<is_string<String>()>::type*/>
+    template<typename String, typename Ref, typename Ptr>
     class StringIterator {
     public:
         typedef char val_type;
-        typedef wlp::size_type size_type;
-        typedef wlp::diff_type diff_type;
+        typedef size_t size_type;
+        typedef ptrdiff_t diff_type;
         typedef String string_type;
         typedef Ref reference;
         typedef Ptr pointer;

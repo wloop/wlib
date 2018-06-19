@@ -14,30 +14,12 @@
 #ifndef CORE_STL_HASH_H
 #define CORE_STL_HASH_H
 
-#include <wlib/Types.h>
-#include <wlib/WlibConfig.h>
-#include <wlib/util/Math.h>
 #include <wlib/strings/String.h>
 
-namespace wlp {
+#define MUL_31(x)  (((x) << 5) - (x))
+#define MUL_127(x) (((x) << 7) - (x))
 
-    /**
-     * A basic hash function is defined to be a function that, as best
-     * as reasonably possible, maps a key-type value to a unique positive integer
-     * value.
-     *
-     * @pre The default hash function attempts to cast to the integer type,
-     *      which works for integer, character, and floating point types.
-     *
-     * @tparam Key     key type
-     * @tparam IntType the unsigned integer type to return
-     */
-    template<class Key, class IntType>
-    struct hash {
-        IntType operator()(const Key &key) const {
-            return static_cast<IntType>(key);
-        }
-    };
+namespace wlp {
 
     /**
      * Hash a static string by multiplying the character value
@@ -51,7 +33,7 @@ namespace wlp {
     template<class IntType, uint16_t tSize>
     inline IntType hash_static_string(const static_string<tSize> &static_string) {
         IntType h = 0;
-        for (size_type pos = 0; pos < static_string.length(); ++pos) {
+        for (size_t pos = 0; pos < static_string.length(); ++pos) {
             h = static_cast<IntType>(MUL_127(h) + static_string[pos]);
         }
         return h;
@@ -75,13 +57,32 @@ namespace wlp {
     }
 
     /**
+     * A basic hash function is defined to be a function that, as best
+     * as reasonably possible, maps a key-type value to a unique positive integer
+     * value.
+     *
+     * @pre The default hash function attempts to cast to the integer type,
+     *      which works for integer, character, and floating point types.
+     *
+     * @tparam Key     key type
+     * @tparam IntType the unsigned integer type to return
+     */
+    template<class Key, class IntType>
+    struct hash {
+        template<typename = typename enable_if<is_integral<Key>::value>::type>
+        IntType operator()(const Key &key) const {
+            return static_cast<IntType>(key);
+        }
+    };
+
+    /**
      * Template specialization for static stirng.
      *
      * @tparam IntType hash code integer type
      * @tparam tSize static string size
      */
     template<class IntType, uint16_t tSize>
-    struct hash<static_string<tSize>, IntType> {
+    struct hash<wlp::static_string<tSize>, IntType> {
         IntType operator()(const static_string<tSize> &s) const {
             return hash_static_string<IntType, tSize>(s);
         }

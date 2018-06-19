@@ -5,16 +5,17 @@
 
 using namespace wlp;
 
+typedef size_t size_type;
 typedef array_list<int>::const_iterator cit;
 
 TEST(array_list_test, test_constructors) {
     int values[] = {1, 2, 3, 4, 5};
     array_list<int> list(values, 5, 2);
-    ASSERT_EQ(5, list.capacity());
-    ASSERT_EQ(5, list.size());
+    ASSERT_EQ(5u, list.capacity());
+    ASSERT_EQ(5u, list.size());
     array_list<int> list0(values, 5);
-    ASSERT_EQ(5, list0.capacity());
-    ASSERT_EQ(5, list.size());
+    ASSERT_EQ(5u, list0.capacity());
+    ASSERT_EQ(5u, list.size());
     for (size_type i = 0; i < 5; i++) {
         ASSERT_EQ(values[i], list[i]);
         ASSERT_EQ(values[i], list0[i]);
@@ -45,7 +46,7 @@ TEST(array_list_test, test_const_list_back_front_when_empty) {
     array_list<int> list(values, 3);
     list.clear();
     const array_list<int> const_list(move(list));
-    ASSERT_EQ(0, const_list.size());
+    ASSERT_EQ(0u, const_list.size());
     ASSERT_EQ(1, const_list.back());
     ASSERT_EQ(1, const_list.front());
 }
@@ -54,8 +55,8 @@ TEST(array_list_test, test_clear) {
     int values[] = {2, 3, 5, 7};
     array_list<int> list(values, 4);
     list.clear();
-    ASSERT_EQ(0, list.size());
-    ASSERT_EQ(4, list.capacity());
+    ASSERT_EQ(0u, list.size());
+    ASSERT_EQ(4u, list.capacity());
     list.clear();
     ASSERT_EQ(2, list.front());
     ASSERT_EQ(2, list.back());

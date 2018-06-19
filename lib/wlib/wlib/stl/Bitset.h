@@ -17,8 +17,6 @@
 #include <math.h>
 #include <string.h>
 
-#include <wlib/Types.h>
-#include <wlib/Wlib.h>
 #include <wlib/strings/String.h>
 
 namespace wlp {
@@ -92,7 +90,7 @@ namespace wlp {
          */
         bit_set(const bit_set<nBits> &b) {
             uint32_t end = ceil_bits<nBits>::value;
-            for (size_type i = 0; i < end; i++) {
+            for (size_t i = 0; i < end; i++) {
                 m_array[i] = (m_array[i] & 0) | b.m_array[i];
             }
         }
@@ -106,7 +104,7 @@ namespace wlp {
             memset(m_array, 0, sizeof(m_array));
             constexpr uint32_t end = static_cast<uint32_t>(nBits / INT32_SIZE);
             constexpr uint32_t extra = static_cast<uint32_t>(nBits - end * INT32_SIZE);
-            for (size_type i = 0; i < end; ++i) {
+            for (size_t i = 0; i < end; ++i) {
                 m_array[i] = static_cast<uint32_t>(n);
                 n >>= INT32_SIZE;
             }
@@ -207,7 +205,7 @@ namespace wlp {
          */
         bit_set<nBits> &operator=(const bit_set<nBits> &b) {
             uint32_t end = ceil_bits<nBits>::value;
-            for (size_type i = 0; i < end; i++) {
+            for (size_t i = 0; i < end; i++) {
                 m_array[i] = (m_array[i] & 0) | b.m_array[i];
             }
             return *this;

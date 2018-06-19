@@ -18,9 +18,6 @@
 #include <wlib/stl/Equal.h>
 #include <wlib/stl/Hash.h>
 #include <wlib/stl/Pair.h>
-#include <wlib/mem/Memory.h>
-#include <wlib/util/Utility.h>
-#include <wlib/exceptions/Exceptions.h>
 
 namespace wlp {
 
@@ -66,7 +63,7 @@ namespace wlp {
         typedef GetKey get_key;
         typedef GetVal get_value;
 
-        typedef wlp::size_type size_type;
+        typedef size_t size_type;
 
         /**
          * Pointer to the node referenced by this iterator.
@@ -117,9 +114,6 @@ namespace wlp {
          * pointed to by the iterator
          */
         reference operator*() const {
-            if (m_node == nullptr) {
-                THROW(KEY_EXCEPTION("Accessing invalid iterator"))
-            }
             return m_get_value(*m_node);
         }
 
@@ -128,9 +122,6 @@ namespace wlp {
          * pointed to by the iterator
          */
         pointer operator->() const {
-            if (m_node == nullptr) {
-                THROW(KEY_EXCEPTION("Accessing invalid iterator"))
-            }
             return &(operator*());
         }
 
@@ -227,7 +218,7 @@ namespace wlp {
         typedef GetKey get_key;
         typedef GetVal get_value;
 
-        typedef wlp::size_type size_type;
+        typedef size_t size_type;
         typedef uint8_t percent_type;
 
         typedef Hasher hash_function;
@@ -539,7 +530,7 @@ namespace wlp {
             typename Hasher, typename Equals>
     void open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::init_buckets(open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::size_type n) {
-        m_buckets = malloc<element_type *[]>(n);
+        m_buckets = create<element_type *[]>(n);
         for (size_type i = 0; i < n; ++i) {
             m_buckets[i] = nullptr;
         }
@@ -554,7 +545,7 @@ namespace wlp {
             return;
         }
         size_type new_capacity = static_cast<size_type>(m_capacity * 2);
-        element_type **new_buckets = malloc<element_type *[]>(new_capacity);
+        element_type **new_buckets = create<element_type *[]>(new_capacity);
         for (size_type i = 0; i < new_capacity; ++i) {
             new_buckets[i] = nullptr;
         }
@@ -571,7 +562,7 @@ namespace wlp {
             }
             new_buckets[k] = node;
         }
-        free<element_type *>(m_buckets);
+        destroy<element_type *[]>(m_buckets);
         m_buckets = new_buckets;
         m_capacity = new_capacity;
     }
@@ -583,7 +574,7 @@ namespace wlp {
     ::clear() noexcept {
         for (size_type i = 0; i < m_capacity; ++i) {
             if (m_buckets[i]) {
-                free<element_type>(m_buckets[i]);
+                destroy<element_type>(m_buckets[i]);
                 m_buckets[i] = nullptr;
             }
         }
@@ -608,7 +599,7 @@ namespace wlp {
             return pair<iterator, bool>(iterator(m_buckets[i], this), false);
         } else {
             ++m_num_elements;
-            element_type *node = malloc<element_type>();
+            element_type *node = create<element_type>();
             *node = forward<E>(element);
             m_buckets[i] = node;
             return pair<iterator, bool>(iterator(node, this), true);
@@ -634,9 +625,9 @@ namespace wlp {
             return;
         }
         --m_num_elements;
-        free<element_type>(m_buckets[i]);
+        destroy<element_type>(m_buckets[i]);
         m_buckets[i] = nullptr;
-        element_type **new_buckets = malloc<element_type *[]>(m_capacity);
+        element_type **new_buckets = create<element_type *[]>(m_capacity);
         for (size_type k = 0; k < m_capacity; k++) {
             new_buckets[k] = nullptr;
         }
@@ -653,14 +644,15 @@ namespace wlp {
             }
             new_buckets[j] = node;
         }
-        free<element_type *>(m_buckets);
+        destroy<element_type *[]>(m_buckets);
         m_buckets = new_buckets;
     }
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal,
             typename Hasher, typename Equals>
-    size_type open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
+    typename open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>::size_type
+    open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::erase(const key_type &key) {
         size_type i = hash(key);
         while (m_buckets[i] && !m_key_equals(key, m_get_key(*m_buckets[i]))) {
@@ -672,9 +664,9 @@ namespace wlp {
             return 0;
         }
         --m_num_elements;
-        free<element_type>(m_buckets[i]);
+        destroy<element_type>(m_buckets[i]);
         m_buckets[i] = nullptr;
-        element_type **new_buckets = malloc<element_type *[]>(m_capacity);
+        element_type **new_buckets = create<element_type *[]>(m_capacity);
         for (size_type k = 0; k < m_capacity; k++) {
             new_buckets[k] = nullptr;
         }
@@ -691,7 +683,7 @@ namespace wlp {
             }
             new_buckets[j] = node;
         }
-        free<element_type *>(m_buckets);
+        destroy<element_type *[]>(m_buckets);
         m_buckets = new_buckets;
         return 1;
     }
@@ -744,11 +736,11 @@ namespace wlp {
         }
         for (size_type i = 0; i < m_capacity; ++i) {
             if (m_buckets[i]) {
-                free<element_type>(m_buckets[i]);
+                destroy<element_type>(m_buckets[i]);
                 m_buckets[i] = nullptr;
             }
         }
-        free<element_type *>(m_buckets);
+        destroy<element_type *[]>(m_buckets);
         m_buckets = nullptr;
     }
 
@@ -759,7 +751,7 @@ namespace wlp {
     open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals>
     ::operator=(open_table<Element, Key, Val, GetKey, GetVal, Hasher, Equals> &&map) {
         clear();
-        free<element_type *>(m_buckets);
+        destroy<element_type *[]>(m_buckets);
         m_capacity = move(map.m_capacity);
         m_max_load = move(map.m_max_load);
         m_num_elements = move(map.m_num_elements);

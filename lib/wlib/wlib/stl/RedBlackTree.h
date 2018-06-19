@@ -15,10 +15,6 @@
 
 #include <wlib/stl/Comparator.h>
 #include <wlib/stl/Pair.h>
-#include <wlib/Types.h>
-#include <wlib/mem/Memory.h>
-#include <wlib/util/Utility.h>
-#include <wlib/exceptions/Exceptions.h>
 
 namespace wlp {
 
@@ -249,9 +245,6 @@ namespace wlp {
          * pointed to by the iterator
          */
         reference operator*() const {
-            if (m_node == nullptr) {
-                THROW(KEY_EXCEPTION("Accessing invalid iterator"))
-            }
             return m_get_value(m_node->m_element);
         }
 
@@ -362,7 +355,7 @@ namespace wlp {
         typedef Key key_type;
         typedef Val val_type;
         typedef Cmp comparator;
-        typedef wlp::size_type size_type;
+        typedef size_t size_type;
         typedef RedBlackTreeNode<Element> node_type;
         typedef tree<Element, Key, Val, GetKey, GetVal, Cmp> tree_type;
         typedef RedBlackTreeIterator<Element, Key, Val, Val &, Val *, GetKey, GetVal> iterator;
@@ -397,7 +390,7 @@ namespace wlp {
          * @return pointer to the new node
          */
         node_type *create_node() {
-            return malloc<node_type>();
+            return create<node_type>();
         }
 
         /**
@@ -421,7 +414,7 @@ namespace wlp {
          * @param node node to deallocate
          */
         void destroy_node(node_type *node) {
-            free<node_type>(node);
+            destroy<node_type>(node);
         }
 
         /**
@@ -1163,7 +1156,7 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    inline size_type
+    inline typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::size_type
     tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::erase(const iterator &first, const iterator &last) {
         size_type count;

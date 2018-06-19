@@ -19,9 +19,44 @@
 #define EMBEDDEDCPLUSPLUS_TUPLE_H
 
 #include <wlib/stl/Pair.h>
-#include <wlib/util/Tmp.h>
+#include <wlib/type_traits>
 
 namespace wlp {
+
+    /**
+    * This function consumes, and does nothing with, the return
+    * values of parameter pack expanded function calls. This function
+    * enables individual functions to be called on each parameter pack
+    * item by consuming the expansion.
+    *
+    * @tparam Types parameter pack of arbitrary return types
+    * which may be void
+    */
+    template<typename... Types>
+    void swallow(Types &&...) {}
+
+    /**
+     * Recursive function applies an operator to each
+     * type in a type pack.
+     * @return false in the base case
+     */
+    template<template<class> class>
+    constexpr bool is_any_of() {
+        return false;
+    }
+
+    /**
+     * Recursive function applies a boolean operator
+     * type to each value in the type pack
+     * @tparam Op a boolean operator type with a bool value
+     * @tparam Head head type
+     * @tparam Tail tail types
+     * @return true if the operator is satisfied by any of the types
+     */
+    template<template<class> class Op, typename Head, typename... Tail>
+    constexpr bool is_any_of() {
+        return Op<Head>::value || is_any_of<Op, Tail...>();
+    };
 
     /**
      * Tuple is a flat implementation so that compile-time template
@@ -31,7 +66,7 @@ namespace wlp {
      * @tparam I the element index
      * @tparam T the tuple element type
      */
-    template<size_type I, typename T>
+    template<int I, typename T>
     struct TupleElement {
         /**
          * Value contained in this tuple element.
@@ -47,9 +82,9 @@ namespace wlp {
          * @param te tuple element to assign
          * @return a reference to this element
          */
-        template<size_type J, typename Q, typename = typename enable_if<
+        template<size_t J, typename Q, typename = typename enable_if<
                 I == J &&
-                is_same<decay_type<T>, decay_type<Q>>::value
+                is_same<typename decay<T>::type, typename decay<Q>::type>::value
         >::type>
         TupleElement<I, T> &operator=(TupleElement<J, Q> const &te) {
             value = te.value;
@@ -63,9 +98,9 @@ namespace wlp {
          * @param te tuple element to assign
          * @return a reference to this element
          */
-        template<size_type J, typename Q, typename = typename enable_if<
+        template<int J, typename Q, typename = typename enable_if<
                 I == J &&
-                is_same<decay_type<T>, decay_type<Q>>::value
+                is_same<typename decay<T>::type, typename decay<Q>::type>::value
         >::type>
         TupleElement<I, T> &operator=(TupleElement<J, Q> &&te) {
             value = move(te.value);
@@ -90,7 +125,7 @@ namespace wlp {
      * pack to instantiate tuples.
      * @tparam Indices the index pack to expand
      */
-    template<size_type... Indices>
+    template<int... Indices>
     struct IndexSequence {
         using type = IndexSequence<Indices...>;
     };
@@ -102,7 +137,7 @@ namespace wlp {
      * @tparam I index to append
      * @tparam Sequence index sequence to append to
      */
-    template<size_type I, typename Sequence>
+    template<int I, typename Sequence>
     struct AppendIndexSequence;
 
     /**
@@ -113,7 +148,7 @@ namespace wlp {
      * @tparam I index to append
      * @tparam Indices existing index pack
      */
-    template<size_type I, size_type... Indices>
+    template<int I, int... Indices>
     struct AppendIndexSequence<I, IndexSequence<Indices...>>
             : IndexSequence<Indices..., I> {
     };
@@ -123,7 +158,7 @@ namespace wlp {
      * with value up to N.
      * @tparam N the current index to append
      */
-    template<size_type N>
+    template<int N>
     struct MakeIndexSequence
             : AppendIndexSequence<N - 1, typename MakeIndexSequence<N - 1>::type>::type {
     };
@@ -144,7 +179,7 @@ namespace wlp {
      * @tparam Head the head of the type pack
      * @tparam Tail the remaining types in the pack
      */
-    template<size_type I, typename Head, typename... Tail>
+    template<int I, typename Head, typename... Tail>
     struct TypeAtIndex {
         using type = typename TypeAtIndex<I - 1, Tail...>::type;
     };
@@ -163,7 +198,7 @@ namespace wlp {
     /**
      * Shorthand to obtain the type at an index.
      */
-    template<size_type I, typename... Types>
+    template<int I, typename... Types>
     using TypeAtIndexType = typename TypeAtIndex<I, Types...>::type;
 
     /**
@@ -189,7 +224,7 @@ namespace wlp {
      * @tparam Indices tuple indices
      * @tparam Types tuple types
      */
-    template<size_type... Indices, typename... Types>
+    template<int... Indices, typename... Types>
     struct IsTupleImpl<TupleImpl<IndexSequence<Indices...>, Types...>>
             : true_type {
     };
@@ -201,7 +236,7 @@ namespace wlp {
      * @tparam Indices the index pack
      * @tparam Types the type pack
      */
-    template<size_type... Indices, typename... Types>
+    template<int... Indices, typename... Types>
     struct TupleImpl<IndexSequence<Indices...>, Types...>
             : TupleElement<Indices, Types> ... {
 
@@ -251,7 +286,7 @@ namespace wlp {
          * @param elements values for each tuple element
          */
         template<typename... OtherTypes, typename = typename enable_if<
-                !is_any_of<IsTupleImpl, decay_type<OtherTypes>...>()
+                !is_any_of<IsTupleImpl, typename decay<OtherTypes>::type...>()
         >::type>
         explicit TupleImpl(OtherTypes &&... elements)
                 : TupleElement<Indices, Types>(forward<OtherTypes>(elements))... {
@@ -395,7 +430,7 @@ namespace wlp {
      * @param tuple the tuple from which to get
      * @return the element value at the index
      */
-    template<size_type I, typename... Types>
+    template<int I, typename... Types>
     TypeAtIndexType<I, Types...> const &get(tuple<Types...> const &tuple) {
         TupleElement<I, TypeAtIndexType<I, Types...>> const &base = tuple;
         return base.value;
@@ -408,7 +443,7 @@ namespace wlp {
      * @param tuple the tuple from which to get
      * @return the element value at the index
      */
-    template<size_type I, typename... Types>
+    template<int I, typename... Types>
     TypeAtIndexType<I, Types...> &get(tuple<Types...> &tuple) {
         TupleElement<I, TypeAtIndexType<I, Types...>> &base = tuple;
         return base.value;
@@ -422,8 +457,8 @@ namespace wlp {
      * @param tuple the tuple from which to get
      * @return the element value at the index
      */
-    template<size_type I, typename... Types>
-    remove_reference_type<TypeAtIndexType<I, Types...>> &&get(tuple<Types...> &&tuple) {
+    template<int I, typename... Types>
+    typename remove_reference<TypeAtIndexType<I, Types...>>::type &&get(tuple<Types...> &&tuple) {
         TupleElement<I, TypeAtIndexType<I, Types...>> base = tuple;
         return forward<TypeAtIndexType<I, Types...>>(base.value);
     };
@@ -524,7 +559,7 @@ namespace wlp {
      * @tparam Types the types of the tuple
      */
     template<typename... Types>
-    struct tuple_size<tuple<Types...>> : integral_constant<size_type, sizeof...(Types)> {
+    struct tuple_size<tuple<Types...>> : integral_constant<int, sizeof...(Types)> {
     };
 
     /**
@@ -534,7 +569,7 @@ namespace wlp {
      * @return the number of types
      */
     template<typename... Types>
-    constexpr size_type get_tuple_size(tuple<Types...>) {
+    constexpr int get_tuple_size(tuple<Types...>) {
         return sizeof...(Types);
     }
 
@@ -576,7 +611,7 @@ namespace wlp {
         return tuple<Types &...>(elements...);
     }
 
-    template<typename Type, size_type>
+    template<typename Type, int>
     struct repeat_tuple_type_hopper {
         typedef Type type;
     };
@@ -584,24 +619,24 @@ namespace wlp {
     template<typename, typename>
     struct repeat_tuple_type_sub;
 
-    template<typename Type, size_type ...Indices>
+    template<typename Type, int ...Indices>
     struct repeat_tuple_type_sub<Type, IndexSequence<Indices...>> {
         using type = tuple<typename repeat_tuple_type_hopper<Type, Indices>::type...>;
     };
 
-    template<typename Type, size_type Repeat>
+    template<typename Type, int Repeat>
     struct repeat_tuple_type {
         using Sequence = typename MakeIndexSequence<Repeat>::type;
         typedef typename repeat_tuple_type_sub<Type, Sequence>::type type;
     };
 
-    template<typename Type, size_type Repeat>
+    template<typename Type, int Repeat>
     using RepeatTuple = typename repeat_tuple_type<Type, Repeat>::type;
 
     /**
      * Undefined base type for type at tuple.
      */
-    template<size_type, typename>
+    template<int, typename>
     struct TypeAtTuple;
 
     /**
@@ -609,7 +644,7 @@ namespace wlp {
      * @tparam I the index whose type to get
      * @tparam Types the type pack
      */
-    template<size_type I, typename... Types>
+    template<int I, typename... Types>
     struct TypeAtTuple<I, tuple<Types...>>
             : TypeAtIndex<I, Types...> {
     };
@@ -628,7 +663,7 @@ namespace wlp {
      * @tparam TupleB second tuple type
      * @tparam IndicesB second tuple index pack
      */
-    template<typename TupleA, size_type... IndicesA, typename TupleB, size_type... IndicesB>
+    template<typename TupleA, int... IndicesA, typename TupleB, int... IndicesB>
     struct cat_pair_type_sub<
             TupleA, IndexSequence<IndicesA...>,
             TupleB, IndexSequence<IndicesB...>
@@ -647,13 +682,13 @@ namespace wlp {
      */
     template<typename TupleA, typename TupleB>
     struct cat_pair_type {
-        static constexpr size_type SizeA = tuple_size<decay_type<TupleA>>::value;
-        static constexpr size_type SizeB = tuple_size<decay_type<TupleB>>::value;
+        static constexpr int SizeA = tuple_size<typename decay<TupleA>::type>::value;
+        static constexpr int SizeB = tuple_size<typename decay<TupleB>::type>::value;
         using SequenceA = typename MakeIndexSequence<SizeA>::type;
         using SequenceB = typename MakeIndexSequence<SizeB>::type;
         using type = typename cat_pair_type_sub<
-                decay_type<TupleA>, SequenceA,
-                decay_type<TupleB>, SequenceB
+                typename decay<TupleA>::type, SequenceA,
+                typename decay<TupleB>::type, SequenceB
         >::type;
     };
 
@@ -665,8 +700,8 @@ namespace wlp {
      * @return a tuple sized to the number of elements
      */
     template<typename... Types>
-    tuple<decay_type<Types>...> make_tuple(Types &&... elements) {
-        return tuple<decay_type<Types>...>(forward<Types>(elements)...);
+    tuple<typename decay<Types>::type...> make_tuple(Types &&... elements) {
+        return tuple<typename decay<Types>::type...>(forward<Types>(elements)...);
     }
 
     /**
@@ -679,10 +714,10 @@ namespace wlp {
      * @param tupleB second tuple
      * @return concatenation of the two tuples
      */
-    template<typename TupleA, size_type... IndicesA, typename TupleB, size_type... IndicesB>
+    template<typename TupleA, int... IndicesA, typename TupleB, int... IndicesB>
     tuple<
-            typename TypeAtTuple<IndicesA, decay_type<TupleA>>::type...,
-            typename TypeAtTuple<IndicesB, decay_type<TupleB>>::type...
+            typename TypeAtTuple<IndicesA, typename decay<TupleA>::type>::type...,
+            typename TypeAtTuple<IndicesB, typename decay<TupleB>::type>::type...
     >
     tuple_cat_pair_sub(
             TupleA &&tupleA, TupleB &&tupleB,
@@ -707,8 +742,8 @@ namespace wlp {
         return tuple_cat_pair_sub(
                 forward<TupleA>(tupleA),
                 forward<TupleB>(tupleB),
-                MakeIndexSequence<tuple_size<decay_type<TupleA>>::value>{},
-                MakeIndexSequence<tuple_size<decay_type<TupleB>>::value>{}
+                MakeIndexSequence<tuple_size<typename decay<TupleA>::type>::value>{},
+                MakeIndexSequence<tuple_size<typename decay<TupleB>::type>::value>{}
         );
     };
 
