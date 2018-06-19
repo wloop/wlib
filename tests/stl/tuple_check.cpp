@@ -142,13 +142,13 @@ TEST(tuple_test, test_tuple_tie) {
 
 TEST(tuple_test, test_repeat_tuple_size) {
     RepeatTuple<int, 5> rt_1;
-    size_type value = tuple_size<decltype(rt_1)>::value;
-    ASSERT_EQ(value, 5);
-    ASSERT_NE(value, 6);
+    size_t value = tuple_size<decltype(rt_1)>::value;
+    ASSERT_EQ(value, 5u);
+    ASSERT_NE(value, 6u);
     RepeatTuple<int, 6> rt_2;
     value = tuple_size<decltype(rt_2)>::value;
-    ASSERT_EQ(value, 6);
-    ASSERT_NE(value, 5);
+    ASSERT_EQ(value, 6u);
+    ASSERT_NE(value, 5u);
 }
 
 TEST(tuple_test, test_repeat_tuple_values) {

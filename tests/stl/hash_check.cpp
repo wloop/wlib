@@ -5,7 +5,7 @@
 using namespace wlp;
 
 TEST(hash_test, test_hash_static_string) {
-    hash<String8, size_type> hasher = hash<String8, size_type>();
+    hash<String8, size_t> hasher = hash<String8, size_t>();
     String8 str1{"darwin"};
     String8 str2{"darwin"};
     String8 str3{"hello"};

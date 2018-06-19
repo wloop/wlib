@@ -36,7 +36,7 @@ namespace wlp {
     struct equals<uint16_t>;
 
     template
-    struct hash<String8, uint16_t>;
+    struct hash<wlp::static_string<8u>, uint16_t>;
 
     template
     struct hash<char *, uint16_t>;

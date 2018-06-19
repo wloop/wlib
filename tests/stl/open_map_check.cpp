@@ -13,8 +13,8 @@ typedef pair<imi, bool> P_imi_b;
 
 TEST(open_map_test, test_constructor_parameters) {
     int_map map(15, 61);
-    ASSERT_EQ(15, map.capacity());
-    ASSERT_EQ(0, map.size());
+    ASSERT_EQ(15u, map.capacity());
+    ASSERT_EQ(0u, map.size());
     ASSERT_EQ(61, map.max_load());
 }
 
@@ -106,8 +106,8 @@ TEST(open_map_test, test_insert_find_iterate_integer) {
     ASSERT_EQ(90, *it1);
     ++it1;
     ASSERT_EQ(it1, map.end());
-    ASSERT_EQ(5, map.size());
-    ASSERT_EQ(10, map.capacity());
+    ASSERT_EQ(5u, map.size());
+    ASSERT_EQ(10u, map.capacity());
 }
 
 TEST(open_map_test, test_map_iterator_postfix) {
@@ -122,7 +122,7 @@ TEST(open_map_test, test_map_iterator_postfix) {
     ASSERT_EQ(*it, 12);
     ++it_post;
     ASSERT_EQ(it_post, it);
-    ASSERT_EQ(2, map.size());
+    ASSERT_EQ(2u, map.size());
 }
 
 TEST(open_map_test, test_begin_non_empty) {
@@ -144,7 +144,7 @@ TEST(open_map_test, test_map_insert_or_assign) {
     ASSERT_EQ(14, *res1.first());
     ASSERT_EQ(12, *res2.first());
     ASSERT_EQ(14, *res3.first());
-    ASSERT_EQ(2, map.size());
+    ASSERT_EQ(2u, map.size());
 }
 
 TEST(open_map_test, test_at_returns_value) {
@@ -153,7 +153,7 @@ TEST(open_map_test, test_at_returns_value) {
     map.insert(16, 15);
     map.insert(20, 19);
     map.insert(4, 16);
-    ASSERT_EQ(4, map.size());
+    ASSERT_EQ(4u, map.size());
     ASSERT_EQ(12, map.at(10));
     ASSERT_EQ(15, map.at(16));
     ASSERT_EQ(19, map.at(20));
@@ -166,12 +166,12 @@ TEST(open_map_test, test_at_is_assignable) {
     map.insert(16, 15);
     ASSERT_EQ(15, map.at(16));
     ASSERT_EQ(12, map.at(10));
-    ASSERT_EQ(2, map.size());
+    ASSERT_EQ(2u, map.size());
     map.at(16) = 100;
     map.at(10) = 101;
     ASSERT_EQ(100, map.at(16));
     ASSERT_EQ(101, map.at(10));
-    ASSERT_EQ(2, map.size());
+    ASSERT_EQ(2u, map.size());
 }
 
 TEST(open_map_test, test_at_returns_pass_the_end) {
@@ -254,10 +254,10 @@ TEST(open_map_test, test_clear_map) {
     map[226] = 2216;
     map[337] = 2317;
     map[448] = 2418;
-    ASSERT_EQ(9, map.size());
+    ASSERT_EQ(9u, map.size());
     map.clear();
-    ASSERT_EQ(0, map.size());
-    ASSERT_EQ(20, map.capacity());
+    ASSERT_EQ(0u, map.size());
+    ASSERT_EQ(20u, map.capacity());
     ASSERT_EQ(map.begin(), map.end());
 }
 
@@ -297,13 +297,13 @@ TEST(open_map_test, test_erase_iterator_rehash) {
     map[28] = 280;
     map[38] = 380;
     map[48] = 480;
-    ASSERT_EQ(10, map.capacity());
-    ASSERT_EQ(5, map.size());
+    ASSERT_EQ(10u, map.capacity());
+    ASSERT_EQ(5u, map.size());
     imi it = map.begin();
     it = map.erase(it);
     ASSERT_EQ(380, *it);
-    ASSERT_EQ(4, map.size());
-    ASSERT_EQ(10, map.capacity());
+    ASSERT_EQ(4u, map.size());
+    ASSERT_EQ(10u, map.capacity());
 }
 
 TEST(open_map_test, test_erase_nonexisting_key) {
@@ -321,12 +321,12 @@ TEST(open_map_test, test_erase_key_rehash) {
     map[28] = 280;
     map[38] = 380;
     map[48] = 480;
-    ASSERT_EQ(10, map.capacity());
-    ASSERT_EQ(5, map.size());
+    ASSERT_EQ(10u, map.capacity());
+    ASSERT_EQ(5u, map.size());
     uint16_t k = 28;
     ASSERT_TRUE(map.erase(k));
-    ASSERT_EQ(4, map.size());
-    ASSERT_EQ(10, map.capacity());
+    ASSERT_EQ(4u, map.size());
+    ASSERT_EQ(10u, map.capacity());
 }
 
 TEST(open_map_test, test_move_assignment) {
@@ -338,14 +338,14 @@ TEST(open_map_test, test_move_assignment) {
     map[48] = 480;
     int_map map1(12, 91);
     map1 = move(map);
-    ASSERT_EQ(0, map.size());
-    ASSERT_EQ(0, map.capacity());
-    ASSERT_EQ(5, map1.size());
-    ASSERT_EQ(10, map1.capacity());
+    ASSERT_EQ(0u, map.size());
+    ASSERT_EQ(0u, map.capacity());
+    ASSERT_EQ(5u, map1.size());
+    ASSERT_EQ(10u, map1.capacity());
     ASSERT_EQ(90, map1.max_load());
     imi it = map1.begin();
     uint16_t expected_traverse[] = {280, 380, 480, 80, 880};
-    for (size_type i = 0; i < 5; i++) {
+    for (size_t i = 0; i < 5; i++) {
         ASSERT_EQ(expected_traverse[i], *it);
         ++it;
     }
@@ -362,8 +362,8 @@ TEST(open_map_test, insert_rvalue) {
     string val("val");
 
     map.insert(move(key), move(val));
-    ASSERT_EQ(0, key.length());
-    ASSERT_EQ(0, val.length());
+    ASSERT_EQ(0u, key.length());
+    ASSERT_EQ(0u, val.length());
     ASSERT_STREQ("", key.c_str());
     ASSERT_STREQ("", val.c_str());
 

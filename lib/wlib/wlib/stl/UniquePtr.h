@@ -13,8 +13,10 @@
 #ifndef EMBEDDEDCPLUSPLUS_UNIQUEPTR_H
 #define EMBEDDEDCPLUSPLUS_UNIQUEPTR_H
 
-#include <wlib/type_traits>
+#include <wlib/stl/Helper.h>
 #include <wlib/tmp/Convertible.h>
+#include <wlib/type_traits>
+#include <wlib/memory>
 
 namespace wlp {
 
@@ -208,7 +210,7 @@ namespace wlp {
 
         void reset(pointer ptr = pointer()) {
             if (ptr != m_ptr) {
-                destroy<val_type>(m_ptr);
+                destroy<val_type[]>(m_ptr);
                 m_ptr = ptr;
             }
         }

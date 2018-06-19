@@ -15,6 +15,7 @@
 
 #include <wlib/stl/Comparator.h>
 #include <wlib/stl/Pair.h>
+#include <wlib/memory>
 
 namespace wlp {
 
@@ -55,15 +56,15 @@ namespace wlp {
         /**
          * Node parent.
          */
-        node_type *m_parent;
+        node_type *m_parent = nullptr;
         /**
          * Left child node.
          */
-        node_type *m_left;
+        node_type *m_left = nullptr;
         /**
          * Right child node.
          */
-        node_type *m_right;
+        node_type *m_right = nullptr;
 
         /**
          * Element of the node, which contains the key
@@ -349,7 +350,7 @@ namespace wlp {
             typename Val,
             typename GetKey,
             typename GetVal,
-            typename Cmp = comparator <Key>>
+            typename Cmp = wlp::comparator<Key>>
     class tree {
     public:
         typedef Key key_type;
@@ -472,7 +473,7 @@ namespace wlp {
          * @return iterator to the inserted node
          */
         template<typename E>
-        iterator insert(node_type *node, node_type *piv, E &&element);
+        iterator insert(node_type *cur, node_type *carry, E &&element);
 
         /**
          * Delete the supplied node from the tree and all
@@ -1125,7 +1126,9 @@ namespace wlp {
                 }
                 if (!pre->m_right) {
                     pre->m_right = current;
-                    current = current->m_left;
+                    tmp = current->m_left;
+                    current->m_left = nullptr;
+                    current = tmp;
                 } else {
                     pre->m_right = nullptr;
                     tmp = current;

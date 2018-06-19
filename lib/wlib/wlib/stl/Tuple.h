@@ -18,10 +18,19 @@
 #ifndef EMBEDDEDCPLUSPLUS_TUPLE_H
 #define EMBEDDEDCPLUSPLUS_TUPLE_H
 
+#include <wlib/tmp/IntegralConstant.h>
 #include <wlib/stl/Pair.h>
 #include <wlib/type_traits>
 
 namespace wlp {
+
+    /**
+     * Constant expression shorthand.
+     * @tparam T value type
+     * @tparam t contained value
+     */
+    template<typename T, T t>
+    constexpr T integral_constant<T, t>::value;
 
     /**
     * This function consumes, and does nothing with, the return
@@ -82,7 +91,7 @@ namespace wlp {
          * @param te tuple element to assign
          * @return a reference to this element
          */
-        template<size_t J, typename Q, typename = typename enable_if<
+        template<int J, typename Q, typename = typename enable_if<
                 I == J &&
                 is_same<typename decay<T>::type, typename decay<Q>::type>::value
         >::type>

@@ -24,17 +24,17 @@ TEST(rb_tree_test, test_insert_iterator_order) {
     int vals[] = {5, 1, 0, 9, -1, -4, 12, 10, -66};
     open_map<char, int> val_map(20);
     rb_tree tree;
-    for (size_type i = 0; i < 9; i++) {
+    for (size_t i = 0; i < 9; i++) {
         val_map.insert(keys[i], vals[i]);
         pair<rbi, bool> res = tree.insert_unique(make_tuple(keys[i], vals[i]));
         ASSERT_TRUE(res.second());
         ASSERT_EQ(vals[i], *res.first());
     }
-    ASSERT_EQ(9, tree.size());
+    ASSERT_EQ(9u, tree.size());
     array_list<char> key_list(keys, 9);
     heap_sort(key_list);
     rbi it = tree.begin();
-    for (size_type i = 0; i < key_list.size(); i++) {
+    for (size_t i = 0; i < key_list.size(); i++) {
         char expected_key = key_list[i];
         int expected_val = val_map[expected_key];
         char key = get<0>(it.m_node->m_element);
@@ -100,25 +100,25 @@ TEST(rb_tree_test, test_insert_unique_find) {
         ASSERT_EQ(val_map[keys[i]], *tree.find(keys[i]));
     }
     for (open_set<char>::iterator it = key_set.begin(); it != key_set.end(); ++it) {
-        ASSERT_EQ(1, tree.erase(*it));
+        ASSERT_EQ(1u, tree.erase(*it));
     }
-    ASSERT_EQ(0, tree.size());
+    ASSERT_EQ(0u, tree.size());
 }
 
 TEST(rb_tree_test, test_insert_equal_and_range) {
     char keys[] = {'a', 'a', 'a', 'b', 'b', 'c', 'c', 'c', 'c', 'd'};
     int values[] = {5, 6, 7, 8, 9, 10, 10, 11, 12, 13};
     hash_set<int> val_set(20);
-    size_type cnt = 10;
+    size_t cnt = 10;
     rb_tree tree;
-    for (int i = 0; i < cnt; i++) {
+    for (size_t i = 0; i < cnt; i++) {
         rbi it = tree.insert_equal(make_tuple(keys[i], values[i]));
         ASSERT_EQ(values[i], *it);
         ASSERT_EQ(keys[i], get<0>(it.m_node->m_element));
         val_set.insert(values[i]);
     }
     char ukeys[] = {'a', 'b', 'c', 'd'};
-    int counts[] = {3, 2, 4, 1};
+    unsigned int counts[] = {3, 2, 4, 1};
     for (int i = 0; i < 4; i++) {
         ASSERT_EQ(counts[i], tree.count(ukeys[i]));
     }
@@ -141,10 +141,10 @@ TEST(rb_tree_test, test_insert_equal_and_range) {
     ASSERT_TRUE(val_set.empty());
     for (int i = 0; i < 4; i++) {
         char ukey = ukeys[i];
-        size_type erased = tree.erase(ukey);
+        size_t erased = tree.erase(ukey);
         ASSERT_EQ(counts[i], erased);
     }
-    ASSERT_EQ(0, tree.size());
+    ASSERT_EQ(0u, tree.size());
     ASSERT_TRUE(tree.empty());
     ASSERT_TRUE(tree.begin() == tree.end());
 }

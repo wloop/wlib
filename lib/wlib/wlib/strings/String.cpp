@@ -154,9 +154,11 @@ namespace wlp {
 
     dynamic_string &dynamic_string::append(const char *c_str, size_type len) {
         auto newLength = static_cast<size_type>(m_len + len);
-        m_buffer = static_cast<char *>(mem::realloc(m_buffer, static_cast<size_type>(newLength + 1)));
-
-        memcpy(m_buffer + m_len, c_str, newLength);
+        char *newBuffer = create<char[]>(newLength);
+        memcpy(newBuffer, m_buffer, m_len);
+        memcpy(newBuffer + m_len, c_str, len);
+        destroy<char[]>(m_buffer);
+        m_buffer = newBuffer;
 
         m_buffer[newLength] = '\0';
         m_len = newLength;

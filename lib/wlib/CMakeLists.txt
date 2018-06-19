@@ -35,7 +35,7 @@ endforeach()
 target_link_libraries(wlib-malloc wlib-tlsf)
 target_include_directories(wlib-malloc PRIVATE ${wlib-tlsf_dir}/include)
 target_compile_definitions(wlib-tlsf PRIVATE
-    WLIB_TLSF_32BIT
-    WLIB_TLSF_LOG2_ALIGN=2
+    WLIB_TLSF_64BIT
+    WLIB_TLSF_LOG2_ALIGN=3
     WLIB_TLSF_LOG2_MAX=15
     WLIB_TLSF_LOG2_DIV=5)

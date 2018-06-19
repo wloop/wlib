@@ -14,6 +14,8 @@
 #ifndef CORE_STL_LIST_H
 #define CORE_STL_LIST_H
 
+#include <wlib/memory>
+
 namespace wlp {
 
     template<typename T>

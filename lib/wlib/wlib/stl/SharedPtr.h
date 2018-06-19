@@ -92,7 +92,7 @@ namespace wlp {
          * Free the underlying pointer.
          */
         void dispose() {
-            free(m_ptr);
+            wlp::destroy(m_ptr);
         }
 
         /**
@@ -100,7 +100,7 @@ namespace wlp {
          * The instance must be dynamically allocated.
          */
         void destroy() {
-            free(this);
+            wlp::destroy(this);
         }
 
         /**

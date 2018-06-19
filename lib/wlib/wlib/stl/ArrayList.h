@@ -15,6 +15,7 @@
 
 #include <wlib/utility>
 #include <wlib/memory>
+#include <stddef.h>
 
 namespace wlp {
 
