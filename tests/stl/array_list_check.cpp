@@ -246,8 +246,8 @@ TEST(array_list_test, test_index_of_empty_list) {
 TEST(array_list_test, test_index_of) {
     int values[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     array_list<int> list(values, 10);
-    for (size_type i = 0; i < 9; i++) {
-        ASSERT_EQ(i, list.index_of(i + 1));
+    for (int i = 0; i < 9; i++) {
+        ASSERT_EQ(static_cast<size_t>(i), list.index_of(i + 1));
     }
 }
 

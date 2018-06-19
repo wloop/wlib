@@ -39,8 +39,8 @@ namespace wlp {
         }
 
         array2d(wlp::initializer_list<wlp::initializer_list<val_t>> l) {
-            m_x = l.size();
-            m_y = l.begin()->size();
+            m_x = static_cast<size_t>(l.size());
+            m_y = static_cast<size_t>(l.begin()->size());
             make_array(m_x, m_y);
 
             int i = 0;
