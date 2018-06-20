@@ -212,7 +212,7 @@ _build(){
     echo "Running CMake"
     cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=.. -DBUILD_SHARED_LIBS=ON
     echo "Running Make"
-    make
+    make -j6
     echo "Project Built"
     cd ..
 }
@@ -247,6 +247,10 @@ _clean(){
 _run(){
     ./bin/examples/examples
     echo "Execution Finished"
+}
+
+_memory(){
+    valgrind --leak-check=yes ./bin/tests/tests
 }
 
 _test(){
@@ -290,6 +294,8 @@ _simple() {
         echo "Building and testing"
         _build
         _test
+    elif [ "$1" == "memory" ]; then
+        _memory
     else
         _print_help
     fi

@@ -154,7 +154,7 @@ namespace wlp {
 
     dynamic_string &dynamic_string::append(const char *c_str, size_type len) {
         auto newLength = static_cast<size_type>(m_len + len);
-        char *newBuffer = create<char[]>(newLength);
+        char *newBuffer = create<char[]>(newLength + 1);
         memcpy(newBuffer, m_buffer, m_len);
         memcpy(newBuffer + m_len, c_str, len);
         destroy<char[]>(m_buffer);
@@ -213,6 +213,7 @@ namespace wlp {
     }
 
     dynamic_string dynamic_string::substr(size_type pos, size_type length) const {
+        length = pos >= m_len ? 0 : MIN(length, m_len - pos);
         char *newBuffer = create<char[]>(static_cast<size_type>(length + 1));
         memcpy(newBuffer, m_buffer + pos, length);
         newBuffer[length] = '\0';
