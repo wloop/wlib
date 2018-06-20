@@ -12,7 +12,6 @@
 
 #include <string.h> // strcmp
 
-#include <wlib/Types.h>
 #include <wlib/strings/String.h>
 
 namespace wlp {

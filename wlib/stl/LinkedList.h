@@ -14,9 +14,7 @@
 #ifndef CORE_STL_LIST_H
 #define CORE_STL_LIST_H
 
-#include <wlib/mem/Memory.h>
-#include <wlib/util/Utility.h>
-#include <wlib/exceptions/Exceptions.h>
+#include <wlib/memory>
 
 namespace wlp {
 
@@ -44,7 +42,7 @@ namespace wlp {
         typedef T val_type;
         typedef Ref reference;
         typedef Ptr pointer;
-        typedef wlp::size_type size_type;
+        typedef size_t size_type;
         typedef LinkedListNode<T> node_type;
         typedef linked_list<T> list_type;
         typedef LinkedListIterator<T, Ref, Ptr> self_type;
@@ -89,9 +87,6 @@ namespace wlp {
          * pointed to by the iterator
          */
         reference operator*() const {
-            if (m_current == nullptr) {
-                THROW(INDEX_EXCEPTION("Accessing invalid iterator"))
-            }
             return m_current->m_val;
         }
 
@@ -198,7 +193,7 @@ namespace wlp {
     class linked_list {
     public:
         typedef T val_type;
-        typedef wlp::size_type size_type;
+        typedef size_t size_type;
         typedef linked_list<T> list_type;
         typedef LinkedListNode<T> node_type;
         typedef LinkedListIterator<T, T &, T *> iterator;
@@ -321,9 +316,6 @@ namespace wlp {
          * @return a reference to the value at the start of the List
          */
         val_type &front() {
-            if (m_head == nullptr) {
-                THROW(INDEX_EXCEPTION("Accessing empty list"))
-            }
             return m_head->m_val;
         }
 
@@ -331,9 +323,6 @@ namespace wlp {
          * @return a const reference to the value at the start of the List
          */
         const val_type &front() const {
-            if (m_head == nullptr) {
-                THROW(INDEX_EXCEPTION("Accessing empty list"))
-            }
             return m_head->m_val;
         }
 
@@ -341,9 +330,6 @@ namespace wlp {
          * @return a reference to the value at the end of the List
          */
         val_type &back() {
-            if (m_tail == nullptr) {
-                THROW(INDEX_EXCEPTION("Accessing empty list"))
-            }
             return m_tail->m_val;
         }
 
@@ -351,9 +337,6 @@ namespace wlp {
          * @return a const reference to the value at the end of the List
          */
         const val_type &back() const {
-            if (m_tail == nullptr) {
-                THROW(INDEX_EXCEPTION("Accessing empty list"))
-            }
             return m_tail->m_val;
         }
 
@@ -407,7 +390,7 @@ namespace wlp {
         iterator insert(size_type i, V &&val) {
             if (!m_size) { i = 0; }
             else { i %= m_size; }
-            node_type *node = malloc<node_type>();
+            node_type *node = create<node_type>();
             node->m_val = forward<V>(val);
             if (m_head == nullptr) {
                 node->m_next = nullptr;
@@ -443,7 +426,7 @@ namespace wlp {
                 push_back(forward<V>(val));
                 return iterator(m_tail, this);
             }
-            node_type *node = malloc<node_type>();
+            node_type *node = create<node_type>();
             node->m_val = forward<V>(val);
             node->m_next = it.m_current;
             node->m_prev = it.m_current->m_prev;
@@ -484,7 +467,7 @@ namespace wlp {
                 m_tail = pTmp->m_prev;
             }
             node_type *next = pTmp->m_next;
-            free<node_type>(pTmp);
+            destroy<node_type>(pTmp);
             --m_size;
             return iterator(next, this);
         }
@@ -496,7 +479,7 @@ namespace wlp {
          */
         template<typename V>
         void push_back(V &&val) {
-            node_type *node = malloc<node_type>();
+            node_type *node = create<node_type>();
             node->m_val = forward<V>(val);
             node->m_next = nullptr;
             if (m_head == nullptr) {
@@ -517,7 +500,7 @@ namespace wlp {
          */
         template<typename V>
         void push_front(V &&val) {
-            node_type *node = malloc<node_type>();
+            node_type *node = create<node_type>();
             node->m_val = forward<V>(val);
             node->m_prev = nullptr;
 
@@ -546,7 +529,7 @@ namespace wlp {
             } else {
                 m_head = nullptr;
             }
-            free<node_type>(pTmp);
+            destroy<node_type>(pTmp);
             m_size--;
         }
 
@@ -564,7 +547,7 @@ namespace wlp {
             } else {
                 m_tail = nullptr;
             }
-            free<node_type>(pTmp);
+            destroy<node_type>(pTmp);
             m_size--;
         }
 
@@ -645,7 +628,7 @@ namespace wlp {
         while (m_head != nullptr) {
             pTmp = m_head;
             m_head = m_head->m_next;
-            free<node_type>(pTmp);
+            destroy<node_type>(pTmp);
         }
         m_size = 0;
         m_tail = nullptr;
@@ -676,7 +659,7 @@ namespace wlp {
             m_tail = pTmp->m_prev;
         }
         node_type *next = pTmp->m_next;
-        free<node_type>(pTmp);
+        destroy<node_type>(pTmp);
         m_size--;
         return iterator(next, this);
     }
@@ -685,8 +668,7 @@ namespace wlp {
     inline typename linked_list<T>::val_type &
     linked_list<T>::at(size_type i) {
         if (i >= m_size) {
-            if (m_size) { i %= m_size; }
-            else { THROW(INDEX_EXCEPTION("Accessing empty list")) }
+            i %= m_size;
         }
         node_type *pTmp = m_head;
         while (i-- > 0) {
@@ -699,8 +681,7 @@ namespace wlp {
     inline const typename linked_list<T>::val_type &
     linked_list<T>::at(size_type i) const {
         if (i >= m_size) {
-            if (m_size) { i %= m_size; }
-            else { THROW(INDEX_EXCEPTION("Accessing empty list")) }
+            i %= m_size;
         }
         node_type *pTmp = m_head;
         while (i-- > 0) {

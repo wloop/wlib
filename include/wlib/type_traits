@@ -1,7 +1,0 @@
-#ifndef __WLIB_TYPE_TRAITS__
-#define __WLIB_TYPE_TRAITS__
-
-#include <wlib/stl/TypeTraits.h>
-
-#endif
-

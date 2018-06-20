@@ -18,12 +18,22 @@
 #define EMBEDDEDCPLUSPLUS_SHAREDPTR_H
 
 #include <wlib/stl/UniquePtr.h>
-#include <wlib/Types.h>
-#include <wlib/util/Tmp.h>
-#include <wlib/util/Utility.h>
-#include <wlib/exceptions/Exceptions.h>
 
 namespace wlp {
+
+    template<typename IntType>
+    static inline IntType exchange_and_add(IntType *mem, IntType val) {
+        IntType res = *mem;
+        *mem = static_cast<IntType>(*mem + val);
+        return res;
+    }
+
+    template<typename IntType>
+    static inline IntType exchange_and_sub(IntType *mem, IntType val) {
+        IntType res = *mem;
+        *mem = static_cast<IntType>(*mem - val);
+        return res;
+    }
 
     /**
      * This class tracks the number of weak references and strong references
@@ -82,7 +92,7 @@ namespace wlp {
          * Free the underlying pointer.
          */
         void dispose() {
-            free(m_ptr);
+            wlp::destroy(m_ptr);
         }
 
         /**
@@ -90,7 +100,7 @@ namespace wlp {
          * The instance must be dynamically allocated.
          */
         void destroy() {
-            free(this);
+            wlp::destroy(this);
         }
 
         /**
@@ -109,7 +119,6 @@ namespace wlp {
         void add_locked_reference() {
             if (exchange_and_add<ptr_use_count>(&m_use_count, 1) == 0) {
                 m_use_count = 0;
-                THROW(BAD_WEAK_PTR_EXCEPTION("Locking expired weak pointer"))
             }
         }
 
@@ -223,7 +232,7 @@ namespace wlp {
         template<typename PtrType>
         explicit SharedCount(PtrType ptr)
                 : m_pi(nullptr) {
-            m_pi = malloc<ReferenceCount<PtrType>>(ptr);
+            m_pi = create<ReferenceCount<PtrType>>(ptr);
         }
 
         /**
@@ -237,7 +246,7 @@ namespace wlp {
         template<typename U>
         SharedCount(unique_ptr <U> &&up)
                 : m_pi(nullptr) {
-            m_pi = malloc<ReferenceCount<U *>>(up.get());
+            m_pi = create<ReferenceCount<U *>>(up.get());
             up.release();
         }
 
@@ -448,10 +457,8 @@ namespace wlp {
      */
     template<typename Ptr>
     inline SharedCount<Ptr>::SharedCount(const WeakCount<Ptr> &wc)
-            : m_pi(wc.m_pi) {
-        if (m_pi) { m_pi->add_locked_reference(); }
-        else { THROW(BAD_WEAK_PTR_EXCEPTION("Creating shared ptr from expired weak ptr")) }
-    }
+            : m_pi(wc.m_pi)
+    { m_pi->add_locked_reference(); }
 
     template<typename T>
     class shared_ptr {
@@ -577,9 +584,6 @@ namespace wlp {
         }
 
         typename add_lvalue_reference<T>::type operator*() const {
-            if (m_ptr == nullptr) {
-                THROW(NULLPTR_EXCEPTION("Shared pointer is null"))
-            }
             return *m_ptr;
         }
 

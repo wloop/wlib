@@ -13,8 +13,10 @@
 #ifndef EMBEDDEDCPLUSPLUS_UNIQUEPTR_H
 #define EMBEDDEDCPLUSPLUS_UNIQUEPTR_H
 
-#include <wlib/mem/Memory.h>
-#include <wlib/exceptions/Exceptions.h>
+#include <wlib/stl/Helper.h>
+#include <wlib/tmp/Convertible.h>
+#include <wlib/type_traits>
+#include <wlib/memory>
 
 namespace wlp {
 
@@ -99,9 +101,6 @@ namespace wlp {
         }
 
         typename add_lvalue_reference<val_type>::type operator*() const {
-            if (m_ptr == nullptr) {
-                THROW(NULLPTR_EXCEPTION("Unique pointer is null"))
-            }
             return *m_ptr;
         };
 
@@ -126,7 +125,7 @@ namespace wlp {
 
         void reset(pointer ptr = pointer()) {
             if (ptr != m_ptr) {
-                free<val_type>(m_ptr);
+                destroy<val_type>(m_ptr);
                 m_ptr = ptr;
             }
         }
@@ -191,7 +190,7 @@ namespace wlp {
             return *this;
         }
 
-        typename add_lvalue_reference<val_type>::type operator[](size_type i) const {
+        typename add_lvalue_reference<val_type>::type operator[](size_t i) const {
             return m_ptr[i];
         }
 
@@ -211,7 +210,7 @@ namespace wlp {
 
         void reset(pointer ptr = pointer()) {
             if (ptr != m_ptr) {
-                free<val_type>(m_ptr);
+                destroy<val_type[]>(m_ptr);
                 m_ptr = ptr;
             }
         }
@@ -228,11 +227,9 @@ namespace wlp {
 
         template<typename U>
         explicit
-        unique_ptr(U *,
-                  typename enable_if<
-                          is_convertible<U *, pointer>::value
-                  >::type * = 0
-        ) = delete;
+        unique_ptr(U *, typename enable_if<
+            is_convertible<U *, pointer>::value
+        >::type * = 0) = delete;
 
         unique_ptr_t &operator=(const unique_ptr_t &) = delete;
 
@@ -287,7 +284,7 @@ namespace wlp {
 
     template<typename T, typename... Args>
     unique_ptr<T> make_unique(Args &&... args) {
-        return unique_ptr<T>(malloc<T>(forward<Args>(args)...));
+        return unique_ptr<T>(create<T>(forward<Args>(args)...));
     };
 
 };

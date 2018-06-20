@@ -13,7 +13,6 @@
 #include <wlib/stl/RedBlackTree.h>
 #include <wlib/stl/Table.h>
 #include <wlib/stl/Tuple.h>
-#include <wlib/Types.h>
 
 namespace wlp {
 
