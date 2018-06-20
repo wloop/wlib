@@ -21,10 +21,10 @@ var searchData=
   ['hash_3c_20char_20_2a_2c_20inttype_20_3e',['hash&lt; char *, IntType &gt;',['../d0/dd8/structwlp_1_1hash_3_01char_01_5_00_01_int_type_01_4.html',1,'wlp']]],
   ['hash_3c_20const_20char_20_2a_2c_20inttype_20_3e',['hash&lt; const char *, IntType &gt;',['../d7/d1d/structwlp_1_1hash_3_01const_01char_01_5_00_01_int_type_01_4.html',1,'wlp']]],
   ['hash_3c_20dynamic_5fstring_2c_20inttype_20_3e',['hash&lt; dynamic_string, IntType &gt;',['../d7/d9b/structwlp_1_1hash_3_01dynamic__string_00_01_int_type_01_4.html',1,'wlp']]],
-  ['hash_3c_20static_5fstring_3c_20tsize_20_3e_2c_20inttype_20_3e',['hash&lt; static_string&lt; tSize &gt;, IntType &gt;',['../d8/d61/structwlp_1_1hash_3_01static__string_3_01t_size_01_4_00_01_int_type_01_4.html',1,'wlp']]],
+  ['hash_3c_20wlp_3a_3astatic_5fstring_3c_20tsize_20_3e_2c_20inttype_20_3e',['hash&lt; wlp::static_string&lt; tSize &gt;, IntType &gt;',['../d3/d63/structwlp_1_1hash_3_01wlp_1_1static__string_3_01t_size_01_4_00_01_int_type_01_4.html',1,'wlp']]],
   ['hash_5ffunction',['hash_function',['../dc/d42/classwlp_1_1hash__table.html#acb603a3180de2d19b54fe52d29740249',1,'wlp::hash_table']]],
-  ['hash_5fmap',['hash_map',['../dd/d65/classwlp_1_1hash__map.html#a5c2c864f417cdb990158a2fe6a361285',1,'wlp::hash_map::hash_map(size_type n=12, percent_type max_load=75)'],['../dd/d65/classwlp_1_1hash__map.html#aaae3be41a6892213a1f92a4b3cad54ce',1,'wlp::hash_map::hash_map(const map_type &amp;)=delete'],['../dd/d65/classwlp_1_1hash__map.html#aa8b5b9a64704453835aa58d099806aaa',1,'wlp::hash_map::hash_map(map_type &amp;&amp;map)']]],
   ['hash_5fmap',['hash_map',['../dd/d65/classwlp_1_1hash__map.html',1,'wlp']]],
+  ['hash_5fmap',['hash_map',['../dd/d65/classwlp_1_1hash__map.html#a5c2c864f417cdb990158a2fe6a361285',1,'wlp::hash_map::hash_map(size_type n=12, percent_type max_load=75)'],['../dd/d65/classwlp_1_1hash__map.html#aaae3be41a6892213a1f92a4b3cad54ce',1,'wlp::hash_map::hash_map(const map_type &amp;)=delete'],['../dd/d65/classwlp_1_1hash__map.html#aa8b5b9a64704453835aa58d099806aaa',1,'wlp::hash_map::hash_map(map_type &amp;&amp;map)']]],
   ['hash_5fset',['hash_set',['../d6/de4/classwlp_1_1hash__set.html#a929cd2a48461f1dc2ecef65f1111f6e0',1,'wlp::hash_set::hash_set(size_type n=12, percent_type max_load=75)'],['../d6/de4/classwlp_1_1hash__set.html#ad503b650bb576b7f5881f36e904d5330',1,'wlp::hash_set::hash_set(const set_type &amp;)=delete'],['../d6/de4/classwlp_1_1hash__set.html#ae433afa86d8be408943689c572f7fcb8',1,'wlp::hash_set::hash_set(set_type &amp;&amp;set)']]],
   ['hash_5fset',['hash_set',['../d6/de4/classwlp_1_1hash__set.html',1,'wlp']]],
   ['hash_5fstatic_5fstring',['hash_static_string',['../d5/dca/namespacewlp.html#a802753869a0f3cdcd08c0857d34ac157',1,'wlp']]],
@@ -36,11 +36,12 @@ var searchData=
   ['hashmap_2eh',['HashMap.h',['../dd/d0b/_hash_map_8h.html',1,'']]],
   ['hashset_2eh',['HashSet.h',['../d2/dfc/_hash_set_8h.html',1,'']]],
   ['hashtable_2eh',['HashTable.h',['../de/def/_hash_table_8h.html',1,'']]],
-  ['hashtableiterator',['HashTableIterator',['../d7/dc9/structwlp_1_1_hash_table_iterator.html#a09f1ffe8091aef6db2bcc79a03729078',1,'wlp::HashTableIterator::HashTableIterator()'],['../d7/dc9/structwlp_1_1_hash_table_iterator.html#a30300c76fa82c0f04e73f470a8a75967',1,'wlp::HashTableIterator::HashTableIterator(node_type *node, const table_type *table)']]],
   ['hashtableiterator',['HashTableIterator',['../d7/dc9/structwlp_1_1_hash_table_iterator.html',1,'wlp']]],
+  ['hashtableiterator',['HashTableIterator',['../d7/dc9/structwlp_1_1_hash_table_iterator.html#a09f1ffe8091aef6db2bcc79a03729078',1,'wlp::HashTableIterator::HashTableIterator()'],['../d7/dc9/structwlp_1_1_hash_table_iterator.html#a30300c76fa82c0f04e73f470a8a75967',1,'wlp::HashTableIterator::HashTableIterator(node_type *node, const table_type *table)']]],
   ['hashtableiterator_3c_20element_2c_20key_2c_20val_2c_20const_20val_20_26_2c_20const_20val_20_2a_2c_20getkey_2c_20getval_2c_20hasher_2c_20equals_20_3e',['HashTableIterator&lt; Element, Key, Val, const Val &amp;, const Val *, GetKey, GetVal, Hasher, Equals &gt;',['../dc/d42/classwlp_1_1hash__table.html#ad5823969cc04697f3525fcb1054ab966',1,'wlp::hash_table']]],
   ['hashtableiterator_3c_20element_2c_20key_2c_20val_2c_20val_20_26_2c_20val_20_2a_2c_20getkey_2c_20getval_2c_20hasher_2c_20equals_20_3e',['HashTableIterator&lt; Element, Key, Val, Val &amp;, Val *, GetKey, GetVal, Hasher, Equals &gt;',['../dc/d42/classwlp_1_1hash__table.html#aeffd260c3dd5aa4a012bce9af934ae78',1,'wlp::hash_table']]],
   ['hashtablenode',['HashTableNode',['../dd/d94/structwlp_1_1_hash_table_node.html',1,'wlp']]],
   ['heap_5fsort',['heap_sort',['../d5/dca/namespacewlp.html#ac5b878c0fe198ce97804014fc7021641',1,'wlp::heap_sort(array_list&lt; T &gt; &amp;list)'],['../d5/dca/namespacewlp.html#ae6196482f6224fb81653c1b685c84a56',1,'wlp::heap_sort(array_list&lt; T &gt; &amp;list, Cmp cmp)']]],
-  ['heap_5ft',['heap_t',['../d5/d92/classwlp_1_1array__heap.html#ac97477ef61e8fcb6402b6962856ec685',1,'wlp::array_heap']]]
+  ['heap_5ft',['heap_t',['../d5/d92/classwlp_1_1array__heap.html#ac97477ef61e8fcb6402b6962856ec685',1,'wlp::array_heap']]],
+  ['helper_2eh',['Helper.h',['../de/d35/_helper_8h.html',1,'']]]
 ];

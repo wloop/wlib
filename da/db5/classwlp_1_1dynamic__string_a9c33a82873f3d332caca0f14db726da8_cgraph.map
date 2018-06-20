@@ -1,11 +1,5 @@
 <map id="wlp::dynamic_string::operator=" name="wlp::dynamic_string::operator=">
 <area shape="rect" id="node2" href="$da/db5/classwlp_1_1dynamic__string.html#a0503fcb5fe9203c7a47e309ee4168a69" title="wlp::dynamic_string\l::c_str" alt="" coords="192,5,331,46"/>
-<area shape="rect" id="node3" href="$da/db5/classwlp_1_1dynamic__string.html#af10bd26879fe1464a9b7515b4c073835" title="wlp::dynamic_string\l::length" alt="" coords="192,70,331,111"/>
+<area shape="rect" id="node3" href="$da/db5/classwlp_1_1dynamic__string.html#a4557f75e4a9553fcba1899cd8f89efa9" title="wlp::dynamic_string\l::length" alt="" coords="192,70,331,111"/>
 <area shape="rect" id="node4" href="$da/db5/classwlp_1_1dynamic__string.html#af1590fdacff0b21ee4826e4669ac25e1" title="wlp::dynamic_string\l::set_value" alt="" coords="192,135,331,177"/>
-<area shape="rect" id="node5" href="$d3/de6/_memory_8h.html#a137edc434b402c4f8ea23892006a38b6" title="free" alt="" coords="379,143,423,169"/>
-<area shape="rect" id="node6" href="$d3/de6/_memory_8h.html#aa359f6271adac5034612761142de9195" title="__memory_free" alt="" coords="472,143,584,169"/>
-<area shape="rect" id="node7" href="$de/d5b/classwlp_1_1_____allocator.html#aed0aab73d3ff2598dbe833a32c17321a" title="wlp::__Allocator::deallocate" alt="" coords="633,92,815,119"/>
-<area shape="rect" id="node9" href="$df/d64/_memory_8cpp.html#af94c4a48637bc573da1bbea9fec52d54" title="get_block_allocator" alt="" coords="657,143,791,169"/>
-<area shape="rect" id="node10" href="$df/d64/_memory_8cpp.html#ab333f945dc0df95c1535b49820195985" title="get_block_ptr" alt="" coords="674,193,774,220"/>
-<area shape="rect" id="node8" href="$de/d5b/classwlp_1_1_____allocator.html#aced9c1024626524f09caaee69cb3a1d8" title="wlp::__Allocator::isPool\lBlock" alt="" coords="865,85,1023,126"/>
 </map>

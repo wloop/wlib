@@ -1,7 +1,0 @@
-<map id="realloc" name="realloc">
-<area shape="rect" id="node2" href="$d3/de6/_memory_8h.html#a19776500cfa4d32aeb17adb0c2f3c5fe" title="getFixedMemorySize" alt="" coords="118,56,263,83"/>
-<area shape="rect" id="node5" href="$d3/de6/_memory_8h.html#a449842ab76bd106ec789d778081bbb72" title="getSmallestBlockSize" alt="" coords="115,107,266,133"/>
-<area shape="rect" id="node3" href="$df/d64/_memory_8cpp.html#af94c4a48637bc573da1bbea9fec52d54" title="get_block_allocator" alt="" coords="347,5,482,32"/>
-<area shape="rect" id="node4" href="$de/d5b/classwlp_1_1_____allocator.html#a17cb717b04d18a8febfa4f4e0582d0b7" title="wlp::__Allocator::getBlockSize" alt="" coords="315,56,515,83"/>
-<area shape="rect" id="node6" href="$d5/dca/namespacewlp.html#abcf07b4864595e780577d83d294c4676" title="wlp::pow_const" alt="" coords="358,107,471,133"/>
-</map>

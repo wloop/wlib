@@ -1,13 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d6/d7d/classexception.html" title="exception" alt="" coords="6,233,85,260"/>
-<area shape="rect" id="node2" href="$d7/da3/class_bad_alloc_exception.html" title="BadAllocException" alt="" coords="158,5,290,32"/>
-<area shape="rect" id="node3" href="$db/d4e/class_bad_state_exception.html" title="BadStateException" alt="" coords="157,56,291,83"/>
-<area shape="rect" id="node4" href="$d1/de8/class_bad_weak_ptr_exception.html" title="BadWeakPtrException" alt="" coords="147,107,301,133"/>
-<area shape="rect" id="node5" href="$d3/d07/class_illegal_transition_exception.html" title="IllegalTransitionException" alt="" coords="139,157,309,184"/>
-<area shape="rect" id="node6" href="$dc/d04/class_index_exception.html" title="IndexException" alt="" coords="168,208,280,235"/>
-<area shape="rect" id="node7" href="$d0/d72/class_key_exception.html" title="KeyException" alt="" coords="173,259,275,285"/>
-<area shape="rect" id="node8" href="$d3/d89/class_logic_failure_exception.html" title="LogicFailureException" alt="" coords="149,309,299,336"/>
-<area shape="rect" id="node9" href="$dc/d56/class_null_ptr_exception.html" title="NullPtrException" alt="" coords="164,360,284,387"/>
-<area shape="rect" id="node10" href="$d9/da8/class_runtime_exception.html" title="RuntimeException" alt="" coords="159,411,289,437"/>
-<area shape="rect" id="node11" href="$d4/da3/class_unexpected_state_exception.html" title="UnexpectedStateException" alt="" coords="133,461,315,488"/>
+<area shape="rect" id="node1" href="$d3/d63/classfalse__type.html" title="false_type" alt="" coords="5,5,88,32"/>
+<area shape="rect" id="node2" href="$d8/da9/structwlp_1_1_is_tuple_impl.html" title="wlp::IsTupleImpl\&lt; typename \&gt;" alt="" coords="137,5,335,32"/>
 </map>

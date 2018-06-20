@@ -66,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -93,7 +93,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:aabbaa42503c9e42b6d3bafc07e8c7613"><td class="memItemLeft" align="right" valign="top">static constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da0/structwlp_1_1has__diff__type.html#aabbaa42503c9e42b6d3bafc07e8c7613">value</a> = !<a class="el" href="../../d1/dbd/structwlp_1_1is__void.html">is_void</a>&lt;decltype(<a class="el" href="../../df/da0/structwlp_1_1has__diff__type.html#aba64dfbbdd5c110e3d3713c566568ad3">test</a>&lt;C&gt;(0))&gt;::value</td></tr>
+<tr class="memitem:aabbaa42503c9e42b6d3bafc07e8c7613"><td class="memItemLeft" align="right" valign="top">static constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da0/structwlp_1_1has__diff__type.html#aabbaa42503c9e42b6d3bafc07e8c7613">value</a> = !is_void&lt;decltype(<a class="el" href="../../df/da0/structwlp_1_1has__diff__type.html#aba64dfbbdd5c110e3d3713c566568ad3">test</a>&lt;C&gt;(0))&gt;::value</td></tr>
 <tr class="separator:aabbaa42503c9e42b6d3bafc07e8c7613"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
@@ -130,7 +130,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static constexpr T:: <a class="el" href="../../d5/dca/namespacewlp.html#a772bbc2878d981d2ee2fa542d008f4d8">diff_type</a> <a class="el" href="../../df/da0/structwlp_1_1has__diff__type.html">wlp::has_diff_type</a>&lt; C &gt;::test </td>
+          <td class="memname">static constexpr T:: diff_type <a class="el" href="../../df/da0/structwlp_1_1has__diff__type.html">wlp::has_diff_type</a>&lt; C &gt;::test </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -185,7 +185,7 @@ template&lt;typename C &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr bool <a class="el" href="../../df/da0/structwlp_1_1has__diff__type.html">wlp::has_diff_type</a>&lt; C &gt;::value = !<a class="el" href="../../d1/dbd/structwlp_1_1is__void.html">is_void</a>&lt;decltype(<a class="el" href="../../df/da0/structwlp_1_1has__diff__type.html#aba64dfbbdd5c110e3d3713c566568ad3">test</a>&lt;C&gt;(0))&gt;::value</td>
+          <td class="memname">constexpr bool <a class="el" href="../../df/da0/structwlp_1_1has__diff__type.html">wlp::has_diff_type</a>&lt; C &gt;::value = !is_void&lt;decltype(<a class="el" href="../../df/da0/structwlp_1_1has__diff__type.html#aba64dfbbdd5c110e3d3713c566568ad3">test</a>&lt;C&gt;(0))&gt;::value</td>
         </tr>
       </table>
   </td>
@@ -205,7 +205,7 @@ template&lt;typename C &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 20 2018 03:13:22 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 20 2018 03:22:31 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -45,13 +45,13 @@
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<polygon fill="white" stroke="#bfbfbf" points="178.5,-139.5 178.5,-158.5 229.5,-158.5 229.5,-139.5 178.5,-139.5"/>
-<text text-anchor="middle" x="204" y="-146.5" font-family="Helvetica,sans-Serif" font-size="10.00">uint16_t</text>
+<polygon fill="white" stroke="#bfbfbf" points="182.5,-139.5 182.5,-158.5 225.5,-158.5 225.5,-139.5 182.5,-139.5"/>
+<text text-anchor="middle" x="204" y="-146.5" font-family="Helvetica,sans-Serif" font-size="10.00">size_t</text>
 </g>
 <!-- Node4&#45;&gt;Node2 -->
 <g id="edge3" class="edge"><title>Node4&#45;&gt;Node2</title>
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M239.953,-143.757C270.468,-139.18 315.711,-132.393 353.822,-126.677"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="239.179,-140.334 229.809,-145.279 240.218,-147.256 239.179,-140.334"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M235.707,-144.394C266.164,-139.825 313.929,-132.661 353.857,-126.671"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="235.067,-140.951 225.697,-145.895 236.106,-147.873 235.067,-140.951"/>
 <text text-anchor="middle" x="310" y="-139" font-family="Helvetica,sans-Serif" font-size="10.00"> m_size</text>
 </g>
 <!-- Node5 -->

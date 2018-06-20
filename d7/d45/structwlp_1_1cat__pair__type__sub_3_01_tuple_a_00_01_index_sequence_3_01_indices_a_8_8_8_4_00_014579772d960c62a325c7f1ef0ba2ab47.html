@@ -66,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,7 +96,7 @@ Public Types</h2></td></tr>
 <tr class="separator:a9278f9f402397a920caf3d46c98172ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename TupleA, size_type... IndicesA, typename TupleB, size_type... IndicesB&gt;<br/>
+<div class="textblock"><h3>template&lt;typename TupleA, int... IndicesA, typename TupleB, int... IndicesB&gt;<br/>
 struct wlp::cat_pair_type_sub&lt; TupleA, IndexSequence&lt; IndicesA...&gt;, TupleB, IndexSequence&lt; IndicesB...&gt; &gt;</h3>
 
 <p>Helper type for determining the resultant type of a tuple concatenation. </p>
@@ -110,13 +110,13 @@ struct wlp::cat_pair_type_sub&lt; TupleA, IndexSequence&lt; IndicesA...&gt;, Tup
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00632">632</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00676">676</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a class="anchor" id="a9278f9f402397a920caf3d46c98172ca"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename TupleA , size_type... IndicesA, typename TupleB , size_type... IndicesB&gt; </div>
+template&lt;typename TupleA , int... IndicesA, typename TupleB , int... IndicesB&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">using <a class="el" href="../../db/df1/structwlp_1_1cat__pair__type__sub.html">wlp::cat_pair_type_sub</a>&lt; TupleA, <a class="el" href="../../d8/dcd/structwlp_1_1_index_sequence.html">IndexSequence</a>&lt; IndicesA...&gt;, TupleB, <a class="el" href="../../d8/dcd/structwlp_1_1_index_sequence.html">IndexSequence</a>&lt; IndicesB...&gt; &gt;::<a class="el" href="../../d7/d45/structwlp_1_1cat__pair__type__sub_3_01_tuple_a_00_01_index_sequence_3_01_indices_a_8_8_8_4_00_014579772d960c62a325c7f1ef0ba2ab47.html#a9278f9f402397a920caf3d46c98172ca">type</a> =  <a class="el" href="../../de/dab/classwlp_1_1tuple.html">tuple</a>&lt; typename <a class="el" href="../../d0/d93/structwlp_1_1_type_at_tuple.html">TypeAtTuple</a>&lt;IndicesA, TupleA&gt;::type..., typename <a class="el" href="../../d0/d93/structwlp_1_1_type_at_tuple.html">TypeAtTuple</a>&lt;IndicesB, TupleB&gt;::type... &gt;</td>
@@ -124,7 +124,7 @@ template&lt;typename TupleA , size_type... IndicesA, typename TupleB , size_type
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00639">639</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d2a/_tuple_8h_source.html#l00683">683</a> of file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
 
 </div>
 </div>
@@ -134,7 +134,7 @@ template&lt;typename TupleA , size_type... IndicesA, typename TupleB , size_type
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 20 2018 03:13:22 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 20 2018 03:22:31 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

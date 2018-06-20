@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['filename',['fileName',['../d6/d7d/classexception.html#ad4c61a2286cd4f84fe7f0aeb9dc5f2d8',1,'exception']]]
+  ['sizea',['SizeA',['../d2/d32/structwlp_1_1cat__pair__type.html#a79d45ccf6463d7e8b904e71d796d7d1c',1,'wlp::cat_pair_type']]],
+  ['sizeb',['SizeB',['../d2/d32/structwlp_1_1cat__pair__type.html#a65a65263fbfdc635c9c5e09725b72918',1,'wlp::cat_pair_type']]]
 ];

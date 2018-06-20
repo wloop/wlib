@@ -43,7 +43,7 @@
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<g id="a_node4"><a xlink:href="../../d9/d40/classwlp_1_1tree.html#a77736505c8590345fe3ade2961877845" target="_top" xlink:title="wlp::tree::erase">
+<g id="a_node4"><a xlink:href="../../d9/d40/classwlp_1_1tree.html#acfd0ae02fbf238e57658e48e36d53e15" target="_top" xlink:title="wlp::tree::erase">
 <polygon fill="white" stroke="black" points="105,-133.5 105,-152.5 189,-152.5 189,-133.5 105,-133.5"/>
 <text text-anchor="middle" x="147" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">wlp::tree::erase</text>
 </a>

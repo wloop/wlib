@@ -17,8 +17,8 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<polygon fill="white" stroke="#bfbfbf" points="13.5,-158.5 13.5,-177.5 64.5,-177.5 64.5,-158.5 13.5,-158.5"/>
-<text text-anchor="middle" x="39" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">uint16_t</text>
+<polygon fill="white" stroke="#bfbfbf" points="17.5,-158.5 17.5,-177.5 60.5,-177.5 60.5,-158.5 17.5,-158.5"/>
+<text text-anchor="middle" x="39" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">size_t</text>
 </g>
 <!-- Node2&#45;&gt;Node1 -->
 <g id="edge1" class="edge"><title>Node2&#45;&gt;Node1</title>

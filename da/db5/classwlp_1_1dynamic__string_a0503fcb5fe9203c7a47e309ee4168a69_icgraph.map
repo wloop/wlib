@@ -1,7 +1,7 @@
 <map id="wlp::dynamic_string::c_str" name="wlp::dynamic_string::c_str">
 <area shape="rect" id="node2" href="$d7/d08/classwlp_1_1static__string.html#ab3d4f6585570c157c0046a7fd17de416" title="wlp::static_string\l::append" alt="" coords="226,5,347,46"/>
 <area shape="rect" id="node3" href="$da/db5/classwlp_1_1dynamic__string.html#a8f6b7a8fccf98de4f85e81c80bc220a6" title="wlp::dynamic_string\l::append" alt="" coords="217,70,356,111"/>
-<area shape="rect" id="node4" href="$d7/d08/classwlp_1_1static__string.html#ae79b1d3fcdc7c14f0dc075853cf073dd" title="wlp::static_string\l::compare" alt="" coords="226,135,347,177"/>
+<area shape="rect" id="node4" href="$d7/d08/classwlp_1_1static__string.html#aa45d4748d337609294eff0bcd90bf55e" title="wlp::static_string\l::compare" alt="" coords="226,135,347,177"/>
 <area shape="rect" id="node5" href="$d1/d68/structwlp_1_1equals_3_01dynamic__string_01_4.html#a52e27e4e406cb1f7b6db11d2dc690d24" title="wlp::equals\&lt; dynamic\l_string \&gt;::operator()" alt="" coords="212,201,361,242"/>
 <area shape="rect" id="node6" href="$d2/d51/structwlp_1_1equals_3_01const_01dynamic__string_01_4.html#a927a90524ce139bdb0ec4858a9b0d064" title="wlp::equals\&lt; const\l dynamic_string \&gt;::operator()" alt="" coords="192,266,381,307"/>
 <area shape="rect" id="node7" href="$d7/d9b/structwlp_1_1hash_3_01dynamic__string_00_01_int_type_01_4.html#a1abf1fbc46af6e5097c522b3d54d320f" title="wlp::hash\&lt; dynamic\l_string, IntType \&gt;::\loperator()" alt="" coords="217,331,356,387"/>

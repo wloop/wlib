@@ -1,11 +1,10 @@
 var searchData=
 [
-  ['length',['length',['../d7/d08/classwlp_1_1static__string.html#a56507a4939d6663a947a227503c40214',1,'wlp::static_string::length()'],['../da/db5/classwlp_1_1dynamic__string.html#af10bd26879fe1464a9b7515b4c073835',1,'wlp::dynamic_string::length()']]],
+  ['length',['length',['../d7/d08/classwlp_1_1static__string.html#a56507a4939d6663a947a227503c40214',1,'wlp::static_string::length()'],['../da/db5/classwlp_1_1dynamic__string.html#a4557f75e4a9553fcba1899cd8f89efa9',1,'wlp::dynamic_string::length()']]],
   ['length_5fset',['length_set',['../da/db5/classwlp_1_1dynamic__string.html#aa6ebbef5602fc7aae527a3adc07a41a4',1,'wlp::dynamic_string']]],
   ['less',['less',['../da/dbb/classwlp_1_1_shared_count.html#ac516a59112a0ce6d885dd480a06b205c',1,'wlp::SharedCount::less(const SharedCount&lt; Ptr &gt; &amp;) const '],['../da/dbb/classwlp_1_1_shared_count.html#a9371d649c504b66fc4f102e2010afe34',1,'wlp::SharedCount::less(const WeakCount&lt; Ptr &gt; &amp;) const '],['../d4/d8d/classwlp_1_1_weak_count.html#a5c3a0687ae3f2394465c7b5fdeb6fff5',1,'wlp::WeakCount::less(const SharedCount&lt; Ptr &gt; &amp;) const '],['../d4/d8d/classwlp_1_1_weak_count.html#ad9998c1b3cddc2f11bc4e9488ee69422',1,'wlp::WeakCount::less(const WeakCount&lt; Ptr &gt; &amp;) const ']]],
-  ['linenum',['lineNum',['../d6/d7d/classexception.html#ae1fbc216246d8847f379bc441d51e9e0',1,'exception']]],
-  ['linked_5flist',['linked_list',['../d8/de4/classwlp_1_1linked__list.html',1,'wlp']]],
   ['linked_5flist',['linked_list',['../d8/de4/classwlp_1_1linked__list.html#a7890f598f2d9285c86a48450fe7de209',1,'wlp::linked_list::linked_list()'],['../d8/de4/classwlp_1_1linked__list.html#ac3835ede43b29a48f10f83bf4ba7b149',1,'wlp::linked_list::linked_list(const list_type &amp;)=delete'],['../d8/de4/classwlp_1_1linked__list.html#a93a7fc8efd5b8f607cfd0fef58fd7260',1,'wlp::linked_list::linked_list(list_type &amp;&amp;list)']]],
+  ['linked_5flist',['linked_list',['../d8/de4/classwlp_1_1linked__list.html',1,'wlp']]],
   ['linkedlist_2eh',['LinkedList.h',['../de/dc6/_linked_list_8h.html',1,'']]],
   ['linkedlistiterator',['LinkedListIterator',['../d7/dea/structwlp_1_1_linked_list_iterator.html',1,'wlp']]],
   ['linkedlistiterator',['LinkedListIterator',['../d7/dea/structwlp_1_1_linked_list_iterator.html#aa648d38b0cfd2831ee40e7f9a4574d2f',1,'wlp::LinkedListIterator::LinkedListIterator()'],['../d7/dea/structwlp_1_1_linked_list_iterator.html#af0e82443ffeadeb5c09730f082ef6454',1,'wlp::LinkedListIterator::LinkedListIterator(node_type *node, const list_type *list)'],['../d7/dea/structwlp_1_1_linked_list_iterator.html#ae0ca86b797f4e0c61c114da2ad1a2dc5',1,'wlp::LinkedListIterator::LinkedListIterator(const self_type &amp;it)']]],
@@ -16,8 +15,5 @@ var searchData=
   ['list_5fconcept_3c_20c_2c_20true_20_3e',['list_concept&lt; C, true &gt;',['../dd/da7/structwlp_1_1list__concept_3_01_c_00_01true_01_4.html',1,'wlp']]],
   ['list_5ftype',['list_type',['../d3/dc1/classwlp_1_1array__list.html#a2e15a8ef526fca0c47fdbbad64b97a25',1,'wlp::array_list::list_type()'],['../dd/da7/structwlp_1_1list__concept_3_01_c_00_01true_01_4.html#a6f2c1b76e377b5505bdbd3276294a855',1,'wlp::list_concept&lt; C, true &gt;::list_type()'],['../d7/dea/structwlp_1_1_linked_list_iterator.html#a210990e1c58cd71e4fcbe11d65c00a49',1,'wlp::LinkedListIterator::list_type()'],['../d8/de4/classwlp_1_1linked__list.html#acbf1cc7a888e38114d1eb01bc3e1233b',1,'wlp::linked_list::list_type()']]],
   ['lock',['lock',['../d0/dd9/classwlp_1_1weak__ptr.html#a93511e045f334a6c97acacaf9df31283',1,'wlp::weak_ptr']]],
-  ['log2_5fconst',['log2_const',['../d5/dca/namespacewlp.html#a87904547072bebdfb5168afb989600de',1,'wlp']]],
-  ['logic_5ffailure_5fexception',['LOGIC_FAILURE_EXCEPTION',['../d7/d2f/_exceptions_8h.html#a5d1729ce4fb03ae57a92c18956d8e6ef',1,'Exceptions.h']]],
-  ['logicfailureexception',['LogicFailureException',['../d3/d89/class_logic_failure_exception.html',1,'LogicFailureException'],['../d3/d89/class_logic_failure_exception.html#a8b3453927dfb8474f19838e4075182e1',1,'LogicFailureException::LogicFailureException()']]],
   ['lower_5fbound',['lower_bound',['../d9/d40/classwlp_1_1tree.html#a96951f489da395f2ad6709fad51989b9',1,'wlp::tree::lower_bound(const key_type &amp;key)'],['../d9/d40/classwlp_1_1tree.html#a72a3c945fa0d64387675fb5ca4b839ce',1,'wlp::tree::lower_bound(const key_type &amp;key) const ']]]
 ];

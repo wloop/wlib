@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['black',['BLACK',['../df/d4f/structwlp_1_1_red_black_tree_color.html#adb9ab6a3f898960da00d872265504fbf',1,'wlp::RedBlackTreeColor']]]
+  ['ignore',['ignore',['../d5/dca/namespacewlp.html#a78e9e7e7349ced3fe04732a693654918',1,'wlp']]]
 ];

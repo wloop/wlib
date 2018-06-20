@@ -1,6 +1,3 @@
 <map id="wlib/stl/Array2D.h" name="wlib/stl/Array2D.h">
-<area shape="rect" id="node3" href="$d0/db6/_types_8h.html" title="type definition of all the string types we will be using " alt="" coords="173,229,269,256"/>
-<area shape="rect" id="node5" href="$d6/d22/_initializer_list_8h.html" title="wlib/stl/InitializerList.h" alt="" coords="146,155,296,181"/>
-<area shape="rect" id="node6" href="$db/d2a/_utility_8h.html" title="Various helper functions. " alt="" coords="287,80,401,107"/>
-<area shape="rect" id="node7" href="$d2/d37/_tmp_8h.html" title="Template helper types, structs, and metafunctions. " alt="" coords="321,155,428,181"/>
+<area shape="rect" id="node2" href="$d6/d22/_initializer_list_8h.html" title="wlib/stl/InitializerList.h" alt="" coords="5,80,155,107"/>
 </map>

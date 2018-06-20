@@ -35,13 +35,13 @@
 </g>
 <!-- Node3 -->
 <g id="node3" class="node"><title>Node3</title>
-<polygon fill="white" stroke="#bfbfbf" points="178.5,-231.5 178.5,-250.5 229.5,-250.5 229.5,-231.5 178.5,-231.5"/>
-<text text-anchor="middle" x="204" y="-238.5" font-family="Helvetica,sans-Serif" font-size="10.00">uint16_t</text>
+<polygon fill="white" stroke="#bfbfbf" points="182.5,-231.5 182.5,-250.5 225.5,-250.5 225.5,-231.5 182.5,-231.5"/>
+<text text-anchor="middle" x="204" y="-238.5" font-family="Helvetica,sans-Serif" font-size="10.00">size_t</text>
 </g>
 <!-- Node3&#45;&gt;Node2 -->
 <g id="edge2" class="edge"><title>Node3&#45;&gt;Node2</title>
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M239.552,-237.341C272.394,-232.848 322.497,-223.306 362,-204 379.896,-195.254 397.419,-181.99 411.641,-169.642"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="239.003,-233.883 229.53,-238.629 239.895,-240.826 239.003,-233.883"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M235.828,-237.839C268.511,-233.57 320.973,-224.05 362,-204 379.896,-195.254 397.419,-181.99 411.641,-169.642"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="235.051,-234.408 225.548,-239.093 235.898,-241.356 235.051,-234.408"/>
 <text text-anchor="middle" x="323" y="-242" font-family="Helvetica,sans-Serif" font-size="10.00"> m_capacity</text>
 <text text-anchor="middle" x="323" y="-231" font-family="Helvetica,sans-Serif" font-size="10.00">m_size</text>
 </g>

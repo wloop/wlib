@@ -1,7 +1,0 @@
-<map id="find_allocator" name="find_allocator">
-<area shape="rect" id="node2" href="$df/d64/_memory_8cpp.html#ae2e1e5eb229847e60461811e59883e94" title="memory_get_allocator" alt="" coords="153,31,303,57"/>
-<area shape="rect" id="node3" href="$d3/de6/_memory_8h.html#ae94046dbccfe12303d31bb8aaff3e523" title="__memory_alloc" alt="" coords="352,31,469,57"/>
-<area shape="rect" id="node4" href="$d3/de6/_memory_8h.html#ac22d681988e173a07bb5f4b5375923f8" title="malloc" alt="" coords="518,31,578,57"/>
-<area shape="rect" id="node5" href="$d9/d8a/_new_8h.html#a2be7f3b9f5f2189e467551f094f6dc67" title="operator new" alt="" coords="631,5,729,32"/>
-<area shape="rect" id="node6" href="$d9/d8a/_new_8h.html#a60b33dbd1804d9a08cec7f1e34e6bdf4" title="operator new[]" alt="" coords="627,56,733,83"/>
-</map>

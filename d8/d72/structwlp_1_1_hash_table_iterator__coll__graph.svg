@@ -147,13 +147,13 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node7 -->
 <g id="node7" class="node"><title>Node7</title>
-<polygon fill="white" stroke="#bfbfbf" points="170.5,-114.5 170.5,-133.5 221.5,-133.5 221.5,-114.5 170.5,-114.5"/>
-<text text-anchor="middle" x="196" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">uint16_t</text>
+<polygon fill="white" stroke="#bfbfbf" points="174.5,-114.5 174.5,-133.5 217.5,-133.5 217.5,-114.5 174.5,-114.5"/>
+<text text-anchor="middle" x="196" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">size_t</text>
 </g>
 <!-- Node7&#45;&gt;Node6 -->
 <g id="edge7" class="edge"><title>Node7&#45;&gt;Node6</title>
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M231.767,-122.28C243.295,-121.777 256.196,-121.285 268,-121 299.686,-120.234 334.846,-119.946 364.375,-119.866"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="231.467,-118.79 221.637,-122.74 231.785,-125.783 231.467,-118.79"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M228.11,-122.442C240.517,-121.884 254.931,-121.316 268,-121 299.686,-120.234 334.846,-119.946 364.375,-119.866"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="227.635,-118.96 217.809,-122.923 227.961,-125.953 227.635,-118.96"/>
 <text text-anchor="middle" x="307" y="-135" font-family="Helvetica,sans-Serif" font-size="10.00"> m_capacity</text>
 <text text-anchor="middle" x="307" y="-124" font-family="Helvetica,sans-Serif" font-size="10.00">m_size</text>
 </g>

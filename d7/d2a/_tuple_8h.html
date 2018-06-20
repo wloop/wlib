@@ -66,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -94,12 +94,13 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 
 <p>Template oriented tuple implementation.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="../../d4/dda/_pair_8h_source.html">wlib/stl/Pair.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="../../d2/d37/_tmp_8h_source.html">wlib/util/Tmp.h</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;wlib/tmp/IntegralConstant.h&gt;</code><br/>
+<code>#include &lt;<a class="el" href="../../d4/dda/_pair_8h_source.html">wlib/stl/Pair.h</a>&gt;</code><br/>
+<code>#include &lt;wlib/type_traits&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Tuple.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="../../d1/de0/_tuple_8h__incl.svg" width="172" height="411"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="../../d1/de0/_tuple_8h__incl.svg" width="454" height="187"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -145,7 +146,7 @@ Data Structures</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d13/structwlp_1_1ignore__type.html">wlp::ignore_type</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9c/structwlp_1_1repeat__tuple__type__hopper.html">wlp::repeat_tuple_type_hopper&lt; Type, size_type &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9c/structwlp_1_1repeat__tuple__type__hopper.html">wlp::repeat_tuple_type_hopper&lt; Type, int &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/daf/structwlp_1_1repeat__tuple__type__sub.html">wlp::repeat_tuple_type_sub&lt; typename, typename &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,7 +154,7 @@ Data Structures</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d0e/structwlp_1_1repeat__tuple__type.html">wlp::repeat_tuple_type&lt; Type, Repeat &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d93/structwlp_1_1_type_at_tuple.html">wlp::TypeAtTuple&lt; size_type, typename &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d93/structwlp_1_1_type_at_tuple.html">wlp::TypeAtTuple&lt; int, typename &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d13/structwlp_1_1_type_at_tuple_3_01_i_00_01tuple_3_01_types_8_8_8_4_01_4.html">wlp::TypeAtTuple&lt; I, tuple&lt; Types...&gt; &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,26 +180,36 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a688e55a52ef59524a7cc9bdf2ab7b719"><td class="memTemplParams" colspan="2">template&lt;size_type I, typename... Types&gt; </td></tr>
+<tr class="memitem:a688e55a52ef59524a7cc9bdf2ab7b719"><td class="memTemplParams" colspan="2">template&lt;int I, typename... Types&gt; </td></tr>
 <tr class="memitem:a688e55a52ef59524a7cc9bdf2ab7b719"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a688e55a52ef59524a7cc9bdf2ab7b719">wlp::TypeAtIndexType</a> = typename TypeAtIndex&lt; I, Types...&gt;::type</td></tr>
 <tr class="separator:a688e55a52ef59524a7cc9bdf2ab7b719"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4b465c0fd93e498c8d1e746be752368"><td class="memTemplParams" colspan="2">template&lt;typename Type , size_type Repeat&gt; </td></tr>
+<tr class="memitem:ae4b465c0fd93e498c8d1e746be752368"><td class="memTemplParams" colspan="2">template&lt;typename Type , int Repeat&gt; </td></tr>
 <tr class="memitem:ae4b465c0fd93e498c8d1e746be752368"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ae4b465c0fd93e498c8d1e746be752368">wlp::RepeatTuple</a> = typename repeat_tuple_type&lt; Type, Repeat &gt;::type</td></tr>
 <tr class="separator:ae4b465c0fd93e498c8d1e746be752368"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ab74d3a62865aa15a29b5c0129f3a8cce"><td class="memTemplParams" colspan="2">template&lt;size_type I, typename... Types&gt; </td></tr>
+<tr class="memitem:a23b54e60f0f6605b7e9160db190e9a18"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
+<tr class="memitem:a23b54e60f0f6605b7e9160db190e9a18"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a23b54e60f0f6605b7e9160db190e9a18">wlp::swallow</a> (<a class="el" href="../../d6/da2/class_types.html">Types</a> &amp;&amp;...)</td></tr>
+<tr class="separator:a23b54e60f0f6605b7e9160db190e9a18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c73b1aea80dc712e78bccd724dd6415"><td class="memTemplParams" colspan="2">template&lt;template&lt; class &gt; class&gt; </td></tr>
+<tr class="memitem:a1c73b1aea80dc712e78bccd724dd6415"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a1c73b1aea80dc712e78bccd724dd6415">wlp::is_any_of</a> ()</td></tr>
+<tr class="separator:a1c73b1aea80dc712e78bccd724dd6415"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76e59be767ecef8dc6e39b56a56f2405"><td class="memTemplParams" colspan="2">template&lt;template&lt; class &gt; class Op, typename Head , typename... Tail&gt; </td></tr>
+<tr class="memitem:a76e59be767ecef8dc6e39b56a56f2405"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a76e59be767ecef8dc6e39b56a56f2405">wlp::is_any_of</a> ()</td></tr>
+<tr class="separator:a76e59be767ecef8dc6e39b56a56f2405"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab74d3a62865aa15a29b5c0129f3a8cce"><td class="memTemplParams" colspan="2">template&lt;int I, typename... Types&gt; </td></tr>
 <tr class="memitem:ab74d3a62865aa15a29b5c0129f3a8cce"><td class="memTemplItemLeft" align="right" valign="top">TypeAtIndexType&lt; I, Types...&gt;<br class="typebreak"/>
  const &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ab74d3a62865aa15a29b5c0129f3a8cce">wlp::get</a> (tuple&lt; Types...&gt; const &amp;tuple)</td></tr>
 <tr class="separator:ab74d3a62865aa15a29b5c0129f3a8cce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3187e276330342c8175977bc2bec775"><td class="memTemplParams" colspan="2">template&lt;size_type I, typename... Types&gt; </td></tr>
+<tr class="memitem:ab3187e276330342c8175977bc2bec775"><td class="memTemplParams" colspan="2">template&lt;int I, typename... Types&gt; </td></tr>
 <tr class="memitem:ab3187e276330342c8175977bc2bec775"><td class="memTemplItemLeft" align="right" valign="top">TypeAtIndexType&lt; I, Types...&gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ab3187e276330342c8175977bc2bec775">wlp::get</a> (tuple&lt; Types...&gt; &amp;tuple)</td></tr>
 <tr class="separator:ab3187e276330342c8175977bc2bec775"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1a2ab437270863815db19d49b25dd7d"><td class="memTemplParams" colspan="2">template&lt;size_type I, typename... Types&gt; </td></tr>
-<tr class="memitem:ac1a2ab437270863815db19d49b25dd7d"><td class="memTemplItemLeft" align="right" valign="top">remove_reference_type<br class="typebreak"/>
-&lt; TypeAtIndexType&lt; I, Types...&gt; &gt; &amp;&amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ac1a2ab437270863815db19d49b25dd7d">wlp::get</a> (tuple&lt; Types...&gt; &amp;&amp;tuple)</td></tr>
-<tr class="separator:ac1a2ab437270863815db19d49b25dd7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0f97c7e63624343f416478a969bd379"><td class="memTemplParams" colspan="2">template&lt;int I, typename... Types&gt; </td></tr>
+<tr class="memitem:aa0f97c7e63624343f416478a969bd379"><td class="memTemplItemLeft" align="right" valign="top">remove_reference<br class="typebreak"/>
+&lt; TypeAtIndexType&lt; I, Types...&gt;<br class="typebreak"/>
+ &gt;::type &amp;&amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#aa0f97c7e63624343f416478a969bd379">wlp::get</a> (tuple&lt; Types...&gt; &amp;&amp;tuple)</td></tr>
+<tr class="separator:aa0f97c7e63624343f416478a969bd379"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af742e063aead511b81cff1fbcb5333ac"><td class="memTemplParams" colspan="2">template&lt;typename &gt; </td></tr>
 <tr class="memitem:af742e063aead511b81cff1fbcb5333ac"><td class="memTemplItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#af742e063aead511b81cff1fbcb5333ac">wlp::count</a> ()</td></tr>
 <tr class="separator:af742e063aead511b81cff1fbcb5333ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -220,26 +231,27 @@ Functions</h2></td></tr>
 <tr class="memitem:a3030833e4cfdff35dc53f21325f62430"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Types&gt; </td></tr>
 <tr class="memitem:a3030833e4cfdff35dc53f21325f62430"><td class="memTemplItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a3030833e4cfdff35dc53f21325f62430">wlp::get</a> (tuple&lt; Types...&gt; &amp;&amp;tuple)</td></tr>
 <tr class="separator:a3030833e4cfdff35dc53f21325f62430"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa39db8bfc1b311b905dfaeb8c93c82f1"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
-<tr class="memitem:aa39db8bfc1b311b905dfaeb8c93c82f1"><td class="memTemplItemLeft" align="right" valign="top">constexpr size_type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#aa39db8bfc1b311b905dfaeb8c93c82f1">wlp::get_tuple_size</a> (tuple&lt; Types...&gt;)</td></tr>
-<tr class="separator:aa39db8bfc1b311b905dfaeb8c93c82f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c1637de79022869b09b2f0fd0e263f2"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
+<tr class="memitem:a2c1637de79022869b09b2f0fd0e263f2"><td class="memTemplItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a2c1637de79022869b09b2f0fd0e263f2">wlp::get_tuple_size</a> (tuple&lt; Types...&gt;)</td></tr>
+<tr class="separator:a2c1637de79022869b09b2f0fd0e263f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a847878203381278fa6109cdf08a42c12"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
 <tr class="memitem:a847878203381278fa6109cdf08a42c12"><td class="memTemplItemLeft" align="right" valign="top">tuple&lt; <a class="el" href="../../d6/da2/class_types.html">Types</a> &amp;&amp;...&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a847878203381278fa6109cdf08a42c12">wlp::forward_as_tuple</a> (<a class="el" href="../../d6/da2/class_types.html">Types</a> &amp;&amp;...elements)</td></tr>
 <tr class="separator:a847878203381278fa6109cdf08a42c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27641fd36eae01c149bf3eede6986137"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
 <tr class="memitem:a27641fd36eae01c149bf3eede6986137"><td class="memTemplItemLeft" align="right" valign="top">tuple&lt; <a class="el" href="../../d6/da2/class_types.html">Types</a> &amp;...&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a27641fd36eae01c149bf3eede6986137">wlp::tie</a> (<a class="el" href="../../d6/da2/class_types.html">Types</a> &amp;...elements)</td></tr>
 <tr class="separator:a27641fd36eae01c149bf3eede6986137"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a8dfd3df3d34c44aaf3c39f94cfeab6"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
-<tr class="memitem:a8a8dfd3df3d34c44aaf3c39f94cfeab6"><td class="memTemplItemLeft" align="right" valign="top">tuple&lt; decay_type&lt; <a class="el" href="../../d6/da2/class_types.html">Types</a> &gt;...&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a8a8dfd3df3d34c44aaf3c39f94cfeab6">wlp::make_tuple</a> (<a class="el" href="../../d6/da2/class_types.html">Types</a> &amp;&amp;...elements)</td></tr>
-<tr class="separator:a8a8dfd3df3d34c44aaf3c39f94cfeab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5a1e7bc07262244ef41601b6e9789bb"><td class="memTemplParams" colspan="2">template&lt;typename TupleA , size_type... IndicesA, typename TupleB , size_type... IndicesB&gt; </td></tr>
-<tr class="memitem:ad5a1e7bc07262244ef41601b6e9789bb"><td class="memTemplItemLeft" align="right" valign="top">tuple&lt; typename TypeAtTuple<br class="typebreak"/>
-&lt; IndicesA, decay_type&lt; TupleA &gt;<br class="typebreak"/>
- &gt;::type..., typename <br class="typebreak"/>
-TypeAtTuple&lt; IndicesB, <br class="typebreak"/>
-decay_type&lt; TupleB &gt;<br class="typebreak"/>
- &gt;::type... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#ad5a1e7bc07262244ef41601b6e9789bb">wlp::tuple_cat_pair_sub</a> (TupleA &amp;&amp;tupleA, TupleB &amp;&amp;tupleB, IndexSequence&lt; IndicesA...&gt;, IndexSequence&lt; IndicesB...&gt;)</td></tr>
-<tr class="separator:ad5a1e7bc07262244ef41601b6e9789bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8eaea6f842c348064997526348b90eeb"><td class="memTemplParams" colspan="2">template&lt;typename... Types&gt; </td></tr>
+<tr class="memitem:a8eaea6f842c348064997526348b90eeb"><td class="memTemplItemLeft" align="right" valign="top">tuple&lt; typename decay&lt; <a class="el" href="../../d6/da2/class_types.html">Types</a> &gt;<br class="typebreak"/>
+::type...&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a8eaea6f842c348064997526348b90eeb">wlp::make_tuple</a> (<a class="el" href="../../d6/da2/class_types.html">Types</a> &amp;&amp;...elements)</td></tr>
+<tr class="separator:a8eaea6f842c348064997526348b90eeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c481d042f76dc12ace837ada06ed04b"><td class="memTemplParams" colspan="2">template&lt;typename TupleA , int... IndicesA, typename TupleB , int... IndicesB&gt; </td></tr>
+<tr class="memitem:a8c481d042f76dc12ace837ada06ed04b"><td class="memTemplItemLeft" align="right" valign="top">tuple&lt; typename TypeAtTuple<br class="typebreak"/>
+&lt; IndicesA, typename decay<br class="typebreak"/>
+&lt; TupleA &gt;::type &gt;::type..., <br class="typebreak"/>
+typename TypeAtTuple&lt; IndicesB, <br class="typebreak"/>
+typename decay&lt; TupleB &gt;::type &gt;<br class="typebreak"/>
+::type... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a8c481d042f76dc12ace837ada06ed04b">wlp::tuple_cat_pair_sub</a> (TupleA &amp;&amp;tupleA, TupleB &amp;&amp;tupleB, IndexSequence&lt; IndicesA...&gt;, IndexSequence&lt; IndicesB...&gt;)</td></tr>
+<tr class="separator:a8c481d042f76dc12ace837ada06ed04b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a447cceb8493717b7192963b2266d1553"><td class="memTemplParams" colspan="2">template&lt;typename TupleA , typename TupleB &gt; </td></tr>
 <tr class="memitem:a447cceb8493717b7192963b2266d1553"><td class="memTemplItemLeft" align="right" valign="top">cat_pair_type&lt; TupleA, TupleB &gt;<br class="typebreak"/>
 ::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dca/namespacewlp.html#a447cceb8493717b7192963b2266d1553">wlp::tuple_cat_pair</a> (TupleA &amp;&amp;tupleA, TupleB &amp;&amp;tupleB)</td></tr>
@@ -267,13 +279,13 @@ Variables</h2></td></tr>
 <p>The template oriented tuple implementation is flexible and performant and resolves at compile time, resulting in good runtime performance.</p>
 <dl class="section author"><dt>Author</dt><dd>Jeff Niu </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>November 5, 2017 </dd></dl>
-<dl class="bug"><dt><b><a class="el" href="../../de/da5/bug.html#_bug000028">Bug:</a></b></dt><dd>No known bugs </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="../../de/da5/bug.html#_bug000019">Bug:</a></b></dt><dd>No known bugs </dd></dl>
 
 <p>Definition in file <a class="el" href="../../d7/d2a/_tuple_8h_source.html">Tuple.h</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 20 2018 03:13:20 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 20 2018 03:22:30 for Waterloop Wlib by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

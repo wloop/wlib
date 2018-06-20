@@ -16,8 +16,8 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<polygon fill="white" stroke="#bfbfbf" points="43.5,-68.5 43.5,-87.5 78.5,-87.5 78.5,-68.5 43.5,-68.5"/>
-<text text-anchor="middle" x="61" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00">bool</text>
+<polygon fill="white" stroke="#bfbfbf" points="7.5,-68.5 7.5,-87.5 114.5,-87.5 114.5,-68.5 7.5,-68.5"/>
+<text text-anchor="middle" x="61" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00">static constexpr bool</text>
 </g>
 <!-- Node2&#45;&gt;Node1 -->
 <g id="edge1" class="edge"><title>Node2&#45;&gt;Node1</title>
