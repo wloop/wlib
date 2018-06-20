@@ -1,8 +1,8 @@
+#include <wlib/utility>
 #include <gtest/gtest.h>
 #include <wlib/strings/String.h>
 
 using namespace wlp;
-
 
 TEST(dynamic_string_tests, constructor_tests) {
     dynamic_string string1;
@@ -10,8 +10,8 @@ TEST(dynamic_string_tests, constructor_tests) {
     dynamic_string string3(string1);
     ASSERT_EQ(string2, "HELLo WORld!");
     ASSERT_TRUE(string1.empty());
-    ASSERT_EQ(12, string2.length());
-    ASSERT_EQ(0, string3.length()); //This assert fails
+    ASSERT_EQ(12u, string2.length());
+    ASSERT_EQ(0u, string3.length());
 
     string2.clear();
 
@@ -30,8 +30,8 @@ TEST(dynamic_string_tests, assignment_tests) {
     ASSERT_EQ(string2, "");
     ASSERT_EQ(string1, "");
 
-    ASSERT_EQ(string3.length(), 9);
-    ASSERT_EQ(string2.length(), 0);
+    ASSERT_EQ(string3.length(), 9u);
+    ASSERT_EQ(string2.length(), 0u);
 }
 
 TEST(dynamic_string_tests, character_access_tests) {
@@ -123,13 +123,13 @@ TEST(dynamic_string_tests, move_tests) {
     char str[] = "Tis an unweeded garden that grows to seed; things rank and gross in Nature possess";
     dynamic_string s1(str);
     dynamic_string s2(move(s1));
-    ASSERT_EQ(0, s1.length());
+    ASSERT_EQ(0u, s1.length());
     ASSERT_STREQ("", s1.c_str());
     ASSERT_EQ(strlen(str), s2.length());
     ASSERT_STREQ(str, s2.c_str());
     dynamic_string s3("To sleep; to die");
     s3 = move(s2);
-    ASSERT_EQ(0, s2.length());
+    ASSERT_EQ(0u, s2.length());
     ASSERT_STREQ("", s2.c_str());
     ASSERT_EQ(strlen(str), s3.length());
     ASSERT_STREQ(str, s3.c_str());
@@ -137,14 +137,14 @@ TEST(dynamic_string_tests, move_tests) {
 
 TEST(dynamic_string_tests, resize_length_set) {
     char teststr[] = "Your empire needs you!";
-    size_type length = static_cast<size_type>(strlen(teststr));
+    size_t length = static_cast<size_t>(strlen(teststr));
 
     dynamic_string str("hello");
     ASSERT_STREQ("hello", str.c_str());
     ASSERT_EQ(strlen("hello"), str.length());
 
     str.resize(length);
-    ASSERT_EQ(0, str.length());
+    ASSERT_EQ(0u, str.length());
     ASSERT_STREQ("", str.c_str());
 
     strcpy(str.c_str(), "Your empire needs you!");

@@ -8,7 +8,7 @@ using namespace wlp;
 TEST(string_iterator_test, test_static_string_iteration) {
     char str[] = "No Gods or Kings, only Man";
     static_string<64> ss(str);
-    size_type i = 0;
+    size_t i = 0;
     for (char &s : ss) {
         ASSERT_EQ(str[i], s);
         ++i;
@@ -18,7 +18,7 @@ TEST(string_iterator_test, test_static_string_iteration) {
 TEST(string_iterator_test, test_dynamic_string_iteration) {
     char str[] = "Is a man not entitled to the sweat of his brow?";
     dynamic_string ds(str);
-    size_type i = 0;
+    size_t i = 0;
     for (char  &s : ds) {
         ASSERT_EQ(str[i], s);
         ++i;

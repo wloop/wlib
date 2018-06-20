@@ -12,21 +12,20 @@
 #ifndef EMBEDDEDCPLUSPLUS_STRINGTYPES_H
 #define EMBEDDEDCPLUSPLUS_STRINGTYPES_H
 
-#include <string.h> // strlen, strncpy, strcmp
-
 #include <wlib/strings/StringIterator.h>
-#include <wlib/Types.h>
-#include <wlib/util/Math.h>
-#include <wlib/mem/Memory.h>
+#include <wlib/tmp/NullptrType.h>
+#include <wlib/stl/Helper.h>
+#include <stdint.h>
+#include <string.h>
 
 namespace wlp {
 
-    template<size_type tSize>
+    template<size_t tSize>
     class static_string;
 
     class dynamic_string;
 
-    template<size_type tSize>
+    template<size_t tSize>
     class static_string {
     public:
         // Iterator types
@@ -34,8 +33,8 @@ namespace wlp {
         typedef StringIterator<const static_string<tSize>, const char &, const char *> const_iterator;
 
         // Required types for concept check
-        typedef wlp::size_type size_type;
-        typedef wlp::diff_type diff_type;
+        typedef size_t size_type;
+        typedef ptrdiff_t diff_type;
 
         /**
          * Default constructor creates string with no character
@@ -326,16 +325,6 @@ namespace wlp {
         }
 
         /**
-         * Add a static string to a static string.
-         *
-         * @param str static string to add
-         * @return a new static string containing the most contents of both strings
-         */
-        static_string<tSize> operator=(const static_string<tSize> &str) const {
-            return {m_buffer, str.m_buffer, m_len, str.m_len};
-        }
-
-        /**
          * Appends a @code StaticString @endcode string to the current string. If String cannot
          * hold the given string, it does not add it
          *
@@ -600,159 +589,159 @@ namespace wlp {
         size_type m_len;
 
         // Asymmetrical addition operators
-        template<size_type size>
+        template<size_t size>
         friend static_string<size> operator+(const static_string<size> &, const char *);
 
-        template<size_type size>
+        template<size_t size>
         friend static_string<size> operator+(const char *, const static_string<size> &);
 
-        template<size_type size>
+        template<size_t size>
         friend static_string<size> operator+(const static_string<size> &, char);
 
-        template<size_type size>
+        template<size_t size>
         friend static_string<size> operator+(char, const static_string<size> &);
     };
 
     // Comparison with LHS character array
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator==(const char *lhs, const static_string<tSize> &rhs) {
         return rhs.compare(lhs) == 0;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator!=(const char *lhs, const static_string<tSize> &rhs) {
         return rhs.compare(lhs) != 0;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator>(const char *lhs, const static_string<tSize> &rhs) {
         return rhs.compare(lhs) <= 0;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator>=(const char *lhs, const static_string<tSize> &rhs) {
         return rhs.compare(lhs) < 0;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator<(const char *lhs, const static_string<tSize> &rhs) {
         return rhs.compare(lhs) >= 0;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator<=(const char *lhs, const static_string<tSize> &rhs) {
         return rhs.compare(lhs) > 0;
     }
 
     // Comparison with RHS character array
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator==(const static_string<tSize> &lhs, const char *rhs) {
         return lhs.compare(rhs) == 0;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator!=(const static_string<tSize> &lhs, const char *rhs) {
         return lhs.compare(rhs) != 0;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator>(const static_string<tSize> &lhs, const char *rhs) {
         return lhs.compare(rhs) > 0;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator>=(const static_string<tSize> &lhs, const char *rhs) {
         return lhs.compare(rhs) >= 0;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator<(const static_string<tSize> &lhs, const char *rhs) {
         return lhs.compare(rhs) < 0;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator<=(const static_string<tSize> &lhs, const char *rhs) {
         return lhs.compare(rhs) <= 0;
     }
 
     // Comparison with RHS character
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator==(const static_string<tSize> &lhs, const char rhs) {
         return lhs.length() == 1 && lhs.at(0) == rhs;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator!=(const static_string<tSize> &lhs, const char rhs) {
         return lhs.length() != 1 || lhs.at(0) != rhs;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator>(const static_string<tSize> &lhs, const char rhs) {
         return lhs.compare(rhs) > 0;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator>=(const static_string<tSize> &lhs, const char rhs) {
         return lhs.compare(rhs) >= 0;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator<(const static_string<tSize> &lhs, const char rhs) {
         return lhs.compare(rhs) < 0;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator<=(const static_string<tSize> &lhs, const char rhs) {
         return lhs.compare(rhs) <= 0;
     }
 
     // Comparison with LHS character
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator==(const char lhs, const static_string<tSize> &rhs) {
         return rhs == lhs;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator!=(const char lhs, const static_string<tSize> &rhs) {
         return rhs != lhs;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator>(const char lhs, const static_string<tSize> &rhs) {
         return rhs <= lhs;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator>=(const char lhs, const static_string<tSize> &rhs) {
         return rhs < lhs;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator<(const char lhs, const static_string<tSize> &rhs) {
         return rhs >= lhs;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     bool operator<=(const char lhs, const static_string<tSize> &rhs) {
         return rhs > lhs;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     static_string<tSize> operator+(const char *lhs, const static_string<tSize> &rhs) {
-        return {lhs, rhs.c_str(), static_cast<size_type>(strlen(lhs)), rhs.length()};
+        return {lhs, rhs.c_str(), static_cast<size_t>(strlen(lhs)), rhs.length()};
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     static_string<tSize> operator+(const static_string<tSize> &lhs, const char *rhs) {
-        return {lhs.c_str(), rhs, lhs.length(), static_cast<size_type>(strlen(rhs))};
+        return {lhs.c_str(), rhs, lhs.length(), static_cast<size_t>(strlen(rhs))};
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     static_string<tSize> operator+(const static_string<tSize> &lhs, const char rhs) {
         return {lhs.c_str(), &rhs, lhs.length(), 1};
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     static_string<tSize> operator+(const char lhs, const static_string<tSize> &rhs) {
         return {&lhs, rhs.c_str(), 1, rhs.length()};
     }
@@ -760,8 +749,8 @@ namespace wlp {
     class dynamic_string {
     public:
         // Required types for concept check
-        typedef wlp::size_type size_type;
-        typedef wlp::diff_type diff_type;
+        typedef size_t size_type;
+        typedef ptrdiff_t diff_type;
 
         // Iterator types
         typedef StringIterator<dynamic_string, char &, char *> iterator;
@@ -789,7 +778,7 @@ namespace wlp {
          *
          * @param str static string to copy
          */
-        template<size_type tSize>
+        template<size_t tSize>
         explicit dynamic_string(const static_string<tSize> &str)
                 : dynamic_string(str.c_str(), str.length()) {}
 
@@ -831,7 +820,7 @@ namespace wlp {
          */
         dynamic_string &operator=(const dynamic_string &str);
 
-        template<size_type tSize>
+        template<size_t tSize>
         dynamic_string &operator=(const static_string<tSize> &str) {
             set_value(str.c_str(), str.length());
             return *this;
@@ -974,7 +963,7 @@ namespace wlp {
          */
         dynamic_string &operator+=(const dynamic_string &other);
 
-        template<size_type tSize>
+        template<size_t tSize>
         dynamic_string &operator+=(const static_string<tSize> &str) {
             return append(str.c_str(), str.length());
         }
@@ -1068,7 +1057,7 @@ namespace wlp {
          */
         diff_type compare(const dynamic_string &str) const;
 
-        template<size_type tSize>
+        template<size_t tSize>
         diff_type compare(const static_string<tSize> &str) const {
             return compare(str.c_str());
         }
@@ -1109,7 +1098,7 @@ namespace wlp {
             return const_iterator(m_len, this);
         }
 
-        template<size_type tSize>
+        template<size_t tSize>
         dynamic_string operator+(const static_string<tSize> &str) {
             return {m_buffer, str.c_str(), m_len, str.length()};
         }
@@ -1147,62 +1136,38 @@ namespace wlp {
         dynamic_string &append(const char *c_str, size_type len);
 
         friend dynamic_string operator+(const dynamic_string &lhs, const dynamic_string &rhs);
-
         friend dynamic_string operator+(const char *lhs, const dynamic_string &rhs);
-
         friend dynamic_string operator+(const dynamic_string &lhs, const char *rhs);
-
         friend dynamic_string operator+(char lhs, const dynamic_string &rhs);
-
         friend dynamic_string operator+(const dynamic_string &lhs, char rhs);
     };
 
     bool operator==(const dynamic_string &lhs, const dynamic_string &rhs);
-
     bool operator!=(const dynamic_string &lhs, const dynamic_string &rhs);
-
     bool operator>(const dynamic_string &lhs, const dynamic_string &rhs);
-
     bool operator>=(const dynamic_string &lhs, const dynamic_string &rhs);
-
     bool operator<(const dynamic_string &lhs, const dynamic_string &rhs);
-
     bool operator<=(const dynamic_string &lhs, const dynamic_string &rhs);
-
     bool operator==(const char *lhs, const dynamic_string &rhs);
-
     bool operator!=(const char *lhs, const dynamic_string &rhs);
-
     bool operator>(const char *lhs, const dynamic_string &rhs);
-
     bool operator>=(const char *lhs, const dynamic_string &rhs);
-
     bool operator<(const char *lhs, const dynamic_string &rhs);
-
     bool operator<=(const char *lhs, const dynamic_string &rhs);
-
     bool operator==(const dynamic_string &lhs, const char *rhs);
-
     bool operator!=(const dynamic_string &lhs, const char *rhs);
-
     bool operator>(const dynamic_string &lhs, const char *rhs);
-
     bool operator>=(const dynamic_string &lhs, const char *rhs);
-
     bool operator<(const dynamic_string &lhs, const char *rhs);
-
     bool operator<=(const dynamic_string &lhs, const char *rhs);
-
     bool operator==(char lhs, const dynamic_string &rhs);
-
     bool operator==(const dynamic_string &lhs, char rhs);
 
-    template<size_type tSize>
+    template<size_t tSize>
     static_string<tSize>::static_string(const dynamic_string &str)
-            : static_string(str.c_str(), str.length()) {
-    }
+            : static_string(str.c_str(), str.length()) {}
 
-    template<size_type tSize>
+    template<size_t tSize>
     static_string<tSize> &static_string<tSize>::operator=(const dynamic_string &str) {
         m_len = MIN(str.length(), tSize);
         memcpy(m_buffer, str.c_str(), m_len);
@@ -1210,28 +1175,28 @@ namespace wlp {
         return *this;
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     static_string<tSize> static_string<tSize>::operator+(const dynamic_string &str) const {
         return {m_buffer, str.c_str(), m_len, str.length()};
     }
 
-    template<size_type tSize>
+    template<size_t tSize>
     static_string<tSize> &static_string<tSize>::append(const dynamic_string &str) {
         return append(str.c_str(), str.length());
     }
 
-    template<size_type tSize>
-    diff_type static_string<tSize>::compare(const dynamic_string &str) const {
+    template<size_t tSize>
+    ptrdiff_t static_string<tSize>::compare(const dynamic_string &str) const {
         return compare(str.c_str());
     }
 
     // Static Strings
-    typedef static_string<8u> String8;
-    typedef static_string<16u> String16;
-    typedef static_string<32u> String32;
-    typedef static_string<64u> String64;
-    typedef static_string<128u> String128;
-    typedef static_string<256u> String256;
+    typedef wlp::static_string<8u> String8;
+    typedef wlp::static_string<16u> String16;
+    typedef wlp::static_string<32u> String32;
+    typedef wlp::static_string<64u> String64;
+    typedef wlp::static_string<128u> String128;
+    typedef wlp::static_string<256u> String256;
 
     // Dynamic String
     typedef wlp::dynamic_string String;

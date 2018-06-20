@@ -14,10 +14,9 @@
 #ifndef CORE_STL_HASH_H
 #define CORE_STL_HASH_H
 
-#include <wlib/Types.h>
-#include <wlib/WlibConfig.h>
-#include <wlib/util/Math.h>
 #include <wlib/strings/String.h>
+
+#define MUL_127(x) (((x) << 7) - (x))
 
 namespace wlp {
 
@@ -51,7 +50,7 @@ namespace wlp {
     template<class IntType, uint16_t tSize>
     inline IntType hash_static_string(const static_string<tSize> &static_string) {
         IntType h = 0;
-        for (size_type pos = 0; pos < static_string.length(); ++pos) {
+        for (size_t pos = 0; pos < static_string.length(); ++pos) {
             h = static_cast<IntType>(MUL_127(h) + static_string[pos]);
         }
         return h;
@@ -80,8 +79,8 @@ namespace wlp {
      * @tparam IntType hash code integer type
      * @tparam tSize static string size
      */
-    template<class IntType, uint16_t tSize>
-    struct hash<static_string<tSize>, IntType> {
+    template<class IntType, size_t tSize>
+    struct hash<wlp::static_string<tSize>, IntType> {
         IntType operator()(const static_string<tSize> &s) const {
             return hash_static_string<IntType, tSize>(s);
         }

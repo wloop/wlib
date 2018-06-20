@@ -32,8 +32,8 @@ TEST(tree_map, insert_rvalue) {
     string val("val");
 
     map.insert(move(key), move(val));
-    ASSERT_EQ(0, key.length());
-    ASSERT_EQ(0, val.length());
+    ASSERT_EQ(0u, key.length());
+    ASSERT_EQ(0u, val.length());
     ASSERT_STREQ("", key.c_str());
     ASSERT_STREQ("", val.c_str());
 

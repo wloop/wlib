@@ -10,7 +10,7 @@ typedef linked_list<int>::const_iterator lli_cit;
 
 TEST(linked_list_test, constructor_tests) {
     linked_list<int> numlist;
-    ASSERT_EQ(numlist.size(), 0);
+    ASSERT_EQ(numlist.size(), 0u);
 }
 
 TEST(linked_list_test, push_pop_remove_tests) {
@@ -20,7 +20,7 @@ TEST(linked_list_test, push_pop_remove_tests) {
     numlist.push_front(3); // 3 1 2
     ASSERT_EQ(numlist.front(), 3);
     ASSERT_EQ(numlist.back(), 2);
-    ASSERT_EQ(numlist.size(), 3);
+    ASSERT_EQ(numlist.size(), 3u);
     numlist.pop_back();
     numlist.pop_front();
     ASSERT_EQ(numlist.front(), 1);
@@ -28,33 +28,33 @@ TEST(linked_list_test, push_pop_remove_tests) {
     numlist.push_front(4);
     numlist.push_back(5);
     numlist.erase(1);
-    ASSERT_EQ(numlist.size(), 2);
+    ASSERT_EQ(numlist.size(), 2u);
     numlist.erase(1);
-    ASSERT_EQ(numlist.size(), 1);
+    ASSERT_EQ(numlist.size(), 1u);
     numlist.pop_front();
-    ASSERT_EQ(numlist.size(), 0);
+    ASSERT_EQ(numlist.size(), 0u);
     // does nothing, should not die
     numlist.erase(100);
-    ASSERT_EQ(numlist.size(), 0);
+    ASSERT_EQ(numlist.size(), 0u);
     numlist.push_front(4);
-    ASSERT_EQ(numlist.size(), 1);
+    ASSERT_EQ(numlist.size(), 1u);
     numlist.pop_back();
-    ASSERT_EQ(numlist.size(), 0);
+    ASSERT_EQ(numlist.size(), 0u);
     numlist.push_back(5);
-    ASSERT_EQ(numlist.size(), 1);
+    ASSERT_EQ(numlist.size(), 1u);
     numlist.erase(0);
-    ASSERT_EQ(numlist.size(), 0);
+    ASSERT_EQ(numlist.size(), 0u);
     numlist.push_back(5);
-    ASSERT_EQ(numlist.size(), 1);
+    ASSERT_EQ(numlist.size(), 1u);
     numlist.clear();
-    ASSERT_EQ(numlist.size(), 0);
+    ASSERT_EQ(numlist.size(), 0u);
     numlist.push_back(3);
     numlist.push_back(1);
     numlist.push_back(2);
     const linked_list<int> constlist = move(numlist);
     ASSERT_EQ(constlist.front(), 3);
     ASSERT_EQ(constlist.back(), 2);
-    ASSERT_EQ(constlist.size(), 3);
+    ASSERT_EQ(constlist.size(), 3u);
 }
 
 TEST(linked_list_test, indexing_tests) {
@@ -62,10 +62,10 @@ TEST(linked_list_test, indexing_tests) {
     numlist.push_front(1);
     numlist.push_back(2);
     numlist.push_front(3); // 3 1 2
-    ASSERT_EQ(numlist.index_of(3), 0);
-    ASSERT_EQ(numlist.index_of(1), 1);
-    ASSERT_EQ(numlist.index_of(2), 2);
-    ASSERT_EQ(numlist.index_of(4), 3);
+    ASSERT_EQ(numlist.index_of(3), 0u);
+    ASSERT_EQ(numlist.index_of(1), 1u);
+    ASSERT_EQ(numlist.index_of(2), 2u);
+    ASSERT_EQ(numlist.index_of(4), 3u);
     ASSERT_EQ(numlist.at(0), 3);
     ASSERT_EQ(numlist[2], 2);
     const linked_list<int> constlist = move(numlist);
@@ -105,8 +105,8 @@ TEST(linked_list_test, copy_move_constructors) {
     auto newlist = move(list);
     linked_list<int> list2;
     auto movedlist = move(list2);
-    ASSERT_EQ(newlist.size(), 0);
-    ASSERT_EQ(movedlist.size(), 0);
+    ASSERT_EQ(newlist.size(), 0u);
+    ASSERT_EQ(movedlist.size(), 0u);
 }
 
 TEST(linked_list_test, test_insert_index) {
@@ -116,10 +116,10 @@ TEST(linked_list_test, test_insert_index) {
     list.insert(1, 20);
     list.insert(1, 25);
     list.insert(2, 40);
-    ASSERT_EQ(5, list.size());
+    ASSERT_EQ(5u, list.size());
     int traverse[] = {15, 25, 40, 20, 10};
     linked_list<int>::iterator it = list.begin();
-    for (int i = 0; i < list.size(); i++) {
+    for (size_t i = 0; i < list.size(); i++) {
         ASSERT_EQ(*it, traverse[i]);
         ++it;
     }
@@ -144,8 +144,8 @@ TEST(linked_list_test, test_insert_iterator) {
     list.insert(it, 45);
     int traverse[] = {20, 30, 45, 25, 15};
     it = list.begin();
-    ASSERT_EQ(5, list.size());
-    for (int i = 0; i < list.size(); i++) {
+    ASSERT_EQ(5u, list.size());
+    for (size_t i = 0; i < list.size(); i++) {
         ASSERT_EQ(traverse[i], *it);
         ++it;
     }
@@ -155,7 +155,7 @@ TEST(linked_list_test, test_insert_iterator) {
 TEST(linked_list_test, test_erase_index) {
     linked_list<int> list;
     int values[] = {1, 2, 3, 4, 5, 6, 7};
-    for (size_type i = 0; i < 7; i++) {
+    for (size_t i = 0; i < 7; i++) {
         list.push_back(values[i]);
     }
     linked_list<int>::iterator it = list.erase(1);
@@ -167,7 +167,7 @@ TEST(linked_list_test, test_erase_index) {
     ASSERT_EQ(it, list.end());
     it = list.erase(0);
     ASSERT_EQ(3, *it);
-    ASSERT_EQ(4, list.size());
+    ASSERT_EQ(4u, list.size());
     linked_list<int> empty_list;
     ASSERT_EQ(empty_list.erase(0), empty_list.end());
 }
@@ -175,7 +175,7 @@ TEST(linked_list_test, test_erase_index) {
 TEST(linked_list_test, test_erase_iterator) {
     linked_list<int> list;
     int values[] = {1, 2, 3, 4, 5, 6, 7};
-    for (size_type i = 0; i < 7; i++) {
+    for (size_t i = 0; i < 7; i++) {
         list.push_back(values[i]);
     }
     linked_list<int>::iterator it = list.find(5);
@@ -195,7 +195,7 @@ TEST(linked_list_test, test_erase_iterator) {
 TEST(linked_list_test, test_find) {
     linked_list<int> list;
     int values[] = {1, 2, 3, 4, 5, 6, 7};
-    for (size_type i = 0; i < 7; i++) {
+    for (size_t i = 0; i < 7; i++) {
         list.push_back(values[i]);
     }
     ASSERT_EQ(list.find(123), list.end());

@@ -1,18 +1,19 @@
 #ifndef TEMPLATE_DEFS_H
 #define TEMPLATE_DEFS_H
 
-#include <wlib/Types.h>
-
 #include <wlib/strings/String.h>
-#include <wlib/util/Utility.h>
 #include <wlib/stl/HashMap.h>
 #include <wlib/stl/OpenMap.h>
 #include <wlib/stl/ArrayHeap.h>
 #include <wlib/stl/LinkedList.h>
 #include <wlib/stl/UniquePtr.h>
 #include <wlib/stl/SharedPtr.h>
+#include <wlib/stl/Array2D.h>
 
 namespace wlp {
+    template
+    class array2d<int, int>;
+
     template
     struct pair<uint16_t, const char *>;
 
@@ -35,7 +36,7 @@ namespace wlp {
     struct equals<uint16_t>;
 
     template
-    struct hash<String8, uint16_t>;
+    struct hash<wlp::static_string<8u>, uint16_t>;
 
     template
     struct hash<char *, uint16_t>;

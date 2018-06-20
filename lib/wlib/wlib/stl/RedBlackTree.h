@@ -15,10 +15,7 @@
 
 #include <wlib/stl/Comparator.h>
 #include <wlib/stl/Pair.h>
-#include <wlib/Types.h>
-#include <wlib/mem/Memory.h>
-#include <wlib/util/Utility.h>
-#include <wlib/exceptions/Exceptions.h>
+#include <wlib/memory>
 
 namespace wlp {
 
@@ -59,15 +56,15 @@ namespace wlp {
         /**
          * Node parent.
          */
-        node_type *m_parent;
+        node_type *m_parent = nullptr;
         /**
          * Left child node.
          */
-        node_type *m_left;
+        node_type *m_left = nullptr;
         /**
          * Right child node.
          */
-        node_type *m_right;
+        node_type *m_right = nullptr;
 
         /**
          * Element of the node, which contains the key
@@ -249,9 +246,6 @@ namespace wlp {
          * pointed to by the iterator
          */
         reference operator*() const {
-            if (m_node == nullptr) {
-                THROW(KEY_EXCEPTION("Accessing invalid iterator"))
-            }
             return m_get_value(m_node->m_element);
         }
 
@@ -356,13 +350,13 @@ namespace wlp {
             typename Val,
             typename GetKey,
             typename GetVal,
-            typename Cmp = comparator <Key>>
+            typename Cmp = wlp::comparator<Key>>
     class tree {
     public:
         typedef Key key_type;
         typedef Val val_type;
         typedef Cmp comparator;
-        typedef wlp::size_type size_type;
+        typedef size_t size_type;
         typedef RedBlackTreeNode<Element> node_type;
         typedef tree<Element, Key, Val, GetKey, GetVal, Cmp> tree_type;
         typedef RedBlackTreeIterator<Element, Key, Val, Val &, Val *, GetKey, GetVal> iterator;
@@ -397,7 +391,7 @@ namespace wlp {
          * @return pointer to the new node
          */
         node_type *create_node() {
-            return malloc<node_type>();
+            return create<node_type>();
         }
 
         /**
@@ -421,7 +415,7 @@ namespace wlp {
          * @param node node to deallocate
          */
         void destroy_node(node_type *node) {
-            free<node_type>(node);
+            destroy<node_type>(node);
         }
 
         /**
@@ -479,7 +473,7 @@ namespace wlp {
          * @return iterator to the inserted node
          */
         template<typename E>
-        iterator insert(node_type *node, node_type *piv, E &&element);
+        iterator insert(node_type *cur, node_type *carry, E &&element);
 
         /**
          * Delete the supplied node from the tree and all
@@ -1132,7 +1126,9 @@ namespace wlp {
                 }
                 if (!pre->m_right) {
                     pre->m_right = current;
-                    current = current->m_left;
+                    tmp = current->m_left;
+                    current->m_left = nullptr;
+                    current = tmp;
                 } else {
                     pre->m_right = nullptr;
                     tmp = current;
@@ -1163,7 +1159,7 @@ namespace wlp {
 
     template<typename Element, typename Key, typename Val,
             typename GetKey, typename GetVal, typename Cmp>
-    inline size_type
+    inline typename tree<Element, Key, Val, GetKey, GetVal, Cmp>::size_type
     tree<Element, Key, Val, GetKey, GetVal, Cmp>
     ::erase(const iterator &first, const iterator &last) {
         size_type count;

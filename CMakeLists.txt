@@ -12,6 +12,5 @@ set(WLIB_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/wlib)
 
 add_subdirectory(include/gtest-1.8.0)
 add_subdirectory(lib/wlib)
-add_subdirectory(examples)
 add_subdirectory(tests)
 add_test(NAME EmbeddedCplusplusTests COMMAND tests)

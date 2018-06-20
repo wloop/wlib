@@ -13,10 +13,9 @@
 #ifndef EMBEDDEDCPLUSPLUS_ARRAYLIST_H
 #define EMBEDDEDCPLUSPLUS_ARRAYLIST_H
 
-#include <wlib/Types.h>
-#include <wlib/mem/Memory.h>
-#include <wlib/util/Utility.h>
-#include <wlib/exceptions/Exceptions.h>
+#include <wlib/utility>
+#include <wlib/memory>
+#include <stddef.h>
 
 namespace wlp {
 
@@ -34,8 +33,8 @@ namespace wlp {
     template<typename T, typename Ref, typename Ptr>
     class ArrayListIterator {
     public:
-        typedef wlp::size_type size_type;
-        typedef wlp::diff_type diff_type;
+        typedef size_t size_type;
+        typedef ptrdiff_t diff_type;
         typedef T val_type;
         typedef Ref reference;
         typedef Ptr pointer;
@@ -103,9 +102,6 @@ namespace wlp {
          * by this iterator
          */
         reference operator*() const {
-            if (m_i >= m_list->m_size) {
-                THROW(INDEX_EXCEPTION("Accessing invalid iterator"))
-            }
             return m_list->m_data[m_i];
         }
 
@@ -276,7 +272,7 @@ namespace wlp {
     class array_list {
     public:
         typedef T val_type;
-        typedef wlp::size_type size_type;
+        typedef size_t size_type;
         typedef array_list<T> list_type;
         typedef ArrayListIterator<T, T &, T *> iterator;
         typedef ArrayListIterator<T, const T &, const T *> const_iterator;
@@ -372,7 +368,7 @@ namespace wlp {
             if (!m_data) {
                 return;
             }
-            free<val_type>(m_data);
+            destroy<val_type[]>(m_data);
             m_data = nullptr;
         }
 
@@ -385,7 +381,7 @@ namespace wlp {
          * @param initial_size the initial capacity for the backing array
          */
         void init_array(size_type initial_size) {
-            m_data = malloc<val_type[]>(initial_size);
+            m_data = create<val_type[]>(initial_size);
         }
 
         /**
@@ -475,9 +471,6 @@ namespace wlp {
          * @return reference to the element
          */
         val_type &at(size_type i) {
-            if (i == 0 && m_size == 0) {
-                THROW(INDEX_EXCEPTION("Accessing empty list"))
-            }
             normalize(i);
             return m_data[i];
         }
@@ -489,9 +482,6 @@ namespace wlp {
          * @return reference to the element
          */
         val_type const &at(size_type i) const {
-            if (i == 0 && m_size == 0) {
-                THROW(INDEX_EXCEPTION("Accessing empty list"))
-            }
             normalize(i);
             return m_data[i];
         }
@@ -761,7 +751,7 @@ namespace wlp {
          * @return reference to this list
          */
         list_type &operator=(list_type &&list) {
-            free<val_type>(m_data);
+            destroy<val_type[]>(m_data);
             m_data = move(list.m_data);
             m_size = move(list.m_size);
             m_capacity = move(list.m_capacity);
@@ -779,11 +769,11 @@ namespace wlp {
             return;
         }
         size_type new_capacity = static_cast<size_type>(2 * m_capacity);
-        val_type *new_data = malloc<val_type[]>(new_capacity);
+        val_type *new_data = create<val_type[]>(new_capacity);
         for (size_type i = 0; i < m_size; i++) {
             new_data[i] = m_data[i];
         }
-        free<val_type>(m_data);
+        destroy<val_type[]>(m_data);
         m_data = new_data;
         m_capacity = new_capacity;
     }
@@ -793,11 +783,11 @@ namespace wlp {
         if (new_capacity <= m_capacity) {
             return;
         }
-        val_type *new_data = malloc<val_type>(new_capacity);
+        val_type *new_data = create<val_type[]>(new_capacity);
         for (size_type i = 0; i < m_size; i++) {
             new_data[i] = m_data[i];
         }
-        free<val_type>(m_data);
+        destroy<val_type[]>(m_data);
         m_data = new_data;
         m_capacity = new_capacity;
     }
@@ -807,11 +797,11 @@ namespace wlp {
         if (m_size == m_capacity) {
             return;
         }
-        val_type *new_data = malloc<val_type>(m_size);
+        val_type *new_data = create<val_type[]>(m_size);
         for (size_type i = 0; i < m_size; i++) {
             new_data[i] = m_data[i];
         }
-        free<val_type>(m_data);
+        destroy<val_type[]>(m_data);
         m_data = new_data;
         m_capacity = m_size;
     }

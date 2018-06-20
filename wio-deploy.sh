@@ -22,9 +22,9 @@ rm -rf wlib-wio
 wio create pkg wlib-wio ALL --platform ALL
 
 # Replace with template wio.yml
-rm wlib-wio/wio.yml
-cp wio-test.yml wlib-wio/
-mv wlib-wio/wio-test.yml wlib-wio/wio.yml
+#rm wlib-wio/wio.yml
+#cp wio-test.yml wlib-wio/
+#mv wlib-wio/wio-test.yml wlib-wio/wio.yml
 
 rm -rf wlib-wio/src
 rm -rf wlib-wio/include
@@ -58,15 +58,24 @@ for (( i = 0; i < ${len_headers}; i++ )); do
     mv ${arr_headers[$i]} "wlib-wio/include/"${arr_relative[$i]}
 done
 
+rm -rf wlib-stl/include
+rm -rf wlib-stl/src
+rm -rf wlib-stl/tests
+
+cp -r wlib-wio/include wlib-stl/include
+cp -r wlib-wio/src wlib-stl/src
+
+rm -rf wlib-wio
+
 # Do a build test
-cd wlib-wio
-wio build --verbose
-wio clean
-cd ..
+#cd wlib-wio
+#wio build --verbose
+#wio clean
+#cd ..
 
 # Copy the deploy config
-rm -rf wlib-wio/wio.yml
-cp wio.yml wlib-wio/
+#rm -rf wlib-wio/wio.yml
+#cp wio.yml wlib-wio/
 
 # Do a deploy
 #cd wlib-wio

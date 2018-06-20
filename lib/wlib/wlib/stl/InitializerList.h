@@ -1,8 +1,6 @@
 #ifndef EMBEDDEDCPLUSPLUS_INITIALIZERLIST_H
 #define EMBEDDEDCPLUSPLUS_INITIALIZERLIST_H
 
-#include <wlib/Types.h>
-
 namespace wlp {
 
     template<typename val_t>
@@ -11,7 +9,7 @@ namespace wlp {
         typedef val_t value_type;
         typedef const val_t &reference;
         typedef const val_t &const_reference;
-        typedef wlp::size_type size_type;
+        typedef size_t size_type;
         typedef const val_t *iterator;
         typedef const val_t *const_iterator;
 

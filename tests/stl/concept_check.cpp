@@ -9,6 +9,7 @@
 #include <wlib/stl/OpenSet.h>
 #include <wlib/stl/TreeSet.h>
 #include <wlib/stl/LinkedList.h>
+#include <wlib/stl/Concept.h>
 
 using namespace wlp;
 
