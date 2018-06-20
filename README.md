@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/waterloop/waterloop-wlib.svg?branch=master)](https://travis-ci.org/waterloop/waterloop-wlib)
+[![Build Status](https://travis-ci.org/waterloop/waterloop-wlib.svg?branch=master)](https://travis-ci.org/waterloop/wlib)
 [![Coverage Status](https://coveralls.io/repos/github/waterloop/waterloop-wlib/badge.svg?branch=master)](https://coveralls.io/github/waterloop/waterloop-wlib?branch=master)
 
 # WLib
