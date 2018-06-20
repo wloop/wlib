@@ -20,7 +20,7 @@ typedef weak_ptr<Integer> iwptr;
 
 TEST(shared_ptr_test, test_multiple_shared_delete) {
     __destructs = 0;
-    iptr p1 = iptr(malloc<Integer>(6));
+    iptr p1 = iptr(create<Integer>(6));
     ASSERT_EQ(6, (*p1).v);
     ASSERT_EQ(1, p1.use_count());
     ASSERT_TRUE(p1.unique());
@@ -30,7 +30,7 @@ TEST(shared_ptr_test, test_multiple_shared_delete) {
     ASSERT_EQ(6, p2->v);
     ASSERT_FALSE(p2.unique());
     ASSERT_EQ(p1->v, p2->v);
-    iptr p3 = iptr(malloc<Integer>(10));
+    iptr p3 = iptr(create<Integer>(10));
     ASSERT_EQ(10, p3->v);
     ASSERT_EQ(1, p3.use_count());
     p2.swap(p3);
@@ -46,7 +46,7 @@ TEST(shared_ptr_test, test_multiple_shared_delete) {
     ASSERT_FALSE(p1.owner_before(p2));
     ASSERT_FALSE(p2.owner_before(p1));
     ASSERT_FALSE(p3.owner_before(p2));
-    p1.reset(malloc<Integer>(15));
+    p1.reset(create<Integer>(15));
     ASSERT_EQ(2, p2.use_count());
     ASSERT_EQ(2, p3.use_count());
     ASSERT_EQ(1, p1.use_count());
@@ -63,7 +63,7 @@ TEST(shared_ptr_test, test_multiple_shared_delete) {
 
 TEST(shared_ptr_test, test_destruction_out_of_scope) {
     __destructs = 0;
-    iptr p1 = iptr(malloc<Integer>(1));
+    iptr p1 = iptr(create<Integer>(1));
     ASSERT_EQ(1, p1.use_count());
     {
         iptr p2(p1);
@@ -77,7 +77,7 @@ TEST(shared_ptr_test, test_destruction_out_of_scope) {
 
 TEST(shared_ptr_test, test_weak_ptr) {
     __destructs = 0;
-    iptr sp1 = iptr(malloc<Integer>(1));
+    iptr sp1 = iptr(create<Integer>(1));
     iptr sp2(sp1);
     iptr sp3(sp2);
     ASSERT_EQ(3, sp1.use_count());

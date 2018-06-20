@@ -8,7 +8,6 @@
  */
 
 #include <gtest/gtest.h>
-#include <wlib/Types.h>
 #include <wlib/strings/String.h>
 
 using namespace wlp;
@@ -18,13 +17,13 @@ TEST(static_string_test, ctor_test) {
     String8 string2;                // no text
     String8 string3{string1};       // string object give
 
-    ASSERT_EQ(8, string1.capacity());
-    ASSERT_EQ(8, string2.capacity());
-    ASSERT_EQ(8, string3.capacity());
+    ASSERT_EQ(8u, string1.capacity());
+    ASSERT_EQ(8u, string2.capacity());
+    ASSERT_EQ(8u, string3.capacity());
 
-    ASSERT_EQ(8, string1.length());
-    ASSERT_EQ(0, string2.length());
-    ASSERT_EQ(8, string3.length());
+    ASSERT_EQ(8u, string1.length());
+    ASSERT_EQ(0u, string2.length());
+    ASSERT_EQ(8u, string3.length());
 
     ASSERT_STREQ("helloooo", string1.c_str());
     ASSERT_STREQ("", string2.c_str());
@@ -178,15 +177,15 @@ TEST(static_string_test, clear_string) {
     string3.clear();
     string4.clear();
 
-    ASSERT_EQ(0, string1.length());
-    ASSERT_EQ(0, string2.length());
-    ASSERT_EQ(0, string3.length());
-    ASSERT_EQ(0, string4.length());
+    ASSERT_EQ(0u, string1.length());
+    ASSERT_EQ(0u, string2.length());
+    ASSERT_EQ(0u, string3.length());
+    ASSERT_EQ(0u, string4.length());
 
-    ASSERT_EQ(8, string1.capacity());
-    ASSERT_EQ(8, string2.capacity());
-    ASSERT_EQ(8, string3.capacity());
-    ASSERT_EQ(8, string4.capacity());
+    ASSERT_EQ(8u, string1.capacity());
+    ASSERT_EQ(8u, string2.capacity());
+    ASSERT_EQ(8u, string3.capacity());
+    ASSERT_EQ(8u, string4.capacity());
 
     ASSERT_STREQ("", string1.c_str());
     ASSERT_STREQ("", string2.c_str());
@@ -217,37 +216,37 @@ TEST(static_string_test, erase_popBack){
     String16 string4{"y"};
 
     string1.erase(2);
-    ASSERT_EQ(3, string1.length());
-    ASSERT_EQ(16, string1.capacity());
+    ASSERT_EQ(3u, string1.length());
+    ASSERT_EQ(16u, string1.capacity());
     ASSERT_STREQ("dep", string1.c_str());
 
     string1.erase();
-    ASSERT_EQ(2, string1.length());
+    ASSERT_EQ(2u, string1.length());
     ASSERT_STREQ("ep", string1.c_str());
 
     string2.erase(0);
     string2.erase(1);
-    ASSERT_EQ(1, string2.length());
+    ASSERT_EQ(1u, string2.length());
     ASSERT_STREQ("y", string2.c_str());
 
     string2.erase(5);
-    ASSERT_EQ(1, string2.length());
+    ASSERT_EQ(1u, string2.length());
     ASSERT_STREQ("y", string2.c_str());
 
     string2.erase();
     string2.erase();
-    ASSERT_EQ(0, string2.length());
+    ASSERT_EQ(0u, string2.length());
     ASSERT_STREQ("", string2.c_str());
 
     string3.pop_back();
     string4.pop_back();
-    ASSERT_EQ(1, string3.length());
+    ASSERT_EQ(1u, string3.length());
     ASSERT_STREQ("h", string3.c_str());
-    ASSERT_EQ(0, string4.length());
+    ASSERT_EQ(0u, string4.length());
     ASSERT_STREQ("", string4.c_str());
 
     string4.pop_back();
-    ASSERT_EQ(0, string4.length());
+    ASSERT_EQ(0u, string4.length());
     ASSERT_STREQ("", string4.c_str());
 }
 

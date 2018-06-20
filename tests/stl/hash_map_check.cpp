@@ -25,8 +25,8 @@ TEST(chain_map_test, test_chain_map_node) {
     string_map::table_type::node_type snode;
     snode.m_element = make_tuple(String16{"hello"}, String16{"hello"});
     smi sit(&snode, nullptr);
-    ASSERT_EQ(5, sit->length());
-    ASSERT_EQ(16, sit->capacity());
+    ASSERT_EQ(5u, sit->length());
+    ASSERT_EQ(16u, sit->capacity());
 }
 
 TEST(chain_map_test, test_const_iterator) {
@@ -84,14 +84,14 @@ TEST(chain_map_test, test_ensure_capacity_holes) {
     map[1] = 1;
     map[6] = 6;
     map[11] = 11;
-    ASSERT_EQ(5, map.capacity());
+    ASSERT_EQ(5u, map.capacity());
     map[16] = 16;
-    ASSERT_EQ(10, map.capacity());
+    ASSERT_EQ(10u, map.capacity());
     map[21] = 21;
-    ASSERT_EQ(10, map.capacity());
+    ASSERT_EQ(10u, map.capacity());
     map[26] = 26;
-    ASSERT_EQ(20, map.capacity());
-    ASSERT_EQ(20, map.capacity());
+    ASSERT_EQ(20u, map.capacity());
+    ASSERT_EQ(20u, map.capacity());
     ui16 expected_values_traverse[] = {1, 21, 26, 6, 11, 16};
     imi it = map.begin();
     for (ui16 i = 0; i < 6; i++) {
@@ -101,8 +101,8 @@ TEST(chain_map_test, test_ensure_capacity_holes) {
     ASSERT_EQ(map.end(), it);
     map.clear();
     ASSERT_EQ(map.end(), map.begin());
-    ASSERT_EQ(0, map.size());
-    ASSERT_EQ(20, map.capacity());
+    ASSERT_EQ(0u, map.size());
+    ASSERT_EQ(20u, map.capacity());
 }
 
 TEST(chain_map_test, test_erase_cases) {
@@ -121,9 +121,9 @@ TEST(chain_map_test, test_erase_cases) {
 
 TEST(chain_map_test, test_constructor_params) {
     int_map map(10, 150);
-    ASSERT_EQ(10, map.capacity());
+    ASSERT_EQ(10u, map.capacity());
     ASSERT_EQ(150, map.max_load());
-    ASSERT_EQ(0, map.size());
+    ASSERT_EQ(0u, map.size());
     ASSERT_TRUE(map.empty());
 }
 
@@ -148,7 +148,7 @@ TEST(chain_map_test, test_insert_at_iterator_no_collision) {
             map.insert(3, 30),
             map.insert(4, 40)
     };
-    ASSERT_EQ(5, map.size());
+    ASSERT_EQ(5u, map.size());
     for (ui16 i = 0; i < 5; i++) {
         ASSERT_TRUE(r[i].second());
         ASSERT_EQ(values[i], *r[i].first());
@@ -197,7 +197,7 @@ TEST(chain_map_test, test_insert_at_iterator_collision_resolution) {
     for (ui16 i = 0; i < 15; i++) {
         ASSERT_EQ(values[i], *r[i].first());
     }
-    ASSERT_EQ(15, map.size());
+    ASSERT_EQ(15u, map.size());
     imi it = r[14].first();
     ASSERT_EQ(it, map.begin());
     int expected_values_traverse[] = {
@@ -228,13 +228,13 @@ TEST(chain_map_test, test_insert_or_assign) {
     String16 v3{"value3"};
     P_smi_b r1 = map.insert_or_assign(a1, v1);
     P_smi_b r2 = map.insert_or_assign(a2, v2);
-    ASSERT_EQ(2, map.size());
+    ASSERT_EQ(2u, map.size());
     ASSERT_TRUE(r1.second());
     ASSERT_TRUE(r2.second());
     ASSERT_EQ(v1, map.at(a1));
     ASSERT_EQ(v2, map.at(a2));
     P_smi_b r3 = map.insert_or_assign(a1, v3);
-    ASSERT_EQ(2, map.size());
+    ASSERT_EQ(2u, map.size());
     ASSERT_FALSE(r3.second());
     ASSERT_EQ(v3, *r3.first());
     ASSERT_EQ(v3, map.at(a1));
@@ -244,7 +244,7 @@ TEST(chain_map_test, test_erase_key_nothing) {
     string_map map(15, 255);
     String16 a{"key"};
     ASSERT_FALSE(map.erase(a));
-    ASSERT_EQ(0, map.size());
+    ASSERT_EQ(0u, map.size());
 }
 
 TEST(chain_map_test, test_erase_key) {
@@ -252,9 +252,9 @@ TEST(chain_map_test, test_erase_key) {
     String16 a{"key"};
     String16 b{"val"};
     map.insert(a, b);
-    ASSERT_EQ(1, map.size());
+    ASSERT_EQ(1u, map.size());
     ASSERT_TRUE(map.erase(a));
-    ASSERT_EQ(0, map.size());
+    ASSERT_EQ(0u, map.size());
 }
 
 TEST(chain_map_test, test_erase_iterator) {
@@ -265,24 +265,24 @@ TEST(chain_map_test, test_erase_iterator) {
     P_imi_b r0 = map.insert(0, 0);
     P_imi_b r1 = map.insert(1, 1);
     P_imi_b r3 = map.insert(3, 3);
-    ASSERT_EQ(3, map.size());
+    ASSERT_EQ(3u, map.size());
     P_imi_b r20 = map.insert(20, 20);
     P_imi_b r33 = map.insert(33, 33);
     map.insert(40, 40);
-    ASSERT_EQ(6, map.size());
+    ASSERT_EQ(6u, map.size());
     imi it = r1.first();
     it = map.erase(it);
-    ASSERT_EQ(5, map.size());
+    ASSERT_EQ(5u, map.size());
     ASSERT_EQ(33, *it);
     ASSERT_EQ(it, r33.first());
     int_map::iterator prev_it = it;
     it = map.erase(it);
-    ASSERT_EQ(4, map.size());
+    ASSERT_EQ(4u, map.size());
     ASSERT_EQ(3, *it);
     ASSERT_NE(prev_it, r3.first()); // iterator invalidated by erase
     ASSERT_EQ(*it, *r3.first());
     it = map.erase(it);
-    ASSERT_EQ(3, map.size());
+    ASSERT_EQ(3u, map.size());
     ASSERT_EQ(map.end(), it);
     ASSERT_EQ(40, map.at(40));
     ASSERT_EQ(20, map.at(20));
@@ -290,13 +290,13 @@ TEST(chain_map_test, test_erase_iterator) {
     it = r20.first();
     prev_it = it;
     it = map.erase(it);
-    ASSERT_EQ(2, map.size());
+    ASSERT_EQ(2u, map.size());
     ASSERT_EQ(0, *it);
     ASSERT_NE(prev_it, r0.first());
     ASSERT_EQ(0, *r0.first());
     it = map.erase(it);
     ASSERT_EQ(map.end(), it);
-    ASSERT_EQ(1, map.size());
+    ASSERT_EQ(1u, map.size());
     ASSERT_EQ(40, *map.begin());
 }
 
@@ -307,12 +307,12 @@ TEST(chain_map_test, test_contains_access_operator) {
     map[0] = 0;
     map[20] = 200;
     map[25] = 250;
-    ASSERT_EQ(5, map.size());
+    ASSERT_EQ(5u, map.size());
     map.insert(3, 30);
-    ASSERT_EQ(6, map.size());
+    ASSERT_EQ(6u, map.size());
     ASSERT_EQ(30, map.at(3));
     map[3] = 33;
-    ASSERT_EQ(6, map.size());
+    ASSERT_EQ(6u, map.size());
     ASSERT_EQ(33, map.at(3));
     ASSERT_EQ(50, map[5]);
     ASSERT_EQ(150, map[15]);
@@ -326,10 +326,10 @@ TEST(chain_map_test, test_contains_access_operator) {
     ASSERT_FALSE(map.contains(4));
     map[24] = 24;
     ASSERT_FALSE(map.contains(4));
-    ASSERT_EQ(8, map.size());
+    ASSERT_EQ(8u, map.size());
     map[4] = 4;
     ASSERT_TRUE(map.contains(4));
-    ASSERT_EQ(9, map.size());
+    ASSERT_EQ(9u, map.size());
 }
 
 TEST(chain_map_test, test_find) {
@@ -388,7 +388,7 @@ TEST(chain_map_test, test_iterator_ctor) {
     s_map.insert(String16("key"), String16("val"));
     const string_map const_s_map(move(s_map));
     string_map::const_iterator s_ci1 = const_s_map.begin();
-    ASSERT_EQ(3, s_ci1->length());
+    ASSERT_EQ(3u, s_ci1->length());
     ci2 = move(const_map.begin());
     ASSERT_EQ(5, *ci2);
     ci3 = move(const_map.begin());
@@ -414,7 +414,7 @@ TEST(chain_map_test, test_move_assignment_op) {
     map.insert(3, 15);
     int_map map1(10, 255);
     map1 = move(map);
-    ASSERT_EQ(3, map1.size());
+    ASSERT_EQ(3u, map1.size());
     ASSERT_EQ(5, map1[1]);
     ASSERT_EQ(10, map1[2]);
     ASSERT_EQ(15, map1[3]);
@@ -429,8 +429,8 @@ TEST(chain_map_test, insert_rvalue) {
     string val1("val1");
 
     map.insert(move(key1), move(val1));
-    ASSERT_EQ(0, key1.length());
-    ASSERT_EQ(0, val1.length());
+    ASSERT_EQ(0u, key1.length());
+    ASSERT_EQ(0u, val1.length());
     ASSERT_STREQ("", key1.c_str());
     ASSERT_STREQ("", val1.c_str());
 
@@ -449,25 +449,25 @@ TEST(chain_map_test, insert_or_assign_rvalue) {
     string val1("val1");
     string val2("val2");
 
-    ASSERT_EQ(0, map.size());
+    ASSERT_EQ(0u, map.size());
     auto ret1 = map.insert(key1, val1);
-    ASSERT_EQ(1, map.size());
+    ASSERT_EQ(1u, map.size());
     ASSERT_TRUE(ret1.second());
     ASSERT_STREQ("val1", ret1.first()->c_str());
 
     auto ret2 = map.insert(key2, val2);
-    ASSERT_EQ(2, map.size());
+    ASSERT_EQ(2u, map.size());
     ASSERT_TRUE(ret2.second());
     ASSERT_STREQ("val2", ret2.first()->c_str());
 
     map.insert(key1, val1);
     map.insert(key2, val1);
     map.insert(key1, val1);
-    ASSERT_EQ(2, map.size());
+    ASSERT_EQ(2u, map.size());
 
     ASSERT_NE(map.end(), map.find(key1));
     auto ret3 = map.insert_or_assign(move(key1), move(val2));
-    ASSERT_EQ(2, map.size());
+    ASSERT_EQ(2u, map.size());
     ASSERT_FALSE(ret3.second());
     ASSERT_STREQ("val2", ret3.first()->c_str());
 }

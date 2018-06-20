@@ -5,16 +5,17 @@
 
 using namespace wlp;
 
+typedef size_t size_type;
 typedef array_list<int>::const_iterator cit;
 
 TEST(array_list_test, test_constructors) {
     int values[] = {1, 2, 3, 4, 5};
     array_list<int> list(values, 5, 2);
-    ASSERT_EQ(5, list.capacity());
-    ASSERT_EQ(5, list.size());
+    ASSERT_EQ(5u, list.capacity());
+    ASSERT_EQ(5u, list.size());
     array_list<int> list0(values, 5);
-    ASSERT_EQ(5, list0.capacity());
-    ASSERT_EQ(5, list.size());
+    ASSERT_EQ(5u, list0.capacity());
+    ASSERT_EQ(5u, list.size());
     for (size_type i = 0; i < 5; i++) {
         ASSERT_EQ(values[i], list[i]);
         ASSERT_EQ(values[i], list0[i]);
@@ -45,7 +46,7 @@ TEST(array_list_test, test_const_list_back_front_when_empty) {
     array_list<int> list(values, 3);
     list.clear();
     const array_list<int> const_list(move(list));
-    ASSERT_EQ(0, const_list.size());
+    ASSERT_EQ(0u, const_list.size());
     ASSERT_EQ(1, const_list.back());
     ASSERT_EQ(1, const_list.front());
 }
@@ -54,8 +55,8 @@ TEST(array_list_test, test_clear) {
     int values[] = {2, 3, 5, 7};
     array_list<int> list(values, 4);
     list.clear();
-    ASSERT_EQ(0, list.size());
-    ASSERT_EQ(4, list.capacity());
+    ASSERT_EQ(0u, list.size());
+    ASSERT_EQ(4u, list.capacity());
     list.clear();
     ASSERT_EQ(2, list.front());
     ASSERT_EQ(2, list.back());
@@ -93,12 +94,12 @@ TEST(array_list_test, test_const_list_begin_end) {
 TEST(array_list_test, test_insert_index_lvalue) {
     int values[] = {1, 2, 3, 4};
     array_list<int> list(values, 4, 5);
-    ASSERT_EQ(4, list.size());
+    ASSERT_EQ(4u, list.size());
     const int v = 100;
     array_list<int>::iterator it = list.insert(2, v);
     ASSERT_EQ(100, *it);
     int expected[] = {1, 2, 100, 3, 4};
-    ASSERT_EQ(5, list.size());
+    ASSERT_EQ(5u, list.size());
     for (size_type i = 0; i < list.size(); i++) {
         ASSERT_EQ(expected[i], list[i]);
     }
@@ -107,11 +108,11 @@ TEST(array_list_test, test_insert_index_lvalue) {
 TEST(array_list_test, test_insert_index_rvalue) {
     int values[] = {1, 10};
     array_list<int> list(values, 2, 3);
-    ASSERT_EQ(2, list.size());
+    ASSERT_EQ(2u, list.size());
     array_list<int>::iterator it = list.insert(1, 100);
     ASSERT_EQ(100, *it);
     int expected[] = {1, 100, 10};
-    ASSERT_EQ(3, list.size());
+    ASSERT_EQ(3u, list.size());
     for (size_type i = 0; i < list.size(); i++) {
         ASSERT_EQ(expected[i], list[i]);
     }
@@ -123,7 +124,7 @@ TEST(array_list_test, test_insert_iterator_lvalue) {
     array_list<int>::iterator it = list.end();
     const int v = 100;
     it = list.insert(it, v);
-    ASSERT_EQ(3, list.size());
+    ASSERT_EQ(3u, list.size());
     ASSERT_EQ(100, *it);
     ++it;
     ASSERT_EQ(it, list.end());
@@ -134,7 +135,7 @@ TEST(array_list_test, test_insert_iterator_rvalue) {
     array_list<int> list(values, 2, 2);
     array_list<int>::iterator it = list.begin();
     it = list.insert(it, 100);
-    ASSERT_EQ(3, list.size());
+    ASSERT_EQ(3u, list.size());
     ASSERT_EQ(100, *it);
     ++it;
     ASSERT_EQ(1, *it);
@@ -148,8 +149,8 @@ TEST(array_list_test, test_insert_when_full) {
     int values[] = {1, 10};
     array_list<int> list(values, 2);
     list.insert(1, 15);
-    ASSERT_EQ(3, list.size());
-    ASSERT_EQ(4, list.capacity());
+    ASSERT_EQ(3u, list.size());
+    ASSERT_EQ(4u, list.capacity());
     ASSERT_EQ(1, *list.begin());
     ASSERT_EQ(15, list.at(1));
     ASSERT_EQ(10, list.at(2));
@@ -158,8 +159,8 @@ TEST(array_list_test, test_insert_when_full) {
 TEST(array_list_test, test_insert_when_empty) {
     array_list<int> list(5);
     list.insert(0, 10);
-    ASSERT_EQ(1, list.size());
-    ASSERT_EQ(5, list.capacity());
+    ASSERT_EQ(1u, list.size());
+    ASSERT_EQ(5u, list.capacity());
     ASSERT_EQ(10, list.at(0));
 }
 
@@ -167,13 +168,13 @@ TEST(array_list_test, test_insert_iterator_when_empty) {
     array_list<int> list1(5);
     array_list<int>::iterator it1 = list1.begin();
     it1 = list1.insert(it1, 10);
-    ASSERT_EQ(1, list1.size());
+    ASSERT_EQ(1u, list1.size());
     ASSERT_EQ(10, list1[0]);
     ASSERT_EQ(10, *it1);
     array_list<int> list2(5);
     array_list<int>::iterator it2 = list2.end();
     it2 = list2.insert(it2, 10);
-    ASSERT_EQ(1, list2.size());
+    ASSERT_EQ(1u, list2.size());
     ASSERT_EQ(10, list2[0]);
     ASSERT_EQ(10, *it2);
 }
@@ -213,12 +214,12 @@ TEST(array_list_test, test_push_pop_back) {
     list.push_back(15);
     list.push_back(20);
     int traverse[] = {10, 15, 20};
-    for (size_type i = 0; i < list.size(); i++) {
+    for (size_t i = 0; i < list.size(); i++) {
         ASSERT_EQ(traverse[i], list[i]);
     }
     list.pop_back();
     list.pop_back();
-    ASSERT_EQ(1, list.size());
+    ASSERT_EQ(1u, list.size());
     ASSERT_EQ(list[0], 10);
 }
 
@@ -228,40 +229,40 @@ TEST(array_list_test, test_push_pop_front) {
     list.push_front(10);
     list.push_front(15);
     int traverse[] = {15, 10, 0};
-    for (size_type i = 0; i < list.size(); i++) {
+    for (size_t i = 0; i < list.size(); i++) {
         ASSERT_EQ(traverse[i], list[i]);
     }
     list.pop_front();
     list.pop_front();
-    ASSERT_EQ(1, list.size());
+    ASSERT_EQ(1u, list.size());
     ASSERT_EQ(list[0], 0);
 }
 
 TEST(array_list_test, test_index_of_empty_list) {
     array_list<int> empty_list;
-    ASSERT_EQ(0, empty_list.index_of(1234));
+    ASSERT_EQ(0u, empty_list.index_of(1234));
 }
 
 TEST(array_list_test, test_index_of) {
     int values[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     array_list<int> list(values, 10);
-    for (size_type i = 0; i < 9; i++) {
-        ASSERT_EQ(i, list.index_of(i + 1));
+    for (int i = 0; i < 9; i++) {
+        ASSERT_EQ(static_cast<size_t>(i), list.index_of(i + 1));
     }
 }
 
 TEST(array_list_test, test_index_of_repeats) {
     int values[] = {1, 2, 3, 4, 5, 6, 5, 7, 5, 3};
     array_list<int> list(values, 10);
-    ASSERT_EQ(4, list.index_of(5));
+    ASSERT_EQ(4u, list.index_of(5));
 }
 
 TEST(array_list_test, test_index_of_not_found) {
     int values[] = {1, 2, 3, 4, 5, 6, 7, 10};
     array_list<int> list(values, 8);
-    ASSERT_EQ(8, list.size());
-    ASSERT_EQ(8, list.index_of(22));
-    ASSERT_EQ(8, list.index_of(8));
+    ASSERT_EQ(8u, list.size());
+    ASSERT_EQ(8u, list.index_of(22));
+    ASSERT_EQ(8u, list.index_of(8));
 }
 
 TEST(array_list_test, test_find) {
@@ -276,26 +277,26 @@ TEST(array_list_test, test_find) {
 TEST(array_list_test, test_push_back_when_full) {
     int values[] = {1, 2};
     array_list<int> list(values, 2);
-    ASSERT_EQ(2, list.size());
-    ASSERT_EQ(2, list.capacity());
+    ASSERT_EQ(2u, list.size());
+    ASSERT_EQ(2u, list.capacity());
     list.push_back(3);
-    ASSERT_EQ(3, list.size());
-    ASSERT_EQ(4, list.capacity());
+    ASSERT_EQ(3u, list.size());
+    ASSERT_EQ(4u, list.capacity());
     ASSERT_EQ(3, list.at(2));
 }
 
 TEST(array_list_test, test_erase_index) {
     int values[] = {1, 2, 3};
     array_list<int> list(values, 3);
-    ASSERT_EQ(3, list.size());
-    ASSERT_EQ(3, list.capacity());
+    ASSERT_EQ(3u, list.size());
+    ASSERT_EQ(3u, list.capacity());
     array_list<int>::iterator it = list.erase(1);
     ASSERT_EQ(3, *it);
     ++it;
     ASSERT_EQ(list.end(), it);
     list.erase(0);
     list.erase(0);
-    ASSERT_EQ(0, list.size());
+    ASSERT_EQ(0u, list.size());
     ASSERT_EQ(list.end(), list.erase(100));
 }
 
@@ -307,25 +308,25 @@ TEST(array_list_test, test_erase_iterator) {
     it = list.begin();
     it = list.erase(it);
     ASSERT_EQ(2, *it);
-    ASSERT_EQ(2, list.size());
+    ASSERT_EQ(2u, list.size());
     it = list.erase(it);
     ASSERT_EQ(3, *it);
-    ASSERT_EQ(1, list.size());
+    ASSERT_EQ(1u, list.size());
     it = list.erase(it);
     ASSERT_EQ(list.end(), it);
-    ASSERT_EQ(0, list.size());
+    ASSERT_EQ(0u, list.size());
     ASSERT_EQ(list.end(), list.erase(it));
 }
 
 TEST(array_list_test, test_reserve) {
     array_list<int> list(10);
-    ASSERT_EQ(10, list.capacity());
+    ASSERT_EQ(10u, list.capacity());
     list.reserve(5);
-    ASSERT_EQ(10, list.capacity());
+    ASSERT_EQ(10u, list.capacity());
     list.push_back(10);
     list.push_back(5);
     list.reserve(15);
-    ASSERT_EQ(15, list.capacity());
+    ASSERT_EQ(15u, list.capacity());
     ASSERT_EQ(10, list.front());
     ASSERT_EQ(5, list.back());
 }
@@ -334,14 +335,14 @@ TEST(array_list_test, test_shrink) {
     int values[] = {1, 2, 3};
     array_list<int> list(values, 3);
     list.shrink();
-    ASSERT_EQ(3, list.size());
-    ASSERT_EQ(3, list.capacity());
+    ASSERT_EQ(3u, list.size());
+    ASSERT_EQ(3u, list.capacity());
     list.pop_back();
     list.pop_back();
-    ASSERT_EQ(1, list.size());
-    ASSERT_EQ(3, list.capacity());
+    ASSERT_EQ(1u, list.size());
+    ASSERT_EQ(3u, list.capacity());
     list.shrink();
-    ASSERT_EQ(1, list.capacity());
+    ASSERT_EQ(1u, list.capacity());
     ASSERT_EQ(1, list[0]);
 }
 
@@ -370,9 +371,9 @@ TEST(list_iterator_test, test_arrow_op) {
     string_list.push_back(String8("hello"));
     string_list.push_back(String8("woah"));
     array_list<String8>::iterator it = string_list.begin();
-    ASSERT_EQ(5, it->length());
+    ASSERT_EQ(5u, it->length());
     ++it;
-    ASSERT_EQ(4, it->length());
+    ASSERT_EQ(4u, it->length());
     ++it;
     ASSERT_EQ(string_list.end(), it);
     ++it;
@@ -382,23 +383,23 @@ TEST(list_iterator_test, test_arrow_op) {
     string_list.push_back(String8("boi"));
     it = string_list.begin();
     it += 2;
-    ASSERT_EQ(3, it->length());
+    ASSERT_EQ(3u, it->length());
     it -= 2;
-    ASSERT_EQ(5, it->length());
+    ASSERT_EQ(5u, it->length());
     size_type v = 2;
     it += v;
-    ASSERT_EQ(3, it->length());
+    ASSERT_EQ(3u, it->length());
     it -= v;
-    ASSERT_EQ(5, it->length());
+    ASSERT_EQ(5u, it->length());
     it += (size_type) 100;
     ASSERT_EQ(string_list.end(), it);
     it += v;
     ASSERT_EQ(string_list.end(), it);
     it -= 1;
-    ASSERT_EQ(3, it->length());
+    ASSERT_EQ(3u, it->length());
     v = 1;
     it -= v;
-    ASSERT_EQ(4, it->length());
+    ASSERT_EQ(4u, it->length());
     --it;
     --it;
     --it;
@@ -438,7 +439,7 @@ TEST(list_const_iterator_test, test_arrow_op) {
     array_list<String8> list(5);
     list.push_back(String8("hello"));
     const array_list<String8> const_list(move(list));
-    ASSERT_EQ(5, const_list.begin()->length());
+    ASSERT_EQ(5u, const_list.begin()->length());
 }
 
 TEST(list_const_iterator_test, test_bulk_functions) {

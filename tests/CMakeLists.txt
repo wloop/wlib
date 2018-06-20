@@ -18,10 +18,6 @@ file(GLOB files
         "test.cpp"
         "strings/*.cpp"
         "stl/*.cpp"
-        "fsm/*.cpp"
-        "memory/*.cpp"
-        "exceptions/*.cpp"
-        "utility/*.cpp"
         "includes/*.cpp")
 
 add_executable(tests ${files})

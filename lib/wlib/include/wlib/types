@@ -1,7 +1,0 @@
-#ifndef __WLIB_TYPES__
-#define __WLIB_TYPES__
-
-#include <wlib/Types.h>
-
-#endif
-

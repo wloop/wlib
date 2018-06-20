@@ -1,7 +1,0 @@
-#ifndef __WLIB_EXCEPTION__
-#define __WLIB_EXCEPTION__
-
-#include <wlib/exceptions/Exceptions.h>
-
-#endif
-

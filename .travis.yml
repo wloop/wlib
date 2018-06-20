@@ -29,6 +29,9 @@ install:
   - gem install coveralls-lcov
   - lcov --version
   - g++ --version
+  - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
+  - sudo npm install -g wio@0.2.1 --unsafe-perm
 
 before_script:
   - cd ${TRAVIS_BUILD_DIR}
@@ -40,6 +43,10 @@ script:
   # Check versions of gcc, g++ and cmake
   - gcc -v && g++ -v && cmake --version
   # Compile project and run tests
+  - cd wlib-stl
+  - wio update pkg .
+  - wio pac get
+  - cd ..
   - ./wmake build
   - ./wmake test
   # Run static code analyzer

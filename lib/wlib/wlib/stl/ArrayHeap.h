@@ -19,7 +19,6 @@
 #include <wlib/stl/Comparator.h>
 #include <wlib/stl/Concept.h>
 #include <wlib/stl/TypeTraits.h>
-#include <wlib/util/Utility.h>
 
 namespace wlp {
 

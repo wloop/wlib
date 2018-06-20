@@ -1,7 +1,0 @@
-#ifndef __WLIB_MATH__
-#define __WLIB_MATH__
-
-#include <wlib/util/Math.h>
-
-#endif
-

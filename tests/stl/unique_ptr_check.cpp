@@ -33,7 +33,7 @@ struct __TestObject {
 };
 
 TEST(unique_ptr_test, test_constructor_access) {
-    unique_ptr<int> int_ptr = unique_ptr<int>(malloc<int>());
+    unique_ptr<int> int_ptr = unique_ptr<int>(create<int>());
     *int_ptr = 5;
     ASSERT_EQ(*int_ptr, 5);
     bool bool_val = !!int_ptr;
@@ -60,7 +60,7 @@ TEST(unique_ptr_test, test_default_ctor) {
 
 TEST(unique_ptr_test, test_custom_deleter_move_ctor) {
     __reset_test();
-    unique_ptr<__TestObject> ptr = unique_ptr<__TestObject>(malloc<__TestObject>());
+    unique_ptr<__TestObject> ptr = unique_ptr<__TestObject>(create<__TestObject>());
     ASSERT_EQ(1, __constructs);
     ptr->value = 10;
     ASSERT_EQ(10, ptr->value);
@@ -70,23 +70,23 @@ TEST(unique_ptr_test, test_custom_deleter_move_ctor) {
 
 TEST(unique_ptr_test, test_deleter_ctor) {
     __reset_test();
-    unique_ptr<const char *> cstr_ptr = unique_ptr<const char *>(malloc<const char *>());
+    unique_ptr<const char *> cstr_ptr = unique_ptr<const char *>(create<const char *>());
     const char *string = "Stars, hide your fires; Let not "
             "light see my black and deep desires";
     *cstr_ptr = string;
     ASSERT_STREQ(string, *cstr_ptr);
-    cstr_ptr.reset(malloc<const char *>());
-    cstr_ptr = unique_ptr<const char *>(malloc<const char *>());
+    cstr_ptr.reset(create<const char *>());
+    cstr_ptr = unique_ptr<const char *>(create<const char *>());
 }
 
 TEST(unique_ptr_test, test_array_ptr) {
     __reset_test();
     using obj = __TestObject;
-    unique_ptr<obj[]> arr = unique_ptr<obj[]>(malloc<obj[]>(5));
-    // malloc should call constructor
+    unique_ptr<obj[]> arr = unique_ptr<obj[]>(create<obj[]>(5));
+    // create should call constructor
     ASSERT_EQ(5, __constructs);
     int values[] = {1, 2, 3, 4, 5};
-    for (size_type i = 0; i < 5; i++) {
+    for (size_t i = 0; i < 5; i++) {
         // explicit operator call due to clion parsing issues
         // array subscript syntax is still valid
         arr.operator[](i) = obj(values[i]);
@@ -94,20 +94,20 @@ TEST(unique_ptr_test, test_array_ptr) {
     ASSERT_EQ(5, __assignments);
     ASSERT_EQ(10, __constructs);
     ASSERT_EQ(5, __deconstructs);
-    for (size_type i = 0; i < 5; i++) {
+    for (size_t i = 0; i < 5; i++) {
         ASSERT_EQ(values[i], arr.operator[](i).value);
     }
-    arr.reset(malloc<obj>());
+    arr.reset(create<obj>());
     ASSERT_EQ(10, __deconstructs);
     ASSERT_EQ(11, __constructs);
     arr.operator[](0).value = 10;
     obj *ptr = arr.release();
-    free<obj>(ptr);
+    destroy<obj>(ptr);
     ASSERT_EQ(11, __deconstructs);
 }
 
 TEST(unique_ptr_test, test_comparison_operators) {
-    uint32_t *twice16 = malloc<uint32_t>();
+    uint32_t *twice16 = create<uint32_t>();
     uint16_t *first = reinterpret_cast<uint16_t *>(twice16);
     uint16_t *second = (first + 1);
     ASSERT_LT(first, second); // first < second
@@ -142,5 +142,5 @@ TEST(unique_ptr_test, test_comparison_operators) {
     first_ptr.release();
     second_ptr.release();
     l_first_ptr.release();
-    free<uint32_t>(twice16);
+    destroy<uint32_t>(twice16);
 }

@@ -67,3 +67,5 @@ fabric.properties
 
 *.swp
 
+wlib-stl/include/*
+wlib-stl/src/*

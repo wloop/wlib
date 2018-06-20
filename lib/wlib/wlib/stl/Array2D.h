@@ -1,11 +1,9 @@
 #ifndef EMBEDDEDCPLUSPLUS_ARRAY2D_H
 #define EMBEDDEDCPLUSPLUS_ARRAY2D_H
 
-#include <string.h>
-
-#include <wlib/Types.h>
 #include <wlib/stl/InitializerList.h>
-#include <wlib/util/Utility.h>
+#include <wlib/utility>
+#include <string.h>
 
 namespace wlp {
 
@@ -30,7 +28,7 @@ namespace wlp {
         size_t m_len;
     };
 
-    template<typename val_t, typename size_t = wlp::size_type>
+    template<typename val_t, typename size_t = size_t>
     class array2d {
     public:
 
@@ -41,8 +39,8 @@ namespace wlp {
         }
 
         array2d(wlp::initializer_list<wlp::initializer_list<val_t>> l) {
-            m_x = l.size();
-            m_y = l.begin()->size();
+            m_x = static_cast<size_t>(l.size());
+            m_y = static_cast<size_t>(l.begin()->size());
             make_array(m_x, m_y);
 
             int i = 0;
@@ -57,9 +55,9 @@ namespace wlp {
         }
 
         array2d(array2d<val_t, size_t> &&arr) noexcept
-            : m_x(arr.m_x),
-              m_y(arr.m_y),
-              m_arr(arr.m_arr) {
+            : m_arr(arr.m_arr),
+              m_x(arr.m_x),
+              m_y(arr.m_y) {
             arr.m_x = 0;
             arr.m_y = 0;
             arr.m_arr = nullptr;
