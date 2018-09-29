@@ -7,11 +7,11 @@
 
 namespace wlp {
 
-    template<typename val_t, typename size_t>
+    template<typename val_t, typename len_t>
     class __array2d_access {
     public:
 
-        __array2d_access(val_t *sub_arr, size_t len)
+        __array2d_access(val_t *sub_arr, len_t len)
             : m_sub_arr(sub_arr),
               m_len(len) {}
 
@@ -19,28 +19,28 @@ namespace wlp {
             return m_sub_arr;
         }
 
-        val_t &operator[](size_t t) {
+        val_t &operator[](len_t t) {
             return m_sub_arr[t];
         }
 
     private:
         val_t *m_sub_arr;
-        size_t m_len;
+        len_t m_len;
     };
 
-    template<typename val_t, typename size_t = size_t>
+    template<typename val_t, typename len_t = size_t>
     class array2d {
     public:
 
-        array2d(size_t x, size_t y)
+        array2d(len_t x, len_t y)
             : m_x(x),
               m_y(y) {
             make_array(x, y);
         }
 
         array2d(wlp::initializer_list<wlp::initializer_list<val_t>> l) {
-            m_x = static_cast<size_t>(l.size());
-            m_y = static_cast<size_t>(l.begin()->size());
+            m_x = static_cast<len_t>(l.size());
+            m_y = static_cast<len_t>(l.begin()->size());
             make_array(m_x, m_y);
 
             int i = 0;
@@ -54,7 +54,7 @@ namespace wlp {
             }
         }
 
-        array2d(array2d<val_t, size_t> &&arr) noexcept
+        array2d(array2d<val_t, len_t> &&arr) noexcept
             : m_arr(arr.m_arr),
               m_x(arr.m_x),
               m_y(arr.m_y) {
@@ -69,25 +69,25 @@ namespace wlp {
             }
         }
 
-        size_t x() const {
+        len_t x() const {
             return m_x;
         }
 
-        size_t y() const {
+        len_t y() const {
             return m_y;
         }
 
-        size_t xy() const {
+        len_t xy() const {
             return m_x * m_y;
         }
 
         void zero_clear() {
-            for (size_t x = 0; x < m_x; ++x) {
-                memset(m_arr[x], 0, m_y * sizeof(val_t));
+            for (len_t x = 0; x < m_x; ++x) {
+                memset(m_arr[x], 0, static_cast<size_t>(m_y) * sizeof(val_t));
             }
         }
 
-        array2d<val_t, size_t> &operator=(array2d<val_t, size_t> &&arr) noexcept {
+        array2d<val_t, len_t> &operator=(array2d<val_t, len_t> &&arr) noexcept {
             m_x = arr.m_x;
             m_y = arr.m_y;
             m_arr = arr.m_arr;
@@ -101,14 +101,14 @@ namespace wlp {
             return m_arr;
         }
 
-        __array2d_access<val_t, size_t> operator[](size_t x) {
-            return __array2d_access<val_t, size_t>(m_arr[x], m_y);
+        __array2d_access<val_t, len_t> operator[](len_t x) {
+            return __array2d_access<val_t, len_t>(m_arr[x], m_y);
         };
 
         // Disable copy constructor and assignment
-        array2d(const array2d<val_t, size_t> &) = delete;
+        array2d(const array2d<val_t, len_t> &) = delete;
 
-        array2d<val_t, size_t> &operator=(const array2d<val_t, size_t> &) = delete;
+        array2d<val_t, len_t> &operator=(const array2d<val_t, len_t> &) = delete;
 
     private:
         void make_array(int x, int y) {
@@ -118,20 +118,20 @@ namespace wlp {
             m_arr = new val_t *[x];
             for (int tx = 0; tx < x; ++tx) {
                 m_arr[tx] = new val_t[y];
-                memset(m_arr[tx], 0, y * sizeof(val_t));
+                memset(m_arr[tx], 0, static_cast<size_t>(y) * sizeof(val_t));
             }
         }
 
         void delete_array() noexcept {
-            for (size_t x = 0; x < m_x; ++x) {
+            for (len_t x = 0; x < m_x; ++x) {
                 delete[] m_arr[x];
             }
             delete[] m_arr;
         }
 
         val_t **m_arr = nullptr;
-        size_t m_x = 0;
-        size_t m_y = 0;
+        len_t m_x = 0;
+        len_t m_y = 0;
     };
 
 }
