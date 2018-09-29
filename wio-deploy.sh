@@ -60,7 +60,6 @@ done
 
 rm -rf wlib-stl/include
 rm -rf wlib-stl/src
-rm -rf wlib-stl/tests
 
 cp -r wlib-wio/include wlib-stl/include
 cp -r wlib-wio/src wlib-stl/src
