@@ -1,42 +1,60 @@
-pkg:
+type: pkg
+
+project:
   name: wlib-stl
+  version: 3.0.1
+  organization: Waterloop
   description: Standard Library for embedded C++ development
   repository: https://github.com/waterloop/waterloop-wlib.git
-  version: 3.0.0
+  license: MIT
   author: Jeff Niu <jeffniu22@gmail.com> (https://github.com/mogball)
   contributors:
   - Deep Dhillon <deep@deepdhillon.ca> (https://github.com/dhillondeep)
-  organization: Waterloop
   keywords:
   - wio
   - waterloop
   - stl
   - library
-  license: MIT
-  header_only: false
-  platform: ALL
-  framework:
-  - ALL
-  board:
-  - ALL
-  compile_flags: []
-  ide: none
+  definitions:
+    required:
+      private:
+      - WLIB_TLSF_ARCH
+      - WLIB_TLSF_LOG2_DIV
+      - WLIB_TLSF_LOG2_ALIGN
+      - WLIB_TLSF_LOG2_MAX
+  compile_options:
+    wio_version: 0.4.1
+    default_target: tests
 
 targets:
-  default: tests
-  create:
-    tests:
-      board: ALL
-      target_compile_flags: []
-      pkg_compile_flags: []
+  tests:
+    src: tests
+    platform: avr
+    framework: cosa
+    board: mega2560
+    definitions:
+      package:
+      - WLIB_TLSF_ARCH=16
+      - WLIB_TLSF_LOG2_DIV=3
+      - WLIB_TLSF_LOG2_ALIGN=1
+      - WLIB_TLSF_LOG2_MAX=11
+  native-tests:
+    src: native-tests
+    platform: native
+    definitions:
+      package:
+      - WLIB_TLSF_ARCH=64
+      - WLIB_TLSF_LOG2_DIV=4
+      - WLIB_TLSF_LOG2_ALIGN=3
+      - WLIB_TLSF_LOG2_MAX=14
 
 dependencies:
   wlib-memory:
-    version: latest
-    vendor: false
-    compile_flags: []
+    version: 1.0.3
+    link_visibility: PUBLIC
+    definitions:
+    - $(WLIB_TLSF_ARCH)
+    - $(WLIB_TLSF_LOG2_DIV)
+    - $(WLIB_TLSF_LOG2_ALIGN)
+    - $(WLIB_TLSF_LOG2_MAX)
 
-  wlib-tmp:
-    version: latest
-    vendor: false
-    compile_flags: []

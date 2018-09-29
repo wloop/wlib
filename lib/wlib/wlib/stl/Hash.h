@@ -51,7 +51,7 @@ namespace wlp {
     inline IntType hash_static_string(const static_string<tSize> &static_string) {
         IntType h = 0;
         for (size_t pos = 0; pos < static_string.length(); ++pos) {
-            h = static_cast<IntType>(MUL_127(h) + static_string[pos]);
+            h = static_cast<IntType>(MUL_127(h) + static_cast<IntType>(static_string[pos]));
         }
         return h;
     };
