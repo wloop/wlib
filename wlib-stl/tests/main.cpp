@@ -8,6 +8,7 @@ typedef dynamic_string string;
 template<typename K, typename V>
 using map = tree_map<K, V>;
 
+void *operator new(decltype(sizeof(0)), void *ptr) noexcept { return ptr; }
 
 struct data_init {
     static constexpr unsigned POOL_SIZE = 4096;
