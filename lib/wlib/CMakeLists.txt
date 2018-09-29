@@ -18,7 +18,7 @@ set(WLIB_STL_DIR ${CMAKE_CURRENT_LIST_DIR}/../../wlib-stl)
 set(WIO_MODULES_DIR ${WLIB_STL_DIR}/.wio/node_modules)
 
 set(wlib-tmp_dir ${WIO_MODULES_DIR}/wlib-tmp__1.0.2)
-set(wlib-memory_dir ${WIO_MODULES_DIR}/wlib-memory__1.0.3)
+set(wlib-memory_dir ${WIO_MODULES_DIR}/wlib-memory__1.0.4)
 set(wlib-malloc_dir ${WIO_MODULES_DIR}/wlib-malloc__1.0.4)
 set(wlib-tlsf_dir ${WIO_MODULES_DIR}/wlib-tlsf__1.0.5)
 

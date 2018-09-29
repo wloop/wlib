@@ -2,7 +2,7 @@ type: pkg
 
 project:
   name: wlib-stl
-  version: 3.0.1
+  version: 3.0.2
   organization: Waterloop
   description: Standard Library for embedded C++ development
   repository: https://github.com/waterloop/waterloop-wlib.git
@@ -50,7 +50,7 @@ targets:
 
 dependencies:
   wlib-memory:
-    version: 1.0.3
+    version: 1.0.4
     link_visibility: PUBLIC
     definitions:
     - $(WLIB_TLSF_ARCH)
