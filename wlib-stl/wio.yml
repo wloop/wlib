@@ -2,7 +2,7 @@ type: pkg
 
 project:
   name: wlib-stl
-  version: 3.0.2
+  version: 3.0.3
   organization: Waterloop
   description: Standard Library for embedded C++ development
   repository: https://github.com/waterloop/waterloop-wlib.git
@@ -22,13 +22,17 @@ project:
       - WLIB_TLSF_LOG2_DIV
       - WLIB_TLSF_LOG2_ALIGN
       - WLIB_TLSF_LOG2_MAX
+    optional:
+      private:
+      - WLIB_TLSF_PRINTF
+      - WLIB_TLSF_ASSERT
   compile_options:
-    wio_version: 0.4.1
-    default_target: tests
+    wio_version: 0.6.0
+    default_target: cosa-tests
 
 targets:
-  tests:
-    src: tests
+  cosa-tests:
+    src: tests/cosa
     platform: avr
     framework: cosa
     board: mega2560
@@ -39,7 +43,7 @@ targets:
       - WLIB_TLSF_LOG2_ALIGN=1
       - WLIB_TLSF_LOG2_MAX=11
   native-tests:
-    src: native-tests
+    src: tests/native
     platform: native
     definitions:
       package:
@@ -47,14 +51,15 @@ targets:
       - WLIB_TLSF_LOG2_DIV=4
       - WLIB_TLSF_LOG2_ALIGN=3
       - WLIB_TLSF_LOG2_MAX=14
-
+      - WLIB_TLSF_PRINTF
 dependencies:
   wlib-memory:
-    version: 1.0.4
+    version: 1.0.5
     link_visibility: PUBLIC
     definitions:
     - $(WLIB_TLSF_ARCH)
     - $(WLIB_TLSF_LOG2_DIV)
     - $(WLIB_TLSF_LOG2_ALIGN)
     - $(WLIB_TLSF_LOG2_MAX)
-
+    - $optional(WLIB_TLSF_PRINTF)
+    - $optional(WLIB_TLSF_ASSERT)
